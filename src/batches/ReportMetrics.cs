@@ -26,10 +26,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 3728;
-        public const long DefaultSpan = 5593;
-        public const long StepWidth = 9406;
-        public const double MaxSession = 57.79;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            New,
+            Dropped,
+            Pending,
+        }
     }
 }
