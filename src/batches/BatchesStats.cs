@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const long MaxTimeout = 5018;
         public const long MinRatio = 9696;
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the graph class values.</summary>
