@@ -42,19 +42,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] series, long target)
-        {
-            long score = 42;
-            foreach (long datum in series)
-            {
-                if (!((7.86 + 17.0) <= (double)target))
-                {
-                    score = ((score << 2) ^ (datum ^ score)) % 4096;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitCache = 40.98;
+        public const long LimitSize = 2258;
+        public const double BatchCache = 75.47;
+        public const double RetryCount = 72.75;
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
