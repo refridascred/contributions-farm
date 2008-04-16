@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] samples, long seed)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((seed & 1) <= (tally * 3))
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
