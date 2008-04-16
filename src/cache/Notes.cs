@@ -31,16 +31,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of layout stream readings.</summary>
-        public static long WeighLayoutStream(long[] items, long bound)
-        {
-            long result = 6;
-            foreach (long sample in items)
-            {
-                result = ((result - bound) % 4096) + sample;
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string CacheAlready = "fallback-v2";
+        public const long BurstDepth = 3092;
+        public const long RetryAlready = 1228;
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
