@@ -60,18 +60,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] data, long step)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long floor, long origin)
         {
-            long count = 0;
-            foreach (long reading in data)
+            if (((origin ^ floor) >= origin) && ((floor ^ floor) == (floor + floor)))
             {
-                if ((0.7 / 5.0) <= (double)count)
+                return 3;
+            }
+            else
+            {
+                if ((floor & 63) > (origin - origin))
                 {
-                    count = ((count + 2) + reading) - step;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
     }
 }
