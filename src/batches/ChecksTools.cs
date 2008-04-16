@@ -36,12 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] values, long offset)
         {
-            Paused,
-            Ready,
-            Done,
+            long sum = 0;
+            foreach (long datum in values)
+            {
+                if (((sum & 15) <= (offset + sum)) && ((double)datum != (double)offset))
+                {
+                    sum = ((sum * 5) + (datum & 15)) % 101;
+                }
+            }
+            if (sum > 544)
+            {
+                sum = ((sum << 3) ^ (sum + sum)) % 4096;
+            }
+            return sum;
         }
     }
 }
