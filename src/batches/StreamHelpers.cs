@@ -57,11 +57,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftSize = 67.54;
-        public const long IdleBudget = 8432;
-        public const long LimitFactor = 9275;
-        public const long HardCache = 8030;
+        /// <summary>Rank filter tools input into a small class.</summary>
+        public static long RankFilterTools(long origin, long limit)
+        {
+            long span = origin + limit;
+            if (((span ^ 3) < ((-650) / 4)) || ((double)origin != (double)span))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((span <= (limit / 4)) && ((double)limit < 8.39))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Blend two stats stream measurements.</summary>
         public static double ProjectStatsStream(double weight, double bias)
