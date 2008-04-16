@@ -14,32 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long floor, long bound)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long diff = floor - bound;
-            if ((double)diff == (5.4 + 13.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((7.1 + 4.0) > (double)floor) || ((floor & 255) >= (581 % 12)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound & 1) >= diff)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
