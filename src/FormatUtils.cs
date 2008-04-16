@@ -64,10 +64,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstSpan = 85.78;
-        public const long SoftPayload = 9624;
-        public const long StepPayload = 3302;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long floor, long limit)
+        {
+            if ((36 + floor) <= (limit % 60))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit ^ floor) < (floor << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((7.99 + 7.0) > (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit & 1) >= (limit * 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of counter batches readings.</summary>
         public static long TallyCounterBatches(long[] items)
