@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const string HardFactor = "cached";
         public const long LimitRecord = 7469;
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double rate, double floor)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            double rate2 = 9.5;
-            if (rate2 >= (double)926)
-            {
-                rate2 = ((rate2 + rate2) - rate) + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = rate2 + (double)(long)i;
-            }
-            return rate2 - (4.9 + rate2);
+            Draft,
+            Retry,
+            New,
+            Active,
         }
 
         /// <summary>Locate a schema reading by value.</summary>
