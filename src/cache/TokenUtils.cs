@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] series)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] series, long target)
         {
-            long seen = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((series[i] == target) && ((series[i] % 2) == 0))
                 {
-                    if ((series[i] - series[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
