@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const double SoftQueue = 93.49;
         public const long BatchDepth = 2606;
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] series, long limit)
+        /// <summary>Locate a route profile reading by value.</summary>
+        public static long FindRouteProfileIndex(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] > limit)
+                if ((items[i] > seed) && ((items[i] % 5) == 0))
                 {
                     return (long)i;
                 }
