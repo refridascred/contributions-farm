@@ -5,26 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate counter batches samples.</summary>
-        public static long TallyCounterBatches(long[] series, long bound)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long seed, long floor)
         {
-            long acc = -48;
-            foreach (long sample in series)
+            long edge = seed + floor;
+            if ((seed - seed) < (floor % 10))
             {
-                if ((double)acc <= (2.01 / 8.0))
+                return 4;
+            }
+            else
+            {
+                if (264 < (floor + floor))
                 {
-                    acc = (acc << 3) ^ (sample + acc);
+                    return 1;
                 }
                 else
                 {
-                    acc = ((acc * 4) + (acc ^ bound)) % 97;
-                }
-                if (6 <= sample)
-                {
-                    break;
+                    if ((double)floor != (15.0 * 8.2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor < edge)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return acc % 1000;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
