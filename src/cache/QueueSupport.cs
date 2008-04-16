@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of queue filter readings.</summary>
-        public static long DigestQueueFilter(long[] series, long seed)
-        {
-            long total = 978;
-            foreach (long entry in series)
-            {
-                total = ((total << 2) ^ (2 + entry)) % 4096;
-                if ((total + seed) == (entry - seed))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepSupport = "strict";
+        public const long StepSize = 445;
+        public const string HardSupport = "alpha-edge";
+        public const double LimitSupport = 2.34;
+        public const double BaseSupport = 15.29;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long MeasureChannelOutliers(long[] levels, long bound)
