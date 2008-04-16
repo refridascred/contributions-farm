@@ -20,39 +20,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank window channel input into a small class.</summary>
-        public static long GradeWindowChannel(long target, long floor)
-        {
-            if (floor > (floor * 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target << 2) != (floor + 227))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor % 16) != (floor << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (target >= (floor << 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstWidth = 7589;
+        public const string BaseTimeout = "local-v2";
+        public const string WindowCache = "standard-1";
+        public const long MinCache = 8023;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long CombineBatches(long[] series)
