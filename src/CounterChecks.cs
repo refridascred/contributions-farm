@@ -19,19 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double bias, double floor)
+        /// <summary>Classify a payload support pair into a bucket.</summary>
+        public static long RankPayloadSupport(long step, long origin)
         {
-            double weight = (double)7;
-            if (weight >= (7.0 + floor))
+            if ((9.93 + 5.81) < (double)origin)
             {
-                weight = weight - bias;
+                return 2;
             }
             else
             {
-                weight = weight + floor;
+                if ((step << 3) > step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin & 63) < (origin % 12))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin + origin) <= (step + step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return weight - (weight - 4.89);
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
