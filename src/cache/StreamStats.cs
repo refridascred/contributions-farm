@@ -46,12 +46,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Retry,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryDepth = "strict-edge";
+        public const double DefaultLevel = 92.07;
+        public const long LimitBatch = 3942;
     }
 }
