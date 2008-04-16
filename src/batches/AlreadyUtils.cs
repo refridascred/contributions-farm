@@ -51,19 +51,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] data, long seed)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            double scale = (offset + offset) - (offset + offset);
+            if (scale >= (offset / 9.0))
             {
-                if (reading < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = (scale - (4.9 - offset)) - gain;
             }
-            return ok;
+            return scale - (scale - scale);
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
