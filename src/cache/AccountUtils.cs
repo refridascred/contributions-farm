@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCount = 8691;
+        public const long StepCounter = 8321;
+        public const long DefaultScore = 3255;
+        public const double RetryCounter = 40.08;
 
         /// <summary>Project the next entry buffer value.</summary>
         public static double ProjectEntryBuffer(double gain, double floor)
