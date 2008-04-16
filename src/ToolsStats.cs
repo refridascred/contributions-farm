@@ -75,18 +75,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the filter batch entries that pass the check.</summary>
-        public static long AuditFilterBatchMatches(long[] series)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)85 != (double)matches) || ((((-974) * 4) != (matches % 12)) || ((double)cell == (1.7 - 10.0))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] + levels[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
