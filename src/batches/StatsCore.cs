@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] data)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen & 255) > seen)
+                if (series[i] == step)
                 {
-                    seen = (seen + 2) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the report kind values.</summary>
