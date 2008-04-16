@@ -35,30 +35,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] data, long origin)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] series, long step)
         {
-            long state = 706;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (state < origin)
+                if (series[i] >= step)
                 {
-                    state = state + (state + state);
-                }
-                if (((sample + sample) != (8 - state)) || ((double)origin != (8.5 / 6.0)))
-                {
-                    state = state ^ (state + sample);
-                }
-                else
-                {
-                    state = (state ^ (origin * 3)) % 1000;
+                    return (long)i;
                 }
             }
-            if (state < 22)
-            {
-                state = ((state << 3) ^ (origin << 1)) % 65521;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
