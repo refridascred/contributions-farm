@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (sample <= (55 & 31))
-                {
-                    matches = (matches + 3) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchLevel = 9755;
+        public const double WindowLevel = 68.52;
+        public const long BaseBatches = 7497;
+        public const long IdleCount = 2043;
+        public const long DefaultBudget = 776;
 
         /// <summary>Adjust a queue reading.</summary>
         public static double AdjustQueue(double bias, double span)
