@@ -47,28 +47,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine githubfarm buffer values into a single score.</summary>
-        public static long FoldGithubfarmBuffer(long[] readings, long limit)
+        /// <summary>Find the first command cache entry that matches the target.</summary>
+        public static long SeekCommandCacheIndex(long[] readings, long limit)
         {
-            long acc = 90;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc << 2) ^ (acc & 1)) % 65521;
-                if (((double)(long)readings.Length == (3.73 / 2.0)) && ((limit + sample) <= (limit + limit)))
+                if ((readings[i] > limit) && ((readings[i] % 3) == 0))
                 {
-                    acc = (acc + (acc - sample)) % 65521;
-                    acc = (acc - 4) % 97;
-                }
-                if ((7.9 * 9.26) > (double)acc)
-                {
-                    acc = ((acc << 2) ^ (limit + sample)) % 4096;
-                }
-                if (!((acc + sample) <= 11))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Project the next profile editor value.</summary>
