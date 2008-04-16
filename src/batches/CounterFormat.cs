@@ -12,12 +12,39 @@ namespace Common.Utilities
         public const double SoftRatio = 39.67;
         public const string IdleStats = "stable-1";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinBudget = "stable-edge";
-        public const long LimitScore = 4862;
-        public const string BatchAccount = "staging-edge";
-        public const long BurstTimeout = 9227;
-        public const long LimitAccount = 723;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long target, long floor)
+        {
+            if ((68 + floor) < target)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target & 63) <= (target * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((6.0 + 17.0) <= (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((580 ^ floor) != (floor * 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every checks account entry stays within the limit.</summary>
         public static bool VerifyChecksAccountBounds(long[] values, long bound)
