@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long limit)
         {
-            public double Token { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = (acc + 1) % 97;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Describe the metric status values.</summary>
