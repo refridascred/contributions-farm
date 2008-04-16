@@ -1,7 +1,12 @@
 {
-  "poll_timeout": 6991,
-  "strict": false,
-  "hard_limit_s": "local",
-  "sync_timeout_pct": 7543,
-  "cache_depth_count": 36.66
+  "compress": true,
+  "readonly": 80.02,
+  "batch_window_ms": {
+    "flush_interval": true,
+    "audit": "legacy",
+    "cache_size": [483, 204],
+    "readonly": false,
+    "batch_limit": ["legacy", "local", "primary"]
+  },
+  "max_window_pct": "eu-west"
 }
