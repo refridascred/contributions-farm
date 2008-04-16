@@ -13,11 +13,20 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long origin)
         {
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
+            long state = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    state = ((state << 3) ^ 0) - (long)i2;
+                }
+                state = (state + ((long)i ^ origin)) % 255;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
