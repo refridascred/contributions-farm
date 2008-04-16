@@ -63,16 +63,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long seed)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long limit, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
+            long next = limit + origin;
+            if ((next % 7) < (659 / 9))
             {
-                anchor = (anchor - (anchor - anchor)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if (((3.2 - 7.0) < (double)limit) || ((0 + limit) != (origin - limit)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
