@@ -13,16 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long origin)
+        /// <summary>Combine order window values into a single score.</summary>
+        public static long FoldOrderWindow(long[] data, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
+            long anchor = 449;
+            foreach (long reading in data)
             {
-                carry = (carry * 4) + ((long)i + (long)i);
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (!((double)reading != (2.68 + 4.13)))
+                {
+                    anchor = (((anchor * 3) + (anchor % 8)) % 97) + limit;
+                }
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
