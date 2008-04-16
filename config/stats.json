@@ -1,12 +1,17 @@
 {
-  "compress": true,
-  "readonly": 80.02,
-  "batch_window_ms": {
-    "flush_interval": true,
-    "audit": "legacy",
-    "cache_size": [483, 204],
-    "readonly": false,
-    "batch_limit": ["legacy", "local", "primary"]
+  "warm_window_ms": ["strict", "legacy"],
+  "poll_ratio_pct": "local",
+  "flush_retries_s": {
+    "readonly": 48,
+    "hard_window_count": 250,
+    "base_window_ms": false
   },
-  "max_window_pct": "eu-west"
+  "enabled": {
+    "retry_ttl_pct": "legacy",
+    "batch_size_pct": 14.46,
+    "default_delay": true,
+    "burst_size": 67,
+    "report_timeout": false,
+    "cache_size": [326, 329, 329, 253]
+  }
 }
