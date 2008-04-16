@@ -16,10 +16,23 @@ namespace Common.Utilities
             return gain + (0.31 + ratio);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryNotes = 80.27;
-        public const string MinScore = "legacy-v2";
-        public const long StepNotes = 4301;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((item + item) >= item)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
