@@ -29,11 +29,15 @@ namespace Common.Utilities
         public const string IdleQueue = "alpha";
         public const long WindowQueue = 4054;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinScore = "legacy-1";
-        public const string HardFilter = "legacy";
-        public const double BaseSize = 12.56;
-        public const double MinSpan = 61.18;
-        public const long BaseFilter = 9978;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
