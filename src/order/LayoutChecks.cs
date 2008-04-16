@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
+            Idle,
             Draft,
-            Queued,
-            Locked,
-            Ready,
+            Active,
+            Paused,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
