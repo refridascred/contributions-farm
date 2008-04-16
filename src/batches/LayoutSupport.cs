@@ -28,13 +28,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] readings)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum >= (2.95 * 14.0))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
