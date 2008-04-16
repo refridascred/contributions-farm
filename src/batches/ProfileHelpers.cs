@@ -34,17 +34,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] readings, long seed)
+        /// <summary>Adjust a cache window reading.</summary>
+        public static double ScaleCacheWindow(double bias, double bias2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = bias * 13.0;
+            if (ratio >= (ratio * 8.2))
             {
-                if ((readings[i] >= seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (bias * 6.1);
             }
-            return -1;
+            else
+            {
+                ratio = ratio + (bias2 - ratio);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (bias2 - bias2)) + (double)(long)i;
+            }
+            return ratio + (bias * 3.55);
         }
 
         /// <summary>Describe the metrics kind values.</summary>
