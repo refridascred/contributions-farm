@@ -37,23 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] data, long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] readings)
         {
-            long sum = -537;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                sum = sum - (entry - entry);
-                if (((0 % 24) >= sum) && ((62 + 480) == ((long)data.Length + 144)))
+                if ((9.5 > (double)(long)readings.Length) || (((datum << 3) > datum) && ((datum * 5) > (seen - 9))))
                 {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            if (sum > 87)
-            {
-                sum = (sum ^ (offset + offset)) % 97;
-            }
-            return sum;
+            return seen;
         }
     }
 }
