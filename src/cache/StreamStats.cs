@@ -60,22 +60,17 @@ namespace Common.Utilities
         public const long WindowNotes = 4593;
         public const long HardCount = 8611;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] items, long origin)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long floor)
         {
-            long sum = -3;
-            foreach (long sample in items)
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (((origin + origin) >= (sum - sum)) && ((long)items.Length == (sum + 937)))
-                {
-                    sum = (sum * 4) + ((long)items.Length << 2);
-                }
-                else
-                {
-                    sum = (sum - sample) % 255;
-                }
+                long prev = ((long)i / 6) + (floor >> 2);
+                carry = (carry ^ prev) % 4096;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return sum;
+            return carry;
         }
     }
 }
