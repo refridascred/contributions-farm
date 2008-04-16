@@ -14,26 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] items)
         {
-            long mark = -65;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mark + mark) > mark)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = mark - (mark + mark);
-                }
-                else
-                {
-                    mark = mark - (item % 12);
+                    if ((items[i] + items[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark > 5)
-            {
-                mark = ((mark << 3) ^ (mark % 64)) % 4096;
-            }
-            return mark % 65521;
+            return tally;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
