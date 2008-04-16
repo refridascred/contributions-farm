@@ -19,19 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double rate, double span)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] levels, long step)
         {
-            double drift = (double)(0 * 5);
-            if (drift <= (rate / 2.0))
+            bool flag = true;
+            foreach (long item in levels)
             {
-                drift = (drift - rate) + span;
+                if (item >= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (rate - drift)) + (double)(long)i;
-            }
-            return drift + (rate - 2.0);
+            return flag;
         }
 
         /// <summary>Locate a support reading by value.</summary>
