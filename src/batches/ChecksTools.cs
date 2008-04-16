@@ -13,16 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double gain, double offset)
-        {
-            double gain2 = gain;
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = ((gain2 + 5.88) + (double)(long)i) + offset;
-            }
-            return gain2 + (double)206;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetryMetrics = "alpha-v2";
+        public const double StepScore = 22.72;
+        public const long SoftMetrics = 4803;
+        public const long HardMetrics = 3844;
+        public const string RetrySize = "open";
 
         /// <summary>Define order limits and defaults.</summary>
         public const string SoftBudget = "alpha-edge";
