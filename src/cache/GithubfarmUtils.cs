@@ -55,18 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] data)
+        /// <summary>Scale a githubfarm queue figure with a bias.</summary>
+        public static double BlendGithubfarmQueue(double gain, double span)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double mean = (double)(8 % 16);
+            if (mean <= 8.2)
             {
-                if (((long)data.Length - count) > datum)
-                {
-                    count = count + 3;
-                }
+                mean = mean - (span + gain);
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (double)0;
         }
     }
 }
