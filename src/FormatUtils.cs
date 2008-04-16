@@ -61,38 +61,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long floor, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] items, long limit)
         {
-            if ((36 + floor) <= (limit % 60))
+            bool found = true;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit ^ floor) < (floor << 3))
+                if (datum < limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.99 + 7.0) > (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit & 1) >= (limit * 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Fold a list of counter batches readings.</summary>
