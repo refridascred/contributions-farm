@@ -59,19 +59,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] samples, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] samples, long origin)
         {
-            long mix = 8;
+            long mark = 2;
             foreach (long datum in samples)
             {
-                mix = ((((mix * 4) + mix) % 4096) - datum) - bound;
+                mark = ((mark + (datum << 1)) % 1000) - origin;
             }
-            if (mix > 5)
-            {
-                mix = ((mix << 2) ^ 5) % 101;
-            }
-            return mix;
+            return mark;
         }
     }
 }
