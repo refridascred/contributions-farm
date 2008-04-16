@@ -30,11 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Adjust a already githubfarm reading.</summary>
+        public static double AdjustAlreadyGithubfarm(double scale, double bias)
         {
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            double mean = (scale - scale) * 4.4;
+            if (mean < 7.7)
+            {
+                mean = mean - (4.5 * 9.2);
+            }
+            else
+            {
+                mean = mean - 2.9;
+            }
+            return mean - bias;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
