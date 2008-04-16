@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] series)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (((matches + sample) > ((-9) * 3)) || (((sample ^ matches) <= matches) && ((double)sample == (3.6 / 2.0))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Done,
+            Locked,
+            Closed,
         }
 
         /// <summary>Check that every commits format entry stays within the limit.</summary>
