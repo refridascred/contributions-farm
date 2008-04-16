@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] values, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            long result = -7;
+            foreach (long reading in values)
             {
-                mix = (mix - (192 * 3)) % 255;
-                mix = (mix + (mix * 2)) % 255;
-                mix = ((mix * 2) + (long)i) % 4093;
+                result = (((result * 2) + (bound / 2)) % 4096) - reading;
+                if ((bound % 5) <= (long)values.Length)
+                {
+                    result = ((result * 5) + (bound << 2)) % 97;
+                }
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
