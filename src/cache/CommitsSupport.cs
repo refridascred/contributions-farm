@@ -40,18 +40,11 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Locate a tools report reading by value.</summary>
-        public static long FindToolsReportIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == offset) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 307;
+        public const long MaxBudget = 1558;
+        public const long IdleSpan = 1290;
+        public const long SoftCache = 7263;
 
         /// <summary>Rank support input into a small class.</summary>
         public static long RankSupport(long bound, long offset)
