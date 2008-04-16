@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 7990;
-        public const long WindowAlready = 4006;
-        public const string MaxTimeout = "alpha";
-        public const long LimitFactor = 3859;
-        public const long LimitLevel = 9109;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (((seen + item) != (item * 4)) && !(1.6 < (double)item))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long IdleLevel = 4584;
