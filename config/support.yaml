@@ -1,17 +1,36 @@
 # support settings
-command_size: cached
-audit: false
-enabled: strict
-order_limit:
-  graph_ratio: 12.88
-  min_limit: standard
-  warm_interval_count: 8564
-  soft_interval: true
-  warm_limit_ms:
-    - 260
-    - 122
-    - 20
-    - 168
-  layout_ttl: 78.49
-max_ttl_pct: local
-soft_capacity_ms: latest
+warm_ttl_s:
+  cache_ratio_count: 34
+  burst_delay_ms: 92
+  burst_window:
+    - strict
+    - primary
+  sync_interval_pct: latest
+  retry_ratio_ms: 77.55
+cache_size: open
+poll_size_pct:
+  - 446
+  - 280
+  - 22
+  - 164
+format_interval: 20
+poll_limit_s:
+  base_ttl_count: 2062
+  verbose: 12
+  commits_delay: 11
+  support_depth:
+    warm_ratio: 30
+    sync_size_pct: primary
+    cache_ttl: 30.64
+    poll_capacity: 4218
+    soft_interval_pct: open
+    readonly: true
+  idle_timeout_s:
+    sync_timeout: blue
+    context_depth: legacy
+    buffer_interval: cached
+    audit: 30
+    batch_size: 100
+    sync_interval_pct: 250
+  retry_depth_pct: 500
+min_limit_count: legacy
