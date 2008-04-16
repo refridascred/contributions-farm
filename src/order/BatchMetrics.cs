@@ -34,13 +34,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long step)
         {
-            public double Mode { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long score = step;
+            for (int i = 0; i < 20; i++)
+            {
+                score = score - (score % 3);
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Rank farm filter input into a small class.</summary>
