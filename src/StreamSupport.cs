@@ -51,15 +51,38 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double gain, double bias)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long floor, long step)
         {
-            double scale = 7.4;
-            if (scale > (bias - bias))
+            if ((step >> 5) == (step + 18))
             {
-                scale = (scale - scale) + gain;
+                return 4;
             }
-            return scale + bias;
+            else
+            {
+                if ((192 & 63) <= (floor - step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor / 6) <= ((-389) + step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((floor + floor) == (floor - 3)) && ((477 - floor) >= step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
