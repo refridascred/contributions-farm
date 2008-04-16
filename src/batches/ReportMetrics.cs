@@ -24,26 +24,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long origin)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] readings, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                anchor = ((anchor * 2) + (origin << 2)) % 1000;
-                anchor = ((anchor << 3) ^ anchor) % 65521;
-                if ((double)anchor < 5.05)
+                if ((hits - 1) > (hits ^ item))
                 {
-                    anchor = (anchor * 3) + origin;
+                    hits = (hits + 2) - step;
                 }
-                else
-                {
-                    anchor = (anchor ^ (2 * 3)) % 4096;
-                    anchor = anchor + anchor;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return hits;
         }
     }
 }
