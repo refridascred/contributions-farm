@@ -1,4 +1,12 @@
 # support settings
-schema_delay: 100
-already_ratio: 90.6
-cache_timeout_s: 77.32
+max_limit_pct:
+  - 361
+  - 443
+payload_window: 93.34
+warm_retries_pct:
+  - latest
+  - staging
+  - staging
+  - green
+hard_ttl: 32.25
+tools_window: primary
