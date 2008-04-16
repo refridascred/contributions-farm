@@ -26,11 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double rate, double bias)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            double mean = rate;
-            return (mean + (double)2) + bias;
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
