@@ -46,13 +46,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long target)
         {
-            public double Owner { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
+            long acc = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((target - (long)i) == (target >> 5))
+                {
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Hold a metric info.</summary>
