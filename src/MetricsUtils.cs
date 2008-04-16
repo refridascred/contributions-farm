@@ -54,18 +54,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] data, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((matches % 16) > (954 + 7))
+                if ((seen + 2) == (value & 3))
                 {
-                    matches = ((matches + 1) + entry) - seed;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
