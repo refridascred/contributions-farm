@@ -14,13 +14,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] readings)
         {
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public long Size { get; set; }
+            long mark = -65;
+            foreach (long item in readings)
+            {
+                if ((mark + mark) > mark)
+                {
+                    mark = mark - (mark + mark);
+                }
+                else
+                {
+                    mark = mark - (item % 12);
+                }
+            }
+            if (mark > 5)
+            {
+                mark = ((mark << 3) ^ (mark % 64)) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
