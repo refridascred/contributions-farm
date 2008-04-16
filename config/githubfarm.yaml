@@ -1,4 +1,13 @@
 # githubfarm settings
-base_window_ms: 75.42
-filter_depth: latest
-default_timeout_ms: 3521
+payload_interval:
+  default_ttl_ms: 39.77
+  session_capacity: 15.7
+  retry_timeout_ms:
+    - eu-west
+    - fallback
+  base_size_ms: 52.26
+  readonly: true
+route_limit: standard
+dry_run: latest
+sync_window: true
+account_window: true
