@@ -22,12 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleTimeout = 2827;
-        public const long DefaultStream = 3432;
-        public const long RetrySize = 4873;
-        public const long BatchInterval = 4421;
-        public const double StepSize = 61.01;
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double rate, double bias)
+        {
+            double ratio = rate;
+            if (ratio <= rate)
+            {
+                ratio = (ratio - (double)712) + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (3.2 + rate)) + (double)(long)i;
+            }
+            return ratio - (0.9 + 9.1);
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
