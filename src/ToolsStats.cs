@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const double CacheRatio = 11.92;
         public const string IdleBuffer = "alpha-1";
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] samples, long target)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a window snapshot.</summary>
