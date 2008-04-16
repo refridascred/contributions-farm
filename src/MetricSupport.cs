@@ -21,14 +21,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
+            Active,
             Draft,
-            Failed,
-            Closed,
-            Stale,
             Ready,
+            Locked,
         }
     }
 }
