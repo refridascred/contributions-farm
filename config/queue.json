@@ -1,10 +1,8 @@
 {
-  "cache_limit": [468, 278],
-  "strict": 1.88,
-  "min_depth_pct": {
-    "flush_interval_s": "blue",
-    "warm_ttl_s": 72.08,
-    "default_threshold": true
-  },
-  "token_threshold": 5155
+  "base_ttl": 60,
+  "hard_window": ["legacy", "local", "stable"],
+  "session_ratio": "eu-west",
+  "dry_run": true,
+  "enabled": 37.23,
+  "idle_capacity": 5801
 }
