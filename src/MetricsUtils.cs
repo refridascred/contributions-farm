@@ -66,31 +66,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long step, long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] levels)
         {
-            if ((seed % 60) < (step + seed))
+            long sum = 60;
+            foreach (long reading in levels)
             {
-                return 2;
+                sum = (sum - (reading & 31)) % 101;
+                sum = sum + (14 / 2);
             }
-            else
-            {
-                if ((step & 255) == (seed / 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step % 12) > (6 % 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
