@@ -11,38 +11,19 @@ namespace Common.Utilities
         public const string MaxTimeout = "fallback-edge";
         public const long SoftBuffer = 5638;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long bound, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] data, long seed)
         {
-            if (bound >= (211 + 72))
+            long sum = 52;
+            foreach (long item in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((3.58 + 0.21) < (double)floor)
+                sum = ((sum * 4) + (item + seed)) % 255;
+                if ((sum + item) == (sum - item))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(bound <= (bound << 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor % 12) > (floor / 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Check that every record account entry stays within the limit.</summary>
