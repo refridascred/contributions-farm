@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of support channel readings.</summary>
-        public static long MatchSupportChannelCount(long[] items)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((3 + (long)samples.Length) >= (reading - reading))
                 {
-                    if ((items[i] ^ items[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) - bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
