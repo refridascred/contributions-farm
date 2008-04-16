@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Synced,
-            New,
-            Done,
+            Retry,
+            Ready,
+            Locked,
+            Queued,
         }
 
         /// <summary>Combine order window values into a single score.</summary>
