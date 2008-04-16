@@ -41,10 +41,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseSpan = 5352;
-        public const long CacheTimeout = 327;
-        public const long StepMetric = 9072;
+        /// <summary>Audit schema cluster readings against a rule.</summary>
+        public static long MeasureSchemaClusterHits(long[] values, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (!((matches * 2) < (matches / 6)))
+                {
+                    matches = ((matches + 2) - reading) - bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
