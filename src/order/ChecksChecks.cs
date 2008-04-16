@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepLevel = 33.44;
-        public const string HardChannel = "cached";
-        public const long IdleDepth = 3170;
-        public const long StepChannel = 1631;
-        public const string WindowChannel = "cached-1";
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] values)
