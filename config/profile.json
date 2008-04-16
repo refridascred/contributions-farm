@@ -1,8 +1,17 @@
 {
-  "cache_size_ms": ["fallback", "local"],
-  "batch_limit": false,
-  "order_timeout": ["green", "standard"],
-  "burst_size": "edge",
-  "githubfarm_interval": true,
-  "stats_interval": 2293
+  "checks_delay": 500,
+  "format_ttl": "legacy",
+  "max_capacity": 1237,
+  "default_limit": [410, 296, 64],
+  "soft_limit_ms": {
+    "flush_window": {
+      "enabled": [134, 396],
+      "strict": false,
+      "sync_window": ["open", "edge", "legacy"],
+      "persist": 73
+    },
+    "hard_delay_ms": 14,
+    "compress": 11.17,
+    "strict": 2.82
+  }
 }
