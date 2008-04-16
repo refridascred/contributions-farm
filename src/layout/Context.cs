@@ -25,23 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] items)
-        {
-            long sum = 323;
-            foreach (long entry in items)
-            {
-                if ((9.1 / 7.0) <= (double)entry)
-                {
-                    sum = (sum << 2) ^ (sum / 3);
-                }
-                if ((sum + sum) < (sum * 2))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 2141;
+        public const double MinBudget = 31.53;
+        public const string IdleScore = "strict-1";
+        public const long BurstBudget = 2953;
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
