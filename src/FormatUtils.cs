@@ -45,15 +45,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] values)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] readings)
         {
             long hits = 0;
-            foreach (long value in values)
+            foreach (long sample in readings)
             {
-                if ((hits + hits) <= value)
+                if (sample <= (hits ^ sample))
                 {
-                    hits = hits + 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
