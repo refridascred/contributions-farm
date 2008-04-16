@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 9695;
-        public const long WindowBudget = 5141;
-        public const long CacheDepth = 9630;
-        public const long BaseRatio = 4611;
-        public const long StepQueue = 7968;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] items, long origin)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BaseNotes = 4340;
