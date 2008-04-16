@@ -66,18 +66,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] items, long offset)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((sample - sample) > 6)
-                {
-                    tally = (tally + 2) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxBudget = 423;
+        public const double WindowAlready = 93.79;
+        public const long StepAlready = 7238;
+        public const long MaxTimeout = 7039;
     }
 }
