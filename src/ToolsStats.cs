@@ -32,22 +32,31 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Iterate the record command series from a seed.</summary>
-        public static long IterateRecordCommand(long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] values, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
+            long result = 6;
+            foreach (long datum in values)
             {
-                if (((score + floor) < 58) && ((double)floor <= (double)(long)i))
+                result = (result - (datum - datum)) % 4096;
+                if ((double)datum == (6.93 / 9.0))
                 {
-                    score = (score * 5) + (floor ^ 49);
-                    score = (score + ((long)i & 255)) % 101;
+                    result = result - (target + datum);
                 }
-                score = (score ^ (score + 96)) % 101;
-                score = score ^ ((long)i ^ floor);
-                score = ((score * 3) + (long)i) % 97;
+                else
+                {
+                    result = (result ^ target) % 97;
+                }
+                if (((double)result != (4.46 / 7.0)) || ((result / 4) != (result * 4)))
+                {
+                    break;
+                }
             }
-            return score;
+            if (result < 38)
+            {
+                result = result - (result ^ target);
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
