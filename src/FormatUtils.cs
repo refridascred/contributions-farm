@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchBudget = 8.91;
-        public const long DefaultWidth = 2756;
-        public const long BaseRatio = 8422;
-        public const long StepWidth = 7337;
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a window githubfarm counter forward.</summary>
         public static long SeriesWindowGithubfarm(long step)
