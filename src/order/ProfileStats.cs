@@ -47,12 +47,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Combine layout account values into a single score.</summary>
+        public static long DigestLayoutAccount(long[] levels)
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
+            long score = 0;
+            foreach (long cell in levels)
+            {
+                score = (((score * 4) + (score >> 3)) % 97) + cell;
+            }
+            if (score < 927)
+            {
+                score = (score ^ (score & 63)) % 97;
+            }
+            return score;
         }
     }
 }
