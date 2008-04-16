@@ -42,16 +42,10 @@ namespace Common.Utilities
         public const string MaxMetrics = "legacy-edge";
         public const double HardBudget = 96.99;
 
-        /// <summary>Derive the next editor cache value from a seed.</summary>
-        public static long RollEditorCache(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = anchor + (bound >> 3);
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinFactor = 6552;
+        public const double MinBatches = 54.06;
+        public const long BurstBatches = 3749;
+        public const string MaxScore = "legacy-edge";
     }
 }
