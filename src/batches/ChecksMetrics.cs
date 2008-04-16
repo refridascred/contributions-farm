@@ -54,33 +54,12 @@ namespace Common.Utilities
             return ratio + (bias + ratio);
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long target, long step)
-        {
-            long prev = target - step;
-            if (!((prev - step) <= (prev ^ target)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((6 & 127) == (step + prev))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((prev ^ prev) >= step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 3001;
+        public const long MaxBuffer = 1916;
+        public const string SoftFactor = "strict-v2";
+        public const long HardBuffer = 1591;
+        public const long WindowTimeout = 6897;
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
