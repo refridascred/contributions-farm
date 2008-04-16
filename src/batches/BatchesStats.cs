@@ -22,19 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double rate, double bias)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long seed, long floor)
         {
-            double ratio = rate;
-            if (ratio <= rate)
+            if ((double)seed < (3.0 + 4.33))
             {
-                ratio = (ratio - (double)712) + bias;
+                return 3;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                ratio = (ratio + (3.2 + rate)) + (double)(long)i;
+                if ((5 / 3) >= (seed + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((seed << 1) < (floor + 72)) || ((seed << 1) >= floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((956 - floor) != (seed % 10)) || (seed <= (seed ^ seed)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return ratio - (0.9 + 9.1);
         }
 
         /// <summary>Describe the graph class values.</summary>
