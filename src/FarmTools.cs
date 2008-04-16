@@ -27,38 +27,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long target, long target2)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long target)
         {
-            if (((double)target2 > 6.04) || ((target2 / 6) > (target2 + target)))
+            long mark = target;
+            for (int i = 0; i < 11; i++)
             {
-                return 4;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((target % 64) > target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target >= (target - 14))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((1.8 * 2.07) >= (double)target2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
