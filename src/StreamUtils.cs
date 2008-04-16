@@ -33,19 +33,12 @@ namespace Common.Utilities
             return (mean + (double)2) + bias;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] samples, long step)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
