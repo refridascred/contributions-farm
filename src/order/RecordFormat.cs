@@ -33,25 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long floor, long target)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long slot = floor + target;
-            if ((floor - floor) <= (floor ^ target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target + slot) != (floor * 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Pending,
+            Synced,
+            Active,
+            Draft,
+            Failed,
         }
 
         /// <summary>Blend two record measurements.</summary>
