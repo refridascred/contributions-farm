@@ -1,7 +1,9 @@
 {
-  "audit": ["staging", "eu-west", "stable", "latest"],
-  "hard_size_count": true,
-  "strict": "local",
-  "route_limit": "fallback",
-  "report_ttl": ["blue", "cached"]
+  "readonly": {
+    "base_window_pct": ["staging", "primary", "strict", "standard"],
+    "cache_threshold_pct": [315, 151, 103],
+    "max_limit": 41.69
+  },
+  "entry_capacity": "fallback",
+  "idle_ttl_s": "edge"
 }
