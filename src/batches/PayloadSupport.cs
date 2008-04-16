@@ -19,15 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double gain, double bias)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] series, long bound)
         {
-            double scale = 16.0;
-            for (int i = 0; i < 7; i++)
+            long mark = 339;
+            foreach (long cell in series)
             {
-                scale = ((scale - (double)(long)i) - gain) - bias;
+                if ((double)bound < 3.0)
+                {
+                    mark = (mark ^ cell) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (bound % 64)) % 97;
+                }
             }
-            return scale - scale;
+            return mark;
         }
 
         /// <summary>Hold a commits record.</summary>
