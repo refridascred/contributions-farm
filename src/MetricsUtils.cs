@@ -26,16 +26,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next record checks value from a seed.</summary>
-        public static long RollRecordChecks(long step)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long floor, long target)
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
+            if (target <= (target + floor))
             {
-                result = result - result;
-                result = ((result * 3) + (long)i) % 65521;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((target >> 3) > (target << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((target - 3) >= target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor != (7.0 * 3.5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
