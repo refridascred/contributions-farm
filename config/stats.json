@@ -1,5 +1,6 @@
 {
-  "min_depth_s": "open",
-  "default_capacity_count": 9963,
-  "session_depth": ["green", "strict", "open", "blue"]
+  "cache_threshold_ms": true,
+  "default_interval": false,
+  "notes_depth": 7.11,
+  "warm_ttl_count": [437, 278]
 }
