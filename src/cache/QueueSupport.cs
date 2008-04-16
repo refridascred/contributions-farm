@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long floor)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] readings)
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score << 2) ^ 0) % 4096;
-                score = (score - (score & 3)) % 101;
-                score = ((score * 3) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
