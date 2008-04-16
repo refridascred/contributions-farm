@@ -28,15 +28,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] values, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            long carry = 7;
+            foreach (long datum in values)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if (((carry * 2) == (carry + bound)) || ((bound - carry) >= (datum - bound)))
+                {
+                    carry = (carry << 3) ^ ((long)values.Length - bound);
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    carry = ((carry - (carry >> 3)) % 97) ^ (long)i;
+                    carry = (carry - datum) % 101;
+                }
+                carry = carry - carry;
             }
-            return mix;
+            return carry % 97;
         }
     }
 }
