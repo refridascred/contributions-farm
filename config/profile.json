@@ -1,7 +1,8 @@
 {
-  "persist": false,
-  "base_size_s": "cached",
-  "sync_depth_count": 24.64,
-  "graph_depth": "latest",
-  "poll_capacity": 7704
+  "dry_run": 250,
+  "hard_ttl": "legacy",
+  "soft_retries_pct": 1024,
+  "graph_threshold": "edge",
+  "order_depth": true,
+  "retry_ttl": 250
 }
