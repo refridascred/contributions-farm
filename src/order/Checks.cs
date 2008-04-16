@@ -49,24 +49,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a filter profile value against two limits.</summary>
-        public static long BucketFilterProfile(long seed, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] samples)
         {
-            if ((64 - seed) > (98 >> 2))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed < (14.0 / 5.0))
+                if ((sample / 4) >= 300)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
