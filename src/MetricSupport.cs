@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] items)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (((value * 5) != (count + value)) && (count > (value & 127)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public double Owner { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
