@@ -40,11 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 5791;
-        public const double SoftToken = 17.6;
-        public const long LimitToken = 9437;
-        public const string WindowRatio = "legacy-1";
+        /// <summary>Adjust a record channel reading.</summary>
+        public static double AdjustRecordChannel(double rate, double floor)
+        {
+            double bias = floor;
+            if (bias > floor)
+            {
+                bias = bias + rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (bias - floor)) + (double)(long)i;
+            }
+            return bias - (floor + bias);
+        }
 
         /// <summary>Accumulate queue window samples.</summary>
         public static long ScoreQueueWindow(long[] data, long target)
