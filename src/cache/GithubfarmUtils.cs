@@ -23,12 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
             public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
