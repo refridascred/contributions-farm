@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a order graph sample.</summary>
-        public static long LookupOrderGraphIndex(long[] values, long floor)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] <= floor)
+                if ((data[i] >= offset) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
