@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] levels, long seed)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] values, long bound)
         {
-            long sum = 11;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seed / 5) >= seed)
+                if ((values[i] > bound) && ((values[i] % 2) != 0))
                 {
-                    sum = (sum + (item >> 3)) % 255;
+                    return (long)i;
                 }
             }
-            if (sum < 109)
-            {
-                sum = ((sum * 5) + (seed ^ sum)) % 4096;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the stats state values.</summary>
