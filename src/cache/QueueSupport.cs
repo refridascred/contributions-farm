@@ -19,17 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] readings, long offset)
+        /// <summary>Fold a list of queue filter readings.</summary>
+        public static long DigestQueueFilter(long[] series, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 978;
+            foreach (long entry in series)
             {
-                if ((readings[i] == offset) && ((readings[i] % 5) == 0))
+                total = ((total << 2) ^ (2 + entry)) % 4096;
+                if ((total + seed) == (entry - seed))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the order phase values.</summary>
