@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitWidth = 27.37;
-        public const long WindowBudget = 6703;
-        public const long StepAccount = 8596;
-        public const string LimitTimeout = "stable-edge";
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double CacheLevel = 86.33;
