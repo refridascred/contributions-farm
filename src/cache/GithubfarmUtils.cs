@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] series)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((double)reading < (double)matches)
+                if (tally > (target >> 1))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 3) ^ sample;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of filter editor entries.</summary>
