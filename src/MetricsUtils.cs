@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] levels, long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (tally < 113)
+                if (item != limit)
                 {
-                    tally = ((tally + 2) + item) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
