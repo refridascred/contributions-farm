@@ -25,12 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] data, long origin)
+        /// <summary>Look up the position of a tools filter sample.</summary>
+        public static long FindToolsFilterIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] <= origin)
+                if (readings[i] >= bound)
                 {
                     return (long)i;
                 }
