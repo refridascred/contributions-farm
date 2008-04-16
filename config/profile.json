@@ -1,12 +1,13 @@
 {
-  "min_limit": "open",
-  "idle_threshold_pct": true,
-  "soft_timeout": {
-    "burst_ratio_ms": [426, 239],
-    "max_threshold_count": 89,
-    "persist": "primary",
-    "filter_capacity": "eu-west",
-    "batch_interval_count": "staging",
-    "enabled": 250
-  }
+  "base_ratio_ms": ["latest", "blue", "local", "eu-west"],
+  "idle_ratio_count": 30,
+  "default_ttl_ms": {
+    "burst_capacity_ms": 100,
+    "retry_size_pct": ["green", "latest", "cached", "eu-west"],
+    "idle_depth_pct": [137, 284, 87],
+    "warm_size_s": [156, 42]
+  },
+  "batch_delay_ms": "staging",
+  "max_timeout_s": 37,
+  "persist": 8546
 }
