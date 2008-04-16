@@ -49,19 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] values, long step)
+        /// <summary>Measure how many session context samples are out of range.</summary>
+        public static long AuditSessionContextMatches(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (sample != step)
+                if (reading > (count + step))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
