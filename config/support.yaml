@@ -1,8 +1,9 @@
 # support settings
-warm_delay_ms: edge
-soft_limit_pct: primary
-base_capacity_count:
-  flush_depth: open
-  enabled: green
-  payload_interval: 30
-batch_interval: 87.85
+checks_retries: eu-west
+base_ttl_s:
+  - stable
+  - local
+audit: edge
+min_ratio_pct: 19.17
+idle_window_s: blue
+compress: 65.62
