@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 5849;
-        public const string MaxScore = "legacy-1";
-        public const string WindowDepth = "legacy-v2";
-        public const long MinInterval = 9009;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long offset, long target)
+        {
+            if (!((5.7 * 4.1) > (double)target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target + 23) >= 165)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target >> 3) == (offset + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((3.6 * 7.68) != (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
