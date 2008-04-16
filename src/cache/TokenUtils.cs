@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the layout filter entries that pass the check.</summary>
-        public static long MeasureLayoutFilterHits(long[] data, long limit)
+        /// <summary>Audit graph account readings against a rule.</summary>
+        public static long MeasureGraphAccountHits(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((tally / 8) < limit)
+                if (seen < step)
                 {
-                    tally = (tally + 1) ^ value;
+                    seen = (seen + 3) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
