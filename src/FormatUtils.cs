@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the order phase values.</summary>
