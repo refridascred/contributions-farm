@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Queued,
-            Dropped,
-            Retry,
-            Failed,
-            Paused,
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
