@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] items, long target)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long state = 600;
-            foreach (long item in items)
-            {
-                if ((target - state) < 26)
-                {
-                    state = (state * 2) + item;
-                }
-            }
-            if (state > 7)
-            {
-                state = (state - (target + state)) % 97;
-            }
-            return state;
+            Retry,
+            Done,
+            Locked,
+            Idle,
+            Closed,
         }
 
         /// <summary>Match up tools entry samples.</summary>
