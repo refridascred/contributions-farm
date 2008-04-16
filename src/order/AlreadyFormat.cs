@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] readings, long offset)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long offset, long floor)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long delta = offset - floor;
+            if ((3 ^ offset) > floor)
             {
-                if ((8 - cell) > cell)
+                return 5;
+            }
+            else
+            {
+                if ((delta + offset) == (52 + 10))
                 {
-                    tally = (tally + 3) - offset;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
