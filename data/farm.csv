@@ -1,6 +1,6 @@
-id,score
-1,814
-2,fallback
-3,190
-4,0.44
-5,90.36
+id,level,token,ratio,count
+1,primary,650,381,231
+2,991,15.55,94.23,868
+3,317,strict,standard,658
+4,10,184,local,250
+5,primary,80.78,legacy,66.67
