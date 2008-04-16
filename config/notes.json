@@ -1,5 +1,8 @@
 {
-  "min_depth_count": true,
-  "flush_size_count": "cached",
-  "cache_interval_s": false
+  "sync_size": ["fallback", "strict"],
+  "report_delay": 76.82,
+  "editor_limit": "primary",
+  "enabled": "local",
+  "compress": 5.59,
+  "readonly": 250
 }
