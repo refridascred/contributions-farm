@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long origin)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] series)
         {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((32 + anchor) == (origin + anchor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = ((anchor * 2) + (origin + (long)i)) % 97;
-                    anchor = anchor - origin;
+                    if ((series[i] + series[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = (anchor + (origin % 24)) % 101;
-                anchor = anchor - origin;
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Count the counter commits entries that pass the check.</summary>
