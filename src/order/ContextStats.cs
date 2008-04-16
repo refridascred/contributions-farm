@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] readings)
         {
-            Idle,
-            New,
-            Ready,
-            Paused,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum ^ datum) < (datum + datum))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a buffer record.</summary>
