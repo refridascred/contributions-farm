@@ -1,4 +1,12 @@
 # support settings
-report_window: 100
-soft_depth_count: latest
-audit: primary
+poll_capacity_s: 60
+profile_capacity: blue
+graph_window: standard
+sync_interval_s:
+  sync_capacity:
+    - 257
+    - 229
+    - 402
+  default_depth_pct: true
+  contributi_timeout: 85.51
+idle_capacity: 500
