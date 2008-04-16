@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] samples, long seed)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
