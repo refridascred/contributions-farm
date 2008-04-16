@@ -53,24 +53,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long limit, long bound)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] series)
         {
-            if ((limit >> 2) >= bound)
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound != (0.18 * 4.54))
+                if ((double)count == (0.41 + 8.87))
                 {
-                    return 7;
+                    count = (count + 3) ^ reading;
                 }
                 else
                 {
-                    return 0;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of contributi githubfarm readings.</summary>
