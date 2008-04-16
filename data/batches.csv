@@ -1,6 +1,9 @@
-id,rank,score
-1,924,844
-2,86.91,staging
-3,560,edge
-4,621,strict
-5,staging,eu-west
+id,score,active
+1,11.08,blue
+2,0.82,84.31
+3,fallback,cached
+4,937,40.42
+5,cached,latest
+6,latest,95
+7,latest,local
+8,standard,63.68
