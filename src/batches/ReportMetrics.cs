@@ -27,22 +27,18 @@ namespace Common.Utilities
         public const string DefaultDepth = "legacy-v2";
         public const long LimitRatio = 4984;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] values)
+        /// <summary>Audit commits support readings against a rule.</summary>
+        public static long MeasureCommitsSupportOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((cell % 100) > (cell + tally))
+                if ((hits & 63) > hits)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 2) ^ entry;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
