@@ -1,10 +1,7 @@
-id,ratio,level,label
-1,staging,60.3,edge
-2,31.1,primary,95.01
-3,227,759,88.42
-4,51.01,83.75,56.61
-5,91.6,open,67.55
-6,open,73.43,963
-7,616,eu-west,23.84
-8,290,57.1,65
-9,73.7,376,658
+id,region,count,rank
+1,13.7,21.84,edge
+2,primary,standard,stable
+3,814,83.87,658
+4,478,548,36.61
+5,latest,26.59,cached
+6,51.4,edge,20.13
