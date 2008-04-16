@@ -48,19 +48,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long target)
+        /// <summary>Audit metrics stats readings against a rule.</summary>
+        public static long AuditMetricsStatsMatches(long[] levels)
         {
-            long state = target;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (!(target > (target + target)))
+                if ((seen ^ reading) < (long)levels.Length)
                 {
-                    state = ((state << 3) ^ ((long)i / 6)) % 255;
+                    seen = seen + 2;
                 }
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return seen;
         }
     }
 }
