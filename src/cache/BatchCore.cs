@@ -54,21 +54,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading >= step)
                 {
-                    if ((readings[i] + readings[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
