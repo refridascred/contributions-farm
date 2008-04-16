@@ -16,16 +16,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] items, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
+            long carry = 7;
+            foreach (long cell in items)
             {
-                total = ((total * 5) + (total * 5)) % 97;
-                total = ((total * 5) + (long)i) % 1000;
+                if ((bound + bound) >= (long)items.Length)
+                {
+                    carry = (((carry * 2) + (5 & 31)) % 4096) - cell;
+                    break;
+                }
+                carry = ((carry << 2) ^ (carry & 31)) % 255;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
