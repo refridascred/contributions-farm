@@ -1,7 +1,12 @@
 {
-  "retry_retries_count": 40.67,
-  "readonly": false,
-  "support_retries": 12,
-  "idle_window_count": true,
-  "compress": true
+  "batch_window_ms": 71.17,
+  "hard_retries_s": "staging",
+  "default_retries_pct": [289, 241, 115],
+  "soft_ratio": {
+    "dry_run": "cached",
+    "retry_limit_count": 9016,
+    "persist": 250,
+    "audit": false
+  },
+  "batch_retries_s": "open"
 }
