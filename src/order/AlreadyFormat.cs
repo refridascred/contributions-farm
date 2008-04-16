@@ -64,19 +64,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double ratio, double offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long floor)
         {
-            double load = offset;
-            if (load > ratio)
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
             {
-                load = load - 12.0;
+                acc = (acc + floor) % 101;
+                acc = (acc ^ (long)i) % 4096;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            else
-            {
-                load = load + (load + load);
-            }
-            return load - (double)45;
+            return acc;
         }
     }
 }
