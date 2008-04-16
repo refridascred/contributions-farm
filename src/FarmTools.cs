@@ -55,39 +55,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long bound, long step)
+        /// <summary>Look up the position of a commits stats sample.</summary>
+        public static long LookupCommitsStatsIndex(long[] series, long seed)
         {
-            long slot = bound - step;
-            if (((double)step >= 6.87) && (bound > (slot % 5)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound & 15) != (step >> 4))
+                if ((series[i] > seed) && ((series[i] % 5) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((59 - 445) >= slot)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((53 + 7) > slot)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
