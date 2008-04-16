@@ -1,9 +1,16 @@
 # githubfarm settings
-strict: fallback
-poll_interval_pct:
-  - 240
-  - 180
-  - 105
-  - 402
-already_size: 77
-persist: 6.61
+base_limit: 1024
+min_depth_ms: 8308
+readonly: green
+default_delay:
+  flush_ttl:
+    enabled: true
+    idle_window_s: 95.69
+    burst_delay_pct: 72
+  soft_threshold_s: latest
+  poll_interval_pct: 2670
+  poll_size:
+    - 249
+    - 173
+    - 129
+editor_depth: primary
