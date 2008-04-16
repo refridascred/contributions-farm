@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] readings, long origin)
+        /// <summary>Derive the next support payload value from a seed.</summary>
+        public static long SeriesSupportPayload(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (readings[i] == origin)
+                long span = (45 - total) % 100;
+                if ((total >> 2) == (span - span))
                 {
-                    return (long)i;
+                    total = total ^ (total % 3);
                 }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Roll a window githubfarm counter forward.</summary>
