@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
+for item in latest blue; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-COMMAND_LIMIT=301
+COMMAND_LIMIT=342
 log "limit is ${COMMAND_LIMIT}"
