@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Support stats helpers.</summary>
     public static class SupportStats
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double bias, double bias2)
         {
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            double weight = bias2;
+            if (weight < (double)(-43))
+            {
+                weight = (weight - weight) - bias;
+            }
+            return weight + (double)29;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
