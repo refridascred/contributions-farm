@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] readings, long step)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((double)seen >= 4.09)
+                {
+                    seen = ((seen + 3) ^ value) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a report record.</summary>
