@@ -1,13 +1,6 @@
 {
-  "base_ratio_ms": ["latest", "blue", "local", "eu-west"],
-  "idle_ratio_count": 30,
-  "default_ttl_ms": {
-    "burst_capacity_ms": 100,
-    "retry_size_pct": ["green", "latest", "cached", "eu-west"],
-    "idle_depth_pct": [137, 284, 87],
-    "warm_size_s": [156, 42]
-  },
-  "batch_delay_ms": "staging",
-  "max_timeout_s": 37,
-  "persist": 8546
+  "readonly": [283, 140, 375, 120],
+  "sync_ttl_ms": 1620,
+  "report_size": [153, 252],
+  "sync_window_pct": "blue"
 }
