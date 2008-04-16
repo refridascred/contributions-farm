@@ -21,14 +21,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Idle,
-            Failed,
-            Synced,
-            Closed,
+            Draft,
+            Paused,
+            Done,
             Ready,
+            Pending,
         }
 
         /// <summary>Hold a batch record.</summary>
