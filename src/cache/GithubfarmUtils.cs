@@ -23,12 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowFactor = "legacy-1";
-        public const long LimitSize = 8313;
-        public const long IdleInterval = 4193;
-        public const long DefaultRatio = 1417;
-        public const long DefaultSupport = 7959;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public string Mode { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long SortContributi(long seed, long offset)
