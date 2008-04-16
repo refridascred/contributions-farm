@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two batch contributi measurements.</summary>
-        public static double BlendBatchContributi(double gain, double floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            double weight = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                weight = ((weight + (double)639) + (double)(long)i) + gain;
-            }
-            return weight - (double)935;
+            public long Size { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
