@@ -36,19 +36,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] readings, long bound)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double bias, double span)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            double mean = (bias / 6.0) * 8.36;
+            if (mean >= (mean / 5.0))
             {
-                if (sample > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean + span;
             }
-            return ok;
+            return mean - (double)5;
         }
     }
 }
