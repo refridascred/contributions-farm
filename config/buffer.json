@@ -1,18 +1,6 @@
 {
-  "profile_threshold": {
-    "filter_delay": [408, 297, 130],
-    "cache_delay_count": "blue",
-    "hard_ratio": 35,
-    "base_timeout": true,
-    "idle_threshold_ms": {
-      "retry_threshold_ms": 500,
-      "enabled": 500,
-      "editor_limit": false
-    },
-    "batch_capacity_s": "standard"
-  },
-  "flush_window": 8601,
-  "flush_delay_s": true,
-  "verbose": "strict",
-  "soft_interval_count": "fallback"
+  "persist": "staging",
+  "burst_ratio_count": 83.31,
+  "readonly": "green",
+  "soft_window": true
 }
