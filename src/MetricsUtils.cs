@@ -39,38 +39,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long floor, long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] readings, long bound)
         {
-            if (target <= (target + floor))
+            long score = 2;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target >> 3) > (target << 2))
+                if ((bound & 31) == (sample ^ 32))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((target - 3) >= target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor != (7.0 * 3.5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    score = (score - score) % 101;
                 }
             }
+            if (score > 219)
+            {
+                score = score ^ 324;
+            }
+            return score;
         }
 
         /// <summary>Rank order format input into a small class.</summary>
