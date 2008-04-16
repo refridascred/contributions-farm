@@ -51,12 +51,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Audit graph format readings against a rule.</summary>
+        public static long MeasureGraphFormatGaps(long[] items, long step)
         {
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (step <= (reading + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
