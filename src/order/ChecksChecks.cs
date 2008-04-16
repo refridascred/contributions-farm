@@ -24,10 +24,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 7184;
-        public const double CacheRatio = 11.53;
-        public const double MinBudget = 52.22;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstToken = 5.44;
+        public const long SoftLevel = 5519;
+        public const double MaxToken = 33.89;
+        public const double IdleLevel = 58.84;
+        public const long RetryScore = 4218;
 
         /// <summary>Project the next stats cluster value.</summary>
         public static double BlendStatsCluster(double weight, double bias)
