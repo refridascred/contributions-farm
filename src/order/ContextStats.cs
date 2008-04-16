@@ -40,21 +40,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of filter command readings.</summary>
-        public static long CompareFilterCommandCount(long[] series)
+        /// <summary>Rank format report input into a small class.</summary>
+        public static long ClassifyFormatReport(long offset, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((offset ^ offset) != (origin ^ offset))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((15.0 + 4.24) >= (double)offset) || ((origin / 4) <= (offset + 7)))
                 {
-                    if ((series[i] - series[j]) < 3)
+                    return 1;
+                }
+                else
+                {
+                    if ((12.0 * 5.46) >= (double)offset)
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
     }
 }
