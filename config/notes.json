@@ -1,20 +1,13 @@
 {
-  "checks_threshold": 46,
-  "hard_interval_ms": {
-    "persist": "fallback",
-    "batch_depth_count": "eu-west",
-    "record_retries": 1024,
-    "batch_limit": {
-      "metric_timeout": 500,
-      "idle_interval": "legacy",
-      "batch_limit_pct": 60,
-      "metrics_interval": [500, 43, 381]
-    },
-    "audit": [199, 386, 465, 309],
-    "retry_ttl_count": "fallback"
+  "audit": [311, 302, 284],
+  "batch_size_s": true,
+  "verbose": {
+    "soft_interval_pct": 96.98,
+    "min_delay_count": false,
+    "verbose": false,
+    "min_interval_count": "staging"
   },
-  "enabled": [143, 115, 417],
-  "batch_threshold_count": "local",
-  "token_ratio": ["eu-west", "legacy", "latest"],
-  "dry_run": 250
+  "profile_depth": [153, 75, 243],
+  "base_threshold_count": true,
+  "entry_delay": 45.88
 }
