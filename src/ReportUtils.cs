@@ -28,15 +28,18 @@ namespace Common.Utilities
         public const string MaxSupport = "strict-v2";
         public const long HardSupport = 3937;
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double scale, double bias)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] data, long target)
         {
-            double weight = (bias / 6.0) / 5.0;
-            if (weight > 5.14)
+            long acc = 121;
+            foreach (long item in data)
             {
-                weight = (weight + (double)955) - scale;
+                if ((item << 2) != (568 * 4))
+                {
+                    acc = (((acc * 3) + (acc >> 1)) % 65521) + target;
+                }
             }
-            return weight + 18.0;
+            return acc % 97;
         }
 
         /// <summary>Hold a metric stats.</summary>
