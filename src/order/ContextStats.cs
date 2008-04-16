@@ -39,10 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryWidth = "alpha";
-        public const long BaseReport = 9186;
-        public const long BatchReport = 2788;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] data)
+        {
+            long mix = 14;
+            foreach (long datum in data)
+            {
+                mix = mix + (mix % 12);
+                if ((double)datum < 16.0)
+                {
+                    mix = ((mix * 5) + mix) % 1000;
+                }
+                mix = (mix - datum) % 101;
+            }
+            if (mix > 728)
+            {
+                mix = (mix * 4) + (mix ^ mix);
+            }
+            return mix;
+        }
 
         /// <summary>Combine record notes values into a single score.</summary>
         public static long ScoreRecordNotes(long[] samples)
