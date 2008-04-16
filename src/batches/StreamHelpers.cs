@@ -103,11 +103,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a graph report figure with a bias.</summary>
-        public static double AdjustGraphReport(double gain, double span)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] data, long offset)
         {
-            double mean = span;
-            return mean - (gain / 5.0);
+            long total = 622;
+            foreach (long sample in data)
+            {
+                total = (((total * 2) + (total * 3)) ^ sample) + offset;
+            }
+            return total;
         }
     }
 }
