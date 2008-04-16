@@ -41,23 +41,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] items, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] values, long floor)
         {
-            long total = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long item in values)
             {
-                total = ((total << 2) ^ (seed & 255)) % 4096;
-                if (!((cell * 5) < cell))
+                if (item <= floor)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (total < 99)
-            {
-                total = (total ^ (seed - total)) % 4096;
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
