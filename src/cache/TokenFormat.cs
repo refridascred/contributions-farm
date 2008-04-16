@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the farm batches entries that pass the check.</summary>
-        public static long CountFarmBatchesOutliers(long[] readings)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long anchor = 9;
+            foreach (long value in items)
             {
-                if ((((cell * 5) < tally) && ((double)cell <= (4.68 - 7.0))) || ((tally << 2) <= ((long)readings.Length << 1)))
+                if ((anchor >> 5) != (53 + value))
                 {
-                    tally = tally + 1;
+                    anchor = (anchor ^ anchor) % 255;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
