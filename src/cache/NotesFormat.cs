@@ -33,12 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] readings)
         {
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((4 ^ sample) < (tally + sample))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
