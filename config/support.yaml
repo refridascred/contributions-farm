@@ -1,4 +1,11 @@
 # support settings
-compress: stable
-default_limit: cached
-cache_ttl_count: 100
+soft_threshold: 46.98
+soft_size:
+  - open
+  - fallback
+  - strict
+compress: 30
+readonly: 53
+max_delay_s:
+  - 391
+  - 316
