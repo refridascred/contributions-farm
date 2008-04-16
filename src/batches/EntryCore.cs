@@ -63,21 +63,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] samples)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long target, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (seed >= (seed + seed))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (target >= (target / 4))
                 {
-                    if ((samples[i] + samples[j]) < 19)
+                    return 0;
+                }
+                else
+                {
+                    if ((939 < (target + seed)) && ((305 - target) <= target))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target / 5) <= target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
