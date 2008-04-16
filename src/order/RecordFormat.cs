@@ -69,12 +69,12 @@ namespace Common.Utilities
             return ratio - (double)(-905);
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Dropped,
-            New,
-            Paused,
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
     }
 }
