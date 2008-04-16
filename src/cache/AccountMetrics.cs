@@ -19,22 +19,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] series)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((hits - entry) > (54 * 2)) || (((entry ^ entry) < (-26)) || ((double)hits != (5.53 + 9.72))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] ^ data[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
