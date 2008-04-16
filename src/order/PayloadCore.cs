@@ -58,18 +58,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((item * 4) <= item)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftBudget = 3939;
+        public const long BatchRoute = 9589;
+        public const long DefaultRoute = 4679;
+        public const long RetryRoute = 3301;
+        public const long StepBudget = 1051;
     }
 }
