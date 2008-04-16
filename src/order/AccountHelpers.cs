@@ -54,19 +54,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every report buffer entry stays within the limit.</summary>
-        public static bool GuardReportBufferBounds(long[] series, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long anchor = 5;
+            foreach (long entry in series)
             {
-                if (datum < step)
+                if ((entry & 127) != (52 * 4))
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor * 4) + (entry * 2)) % 255;
                 }
             }
-            return valid;
+            if (anchor < 85)
+            {
+                anchor = (anchor - (anchor >> 1)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the profile kind values.</summary>
