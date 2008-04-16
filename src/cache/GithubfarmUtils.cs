@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (tally > (target >> 1))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseInterval = 8740;
+        public const string BatchInterval = "standard";
+        public const string SoftFarm = "staging-edge";
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
