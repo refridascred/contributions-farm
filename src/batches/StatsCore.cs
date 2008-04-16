@@ -84,17 +84,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepLevel = 984;
+        public const long WindowContext = 8365;
+        public const long BaseContext = 1374;
+        public const double HardContext = 32.11;
     }
 }
