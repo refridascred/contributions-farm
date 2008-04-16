@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Retry,
-            Dropped,
-            Active,
-            Closed,
+            public double Count { get; set; }
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Validate order stream readings against a bound.</summary>
