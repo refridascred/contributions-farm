@@ -34,22 +34,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] items)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long origin, long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            if ((((-76) - origin) <= 9) && ((seed ^ seed) == (seed + seed)))
             {
-                if (!((datum / 7) == (datum * 4)) && ((count - 18) > (count >> 3)))
+                return 2;
+            }
+            else
+            {
+                if ((origin ^ 7) > (origin & 63))
                 {
-                    count = count + 3;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((9.74 - 3.27) != (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed - seed) != (origin << 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
