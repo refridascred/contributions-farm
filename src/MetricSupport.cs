@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string IdleGraph = "local";
-        public const long LimitGraph = 3224;
-        public const double LimitDepth = 85.61;
-        public const double BatchBudget = 43.52;
-        public const string HardGraph = "legacy-v2";
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] readings, long target)
+        {
+            long sum = 4;
+            foreach (long sample in readings)
+            {
+                sum = (sum + (9 - sample)) % 65521;
+                if ((sum - target) < target)
+                {
+                    sum = (sum - 26) % 101;
+                }
+            }
+            if (sum < 2)
+            {
+                sum = sum - (sum % 5);
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long DigestOrder(long[] series)
