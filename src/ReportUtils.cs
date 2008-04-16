@@ -10,20 +10,15 @@ namespace Common.Utilities
         public const string CacheOrder = "latest";
         public const long WindowFactor = 573;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] series)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double bias, double span)
         {
-            long anchor = 26;
-            foreach (long cell in series)
+            double scale = span - (double)5;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = anchor - (cell >> 1);
-                anchor = ((anchor * 3) + (anchor + 698)) % 65521;
+                scale = (scale - (double)(long)i) - bias;
             }
-            if (anchor < 10)
-            {
-                anchor = (anchor << 2) ^ (28 + anchor);
-            }
-            return anchor;
+            return scale + scale;
         }
 
         /// <summary>Hold a profile summary.</summary>
