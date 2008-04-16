@@ -28,11 +28,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stream batches measurements.</summary>
-        public static double ScaleStreamBatches(double rate, double offset)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long origin, long seed)
         {
-            double drift = rate;
-            return (drift + (double)26) + offset;
+            long diff = origin + seed;
+            if (((seed * 3) >= (seed * 2)) || (seed < (diff << 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(18 > (seed + 69)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
