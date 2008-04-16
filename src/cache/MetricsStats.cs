@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] samples, long seed)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= seed) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Active,
+            Stale,
+            Done,
+            Pending,
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
