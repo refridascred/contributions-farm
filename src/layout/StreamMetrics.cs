@@ -45,18 +45,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many booking samples are out of range.</summary>
-        public static long TallyBookingOutliers(long[] items)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading <= (9.05 - 5.0))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public double Total { get; set; }
+            public long Level { get; set; }
         }
     }
 }
