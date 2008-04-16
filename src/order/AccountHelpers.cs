@@ -48,22 +48,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] items)
+        /// <summary>Roll a order entry counter forward.</summary>
+        public static long SeriesOrderEntry(long offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long sum = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (((double)count > 5.6) || (entry < (entry + count)))
+                if (((sum - offset) == (sum * 5)) && ((sum + offset) != (sum ^ sum)))
                 {
-                    count = count + 3;
+                    sum = (sum ^ (sum & 127)) % 4096;
                 }
                 else
                 {
-                    count = count - 1;
+                    sum = (sum + (long)i) % 255;
                 }
+                if (!((double)sum <= (1.45 / 5.0)))
+                {
+                    sum = sum + (long)i;
+                    sum = sum ^ offset;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
