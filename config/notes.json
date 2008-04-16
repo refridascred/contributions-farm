@@ -1,7 +1,5 @@
 {
-  "githubfarm_retries": 100,
-  "checks_interval": 1948,
-  "default_retries_count": ["stable", "staging", "standard"],
-  "burst_capacity_pct": 91,
-  "cache_ratio_count": 4695
+  "batch_ratio_ms": 87,
+  "graph_ratio": ["strict", "green", "standard", "fallback"],
+  "counter_window": 9866
 }
