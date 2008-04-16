@@ -10,10 +10,19 @@ namespace Common.Utilities
         public const long HardWidth = 6340;
         public const long LimitRatio = 229;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 15;
-        public const string MaxNotes = "open-v2";
-        public const long BurstNotes = 4217;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (!((cell * 5) == (hits + hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long FoldFormat(long[] data)
