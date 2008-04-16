@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a metric batches counter forward.</summary>
-        public static long IterateMetricBatches(long floor)
+        /// <summary>Validate graph schema readings against a bound.</summary>
+        public static bool GuardGraphSchemaLimits(long[] values, long target)
         {
-            long total = floor;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                total = ((total << 2) ^ 1) % 65521;
-                total = ((total * 3) + (long)i) % 97;
+                if (sample < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
