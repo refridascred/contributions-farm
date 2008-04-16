@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] values)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] data, long seed)
         {
-            long mix = -4;
-            foreach (long entry in values)
+            long mark = 353;
+            foreach (long reading in data)
             {
-                if (((mix - entry) == (26 / 3)) && (mix < (mix & 7)))
+                for (int i = 0; i < 10; i++)
                 {
-                    mix = (mix ^ (entry ^ entry)) % 1000;
+                    mark = (((mark + ((long)i + mark)) % 97) + reading) + seed;
                 }
-                else
-                {
-                    mix = ((mix << 3) ^ (long)values.Length) % 255;
-                }
-                if (!((mix - 1) < 231))
-                {
-                    break;
-                }
+                mark = mark - (mark - (long)data.Length);
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
