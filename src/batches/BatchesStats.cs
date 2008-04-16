@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long offset, long target)
-        {
-            if (!((5.7 * 4.1) > (double)target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target + 23) >= 165)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target >> 3) == (offset + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((3.6 * 7.68) != (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepCount = 467;
+        public const long MaxChannel = 6041;
+        public const string LimitBudget = "legacy-1";
+        public const long MaxTimeout = 5018;
+        public const long MinRatio = 9696;
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
