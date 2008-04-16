@@ -33,9 +33,10 @@ namespace Common.Utilities
         public const long BaseReport = 9186;
         public const long BatchReport = 2788;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultInterval = 5857;
-        public const long RetryBatches = 1052;
-        public const double StepInterval = 76.09;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 5879;
+        public const long BatchProfile = 5869;
+        public const long BatchSpan = 5798;
+        public const long HardScore = 1511;
     }
 }
