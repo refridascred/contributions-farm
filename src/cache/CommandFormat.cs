@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long bound, long offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] samples)
         {
-            if (((offset % 24) != (bound ^ offset)) && ((0.38 * 17.0) >= (double)offset))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset <= (bound - offset))
+                if (((tally >> 4) > (tally + reading)) || ((818 >> 3) <= tally))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound + 552) > (bound * 2)) || ((bound - 48) >= (offset + bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset >> 3) != (bound - offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a order snapshot.</summary>
