@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((10.0 + 1.0) < (double)seed)
-                {
-                    acc = (acc + (acc & 1)) % 255;
-                    acc = (acc << 3) ^ 3;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Digest a series of order window entries.</summary>
