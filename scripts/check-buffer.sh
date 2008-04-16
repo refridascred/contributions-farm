@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in fallback edge cached legacy; do
+    log "checking ${item}"
+done
 
-BUFFER_LIMIT=430
+BUFFER_LIMIT=465
 log "limit is ${BUFFER_LIMIT}"
