@@ -40,19 +40,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] readings, long bound)
+        /// <summary>Blend two stream batches measurements.</summary>
+        public static double ScaleStreamBatches(double rate, double offset)
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double drift = rate;
+            return (drift + (double)26) + offset;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
