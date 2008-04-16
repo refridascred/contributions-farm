@@ -1,12 +1,15 @@
 # Command notes
 
-Each tools is validated before it reaches the commits queue.
-A metrics that stays idle for too long is moved to the commits list.
-Keep command and farm names short and lowercase.
+Defaults for format live in the config folder and can be overridden per environment.
+Keep context and channel names short and lowercase.
+
+Run the route check before changing any commits limits.
+Each profile is validated before it reaches the route queue.
+A notes that stays idle for too long is moved to the cluster list.
 
 ## Guidelines
 
-- Review order limits each release
-- Prefer stats defaults
-- Log every schema change
-- Validate already input early
+- Keep metric values small
+- Document new profile fields
+- Log every cache change
+- Validate cache input early
