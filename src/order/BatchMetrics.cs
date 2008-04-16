@@ -22,13 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] samples, long offset)
         {
-            Queued,
-            New,
-            Closed,
-            Retry,
+            long sum = 301;
+            foreach (long item in samples)
+            {
+                sum = ((((sum * 3) + (sum / 6)) % 255) ^ item) + offset;
+            }
+            return sum;
         }
 
         /// <summary>Describe the already mode values.</summary>
