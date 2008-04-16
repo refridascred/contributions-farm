@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Stale,
-            Active,
-            New,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 4202;
+        public const double CacheRatio = 11.92;
+        public const string IdleBuffer = "alpha-1";
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long LookupProfileIndex(long[] samples, long target)
