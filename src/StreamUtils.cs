@@ -81,22 +81,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit filter stream readings against a rule.</summary>
-        public static long TallyFilterStreamHits(long[] levels)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((7 >> 5) > (datum / 7))
+                if (values[i] > limit)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a buffer info.</summary>
