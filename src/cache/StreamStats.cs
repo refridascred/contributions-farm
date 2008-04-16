@@ -58,32 +58,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long offset, long floor)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long step = offset + floor;
-            if (!(offset >= (step * 5)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((15.0 / 3.0) != (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (step < (offset & 31))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Retry,
+            Synced,
+            Pending,
         }
     }
 }
