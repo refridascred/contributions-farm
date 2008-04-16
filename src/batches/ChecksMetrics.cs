@@ -14,19 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every cluster counter entry stays within the limit.</summary>
-        public static bool ValidateClusterCounterRange(long[] samples, long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (entry > seed)
+                if (value <= step)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
