@@ -25,25 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long limit, long seed)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long slot = limit + seed;
-            if (((limit >> 3) > 9) && ((seed ^ 6) > limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (slot < (limit >> 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Locked,
+            New,
+            Synced,
         }
 
         /// <summary>Check that every githubfarm editor entry stays within the limit.</summary>
