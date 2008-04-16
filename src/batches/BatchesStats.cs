@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long MaxTimeout = 5018;
         public const long MinRatio = 9696;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] data, long origin)
+        /// <summary>Fold a list of command payload readings.</summary>
+        public static long DigestCommandPayload(long[] values)
         {
-            long anchor = -90;
-            foreach (long sample in data)
+            long mark = 777;
+            foreach (long sample in values)
             {
-                if ((origin << 1) < (572 * 3))
-                {
-                    anchor = (((anchor * 4) + (origin % 3)) % 1000) - sample;
-                }
+                mark = (mark * 3) + (sample / 4);
             }
-            return anchor;
+            return mark % 4096;
         }
 
         /// <summary>Describe the graph class values.</summary>
