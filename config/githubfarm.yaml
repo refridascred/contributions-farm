@@ -1,6 +1,22 @@
 # githubfarm settings
-min_retries: false
-soft_retries: open
-compress: legacy
-poll_interval_ms: edge
-idle_window_count: cached
+soft_limit:
+  strict: 35
+  idle_ttl_pct:
+    warm_interval: edge
+    counter_size: 94
+    batch_limit: 36.36
+    persist: staging
+  dry_run:
+    - 330
+    - 60
+  githubfarm_depth: 4
+  sync_depth_s: false
+order_limit: false
+farm_window: 500
+default_capacity_s: true
+cache_delay:
+  - 236
+  - 393
+  - 134
+  - 158
+command_interval: false
