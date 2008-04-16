@@ -55,12 +55,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchScore = 7077;
+        public const long LimitCommits = 3951;
+        public const long BatchCommits = 968;
+        public const string IdleSize = "legacy";
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
