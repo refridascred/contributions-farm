@@ -28,19 +28,15 @@ namespace Common.Utilities
         public const string MaxSupport = "strict-v2";
         public const long HardSupport = 3937;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] items, long bound)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double scale, double bias)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            double weight = (bias / 6.0) / 5.0;
+            if (weight > 5.14)
             {
-                if (cell > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = (weight + (double)955) - scale;
             }
-            return valid;
+            return weight + 18.0;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
