@@ -1,26 +1,4 @@
 # support settings
-account_depth:
-  max_window:
-    default_ttl_pct:
-      - 237
-      - 308
-      - 234
-      - 111
-    stats_size:
-      - 382
-      - 492
-    buffer_capacity: 30
-    audit: 250
-  burst_size: blue
-  strict:
-    - eu-west
-    - primary
-  hard_interval:
-    - green
-    - legacy
-    - staging
-    - primary
-retry_retries_pct: fallback
-sync_ratio: 74.14
-strict: primary
-contributi_window: true
+commits_limit: true
+hard_timeout_count: eu-west
+flush_interval_ms: 500
