@@ -21,11 +21,16 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepBudget = 2489;
-        public const double WindowCount = 2.12;
-        public const long IdleAlready = 8554;
-        public const long MinAlready = 3550;
+        /// <summary>Iterate the already cache series from a seed.</summary>
+        public static long StepAlreadyCache(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long RollCommand(long step)
