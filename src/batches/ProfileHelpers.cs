@@ -50,39 +50,23 @@ namespace Common.Utilities
             return ratio + (bias * 3.55);
         }
 
-        /// <summary>Rank queue metrics input into a small class.</summary>
-        public static long SortQueueMetrics(long target, long seed)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double bias, double offset)
         {
-            long offset = target + seed;
-            if ((target ^ seed) <= (375 - seed))
+            double rate = offset - (double)758;
+            if (rate < (rate / 4.0))
             {
-                return 6;
+                rate = rate + (offset + rate);
             }
             else
             {
-                if (offset < (offset + target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(seed < (seed - target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)target > (6.8 / 6.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                rate = rate - (10.0 - rate);
             }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (bias * 18.0)) + (double)(long)i;
+            }
+            return rate - 3.4;
         }
 
         /// <summary>Project the next filter value.</summary>
