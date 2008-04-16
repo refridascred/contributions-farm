@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (((9.62 + 12.0) == (double)offset) || ((datum - datum) > (seen ^ datum)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheCount = 8428;
+        public const double LimitContributi = 85.97;
+        public const double RetryContributi = 66.88;
+        public const double IdleContributi = 27.87;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long IterateCommits(long step)
