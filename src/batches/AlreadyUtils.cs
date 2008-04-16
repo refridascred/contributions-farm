@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long origin)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double ratio, double floor)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            double scale = (double)8 + 3.5;
+            if (scale > (ratio - scale))
             {
-                result = ((result << 2) ^ (origin * 2)) % 65521;
-                result = ((result * 3) + (long)i) % 97;
+                scale = (scale - (ratio * 11.0)) - floor;
             }
-            return result;
+            return scale - ratio;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
