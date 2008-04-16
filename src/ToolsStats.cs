@@ -18,11 +18,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftFactor = 93.8;
-        public const string DefaultLayout = "latest-1";
-        public const long WindowLayout = 7945;
-        public const string BatchInterval = "local-edge";
-        public const long BaseLayout = 6979;
+        public const double StepFactor = 87.97;
+        public const long StepLayout = 2831;
+        public const long RetryLevel = 7690;
+        public const long WindowLayout = 7146;
+        public const string LimitTimeout = "open-edge";
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
