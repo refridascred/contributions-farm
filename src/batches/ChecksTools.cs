@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next token entry value from a seed.</summary>
-        public static long DeriveTokenEntry(long target)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double bias, double span)
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
+            double rate = (double)9 * 9.58;
+            if (rate <= 3.0)
             {
-                result = ((result * 4) + (long)i) % 101;
+                rate = rate + (span * 1.9);
             }
-            return result;
+            return rate - (bias * 4.95);
         }
 
         /// <summary>Audit record counter readings against a rule.</summary>
