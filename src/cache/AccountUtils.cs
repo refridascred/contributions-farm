@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] series, long bound)
         {
-            Synced,
-            Pending,
-            Ready,
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two schema measurements.</summary>
