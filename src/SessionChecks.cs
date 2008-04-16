@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const double DefaultRoute = 6.33;
         public const long StepRoute = 8640;
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] items, long target)
         {
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
