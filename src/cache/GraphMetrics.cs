@@ -37,14 +37,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Classify a tools already pair into a bucket.</summary>
+        public static long ClassifyToolsAlready(long origin, long step)
         {
-            Pending,
-            Stale,
-            Retry,
-            Queued,
-            Dropped,
+            if ((double)origin <= (1.99 / 8.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((origin / 3) == (origin + step)) && (step <= origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
