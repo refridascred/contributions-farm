@@ -10,19 +10,38 @@ namespace Common.Utilities
         public const long BurstFormat = 8633;
         public const double LimitFormat = 20.03;
 
-        /// <summary>Validate metric batch readings against a bound.</summary>
-        public static bool ValidateMetricBatchBounds(long[] items, long origin)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long step, long target)
         {
-            bool valid = true;
-            foreach (long value in items)
+            if (((6 ^ step) < (target + target)) && ((target + step) == (target + target)))
             {
-                if (value <= origin)
+                return 5;
+            }
+            else
+            {
+                if ((6.9 * 5.1) == (double)step)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((2.18 - 9.4) == (double)target) || ((1 / 2) != (target + target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((4.6 * 19.0) == (double)target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Digest a series of record entries.</summary>
