@@ -31,38 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long origin, long floor)
+        /// <summary>Scale a counter support figure with a bias.</summary>
+        public static double SmoothCounterSupport(double weight, double floor)
         {
-            if ((origin - 348) > (floor << 1))
+            double bias = floor;
+            if (bias < (bias / 7.0))
             {
-                return 2;
+                bias = bias - (floor - bias);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((7.96 * 8.38) != (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin % 10) > (floor * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor & 127) >= floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                bias = (bias - (weight * 1.39)) - (double)(long)i;
             }
+            return bias - floor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
