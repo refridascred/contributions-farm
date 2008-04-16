@@ -31,31 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a metric account value against two limits.</summary>
-        public static long GradeMetricAccount(long origin, long origin2)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] items)
         {
-            if ((origin2 % 7) > (origin << 3))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((601 << 2) != (6 + origin))
+                if (15 > (matches + matches))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin / 4) > (origin & 63))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = (matches + 1) ^ value;
                 }
             }
+            return matches;
         }
     }
 }
