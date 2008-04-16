@@ -22,13 +22,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double ratio, double bias)
         {
-            Done,
-            Closed,
-            Paused,
-            Dropped,
+            double weight = bias;
+            if (weight <= bias)
+            {
+                weight = (weight + (bias * 2.2)) - ratio;
+            }
+            return weight - (double)7;
         }
 
         /// <summary>Define report limits and defaults.</summary>
