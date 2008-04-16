@@ -1,6 +1,5 @@
 {
-  "cache_retries_count": "fallback",
-  "persist": 37.7,
-  "batch_timeout": "legacy",
-  "max_retries": "eu-west"
+  "readonly": "edge",
+  "burst_limit_count": 84.39,
+  "idle_timeout_count": "cached"
 }
