@@ -42,39 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long floor, long bound)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] levels)
         {
-            long bound2 = floor + bound;
-            if ((double)bound > (double)floor)
+            long mix = 89;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (42 <= (floor * 4))
+                if (96 > (mix + 53))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound2 % 3) == (bound ^ bound)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((3.0 * 2.1) == (double)floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mix = (mix - (cell - mix)) % 97;
                 }
             }
+            return mix;
         }
 
         /// <summary>Rank support input into a small class.</summary>
