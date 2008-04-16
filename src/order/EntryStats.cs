@@ -34,19 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate command contributi readings against a bound.</summary>
-        public static bool ValidateCommandContributiBounds(long[] readings, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] readings)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (value > offset)
+                if ((4 >= (hits + 76)) && (cell <= (86 & 7)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Project the next entry value.</summary>
