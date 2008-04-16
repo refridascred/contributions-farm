@@ -32,10 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowSize = 4806;
-        public const long HardSize = 2422;
-        public const long BurstSpan = 4799;
-        public const string HardStream = "fallback-edge";
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] items, long step)
+        {
+            long mix = 7;
+            foreach (long cell in items)
+            {
+                if (((double)mix < 0.8) && (cell < (mix - cell)))
+                {
+                    mix = ((mix << 3) ^ mix) % 255;
+                }
+            }
+            if (mix < 781)
+            {
+                mix = (mix ^ (mix + step)) % 97;
+            }
+            return mix;
+        }
     }
 }
