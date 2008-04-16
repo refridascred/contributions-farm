@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 5648;
-        public const long SoftBudget = 7402;
-        public const string BatchSize = "alpha-1";
-        public const string CacheGraph = "stable-v2";
-        public const string LimitWidth = "alpha-edge";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheLevel = 86.33;
+        public const long BaseScore = 4909;
+        public const double SoftQueue = 93.49;
+        public const long BatchDepth = 2606;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string MaxStream = "alpha";
