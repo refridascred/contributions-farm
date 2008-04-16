@@ -21,15 +21,11 @@ namespace Common.Utilities
         public const string MinScore = "legacy-v2";
         public const long StepNotes = 4301;
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double rate, double floor)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            double ratio = floor * 4.14;
-            if (ratio >= floor)
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio - rate;
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
