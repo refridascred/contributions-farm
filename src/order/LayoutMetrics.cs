@@ -20,16 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardTimeout = 25.56;
+        public const long BurstFilter = 475;
+        public const double BaseFilter = 57.87;
+        public const long IdleFilter = 3482;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmGaps(long[] items)
