@@ -20,10 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinInterval = 22.09;
-        public const double RetryDepth = 73.76;
-        public const long CacheMetrics = 1190;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryNotes = 80.27;
+        public const string MinScore = "legacy-v2";
+        public const long StepNotes = 4301;
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double AdjustChecks(double rate, double floor)
