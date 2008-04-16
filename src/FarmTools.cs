@@ -20,14 +20,23 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] data, long offset)
         {
-            New,
-            Queued,
-            Active,
-            Paused,
-            Ready,
+            long carry = 71;
+            foreach (long reading in data)
+            {
+                carry = ((carry - (carry * 5)) % 101) ^ reading;
+                if (!(((-31) & 31) == (carry + (-75))))
+                {
+                    carry = carry - (10 & 7);
+                }
+            }
+            if (carry < 496)
+            {
+                carry = (carry + (offset + carry)) % 101;
+            }
+            return carry % 97;
         }
     }
 }
