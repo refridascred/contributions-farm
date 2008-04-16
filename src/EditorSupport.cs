@@ -74,17 +74,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] data, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] items, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if (data[i] >= target)
+                if (reading > limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
