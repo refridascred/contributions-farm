@@ -88,15 +88,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double weight, double floor)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long target)
         {
-            double mean = floor * 3.0;
-            if (mean <= (weight / 5.0))
+            long state = target;
+            for (int i = 0; i < 16; i++)
             {
-                mean = mean - (14.0 * 0.8);
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return mean + (double)26;
+            return state;
         }
     }
 }
