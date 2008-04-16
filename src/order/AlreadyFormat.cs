@@ -30,13 +30,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Dropped,
-            Pending,
-            Closed,
-            Retry,
+            public double Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a filter editor figure with a bias.</summary>
