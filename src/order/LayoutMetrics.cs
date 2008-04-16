@@ -23,10 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWidth = 3927;
-        public const long BurstFactor = 4080;
-        public const long LimitWindow = 5170;
+        /// <summary>Count the counter commits entries that pass the check.</summary>
+        public static long TallyCounterCommitsHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading >= (3.22 / 8.0))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long DigestRecord(long[] samples, long floor)
