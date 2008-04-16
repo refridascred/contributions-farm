@@ -34,18 +34,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many graph counter samples are out of range.</summary>
-        public static long CountGraphCounterHits(long[] readings, long seed)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (cell >= seen)
-                {
-                    seen = (seen + 1) + seed;
-                }
-            }
-            return seen;
+            New,
+            Queued,
+            Active,
+            Paused,
+            Ready,
         }
     }
 }
