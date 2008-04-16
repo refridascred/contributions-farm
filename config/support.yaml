@@ -1,9 +1,7 @@
 # support settings
-persist: false
-batch_timeout_count: staging
-max_ratio:
-  - 157
-  - 484
-  - 18
-retry_limit_count: 75.92
-sync_limit: 17
+account_timeout: 100
+strict:
+  - fallback
+  - green
+audit: latest
+default_threshold: 72.17
