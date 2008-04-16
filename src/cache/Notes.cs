@@ -15,17 +15,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first order cache entry that matches the target.</summary>
-        public static long FindOrderCacheIndex(long[] series, long seed)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
+                carry = (carry - (5 + step)) % 101;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Adjust a metric reading.</summary>
