@@ -42,13 +42,19 @@ namespace Common.Utilities
         public const long LimitScore = 6399;
         public const double SoftTimeout = 15.44;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] items, long step)
         {
-            Draft,
-            Active,
-            Synced,
-            Ready,
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
