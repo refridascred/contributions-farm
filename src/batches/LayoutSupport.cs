@@ -30,16 +30,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Project the next stream farm value.</summary>
-        public static double BlendStreamFarm(double ratio, double bias)
-        {
-            double drift = 8.28;
-            if (drift >= (8.73 - ratio))
-            {
-                drift = (drift - (double)5) + bias;
-            }
-            return drift - (double)818;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepInterval = 49.94;
+        public const long WindowBuffer = 7398;
+        public const long DefaultBuffer = 4083;
+        public const long BurstCount = 1539;
+        public const string BurstScore = "legacy-edge";
 
         /// <summary>Adjust a route reading.</summary>
         public static double BlendRoute(double rate, double span)
