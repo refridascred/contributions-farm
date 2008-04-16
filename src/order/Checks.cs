@@ -13,15 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate schema queue samples.</summary>
-        public static long WeighSchemaQueue(long[] values, long seed)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] items)
         {
-            long score = 301;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((((score * 5) + (2 - 876)) % 4096) ^ entry) + seed;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the buffer level values.</summary>
