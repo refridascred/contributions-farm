@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long seed)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] data, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
