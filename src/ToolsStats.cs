@@ -27,12 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public bool Owner { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardContributi = "local-v2";
+        public const string StepSize = "legacy-v2";
+        public const long RetryContributi = 1174;
+        public const long CacheSpan = 986;
+        public const double WindowRatio = 61.74;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long CombineStream(long[] values, long target)
