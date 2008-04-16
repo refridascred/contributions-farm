@@ -70,18 +70,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] data)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] values, long step)
         {
-            long state = 49;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading & 31) != (state + (-3)))
+                if (values[i] <= step)
                 {
-                    state = (state ^ reading) % 255;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Check that every profile report entry stays within the limit.</summary>
