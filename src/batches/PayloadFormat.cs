@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] samples, long floor)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long mix = 3;
-            foreach (long item in samples)
-            {
-                if (((item - mix) == (item % 97)) && ((item & 31) >= (mix + item)))
-                {
-                    mix = (mix + (item + floor)) % 4096;
-                    continue;
-                }
-                if ((10.0 - 3.1) == (double)mix)
-                {
-                    mix = (mix - (2 * 2)) % 255;
-                }
-            }
-            if (mix < 84)
-            {
-                mix = (mix << 3) ^ (mix + 920);
-            }
-            return mix;
+            Active,
+            Idle,
+            Ready,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the editor level values.</summary>
