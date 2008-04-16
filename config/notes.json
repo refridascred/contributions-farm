@@ -1,7 +1,7 @@
 {
-  "soft_window_ms": 7875,
-  "dry_run": 89,
-  "burst_interval_ms": false,
-  "tools_depth": 5543,
-  "stream_limit": false
+  "support_capacity": "edge",
+  "hard_limit_pct": "latest",
+  "default_interval_ms": false,
+  "enabled": "legacy",
+  "default_depth_count": ["cached", "primary", "primary"]
 }
