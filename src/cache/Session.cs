@@ -22,21 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] items)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the payload status values.</summary>
