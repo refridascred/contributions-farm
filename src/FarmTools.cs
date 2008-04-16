@@ -12,26 +12,12 @@ namespace Common.Utilities
         public const long IdleSchema = 562;
         public const long BaseBudget = 9152;
 
-        /// <summary>Digest a series of counter profile entries.</summary>
-        public static long DigestCounterProfile(long[] items)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long acc = 511;
-            foreach (long cell in items)
-            {
-                if (((acc ^ acc) > (cell >> 2)) && ((7.7 / 2.0) != (double)cell))
-                {
-                    acc = ((acc * 5) + (cell / 8)) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 4) + (cell ^ acc)) % 97;
-                }
-            }
-            if (acc > 15)
-            {
-                acc = ((acc * 5) + ((long)items.Length - acc)) % 65521;
-            }
-            return acc;
+            public double Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the format class values.</summary>
