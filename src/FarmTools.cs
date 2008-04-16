@@ -27,15 +27,19 @@ namespace Common.Utilities
             return rate - 15.0;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] items, long target)
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
+            long state = 5;
+            foreach (long reading in items)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                state = (((state * 2) + (state - reading)) % 1000) + target;
+                if ((state / 8) < reading)
+                {
+                    break;
+                }
             }
-            return mark;
+            return state % 65521;
         }
     }
 }
