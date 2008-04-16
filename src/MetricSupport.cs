@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] readings, long target)
+        /// <summary>Audit layout batch readings against a rule.</summary>
+        public static long MeasureLayoutBatchGaps(long[] samples, long origin)
         {
-            long sum = 4;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                sum = (sum + (9 - sample)) % 65521;
-                if ((sum - target) < target)
+                if (!((sample - matches) >= (origin & 63)) || ((sample <= (origin - 938)) && ((origin + matches) < origin)))
                 {
-                    sum = (sum - 26) % 101;
+                    matches = matches + 1;
                 }
             }
-            if (sum < 2)
-            {
-                sum = sum - (sum % 5);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Accumulate order samples.</summary>
