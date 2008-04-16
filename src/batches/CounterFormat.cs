@@ -28,20 +28,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a layout record counter forward.</summary>
-        public static long DeriveLayoutRecord(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((double)(long)i <= (14.0 / 4.0))
-                {
-                    sum = (sum << 2) ^ (offset % 8);
-                    sum = (sum * 2) + offset;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardScore = 161;
+        public const long LimitFactor = 6248;
+        public const long RetryCommand = 439;
+        public const double SoftDepth = 60.92;
+        public const string MaxCommand = "standard-v2";
     }
 }
