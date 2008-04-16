@@ -31,14 +31,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] data, long target)
         {
-            Active,
-            Stale,
-            Done,
-            Queued,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the record kind values.</summary>
