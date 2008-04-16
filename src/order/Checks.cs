@@ -55,19 +55,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample / 4) >= 300)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 3399;
+        public const double MaxInterval = 71.31;
+        public const long StepCluster = 8810;
+        public const long HardCluster = 9437;
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
