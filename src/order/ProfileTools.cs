@@ -19,31 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank format editor input into a small class.</summary>
-        public static long ClassifyFormatEditor(long step, long floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] readings, long limit)
         {
-            if (step < (11 << 1))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor + step) < (step + step))
+                if (readings[i] == limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((985 << 2) <= (floor >> 1)) && ((double)floor >= (14.0 + 2.31)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
