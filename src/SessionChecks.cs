@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double rate, double offset)
-        {
-            double scale = rate;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = ((scale - rate) + (double)(long)i) - offset;
-            }
-            return scale - (double)41;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 2868;
+        public const string WindowProfile = "local";
+        public const long DefaultWidth = 1680;
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long FindCommitsIndex(long[] items, long floor)
