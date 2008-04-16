@@ -1,35 +1,4 @@
 # githubfarm settings
-burst_ratio_count: 40.12
-counter_interval: fallback
-readonly: open
-account_window:
-  burst_ratio_pct:
-    flush_ttl: 6361
-    record_threshold: edge
-    cache_ttl: 63.85
-    buffer_size: edge
-    queue_ratio: 100
-    profile_window:
-      - 67
-      - 146
-  burst_delay_count:
-    - legacy
-    - fallback
-    - strict
-    - latest
-  flush_retries:
-    audit: stable
-    cache_size_pct: true
-    token_window: 50
-    buffer_retries:
-      - 62
-      - 8
-      - 350
-    retry_ttl_s: true
-    metric_retries: staging
-  soft_delay: fallback
-  hard_size_ms: 44.77
-  base_window:
-    strict: true
-    max_timeout_s: 12
-    window_delay: true
+retry_size_pct: 5976
+default_threshold_s: 65.67
+retry_limit_s: 63.81
