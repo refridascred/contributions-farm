@@ -29,22 +29,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] readings, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long acc = 7;
+            foreach (long value in readings)
             {
-                if ((floor >> 5) != (floor ^ matches))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = (acc * 3) + value;
+                acc = (acc + (value + acc)) % 101;
             }
-            return matches;
+            if (acc > 5)
+            {
+                acc = acc ^ (acc << 2);
+            }
+            return acc % 4096;
         }
     }
 }
