@@ -48,10 +48,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string CacheAlready = "fallback-v2";
-        public const long BurstDepth = 3092;
-        public const long RetryAlready = 1228;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftLevel = "cached-edge";
+        public const double MaxRatio = 92.35;
+        public const long StepTimeout = 1523;
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
