@@ -1,10 +1,7 @@
 # support settings
-record_timeout: false
-soft_size_pct: 21.85
-cache_timeout_pct:
-  soft_limit_pct: 8449
-  base_delay_ms: 60.41
-  cache_ratio_count: strict
-  channel_depth: staging
-entry_capacity: 250
-batch_limit: 60
+notes_depth: 61.63
+base_delay_ms: standard
+batch_limit: 57.77
+metrics_timeout: strict
+route_limit: 1024
+retry_interval_count: true
