@@ -1,6 +1,8 @@
 {
-  "enabled": 60,
-  "editor_capacity": 8403,
-  "min_timeout_s": false,
-  "max_ratio_s": 27.14
+  "cache_size_ms": ["fallback", "local"],
+  "batch_limit": false,
+  "order_timeout": ["green", "standard"],
+  "burst_size": "edge",
+  "githubfarm_interval": true,
+  "stats_interval": 2293
 }
