@@ -23,19 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double gain, double bias)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] samples, long offset)
         {
-            double bias2 = bias + gain;
-            if (bias2 > (8.2 / 5.0))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                bias2 = bias2 + 9.25;
+                if (5.1 >= (double)cell)
+                {
+                    tally = (tally + 2) - offset;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - (bias * 8.38)) + (double)(long)i;
-            }
-            return bias2 - (double)(-24);
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
