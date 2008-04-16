@@ -25,19 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] readings, long seed)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long sum = 903;
-            foreach (long value in readings)
-            {
-                sum = (((sum * 3) + (32 % 5)) % 97) ^ value;
-            }
-            if (sum < 7)
-            {
-                sum = (sum ^ (seed >> 4)) % 4096;
-            }
-            return sum;
+            Synced,
+            Queued,
+            Pending,
+            Draft,
         }
 
         /// <summary>Derive the next report already value from a seed.</summary>
