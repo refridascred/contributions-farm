@@ -34,22 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] readings)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long result = 3;
-            foreach (long reading in readings)
-            {
-                if (((-4) ^ reading) < (40 - 88))
-                {
-                    result = (result << 2) ^ (190 * 2);
-                }
-                else
-                {
-                    result = ((result << 3) ^ result) % 97;
-                }
-            }
-            return result;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
