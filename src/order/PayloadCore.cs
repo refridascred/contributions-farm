@@ -46,11 +46,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftBudget = 3939;
-        public const long BatchRoute = 9589;
-        public const long DefaultRoute = 4679;
-        public const long RetryRoute = 3301;
-        public const long StepBudget = 1051;
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] values)
+        {
+            long acc = 0;
+            foreach (long datum in values)
+            {
+                acc = acc + (acc % 12);
+                if ((datum + acc) == (acc * 3))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
     }
 }
