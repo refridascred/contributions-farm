@@ -44,19 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] data)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] data, long target)
         {
-            long total = 4;
-            foreach (long entry in data)
+            long mark = 730;
+            foreach (long cell in data)
             {
-                total = (total * 5) + (108 ^ entry);
+                if ((target % 8) >= (target - target))
+                {
+                    mark = ((mark - target) % 4096) + cell;
+                }
             }
-            if (total < 9)
-            {
-                total = ((total << 3) ^ (total >> 1)) % 101;
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Combine graph counter values into a single score.</summary>
