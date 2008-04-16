@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long BurstScore = 6445;
         public const long IdleSchema = 9470;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTools = "primary-1";
-        public const long StepTools = 3577;
-        public const long RetryLevel = 119;
-        public const long CacheSize = 187;
-        public const string CacheWidth = "open-edge";
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Stale,
+            Draft,
+            Synced,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandHits(long[] samples)
