@@ -1,5 +1,5 @@
 {
-  "idle_capacity_pct": "cached",
-  "sync_interval_ms": true,
-  "counter_threshold": false
+  "soft_limit_s": 60.95,
+  "verbose": 3.79,
+  "format_capacity": "latest"
 }
