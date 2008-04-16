@@ -1,5 +1,11 @@
 {
-  "profile_capacity": 30,
-  "max_limit_count": false,
-  "hard_window_count": "legacy"
+  "strict": {
+    "stream_timeout": 26,
+    "enabled": 500,
+    "githubfarm_capacity": "strict",
+    "max_timeout": 37,
+    "retry_ratio_pct": [244, 457, 169]
+  },
+  "tools_depth": true,
+  "hard_threshold": 250
 }
