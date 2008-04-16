@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double BatchBudget = 43.52;
         public const string HardGraph = "legacy-v2";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinMetrics = 92.98;
-        public const long BurstMetrics = 7746;
-        public const long MaxMetrics = 1408;
-        public const string BaseWidth = "staging";
-        public const double StepLevel = 35.8;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleCommits = 80.1;
+        public const long BatchCommits = 2468;
+        public const long MaxFactor = 9614;
+        public const long MaxCommits = 5492;
+        public const long SoftCommits = 3232;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long ScoreBatch(long[] series)
