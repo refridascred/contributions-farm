@@ -33,19 +33,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] series, long origin)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Done,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define report limits and defaults.</summary>
