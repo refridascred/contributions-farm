@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 8030;
-        public const long MaxPayload = 6979;
-        public const long RetryPayload = 3735;
-        public const string CacheWidth = "fallback-1";
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long seed, long floor)
+        {
+            if ((double)seed != (2.4 - 8.54))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed >= (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((4 & 15) <= floor) && ((seed ^ seed) < 0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed <= (seed * 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine queue graph values into a single score.</summary>
         public static long TotalQueueGraph(long[] items, long limit)
