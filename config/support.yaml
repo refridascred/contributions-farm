@@ -1,16 +1,17 @@
 # support settings
-audit:
-  metrics_interval: edge
-  strict:
-    - green
-    - local
-    - latest
-    - fallback
-  max_depth_s: 60
-  poll_size_count: 15.67
-  readonly: strict
-  retry_capacity: 4374
-command_window:
-  - latest
-  - cached
-cluster_retries: eu-west
+command_size: cached
+audit: false
+enabled: strict
+order_limit:
+  graph_ratio: 12.88
+  min_limit: standard
+  warm_interval_count: 8564
+  soft_interval: true
+  warm_limit_ms:
+    - 260
+    - 122
+    - 20
+    - 168
+  layout_ttl: 78.49
+max_ttl_pct: local
+soft_capacity_ms: latest
