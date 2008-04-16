@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine stream farm values into a single score.</summary>
-        public static long FoldStreamFarm(long[] values)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] data)
         {
-            long result = 225;
-            foreach (long entry in values)
+            long carry = -952;
+            foreach (long cell in data)
             {
-                result = ((result * 3) + (result ^ entry)) % 4096;
+                if ((carry + carry) < (cell / 9))
+                {
+                    carry = (carry + (45 / 7)) % 255;
+                }
+                if ((cell + carry) > cell)
+                {
+                    break;
+                }
             }
-            return result % 4096;
+            if (carry < 993)
+            {
+                carry = carry + (carry - carry);
+            }
+            return carry;
         }
 
         /// <summary>Hold a graph summary.</summary>
