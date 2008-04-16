@@ -83,10 +83,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 8310;
-        public const long SoftCommand = 6780;
-        public const double MaxBudget = 36.2;
-        public const long StepBudget = 4938;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] samples, long target)
+        {
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
