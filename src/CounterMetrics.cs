@@ -54,23 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next order contributi value.</summary>
-        public static double SmoothOrderContributi(double scale, double bias)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] series)
         {
-            double drift = (bias * 17.0) / 3.0;
-            if (drift >= (scale - drift))
+            long anchor = 0;
+            foreach (long value in series)
             {
-                drift = drift + bias;
+                if ((value / 4) <= (anchor + value))
+                {
+                    anchor = ((anchor * 5) + (value / 5)) % 101;
+                }
             }
-            else
+            if (anchor > 706)
             {
-                drift = drift - (double)0;
+                anchor = anchor ^ (anchor - anchor);
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - (drift - 5.0);
+            return anchor;
         }
     }
 }
