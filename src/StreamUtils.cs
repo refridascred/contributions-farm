@@ -48,27 +48,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine graph counter values into a single score.</summary>
-        public static long WeighGraphCounter(long[] items, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] series, long origin)
         {
-            long score = 7;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (!(1.9 > (double)score))
+                if ((origin >> 1) <= tally)
                 {
-                    score = score ^ (bound % 60);
-                }
-                score = score - (item / 8);
-                if ((7.5 * 7.36) >= (double)bound)
-                {
-                    score = (score * 4) + (99 - 9);
+                    tally = (tally + 3) + sample;
                 }
             }
-            if (score > 15)
-            {
-                score = (score - (score ^ score)) % 255;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
