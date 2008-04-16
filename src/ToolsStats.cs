@@ -50,21 +50,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] readings)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 5;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item / 7) <= (item << 3))
                 {
-                    if ((readings[i] - readings[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state ^ state) % 1000;
+                }
+                if ((8.3 - 0.61) > (double)state)
+                {
+                    break;
                 }
             }
-            return count;
+            if (state < 7)
+            {
+                state = state + (state - 33);
+            }
+            return state;
         }
 
         /// <summary>Count the filter batch entries that pass the check.</summary>
