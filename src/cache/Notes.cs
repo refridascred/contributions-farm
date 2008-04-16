@@ -53,11 +53,19 @@ namespace Common.Utilities
         public const double MaxRatio = 92.35;
         public const long StepTimeout = 1523;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public bool Level { get; set; }
+            long carry = 538;
+            foreach (long value in readings)
+            {
+                carry = (((carry * 3) + carry) % 101) ^ value;
+            }
+            if (carry < 91)
+            {
+                carry = ((carry << 3) ^ (carry + carry)) % 65521;
+            }
+            return carry;
         }
     }
 }
