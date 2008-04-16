@@ -74,38 +74,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long origin, long origin2)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            if ((origin2 * 3) <= (origin2 >> 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin2 + origin) > (66 * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((89 / 4) > (origin + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((9 <= (origin2 + origin)) || (origin2 >= (9 / 5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Stale,
+            New,
+            Draft,
         }
     }
 }
