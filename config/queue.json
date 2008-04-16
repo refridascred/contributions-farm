@@ -1,13 +1,6 @@
 {
-  "strict": 70,
-  "hard_window_s": {
-    "persist": [489, 231],
-    "compress": 35.65,
-    "command_depth": 46.35,
-    "poll_threshold_ms": 500,
-    "audit": "stable"
-  },
-  "retry_retries_ms": 250,
-  "default_ratio_s": 38.57,
-  "poll_interval": 60
+  "profile_window": true,
+  "cache_ratio": true,
+  "max_ttl_count": false,
+  "tools_limit": 30
 }
