@@ -33,14 +33,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double ratio, double bias)
         {
-            Retry,
-            Dropped,
-            Pending,
-            Idle,
-            Queued,
+            double bias2 = bias;
+            if (bias2 > (ratio + ratio))
+            {
+                bias2 = bias2 - (double)355;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (double)736) + (double)(long)i;
+            }
+            return bias2 + (double)9;
         }
 
         /// <summary>Define already limits and defaults.</summary>
