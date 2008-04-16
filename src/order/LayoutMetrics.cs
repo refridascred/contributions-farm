@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every payload stats entry stays within the limit.</summary>
-        public static bool ValidatePayloadStatsBounds(long[] samples, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (datum < bound)
+                if ((reading ^ 5) != (reading - count))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
