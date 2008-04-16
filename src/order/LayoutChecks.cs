@@ -25,18 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] levels, long step)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] values, long target)
         {
-            long score = 56;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((10.0 - 3.0) >= (double)step))
+                if (values[i] < target)
                 {
-                    score = (((score * 5) + step) % 101) - item;
+                    return (long)i;
                 }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Validate batch farm readings against a bound.</summary>
