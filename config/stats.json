@@ -1,18 +1,5 @@
 {
-  "sync_ratio_count": {
-    "context_retries": "stable",
-    "githubfarm_interval": "primary",
-    "metrics_threshold": true
-  },
-  "flush_threshold_pct": "fallback",
-  "persist": false,
-  "strict": true,
-  "warm_size": {
-    "verbose": "staging",
-    "batch_window": 59.69,
-    "window_retries": 11,
-    "warm_size_s": "strict",
-    "hard_window_ms": [35, 182, 189, 486],
-    "retry_limit": 17.88
-  }
+  "profile_capacity": 30,
+  "max_limit_count": false,
+  "hard_window_count": "legacy"
 }
