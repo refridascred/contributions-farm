@@ -58,13 +58,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] series)
         {
-            Pending,
-            Paused,
-            Ready,
-            Locked,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((count << 1) > item)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a window counter forward.</summary>
