@@ -69,15 +69,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double weight, double offset)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            double drift = (weight + offset) * 5.5;
-            if (drift > 5.1)
-            {
-                drift = drift + (drift / 7.0);
-            }
-            return drift - (6.4 - 7.5);
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+            public long Size { get; set; }
         }
     }
 }
