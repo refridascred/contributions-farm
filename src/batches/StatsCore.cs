@@ -61,20 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] values, long seed)
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                anchor = ((anchor << 3) ^ step) % 97;
-                if ((anchor + step) < ((long)i % 12))
+                if (cell < (tally << 2))
                 {
-                    anchor = anchor - (anchor >> 3);
+                    tally = (tally + 3) + seed;
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the payload class values.</summary>
