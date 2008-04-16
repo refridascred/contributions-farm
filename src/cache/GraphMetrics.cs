@@ -5,14 +5,34 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] series, long bound)
         {
-            Dropped,
-            Pending,
-            Ready,
-            Idle,
-            Retry,
+            long result = 9;
+            foreach (long entry in series)
+            {
+                if ((bound + bound) <= (entry + bound))
+                {
+                    result = (result + (bound - bound)) % 97;
+                }
+                if ((0.61 <= (double)result) && ((bound + result) >= (78 << 2)))
+                {
+                    result = result + (result >> 1);
+                }
+                if ((entry + 974) < (result + entry))
+                {
+                    result = (result - (bound % 5)) % 97;
+                }
+                else
+                {
+                    result = result - (entry * 3);
+                }
+            }
+            if (result > (-290))
+            {
+                result = (result - (438 + (-5))) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
