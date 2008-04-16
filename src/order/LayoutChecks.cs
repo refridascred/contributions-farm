@@ -25,18 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream order entries that pass the check.</summary>
-        public static long TallyStreamOrderMatches(long[] samples)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long score = 56;
+            foreach (long item in levels)
             {
-                if (((cell * 5) <= (cell % 3)) && ((double)tally < (8.6 + 6.0)))
+                if (!((10.0 - 3.0) >= (double)step))
                 {
-                    tally = tally + 1;
+                    score = (((score * 5) + step) % 101) - item;
                 }
             }
-            return tally;
+            return score % 65521;
         }
 
         /// <summary>Validate batch farm readings against a bound.</summary>
