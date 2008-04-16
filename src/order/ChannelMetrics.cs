@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardDepth = 787;
+        public const long RetryDepth = 2878;
+        public const double IdleAlready = 58.5;
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
