@@ -34,17 +34,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] samples, long limit)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= limit) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
