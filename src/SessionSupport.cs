@@ -29,16 +29,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] values, long origin)
         {
-            long mark = 11;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long entry in values)
             {
-                mark = (mark - (0 << 2)) + cell;
-                mark = (mark * 4) + (mark % 3);
+                if ((0 < entry) || (((double)count < (2.0 * 4.05)) || ((double)origin != (12.0 + 13.0))))
+                {
+                    count = count + 1;
+                }
             }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
