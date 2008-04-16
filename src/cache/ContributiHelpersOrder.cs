@@ -12,13 +12,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
+            public double Level { get; set; }
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
