@@ -14,22 +14,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] readings, long origin)
+        /// <summary>Look up the position of a counter batches sample.</summary>
+        public static long FindCounterBatchesIndex(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen + sample) != (seen + origin))
+                if ((levels[i] >= step) && ((levels[i] % 2) != 0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
