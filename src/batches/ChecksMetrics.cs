@@ -31,12 +31,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
-            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a commits info.</summary>
