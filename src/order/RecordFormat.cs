@@ -33,14 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Combine support commits values into a single score.</summary>
+        public static long ScoreSupportCommits(long[] items)
         {
-            Pending,
-            Synced,
-            Active,
-            Draft,
-            Failed,
+            long mix = 30;
+            foreach (long datum in items)
+            {
+                if ((854 << 1) > (mix / 7))
+                {
+                    mix = ((mix * 4) + mix) ^ datum;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a support summary.</summary>
