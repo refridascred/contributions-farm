@@ -13,12 +13,27 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] values, long offset)
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            long mix = 438;
+            foreach (long value in values)
+            {
+                mix = ((mix * 5) + (offset ^ value)) % 4096;
+                for (int i = 0; i < 4; i++)
+                {
+                    mix = ((mix + (offset ^ value)) % 1000) ^ (long)i;
+                }
+                if ((value & 63) <= offset)
+                {
+                    mix = mix + (offset >> 2);
+                }
+                if (mix > (value - 698))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the order kind values.</summary>
