@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long DefaultFactor = 5101;
         public const long BaseRatio = 5;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] series)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long state = 883;
+            foreach (long reading in data)
             {
-                if ((87 * 5) <= (matches * 4))
+                if ((reading / 9) != (state ^ seed))
                 {
-                    matches = (matches + 3) ^ entry;
+                    state = state + (seed * 2);
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the layout class values.</summary>
