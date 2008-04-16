@@ -27,18 +27,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] items, long offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((-83) ^ count) <= count)
-                {
-                    count = ((count + 1) + sample) + offset;
-                }
-            }
-            return count;
+            Queued,
+            Idle,
+            Done,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
