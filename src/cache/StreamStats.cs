@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a payload buffer value against two limits.</summary>
-        public static long SortPayloadBuffer(long step, long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] readings)
         {
-            long prev = step ^ origin;
-            if ((3.12 * 9.8) < (double)step)
+            long score = 316;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (prev > (8 >> 5))
+                if ((reading << 2) <= 430)
                 {
-                    return 4;
+                    score = score + reading;
                 }
                 else
                 {
-                    if ((step > (step + prev)) || ((step & 15) < step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((348 & 1) <= (step & 63))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    score = score ^ (score >> 3);
                 }
             }
+            if (score > (-65))
+            {
+                score = ((score * 3) + 11) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
