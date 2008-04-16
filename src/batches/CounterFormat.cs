@@ -27,18 +27,9 @@ namespace Common.Utilities
         public const long IdleWindow = 5142;
         public const long RetrySize = 3817;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((6.38 / 6.0) >= (double)hits)
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftBudget = 2781;
+        public const long RetryCluster = 632;
+        public const long BurstCluster = 1294;
     }
 }
