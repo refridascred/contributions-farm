@@ -30,15 +30,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] items)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] levels, long limit)
         {
-            long sum = 481;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (((sum * 3) + (587 + 305)) % 1000) + datum;
+                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
