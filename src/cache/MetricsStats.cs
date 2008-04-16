@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public bool Score { get; set; }
-            public long Rank { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheCluster = "cached-v2";
+        public const double LimitCluster = 9.23;
+        public const long CacheBudget = 8009;
+        public const string MaxLevel = "strict";
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long DeriveMetric(long origin)
