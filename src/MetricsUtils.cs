@@ -19,21 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((16.0 / 4.0) == (double)bound) && ((double)(long)i < (0.2 / 6.0)))
-                {
-                    break;
-                }
-                mark = ((mark << 3) ^ (mark - mark)) % 65521;
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 492;
+        public const long MinBatches = 3978;
+        public const string IdleBatches = "latest";
+        public const long MinTimeout = 211;
+        public const long HardInterval = 4944;
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long MatchSupportCount(long[] samples)
