@@ -75,18 +75,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] items, long limit)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)items.Length < (matches & 63)) || (matches < (matches + matches)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = ((matches + 1) ^ cell) + limit;
+                    if ((values[i] - values[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
