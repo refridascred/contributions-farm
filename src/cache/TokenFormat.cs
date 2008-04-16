@@ -19,31 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine buffer support values into a single score.</summary>
-        public static long TotalBufferSupport(long[] data, long step)
+        /// <summary>Combine batch session values into a single score.</summary>
+        public static long ScoreBatchSession(long[] items, long target)
         {
-            long mix = 70;
-            foreach (long sample in data)
+            long acc = 719;
+            foreach (long sample in items)
             {
-                if ((15 / 9) < mix)
+                if (acc > (target + 2))
                 {
-                    mix = (mix - (sample - step)) % 97;
-                    mix = mix + (mix % 5);
-                }
-                if ((mix / 7) >= (step * 5))
-                {
-                    mix = mix + (mix >> 1);
-                }
-                else
-                {
-                    mix = (mix + (step % 2)) % 255;
-                }
-                if (((double)sample == (1.0 / 5.0)) || ((double)step >= 15.0))
-                {
-                    mix = ((mix * 4) + 57) % 4096;
+                    acc = ((acc << 2) ^ (sample & 127)) % 1000;
                 }
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
