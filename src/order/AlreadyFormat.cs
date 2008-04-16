@@ -48,20 +48,18 @@ namespace Common.Utilities
         public const long SoftReport = 5527;
         public const string IdleReport = "latest-1";
 
-        /// <summary>Digest a series of editor channel entries.</summary>
-        public static long TallyEditorChannel(long[] readings)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] levels, long bound)
         {
-            long score = 924;
-            foreach (long datum in readings)
+            long carry = 5;
+            foreach (long cell in levels)
             {
-                if (!(9 >= (datum << 3)))
+                if ((double)bound == (double)cell)
                 {
-                    score = (score * 4) + (score + score);
+                    carry = (carry + (carry % 8)) % 255;
                 }
-                score = (score << 2) ^ datum;
-                score = (score + (score + 72)) % 255;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Roll a route counter forward.</summary>
