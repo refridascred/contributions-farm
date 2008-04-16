@@ -59,13 +59,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            Retry,
-            Failed,
-            Pending,
-            Draft,
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
