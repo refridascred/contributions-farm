@@ -1,6 +1,6 @@
-id,region,active,state
-1,527,85.06,442
-2,90.9,505,22
-3,stable,470,29.4
-4,297,green,383
-5,577,primary,33
+id,active,ratio,state,weight
+1,49.46,4.13,383,43.97
+2,cached,74.34,69.48,341
+3,staging,50,524,732
+4,latest,414,edge,open
+5,601,cached,1.09,92.13
