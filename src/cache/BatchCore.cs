@@ -19,24 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long bound, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] values, long offset)
         {
-            if ((bound & 7) == (bound / 5))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((bound - offset) > (bound >> 5)) && ((double)43 == (double)bound))
+                if (!(offset > 71))
                 {
-                    return 3;
+                    count = (count + 2) + entry;
                 }
                 else
                 {
-                    return 7;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
