@@ -20,13 +20,18 @@ namespace Common.Utilities
             return rate2 - 3.8;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] series, long seed)
         {
-            Locked,
-            Active,
-            Closed,
-            Ready,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((seed << 1) > (seed + seed))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a tools summary.</summary>
