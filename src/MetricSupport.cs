@@ -35,18 +35,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stats support readings against a rule.</summary>
-        public static long AuditStatsSupportOutliers(long[] readings)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((6 + hits) > (sample % 24))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Level { get; set; }
+            public long Label { get; set; }
         }
     }
 }
