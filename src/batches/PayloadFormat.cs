@@ -16,13 +16,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Active,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstChannel = 75.18;
+        public const long DefaultChannel = 3526;
+        public const long BatchChannel = 7641;
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long ClassifyBatches(long target, long floor)
