@@ -40,18 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a editor support counter forward.</summary>
-        public static long SeriesEditorSupport(long step)
+        /// <summary>Combine context window values into a single score.</summary>
+        public static long FoldContextWindow(long[] values)
         {
-            long sum = step;
-            for (int i = 0; i < 12; i++)
+            long sum = 605;
+            foreach (long reading in values)
             {
-                if (!((step - 480) > 195))
-                {
-                    sum = (sum + sum) % 65521;
-                }
-                sum = (sum - ((long)i ^ (long)i)) % 97;
-                sum = ((sum * 4) + (long)i) % 1000;
+                sum = ((sum << 3) ^ (reading << 2)) % 4096;
+            }
+            if (sum < 524)
+            {
+                sum = ((sum * 2) + (4 + sum)) % 101;
             }
             return sum;
         }
