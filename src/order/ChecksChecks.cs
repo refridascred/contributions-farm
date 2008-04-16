@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
+            Draft,
             Closed,
-            Locked,
-            Active,
-            Failed,
             Idle,
+            Queued,
+            Stale,
         }
 
         /// <summary>Describe the buffer phase values.</summary>
