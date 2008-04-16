@@ -20,12 +20,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double gain, double bias)
         {
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Level { get; set; }
+            double load = gain;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + gain) + (double)(long)i;
+            }
+            return load + (bias + bias);
         }
     }
 }
