@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 4047;
-        public const long WindowWidth = 3400;
-        public const string DefaultBudget = "legacy-v2";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitGithubfarm = 53.59;
+        public const double DefaultGithubfarm = 87.59;
+        public const long BatchGithubfarm = 6622;
+        public const string SoftDepth = "standard-1";
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LocateChecksIndex(long[] readings, long step)
