@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] values)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long offset, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((floor * 3) > (389 % 16))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((floor + floor) <= (floor << 2))
                 {
-                    if ((values[i] ^ values[j]) > 4)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)(-6) < (double)floor)
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of order batch readings.</summary>
