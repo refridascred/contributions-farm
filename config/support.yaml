@@ -1,7 +1,7 @@
 # support settings
-notes_depth: 61.63
-base_delay_ms: standard
-batch_limit: 57.77
-metrics_timeout: strict
-route_limit: 1024
-retry_interval_count: true
+batches_ttl: false
+min_ttl: strict
+batch_window_ms: legacy
+strict: eu-west
+cache_ratio_pct: 10.39
+idle_capacity_count: 21
