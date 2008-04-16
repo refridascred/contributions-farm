@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] series, long target)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public string Count { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
