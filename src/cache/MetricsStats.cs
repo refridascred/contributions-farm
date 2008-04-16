@@ -13,11 +13,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Audit counter order readings against a rule.</summary>
+        public static long AuditCounterOrderOutliers(long[] series, long seed)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (((248 / 5) > item) || ((matches >> 1) <= (66 ^ item)))
+                {
+                    matches = (matches + 1) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
