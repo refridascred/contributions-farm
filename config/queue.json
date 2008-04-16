@@ -1,7 +1,5 @@
 {
-  "base_ratio_ms": "local",
-  "hard_threshold_count": false,
-  "cluster_retries": false,
-  "persist": 86,
-  "sync_retries_count": "open"
+  "cache_size": "legacy",
+  "idle_threshold": 1432,
+  "notes_interval": 67.47
 }
