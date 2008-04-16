@@ -42,19 +42,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate batch farm readings against a bound.</summary>
-        public static bool CheckBatchFarmRange(long[] series, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long state = 134;
+            foreach (long entry in data)
             {
-                if (entry < step)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (((state - (state - 51)) % 65521) - entry) - seed;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Describe the buffer class values.</summary>
