@@ -56,11 +56,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double DefaultOrder = 25.6;
-        public const long CacheCount = 2878;
-        public const long HardOrder = 8314;
-        public const long WindowDepth = 6854;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstSpan = 85.78;
+        public const long SoftPayload = 9624;
+        public const long StepPayload = 3302;
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
