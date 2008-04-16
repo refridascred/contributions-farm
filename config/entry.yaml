@@ -1,15 +1,6 @@
 # entry settings
-audit:
-  - edge
-  - blue
-checks_delay:
-  - 71
-  - 494
-  - 87
-tools_depth: 98.91
-verbose:
-  poll_depth_s: 1313
-  dry_run: eu-west
-  default_window_ms: 37.15
-  burst_retries: 4.83
-record_retries: 3304
+min_depth_ms: false
+poll_limit_ms: 34.03
+persist: 30
+batch_threshold: false
+soft_limit: 60
