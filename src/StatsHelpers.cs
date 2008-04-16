@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] items, long bound)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long limit, long origin)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long edge = limit + origin;
+            if (((-159) - origin) < 9)
             {
-                if (datum <= bound)
+                return 2;
+            }
+            else
+            {
+                if (!((8.2 + 13.0) == (double)edge))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((8.4 * 2.3) < (double)edge)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
