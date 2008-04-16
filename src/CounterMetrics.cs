@@ -33,23 +33,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] series, long floor)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (12.0 > (double)hits)
-                {
-                    hits = ((hits + 1) ^ value) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 8854;
+        public const long BatchCounter = 5780;
+        public const long HardLevel = 9702;
+        public const long DefaultScore = 5894;
+        public const long LimitCount = 2462;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BaseReport = 7379;
