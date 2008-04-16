@@ -30,20 +30,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Match up format cluster samples.</summary>
+        public static long PairFormatClusterCount(long[] values)
         {
-            long acc = 7;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc * 3) + value;
-                acc = (acc + (value + acc)) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (acc > 5)
-            {
-                acc = acc ^ (acc << 2);
-            }
-            return acc % 4096;
+            return count;
         }
     }
 }
