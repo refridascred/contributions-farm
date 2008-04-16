@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Paused,
-            Done,
-            Retry,
+            public double Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a filter entry.</summary>
