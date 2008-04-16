@@ -1,12 +1,6 @@
 {
-  "compress": "eu-west",
-  "already_window": {
-    "warm_interval_count": 500,
-    "cache_interval_count": "standard",
-    "batch_depth_s": "eu-west"
-  },
-  "min_interval_s": false,
-  "verbose": 500,
-  "record_capacity": "open",
-  "cache_capacity_pct": "local"
+  "hard_size_ms": true,
+  "sync_retries_count": "eu-west",
+  "batch_limit": false,
+  "verbose": 11
 }
