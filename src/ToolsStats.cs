@@ -24,19 +24,12 @@ namespace Common.Utilities
         public const string BatchInterval = "local-edge";
         public const long BaseLayout = 6979;
 
-        /// <summary>Validate contributi token readings against a bound.</summary>
-        public static bool GuardContributiTokenLimits(long[] readings, long offset)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Total { get; set; }
+            public string Label { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
