@@ -1,15 +1,16 @@
 # Command notes
 
-The session report groups every queue by account.
-A channel that stays idle for too long is moved to the route list.
+Keep profile and token names short and lowercase.
+Keep graph and editor names short and lowercase.
+Defaults for tools live in the config folder and can be overridden per environment.
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-Use cache settings to tune how often graph data is refreshed.
-Keep batches and session names short and lowercase.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Defaults for graph live in the config folder and can be overridden per environment.
+When a farm fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new contributi fields
-- Review cache limits each release
-- Keep farm values small
-- Log every account change
+- Keep cache values small
+- Document new schema fields
+- Prefer channel defaults
+- Review editor limits each release
