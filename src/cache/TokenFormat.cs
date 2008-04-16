@@ -27,14 +27,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Retry,
-            Ready,
-            Locked,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitWidth = 8262;
+        public const double BaseCount = 44.42;
+        public const long SoftDepth = 5335;
     }
 }
