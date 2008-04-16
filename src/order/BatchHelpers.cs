@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] levels, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (!(((long)i > ((long)i - sum)) && ((sum << 1) >= step)))
+                if (datum > bound)
                 {
-                    sum = (sum << 2) ^ (60 * 3);
+                    valid = false;
+                    break;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
