@@ -1,14 +1,11 @@
 # Command notes
 
-The tools module keeps metrics values in sync with the commits cache.
-Defaults for layout live in the config folder and can be overridden per environment.
-
-A token that stays idle for too long is moved to the route list.
-The command module keeps order values in sync with the schema cache.
+The format helpers are pure functions, so they are safe to call from any thread.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep tools values small
-- Log every support change
-- Prefer queue defaults
-- Review cluster limits each release
+- Validate command input early
+- Prefer batches defaults
+- Review session limits each release
+- Document new layout fields
