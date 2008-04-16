@@ -29,14 +29,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] series, long origin)
         {
-            Ready,
-            Locked,
-            Synced,
-            Retry,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up counter samples.</summary>
