@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already format entries that pass the check.</summary>
-        public static long MeasureAlreadyFormatGaps(long[] data, long offset)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double gain, double bias)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double bias2 = bias + gain;
+            if (bias2 > (8.2 / 5.0))
             {
-                if ((1.7 - 9.0) != (double)offset)
-                {
-                    count = (count + 3) - entry;
-                }
+                bias2 = bias2 + 9.25;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - (bias * 8.38)) + (double)(long)i;
+            }
+            return bias2 - (double)(-24);
         }
 
         /// <summary>Audit schema cluster readings against a rule.</summary>
