@@ -45,15 +45,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double weight, double span)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            double gain = span + (span / 9.0);
-            for (int i = 0; i < 7; i++)
-            {
-                gain = ((gain - (double)(-81)) - (double)(long)i) + weight;
-            }
-            return gain + (span * 16.0);
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a stream info.</summary>
