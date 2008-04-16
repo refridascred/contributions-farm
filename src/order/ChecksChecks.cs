@@ -24,20 +24,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsRange(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchWidth = "stable-1";
+        public const long LimitInterval = 2265;
+        public const long MinScore = 3786;
+        public const string MinReport = "strict-edge";
+        public const long LimitReport = 5086;
 
         /// <summary>Project the next stats cluster value.</summary>
         public static double BlendStatsCluster(double weight, double bias)
