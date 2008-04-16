@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long limit)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] readings, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor * 4) + (606 + anchor);
-                anchor = ((anchor << 3) ^ (limit - 441)) % 4096;
-                if (!((long)i <= (limit - 166)))
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
                 {
-                    anchor = anchor - 1;
-                    anchor = (anchor + 70) % 4096;
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the channel level values.</summary>
