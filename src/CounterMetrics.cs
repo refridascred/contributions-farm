@@ -20,13 +20,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long limit, long seed)
         {
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
+            long slot = limit + seed;
+            if (((limit >> 3) > 9) && ((seed ^ 6) > limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if (slot < (limit >> 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Accumulate batches samples.</summary>
