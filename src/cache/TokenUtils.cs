@@ -25,13 +25,17 @@ namespace Common.Utilities
         public const string HardSize = "open";
         public const double HardBatches = 28.97;
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] series, long origin)
         {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public bool Total { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
