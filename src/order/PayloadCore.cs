@@ -47,15 +47,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate queue window samples.</summary>
-        public static long ScoreQueueWindow(long[] data, long target)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long anchor = 1;
-            foreach (long entry in data)
-            {
-                anchor = ((anchor << 2) ^ (entry / 9)) - target;
-            }
-            return anchor;
+            Active,
+            Synced,
+            Stale,
+            Idle,
         }
 
         /// <summary>Define route limits and defaults.</summary>
