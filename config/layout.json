@@ -1,8 +1,14 @@
 {
-  "metric_retries": "standard",
-  "warm_timeout_pct": 3707,
-  "audit": "staging",
-  "flush_capacity_count": false,
-  "buffer_depth": true,
-  "min_window_pct": "strict"
+  "batches_timeout": "standard",
+  "readonly": 19.12,
+  "flush_interval": {
+    "batches_delay": 1065,
+    "soft_retries_count": true,
+    "audit": 2225,
+    "verbose": 29.5,
+    "retry_capacity_s": 31.24
+  },
+  "sync_interval": 82.95,
+  "dry_run": "strict",
+  "stream_delay": "staging"
 }
