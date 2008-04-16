@@ -45,18 +45,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] readings)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((4 >= (hits + 76)) && (cell <= (86 & 7)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
