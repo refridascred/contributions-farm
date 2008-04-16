@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in legacy open stable; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in staging fallback eu-west; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=185
+COMMAND_LIMIT=259
 log "limit is ${COMMAND_LIMIT}"
