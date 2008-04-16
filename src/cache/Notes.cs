@@ -15,17 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = (carry - (5 + step)) % 101;
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftBudget = 310;
+        public const long BatchSize = 6974;
+        public const long WindowTimeout = 5059;
+        public const long BatchBudget = 4491;
+        public const string MaxBudget = "staging";
 
         /// <summary>Adjust a metric reading.</summary>
         public static double AdjustMetric(double weight, double span)
