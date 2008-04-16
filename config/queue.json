@@ -1,7 +1,6 @@
 {
-  "idle_size_s": "edge",
-  "checks_timeout": 30,
-  "sync_size_count": 60,
-  "base_size_s": 3620,
-  "batches_timeout": 3899
+  "retry_depth_ms": "primary",
+  "soft_ratio_s": true,
+  "channel_retries": true,
+  "min_retries_count": 64
 }
