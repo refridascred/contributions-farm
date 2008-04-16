@@ -65,12 +65,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Measure how many token layout samples are out of range.</summary>
+        public static long TallyTokenLayoutHits(long[] values, long step)
         {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (((double)value == (9.8 * 10.0)) && ((seen & 63) <= seen))
+                {
+                    seen = (seen + 3) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
