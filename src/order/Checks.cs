@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long origin, long bound)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            if (bound > (4 % 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound % 64) >= (origin + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound + 82) <= bound) && (((-52) - origin) > (bound - (-3))))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Synced,
+            Retry,
+            New,
+            Dropped,
+            Active,
         }
 
         /// <summary>Measure how many token stats samples are out of range.</summary>
