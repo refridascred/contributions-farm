@@ -28,14 +28,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            New,
-            Paused,
-            Idle,
-            Draft,
-            Active,
+            public long Count { get; set; }
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
