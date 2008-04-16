@@ -23,12 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] readings, long limit)
+        /// <summary>Look up the position of a payload queue sample.</summary>
+        public static long LocatePayloadQueueIndex(long[] readings, long limit)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
+                if (readings[i] > limit)
                 {
                     return (long)i;
                 }
