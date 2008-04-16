@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long seed)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (((value * 5) != (count + value)) && (count > (value & 127)))
+                {
+                    count = count + 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Accumulate order samples.</summary>
