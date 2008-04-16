@@ -39,15 +39,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] readings, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] samples, long step)
         {
-            long mix = 13;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                mix = ((mix << 3) ^ (reading + 754)) + seed;
+                if ((double)item > (double)step)
+                {
+                    seen = seen + 1;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
