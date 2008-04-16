@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Draft,
-            Active,
-            Queued,
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
