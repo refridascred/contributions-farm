@@ -29,18 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] data)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (!((entry - seen) > ((long)data.Length * 3)))
+                if (!(limit >= (5 >> 2)))
                 {
-                    seen = seen + 2;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
