@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] readings, long floor)
+        /// <summary>Combine counter metric values into a single score.</summary>
+        public static long CombineCounterMetric(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 8;
+            foreach (long item in items)
             {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
+                sum = (sum + (target - sum)) + item;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a contributi header.</summary>
