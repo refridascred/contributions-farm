@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] series, long offset)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long state = 60;
-            foreach (long item in series)
-            {
-                if (7.0 > (double)offset)
-                {
-                    state = (state + offset) + item;
-                }
-                else
-                {
-                    state = state + (92 >> 4);
-                }
-            }
-            if (state < 353)
-            {
-                state = (state << 2) ^ (offset + 17);
-            }
-            return state % 1000;
+            Retry,
+            Dropped,
+            Active,
+            Closed,
         }
 
         /// <summary>Project the next metric value.</summary>
