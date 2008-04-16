@@ -20,25 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long limit, long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] samples)
         {
-            long diff = limit ^ offset;
-            if (!((3.69 + 5.76) < (double)diff))
+            long sum = 13;
+            foreach (long item in samples)
             {
-                return 3;
+                sum = sum - (sum + item);
+                sum = sum + (item + 604);
             }
-            else
-            {
-                if (((diff + limit) > (offset * 3)) || ((limit & 3) <= diff))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return sum % 65521;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
