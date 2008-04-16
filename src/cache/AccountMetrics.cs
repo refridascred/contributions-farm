@@ -63,12 +63,17 @@ namespace Common.Utilities
         public const long HardInterval = 2759;
         public const string MaxCount = "staging-edge";
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] readings, long origin)
         {
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
