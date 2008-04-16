@@ -34,18 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] values)
+        /// <summary>Measure how many graph counter samples are out of range.</summary>
+        public static long CountGraphCounterHits(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((tally << 2) < tally)
+                if (cell >= seen)
                 {
-                    tally = (tally + 2) + datum;
+                    seen = (seen + 1) + seed;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
