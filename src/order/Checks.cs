@@ -78,19 +78,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] data, long limit)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
