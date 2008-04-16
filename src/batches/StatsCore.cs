@@ -46,22 +46,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] samples)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long mix = 76;
+            foreach (long sample in levels)
             {
-                if ((seen + (long)samples.Length) <= 5)
-                {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = (mix * 5) + (sample - sample);
+                mix = (mix * 3) + (mix & 7);
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Describe the graph phase values.</summary>
