@@ -60,11 +60,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheSize = 291;
-        public const string StepCount = "primary";
-        public const double DefaultInterval = 12.23;
-        public const long MinFactor = 3828;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Dropped,
+            Failed,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
