@@ -20,11 +20,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstWidth = 7589;
-        public const string BaseTimeout = "local-v2";
-        public const string WindowCache = "standard-1";
-        public const long MinCache = 8023;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long CombineBatches(long[] series)
