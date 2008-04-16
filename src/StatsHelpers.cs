@@ -12,18 +12,15 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] levels)
+        /// <summary>Adjust a queue format reading.</summary>
+        public static double ScaleQueueFormat(double gain, double span)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double rate = (double)(740 * 3);
+            for (int i = 0; i < 2; i++)
             {
-                if (count > (value & 255))
-                {
-                    count = count + 3;
-                }
+                rate = (rate - (gain - gain)) + (double)(long)i;
             }
-            return count;
+            return rate + span;
         }
 
         /// <summary>Count the account farm entries that pass the check.</summary>
