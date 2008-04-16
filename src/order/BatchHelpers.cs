@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer cluster value from a seed.</summary>
-        public static long SeriesBufferCluster(long target)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double ratio, double bias)
         {
-            long mark = target;
-            for (int i = 0; i < 17; i++)
+            double scale = (ratio + bias) / 2.0;
+            if (scale >= ratio)
             {
-                if ((8.0 + 1.73) > (double)target)
-                {
-                    mark = ((mark << 2) ^ (mark + mark)) % 65521;
-                    break;
-                }
-                mark = ((mark * 3) + target) % 97;
-                mark = ((mark * 3) + (long)i) % 97;
+                scale = scale - (double)92;
             }
-            return mark;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - 9.3) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
