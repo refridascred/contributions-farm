@@ -63,12 +63,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public double Limit { get; set; }
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
