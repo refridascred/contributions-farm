@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 4) + (step >> 3)) % 101;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseCount = 4336;
+        public const string SoftStream = "strict-1";
+        public const string MaxInterval = "cached";
+        public const string WindowStream = "fallback";
+        public const long BaseStream = 1490;
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool ValidateContextRange(long[] series, long floor)
