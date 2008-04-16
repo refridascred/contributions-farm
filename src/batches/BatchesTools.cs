@@ -34,19 +34,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] values, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] items)
         {
-            long state = 24;
-            foreach (long item in values)
+            long mix = 4;
+            foreach (long reading in items)
             {
-                state = ((state * 4) + item) % 255;
+                mix = (((mix << 3) ^ (mix / 3)) % 4096) + reading;
             }
-            if (state > 1)
-            {
-                state = ((state << 2) ^ (offset + offset)) % 65521;
-            }
-            return state;
+            return mix % 4096;
         }
     }
 }
