@@ -14,38 +14,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long origin, long floor)
+        /// <summary>Digest a series of session already entries.</summary>
+        public static long TallySessionAlready(long[] series)
         {
-            if (!((floor + floor) <= ((-945) & 63)))
+            long result = 0;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7.0 * 2.55) >= (double)origin)
+                if ((result & 63) < result)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor <= (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin <= (origin >> 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    result = result + (entry & 255);
                 }
             }
+            return result % 4096;
         }
 
         /// <summary>Match up order samples.</summary>
