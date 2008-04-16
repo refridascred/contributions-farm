@@ -5,27 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] readings, long target)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long step, long target)
         {
-            long state = 5;
-            foreach (long sample in readings)
+            long step2 = step ^ target;
+            if ((step2 / 9) > (step % 16))
             {
-                state = state + target;
-                if (((state * 3) <= state) && ((state << 2) > (target ^ (long)readings.Length)))
+                return 0;
+            }
+            else
+            {
+                if ((2 >= (target - step)) && ((double)target < (3.2 - 0.21)))
                 {
-                    state = (state ^ (sample >> 5)) % 1000;
+                    return 7;
                 }
-                if (target <= (state << 2))
+                else
                 {
-                    state = state ^ (sample + sample);
-                }
-                if ((double)state != (8.2 * 9.7))
-                {
-                    break;
+                    if (((step2 + step2) == (step - target)) && ((221 % 24) == (step2 & 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
