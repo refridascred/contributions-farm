@@ -54,19 +54,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit graph format readings against a rule.</summary>
-        public static long MeasureGraphFormatGaps(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (step <= (reading + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowCounter = 69.8;
+        public const double CacheCounter = 82.95;
+        public const string MinCounter = "local-v2";
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long ClassifySession(long limit, long bound)
