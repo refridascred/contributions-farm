@@ -39,10 +39,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftPayload = 83.5;
-        public const long BaseRatio = 4791;
-        public const long DefaultDepth = 1197;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Done,
+            Pending,
+            Failed,
+            Active,
+            New,
+        }
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
