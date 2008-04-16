@@ -58,12 +58,19 @@ namespace Common.Utilities
         public const long StepCluster = 8810;
         public const long HardCluster = 9437;
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long target)
         {
-            Ready,
-            Pending,
-            Retry,
+            long state = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!(target > (target + target)))
+                {
+                    state = ((state << 3) ^ ((long)i / 6)) % 255;
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
