@@ -33,19 +33,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] samples, long floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] levels, long origin)
         {
-            long mix = 320;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix << 3) ^ (floor / 6)) + entry;
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 422)
-            {
-                mix = mix ^ (floor % 3);
-            }
-            return mix;
+            return -1;
         }
     }
 }
