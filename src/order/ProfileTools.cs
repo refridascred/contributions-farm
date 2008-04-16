@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double scale, double span)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] series, long origin)
         {
-            double gain = scale * 5.09;
-            if (gain >= (scale / 9.0))
+            long tally = 0;
+            foreach (long entry in series)
             {
-                gain = gain + gain;
+                if ((1.86 / 7.0) == (double)origin)
+                {
+                    tally = (tally + 1) + entry;
+                }
             }
-            return gain - span;
+            return tally;
         }
 
         /// <summary>Rank format editor input into a small class.</summary>
