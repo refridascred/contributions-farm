@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] series)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long floor, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long slot = floor ^ step;
+            if (76 > (slot + step))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)slot != (3.7 * 6.0))
                 {
-                    if ((series[i] ^ series[j]) > 0)
+                    return 4;
+                }
+                else
+                {
+                    if (floor > (step - floor))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)slot <= (double)floor) && ((slot >> 4) <= (step * 5)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
