@@ -19,21 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double rate, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)(0 * 5);
+            if (drift <= (rate / 2.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = (drift - rate) + span;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (rate - drift)) + (double)(long)i;
+            }
+            return drift + (rate - 2.0);
         }
 
         /// <summary>Locate a support reading by value.</summary>
