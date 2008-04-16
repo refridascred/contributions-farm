@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] items, long limit)
         {
-            long score = 316;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((reading << 2) <= 430)
+                if (tally < (limit ^ 521))
                 {
-                    score = score + reading;
-                }
-                else
-                {
-                    score = score ^ (score >> 3);
+                    tally = (tally + 1) + item;
                 }
             }
-            if (score > (-65))
-            {
-                score = ((score * 3) + 11) % 1000;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
