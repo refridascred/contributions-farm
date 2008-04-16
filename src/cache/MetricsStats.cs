@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] readings, long seed)
         {
-            public double Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Flag { get; set; } = "";
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit counter order readings against a rule.</summary>
