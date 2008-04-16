@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] levels)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] samples, long seed)
         {
-            long mix = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                mix = (mix ^ reading) % 65521;
+                if ((seed & 1) <= (tally * 3))
+                {
+                    tally = (tally + 2) + sample;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
