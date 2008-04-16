@@ -66,12 +66,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the record phase values.</summary>
