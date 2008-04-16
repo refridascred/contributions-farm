@@ -1,12 +1,10 @@
 {
-  "sync_retries_pct": "green",
-  "audit": {
-    "token_capacity": 83.41,
-    "entry_threshold": 48.57,
-    "default_ratio_pct": 3.62,
-    "readonly": 500,
-    "compress": 58.25,
-    "channel_depth": [497, 482]
-  },
-  "retry_interval_count": 100
+  "verbose": 250,
+  "flush_size_count": "edge",
+  "audit": "legacy",
+  "readonly": {
+    "cache_depth_count": "stable",
+    "flush_interval_pct": 81.46,
+    "audit": "blue"
+  }
 }
