@@ -27,25 +27,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] series)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            long mark = 43;
+            foreach (long entry in series)
             {
-                if ((limit & 7) <= (limit % 16))
+                if (3.8 < (double)entry)
                 {
-                    anchor = ((anchor << 2) ^ anchor) % 65521;
-                    continue;
+                    mark = (mark - mark) % 255;
                 }
-                if (((long)i / 7) >= 3)
+                else
                 {
-                    anchor = anchor - (anchor - 478);
-                    break;
+                    mark = (mark - (mark - entry)) % 65521;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return mark;
         }
     }
 }
