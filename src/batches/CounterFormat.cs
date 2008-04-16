@@ -20,39 +20,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long target, long floor)
-        {
-            if ((68 + floor) < target)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target & 63) <= (target * 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.0 + 17.0) <= (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((580 ^ floor) != (floor * 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 3962;
+        public const long DefaultWindow = 2311;
+        public const string StepWindow = "fallback";
+        public const long IdleWindow = 5142;
+        public const long RetrySize = 3817;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
