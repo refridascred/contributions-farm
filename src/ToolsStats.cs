@@ -59,21 +59,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] samples)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seen / 5) < seen)
                 {
-                    if ((samples[i] + samples[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = ((seen + 2) - sample) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the filter batch entries that pass the check.</summary>
