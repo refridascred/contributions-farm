@@ -42,19 +42,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many graph layout samples are out of range.</summary>
-        public static long MeasureGraphLayoutOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((seen * 2) <= ((-1) >> 5))
-                {
-                    seen = (seen + 2) - sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheInterval = 1591;
+        public const long IdleFactor = 8904;
+        public const long DefaultChecks = 1619;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long CountBatchGaps(long[] data, long origin)
