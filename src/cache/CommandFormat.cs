@@ -42,13 +42,10 @@ namespace Common.Utilities
             return load + 4.62;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public long Rank { get; set; }
-            public double Score { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheFilter = 41.64;
+        public const long LimitScore = 6399;
+        public const double SoftTimeout = 15.44;
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
