@@ -1,5 +1,7 @@
 {
-  "readonly": false,
-  "poll_limit": 6325,
-  "batch_size": "open"
+  "route_interval": [48, 460],
+  "hard_ratio_ms": ["legacy", "strict", "eu-west"],
+  "base_threshold": false,
+  "sync_retries_ms": true,
+  "min_depth_pct": 54.91
 }
