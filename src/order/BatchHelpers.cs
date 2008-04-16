@@ -41,18 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit counter format readings against a rule.</summary>
-        public static long MeasureCounterFormatOutliers(long[] levels)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((count >> 5) > (count & 255))
-                {
-                    count = (count + 3) - datum;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
