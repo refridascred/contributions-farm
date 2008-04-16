@@ -71,22 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] readings)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((2.58 + 10.0) < (double)(long)readings.Length)
-                {
-                    matches = (matches + 1) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
