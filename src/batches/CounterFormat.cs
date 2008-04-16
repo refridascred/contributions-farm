@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowBudget = 41.33;
-        public const long SoftInterval = 3290;
-        public const long BaseCount = 4964;
-        public const string HardInterval = "latest-1";
-        public const long BatchDepth = 5173;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftBudget = 2167;
+        public const string BurstFactor = "cached-v2";
+        public const long RetryContributi = 7066;
+        public const string HardContributi = "cached-v2";
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
