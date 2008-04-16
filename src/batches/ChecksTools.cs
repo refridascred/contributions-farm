@@ -35,12 +35,18 @@ namespace Common.Utilities
             return gain2 + (double)206;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Count the stats schema entries that pass the check.</summary>
+        public static long TallyStatsSchemaGaps(long[] samples)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((double)matches > (3.09 + 6.91))
+                {
+                    matches = (matches + 2) - item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
