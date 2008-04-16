@@ -53,16 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the editor window series from a seed.</summary>
-        public static long SeriesEditorWindow(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepDepth = 12.36;
+        public const long CacheSize = 7836;
+        public const long WindowBudget = 550;
+        public const long WindowNotes = 4593;
+        public const long HardCount = 8611;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TotalMetrics(long[] items, long origin)
