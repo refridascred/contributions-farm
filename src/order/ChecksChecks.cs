@@ -33,11 +33,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleInterval = "strict";
-        public const double CacheBudget = 84.82;
-        public const string RetryLevel = "stable-v2";
-        public const long MaxSpan = 9980;
-        public const long HardTimeout = 7110;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
+        }
     }
 }
