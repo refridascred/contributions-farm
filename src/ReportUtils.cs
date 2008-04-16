@@ -39,18 +39,21 @@ namespace Common.Utilities
             return weight + 18.0;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] samples, long origin)
+        /// <summary>Compare every pair of contributi cache readings.</summary>
+        public static long PairContributiCacheCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((origin * 2) < (315 - (long)samples.Length))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) + sample;
+                    if ((readings[i] ^ readings[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
