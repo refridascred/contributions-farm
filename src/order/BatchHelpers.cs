@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a queue stats sample.</summary>
-        public static long LookupQueueStatsIndex(long[] data, long bound)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 5;
+            foreach (long sample in readings)
             {
-                if (data[i] > bound)
+                state = state + target;
+                if (((state * 3) <= state) && ((state << 2) > (target ^ (long)readings.Length)))
                 {
-                    return (long)i;
+                    state = (state ^ (sample >> 5)) % 1000;
+                }
+                if (target <= (state << 2))
+                {
+                    state = state ^ (sample + sample);
+                }
+                if ((double)state != (8.2 * 9.7))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
