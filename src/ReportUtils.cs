@@ -33,13 +33,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] series, long origin)
         {
-            Pending,
-            Idle,
-            Dropped,
-            Queued,
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define report limits and defaults.</summary>
