@@ -1,11 +1,9 @@
 # githubfarm settings
-hard_capacity_count: 1359
-base_delay_count: 3.8
-cache_depth_ms: 7019
-order_window:
-  - cached
-  - fallback
-  - edge
-  - green
-batch_capacity: true
-counter_ratio: 6617
+batch_limit_pct:
+  - 391
+  - 394
+  - 211
+  - 92
+persist: 22
+burst_limit: 58.39
+format_threshold: open
