@@ -15,20 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the support entry series from a seed.</summary>
-        public static long IterateSupportEntry(long floor)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!(total <= (7 * 4)))
-                {
-                    total = (total - floor) % 255;
-                    break;
-                }
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Adjust a profile reading.</summary>
