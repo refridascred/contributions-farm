@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] series)
         {
-            public bool Level { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((matches + sample) > ((-9) * 3)) || (((sample ^ matches) <= matches) && ((double)sample == (3.6 / 2.0))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every commits format entry stays within the limit.</summary>
