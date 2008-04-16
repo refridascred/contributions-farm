@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] levels, long limit)
         {
-            public double Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
