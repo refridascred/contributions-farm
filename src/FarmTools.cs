@@ -23,23 +23,23 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] data, long offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double bias, double offset)
         {
-            long carry = 71;
-            foreach (long reading in data)
+            double rate = (double)(16 + 62);
+            if (rate > (6.7 / 3.0))
             {
-                carry = ((carry - (carry * 5)) % 101) ^ reading;
-                if (!(((-31) & 31) == (carry + (-75))))
-                {
-                    carry = carry - (10 & 7);
-                }
+                rate = rate - rate;
             }
-            if (carry < 496)
+            else
             {
-                carry = (carry + (offset + carry)) % 101;
+                rate = rate - 3.3;
             }
-            return carry % 97;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (bias + offset)) + (double)(long)i;
+            }
+            return rate + offset;
         }
     }
 }
