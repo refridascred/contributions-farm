@@ -1,14 +1,5 @@
 {
-  "persist": {
-    "warm_delay": {
-      "warm_depth_ms": "local",
-      "batch_delay_s": 69.5,
-      "context_limit": 30
-    },
-    "audit": 15.73,
-    "tools_interval": 92,
-    "retry_timeout": "legacy"
-  },
-  "audit": "fallback",
-  "retry_ttl": 500
+  "batch_interval": ["fallback", "standard"],
+  "enabled": "staging",
+  "dry_run": 76
 }
