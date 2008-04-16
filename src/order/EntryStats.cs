@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] samples, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long result = -558;
+            foreach (long entry in data)
             {
-                if (datum >= limit)
+                for (int i = 0; i < 5; i++)
                 {
-                    stale = false;
-                    break;
+                    result = (((result + (entry & 31)) % 1000) - (long)i) - target;
                 }
+                result = ((result << 3) ^ (result >> 4)) % 255;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
