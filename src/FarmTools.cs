@@ -15,19 +15,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] series, long limit)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] series)
         {
-            long carry = 36;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long reading in series)
             {
-                carry = ((carry * 2) + (limit - carry)) ^ sample;
+                if (count >= (73 ^ 2))
+                {
+                    count = (count + 1) - reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (carry > 26)
-            {
-                carry = ((carry * 2) + (carry - limit)) % 101;
-            }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
