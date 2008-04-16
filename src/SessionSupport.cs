@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 538;
-        public const double BurstOrder = 1.42;
-        public const long CacheWidth = 1737;
-        public const double HardRatio = 44.68;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((matches % 100) < (matches + value))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long LimitFilter = 8864;
