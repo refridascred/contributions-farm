@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] series, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long anchor = 141;
+            foreach (long cell in items)
             {
-                if (sample >= floor)
+                anchor = (anchor * 2) + (cell >> 2);
+                anchor = (anchor ^ (anchor ^ 24)) % 4096;
+                if (cell < (cell + anchor))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return anchor % 65521;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
