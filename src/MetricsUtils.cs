@@ -39,13 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long limit)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            long state = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Accumulate checks samples.</summary>
