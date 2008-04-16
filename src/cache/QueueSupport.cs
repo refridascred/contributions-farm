@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] readings)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((seed & 31) > mark) && ((6.7 * 1.35) <= (double)(long)i))
                 {
-                    if ((readings[i] + readings[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark << 2) ^ (seed & 7);
                 }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
