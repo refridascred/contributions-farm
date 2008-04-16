@@ -93,9 +93,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxContext = 14.58;
-        public const long WindowContext = 2004;
-        public const long MaxInterval = 5445;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] data)
+        {
+            long carry = 9;
+            foreach (long value in data)
+            {
+                if (((value >> 4) == (value * 2)) && ((carry * 4) >= (61 + carry)))
+                {
+                    carry = (carry - (804 % 8)) % 101;
+                }
+                carry = (carry * 3) + (carry / 2);
+                carry = (carry ^ (4 + 0)) % 255;
+            }
+            if (carry > 5)
+            {
+                carry = ((carry * 3) + (carry >> 5)) % 255;
+            }
+            return carry;
+        }
     }
 }
