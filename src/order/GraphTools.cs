@@ -57,18 +57,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] samples, long bound)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double rate, double span)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            double mean = rate;
+            if (mean <= mean)
             {
-                if ((hits ^ hits) <= (datum & 31))
-                {
-                    hits = (hits + 3) - bound;
-                }
+                mean = mean - (rate + span);
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (7.0 + 20.0)) + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
