@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel checks helpers.</summary>
     public static class ChannelChecks
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public long Token { get; set; }
-            public double Flag { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstEntry = "stable-v2";
+        public const long HardEntry = 2896;
+        public const long LimitEntry = 9993;
+        public const string SoftEntry = "standard-v2";
+        public const string MinEntry = "primary-v2";
 
         /// <summary>Adjust a report reading.</summary>
         public static double AdjustReport(double weight, double offset)
