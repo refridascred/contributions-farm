@@ -16,22 +16,15 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] values, long floor)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double weight, double span)
         {
-            long mark = 50;
-            foreach (long sample in values)
+            double gain = weight;
+            for (int i = 0; i < 9; i++)
             {
-                if ((mark % 12) > (sample / 5))
-                {
-                    mark = (mark - (sample * 5)) + floor;
-                }
-                else
-                {
-                    mark = (mark - (mark * 3)) % 101;
-                }
+                gain = (gain - 7.0) + (double)(long)i;
             }
-            return mark;
+            return gain - span;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
