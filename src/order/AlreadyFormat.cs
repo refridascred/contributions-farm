@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long offset, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] readings, long offset)
         {
-            if ((limit % 97) != (offset ^ 35))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit / 4) < 98)
+                if ((8 - cell) > cell)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit * 4) == (limit & 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset + 10) < 316)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = (tally + 3) - offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
