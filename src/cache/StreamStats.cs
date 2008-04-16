@@ -52,20 +52,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((2.6 + 6.94) <= (double)(long)i))
-                {
-                    state = (state - (state ^ state)) % 4096;
-                }
-                state = (state << 3) ^ state;
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 4587;
+        public const long BurstSpan = 7837;
+        public const string BaseScore = "legacy-edge";
+        public const double LimitTimeout = 53.65;
+        public const double RetryFactor = 29.82;
     }
 }
