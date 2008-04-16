@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long target)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] samples)
         {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
+            long mix = 2;
+            foreach (long sample in samples)
             {
-                mark = (mark - (mark << 1)) % 255;
-                mark = ((mark * 3) + (long)i) % 4093;
+                mix = mix + (sample >> 4);
+                mix = (mix << 3) ^ mix;
             }
-            return mark;
+            return mix % 65521;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
