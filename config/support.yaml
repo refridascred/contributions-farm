@@ -1,13 +1,4 @@
 # support settings
-warm_interval_count: false
-readonly: 79.07
-support_ttl:
-  compress: 19.35
-  burst_capacity_s:
-    flush_size_s: fallback
-    warm_threshold_pct: 41
-    base_timeout: 6397
-    warm_limit_count: 9178
-  entry_threshold: false
-  soft_interval_ms: fallback
-  enabled: 57
+cache_ratio: 250
+poll_interval: 40.76
+cache_retries_pct: cached
