@@ -20,13 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] readings, long bound)
         {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a contributi stats.</summary>
