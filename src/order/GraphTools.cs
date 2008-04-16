@@ -49,12 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Check that every record commits entry stays within the limit.</summary>
+        public static bool VerifyRecordCommitsLimits(long[] samples, long origin)
         {
-            public bool Size { get; set; }
-            public long Label { get; set; }
-            public bool Mode { get; set; }
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Project the next graph value.</summary>
