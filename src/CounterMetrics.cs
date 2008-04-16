@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long bound, long target)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long next = bound - target;
-            if (19.0 < (double)target)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((6 + bound) < (1 / 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound > 1.44)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((next % 12) <= (bound * 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Ready,
+            Closed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Match up tools samples.</summary>
