@@ -19,18 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batch session values into a single score.</summary>
-        public static long ScoreBatchSession(long[] items, long target)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] items, long origin)
         {
-            long acc = 719;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (acc > (target + 2))
+                if ((items[i] > origin) && ((items[i] % 5) != 0))
                 {
-                    acc = ((acc << 2) ^ (sample & 127)) % 1000;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
