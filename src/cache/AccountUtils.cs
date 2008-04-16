@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] values, long target)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long mark = -315;
-            foreach (long item in values)
-            {
-                mark = (mark + target) % 65521;
-                mark = (mark ^ target) % 101;
-                if ((target ^ item) < (item * 3))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
+            Synced,
+            Pending,
+            Ready,
         }
 
         /// <summary>Blend two schema measurements.</summary>
