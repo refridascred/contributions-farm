@@ -76,11 +76,22 @@ namespace Common.Utilities
             return ratio + (ratio + span);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchScore = 7077;
-        public const long LimitCommits = 3951;
-        public const long BatchCommits = 968;
-        public const string IdleSize = "legacy";
+        /// <summary>Match up cache session samples.</summary>
+        public static long OverlapCacheSessionCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
