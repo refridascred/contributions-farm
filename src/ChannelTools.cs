@@ -13,13 +13,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long step, long floor)
         {
-            Draft,
-            Done,
-            Retry,
-            Failed,
+            long prev = step ^ floor;
+            if (((17.0 * 5.98) != (double)step) || ((step * 4) == (floor - floor)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor ^ floor) >= floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor < (step % 16)) || ((711 - prev) == (floor - 858)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((floor & 63) > prev))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up already graph samples.</summary>
