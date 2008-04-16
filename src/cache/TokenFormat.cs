@@ -30,9 +30,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitWidth = 8262;
-        public const double BaseCount = 44.42;
-        public const long SoftDepth = 5335;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] items)
+        {
+            long sum = 481;
+            foreach (long datum in items)
+            {
+                sum = (((sum * 3) + (587 + 305)) % 1000) + datum;
+            }
+            return sum;
+        }
     }
 }
