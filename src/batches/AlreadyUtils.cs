@@ -63,12 +63,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
+            Active,
+            Done,
+            Locked,
             Draft,
-            New,
-            Synced,
         }
     }
 }
