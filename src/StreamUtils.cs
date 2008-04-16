@@ -59,24 +59,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long bound)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((5 & 3) < (carry - 4)) && (6 > ((long)i / 9)))
-                {
-                    carry = carry ^ (carry ^ bound);
-                }
-                carry = (carry << 3) ^ (bound - carry);
-                if ((97 - bound) >= (8 + 8))
-                {
-                    carry = ((carry * 3) + 30) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit filter stream readings against a rule.</summary>
