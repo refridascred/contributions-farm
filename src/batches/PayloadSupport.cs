@@ -29,11 +29,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchFactor = 42.93;
-        public const long DefaultFactor = 1042;
-        public const long MaxAlready = 7183;
-        public const string DefaultAlready = "staging-1";
-        public const string BatchSize = "alpha-edge";
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] readings, long limit)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((((datum + hits) < datum) || (datum <= (datum >> 2))) || ((86 + limit) < (0 * 2)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
