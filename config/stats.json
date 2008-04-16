@@ -1,7 +1,20 @@
 {
-  "base_ttl_count": "cached",
-  "soft_limit_s": 69.79,
-  "verbose": true,
-  "context_depth": [335, 256],
-  "warm_retries": ["staging", "blue", "blue", "strict"]
+  "batch_ttl_s": ["local", "staging", "standard"],
+  "buffer_threshold": "staging",
+  "poll_size_count": "cached",
+  "audit": {
+    "hard_window": "edge",
+    "cache_retries": 67.59,
+    "persist": "eu-west",
+    "max_limit_pct": true,
+    "format_interval": ["strict", "strict"],
+    "hard_delay_s": "primary"
+  },
+  "verbose": "legacy",
+  "flush_depth": {
+    "cache_interval_count": 3473,
+    "burst_limit_count": ["cached", "cached", "blue", "latest"],
+    "channel_window": 63,
+    "min_interval": 63.61
+  }
 }
