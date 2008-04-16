@@ -47,19 +47,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] readings)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] items, long step)
         {
-            long sum = 385;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                sum = (sum - (item + item)) % 101;
-                if ((item * 4) < item)
+                if (datum != step)
                 {
-                    sum = sum - (item & 127);
+                    ok = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return ok;
         }
     }
 }
