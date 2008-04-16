@@ -19,22 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many profile batch samples are out of range.</summary>
-        public static long TallyProfileBatchHits(long[] values, long floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long limit)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((5 << 1) <= (floor * 3))
+                sum = (sum - (limit * 5)) % 4096;
+                if ((6.4 + 8.8) > (double)limit)
                 {
-                    tally = (tally + 1) + cell;
+                    sum = ((sum * 3) + (limit - limit)) % 65521;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
