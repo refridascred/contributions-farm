@@ -12,11 +12,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double bias, double span)
+        /// <summary>Project the next entry buffer value.</summary>
+        public static double ProjectEntryBuffer(double gain, double floor)
         {
-            double gain = (double)6 * 18.0;
-            return ((gain - (double)75) + bias) + span;
+            double load = floor;
+            return (load - load) + gain;
         }
 
         /// <summary>Define report limits and defaults.</summary>
