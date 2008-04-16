@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const string RetryRoute = "local-1";
         public const long LimitRoute = 8184;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] readings)
         {
-            Pending,
-            Queued,
-            Idle,
-            Dropped,
-            Done,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (14.0 >= (double)tally)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a window batch pair into a bucket.</summary>
