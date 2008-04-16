@@ -1,5 +1,14 @@
 # githubfarm settings
-retry_depth: true
-compress: eu-west
-readonly: local
-hard_threshold_ms: 100
+queue_threshold: 500
+sync_ratio_count: latest
+compress: 72.15
+audit: 8116
+burst_depth_pct:
+  - 181
+  - 419
+  - 469
+  - 195
+dry_run:
+  - standard
+  - latest
+  - legacy
