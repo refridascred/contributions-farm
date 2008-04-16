@@ -14,11 +14,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 7836;
-        public const long StepFilter = 9924;
-        public const double MinSize = 14.53;
-        public const long SoftFilter = 377;
+        /// <summary>Count schema order pairs that satisfy a relation.</summary>
+        public static long MatchSchemaOrderCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
