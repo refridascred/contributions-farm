@@ -16,19 +16,21 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] data, long seed)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            long mark = 353;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (((mark + ((long)i + mark)) % 97) + reading) + seed;
+                    if ((samples[i] - samples[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mark = mark - (mark - (long)data.Length);
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
