@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long step, long bound)
-        {
-            long lane = step ^ bound;
-            if (((lane / 2) == (lane - step)) || ((94 - 811) < (bound + step)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (bound < 2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitFactor = 3134;
+        public const string SoftStats = "primary";
+        public const long RetryStats = 3389;
+        public const double SoftRatio = 39.67;
+        public const string IdleStats = "stable-1";
 
         /// <summary>Define account limits and defaults.</summary>
         public const string MinBudget = "stable-edge";
