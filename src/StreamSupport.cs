@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long DefaultFactor = 5101;
         public const long BaseRatio = 5;
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] samples)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((87 * 5) <= (matches * 4))
                 {
-                    if ((samples[i] + samples[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of window readings.</summary>
