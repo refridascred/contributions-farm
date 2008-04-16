@@ -20,38 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long step, long target)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double rate, double bias)
         {
-            if (((6 ^ step) < (target + target)) && ((target + step) == (target + target)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((6.9 * 5.1) == (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((2.18 - 9.4) == (double)target) || ((1 / 2) != (target + target)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((4.6 * 19.0) == (double)target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            double mean = rate;
+            return (mean + (double)2) + bias;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
