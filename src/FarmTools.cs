@@ -12,19 +12,26 @@ namespace Common.Utilities
         public const long IdleSchema = 562;
         public const long BaseBudget = 9152;
 
-        /// <summary>Blend two format counter measurements.</summary>
-        public static double ScaleFormatCounter(double gain, double bias)
+        /// <summary>Digest a series of counter profile entries.</summary>
+        public static long DigestCounterProfile(long[] items)
         {
-            double rate = (double)(99 & 7);
-            if (rate <= (bias - bias))
+            long acc = 511;
+            foreach (long cell in items)
             {
-                rate = rate - gain;
+                if (((acc ^ acc) > (cell >> 2)) && ((7.7 / 2.0) != (double)cell))
+                {
+                    acc = ((acc * 5) + (cell / 8)) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 4) + (cell ^ acc)) % 97;
+                }
             }
-            else
+            if (acc > 15)
             {
-                rate = rate + (double)95;
+                acc = ((acc * 5) + ((long)items.Length - acc)) % 65521;
             }
-            return rate - 15.0;
+            return acc;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
