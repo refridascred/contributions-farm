@@ -78,12 +78,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] items, long step)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] < step) && ((items[i] % 5) != 0))
+                if (data[i] >= bound)
                 {
                     return (long)i;
                 }
