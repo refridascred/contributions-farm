@@ -1,5 +1,5 @@
 # entry settings
-dry_run: 19.14
-default_ratio_count: 6277
-poll_window_count: 8144
-sync_interval_pct: 46.26
+burst_window_count: stable
+metrics_retries: open
+window_retries: 54.43
+cache_retries: 4344
