@@ -1,6 +1,17 @@
 # entry settings
-hard_delay: open
-token_threshold: 500
-compress: 32.44
-dry_run: 60
-cache_depth_pct: 63.29
+already_ratio: staging
+base_limit_pct:
+  readonly: open
+  max_timeout_count: 229
+  verbose:
+    - 102
+    - 321
+    - 154
+    - 451
+  channel_depth:
+    - 165
+    - 90
+    - 99
+    - 205
+  compress: 5
+default_ratio_pct: true
