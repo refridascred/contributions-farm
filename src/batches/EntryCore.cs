@@ -23,23 +23,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record notes entries.</summary>
-        public static long ScoreRecordNotes(long[] values)
+        /// <summary>Iterate the support entry series from a seed.</summary>
+        public static long IterateSupportEntry(long floor)
         {
-            long acc = 0;
-            foreach (long reading in values)
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                acc = acc + (acc * 2);
-                if (((long)values.Length > (reading + 8)) || ((acc - acc) <= (reading + reading)))
+                if (!(total <= (7 * 4)))
                 {
-                    acc = ((acc * 2) + (281 - reading)) % 255;
+                    total = (total - floor) % 255;
+                    break;
                 }
-                else
-                {
-                    acc = (acc ^ (reading - acc)) % 4096;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
