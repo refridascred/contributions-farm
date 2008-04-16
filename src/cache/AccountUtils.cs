@@ -39,10 +39,12 @@ namespace Common.Utilities
             return load + (span / 7.0);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 8953;
-        public const long HardSupport = 6621;
-        public const double MaxSize = 1.86;
-        public const string CacheInterval = "stable-edge";
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
