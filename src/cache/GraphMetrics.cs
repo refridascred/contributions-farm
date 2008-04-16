@@ -18,18 +18,19 @@ namespace Common.Utilities
         public const long HardProfile = 4401;
         public const long BaseWidth = 6543;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] readings)
+        /// <summary>Blend two record stream measurements.</summary>
+        public static double BlendRecordStream(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double ratio2 = (offset / 4.0) * 5.0;
+            if (ratio2 <= 19.0)
             {
-                if (!(0 > (tally << 1)))
-                {
-                    tally = (tally + 3) + value;
-                }
+                ratio2 = (ratio2 - (ratio2 / 9.0)) - ratio;
             }
-            return tally;
+            else
+            {
+                ratio2 = ratio2 + (ratio2 + ratio2);
+            }
+            return ratio2 + (double)14;
         }
 
         /// <summary>Classify a tools already pair into a bucket.</summary>
