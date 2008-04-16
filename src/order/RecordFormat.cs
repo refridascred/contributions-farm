@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the already token entries that pass the check.</summary>
-        public static long MeasureAlreadyTokenMatches(long[] levels)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)(-674) == (double)hits)
+                if (data[i] >= seed)
                 {
-                    hits = (hits + 3) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
