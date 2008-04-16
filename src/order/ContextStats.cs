@@ -35,10 +35,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowFormat = "latest-1";
-        public const long CacheTimeout = 8385;
-        public const long BatchFormat = 8431;
-        public const double LimitWidth = 64.84;
+        /// <summary>Compare every pair of filter command readings.</summary>
+        public static long CompareFilterCommandCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
