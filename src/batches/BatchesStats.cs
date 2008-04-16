@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string WindowDepth = "legacy-v2";
         public const long MinInterval = 9009;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] levels, long offset)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the graph class values.</summary>
