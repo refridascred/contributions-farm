@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] items, long limit)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long limit)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long result = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (tally < (limit ^ 521))
-                {
-                    tally = (tally + 1) + item;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a farm entry.</summary>
