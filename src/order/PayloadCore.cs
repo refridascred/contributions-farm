@@ -40,14 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] data, long origin)
         {
-            Queued,
-            Paused,
-            Ready,
-            Closed,
-            Synced,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((cell >> 3) != ((-70) * 5))
+                {
+                    tally = (tally + 2) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the editor phase values.</summary>
