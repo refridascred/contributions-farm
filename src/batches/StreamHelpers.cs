@@ -103,13 +103,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] data, long offset)
+        /// <summary>Fold a list of entry record readings.</summary>
+        public static long FoldEntryRecord(long[] values, long limit)
         {
-            long total = 622;
-            foreach (long sample in data)
+            long total = 4;
+            foreach (long item in values)
             {
-                total = (((total * 2) + (total * 3)) ^ sample) + offset;
+                total = (((total + ((long)values.Length + total)) % 1000) - item) - limit;
             }
             return total;
         }
