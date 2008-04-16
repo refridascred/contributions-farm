@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const string HardChecks = "local-edge";
         public const long DefaultDepth = 2934;
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark << 2) ^ (mark * 4)) % 255;
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 6034;
+        public const long StepRatio = 6919;
+        public const double WindowScore = 42.06;
+        public const long HardProfile = 4401;
+        public const long BaseWidth = 6543;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long WeighFarm(long[] levels, long seed)
