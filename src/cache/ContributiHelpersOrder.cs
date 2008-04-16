@@ -26,18 +26,25 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] series, long floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long target, long seed)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long step = target + seed;
+            if ((((-96) & 127) >= (971 - seed)) || ((1.6 - 1.2) > (5.9 * 9.26)))
             {
-                if ((floor / 4) == (matches + floor))
+                return 1;
+            }
+            else
+            {
+                if ((step > target) && ((5 ^ 4) <= seed))
                 {
-                    matches = (matches + 3) + sample;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
     }
 }
