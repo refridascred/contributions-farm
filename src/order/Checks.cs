@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            Active,
-            Locked,
-            Draft,
+            Failed,
+            Ready,
+            Done,
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
