@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] items)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long target)
         {
-            long result = -89;
-            foreach (long datum in items)
+            long mix = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((result >> 4) >= (result + 75))
-                {
-                    result = ((result + (32 ^ 8)) % 97) ^ datum;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result << 1)) % 97;
-                }
-                if ((result - result) <= (result / 6))
-                {
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Describe the stats state values.</summary>
