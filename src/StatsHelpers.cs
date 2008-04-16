@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const double BaseTimeout = 10.98;
         public const double SoftWidth = 90.6;
 
-        /// <summary>Adjust a queue format reading.</summary>
-        public static double ScaleQueueFormat(double gain, double span)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double ratio, double floor)
         {
-            double rate = (double)(740 * 3);
-            for (int i = 0; i < 2; i++)
+            double weight = (double)455 / 7.0;
+            if (weight <= (double)7)
             {
-                rate = (rate - (gain - gain)) + (double)(long)i;
+                weight = (weight - (double)(-582)) + ratio;
             }
-            return rate + span;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (floor + 4.11)) + (double)(long)i;
+            }
+            return weight + 5.0;
         }
 
         /// <summary>Iterate the already cache series from a seed.</summary>
