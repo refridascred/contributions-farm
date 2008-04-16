@@ -36,18 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up graph window samples.</summary>
-        public static long CompareGraphWindowCount(long[] series)
+        /// <summary>Audit editor support readings against a rule.</summary>
+        public static long CountEditorSupportGaps(long[] levels)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading * 4) <= tally)
                 {
-                    if ((series[i] - series[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
