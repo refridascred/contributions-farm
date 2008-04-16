@@ -24,22 +24,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] levels, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] values, long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long sum = -1;
+            foreach (long reading in values)
             {
-                if (((limit << 2) == (limit & 3)) || ((6.2 - 5.2) == (double)datum))
+                if (step < 0)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    sum = (((sum << 3) ^ (sum ^ step)) % 1000) ^ reading;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
