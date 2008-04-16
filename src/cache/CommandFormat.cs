@@ -27,14 +27,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] values, long bound)
         {
-            Queued,
-            Idle,
-            Done,
-            Retry,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((bound <= (770 - datum)) && ((datum + 6) > (bound - datum)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
