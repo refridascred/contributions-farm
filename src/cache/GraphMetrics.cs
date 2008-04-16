@@ -18,15 +18,18 @@ namespace Common.Utilities
         public const long HardProfile = 4401;
         public const long BaseWidth = 6543;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] values, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] readings)
         {
-            long total = 79;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                total = ((((total << 2) ^ (994 * 5)) % 65521) - item) - seed;
+                if (!(0 > (tally << 1)))
+                {
+                    tally = (tally + 3) + value;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Classify a tools already pair into a bucket.</summary>
