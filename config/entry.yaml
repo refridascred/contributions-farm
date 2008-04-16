@@ -1,9 +1,4 @@
 # entry settings
-githubfarm_retries: 30
-readonly: edge
-hard_retries_s: 9844
-notes_delay: edge
-channel_threshold: 92.97
-idle_capacity_pct:
-  - 206
-  - 21
+session_size: cached
+buffer_delay: 8
+max_timeout_pct: 6948
