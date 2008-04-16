@@ -50,12 +50,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
