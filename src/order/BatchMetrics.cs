@@ -43,32 +43,22 @@ namespace Common.Utilities
         public const double LimitBudget = 64.53;
         public const long IdleBudget = 303;
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long bound, long bound2)
+        /// <summary>Digest a series of stats support entries.</summary>
+        public static long DigestStatsSupport(long[] levels)
         {
-            long edge = bound + bound2;
-            if (edge > (bound2 / 3))
+            long anchor = 746;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound2 * 2) >= bound)
+                if ((6 + item) < anchor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)bound2 > (double)883) && ((double)bound2 > 14.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    anchor = ((anchor << 2) ^ item) % 97;
                 }
             }
+            if (anchor > 51)
+            {
+                anchor = (anchor - (anchor + anchor)) % 1000;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a layout options.</summary>
