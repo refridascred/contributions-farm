@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double bias, double bias2)
         {
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
+            double mean = bias;
+            return mean - bias2;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
