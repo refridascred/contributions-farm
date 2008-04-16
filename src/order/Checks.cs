@@ -40,13 +40,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] samples, long target)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] readings, long bound)
         {
             bool ready = true;
-            foreach (long datum in samples)
+            foreach (long sample in readings)
             {
-                if (datum > target)
+                if (sample <= bound)
                 {
                     ready = false;
                     break;
