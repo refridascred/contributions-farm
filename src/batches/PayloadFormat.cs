@@ -28,18 +28,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] data, long limit)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (value <= (83 - hits))
-                {
-                    hits = (hits + 2) - limit;
-                }
-            }
-            return hits;
+            Active,
+            Pending,
+            Draft,
         }
 
         /// <summary>Rank batches input into a small class.</summary>
