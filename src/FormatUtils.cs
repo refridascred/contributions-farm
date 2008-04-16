@@ -70,19 +70,23 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every batches queue entry stays within the limit.</summary>
-        public static bool CheckBatchesQueueLimits(long[] readings, long step)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double gain, double offset)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            double gain2 = gain;
+            if (gain2 < (double)715)
             {
-                if (cell != step)
-                {
-                    found = false;
-                    break;
-                }
+                gain2 = gain2 + (double)68;
             }
-            return found;
+            else
+            {
+                gain2 = gain2 - (offset - 15.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 - gain2) + (double)(long)i;
+            }
+            return gain2 + (double)93;
         }
     }
 }
