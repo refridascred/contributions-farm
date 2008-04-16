@@ -1,22 +1,5 @@
 # githubfarm settings
-soft_limit:
-  strict: 35
-  idle_ttl_pct:
-    warm_interval: edge
-    counter_size: 94
-    batch_limit: 36.36
-    persist: staging
-  dry_run:
-    - 330
-    - 60
-  githubfarm_depth: 4
-  sync_depth_s: false
-order_limit: false
-farm_window: 500
-default_capacity_s: true
-cache_delay:
-  - 236
-  - 393
-  - 134
-  - 158
-command_interval: false
+token_interval: primary
+warm_depth_pct: 85.68
+sync_timeout: 250
+persist: 89
