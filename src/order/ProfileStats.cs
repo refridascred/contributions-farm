@@ -50,19 +50,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] readings, long offset)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinScore = "legacy-1";
+        public const string HardFilter = "legacy";
+        public const double BaseSize = 12.56;
+        public const double MinSpan = 61.18;
+        public const long BaseFilter = 9978;
     }
 }
