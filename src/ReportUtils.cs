@@ -10,14 +10,10 @@ namespace Common.Utilities
         public const string CacheOrder = "latest";
         public const long WindowFactor = 573;
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public double Region { get; set; }
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleLevel = 4584;
+        public const string MaxSupport = "strict-v2";
+        public const long HardSupport = 3937;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] data)
