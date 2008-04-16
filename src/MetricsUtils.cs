@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long seed, long offset)
         {
-            New,
-            Synced,
-            Done,
+            if ((seed + seed) < (offset / 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset >= (seed / 9))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((5 + offset) < seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((16.0 < (double)offset) || ((9 - seed) > (offset / 9)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
