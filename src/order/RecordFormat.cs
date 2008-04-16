@@ -43,19 +43,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double scale, double offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] series, long seed)
         {
-            double ratio = scale;
-            if (ratio > offset)
+            bool found = true;
+            foreach (long sample in series)
             {
-                ratio = ratio + (double)(-2);
+                if (sample > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (offset + offset)) + (double)(long)i;
-            }
-            return ratio - (double)(-905);
+            return found;
         }
 
         /// <summary>Hold a record entry.</summary>
