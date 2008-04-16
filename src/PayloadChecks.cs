@@ -14,14 +14,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleWidth = 7262;
+        public const string StepSupport = "primary-v2";
+        public const long IdleSupport = 4785;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long TallyNotes(long[] series, long target)
