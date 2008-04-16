@@ -53,15 +53,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] readings, long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] data)
         {
-            long state = 663;
-            foreach (long entry in readings)
+            long acc = 946;
+            foreach (long cell in data)
             {
-                state = ((state ^ (step * 3)) % 255) ^ entry;
+                for (int i = 0; i < 5; i++)
+                {
+                    acc = ((acc + (cell + 815)) % 101) - (long)i;
+                }
+                if (((cell ^ acc) > cell) || ((cell % 8) >= cell))
+                {
+                    acc = acc - ((-33) % 3);
+                }
+                else
+                {
+                    acc = acc ^ (acc % 3);
+                }
             }
-            return state;
+            if (acc < 51)
+            {
+                acc = (acc - (91 - 2)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a filter options.</summary>
