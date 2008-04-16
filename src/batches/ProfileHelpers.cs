@@ -69,23 +69,15 @@ namespace Common.Utilities
             return rate - 3.4;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double ratio, double offset)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double gain, double bias)
         {
-            double mean = 9.0 + 3.0;
-            if (mean < (ratio + 9.7))
+            double load = gain;
+            for (int i = 0; i < 8; i++)
             {
-                mean = mean + (2.0 + 5.0);
+                load = (load + 18.0) + (double)(long)i;
             }
-            else
-            {
-                mean = mean + (double)72;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - offset;
+            return load - bias;
         }
 
         /// <summary>Hold a account stats.</summary>
