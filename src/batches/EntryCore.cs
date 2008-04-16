@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const double RetryFormat = 77.53;
         public const long BurstFormat = 9711;
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 18.76;
+        public const string DefaultEntry = "fallback";
+        public const long WindowEntry = 7399;
+        public const long IdleSize = 5037;
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
