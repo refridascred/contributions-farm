@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] readings)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score << 2) ^ 0) % 4096;
+                score = (score - (score & 3)) % 101;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
