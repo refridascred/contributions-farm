@@ -21,24 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long origin, long step)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double gain, double span)
         {
-            if (origin < (step - origin))
+            double load = gain;
+            if (load < gain)
             {
-                return 3;
+                load = load - span;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((1.47 + 16.0) != (double)step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
+                load = (load + (load / 2.0)) + (double)(long)i;
             }
+            return load + 4.62;
         }
 
         /// <summary>Hold a stats entry.</summary>
