@@ -1,17 +1,5 @@
 # entry settings
-already_ratio: staging
-base_limit_pct:
-  readonly: open
-  max_timeout_count: 229
-  verbose:
-    - 102
-    - 321
-    - 154
-    - 451
-  channel_depth:
-    - 165
-    - 90
-    - 99
-    - 205
-  compress: 5
-default_ratio_pct: true
+dry_run: 19.14
+default_ratio_count: 6277
+poll_window_count: 8144
+sync_interval_pct: 46.26
