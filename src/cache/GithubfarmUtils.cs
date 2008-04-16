@@ -23,18 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] values)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (989 > (17 + datum))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            New,
+            Closed,
+            Draft,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
