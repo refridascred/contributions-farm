@@ -1,22 +1,8 @@
 # support settings
-soft_interval_pct:
-  readonly: green
-  hard_interval_count: cached
-  layout_capacity: 58.8
-layout_ttl:
-  - 119
-  - 259
-  - 36
-  - 65
-verbose:
-  min_threshold_ms:
-    - 398
-    - 209
-    - 225
-  sync_delay_s: false
-  cache_limit_ms: 39.25
-  persist: fallback
-  cache_ttl_pct:
-    - 236
-    - 174
-    - 173
+warm_delay_ms: edge
+soft_limit_pct: primary
+base_capacity_count:
+  flush_depth: open
+  enabled: green
+  payload_interval: 30
+batch_interval: 87.85
