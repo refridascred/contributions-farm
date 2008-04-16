@@ -53,19 +53,17 @@ namespace Common.Utilities
         public const double MaxRatio = 92.35;
         public const long StepTimeout = 1523;
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] readings)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] data, long floor)
         {
-            long carry = 538;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (((carry * 3) + carry) % 101) ^ value;
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 91)
-            {
-                carry = ((carry << 3) ^ (carry + carry)) % 65521;
-            }
-            return carry;
+            return -1;
         }
     }
 }
