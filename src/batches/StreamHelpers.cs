@@ -57,18 +57,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = mark + (mark / 3);
-                mark = (mark << 3) ^ ((long)i + offset);
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftSize = 67.54;
+        public const long IdleBudget = 8432;
+        public const long LimitFactor = 9275;
+        public const long HardCache = 8030;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long CombineContributi(long[] data)
