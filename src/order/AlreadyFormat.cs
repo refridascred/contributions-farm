@@ -22,19 +22,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] items, long origin)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Closed,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Define report limits and defaults.</summary>
