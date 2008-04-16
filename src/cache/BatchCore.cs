@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] readings)
+        /// <summary>Classify a layout account pair into a bucket.</summary>
+        public static long ClassifyLayoutAccount(long offset, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((19.0 / 4.0) < (double)step)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((offset + offset) >= (offset << 2))
                 {
-                    if ((readings[i] ^ readings[j]) == 13)
+                    return 6;
+                }
+                else
+                {
+                    if ((1.03 / 8.0) <= (double)offset)
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step - step) < step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a channel entry.</summary>
