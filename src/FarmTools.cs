@@ -12,24 +12,19 @@ namespace Common.Utilities
         public const long IdleSchema = 562;
         public const long BaseBudget = 9152;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] data)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] levels, long step)
         {
-            long anchor = 64;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor << 3) ^ (5 + value)) % 255;
-                anchor = ((anchor << 3) ^ (value << 2)) % 101;
-                if ((anchor + value) > anchor)
+                if (datum != step)
                 {
-                    anchor = ((anchor * 5) + (value << 3)) % 4096;
-                }
-                if (!((value >> 2) != (849 - anchor)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Rank format input into a small class.</summary>
