@@ -34,19 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double bias, double bias2)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] values, long origin)
         {
-            double gain = (double)(340 / 4);
-            if (gain <= (bias + bias))
+            bool ok = true;
+            foreach (long item in values)
             {
-                gain = gain + (double)58;
+                if (item != origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + bias2) + (double)(long)i;
-            }
-            return gain + bias2;
+            return ok;
         }
 
         /// <summary>Define record limits and defaults.</summary>
