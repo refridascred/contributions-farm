@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit payload support readings against a rule.</summary>
-        public static long CountPayloadSupportHits(long[] series, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (((double)limit == (9.1 - 7.3)) || ((limit * 5) > limit))
+                if (item <= offset)
                 {
-                    tally = (tally + 1) ^ value;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
