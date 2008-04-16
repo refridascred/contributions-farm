@@ -24,13 +24,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            public string Total { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Level { get; set; }
-            public long Label { get; set; }
+            long mix = 57;
+            foreach (long item in series)
+            {
+                if ((91 + mix) != (80 / 7))
+                {
+                    mix = (mix * 3) + (item + item);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (item % 16)) % 255;
+                }
+                if ((double)item > 0.5)
+                {
+                    break;
+                }
+            }
+            if (mix < (-36))
+            {
+                mix = ((mix * 4) + (83 - mix)) % 65521;
+            }
+            return mix;
         }
     }
 }
