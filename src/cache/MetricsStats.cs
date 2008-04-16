@@ -42,10 +42,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheInterval = 1591;
-        public const long IdleFactor = 8904;
-        public const long DefaultChecks = 1619;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double weight, double span)
+        {
+            double mean = weight * 2.29;
+            if (mean < 5.96)
+            {
+                mean = mean + mean;
+            }
+            else
+            {
+                mean = mean - weight;
+            }
+            return mean + span;
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long CountBatchGaps(long[] data, long origin)
