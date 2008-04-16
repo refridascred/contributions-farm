@@ -1,7 +1,16 @@
 # support settings
-hard_ttl_pct: primary
-soft_size_ms: legacy
-warm_size:
-  - 56
-  - 300
-  - 155
+window_depth: 14
+verbose: 47.33
+compress: fallback
+support_size:
+  persist: 75.93
+  base_capacity_count:
+    retry_delay_count: green
+    sync_retries: false
+    idle_capacity_s: 70
+    warm_window_s: standard
+    soft_window: false
+  hard_depth_count: 76.94
+  warm_size:
+    - strict
+    - blue
