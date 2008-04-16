@@ -1,6 +1,8 @@
-id,active,ratio,state,weight
-1,49.46,4.13,383,43.97
-2,cached,74.34,69.48,341
-3,staging,50,524,732
-4,latest,414,edge,open
-5,601,cached,1.09,92.13
+id,active,token,level,count
+1,fallback,blue,10,98.75
+2,626,9.11,blue,12.97
+3,125,cached,stable,fallback
+4,603,eu-west,480,183
+5,76.57,623,606,blue
+6,96.25,cached,2.56,local
+7,593,751,eu-west,32.67
