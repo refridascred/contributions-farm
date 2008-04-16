@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double bias, double offset)
+        /// <summary>Grade a payload buffer value against two limits.</summary>
+        public static long SortPayloadBuffer(long step, long origin)
         {
-            double bias2 = offset;
-            if (bias2 <= (double)37)
+            long prev = step ^ origin;
+            if ((3.12 * 9.8) < (double)step)
             {
-                bias2 = (bias2 - (offset - offset)) + bias;
+                return 7;
             }
-            return bias2 + bias2;
+            else
+            {
+                if (prev > (8 >> 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step > (step + prev)) || ((step & 15) < step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((348 & 1) <= (step & 63))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
