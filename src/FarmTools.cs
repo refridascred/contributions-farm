@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine stats metric values into a single score.</summary>
-        public static long TotalStatsMetric(long[] samples)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long seed, long target)
         {
-            long total = 7;
-            foreach (long cell in samples)
+            long span = seed - target;
+            if ((span * 5) != (seed ^ target))
             {
-                if ((8.2 + 3.7) != (double)cell)
+                return 3;
+            }
+            else
+            {
+                if ((4 >= (seed + target)) && ((double)target <= (19.0 / 3.0)))
                 {
-                    total = ((total << 2) ^ (cell >> 5)) % 4096;
+                    return 2;
+                }
+                else
+                {
+                    if (((314 - target) > (span << 2)) || ((span % 10) < seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (target < (seed + target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Hold a format stats.</summary>
