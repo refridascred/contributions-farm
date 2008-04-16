@@ -46,21 +46,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Derive the next already route value from a seed.</summary>
-        public static long RollAlreadyRoute(long limit)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] values, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                score = (score * 4) + (352 - score);
-                if (((long)i & 63) != (limit << 1))
+                if (value >= origin)
                 {
-                    score = (score ^ (score + 253)) % 255;
+                    flag = false;
+                    break;
                 }
-                score = ((score * 5) + (score + score)) % 101;
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Fold a list of context token readings.</summary>
