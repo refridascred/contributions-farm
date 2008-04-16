@@ -29,12 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] data, long step)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((307 - tally) == (193 >> 5))
+                {
+                    tally = ((tally + 1) + entry) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank already input into a small class.</summary>
