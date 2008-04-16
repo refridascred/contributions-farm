@@ -52,18 +52,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] samples)
-        {
-            long total = 154;
-            foreach (long datum in samples)
-            {
-                if ((datum << 1) == (datum % 97))
-                {
-                    total = total - (total ^ 357);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchBudget = 8630;
+        public const string WindowFarm = "local-edge";
+        public const long StepFarm = 7383;
+        public const string CacheFarm = "standard-v2";
+        public const long BurstFarm = 3018;
     }
 }
