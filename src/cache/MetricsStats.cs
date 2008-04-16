@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] readings, long seed)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Stale,
+            Closed,
+            Synced,
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
