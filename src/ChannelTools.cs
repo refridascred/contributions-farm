@@ -19,39 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long step, long bound)
-        {
-            if (((step + step) > (step >> 4)) && ((12.0 - 5.53) != (double)bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((8.0 + 7.74) < (double)step) || (bound > (4 & 127)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound ^ 5) != (208 + 379))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (6.22 >= (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 1530;
+        public const long DefaultWidth = 2321;
+        public const long StepRecord = 2955;
+        public const long LimitScore = 1769;
+        public const string RetryFactor = "strict";
 
         /// <summary>Match up already graph samples.</summary>
         public static long PairAlreadyGraphCount(long[] series)
