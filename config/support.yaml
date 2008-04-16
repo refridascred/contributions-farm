@@ -1,25 +1,20 @@
 # support settings
-soft_ratio_s: 14
-window_depth: 55.93
-idle_size: 8.25
-checks_capacity:
-  - 213
-  - 23
-dry_run:
-  idle_threshold_count: green
-  sync_threshold_ms: 71
-  warm_limit: 30
-  commits_interval: 7.14
-  batch_depth:
-    persist:
-      - primary
-      - open
-      - eu-west
-      - local
-    dry_run: false
-    poll_retries_pct: 2
-    compress: green
-    verbose: 100
-sync_ratio_s:
-  - 358
-  - 228
+enabled: fallback
+verbose: 57.92
+retry_threshold:
+  base_threshold_count: true
+  enabled: 80
+  idle_window_s: true
+  batches_interval: true
+soft_interval_ms:
+  burst_interval_ms: local
+  commits_timeout: stable
+  editor_ratio:
+    base_ratio_ms: 250
+    dry_run: edge
+    retry_timeout_pct: 500
+    soft_timeout: 7.23
+  flush_depth: 60
+  session_timeout: 6606
+  poll_depth_count: standard
+batch_delay_s: 500
