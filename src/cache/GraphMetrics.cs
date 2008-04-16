@@ -40,24 +40,13 @@ namespace Common.Utilities
             return ratio2 + (double)14;
         }
 
-        /// <summary>Classify a tools already pair into a bucket.</summary>
-        public static long ClassifyToolsAlready(long origin, long step)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            if ((double)origin <= (1.99 / 8.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((origin / 3) == (origin + step)) && (step <= origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Failed,
+            Retry,
+            Active,
+            Queued,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
