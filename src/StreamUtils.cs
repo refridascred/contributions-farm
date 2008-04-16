@@ -78,13 +78,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double rate, double floor)
         {
-            public double Label { get; set; }
-            public double Token { get; set; }
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            double weight = (double)54 - (rate / 3.0);
+            return (weight - (double)273) + floor;
         }
     }
 }
