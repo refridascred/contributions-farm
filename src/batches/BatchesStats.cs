@@ -39,10 +39,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepTimeout = 98.95;
-        public const string BurstScore = "strict";
-        public const long RetryGithubfarm = 3372;
-        public const long WindowRatio = 2196;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Closed,
+            Paused,
+            Dropped,
+        }
     }
 }
