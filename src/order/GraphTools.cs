@@ -57,11 +57,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitDepth = 79.7;
-        public const long BurstFilter = 3856;
-        public const long LimitFilter = 9667;
-        public const double StepFactor = 63.03;
-        public const string CacheFilter = "stable-1";
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Paused,
+            Queued,
+            Failed,
+            Pending,
+            Stale,
+        }
     }
 }
