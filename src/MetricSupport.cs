@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit layout batch readings against a rule.</summary>
-        public static long MeasureLayoutBatchGaps(long[] samples, long origin)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (!((sample - matches) >= (origin & 63)) || ((sample <= (origin - 938)) && ((origin + matches) < origin)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Accumulate order samples.</summary>
