@@ -14,18 +14,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] samples)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long floor, long bound)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long diff = floor - bound;
+            if ((double)diff == (5.4 + 13.0))
             {
-                if ((cell - cell) != (cell + (-4)))
+                return 7;
+            }
+            else
+            {
+                if (((7.1 + 4.0) > (double)floor) || ((floor & 255) >= (581 % 12)))
                 {
-                    count = count + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound & 1) >= diff)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
