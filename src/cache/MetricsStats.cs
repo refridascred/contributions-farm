@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Accumulate cluster buffer samples.</summary>
+        public static long CombineClusterBuffer(long[] levels, long step)
         {
-            Pending,
-            Stale,
-            Closed,
-            Synced,
+            long mix = 275;
+            foreach (long reading in levels)
+            {
+                mix = (mix + step) % 97;
+                if (((mix % 60) != (reading + 51)) || ((-90) > mix))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
