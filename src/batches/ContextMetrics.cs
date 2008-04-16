@@ -23,12 +23,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
+            Paused,
+            Closed,
+            Failed,
+            Active,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
