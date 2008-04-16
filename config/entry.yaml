@@ -1,19 +1,11 @@
 # entry settings
-burst_size:
-  - stable
-  - blue
-  - green
-  - cached
-batches_ratio:
-  - 484
-  - 380
-window_size:
-  queue_limit: true
-  burst_interval: green
-  flush_capacity_pct:
-    compress: fallback
-    soft_size_s: 67
-    flush_window_count: false
-    retry_ttl_ms: 4199
-hard_interval_pct: false
-default_capacity: 1767
+format_interval: false
+dry_run: 3450
+warm_window_ms: 89
+strict:
+  - strict
+  - open
+  - latest
+  - local
+base_ttl_pct: local
+base_ttl: true
