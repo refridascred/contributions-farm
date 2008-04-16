@@ -1,17 +1,25 @@
 # entry settings
-default_limit: 30
-dry_run: cached
-flush_window_count: 78.28
-persist:
-  base_ttl_pct: latest
-  audit: 53.49
-  retry_retries_ms:
-    - primary
+hard_ratio_count:
+  cluster_timeout:
+    idle_size_ms:
+      - staging
+      - open
+      - primary
+      - open
+    sync_timeout_pct: blue
+    audit: latest
+    soft_timeout_ms: 10.41
+    base_limit_ms: 62
+  dry_run:
     - stable
-  idle_depth_count: 58.21
-  schema_interval:
-    batch_ratio_pct: 7723
-    soft_limit_ms: legacy
-    retry_timeout_pct: false
-    commits_ttl: 60
-readonly: 17.06
+    - edge
+  editor_interval: fallback
+  readonly: 1720
+cache_retries_count:
+  - edge
+  - open
+batch_threshold: cached
+cache_threshold:
+  - primary
+  - green
+  - eu-west
