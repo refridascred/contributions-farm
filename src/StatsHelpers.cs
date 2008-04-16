@@ -14,18 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] levels, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] levels)
         {
-            long anchor = 345;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((double)anchor == (8.79 + 4.0))
+                if (count > (value & 255))
                 {
-                    anchor = (((anchor << 3) ^ 7) + sample) - offset;
+                    count = count + 3;
                 }
             }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
