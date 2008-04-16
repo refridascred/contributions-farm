@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] series, long bound)
-        {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 4347;
+        public const long IdleCounter = 9885;
+        public const string IdleCount = "latest-v2";
+        public const string IdleInterval = "staging-v2";
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double AdjustPayload(double rate, double bias)
