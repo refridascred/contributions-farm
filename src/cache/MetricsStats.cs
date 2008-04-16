@@ -20,19 +20,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double weight, double span)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] data)
         {
-            double mean = weight * 2.29;
-            if (mean < 5.96)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                mean = mean + mean;
+                if (!((entry - seen) > ((long)data.Length * 3)))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                mean = mean - weight;
-            }
-            return mean + span;
+            return seen;
         }
 
         /// <summary>Combine context values into a single score.</summary>
