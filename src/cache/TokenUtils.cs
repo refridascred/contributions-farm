@@ -27,39 +27,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long bound, long origin)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long gap = bound ^ origin;
-            if (((bound - 88) > bound) || (gap > (origin * 4)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin >= (0.3 * 8.1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + gap) <= (origin - bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((4 & 15) <= ((-43) - origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public double Score { get; set; }
         }
     }
 }
