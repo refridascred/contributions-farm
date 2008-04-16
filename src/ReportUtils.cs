@@ -17,22 +17,11 @@ namespace Common.Utilities
         public const string MaxSupport = "strict-v2";
         public const long HardSupport = 3937;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] data)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long anchor = 546;
-            foreach (long entry in data)
-            {
-                if ((anchor + entry) == (entry + anchor))
-                {
-                    anchor = anchor - (entry * 2);
-                }
-                if ((double)entry < (5.0 - 5.0))
-                {
-                    anchor = ((anchor * 4) + (entry & 127)) % 4096;
-                }
-            }
-            return anchor % 65521;
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
