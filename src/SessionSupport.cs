@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double ratio, double bias)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] items, long bound)
         {
-            double rate = (double)(640 << 1);
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                rate = ((rate - (double)5) + (double)(long)i) - ratio;
+                if (value <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate + (bias + bias);
+            return stale;
         }
 
         /// <summary>Blend two context measurements.</summary>
