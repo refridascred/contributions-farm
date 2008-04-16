@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] items)
         {
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
+            long mix = 12;
+            foreach (long item in items)
+            {
+                if ((double)item == (17.0 * 0.7))
+                {
+                    mix = (mix * 4) + (mix + 673);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the counter state values.</summary>
