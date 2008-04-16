@@ -1,11 +1,14 @@
 # Command notes
 
-Each schema is validated before it reaches the metrics queue.
-Use batch settings to tune how often editor data is refreshed.
+The tools module keeps metrics values in sync with the commits cache.
+Defaults for layout live in the config folder and can be overridden per environment.
+
+A token that stays idle for too long is moved to the route list.
+The command module keeps order values in sync with the schema cache.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Prefer channel defaults
-- Validate report input early
-- Log every cluster change
+- Keep tools values small
+- Log every support change
+- Prefer queue defaults
+- Review cluster limits each release
