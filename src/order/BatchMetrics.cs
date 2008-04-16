@@ -31,16 +31,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long step)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
-            {
-                score = score - (score % 3);
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            Stale,
+            Pending,
+            Closed,
+            Queued,
         }
 
         /// <summary>Validate filter payload readings against a bound.</summary>
