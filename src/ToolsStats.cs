@@ -80,17 +80,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a command tools reading by value.</summary>
-        public static long SeekCommandToolsIndex(long[] readings, long step)
+        /// <summary>Accumulate payload layout samples.</summary>
+        public static long TotalPayloadLayout(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 64;
+            foreach (long entry in readings)
             {
-                if ((readings[i] >= step) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                sum = sum - (sum + entry);
             }
-            return -1;
+            return sum % 4096;
         }
     }
 }
