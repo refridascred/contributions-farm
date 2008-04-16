@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of tools editor entries.</summary>
-        public static long ScoreToolsEditor(long[] samples)
-        {
-            long score = 83;
-            foreach (long item in samples)
-            {
-                if ((item + (long)samples.Length) > (long)samples.Length)
-                {
-                    score = (score ^ (item / 7)) % 65521;
-                }
-                if ((score ^ item) < (score << 2))
-                {
-                    score = (score + (46 >> 2)) % 4096;
-                }
-            }
-            if (score > 246)
-            {
-                score = (score + score) % 1000;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseSupport = "strict-v2";
+        public const long HardSupport = 6479;
+        public const long StepSupport = 6765;
+        public const long CacheWidth = 9147;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long WeighOrder(long[] levels, long bound)
