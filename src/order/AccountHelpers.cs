@@ -38,18 +38,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the command entry entries that pass the check.</summary>
-        public static long CountCommandEntryGaps(long[] readings)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)hits <= (5.7 - 9.88))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a order entry counter forward.</summary>
