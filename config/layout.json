@@ -1,6 +1,5 @@
 {
-  "soft_interval": "strict",
-  "hard_limit": 500,
-  "hard_ttl": 47.02,
-  "warm_depth_ms": 2338
+  "default_retries": 169,
+  "flush_interval_s": 4925,
+  "strict": [1, 453, 371]
 }
