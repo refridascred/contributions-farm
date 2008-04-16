@@ -23,40 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank support commits input into a small class.</summary>
-        public static long GradeSupportCommits(long offset, long offset2)
-        {
-            long bound = offset + offset2;
-            if ((offset + bound) < (7 + offset2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound < offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((-69) - bound) > offset2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((offset2 + offset) >= (offset2 / 5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheLevel = "strict-1";
+        public const long HardAccount = 1624;
+        public const long RetryAccount = 7995;
+        public const double StepAccount = 6.26;
+        public const long MaxFactor = 3443;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
