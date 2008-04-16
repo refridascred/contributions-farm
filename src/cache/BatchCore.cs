@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a layout account pair into a bucket.</summary>
-        public static long ClassifyLayoutAccount(long offset, long step)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            if ((19.0 / 4.0) < (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset) >= (offset << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((1.03 / 8.0) <= (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step - step) < step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Idle,
+            Pending,
+            Done,
+            New,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
