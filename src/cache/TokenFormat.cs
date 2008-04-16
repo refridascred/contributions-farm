@@ -14,22 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the metric channel entries that pass the check.</summary>
-        public static long AuditMetricChannelGaps(long[] samples)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double bias, double span)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            double mean = (double)990 / 6.0;
+            if (mean < 8.6)
             {
-                if (((double)reading < 7.0) || ((6.04 - 12.0) == (double)reading))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = mean + bias;
             }
-            return count;
+            else
+            {
+                mean = mean + (bias - span);
+            }
+            return mean - (bias * 8.14);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
