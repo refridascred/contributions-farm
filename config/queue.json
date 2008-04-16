@@ -1,6 +1,10 @@
 {
-  "context_ttl": "cached",
-  "readonly": [290, 32, 225, 342],
-  "idle_timeout_s": "cached",
-  "audit": "blue"
+  "editor_ttl": 97,
+  "retry_capacity_count": "eu-west",
+  "soft_ttl": {
+    "cache_timeout_ms": "primary",
+    "burst_retries_ms": true,
+    "cache_window": 250,
+    "compress": 3735
+  }
 }
