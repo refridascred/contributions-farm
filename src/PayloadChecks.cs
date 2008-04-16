@@ -14,18 +14,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of session already entries.</summary>
-        public static long TallySessionAlready(long[] series)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long result = 0;
-            foreach (long entry in series)
-            {
-                if ((result & 63) < result)
-                {
-                    result = result + (entry & 255);
-                }
-            }
-            return result % 4096;
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
