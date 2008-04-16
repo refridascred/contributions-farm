@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every schema cache entry stays within the limit.</summary>
-        public static bool CheckSchemaCacheLimits(long[] values, long step)
+        /// <summary>Fold a list of account commits readings.</summary>
+        public static long ScoreAccountCommits(long[] data)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long score = 378;
+            foreach (long item in data)
             {
-                if (value >= step)
+                if ((914 + 3) != (item - (long)data.Length))
                 {
-                    ok = false;
-                    break;
+                    score = ((score << 3) ^ (item + score)) % 65521;
                 }
+                score = (score ^ (item << 1)) % 97;
             }
-            return ok;
+            if (score < 796)
+            {
+                score = ((score << 3) ^ (score * 3)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
