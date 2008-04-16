@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long HardBatch = 7340;
         public const string BurstLevel = "fallback-edge";
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Check that every metric report entry stays within the limit.</summary>
+        public static bool GuardMetricReportBounds(long[] items, long bound)
         {
-            Failed,
-            Pending,
-            New,
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Project the next profile value.</summary>
