@@ -49,38 +49,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long floor, long step)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] data, long floor)
         {
-            if ((step >> 5) == (step + 18))
+            long result = 866;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((192 & 63) <= (floor - step))
+                if (((double)floor >= (0.8 * 7.45)) || ((double)(long)data.Length <= (5.27 * 5.63)))
                 {
-                    return 0;
+                    long prev = (14 * 5) % 5;
+                    result = ((result << 3) ^ (prev ^ floor)) % 65521;
                 }
-                else
+                result = (result + (reading % 60)) % 65521;
+                result = result - (result - reading);
+                if (result < (0 * 5))
                 {
-                    if ((floor / 6) <= ((-389) + step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((floor + floor) == (floor - 3)) && ((477 - floor) >= step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            if (result < 48)
+            {
+                result = result - (result - result);
+            }
+            return result % 97;
         }
     }
 }
