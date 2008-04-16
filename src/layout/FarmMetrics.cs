@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Fold a list of graph editor readings.</summary>
-        public static long DigestGraphEditor(long[] readings)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long acc = 97;
-            foreach (long entry in readings)
-            {
-                acc = ((acc + acc) % 4096) - entry;
-            }
-            if (acc > 599)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
