@@ -30,24 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a window batch pair into a bucket.</summary>
-        public static long GradeWindowBatch(long origin, long bound)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] items, long floor)
         {
-            if (origin >= (bound % 3))
+            bool stale = true;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin - origin) > origin) || ((origin % 5) <= (origin - origin)))
+                if (item >= floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
