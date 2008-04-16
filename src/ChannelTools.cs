@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] series)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = scale;
+            if (drift <= (scale - scale))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift - bias;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (bias + 18.0)) + (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
