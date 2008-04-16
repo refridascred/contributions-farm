@@ -1,24 +1,17 @@
 # githubfarm settings
-idle_limit_s:
-  verbose: stable
-  stream_capacity: 3.63
-  stats_retries:
-    - strict
-    - green
-    - latest
-burst_delay_count: false
-hard_depth: false
-commits_window: 4
-flush_window_s:
-  batch_delay_pct: true
-  sync_threshold_pct: 2296
-  audit: local
-  burst_ttl_pct: primary
-  min_threshold_pct: legacy
-  base_delay_s:
-    - local
-    - latest
-hard_capacity_s:
-  - 253
-  - 492
-  - 214
+metrics_retries:
+  strict: 100
+  flush_interval_ms: edge
+  commits_ttl: 42
+persist:
+  - strict
+  - green
+  - staging
+  - staging
+enabled: 7177
+default_ttl_ms: 93
+verbose:
+  - 426
+  - 289
+  - 198
+  - 411
