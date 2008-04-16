@@ -20,15 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double gain, double floor)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] readings)
         {
-            double bias = floor - floor;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = ((bias + 5.72) + (double)(long)i) - gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias + floor;
+            return hits;
         }
 
         /// <summary>Accumulate channel samples.</summary>
