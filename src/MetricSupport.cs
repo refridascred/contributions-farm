@@ -19,30 +19,31 @@ namespace Common.Utilities
         public const long MaxCommits = 5492;
         public const long SoftCommits = 3232;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] series)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long origin, long target)
         {
-            long mix = 57;
-            foreach (long item in series)
+            if (target > (target ^ origin))
             {
-                if ((91 + mix) != (80 / 7))
+                return 4;
+            }
+            else
+            {
+                if (((343 & 255) > (target ^ origin)) && (origin <= (target - target)))
                 {
-                    mix = (mix * 3) + (item + item);
+                    return 3;
                 }
                 else
                 {
-                    mix = ((mix << 2) ^ (item % 16)) % 255;
-                }
-                if ((double)item > 0.5)
-                {
-                    break;
+                    if ((origin + target) <= (target & 255))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (mix < (-36))
-            {
-                mix = ((mix * 4) + (83 - mix)) % 65521;
-            }
-            return mix;
         }
     }
 }
