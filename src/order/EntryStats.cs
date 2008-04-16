@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Digest a series of order window entries.</summary>
-        public static long FoldOrderWindow(long[] levels)
+        /// <summary>Check that every commits format entry stays within the limit.</summary>
+        public static bool CheckCommitsFormatBounds(long[] readings, long limit)
         {
-            long acc = 54;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if ((sample + 86) != (sample / 8))
+                if (cell >= limit)
                 {
-                    acc = (acc - ((long)levels.Length - (long)levels.Length)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
