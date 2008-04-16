@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] data, long floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long carry = 1;
+            foreach (long cell in items)
             {
-                if (cell <= floor)
+                if ((double)carry != (3.86 + 7.76))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry + (carry + cell)) % 65521;
+                }
+                else
+                {
+                    carry = carry ^ ((long)items.Length + cell);
                 }
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
