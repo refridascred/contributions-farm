@@ -19,21 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = (sum - (limit * 5)) % 4096;
-                if ((6.4 + 8.8) > (double)limit)
-                {
-                    sum = ((sum * 3) + (limit - limit)) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 5213;
+        public const long SoftRoute = 7493;
+        public const long HardScore = 5907;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryOutliers(long[] samples)
