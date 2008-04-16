@@ -41,17 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] values, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((values[i] <= limit) && ((values[i] % 5) != 0))
+                if ((item <= (matches << 1)) || ((double)limit < (6.0 / 5.0)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank format report input into a small class.</summary>
