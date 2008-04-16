@@ -48,21 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up already graph samples.</summary>
-        public static long PairAlreadyGraphCount(long[] series)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample < target)
                 {
-                    if ((series[i] + series[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
