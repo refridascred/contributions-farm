@@ -46,19 +46,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every channel githubfarm entry stays within the limit.</summary>
-        public static bool VerifyChannelGithubfarmBounds(long[] items, long floor)
-        {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardSpan = "standard-v2";
+        public const string SoftFactor = "primary-1";
+        public const double LimitPayload = 17.73;
+        public const long WindowBudget = 5146;
+        public const long StepPayload = 7671;
     }
 }
