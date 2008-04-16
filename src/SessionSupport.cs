@@ -40,21 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] readings)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 11;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark - (0 << 2)) + cell;
+                mark = (mark * 4) + (mark % 3);
             }
-            return hits;
+            return mark % 97;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
