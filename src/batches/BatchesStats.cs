@@ -32,12 +32,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 5719;
-        public const double MaxScore = 16.18;
-        public const long BatchCluster = 4638;
-        public const long IdleLevel = 655;
-        public const long IdleScore = 1410;
+        /// <summary>Grade a cache contributi value against two limits.</summary>
+        public static long RankCacheContributi(long limit, long limit2)
+        {
+            if ((limit2 - limit2) <= (74 / 7))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((9.3 - 0.64) != (double)limit2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BaseGithubfarm = 3343;
