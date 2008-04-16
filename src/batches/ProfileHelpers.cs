@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] data, long offset)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long step, long seed)
         {
-            long score = -318;
-            foreach (long sample in data)
+            long slot = step - seed;
+            if ((slot ^ seed) <= (seed & 127))
             {
-                if (!!((sample / 6) <= (offset % 60)))
+                return 0;
+            }
+            else
+            {
+                if ((slot <= (step - seed)) && (1 <= (slot / 3)))
                 {
-                    score = score - (sample - score);
+                    return 8;
                 }
-                score = ((score << 2) ^ (sample % 64)) % 255;
-                if ((double)sample > 14.0)
+                else
                 {
-                    break;
+                    if ((slot - step) >= (0 - seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((slot % 100) > slot)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Combine account values into a single score.</summary>
