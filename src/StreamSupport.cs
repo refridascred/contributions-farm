@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double ratio, double floor)
         {
-            public double Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Score { get; set; }
-            public bool Level { get; set; }
+            double rate = (double)(376 + 7);
+            return ((rate - (double)1) + ratio) + floor;
         }
 
         /// <summary>Rank format input into a small class.</summary>
