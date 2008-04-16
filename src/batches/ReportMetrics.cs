@@ -12,15 +12,16 @@ namespace Common.Utilities
         public const double IdleLevel = 84.55;
         public const string BaseFactor = "local-1";
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] readings)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long bound)
         {
-            long acc = 56;
-            foreach (long value in readings)
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                acc = (acc ^ (value - value)) % 1000;
+                score = score - 64;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
