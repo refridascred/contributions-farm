@@ -1,8 +1,15 @@
 {
-  "hard_retries_ms": ["strict", "stable"],
-  "context_interval": 1415,
-  "account_interval": 22.44,
-  "burst_ratio_ms": true,
-  "soft_capacity_pct": 84,
-  "format_timeout": "blue"
+  "compress": {
+    "min_retries_pct": "cached",
+    "sync_size": 60,
+    "warm_interval": 2.69,
+    "dry_run": "strict",
+    "cache_interval": ["cached", "legacy", "strict"],
+    "hard_ratio_count": 78
+  },
+  "poll_limit_s": "fallback",
+  "sync_capacity": true,
+  "burst_size": "open",
+  "flush_size_s": false,
+  "persist": "staging"
 }
