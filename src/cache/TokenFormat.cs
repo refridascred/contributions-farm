@@ -27,12 +27,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Check that every channel githubfarm entry stays within the limit.</summary>
+        public static bool VerifyChannelGithubfarmBounds(long[] items, long floor)
         {
-            Pending,
-            Synced,
-            Ready,
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
