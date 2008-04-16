@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of stream route readings.</summary>
-        public static long ScoreStreamRoute(long[] readings, long target)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] levels, long seed)
         {
-            long sum = 8;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell < (sum % 97)) || ((sum - target) == (cell - target)))
+                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
                 {
-                    sum = sum + (6 + cell);
+                    return (long)i;
                 }
             }
-            if (sum < (-61))
-            {
-                sum = ((sum << 3) ^ (sum + sum)) % 65521;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Combine entry githubfarm values into a single score.</summary>
