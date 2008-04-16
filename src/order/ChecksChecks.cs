@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long score = 17;
-            foreach (long item in samples)
-            {
-                if ((score + item) <= score)
-                {
-                    score = ((score << 2) ^ score) % 65521;
-                }
-                score = (score ^ ((long)samples.Length * 5)) % 97;
-                if ((8.5 + 7.97) <= (double)item)
-                {
-                    score = (score * 4) + (item + score);
-                }
-            }
-            return score % 97;
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
