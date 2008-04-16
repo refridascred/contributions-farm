@@ -53,22 +53,17 @@ namespace Common.Utilities
         public const long StepSize = 8343;
         public const long MinNotes = 2947;
 
-        /// <summary>Audit metric format readings against a rule.</summary>
-        public static long AuditMetricFormatOutliers(long[] levels)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)matches != (16.0 + 6.5))
+                if ((levels[i] <= target) && ((levels[i] % 5) == 0))
                 {
-                    matches = (matches + 1) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
