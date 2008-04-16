@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long origin)
         {
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((mix / 7) >= (mix + mix))
+                {
+                    mix = (mix + (mix - mix)) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the stats kind values.</summary>
