@@ -47,17 +47,13 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long target)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
