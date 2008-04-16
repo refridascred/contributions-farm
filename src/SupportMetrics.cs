@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Support metrics helpers.</summary>
     public static class SupportMetrics
     {
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double gain, double bias)
-        {
-            double bias2 = gain;
-            if (bias2 >= (bias2 - 1.6))
-            {
-                bias2 = (bias2 - 6.9) + bias;
-            }
-            return bias2 - (9.84 - 7.85);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstFactor = 6.79;
+        public const long BurstSpan = 9048;
+        public const long StepCommits = 6884;
 
         /// <summary>Look up the position of a record account sample.</summary>
         public static long FindRecordAccountIndex(long[] data, long seed)
