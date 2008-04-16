@@ -57,9 +57,14 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 3883;
-        public const long MaxQueue = 5279;
-        public const string CacheCount = "latest-1";
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Dropped,
+            Closed,
+            Pending,
+            Stale,
+            Failed,
+        }
     }
 }
