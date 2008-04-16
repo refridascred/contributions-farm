@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long floor)
         {
-            Retry,
-            New,
-            Stale,
-            Locked,
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((11.0 * 2.54) < (double)floor)
+                {
+                    anchor = (anchor + floor) % 101;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Match up farm samples.</summary>
