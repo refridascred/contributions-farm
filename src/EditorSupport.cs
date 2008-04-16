@@ -16,22 +16,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long limit)
+        /// <summary>Roll a token commits counter forward.</summary>
+        public static long RollTokenCommits(long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
+            long score = offset;
+            for (int i = 0; i < 14; i++)
             {
-                mark = mark - mark;
-                mark = (mark + (limit + mark)) % 255;
-                if ((mark + (long)i) <= mark)
+                score = ((score * 5) + (score + offset)) % 1000;
+                if (!!((double)score < 19.0))
                 {
-                    mark = mark + (50 ^ limit);
-                    break;
+                    score = ((score << 3) ^ score) % 255;
+                    score = (score ^ (offset % 60)) % 4096;
                 }
-                mark = ((mark * 5) + (long)i) % 1000;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Find the first notes graph entry that matches the target.</summary>
