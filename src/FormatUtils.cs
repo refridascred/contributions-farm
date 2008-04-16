@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Validate token payload readings against a bound.</summary>
+        public static bool GuardTokenPayloadLimits(long[] samples, long origin)
         {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public double Score { get; set; }
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a contributi header.</summary>
