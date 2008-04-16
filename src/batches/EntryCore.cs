@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a counter stream sample.</summary>
-        public static long LocateCounterStreamIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "staging";
+        public const long CacheWindow = 5651;
+        public const long MinScore = 8925;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double IdleNotes = 35.64;
