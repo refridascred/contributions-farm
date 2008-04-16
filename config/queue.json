@@ -1,6 +1,10 @@
 {
-  "soft_interval": false,
-  "hard_delay_count": "blue",
-  "profile_timeout": 46.08,
-  "burst_window_s": "stable"
+  "cache_limit": [468, 278],
+  "strict": 1.88,
+  "min_depth_pct": {
+    "flush_interval_s": "blue",
+    "warm_ttl_s": 72.08,
+    "default_threshold": true
+  },
+  "token_threshold": 5155
 }
