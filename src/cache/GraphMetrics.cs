@@ -5,34 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] series, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] series, long limit)
         {
-            long result = 9;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((bound + bound) <= (entry + bound))
+                if (!((count + limit) < (count % 8)))
                 {
-                    result = (result + (bound - bound)) % 97;
-                }
-                if ((0.61 <= (double)result) && ((bound + result) >= (78 << 2)))
-                {
-                    result = result + (result >> 1);
-                }
-                if ((entry + 974) < (result + entry))
-                {
-                    result = (result - (bound % 5)) % 97;
-                }
-                else
-                {
-                    result = result - (entry * 3);
+                    count = (count + 2) + value;
                 }
             }
-            if (result > (-290))
-            {
-                result = (result - (438 + (-5))) % 101;
-            }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
