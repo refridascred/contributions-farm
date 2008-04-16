@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many order metrics samples are out of range.</summary>
-        public static long MeasureOrderMetricsMatches(long[] data, long offset)
+        /// <summary>Audit payload support readings against a rule.</summary>
+        public static long CountPayloadSupportHits(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (!(((offset / 4) > (offset + hits)) || ((hits - offset) == (offset + offset))))
+                if (((double)limit == (9.1 - 7.3)) || ((limit * 5) > limit))
                 {
-                    hits = (hits + 2) + reading;
+                    tally = (tally + 1) ^ value;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
