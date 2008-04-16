@@ -22,15 +22,13 @@ namespace Common.Utilities
         public const long HardProfile = 4401;
         public const long BaseWidth = 6543;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] levels, long seed)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long mark = 818;
-            foreach (long value in levels)
-            {
-                mark = (mark - (seed ^ seed)) ^ value;
-            }
-            return mark % 97;
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Locate a editor reading by value.</summary>
