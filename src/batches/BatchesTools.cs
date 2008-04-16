@@ -16,22 +16,22 @@ namespace Common.Utilities
             return gain + (0.31 + ratio);
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] levels)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((item + item) >= item)
+                if (entry <= (7 >> 4))
                 {
-                    hits = hits + 2;
+                    seen = (seen + 1) + origin;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
