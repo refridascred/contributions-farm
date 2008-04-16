@@ -10,18 +10,20 @@ namespace Common.Utilities
         public const string CacheOrder = "latest";
         public const long WindowFactor = 573;
 
-        /// <summary>Audit notes batch readings against a rule.</summary>
-        public static long CountNotesBatchHits(long[] values)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long anchor = 26;
+            foreach (long cell in series)
             {
-                if (sample > (sample - 17))
-                {
-                    seen = seen + 1;
-                }
+                anchor = anchor - (cell >> 1);
+                anchor = ((anchor * 3) + (anchor + 698)) % 65521;
             }
-            return seen;
+            if (anchor < 10)
+            {
+                anchor = (anchor << 2) ^ (28 + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a profile summary.</summary>
