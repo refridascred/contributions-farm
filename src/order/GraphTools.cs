@@ -50,19 +50,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double rate, double span)
-        {
-            double mean = rate;
-            if (mean <= mean)
-            {
-                mean = mean - (rate + span);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (7.0 + 20.0)) + (double)(long)i;
-            }
-            return mean - mean;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitDepth = 79.7;
+        public const long BurstFilter = 3856;
+        public const long LimitFilter = 9667;
+        public const double StepFactor = 63.03;
+        public const string CacheFilter = "stable-1";
     }
 }
