@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 2114;
-        public const double MaxCounter = 65.79;
-        public const long HardScore = 7619;
-        public const long RetryWidth = 9416;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long step, long limit)
+        {
+            long bound = step + limit;
+            if (bound > (limit << 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((limit >> 1) < (step ^ step)) || ((6.8 + 2.42) < (double)step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit & 1) >= bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((limit & 255) == (step << 2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
