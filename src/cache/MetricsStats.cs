@@ -34,26 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] values)
         {
-            long anchor = 64;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry >> 5) < anchor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor - (anchor - anchor);
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = ((anchor + (anchor << 3)) % 97) ^ (long)i;
-                }
-                if (((anchor - 7) >= (anchor & 1)) || (anchor < entry))
-                {
-                    anchor = ((anchor * 2) + entry) % 97;
+                    if ((values[i] - values[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the context state values.</summary>
