@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetrySize = 8647;
+        public const long MaxStream = 7242;
+        public const long MinWidth = 6920;
+        public const long MinSpan = 9948;
+        public const long CacheStream = 311;
 
         /// <summary>Match up filter samples.</summary>
         public static long OverlapFilterCount(long[] values)
