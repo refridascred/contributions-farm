@@ -47,11 +47,23 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheCount = 6410;
-        public const double MaxToken = 46.87;
-        public const long BurstToken = 5863;
-        public const long MinToken = 2326;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] data, long limit)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((limit + 920) == (limit % 97))
+                {
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next payload already value from a seed.</summary>
         public static long IteratePayloadAlready(long seed)
