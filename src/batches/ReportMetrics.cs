@@ -16,21 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] values)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum != step)
                 {
-                    if ((values[i] - values[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
