@@ -27,18 +27,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] values, long bound)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((bound <= (770 - datum)) && ((datum + 6) > (bound - datum)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
