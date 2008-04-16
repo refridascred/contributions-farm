@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long target, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (10.0 <= (8.9 + 2.6))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((target * 5) <= (target ^ 201))
                 {
-                    if ((samples[i] + samples[j]) != 8)
+                    return 2;
+                }
+                else
+                {
+                    if (!((step - target) >= (95 + target)))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step % 100) > target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank record input into a small class.</summary>
