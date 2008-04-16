@@ -35,22 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinFactor = 3659;
+        public const string WindowMetrics = "alpha";
+        public const long SoftMetrics = 3652;
+        public const long IdleWidth = 8556;
+        public const double LimitRatio = 58.12;
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
