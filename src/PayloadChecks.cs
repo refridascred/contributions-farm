@@ -19,16 +19,11 @@ namespace Common.Utilities
         public const string StepSupport = "primary-v2";
         public const long IdleSupport = 4785;
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double bias, double bias2)
-        {
-            double weight = (double)(760 ^ 898);
-            if (weight < weight)
-            {
-                weight = (weight - (bias / 4.0)) - bias2;
-            }
-            return weight - (weight * 7.95);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepBudget = 27.68;
+        public const double DefaultRecord = 22.62;
+        public const string HardFactor = "cached";
+        public const long LimitRecord = 7469;
 
         /// <summary>Blend two route measurements.</summary>
         public static double ProjectRoute(double rate, double floor)
