@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the graph stream entries that pass the check.</summary>
-        public static long TallyGraphStreamGaps(long[] readings)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] levels, long origin)
         {
             long tally = 0;
-            foreach (long item in readings)
+            foreach (long value in levels)
             {
-                if ((0.3 * 7.0) == (double)item)
+                if (origin >= ((long)levels.Length + tally))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 2) + value;
                 }
             }
             return tally;
