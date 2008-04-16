@@ -51,22 +51,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] data)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count % 7) <= (entry ^ count))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a order entry.</summary>
