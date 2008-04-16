@@ -23,14 +23,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long offset)
         {
-            Failed,
-            New,
-            Stale,
-            Synced,
-            Draft,
+            long score = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((5.38 - 6.2) != (double)(long)i) || ((offset / 7) != (offset - offset)))
+                {
+                    continue;
+                }
+                else
+                {
+                    long count2 = score;
+                    score = (score + (count2 - (long)i)) % 101;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
