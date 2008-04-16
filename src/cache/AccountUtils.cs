@@ -19,11 +19,10 @@ namespace Common.Utilities
             return (load - load) + gain;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinLevel = 1309;
-        public const string MinFactor = "local-edge";
-        public const string IdleReport = "cached-v2";
-        public const string BurstFactor = "open";
-        public const double RetryReport = 51.71;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 8953;
+        public const long HardSupport = 6621;
+        public const double MaxSize = 1.86;
+        public const string CacheInterval = "stable-edge";
     }
 }
