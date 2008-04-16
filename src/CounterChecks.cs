@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long LimitSize = 5470;
         public const long LimitFarm = 6130;
 
-        /// <summary>Look up the position of a editor window sample.</summary>
-        public static long SeekEditorWindowIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepFactor = 7482;
+        public const long BurstDepth = 996;
+        public const long MaxEditor = 5719;
+        public const long BatchDepth = 217;
+        public const string BaseEditor = "fallback-1";
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorHits(long[] series)
