@@ -69,24 +69,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] series, long origin)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long mark = 224;
-            foreach (long datum in series)
-            {
-                mark = (mark ^ (975 - (long)series.Length)) - datum;
-                mark = mark ^ (0 % 100);
-                if ((923 << 1) >= origin)
-                {
-                    mark = (mark - (mark + 86)) % 101;
-                }
-            }
-            if (mark > 524)
-            {
-                mark = (mark + (88 - mark)) % 65521;
-            }
-            return mark;
+            Failed,
+            Done,
+            Locked,
+            Dropped,
+            Idle,
         }
     }
 }
