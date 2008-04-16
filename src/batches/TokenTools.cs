@@ -22,12 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 540;
-        public const long BatchDepth = 8675;
-        public const long DefaultContributi = 3171;
-        public const long MaxContributi = 9211;
-        public const long HardContributi = 3019;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell > (8.56 + 2.6))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
