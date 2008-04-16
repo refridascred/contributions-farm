@@ -1,7 +1,12 @@
 {
-  "already_ratio": 1024,
-  "retry_window": "staging",
-  "payload_size": 8.11,
-  "flush_limit_ms": true,
-  "flush_size_count": false
+  "burst_delay_s": "stable",
+  "payload_size": 4667,
+  "report_delay": "blue",
+  "batches_retries": ["legacy", "local"],
+  "hard_threshold_pct": {
+    "cache_interval_count": false,
+    "base_delay": 5884,
+    "min_window": 36,
+    "cache_limit_pct": false
+  }
 }
