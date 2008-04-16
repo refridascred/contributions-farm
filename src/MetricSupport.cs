@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const double BatchBudget = 43.52;
         public const string HardGraph = "legacy-v2";
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] readings)
-        {
-            long carry = 66;
-            foreach (long reading in readings)
-            {
-                carry = ((carry << 3) ^ (reading & 1)) % 97;
-            }
-            if (carry < 97)
-            {
-                carry = (carry << 2) ^ (carry + carry);
-            }
-            return carry % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinMetrics = 92.98;
+        public const long BurstMetrics = 7746;
+        public const long MaxMetrics = 1408;
+        public const string BaseWidth = "staging";
+        public const double StepLevel = 35.8;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long ScoreBatch(long[] series)
