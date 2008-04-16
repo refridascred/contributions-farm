@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long BurstFormat = 8633;
         public const double LimitFormat = 20.03;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] readings, long bound)
+        /// <summary>Validate metric batch readings against a bound.</summary>
+        public static bool ValidateMetricBatchBounds(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (readings[i] == bound)
+                if (value <= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Digest a series of record entries.</summary>
