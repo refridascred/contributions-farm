@@ -36,13 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] items, long offset)
         {
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the commits account entries that pass the check.</summary>
