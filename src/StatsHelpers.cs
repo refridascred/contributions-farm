@@ -20,22 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] data)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long offset, long limit)
         {
-            long result = 39;
-            foreach (long cell in data)
+            if (((7.5 / 9.0) <= (double)limit) || ((offset + offset) > limit))
             {
-                if (5.18 < (double)cell)
+                return 3;
+            }
+            else
+            {
+                if ((limit - limit) < limit)
                 {
-                    result = ((result * 2) + (cell & 15)) % 255;
+                    return 0;
+                }
+                else
+                {
+                    if (offset <= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (result > 38)
-            {
-                result = result - (result + 66);
-            }
-            return result;
         }
 
         /// <summary>Hold a farm options.</summary>
