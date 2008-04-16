@@ -61,16 +61,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a profile channel counter forward.</summary>
-        public static long StepProfileChannel(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 18; i++)
-            {
-                total = (total ^ total) % 255;
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinDepth = 152;
+        public const double SoftContext = 21.46;
+        public const double MaxDepth = 71.27;
+        public const long MaxContext = 6346;
+        public const string DefaultContext = "stable-1";
     }
 }
