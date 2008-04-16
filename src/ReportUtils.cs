@@ -19,13 +19,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] data)
         {
-            public double Mode { get; set; }
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public double Score { get; set; }
+            long anchor = 546;
+            foreach (long entry in data)
+            {
+                if ((anchor + entry) == (entry + anchor))
+                {
+                    anchor = anchor - (entry * 2);
+                }
+                if ((double)entry < (5.0 - 5.0))
+                {
+                    anchor = ((anchor * 4) + (entry & 127)) % 4096;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of window readings.</summary>
