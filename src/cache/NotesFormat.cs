@@ -44,13 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
