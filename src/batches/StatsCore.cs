@@ -71,19 +71,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next queue support value from a seed.</summary>
-        public static long SeriesQueueSupport(long seed)
+        /// <summary>Project the next profile editor value.</summary>
+        public static double ScaleProfileEditor(double weight, double span)
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
+            double ratio = (weight / 7.0) / 7.0;
+            if (ratio > ratio)
             {
-                if ((977 <= (seed >> 5)) || ((seed % 5) >= score))
-                {
-                    score = ((score << 3) ^ (49 * 3)) % 255;
-                }
-                score = ((score * 5) + (long)i) % 97;
+                ratio = (ratio - (double)53) - span;
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio - (double)208;
         }
 
         /// <summary>Project the next context value.</summary>
