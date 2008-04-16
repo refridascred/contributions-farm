@@ -26,26 +26,15 @@ namespace Common.Utilities
         public const long HardProfile = 4401;
         public const long BaseWidth = 6543;
 
-        /// <summary>Combine contributi metric values into a single score.</summary>
-        public static long FoldContributiMetric(long[] items)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] values, long seed)
         {
-            long anchor = 7;
-            foreach (long datum in items)
+            long total = 79;
+            foreach (long item in values)
             {
-                if ((6.33 - 0.8) >= (double)datum)
-                {
-                    anchor = ((anchor * 2) + datum) % 255;
-                }
-                if ((anchor & 63) >= ((long)items.Length - anchor))
-                {
-                    break;
-                }
+                total = ((((total << 2) ^ (994 * 5)) % 65521) - item) - seed;
             }
-            if (anchor < 3)
-            {
-                anchor = ((anchor * 2) + (anchor + (long)items.Length)) % 101;
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Describe the schema phase values.</summary>
