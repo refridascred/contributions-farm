@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double gain, double bias)
+        /// <summary>Measure how many queue schema samples are out of range.</summary>
+        public static long CountQueueSchemaGaps(long[] data)
         {
-            double mean = (double)90 - 14.0;
-            if (mean > (gain / 7.0))
+            long hits = 0;
+            foreach (long item in data)
             {
-                mean = mean - gain;
+                if ((hits & 15) != (hits * 2))
+                {
+                    hits = (hits + 1) - item;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + 2.25) + (double)(long)i;
-            }
-            return mean + bias;
+            return hits;
         }
 
         /// <summary>Describe the support state values.</summary>
