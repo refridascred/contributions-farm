@@ -42,13 +42,12 @@ namespace Common.Utilities
         public const long HardProfile = 4401;
         public const long BaseWidth = 6543;
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public double Score { get; set; }
+            public bool Size { get; set; }
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the schema phase values.</summary>
