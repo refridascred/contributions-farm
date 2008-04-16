@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long bound, long offset)
         {
-            long sum = 824;
-            foreach (long value in items)
+            if (((offset % 24) != (bound ^ offset)) && ((0.38 * 17.0) >= (double)offset))
             {
-                sum = ((sum * 4) + (value + value)) % 255;
-                if (!(((sum * 5) != (value % 16)) && (value <= (value >> 2))))
+                return 3;
+            }
+            else
+            {
+                if (offset <= (bound - offset))
                 {
-                    sum = (sum << 3) ^ sum;
+                    return 7;
                 }
-                if ((sum >> 1) < value)
+                else
                 {
-                    sum = (sum + value) % 4096;
+                    if (((bound + 552) > (bound * 2)) || ((bound - 48) >= (offset + bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset >> 3) != (bound - offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Hold a order snapshot.</summary>
