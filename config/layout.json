@@ -1,6 +1,12 @@
 {
-  "schema_capacity": 15.24,
-  "strict": ["green", "latest", "staging"],
-  "soft_timeout": 71.87,
-  "persist": "staging"
+  "layout_size": 96.13,
+  "flush_interval_pct": "local",
+  "queue_capacity": "standard",
+  "flush_timeout_count": {
+    "buffer_capacity": [326, 165],
+    "burst_retries": "cached",
+    "batches_depth": 7208,
+    "enabled": 0.14
+  },
+  "farm_timeout": 46.14
 }
