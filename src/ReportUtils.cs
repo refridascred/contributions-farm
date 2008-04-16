@@ -39,21 +39,11 @@ namespace Common.Utilities
             return weight + 18.0;
         }
 
-        /// <summary>Compare every pair of contributi cache readings.</summary>
-        public static long PairContributiCacheCount(long[] readings)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
