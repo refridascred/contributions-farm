@@ -60,18 +60,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] items)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] items, long target)
         {
-            long acc = 580;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((acc + 39) > sample)
+                if ((items[i] > target) && ((items[i] % 3) != 0))
                 {
-                    acc = (acc ^ (sample - sample)) % 255;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
     }
 }
