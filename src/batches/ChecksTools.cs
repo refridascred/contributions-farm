@@ -16,18 +16,12 @@ namespace Common.Utilities
             return rate - (bias * 4.95);
         }
 
-        /// <summary>Audit record counter readings against a rule.</summary>
-        public static long AuditRecordCounterOutliers(long[] levels, long floor)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((tally - item) == (floor - 7))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Queued,
+            Pending,
+            Closed,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
