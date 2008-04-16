@@ -23,24 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long bound, long offset)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            if ((double)offset == (13.0 + 3.03))
-            {
-                return 2;
-            }
-            else
-            {
-                if (92 <= (offset * 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Retry,
+            Done,
+            Synced,
         }
 
         /// <summary>Describe the counter state values.</summary>
