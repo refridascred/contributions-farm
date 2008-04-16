@@ -22,18 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the editor buffer entries that pass the check.</summary>
-        public static long TallyEditorBufferHits(long[] readings, long step)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (sample < step)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Match up graph window samples.</summary>
