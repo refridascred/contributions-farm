@@ -21,15 +21,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double ratio, double span)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            double ratio2 = span;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = ((ratio2 - 2.2) + (double)(long)i) - ratio;
-            }
-            return ratio2 + (double)7;
+            Idle,
+            Failed,
+            Synced,
+            Closed,
+            Ready,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
