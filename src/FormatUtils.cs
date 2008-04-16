@@ -31,23 +31,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((8.87 / 6.0) > (double)cell) && (matches > (matches >> 4)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinTimeout = 133;
+        public const string SoftFactor = "legacy-1";
+        public const long MaxScore = 3705;
+        public const long DefaultWidth = 6819;
+        public const double LimitLayout = 44.79;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long MeasureBatchesMatches(long[] readings)
