@@ -20,21 +20,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] series)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 59;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sum ^ sum) != (sample + sample))
                 {
-                    if ((series[i] - series[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum * 4) + (sum ^ 5)) % 4096;
                 }
+                else
+                {
+                    sum = (sum ^ 5) % 97;
+                }
+                sum = (sum * 5) + (sample + sample);
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
