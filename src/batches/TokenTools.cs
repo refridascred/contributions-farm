@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long origin, long seed)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long slot = origin + seed;
-            if (!(seed > (seed + origin)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((origin - 5) < (seed >> 3)) && ((origin - slot) < slot))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((slot + slot) <= (seed / 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Iterate the payload order series from a seed.</summary>
