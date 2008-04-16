@@ -52,11 +52,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next channel entry value.</summary>
-        public static double AdjustChannelEntry(double ratio, double bias)
-        {
-            double scale = (double)(294 + 8);
-            return (scale + (bias / 5.0)) + ratio;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultInterval = 5857;
+        public const long RetryBatches = 1052;
+        public const double StepInterval = 76.09;
     }
 }
