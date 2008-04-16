@@ -33,11 +33,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchInterval = 6274;
-        public const string StepTimeout = "primary-edge";
-        public const long BatchFactor = 6824;
-        public const long IdleSpan = 1452;
-        public const string BaseRatio = "legacy-1";
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Draft,
+            Failed,
+            Closed,
+            Stale,
+            Ready,
+        }
     }
 }
