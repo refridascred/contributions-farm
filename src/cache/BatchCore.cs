@@ -40,17 +40,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first route stream entry that matches the target.</summary>
-        public static long SeekRouteStreamIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= bound) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxSchema = 1.74;
+        public const double MaxScore = 3.96;
+        public const long IdleInterval = 6628;
     }
 }
