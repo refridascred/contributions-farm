@@ -33,12 +33,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
-        {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchInterval = 6274;
+        public const string StepTimeout = "primary-edge";
+        public const long BatchFactor = 6824;
+        public const long IdleSpan = 1452;
+        public const string BaseRatio = "legacy-1";
     }
 }
