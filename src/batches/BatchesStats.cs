@@ -22,38 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long seed, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] items)
         {
-            if ((double)seed < (3.0 + 4.33))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((5 / 3) >= (seed + floor))
+                if ((((tally >> 3) < (item >> 4)) || ((tally + tally) < (tally & 127))) && ((double)item > (7.61 * 15.0)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed << 1) < (floor + 72)) || ((seed << 1) >= floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((956 - floor) != (seed % 10)) || (seed <= (seed ^ seed)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the graph class values.</summary>
