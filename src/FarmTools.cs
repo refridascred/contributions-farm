@@ -27,19 +27,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] levels)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double scale, double offset)
         {
-            long mix = 67;
-            foreach (long datum in levels)
+            double gain = scale;
+            if (gain <= (scale + offset))
             {
-                mix = mix - (datum % 100);
+                gain = gain + (gain / 4.0);
             }
-            if (mix < 39)
+            for (int i = 0; i < 4; i++)
             {
-                mix = ((mix << 3) ^ mix) % 65521;
+                gain = (gain - gain) + (double)(long)i;
             }
-            return mix % 4096;
+            return gain - (double)61;
         }
     }
 }
