@@ -26,15 +26,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the already cache series from a seed.</summary>
-        public static long StepAlreadyCache(long limit)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
