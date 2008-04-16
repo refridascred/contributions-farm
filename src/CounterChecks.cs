@@ -54,18 +54,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] samples, long origin)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double gain, double span)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double bias = span;
+            if (bias > (span / 5.0))
             {
-                if ((origin - origin) <= origin)
-                {
-                    hits = (hits + 2) + value;
-                }
+                bias = bias - (gain / 5.0);
             }
-            return hits;
+            return bias + gain;
         }
 
         /// <summary>Hold a session record.</summary>
