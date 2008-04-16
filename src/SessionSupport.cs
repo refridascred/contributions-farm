@@ -14,22 +14,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count filter checks pairs that satisfy a relation.</summary>
-        public static long PairFilterChecksCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 7836;
+        public const long StepFilter = 9924;
+        public const double MinSize = 14.53;
+        public const long SoftFilter = 377;
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
