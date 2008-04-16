@@ -16,21 +16,18 @@ namespace Common.Utilities
             return rate + (bias + bias);
         }
 
-        /// <summary>Count schema order pairs that satisfy a relation.</summary>
-        public static long MatchSchemaOrderCount(long[] data)
+        /// <summary>Count the contributi already entries that pass the check.</summary>
+        public static long TallyContributiAlreadyGaps(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((-33) > (origin + value))
                 {
-                    if ((data[i] + data[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
