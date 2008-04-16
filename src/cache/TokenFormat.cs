@@ -28,16 +28,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next metrics stream value from a seed.</summary>
-        public static long DeriveMetricsStream(long seed)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] readings, long step)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry + ((long)i / 6)) % 4096;
-                carry = ((carry * 2) + (long)i) % 65521;
+                if ((readings[i] >= step) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Locate a support reading by value.</summary>
