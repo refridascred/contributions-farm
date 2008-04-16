@@ -84,11 +84,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double rate, double floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] levels, long limit)
         {
-            double weight = (double)54 - (rate / 3.0);
-            return (weight - (double)273) + floor;
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (((797 / 5) != (limit + 7)) || ((limit < (limit + 397)) && ((value + tally) > limit)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
