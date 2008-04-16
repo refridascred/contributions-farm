@@ -38,12 +38,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] series, long offset)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a token info.</summary>
