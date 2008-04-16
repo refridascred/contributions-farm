@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] data)
+        /// <summary>Count the commits queue entries that pass the check.</summary>
+        public static long MeasureCommitsQueueGaps(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (bound < (bound << 3))
                 {
-                    if ((data[i] + data[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) ^ entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
