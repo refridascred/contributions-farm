@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double gain, double offset)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            double rate = gain * 6.31;
+            for (int i = 0; i < 7; i++)
             {
-                score = (score ^ ((long)i / 9)) % 101;
-                score = ((score * 2) + (long)i) % 65521;
+                rate = ((rate + (double)416) + (double)(long)i) + offset;
             }
-            return score;
+            return rate - (double)67;
         }
 
         /// <summary>Hold a context summary.</summary>
