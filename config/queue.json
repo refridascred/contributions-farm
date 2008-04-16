@@ -1,7 +1,7 @@
 {
-  "buffer_interval": 184,
-  "verbose": "legacy",
-  "dry_run": 30,
-  "retry_ratio": true,
-  "enabled": "standard"
+  "base_ratio_ms": "local",
+  "hard_threshold_count": false,
+  "cluster_retries": false,
+  "persist": 86,
+  "sync_retries_count": "open"
 }
