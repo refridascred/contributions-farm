@@ -14,11 +14,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleRoute = "open-v2";
-        public const double HardRoute = 18.04;
-        public const long BaseSize = 8842;
-        public const long MinWidth = 8702;
+        /// <summary>Measure how many context token samples are out of range.</summary>
+        public static long AuditContextTokenHits(long[] readings, long origin)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)seen >= (5.9 + 7.4))
+                {
+                    seen = ((seen + 1) + datum) + origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenOutliers(long[] series)
