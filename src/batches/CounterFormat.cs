@@ -53,15 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] readings, long target)
-        {
-            long result = -731;
-            foreach (long datum in readings)
-            {
-                result = ((((result << 3) ^ result) % 255) ^ datum) - target;
-            }
-            return result % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 7084;
+        public const double CacheMetric = 34.82;
+        public const double HardTimeout = 10.52;
+        public const string HardSpan = "local";
+        public const long IdleDepth = 4515;
     }
 }
