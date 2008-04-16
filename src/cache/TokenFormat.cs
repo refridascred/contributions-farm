@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] series, long offset)
         {
-            long anchor = 9;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((anchor >> 5) != (53 + value))
+                if ((offset - 12) >= sample)
                 {
-                    anchor = (anchor ^ anchor) % 255;
+                    tally = tally + 3;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
