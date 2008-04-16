@@ -33,13 +33,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] samples, long origin)
         {
-            Idle,
-            Done,
-            Queued,
-            Draft,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((origin * 2) < (315 - (long)samples.Length))
+                {
+                    matches = (matches + 2) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
