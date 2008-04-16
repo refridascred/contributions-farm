@@ -30,11 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitCache = 40.98;
-        public const long LimitSize = 2258;
-        public const double BatchCache = 75.47;
-        public const double RetryCount = 72.75;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double bias, double bias2)
+        {
+            double ratio = (double)642 + bias;
+            return (ratio - (ratio + ratio)) + bias2;
+        }
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
