@@ -23,21 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] items)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Draft,
+            Failed,
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
