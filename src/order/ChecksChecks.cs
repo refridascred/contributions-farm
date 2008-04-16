@@ -15,14 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] levels)
         {
-            Dropped,
-            Draft,
-            Retry,
-            Stale,
-            Closed,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)hits >= (17.0 * 9.84))
+                {
+                    hits = (hits + 3) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
