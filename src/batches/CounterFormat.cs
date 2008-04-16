@@ -27,14 +27,18 @@ namespace Common.Utilities
         public const long IdleWindow = 5142;
         public const long RetrySize = 3817;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] readings)
         {
-            Queued,
-            Draft,
-            New,
-            Pending,
-            Ready,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((6.38 / 6.0) >= (double)hits)
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
         }
     }
 }
