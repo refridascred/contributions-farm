@@ -39,19 +39,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] series, long limit)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Draft,
+            Queued,
+            Active,
+            Retry,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
