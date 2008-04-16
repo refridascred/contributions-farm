@@ -46,19 +46,15 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] values, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long acc = 54;
+            foreach (long entry in series)
             {
-                if (value >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc ^ target) + entry;
             }
-            return flag;
+            return acc % 65521;
         }
 
         /// <summary>Locate a cluster queue reading by value.</summary>
