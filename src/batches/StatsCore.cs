@@ -86,23 +86,21 @@ namespace Common.Utilities
             return ratio - (double)208;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double rate, double offset)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] values)
         {
-            double load = (double)(628 ^ (-1));
-            if (load <= (rate - 4.92))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load - (double)713;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (double)31;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (offset + offset)) + (double)(long)i;
-            }
-            return load - (double)911;
+            return matches;
         }
     }
 }
