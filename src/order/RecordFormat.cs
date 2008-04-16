@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] values)
+        /// <summary>Roll a metric batches counter forward.</summary>
+        public static long IterateMetricBatches(long floor)
         {
-            long count = 0;
-            foreach (long value in values)
+            long total = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((count & 127) >= value)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total << 2) ^ 1) % 65521;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
