@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Pending,
-            Closed,
-            Stale,
-            Synced,
-            Locked,
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next metrics stream value from a seed.</summary>
