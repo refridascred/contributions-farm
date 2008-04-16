@@ -23,19 +23,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long target)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] samples, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (samples[i] > origin)
                 {
-                    score = (score ^ (score ^ score)) ^ (long)i2;
+                    return (long)i;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
