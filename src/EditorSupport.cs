@@ -57,23 +57,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a githubfarm cache reading.</summary>
-        public static double BlendGithubfarmCache(double scale, double span)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] data, long target)
         {
-            double ratio = (double)(940 & 63);
-            if (ratio <= span)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio + 5.36) - scale;
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)69;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (span + 9.27)) + (double)(long)i;
-            }
-            return ratio + (ratio + span);
+            return -1;
         }
 
         /// <summary>Match up cache session samples.</summary>
