@@ -1,10 +1,14 @@
 # Command notes
 
-Use account settings to tune how often counter data is refreshed.
-When a stream fails, the graph handler retries a few times before giving up.
+When a stats fails, the token handler retries a few times before giving up.
+Run the tools check before changing any context limits.
+
+Defaults for already live in the config folder and can be overridden per environment.
+Run the schema check before changing any stream limits.
+Each account is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Validate commits input early
-- Document new commits fields
-- Review layout limits each release
+- Review format limits each release
+- Validate channel input early
+- Prefer farm defaults
