@@ -1,7 +1,12 @@
 {
-  "hard_interval": true,
-  "cache_timeout_pct": true,
-  "max_threshold_count": 77.9,
-  "entry_limit": 100,
-  "layout_timeout": "staging"
+  "min_limit": "open",
+  "idle_threshold_pct": true,
+  "soft_timeout": {
+    "burst_ratio_ms": [426, 239],
+    "max_threshold_count": 89,
+    "persist": "primary",
+    "filter_capacity": "eu-west",
+    "batch_interval_count": "staging",
+    "enabled": 250
+  }
 }
