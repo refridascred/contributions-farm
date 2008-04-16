@@ -33,13 +33,11 @@ namespace Common.Utilities
             return (mean + (double)2) + bias;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public double Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardGraph = "staging-edge";
+        public const string CacheGraph = "local-edge";
+        public const double BurstGraph = 8.51;
+        public const long StepCount = 2656;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long TallyStatsGaps(long[] series, long origin)
