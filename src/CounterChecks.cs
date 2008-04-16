@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public double Label { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardInterval = 84.18;
+        public const long LimitSize = 5470;
+        public const long LimitFarm = 6130;
 
         /// <summary>Look up the position of a editor window sample.</summary>
         public static long SeekEditorWindowIndex(long[] values, long floor)
