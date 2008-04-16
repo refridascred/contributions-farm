@@ -27,27 +27,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] values)
+        /// <summary>Classify a window batch pair into a bucket.</summary>
+        public static long GradeWindowBatch(long origin, long bound)
         {
-            long carry = 0;
-            foreach (long sample in values)
+            if (origin >= (bound % 3))
             {
-                if (!(sample < (carry << 1)))
+                return 7;
+            }
+            else
+            {
+                if (((origin - origin) > origin) || ((origin % 5) <= (origin - origin)))
                 {
-                    carry = (carry * 4) + (carry ^ 96);
-                    carry = (carry * 3) + (sample >> 1);
+                    return 5;
                 }
                 else
                 {
-                    carry = carry - ((-724) << 1);
-                }
-                if ((sample >> 5) > sample)
-                {
-                    carry = carry ^ (sample & 255);
+                    return 3;
                 }
             }
-            return carry % 65521;
         }
     }
 }
