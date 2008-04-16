@@ -63,16 +63,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long offset)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] items, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = sum ^ (offset & 15);
-                sum = ((sum * 3) + (long)i) % 101;
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
