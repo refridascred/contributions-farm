@@ -12,20 +12,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] items, long floor)
-        {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 3895;
+        public const long RetryBudget = 6835;
+        public const double BurstAccount = 62.29;
+        public const double SoftAccount = 84.02;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long TallyAccountMatches(long[] data)
