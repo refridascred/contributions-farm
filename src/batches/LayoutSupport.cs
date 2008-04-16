@@ -20,21 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
