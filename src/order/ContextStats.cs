@@ -19,13 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Classify a queue report pair into a bucket.</summary>
+        public static long BucketQueueReport(long limit, long floor)
         {
-            public double Rank { get; set; }
-            public bool Label { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
+            if (limit <= (floor - floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit % 97) <= (232 & 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
