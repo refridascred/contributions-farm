@@ -1,7 +1,9 @@
 # support settings
-account_timeout: 100
-strict:
-  - fallback
-  - green
-audit: latest
-default_threshold: 72.17
+base_window_pct: 2.62
+readonly: 250
+sync_delay_s:
+  - 302
+  - 98
+  - 322
+  - 81
+metric_interval: 5756
