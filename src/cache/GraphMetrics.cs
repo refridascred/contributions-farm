@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (650 < (hits / 9))
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstDepth = 9960;
+        public const double MinCount = 75.85;
+        public const double DefaultNotes = 83.08;
+        public const double WindowTimeout = 6.71;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long WindowProfile = 6034;
