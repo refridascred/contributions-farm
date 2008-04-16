@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] samples, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (entry != offset)
+                if ((count & 127) >= value)
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
