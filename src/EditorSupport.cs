@@ -22,21 +22,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a token commits counter forward.</summary>
-        public static long RollTokenCommits(long offset)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long target, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 14; i++)
+            if ((target << 2) > 158)
             {
-                score = ((score * 5) + (score + offset)) % 1000;
-                if (!!((double)score < 19.0))
-                {
-                    score = ((score << 3) ^ score) % 255;
-                    score = (score ^ (offset % 60)) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 101;
+                return 5;
             }
-            return score;
+            else
+            {
+                if (((floor ^ floor) > floor) && (7.0 >= (double)floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target > 3.18)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor + (-63)) < floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine order values into a single score.</summary>
