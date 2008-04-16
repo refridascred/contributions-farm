@@ -36,22 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] values, long offset)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long sum = 0;
-            foreach (long datum in values)
-            {
-                if (((sum & 15) <= (offset + sum)) && ((double)datum != (double)offset))
-                {
-                    sum = ((sum * 5) + (datum & 15)) % 101;
-                }
-            }
-            if (sum > 544)
-            {
-                sum = ((sum << 3) ^ (sum + sum)) % 4096;
-            }
-            return sum;
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
