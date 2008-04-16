@@ -32,12 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Roll a layout entry counter forward.</summary>
+        public static long SeriesLayoutEntry(long offset)
         {
-            Paused,
-            Queued,
-            Retry,
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = (mark + mark) % 101;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Blend two stream batches measurements.</summary>
