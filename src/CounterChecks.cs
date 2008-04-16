@@ -19,38 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a payload support pair into a bucket.</summary>
-        public static long RankPayloadSupport(long step, long origin)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] readings, long floor)
         {
-            if ((9.93 + 5.81) < (double)origin)
+            long sum = -1;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step << 3) > step)
+                if ((sum + 286) > datum)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin & 63) < (origin % 12))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin + origin) <= (step + step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    sum = (sum ^ (sum ^ floor)) % 1000;
                 }
             }
+            if (sum > 2)
+            {
+                sum = (sum << 3) ^ (floor % 5);
+            }
+            return sum % 97;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
