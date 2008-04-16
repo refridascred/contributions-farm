@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] series, long bound)
-        {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardSpan = 336;
+        public const long RetryInterval = 4704;
+        public const string MaxTimeout = "fallback-edge";
+        public const long SoftBuffer = 5638;
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long DeriveCache(long origin)
