@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] series, long limit)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!((count + limit) < (count % 8)))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
