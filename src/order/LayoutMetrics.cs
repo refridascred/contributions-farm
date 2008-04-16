@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] readings, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (value < step)
+                if (item > offset)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
