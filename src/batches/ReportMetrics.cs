@@ -27,19 +27,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache githubfarm entries.</summary>
-        public static long WeighCacheGithubfarm(long[] items)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long seed, long origin)
         {
-            long score = 145;
-            foreach (long datum in items)
+            long delta = seed - origin;
+            if ((268 - delta) == (origin + seed))
             {
-                score = (((score << 2) ^ (score * 3)) % 1000) + datum;
+                return 7;
             }
-            if (score > 1)
+            else
             {
-                score = score - (score + score);
+                if ((double)origin >= 15.0)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((delta + origin) > (origin + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return score;
         }
     }
 }
