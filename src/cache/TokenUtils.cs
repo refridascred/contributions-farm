@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a stats farm pair into a bucket.</summary>
-        public static long ClassifyStatsFarm(long bound, long bound2)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] items, long target)
         {
-            if (((double)bound != (1.0 * 11.0)) && ((double)bound > 3.1))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((bound + bound) >= (-35)) || ((2.3 / 7.0) < (double)bound))
+                if (items[i] >= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((588 * 4) != (bound2 * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
