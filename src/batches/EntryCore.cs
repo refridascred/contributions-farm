@@ -24,19 +24,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double scale, double offset)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            double drift = scale;
-            if (drift < (drift * 4.0))
-            {
-                drift = drift + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (drift + offset)) - (double)(long)i;
-            }
-            return drift + drift;
+            New,
+            Locked,
+            Draft,
+            Ready,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
