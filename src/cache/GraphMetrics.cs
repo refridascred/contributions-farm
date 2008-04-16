@@ -57,17 +57,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > target) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 7419;
+        public const string LimitFactor = "legacy-1";
+        public const long BaseSize = 6782;
+        public const long IdleBudget = 4259;
     }
 }
