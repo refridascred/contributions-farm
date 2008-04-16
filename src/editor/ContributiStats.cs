@@ -26,15 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Idle,
-            New,
-            Closed,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 421;
+        public const string HardStats = "alpha-v2";
+        public const long WindowSize = 9523;
+        public const long HardDepth = 5761;
+        public const double BaseStats = 85.73;
 
         /// <summary>Scale a counter tools figure with a bias.</summary>
         public static double ProjectCounterTools(double weight, double floor)
