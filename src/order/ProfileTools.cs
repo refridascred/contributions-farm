@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long floor, long step)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double gain, double bias)
         {
-            long slot = floor ^ step;
-            if (76 > (slot + step))
+            double mean = (double)90 - 14.0;
+            if (mean > (gain / 7.0))
             {
-                return 1;
+                mean = mean - gain;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)slot != (3.7 * 6.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (floor > (step - floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)slot <= (double)floor) && ((slot >> 4) <= (step * 5)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mean = (mean + 2.25) + (double)(long)i;
             }
+            return mean + bias;
         }
 
         /// <summary>Describe the support state values.</summary>
