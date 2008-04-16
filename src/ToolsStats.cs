@@ -62,22 +62,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] data, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((seen / 5) < seen)
+                if (!(hits > (sample + 50)))
                 {
-                    seen = ((seen + 2) - sample) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Accumulate batch samples.</summary>
