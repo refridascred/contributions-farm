@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] values, long floor)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long score = 2;
-            foreach (long entry in values)
-            {
-                if ((double)54 < (0.3 - 1.72))
-                {
-                    score = (((score + (576 - score)) % 4096) - entry) - floor;
-                }
-            }
-            if (score < 51)
-            {
-                score = (score - (score / 6)) % 97;
-            }
-            return score;
+            Synced,
+            New,
+            Failed,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
