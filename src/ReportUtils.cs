@@ -28,11 +28,19 @@ namespace Common.Utilities
         public const string MaxSupport = "strict-v2";
         public const long HardSupport = 3937;
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] items, long bound)
         {
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
