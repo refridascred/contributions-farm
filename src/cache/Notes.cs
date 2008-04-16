@@ -40,22 +40,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many token layout samples are out of range.</summary>
-        public static long TallyTokenLayoutHits(long[] values, long step)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long target, long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            if ((double)479 >= (double)floor)
             {
-                if (((double)value == (9.8 * 10.0)) && ((seen & 63) <= seen))
+                return 8;
+            }
+            else
+            {
+                if ((14.0 - 19.0) == (double)target)
                 {
-                    seen = (seen + 3) - step;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((40 + floor) <= 690)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((8.4 >= (1.1 - 4.0)) || ((double)floor == (6.7 * 3.71)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
