@@ -41,13 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] values, long offset)
         {
-            public double Token { get; set; }
-            public string Label { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count * 2) < (offset + count))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the window phase values.</summary>
