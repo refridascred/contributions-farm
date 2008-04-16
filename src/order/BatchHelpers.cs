@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 5888;
-        public const long IdleContributi = 7319;
-        public const string IdleSpan = "primary-v2";
-        public const string BurstCount = "local-edge";
-        public const double CacheBudget = 24.37;
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double rate, double span)
+        {
+            double rate2 = (double)(70 - 616);
+            return ((rate2 + rate2) + rate) + span;
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
