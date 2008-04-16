@@ -36,15 +36,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double ratio, double span)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] readings, long bound)
         {
-            double drift = (double)54 + ratio;
-            if (drift < (double)9)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                drift = drift - drift;
+                if (sample > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift + (span / 6.0);
+            return ok;
         }
     }
 }
