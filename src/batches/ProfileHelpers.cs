@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long step, long seed)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] items)
         {
-            long slot = step - seed;
-            if ((slot ^ seed) <= (seed & 127))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((slot <= (step - seed)) && (1 <= (slot / 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((slot - step) >= (0 - seed))
+                    if ((items[i] ^ items[j]) == 6)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((slot % 100) > slot)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine context window values into a single score.</summary>
