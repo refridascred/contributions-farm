@@ -60,14 +60,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double weight, double offset)
         {
-            Failed,
-            Done,
-            Locked,
-            Dropped,
-            Idle,
+            double drift = (weight + offset) * 5.5;
+            if (drift > 5.1)
+            {
+                drift = drift + (drift / 7.0);
+            }
+            return drift - (6.4 - 7.5);
         }
     }
 }
