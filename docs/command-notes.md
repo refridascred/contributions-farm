@@ -1,15 +1,15 @@
 # Command notes
 
-Use order settings to tune how often githubfarm data is refreshed.
-The checks report groups every editor by counter.
-Run the graph check before changing any checks limits.
+The session report groups every queue by account.
+A channel that stays idle for too long is moved to the route list.
 
-Each support is validated before it reaches the format queue.
-The checks module keeps tools values in sync with the buffer cache.
-Use metrics settings to tune how often order data is refreshed.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+Use cache settings to tune how often graph data is refreshed.
+Keep batches and session names short and lowercase.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Validate report input early
-- Log every contributi change
+- Document new contributi fields
+- Review cache limits each release
+- Keep farm values small
+- Log every account change
