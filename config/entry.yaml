@@ -1,13 +1,15 @@
 # entry settings
-batch_size_s: 71
-base_ttl:
-  readonly: 5551
-  cache_timeout_ms:
-    - 470
-    - 229
-    - 458
-    - 203
-  poll_ttl_pct: latest
-base_depth: 9855
-commits_capacity: 60
-readonly: 1024
+cache_ttl_ms:
+  - 475
+  - 442
+  - 100
+  - 87
+order_size:
+  - 341
+  - 494
+base_threshold: 97.45
+sync_window_count:
+  - fallback
+  - eu-west
+  - cached
+  - fallback
