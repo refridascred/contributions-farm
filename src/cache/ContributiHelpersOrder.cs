@@ -14,18 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine order window values into a single score.</summary>
-        public static long FoldOrderWindow(long[] data, long limit)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long anchor = 449;
-            foreach (long reading in data)
-            {
-                if (!((double)reading != (2.68 + 4.13)))
-                {
-                    anchor = (((anchor * 3) + (anchor % 8)) % 97) + limit;
-                }
-            }
-            return anchor;
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Fold a list of stream readings.</summary>
