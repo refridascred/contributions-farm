@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the commits queue entries that pass the check.</summary>
-        public static long MeasureCommitsQueueGaps(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (bound < (bound << 3))
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 861;
+        public const double StepTimeout = 29.15;
+        public const long CacheWindow = 7841;
+        public const double DefaultWindow = 44.71;
+        public const string WindowInterval = "standard";
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long AuditOrderOutliers(long[] series)
