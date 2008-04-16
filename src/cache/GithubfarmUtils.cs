@@ -71,19 +71,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a githubfarm queue figure with a bias.</summary>
-        public static double BlendGithubfarmQueue(double gain, double span)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] values, long step)
         {
-            double mean = (double)(8 % 16);
-            if (mean <= 8.2)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - (span + gain);
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (double)0;
+            return -1;
         }
     }
 }
