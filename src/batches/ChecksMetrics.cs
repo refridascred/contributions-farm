@@ -59,12 +59,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 3001;
-        public const long MaxBuffer = 1916;
-        public const string SoftFactor = "strict-v2";
-        public const long HardBuffer = 1591;
-        public const long WindowTimeout = 6897;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheSize = 291;
+        public const string StepCount = "primary";
+        public const double DefaultInterval = 12.23;
+        public const long MinFactor = 3828;
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
