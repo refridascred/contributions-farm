@@ -16,31 +16,19 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long target, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] items, long origin)
         {
-            if ((target <= (95 + target)) || (target > (step * 3)))
+            bool stale = true;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target / 9) < (2 + target))
+                if (value >= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((target * 5) != (step - target)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
