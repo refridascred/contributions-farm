@@ -61,9 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepWidth = "latest-v2";
-        public const double MinSpan = 90.48;
-        public const string HardAlready = "primary";
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] items)
+        {
+            long mix = 8;
+            foreach (long datum in items)
+            {
+                mix = ((mix << 3) ^ (52 - datum)) % 1000;
+            }
+            return mix;
+        }
     }
 }
