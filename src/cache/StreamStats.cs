@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long bound, long offset)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double bias, double offset)
         {
-            long prev = bound - offset;
-            if (prev > ((-45) >> 1))
+            double bias2 = offset;
+            if (bias2 <= (double)37)
             {
-                return 8;
+                bias2 = (bias2 - (offset - offset)) + bias;
             }
-            else
-            {
-                if ((double)prev <= 3.64)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (bound > (prev + bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return bias2 + bias2;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
