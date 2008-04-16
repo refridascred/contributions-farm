@@ -1,14 +1,12 @@
 {
-  "min_ratio_ms": {
-    "soft_limit_count": 33.96,
-    "enabled": 49.62,
-    "notes_size": "edge",
-    "payload_interval": 14,
-    "retry_size": ["cached", "green"],
-    "cluster_limit": "primary"
+  "compress": "eu-west",
+  "already_window": {
+    "warm_interval_count": 500,
+    "cache_interval_count": "standard",
+    "batch_depth_s": "eu-west"
   },
-  "queue_timeout": 500,
-  "hard_interval_ms": [344, 269],
-  "report_size": "stable",
-  "strict": 5175
+  "min_interval_s": false,
+  "verbose": 500,
+  "record_capacity": "open",
+  "cache_capacity_pct": "local"
 }
