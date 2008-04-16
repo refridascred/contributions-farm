@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchRatio = 1249;
-        public const string IdleStream = "open";
-        public const double BurstStream = 55.75;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                result = (result - ((long)i + result)) % 97;
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long RollChannel(long target)
