@@ -14,26 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] values, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] samples)
         {
-            long carry = 95;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((double)floor > (4.0 - 15.0))
+                if ((cell - cell) != (cell + (-4)))
                 {
-                    carry = ((carry * 2) + item) % 1000;
-                }
-                else
-                {
-                    carry = (carry + (carry + carry)) % 4096;
+                    count = count + 2;
                 }
             }
-            if (carry < 4)
-            {
-                carry = ((carry << 3) ^ carry) % 65521;
-            }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
