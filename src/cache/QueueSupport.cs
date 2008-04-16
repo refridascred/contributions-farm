@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepSupport = "strict";
-        public const long StepSize = 445;
-        public const string HardSupport = "alpha-edge";
-        public const double LimitSupport = 2.34;
-        public const double BaseSupport = 15.29;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheBatches = "cached-v2";
+        public const string StepWidth = "stable";
+        public const double LimitBatches = 7.64;
 
         /// <summary>Grade a session profile value against two limits.</summary>
         public static long GradeSessionProfile(long seed, long offset)
