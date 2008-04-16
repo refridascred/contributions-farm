@@ -20,12 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double DefaultCommand = 43.42;
-        public const long CacheCommand = 2230;
-        public const long BurstCommand = 3591;
-        public const long MaxCommand = 9676;
-        public const double BurstInterval = 30.26;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public bool Count { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
