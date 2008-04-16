@@ -51,25 +51,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine route batch values into a single score.</summary>
-        public static long TallyRouteBatch(long[] series, long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long bound, long bound2)
         {
-            long mix = 439;
-            foreach (long cell in series)
+            long edge = bound + bound2;
+            if (edge > (bound2 / 3))
             {
-                if (offset > (cell + cell))
+                return 2;
+            }
+            else
+            {
+                if ((bound2 * 2) >= bound)
                 {
-                    mix = ((mix * 5) + (long)series.Length) % 97;
-                    mix = (mix - (107 - cell)) % 97;
-                    continue;
+                    return 5;
                 }
                 else
                 {
-                    mix = ((mix * 3) + (cell - mix)) % 255;
+                    if (((double)bound2 > (double)883) && ((double)bound2 > 14.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
-                mix = (mix ^ (mix & 15)) % 4096;
             }
-            return mix % 97;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
