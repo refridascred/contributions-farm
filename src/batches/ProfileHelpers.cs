@@ -60,17 +60,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] data, long bound)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double ratio, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = 9.0 + 3.0;
+            if (mean < (ratio + 9.7))
             {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mean = mean + (2.0 + 5.0);
             }
-            return -1;
+            else
+            {
+                mean = mean + (double)72;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - offset;
         }
 
         /// <summary>Combine token values into a single score.</summary>
