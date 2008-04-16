@@ -16,13 +16,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long bound)
         {
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public bool Level { get; set; }
-            public double Total { get; set; }
+            long total = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                total = ((total * 5) + (total * 5)) % 97;
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
