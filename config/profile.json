@@ -1,8 +1,9 @@
 {
-  "batch_limit_pct": false,
-  "entry_delay": 42,
-  "poll_ttl_count": "primary",
-  "route_limit": false,
-  "min_retries_pct": ["eu-west", "green"],
-  "flush_ratio_ms": 250
+  "audit": {
+    "min_interval_count": "latest",
+    "burst_limit_count": "edge",
+    "verbose": "staging"
+  },
+  "min_delay": 1024,
+  "base_depth_s": [9, 11, 264, 227]
 }
