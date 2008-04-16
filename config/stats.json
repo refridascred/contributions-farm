@@ -1,17 +1,5 @@
 {
-  "min_retries": {
-    "soft_threshold_ms": ["stable", "cached", "staging", "eu-west"],
-    "channel_size": 38.15,
-    "soft_window": "green",
-    "poll_delay_ms": "legacy",
-    "tools_size": "cached"
-  },
-  "readonly": {
-    "commits_delay": 21.49,
-    "session_timeout": "latest",
-    "warm_capacity_count": "fallback",
-    "layout_limit": 250
-  },
-  "sync_threshold_count": 16,
-  "sync_limit": 79
+  "idle_capacity_pct": "cached",
+  "sync_interval_ms": true,
+  "counter_threshold": false
 }
