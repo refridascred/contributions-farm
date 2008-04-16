@@ -1,10 +1,6 @@
-id,rank,level,score,region
-1,fallback,edge,363,208
-2,93.07,primary,46.34,green
-3,57.68,995,legacy,105
-4,814,756,cached,295
-5,79.2,staging,44.35,latest
-6,843,405,eu-west,775
-7,19,81.67,476,10.97
-8,edge,standard,83.81,legacy
-9,eu-west,661,eu-west,93.61
+id,ratio,token,state,active
+1,fallback,476,29.33,edge
+2,6.75,833,63.25,114
+3,427,475,45,edge
+4,870,35.58,green,856
+5,792,21.98,edge,111
