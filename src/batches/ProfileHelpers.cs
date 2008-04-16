@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a layout commits sample.</summary>
-        public static long FindLayoutCommitsIndex(long[] levels, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = -318;
+            foreach (long sample in data)
             {
-                if ((levels[i] == target) && ((levels[i] % 5) == 0))
+                if (!!((sample / 6) <= (offset % 60)))
                 {
-                    return (long)i;
+                    score = score - (sample - score);
+                }
+                score = ((score << 2) ^ (sample % 64)) % 255;
+                if ((double)sample > 14.0)
+                {
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
