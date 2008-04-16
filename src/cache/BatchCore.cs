@@ -40,9 +40,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxSchema = 1.74;
-        public const double MaxScore = 3.96;
-        public const long IdleInterval = 6628;
+        /// <summary>Locate a stream queue reading by value.</summary>
+        public static long SeekStreamQueueIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
