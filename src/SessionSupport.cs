@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 9056;
-        public const long IdleInterval = 927;
-        public const long LimitGraph = 4415;
-        public const string HardGraph = "staging-edge";
-        public const double LimitScore = 25.74;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BaseFilter = 7836;
