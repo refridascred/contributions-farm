@@ -40,24 +40,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of entry format readings.</summary>
-        public static long DigestEntryFormat(long[] readings)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] values, long offset)
         {
-            long carry = 52;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((carry - item) != (carry + carry))
+                if ((values[i] < offset) && ((values[i] % 3) == 0))
                 {
-                    carry = carry - (carry << 3);
-                    break;
+                    return (long)i;
                 }
-                carry = ((carry << 3) ^ (item - item)) % 4096;
             }
-            if (carry > (-52))
-            {
-                carry = (carry ^ ((-2) * 2)) % 1000;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Project the next cache value.</summary>
