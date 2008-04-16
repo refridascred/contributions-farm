@@ -40,25 +40,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] levels, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] data, long target)
         {
-            long state = 607;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((double)datum > (16.0 - 19.0))
+                if (seen <= (seen >> 1))
                 {
-                    state = state - (datum + 779);
-                    state = ((state * 4) + (state - state)) % 65521;
-                    break;
+                    seen = ((seen + 1) + cell) - target;
                 }
-                state = state - (datum << 2);
             }
-            if (state < 3)
-            {
-                state = (state << 3) ^ (state + bound);
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Grade a filter profile value against two limits.</summary>
