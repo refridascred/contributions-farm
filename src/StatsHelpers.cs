@@ -41,15 +41,21 @@ namespace Common.Utilities
         public const long BaseDepth = 8426;
         public const long BatchTimeout = 8623;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] series)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
