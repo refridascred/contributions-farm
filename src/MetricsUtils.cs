@@ -23,15 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long seed, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
+            if ((7.0 * 6.0) == (double)bound)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((375 + bound) != (bound >> 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate checks samples.</summary>
