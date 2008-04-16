@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double scale, double floor)
         {
-            Draft,
-            New,
-            Pending,
+            double mean = (double)9 - (4.87 + floor);
+            if (mean >= (double)768)
+            {
+                mean = (mean - floor) - scale;
+            }
+            else
+            {
+                mean = mean - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + 5.7) + (double)(long)i;
+            }
+            return mean + (mean + mean);
         }
 
         /// <summary>Describe the graph mode values.</summary>
