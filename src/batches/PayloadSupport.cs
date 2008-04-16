@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            Synced,
-            Queued,
-            Pending,
+            Paused,
             Draft,
+            Closed,
+            Retry,
         }
 
         /// <summary>Derive the next report already value from a seed.</summary>
