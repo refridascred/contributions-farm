@@ -1,6 +1,11 @@
-id,token,rank
-1,eu-west,808
-2,24.69,714
-3,43.34,471
-4,fallback,fallback
-5,36.7,25.45
+id,weight,token,state
+1,587,fallback,127
+2,703,staging,edge
+3,primary,98.41,legacy
+4,67.88,75.24,842
+5,latest,67.1,4
+6,eu-west,642,26.99
+7,97.84,36.79,19.48
+8,131,51.31,22.03
+9,721,66.92,2.11
+10,legacy,418,staging
