@@ -41,12 +41,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Validate order contributi readings against a bound.</summary>
+        public static bool GuardOrderContributiLimits(long[] samples, long offset)
         {
-            Retry,
-            Synced,
-            Ready,
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a stream info.</summary>
