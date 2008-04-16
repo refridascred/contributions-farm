@@ -63,39 +63,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long limit, long origin)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long step = limit ^ origin;
-            if (!((limit - origin) < step))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((limit ^ limit) <= (208 << 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit & 15) != (limit >> 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (19.0 + 7.86))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
