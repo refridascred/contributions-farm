@@ -11,13 +11,24 @@ namespace Common.Utilities
         public const long MaxCache = 6521;
         public const double BurstCount = 72.36;
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long limit, long floor)
         {
-            Draft,
-            Paused,
-            Queued,
-            Stale,
+            if (!((floor + limit) <= (floor ^ limit)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (limit > (floor / 8))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
