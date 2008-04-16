@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long target, long offset)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            if ((double)target == (3.3 / 2.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset / 9) <= 6)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target / 9) < offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (offset < (offset + target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
