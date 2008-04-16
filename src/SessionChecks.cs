@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long step, long origin)
+        /// <summary>Fold a list of stream route readings.</summary>
+        public static long ScoreStreamRoute(long[] readings, long target)
         {
-            if ((step ^ 70) != (step - origin))
+            long sum = 8;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin ^ origin) == (step * 5))
+                if ((cell < (sum % 97)) || ((sum - target) == (cell - target)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (origin <= (origin + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin ^ 3) == (origin & 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    sum = sum + (6 + cell);
                 }
             }
+            if (sum < (-61))
+            {
+                sum = ((sum << 3) ^ (sum + sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Combine entry githubfarm values into a single score.</summary>
