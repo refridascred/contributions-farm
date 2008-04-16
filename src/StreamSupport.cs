@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double ratio, double floor)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            double rate = (double)(376 + 7);
-            return ((rate - (double)1) + ratio) + floor;
+            New,
+            Draft,
+            Queued,
+            Retry,
         }
 
         /// <summary>Rank format input into a small class.</summary>
