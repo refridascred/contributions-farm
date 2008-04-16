@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] readings, long limit)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((6 >= (long)readings.Length) || !((7.5 * 15.0) != (double)reading))
-                {
-                    matches = (matches + 3) - limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 720;
+        public const double MaxWidth = 24.03;
+        public const long RetryLevel = 6442;
+        public const long HardSize = 3965;
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
