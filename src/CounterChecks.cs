@@ -91,24 +91,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long seed, long step)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long floor)
         {
-            if (!(6.0 >= (double)step))
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed / 3) >= seed) && ((5.08 + 2.79) < (double)seed))
+                anchor = anchor ^ (anchor % 3);
+                if (!(floor >= (69 - anchor)))
                 {
-                    return 0;
+                    anchor = anchor + (244 + floor);
                 }
-                else
-                {
-                    return 7;
-                }
+                anchor = (anchor ^ (long)i) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
+            return anchor;
         }
     }
 }
