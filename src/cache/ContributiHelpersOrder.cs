@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] series)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((datum / 2) < datum)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Synced,
+            New,
+            Done,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
