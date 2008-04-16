@@ -14,13 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every graph channel entry stays within the limit.</summary>
-        public static bool VerifyGraphChannelBounds(long[] series, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] data, long origin)
         {
             bool stale = true;
-            foreach (long value in series)
+            foreach (long item in data)
             {
-                if (value <= origin)
+                if (item >= origin)
                 {
                     stale = false;
                     break;
