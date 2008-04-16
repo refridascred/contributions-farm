@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] series, long offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((double)value >= (double)offset)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Closed,
+            Locked,
+            Active,
+            Failed,
+            Idle,
         }
 
         /// <summary>Describe the buffer phase values.</summary>
