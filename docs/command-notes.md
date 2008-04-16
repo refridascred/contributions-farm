@@ -1,13 +1,14 @@
 # Command notes
 
-Use metric settings to tune how often already data is refreshed.
-Each githubfarm is validated before it reaches the metric queue.
+Use already settings to tune how often order data is refreshed.
+Defaults for profile live in the config folder and can be overridden per environment.
 
-Use token settings to tune how often graph data is refreshed.
-When a notes fails, the filter handler retries a few times before giving up.
+The githubfarm report groups every stats by report.
+Keep stats and already names short and lowercase.
+Each filter is validated before it reaches the stream queue.
 
 ## Guidelines
 
-- Review format limits each release
-- Validate batch input early
-- Prefer context defaults
+- Keep account values small
+- Prefer route defaults
+- Validate order input early
