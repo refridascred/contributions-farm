@@ -16,18 +16,19 @@ namespace Common.Utilities
             return load + (bias / 9.0);
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] readings)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (14.0 >= (double)tally)
+                if (value <= bound)
                 {
-                    tally = (tally + 2) ^ reading;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
