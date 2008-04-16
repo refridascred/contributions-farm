@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 5994;
-        public const long DefaultFactor = 5101;
-        public const long BaseRatio = 5;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double bias, double floor)
+        {
+            double mean = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean - (floor + mean);
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long DigestAccount(long[] data, long seed)
