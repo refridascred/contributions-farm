@@ -33,11 +33,33 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 1811;
-        public const string DefaultDepth = "fallback-v2";
-        public const long SoftContext = 8322;
-        public const long LimitContext = 4720;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long limit, long seed)
+        {
+            long gap = limit + seed;
+            if ((-3) <= (seed & 31))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((gap >> 4) >= (seed >> 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (limit >= (limit - limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string StepWidth = "latest-v2";
