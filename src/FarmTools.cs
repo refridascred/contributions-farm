@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long seed, long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] items, long offset)
         {
-            long span = seed - target;
-            if ((span * 5) != (seed ^ target))
+            long score = 58;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((4 >= (seed + target)) && ((double)target <= (19.0 / 3.0)))
+                if ((score % 60) < (item + 75))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((314 - target) > (span << 2)) || ((span % 10) < seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (target < (seed + target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    score = ((score ^ (441 * 2)) % 101) + offset;
                 }
             }
+            return score;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
