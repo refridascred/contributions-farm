@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-blue}"
 case "${mode}" in
-    legacy)
+    latest)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=321
+COMMAND_LIMIT=446
 log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
