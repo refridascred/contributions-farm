@@ -53,11 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 7084;
-        public const double CacheMetric = 34.82;
-        public const double HardTimeout = 10.52;
-        public const string HardSpan = "local";
-        public const long IdleDepth = 4515;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (!((seen + seen) < 429) || ((reading - reading) > (seen + seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
