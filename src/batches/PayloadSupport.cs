@@ -33,9 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseReport = 42.6;
-        public const long DefaultLevel = 2130;
-        public const double HardReport = 10.5;
+        /// <summary>Derive the next report already value from a seed.</summary>
+        public static long SeriesReportAlready(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((step ^ mark) <= (step & 15)) && ((double)233 <= (double)(long)i))
+                {
+                    mark = (mark - (step ^ (long)i)) % 101;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
