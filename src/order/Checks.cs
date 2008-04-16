@@ -52,11 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 3399;
-        public const double MaxInterval = 71.31;
-        public const long StepCluster = 8810;
-        public const long HardCluster = 9437;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public bool Total { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long SeriesAccount(long target)
