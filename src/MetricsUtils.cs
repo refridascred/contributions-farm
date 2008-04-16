@@ -26,22 +26,11 @@ namespace Common.Utilities
         public const long MinTimeout = 211;
         public const long HardInterval = 4944;
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxRatio = 6718;
+        public const long IdleCount = 2037;
+        public const string MinDepth = "alpha";
+        public const long HardCount = 3441;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long TallyEntryHits(long[] data, long floor)
