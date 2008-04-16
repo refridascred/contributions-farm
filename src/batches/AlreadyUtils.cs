@@ -56,13 +56,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long target, long limit)
         {
-            Active,
-            Done,
-            Locked,
-            Draft,
+            if (!((limit + limit) >= (limit + 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target - limit) != (limit + target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit - limit) >= (target * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)limit < (double)target) || ((4.0 * 6.0) <= (double)limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
