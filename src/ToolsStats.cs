@@ -84,21 +84,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] data)
+        /// <summary>Locate a command tools reading by value.</summary>
+        public static long SeekCommandToolsIndex(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((readings[i] >= step) && ((readings[i] % 3) != 0))
                 {
-                    if ((data[i] + data[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
