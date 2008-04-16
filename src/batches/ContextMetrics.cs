@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] data)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] data)
         {
-            long result = 40;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((result % 24) < (item + item))
+                if ((8.4 * 6.25) < (double)tally)
                 {
-                    result = result ^ result;
-                }
-                if ((12.0 + 8.0) >= (7.88 - 1.9))
-                {
-                    break;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Describe the schema state values.</summary>
