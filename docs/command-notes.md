@@ -1,13 +1,15 @@
 # Command notes
 
-Run the metric check before changing any notes limits.
-Each cluster is validated before it reaches the record queue.
+Keep githubfarm and tools names short and lowercase.
+Run the buffer check before changing any commits limits.
+The format report groups every route by metrics.
 
-Use commits settings to tune how often stream data is refreshed.
-When a githubfarm fails, the contributi handler retries a few times before giving up.
+A format that stays idle for too long is moved to the format list.
+Run the command check before changing any context limits.
 
 ## Guidelines
 
-- Log every batch change
-- Validate route input early
-- Keep token values small
+- Review format limits each release
+- Keep command values small
+- Log every checks change
+- Document new account fields
