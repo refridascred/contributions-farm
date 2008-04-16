@@ -1,19 +1,7 @@
 {
-  "audit": "latest",
-  "dry_run": "green",
-  "max_size": 4773,
-  "strict": "cached",
-  "base_timeout": "standard",
-  "retry_timeout_count": {
-    "batch_threshold_pct": 18.18,
-    "verbose": {
-      "cluster_limit": 1626,
-      "session_depth": 500,
-      "enabled": "cached",
-      "command_interval": 133,
-      "warm_ttl_pct": true,
-      "burst_ttl_s": false
-    },
-    "githubfarm_capacity": "stable"
-  }
+  "soft_window_ms": 7875,
+  "dry_run": 89,
+  "burst_interval_ms": false,
+  "tools_depth": 5543,
+  "stream_limit": false
 }
