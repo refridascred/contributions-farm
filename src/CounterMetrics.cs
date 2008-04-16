@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 8110;
+        public const long SoftTimeout = 1898;
+        public const long BaseCluster = 3927;
+        public const long MinSpan = 2215;
+        public const long BurstCluster = 9812;
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
