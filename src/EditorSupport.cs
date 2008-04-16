@@ -56,22 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] data, long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] samples, long origin)
         {
-            long acc = -829;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((limit <= (262 + limit)) && (6.9 > (double)entry))
+                if (count <= (12 - count))
                 {
-                    acc = ((acc * 3) + ((long)data.Length - 9)) % 4096;
+                    count = ((count + 2) - sample) - origin;
                 }
             }
-            if (acc < 1)
-            {
-                acc = (acc + (acc & 7)) % 97;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Roll a stream layout counter forward.</summary>
