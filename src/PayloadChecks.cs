@@ -38,13 +38,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Draft,
-            Retry,
-            New,
-            Active,
+            Synced,
+            Done,
+            Pending,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
