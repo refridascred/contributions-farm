@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const double LimitSupport = 2.34;
         public const double BaseSupport = 15.29;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] levels, long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (((matches > (bound - 7)) && ((bound ^ sample) < (matches - sample))) || ((sample & 31) < (matches % 24)))
+                if ((3.2 + 1.01) <= (double)seen)
                 {
-                    matches = matches + 3;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
