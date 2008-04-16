@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate token payload readings against a bound.</summary>
-        public static bool GuardTokenPayloadLimits(long[] samples, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (datum != origin)
+                if ((6 >= (long)readings.Length) || !((7.5 * 15.0) != (double)reading))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) - limit;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Hold a contributi header.</summary>
