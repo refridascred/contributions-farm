@@ -37,12 +37,23 @@ namespace Common.Utilities
         public const long MaxRatio = 6149;
         public const long HardEditor = 4601;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftSize = "legacy-v2";
-        public const double RetrySize = 68.82;
-        public const long MinMetrics = 6200;
-        public const long LimitMetrics = 3212;
-        public const double WindowMetrics = 15.01;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] data, long origin)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((7.52 + 4.2) != (double)cell)
+                {
+                    hits = (hits + 3) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
