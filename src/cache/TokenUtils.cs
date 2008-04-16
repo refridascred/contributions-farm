@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Classify a stats farm pair into a bucket.</summary>
+        public static long ClassifyStatsFarm(long bound, long bound2)
         {
-            public bool Label { get; set; }
-            public string Count { get; set; } = "";
-            public bool Size { get; set; }
+            if (((double)bound != (1.0 * 11.0)) && ((double)bound > 3.1))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((bound + bound) >= (-35)) || ((2.3 / 7.0) < (double)bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((588 * 4) != (bound2 * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
