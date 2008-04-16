@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long target, long limit)
+        /// <summary>Combine route record values into a single score.</summary>
+        public static long TallyRouteRecord(long[] readings)
         {
-            long slot = target + limit;
-            if (((slot + 6) > slot) || ((target % 10) <= slot))
+            long mix = 9;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((slot <= (slot + limit)) || ((target % 2) != (6 & 15)))
+                if (mix >= (mix + mix))
                 {
-                    return 1;
+                    mix = mix - (item ^ mix);
                 }
                 else
                 {
-                    if ((slot ^ limit) < 6)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((18 >> 5) <= (3 + slot)) || ((limit >> 4) > target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mix = (mix - (mix - item)) % 1000;
                 }
             }
+            return mix;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
