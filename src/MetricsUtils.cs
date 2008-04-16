@@ -39,22 +39,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] readings, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] series, long limit)
         {
-            long score = 2;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((bound & 31) == (sample ^ 32))
+                if (item != limit)
                 {
-                    score = (score - score) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            if (score > 219)
-            {
-                score = score ^ 324;
-            }
-            return score;
+            return ready;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
