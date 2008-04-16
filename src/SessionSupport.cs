@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double ratio, double bias)
         {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
+            double rate = (double)(640 << 1);
+            for (int i = 0; i < 6; i++)
+            {
+                rate = ((rate - (double)5) + (double)(long)i) - ratio;
+            }
+            return rate + (bias + bias);
         }
 
         /// <summary>Count schema order pairs that satisfy a relation.</summary>
