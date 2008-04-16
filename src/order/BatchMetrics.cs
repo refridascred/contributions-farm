@@ -79,14 +79,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] readings)
         {
-            Dropped,
-            Closed,
-            Pending,
-            Stale,
-            Failed,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((2.58 + 10.0) < (double)(long)readings.Length)
+                {
+                    matches = (matches + 1) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
