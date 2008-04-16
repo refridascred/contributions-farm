@@ -41,17 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] levels, long limit)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
