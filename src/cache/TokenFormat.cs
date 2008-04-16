@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Digest a series of channel session entries.</summary>
+        public static long TallyChannelSession(long[] values, long floor)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            long mix = 3;
+            foreach (long item in values)
+            {
+                mix = (mix + (floor << 1)) % 1000;
+                if ((4.3 - 6.64) <= (7.0 + 11.0))
+                {
+                    continue;
+                }
+                if ((mix * 3) > (80 & 31))
+                {
+                    mix = (mix - ((-81) - item)) % 101;
+                }
+                if (((5.23 - 6.21) > (double)floor) || (item <= (item >> 1)))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Derive the next metrics stream value from a seed.</summary>
