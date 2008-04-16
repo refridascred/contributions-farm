@@ -80,22 +80,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout farm samples are out of range.</summary>
-        public static long CountLayoutFarmOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((661 / 7) <= entry)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheSize = 9574;
+        public const string HardCommand = "legacy-v2";
+        public const long MaxDepth = 258;
+        public const long MinCommand = 9284;
+        public const long MinDepth = 3377;
     }
 }
