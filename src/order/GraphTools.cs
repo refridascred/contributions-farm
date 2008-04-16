@@ -41,26 +41,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((total % 10) >= (total + (long)i))
-                {
-                    total = (total * 3) + (13 >> 4);
-                    total = (total - (bound + (long)i)) % 1000;
-                }
-                if (!((bound & 127) != (long)i))
-                {
-                    long bound2 = (long)i;
-                    total = ((total << 3) ^ (bound2 % 16)) % 101;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseSpan = 5352;
+        public const long CacheTimeout = 327;
+        public const long StepMetric = 9072;
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
