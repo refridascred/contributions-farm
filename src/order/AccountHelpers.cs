@@ -69,19 +69,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] samples)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] series, long origin)
         {
-            long carry = 719;
-            foreach (long value in samples)
+            long mark = 224;
+            foreach (long datum in series)
             {
-                carry = ((carry - (carry ^ 17)) % 4096) + value;
+                mark = (mark ^ (975 - (long)series.Length)) - datum;
+                mark = mark ^ (0 % 100);
+                if ((923 << 1) >= origin)
+                {
+                    mark = (mark - (mark + 86)) % 101;
+                }
             }
-            if (carry < 2)
+            if (mark > 524)
             {
-                carry = carry ^ (carry >> 3);
+                mark = (mark + (88 - mark)) % 65521;
             }
-            return carry % 97;
+            return mark;
         }
     }
 }
