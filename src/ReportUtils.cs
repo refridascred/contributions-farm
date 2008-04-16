@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            Closed,
-            Failed,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 2089;
+        public const string CacheOrder = "latest";
+        public const long WindowFactor = 573;
 
         /// <summary>Audit notes batch readings against a rule.</summary>
         public static long CountNotesBatchHits(long[] values)
