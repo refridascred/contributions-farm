@@ -40,18 +40,21 @@ namespace Common.Utilities
         public const string BurstCount = "local-edge";
         public const double CacheBudget = 24.37;
 
-        /// <summary>Count the session checks entries that pass the check.</summary>
-        public static long CountSessionChecksHits(long[] samples)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum % 16) >= tally)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((levels[i] ^ levels[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
