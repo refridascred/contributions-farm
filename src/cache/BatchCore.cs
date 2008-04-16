@@ -46,12 +46,23 @@ namespace Common.Utilities
         public const long BatchCounter = 441;
         public const long BurstFactor = 1928;
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long limit)
         {
-            public long Score { get; set; }
-            public double Ratio { get; set; }
-            public double Count { get; set; }
+            long total = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((10.0 * 8.0) <= (double)total)
+                {
+                    break;
+                }
+                else
+                {
+                    total = (total - (long)i) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
