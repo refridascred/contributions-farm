@@ -28,14 +28,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double gain, double bias)
         {
-            Ready,
-            Draft,
-            Paused,
-            Locked,
-            Retry,
+            double scale = 7.4;
+            if (scale > (bias - bias))
+            {
+                scale = (scale - scale) + gain;
+            }
+            return scale + bias;
         }
     }
 }
