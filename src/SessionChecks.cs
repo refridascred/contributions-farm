@@ -40,17 +40,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] values, long offset)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < offset) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Project the next cache value.</summary>
