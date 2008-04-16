@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate cluster buffer samples.</summary>
-        public static long CombineClusterBuffer(long[] levels, long step)
-        {
-            long mix = 275;
-            foreach (long reading in levels)
-            {
-                mix = (mix + step) % 97;
-                if (((mix % 60) != (reading + 51)) || ((-90) > mix))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowWidth = "latest-v2";
+        public const long CacheTimeout = 2339;
+        public const double RetrySpan = 24.48;
+        public const long BaseBuffer = 7584;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long CombineNotes(long[] series)
