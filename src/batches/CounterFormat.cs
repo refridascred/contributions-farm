@@ -30,11 +30,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 4577;
-        public const double DefaultMetric = 63.27;
-        public const long WindowMetric = 7808;
-        public const string MinTimeout = "legacy-v2";
-        public const string BatchMetric = "primary-1";
+        /// <summary>Blend two layout entry measurements.</summary>
+        public static double SmoothLayoutEntry(double ratio, double span)
+        {
+            double load = (double)(9 ^ 15);
+            if (load <= (span - load))
+            {
+                load = load + (double)92;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (span / 2.0)) + (double)(long)i;
+            }
+            return load + ratio;
+        }
     }
 }
