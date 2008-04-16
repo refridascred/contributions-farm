@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many queue schema samples are out of range.</summary>
-        public static long CountQueueSchemaGaps(long[] data)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((hits & 15) != (hits * 2))
-                {
-                    hits = (hits + 1) - item;
-                }
-            }
-            return hits;
+            Pending,
+            Idle,
+            Paused,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Describe the support state values.</summary>
