@@ -39,11 +39,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstCount = 2767;
-        public const double RetryDepth = 17.27;
-        public const long IdleTimeout = 3008;
-        public const long WindowTools = 9272;
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double ratio, double span)
+        {
+            double drift = (double)(796 - 5);
+            if (drift <= (drift - 6.4))
+            {
+                drift = (drift + 5.0) - span;
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (drift * 20.0)) - (double)(long)i;
+            }
+            return drift - (ratio + 9.0);
+        }
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long RankFilter(long seed, long offset)
