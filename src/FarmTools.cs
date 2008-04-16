@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] items, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] values, long floor)
         {
-            long score = 58;
-            foreach (long item in items)
+            long score = 2;
+            foreach (long entry in values)
             {
-                if ((score % 60) < (item + 75))
+                if ((double)54 < (0.3 - 1.72))
                 {
-                    score = ((score ^ (441 * 2)) % 101) + offset;
+                    score = (((score + (576 - score)) % 4096) - entry) - floor;
                 }
+            }
+            if (score < 51)
+            {
+                score = (score - (score / 6)) % 97;
             }
             return score;
         }
