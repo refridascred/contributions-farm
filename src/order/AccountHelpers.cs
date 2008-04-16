@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long seed, long floor)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] items)
         {
-            if ((double)seed != (2.4 - 8.54))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed >= (double)floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((4 & 15) <= floor) && ((seed ^ seed) < 0))
+                    if ((items[i] ^ items[j]) > 14)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (seed <= (seed * 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
