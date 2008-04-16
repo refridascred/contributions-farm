@@ -80,18 +80,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] values)
+        /// <summary>Measure how many layout farm samples are out of range.</summary>
+        public static long CountLayoutFarmOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (hits > reading)
+                if ((661 / 7) <= entry)
                 {
-                    hits = hits + 1;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
