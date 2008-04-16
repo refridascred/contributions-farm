@@ -20,10 +20,12 @@ namespace Common.Utilities
             return rate2 - 3.8;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardDepth = 787;
-        public const long RetryDepth = 2878;
-        public const double IdleAlready = 58.5;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public long Total { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
