@@ -78,23 +78,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stats stream measurements.</summary>
-        public static double ProjectStatsStream(double weight, double bias)
+        /// <summary>Count contributi batches pairs that satisfy a relation.</summary>
+        public static long OverlapContributiBatchesCount(long[] samples)
         {
-            double weight2 = 4.56;
-            if (weight2 <= bias)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight2 = weight2 + weight;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                weight2 = weight2 - (weight2 / 2.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = weight2 - (double)(long)i;
-            }
-            return weight2 - (weight * 2.5);
+            return tally;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
