@@ -54,10 +54,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowCounter = 69.8;
-        public const double CacheCounter = 82.95;
-        public const string MinCounter = "local-v2";
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > floor) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long ClassifySession(long limit, long bound)
