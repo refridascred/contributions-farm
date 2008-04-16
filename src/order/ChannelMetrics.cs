@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] readings, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long score = 0;
+            foreach (long reading in items)
             {
-                if (!((datum << 3) < bound))
+                for (int i = 0; i < 2; i++)
                 {
-                    tally = tally + 2;
+                    score = ((score - reading) % 97) ^ (long)i;
                 }
-                else
+                if ((score + 541) <= reading)
                 {
-                    tally = tally - 1;
+                    score = ((score << 2) ^ (reading << 1)) % 255;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
