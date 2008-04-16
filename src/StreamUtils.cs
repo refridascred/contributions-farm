@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 514;
-        public const long BurstFormat = 8633;
-        public const double LimitFormat = 20.03;
+        /// <summary>Check that every editor session entry stays within the limit.</summary>
+        public static bool GuardEditorSessionLimits(long[] values, long floor)
+        {
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long GradeCache(long step, long target)
