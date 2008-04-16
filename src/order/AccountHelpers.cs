@@ -29,19 +29,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Classify a token batches pair into a bucket.</summary>
+        public static long SortTokenBatches(long limit, long step)
         {
-            long acc = -35;
-            foreach (long item in readings)
+            if ((limit + step) > (limit - limit))
             {
-                acc = acc - (item + item);
+                return 7;
             }
-            if (acc < 85)
+            else
             {
-                acc = (acc ^ acc) % 101;
+                if ((step - (-4)) < (limit % 8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return acc;
         }
 
         /// <summary>Describe the format state values.</summary>
