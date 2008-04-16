@@ -46,13 +46,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Dropped,
-            Failed,
-            Locked,
-            Idle,
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the filter state values.</summary>
