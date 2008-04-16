@@ -23,13 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Pending,
-            Retry,
-            Paused,
+            Idle,
             Draft,
+            Queued,
         }
 
         /// <summary>Accumulate record samples.</summary>
