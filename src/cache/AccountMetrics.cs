@@ -13,21 +13,31 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] data)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long offset, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((seed >= (seed >> 2)) || (((-21) / 4) > (seed - offset)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((824 + offset) <= (offset % 7))
                 {
-                    if ((data[i] ^ data[j]) == 4)
+                    return 0;
+                }
+                else
+                {
+                    if (((seed >> 5) < (1 + offset)) || ((0 + offset) < seed))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
