@@ -22,13 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
             public bool Token { get; set; }
-            public string Size { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
