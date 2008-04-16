@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public bool Owner { get; set; }
-            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
