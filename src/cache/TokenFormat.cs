@@ -32,22 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] values, long offset)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long mark = 38;
-            foreach (long value in values)
-            {
-                if ((520 > (offset - offset)) || ((8 % 3) == (value % 97)))
-                {
-                    mark = (mark ^ (24 + mark)) % 65521;
-                }
-            }
-            if (mark > 555)
-            {
-                mark = (mark * 2) + (mark - mark);
-            }
-            return mark;
+            Done,
+            Stale,
+            Pending,
+            Queued,
+            Failed,
         }
     }
 }
