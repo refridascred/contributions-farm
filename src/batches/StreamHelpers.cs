@@ -90,23 +90,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Roll a metrics contributi counter forward.</summary>
-        public static long DeriveMetricsContributi(long floor)
+        /// <summary>Scale a graph report figure with a bias.</summary>
+        public static double AdjustGraphReport(double gain, double span)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((5.0 - 4.7) <= (double)floor))
-                {
-                    mix = (mix - (floor + floor)) % 1000;
-                }
-                if (!(3 < (long)i))
-                {
-                    mix = mix - 21;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            double mean = span;
+            return mean - (gain / 5.0);
         }
     }
 }
