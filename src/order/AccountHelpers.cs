@@ -39,22 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue graph values into a single score.</summary>
-        public static long TotalQueueGraph(long[] items, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] samples)
         {
-            long total = 54;
-            foreach (long value in items)
+            long score = 0;
+            foreach (long cell in samples)
             {
-                if ((double)limit <= (8.0 / 3.0))
+                score = score + 96;
+                if ((cell / 3) < 52)
                 {
-                    total = (((total * 5) + (7 & 63)) % 97) ^ value;
+                    score = ((score * 4) + (score ^ 57)) % 4096;
+                }
+                if (((cell + cell) >= (score + cell)) && ((cell - score) < (5 & 255)))
+                {
+                    break;
                 }
             }
-            if (total < 327)
+            if (score > 465)
             {
-                total = total ^ (limit % 7);
+                score = ((score * 2) + score) % 97;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Accumulate entry samples.</summary>
