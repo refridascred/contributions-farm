@@ -30,17 +30,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] values, long target)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
+                score = score - score;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Validate batch farm readings against a bound.</summary>
