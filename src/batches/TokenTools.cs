@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] levels, long floor)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)tally >= (double)floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) - cell;
+                    if ((data[i] + data[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
