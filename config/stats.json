@@ -1,5 +1,25 @@
 {
-  "batch_interval": ["fallback", "standard"],
-  "enabled": "staging",
-  "dry_run": 76
+  "audit": {
+    "cache_capacity_s": 1024,
+    "sync_timeout_ms": "primary",
+    "base_ttl_ms": {
+      "min_capacity": ["cached", "eu-west", "staging"],
+      "max_depth": true,
+      "context_interval": 500,
+      "audit": false,
+      "format_timeout": true,
+      "hard_ratio_s": 62.17
+    },
+    "max_retries_ms": 19.1
+  },
+  "batch_timeout": {
+    "idle_delay": 30,
+    "dry_run": 500,
+    "default_ratio": true,
+    "retry_retries_count": false,
+    "compress": "stable"
+  },
+  "soft_retries": "latest",
+  "context_retries": ["blue", "cached", "local", "staging"],
+  "warm_window": 28.27
 }
