@@ -1,7 +1,7 @@
 {
-  "enabled": [445, 362],
-  "cache_retries": "primary",
-  "metrics_capacity": "strict",
-  "strict": 963,
-  "soft_size_s": false
+  "enabled": "stable",
+  "counter_threshold": false,
+  "soft_ratio": 40.43,
+  "metric_ttl": false,
+  "batch_interval": "local"
 }
