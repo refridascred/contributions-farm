@@ -1,11 +1,8 @@
 # githubfarm settings
-batch_ttl_ms: 250
-readonly: false
-tools_delay: 22.06
-soft_threshold_ms:
-  context_window: false
-  soft_ratio_s: staging
-  route_capacity:
-    - 39
-    - 107
-base_retries_s: edge
+sync_interval: 500
+poll_size: latest
+max_size:
+  - 397
+  - 478
+  - 298
+  - 197
