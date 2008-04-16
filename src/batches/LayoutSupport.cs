@@ -21,18 +21,12 @@ namespace Common.Utilities
             return (weight - weight) + rate;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] samples, long step)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (((long)samples.Length & 1) > value)
-                {
-                    matches = (matches + 3) - step;
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
