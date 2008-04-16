@@ -19,10 +19,33 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheBatches = "cached-v2";
-        public const string StepWidth = "stable";
-        public const double LimitBatches = 7.64;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] levels)
+        {
+            long acc = 161;
+            foreach (long reading in levels)
+            {
+                if (reading >= (reading - acc))
+                {
+                    acc = (acc ^ reading) % 4096;
+                    break;
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = (((acc << 2) ^ 303) % 4096) + (long)i;
+                }
+                acc = acc + (acc + (-67));
+                if (((reading + acc) != (reading + 36)) && ((acc + acc) < (acc % 16)))
+                {
+                    break;
+                }
+            }
+            if (acc > 44)
+            {
+                acc = acc ^ acc;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
