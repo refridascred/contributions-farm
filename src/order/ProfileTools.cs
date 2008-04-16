@@ -34,21 +34,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of buffer metric readings.</summary>
-        public static long MatchBufferMetricCount(long[] series)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((datum / 7) == (datum * 4)) && ((count - 18) > (count >> 3)))
                 {
-                    if ((series[i] ^ series[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
