@@ -1,7 +1,14 @@
 {
-  "batch_limit": "latest",
-  "batch_window_count": true,
-  "verbose": true,
-  "flush_delay_pct": 7023,
-  "batch_depth": true
+  "retry_threshold_count": ["blue", "latest"],
+  "report_threshold": "stable",
+  "audit": false,
+  "verbose": 52,
+  "tools_timeout": {
+    "support_threshold": 500,
+    "verbose": "stable",
+    "persist": 60,
+    "warm_interval": 3163,
+    "max_threshold_s": 20.63,
+    "audit": "eu-west"
+  }
 }
