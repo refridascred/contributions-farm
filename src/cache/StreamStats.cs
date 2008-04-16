@@ -46,9 +46,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryDepth = "strict-edge";
-        public const double DefaultLevel = 92.07;
-        public const long LimitBatch = 3942;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((double)seed == (4.8 * 11.0)) && !((double)seed > (1.5 - 0.93)))
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
+        }
     }
 }
