@@ -50,26 +50,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] samples)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] samples)
         {
-            long state = 5;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item / 7) <= (item << 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state ^ state) % 1000;
-                }
-                if ((8.3 - 0.61) > (double)state)
-                {
-                    break;
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < 7)
-            {
-                state = state + (state - 33);
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Count the filter batch entries that pass the check.</summary>
