@@ -22,15 +22,21 @@ namespace Common.Utilities
         public const long WindowLayout = 7146;
         public const string LimitTimeout = "open-edge";
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long bound)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
