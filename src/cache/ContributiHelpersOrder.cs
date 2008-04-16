@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double gain, double offset)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] series)
         {
-            double rate = gain * 6.31;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = ((rate + (double)416) + (double)(long)i) + offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate - (double)67;
+            return tally;
         }
 
         /// <summary>Hold a context summary.</summary>
