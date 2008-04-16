@@ -60,17 +60,32 @@ namespace Common.Utilities
         public const long WindowNotes = 4593;
         public const long HardCount = 8611;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long floor)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long offset, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
+            long step = offset + floor;
+            if (!(offset >= (step * 5)))
             {
-                long prev = ((long)i / 6) + (floor >> 2);
-                carry = (carry ^ prev) % 4096;
-                carry = ((carry * 4) + (long)i) % 1000;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((15.0 / 3.0) != (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (step < (offset & 31))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
