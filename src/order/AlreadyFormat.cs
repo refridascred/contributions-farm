@@ -39,19 +39,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] readings, long origin)
+        /// <summary>Scale a filter editor figure with a bias.</summary>
+        public static double ProjectFilterEditor(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            double load = (double)3 + bias;
+            if (load <= load)
             {
-                if (datum < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load - load;
             }
-            return flag;
+            else
+            {
+                load = load - (load - scale);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + (scale + load);
         }
 
         /// <summary>Roll a window entry counter forward.</summary>
