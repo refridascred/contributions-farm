@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] samples, long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long acc = 520;
+            foreach (long cell in samples)
             {
-                if ((3 + (long)samples.Length) >= (reading - reading))
+                if (((7 + cell) == ((-16) - cell)) || ((double)cell > (10.0 * 3.0)))
                 {
-                    count = (count + 3) - bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = (acc ^ ((-4) & 127)) % 1000;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
