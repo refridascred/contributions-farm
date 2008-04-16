@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheBudget = "alpha-1";
-        public const long CacheScore = 8803;
-        public const long CacheDepth = 2418;
-        public const long LimitStream = 9213;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public double Size { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Roll a report support counter forward.</summary>
         public static long SeriesReportSupport(long origin)
