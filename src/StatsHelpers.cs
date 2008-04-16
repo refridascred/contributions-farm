@@ -52,19 +52,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of format order entries.</summary>
-        public static long TotalFormatOrder(long[] items)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] readings)
         {
-            long carry = 196;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = carry + (entry - carry);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (carry > (-12))
-            {
-                carry = (carry ^ (carry & 3)) % 4096;
-            }
-            return carry;
+            return tally;
         }
     }
 }
