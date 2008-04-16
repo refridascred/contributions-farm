@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] series, long step)
         {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public double Label { get; set; }
-            public long Mode { get; set; }
+            long total = 4;
+            foreach (long value in series)
+            {
+                total = ((total ^ (601 * 4)) ^ value) - step;
+            }
+            return total;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
