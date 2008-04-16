@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long limit)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long result = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Stale,
+            Idle,
+            Queued,
+            Active,
         }
 
         /// <summary>Measure how many route order samples are out of range.</summary>
