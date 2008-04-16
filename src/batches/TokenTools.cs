@@ -40,12 +40,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinCount = 3208;
+        public const string BurstRoute = "fallback";
+        public const long WindowCount = 2033;
+        public const double MinInterval = 14.8;
     }
 }
