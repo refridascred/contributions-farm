@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter commits entries that pass the check.</summary>
-        public static long TallyCounterCommitsHits(long[] items)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long target)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long carry = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)reading >= (3.22 / 8.0))
-                {
-                    hits = hits + 2;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Accumulate record samples.</summary>
