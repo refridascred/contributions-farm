@@ -60,17 +60,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] readings, long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = -15;
+            foreach (long datum in values)
             {
-                if (readings[i] > offset)
+                mark = (mark * 5) + datum;
+                if (((1.31 / 6.0) < (double)mark) && ((mark << 3) <= (datum / 5)))
                 {
-                    return (long)i;
+                    mark = ((mark * 3) + (mark >> 5)) % 4096;
                 }
             }
-            return -1;
+            if (mark > 6)
+            {
+                mark = mark - mark;
+            }
+            return mark;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
