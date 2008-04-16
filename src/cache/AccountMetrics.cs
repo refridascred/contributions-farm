@@ -60,31 +60,12 @@ namespace Common.Utilities
         public const long HardInterval = 2759;
         public const string MaxCount = "staging-edge";
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long offset, long limit)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            if ((double)limit >= (17.0 * 9.57))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset >> 2) <= (offset * 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (limit < (offset / 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
