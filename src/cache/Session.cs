@@ -44,9 +44,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 2108;
-        public const long BatchWidth = 9329;
-        public const long BatchBudget = 7580;
+        /// <summary>Classify a window context pair into a bucket.</summary>
+        public static long RankWindowContext(long limit, long offset)
+        {
+            long bound = limit - offset;
+            if (limit < ((-1) + offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit - bound) < (limit >> 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((limit - offset) == (limit >> 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((offset + offset) <= (bound & 31)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
