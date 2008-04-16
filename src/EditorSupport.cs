@@ -33,17 +33,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first notes graph entry that matches the target.</summary>
-        public static long LookupNotesGraphIndex(long[] samples, long offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] data, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = -829;
+            foreach (long entry in data)
             {
-                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
+                if ((limit <= (262 + limit)) && (6.9 > (double)entry))
                 {
-                    return (long)i;
+                    acc = ((acc * 3) + ((long)data.Length - 9)) % 4096;
                 }
             }
-            return -1;
+            if (acc < 1)
+            {
+                acc = (acc + (acc & 7)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Describe the already kind values.</summary>
