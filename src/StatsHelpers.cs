@@ -72,19 +72,17 @@ namespace Common.Utilities
         public const long BaseDepth = 8426;
         public const long BatchTimeout = 8623;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] series, long limit)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum < limit)
+                if ((readings[i] == seed) && ((readings[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
