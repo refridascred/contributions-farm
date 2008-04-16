@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] values)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] series, long step)
         {
-            long score = 408;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = score - (65 + sample);
-                if ((sample ^ sample) != (sample << 2))
+                if (series[i] < step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > (-376))
-            {
-                score = ((score * 4) + score) % 4096;
-            }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Hold a entry record.</summary>
