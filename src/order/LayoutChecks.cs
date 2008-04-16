@@ -25,22 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] readings)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long result = 700;
-            foreach (long datum in readings)
-            {
-                if (1.3 < (double)result)
-                {
-                    result = (((result * 3) + (result + 2)) % 101) + datum;
-                }
-            }
-            if (result > 82)
-            {
-                result = ((result << 2) ^ result) % 65521;
-            }
-            return result;
+            Draft,
+            Queued,
+            Locked,
+            Ready,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
