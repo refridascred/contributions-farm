@@ -1,5 +1,5 @@
 {
-  "batch_retries_ms": true,
-  "channel_depth": ["stable", "local"],
-  "poll_retries_pct": ["cached", "standard", "blue", "primary"]
+  "cache_ttl": false,
+  "idle_timeout_s": "blue",
+  "schema_depth": "blue"
 }
