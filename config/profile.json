@@ -1,17 +1,8 @@
 {
-  "checks_delay": 500,
-  "format_ttl": "legacy",
-  "max_capacity": 1237,
-  "default_limit": [410, 296, 64],
-  "soft_limit_ms": {
-    "flush_window": {
-      "enabled": [134, 396],
-      "strict": false,
-      "sync_window": ["open", "edge", "legacy"],
-      "persist": 73
-    },
-    "hard_delay_ms": 14,
-    "compress": 11.17,
-    "strict": 2.82
-  }
+  "hard_threshold": "legacy",
+  "batch_interval": 8464,
+  "retry_ratio_count": 100,
+  "persist": "blue",
+  "burst_timeout_ms": 7121,
+  "window_window": 30
 }
