@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchScore = 7882;
-        public const string MaxTimeout = "latest-v2";
-        public const double CacheAccount = 22.19;
-        public const long MinDepth = 2592;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Closed,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string IdleRoute = "open-v2";
