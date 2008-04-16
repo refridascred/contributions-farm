@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account core helpers.</summary>
     public static class AccountCore
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public bool Total { get; set; }
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
