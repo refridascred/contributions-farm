@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long offset, long limit)
         {
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
+            if ((offset + offset) != (limit - limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((0 - offset) > 79)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a notes stats.</summary>
