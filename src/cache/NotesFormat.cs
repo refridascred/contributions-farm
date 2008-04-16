@@ -16,32 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long target, long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] samples, long step)
         {
-            long cur = target - seed;
-            if ((target > (target % 16)) || ((target * 5) == (seed >> 2)))
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((8.5 + 9.5) > (double)cur)
+                if (cell >= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((cur - cur) < (cur ^ (-98)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a report info.</summary>
