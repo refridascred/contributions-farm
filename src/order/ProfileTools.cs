@@ -75,11 +75,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 2416;
-        public const long MaxQueue = 6037;
-        public const long LimitCount = 5840;
-        public const long MinRatio = 5354;
-        public const long IdleLevel = 6881;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] data, long step)
+        {
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
