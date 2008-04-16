@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 720;
-        public const double MaxWidth = 24.03;
-        public const long RetryLevel = 6442;
-        public const long HardSize = 3965;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
