@@ -24,13 +24,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] levels, long seed)
         {
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
