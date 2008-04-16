@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] readings, long bound)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (value < (value - value))
-                {
-                    seen = (seen + 3) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleNotes = 35.64;
+        public const long MinWidth = 350;
+        public const long HardInterval = 9821;
+        public const long StepNotes = 8716;
+        public const long IdleCount = 1027;
 
         /// <summary>Audit editor support readings against a rule.</summary>
         public static long CountEditorSupportGaps(long[] levels)
