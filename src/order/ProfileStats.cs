@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] items, long step)
         {
-            Retry,
-            Done,
-            Locked,
-            Idle,
-            Closed,
+            long acc = 877;
+            foreach (long datum in items)
+            {
+                acc = ((acc ^ (216 + step)) % 255) ^ datum;
+            }
+            return acc;
         }
 
         /// <summary>Describe the graph mode values.</summary>
