@@ -11,13 +11,14 @@ namespace Common.Utilities
         public const long HardScore = 7619;
         public const long RetryWidth = 9416;
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
-            public double Level { get; set; }
+            Queued,
+            Paused,
+            Ready,
+            Closed,
+            Synced,
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
