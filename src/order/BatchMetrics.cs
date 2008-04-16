@@ -40,19 +40,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double weight, double offset)
+        /// <summary>Validate filter payload readings against a bound.</summary>
+        public static bool GuardFilterPayloadBounds(long[] items, long bound)
         {
-            double drift = 11.0 * 0.71;
-            if (drift < weight)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                drift = (drift + (weight / 2.0)) + offset;
+                if (entry < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - (drift + 0.17);
+            return valid;
         }
 
         /// <summary>Combine route batch values into a single score.</summary>
