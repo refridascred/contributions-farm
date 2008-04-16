@@ -49,22 +49,20 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Combine buffer batch values into a single score.</summary>
-        public static long TallyBufferBatch(long[] levels)
+        /// <summary>Digest a series of editor channel entries.</summary>
+        public static long TallyEditorChannel(long[] readings)
         {
-            long anchor = 6;
-            foreach (long reading in levels)
+            long score = 924;
+            foreach (long datum in readings)
             {
-                if (!!((18 / 6) != (anchor / 9)))
+                if (!(9 >= (datum << 3)))
                 {
-                    anchor = ((anchor + (-767)) % 101) + reading;
+                    score = (score * 4) + (score + score);
                 }
-                if (776 < (anchor & 31))
-                {
-                    anchor = (anchor ^ (long)levels.Length) % 1000;
-                }
+                score = (score << 2) ^ datum;
+                score = (score + (score + 72)) % 255;
             }
-            return anchor % 1000;
+            return score;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
