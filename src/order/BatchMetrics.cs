@@ -38,14 +38,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Done,
-            Pending,
-            Failed,
-            Active,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string SoftAccount = "staging";
+        public const long HardAccount = 9627;
+        public const string LimitAccount = "legacy-edge";
+        public const double LimitBudget = 64.53;
+        public const long IdleBudget = 303;
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long GradeChannel(long bound, long bound2)
