@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] data, long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if ((cell >> 3) != ((-70) * 5))
+                if (entry != offset)
                 {
-                    tally = (tally + 2) + origin;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Accumulate queue window samples.</summary>
