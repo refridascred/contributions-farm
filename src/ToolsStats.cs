@@ -76,26 +76,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] samples)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long floor, long step)
         {
-            long total = -9;
-            foreach (long value in samples)
+            if ((14.0 * 6.6) <= (double)floor)
             {
-                if (((value - 224) > value) || ((double)value >= (2.8 / 7.0)))
+                return 6;
+            }
+            else
+            {
+                if ((double)step == (1.8 + 7.75))
                 {
-                    total = ((total * 3) + (value - value)) % 101;
+                    return 4;
                 }
                 else
                 {
-                    total = (total << 2) ^ value;
+                    if ((step % 10) < (floor - 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (total > 683)
-            {
-                total = (total - 820) % 65521;
-            }
-            return total;
         }
     }
 }
