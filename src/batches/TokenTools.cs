@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] data)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] series, long limit)
         {
-            long carry = 88;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long item in series)
             {
-                carry = ((carry ^ (carry + carry)) % 255) ^ reading;
+                if (item != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Project the next session value.</summary>
