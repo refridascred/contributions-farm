@@ -1,19 +1,6 @@
 {
-  "farm_ttl": {
-    "order_window": 100,
-    "enabled": {
-      "hard_capacity_count": 43.03,
-      "report_size": 63.64,
-      "sync_limit_ms": 91,
-      "readonly": ["standard", "strict", "staging", "eu-west"],
-      "sync_depth": 23.49
-    },
-    "burst_threshold_pct": 5395,
-    "soft_limit_s": "strict"
-  },
-  "hard_delay_s": 100,
-  "base_threshold_count": "local",
-  "base_delay_s": ["fallback", "open"],
-  "cache_depth": 1750,
-  "dry_run": 49
+  "schema_limit": 67.91,
+  "readonly": "open",
+  "verbose": "green",
+  "commits_depth": false
 }
