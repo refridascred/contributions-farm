@@ -38,29 +38,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long bound, long origin)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long target, long origin)
         {
-            long offset = bound - origin;
-            if ((offset / 6) > 705)
+            if (((83 - origin) <= target) && ((983 - origin) == (7 + 786)))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((double)bound > 7.0)
+                if ((target << 1) == (origin << 2))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if (((offset + (-89)) >= bound) || ((origin / 7) >= (bound / 7)))
+                    if ((267 << 1) > (target + target))
                     {
-                        return 4;
+                        return 2;
                     }
                     else
                     {
-                        return 5;
+                        if (((2.0 - 9.49) <= (double)origin) || (target >= (origin - origin)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
