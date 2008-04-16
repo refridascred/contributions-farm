@@ -19,23 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] values, long offset)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (!(offset > 71))
-                {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 5648;
+        public const long SoftBudget = 7402;
+        public const string BatchSize = "alpha-1";
+        public const string CacheGraph = "stable-v2";
+        public const string LimitWidth = "alpha-edge";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string MaxStream = "alpha";
