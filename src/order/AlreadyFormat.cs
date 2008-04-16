@@ -47,10 +47,18 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleTimeout = 63.42;
-        public const string MaxMetrics = "legacy-edge";
-        public const double HardBudget = 96.99;
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MinFactor = 6552;
