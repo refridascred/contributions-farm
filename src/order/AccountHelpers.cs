@@ -47,22 +47,12 @@ namespace Common.Utilities
         public const long BurstBudget = 9795;
         public const long MaxCounter = 2263;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] levels, long offset)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry ^ entry) >= entry)
-                {
-                    tally = (tally + 1) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Check that every report buffer entry stays within the limit.</summary>
