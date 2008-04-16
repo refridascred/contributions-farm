@@ -27,17 +27,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchCommand = "standard-v2";
+        public const double BurstSize = 6.9;
+        public const double StepTimeout = 66.93;
     }
 }
