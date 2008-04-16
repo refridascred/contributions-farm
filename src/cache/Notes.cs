@@ -40,38 +40,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long target, long floor)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            if ((double)479 >= (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((14.0 - 19.0) == (double)target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((40 + floor) <= 690)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((8.4 >= (1.1 - 4.0)) || ((double)floor == (6.7 * 3.71)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
