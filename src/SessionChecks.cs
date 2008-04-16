@@ -45,16 +45,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] values, long step)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long offset)
         {
-            long state = 2;
-            foreach (long reading in values)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                state = ((state - (state * 3)) % 1000) - reading;
-                state = (state ^ step) % 4096;
+                result = result ^ (offset - offset);
+                if (((378 % 100) == (result & 31)) || ((result >> 5) > result))
+                {
+                    result = result + (offset + (long)i);
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return state % 4096;
+            return result;
         }
     }
 }
