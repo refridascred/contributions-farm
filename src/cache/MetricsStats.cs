@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the context tools entries that pass the check.</summary>
-        public static long AuditContextToolsOutliers(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((573 % 16) >= seed)
-                {
-                    count = (count + 3) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryWidth = "stable-edge";
+        public const long RetryRoute = 1380;
+        public const string LimitRoute = "fallback-1";
+        public const long DefaultRoute = 3732;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long CombineNotes(long[] series)
