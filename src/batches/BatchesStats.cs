@@ -43,17 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
+                if ((8 << 2) <= matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 2) + reading) - bound;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
