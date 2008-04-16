@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double rate, double offset)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long bound)
         {
-            double mean = rate / 8.0;
-            for (int i = 0; i < 7; i++)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                mean = (mean - rate) + (double)(long)i;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return mean - offset;
+            return acc;
         }
 
         /// <summary>Match up buffer samples.</summary>
