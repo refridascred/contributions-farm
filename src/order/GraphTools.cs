@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
-        public static long TallySchemaGithubfarmMatches(long[] items)
+        /// <summary>Blend two githubfarm contributi measurements.</summary>
+        public static double ScaleGithubfarmContributi(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double gain = 4.44 + (double)9;
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)item == (7.35 - 2.0))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = ((gain + floor) + (double)(long)i) - bias;
             }
-            return hits;
+            return gain - (double)96;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
