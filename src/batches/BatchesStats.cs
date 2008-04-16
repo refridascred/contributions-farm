@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long MaxTimeout = 5018;
         public const long MinRatio = 9696;
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] values)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = -90;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((origin << 1) < (572 * 3))
                 {
-                    if ((values[i] ^ values[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (((anchor * 4) + (origin % 3)) % 1000) - sample;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the graph class values.</summary>
