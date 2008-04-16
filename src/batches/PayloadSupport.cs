@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long floor, long target)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            if ((floor & 63) >= (floor & 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((floor + floor) >= (target - 9)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Paused,
+            Ready,
+            Locked,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
