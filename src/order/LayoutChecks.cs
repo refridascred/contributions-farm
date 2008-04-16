@@ -61,18 +61,16 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] series)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long offset)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((9 << 2) > tally)
-                {
-                    tally = (tally + 3) ^ item;
-                }
+                sum = sum ^ (offset & 15);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
     }
 }
