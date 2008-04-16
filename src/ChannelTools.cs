@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)floor < 1.2)
-                {
-                    acc = acc - acc;
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Done,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Iterate the buffer githubfarm series from a seed.</summary>
