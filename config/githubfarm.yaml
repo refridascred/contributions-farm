@@ -1,4 +1,4 @@
 # githubfarm settings
-dry_run: 888
-batch_ttl: 95
-cache_timeout: standard
+hard_ttl_count: staging
+idle_ttl_pct: cached
+sync_threshold_s: true
