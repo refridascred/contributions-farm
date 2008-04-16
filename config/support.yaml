@@ -1,20 +1,24 @@
 # support settings
-enabled: fallback
-verbose: 57.92
-retry_threshold:
-  base_threshold_count: true
-  enabled: 80
-  idle_window_s: true
-  batches_interval: true
-soft_interval_ms:
-  burst_interval_ms: local
-  commits_timeout: stable
-  editor_ratio:
-    base_ratio_ms: 250
-    dry_run: edge
-    retry_timeout_pct: 500
-    soft_timeout: 7.23
-  flush_depth: 60
-  session_timeout: 6606
-  poll_depth_count: standard
-batch_delay_s: 500
+audit:
+  retry_interval_pct:
+    - edge
+    - primary
+    - staging
+  base_delay_ms: strict
+  profile_capacity: fallback
+  retry_capacity_s: false
+  default_interval_ms: latest
+  sync_delay: eu-west
+format_delay:
+  - 306
+  - 265
+  - 414
+default_limit_pct:
+  - 399
+  - 498
+  - 226
+batch_threshold_s:
+  - latest
+  - primary
+  - stable
+  - strict
