@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] items, long seed)
-        {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardScore = 1417;
+        public const string BurstCount = "alpha-v2";
+        public const double CacheFactor = 43.63;
+        public const long BatchScore = 4777;
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long RollChannel(long target)
