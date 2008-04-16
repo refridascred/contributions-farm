@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Audit channel farm readings against a rule.</summary>
+        public static long CountChannelFarmMatches(long[] items)
         {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
-            public double Region { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((item << 2) > (count - 327))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the account kind values.</summary>
