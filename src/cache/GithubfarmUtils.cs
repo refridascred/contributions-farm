@@ -53,16 +53,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] data)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                anchor = (anchor * 3) + ((long)i >> 3);
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (((long)data.Length - count) > datum)
+                {
+                    count = count + 3;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
