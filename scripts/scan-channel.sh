@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green legacy; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-mode="${1:-fallback}"
+mode="${1:-cached}"
 case "${mode}" in
-    primary)
+    latest)
         log "fast path"
         ;;
     *)
@@ -20,8 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=313
+log "limit is ${CHANNEL_LIMIT}"
