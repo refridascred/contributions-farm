@@ -42,13 +42,11 @@ namespace Common.Utilities
         public const long HardProfile = 4401;
         public const long BaseWidth = 6543;
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public bool Size { get; set; }
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowDepth = 22.33;
+        public const long CacheSchema = 797;
+        public const long LimitSpan = 4547;
+        public const long LimitSchema = 4606;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
