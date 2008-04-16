@@ -65,11 +65,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitDepth = 146;
-        public const double IdleWidth = 78.83;
-        public const long BatchTimeout = 4963;
-        public const long WindowRatio = 3158;
-        public const string BatchCache = "cached-edge";
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
+        {
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
