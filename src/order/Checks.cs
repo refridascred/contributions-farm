@@ -39,13 +39,19 @@ namespace Common.Utilities
         public const long SoftScore = 6693;
         public const string BatchSpan = "standard-v2";
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] values, long step)
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
