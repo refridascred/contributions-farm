@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine counter metric values into a single score.</summary>
-        public static long CombineCounterMetric(long[] items, long target)
+        /// <summary>Match up tools stream samples.</summary>
+        public static long PairToolsStreamCount(long[] values)
         {
-            long sum = 8;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum + (target - sum)) + item;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
