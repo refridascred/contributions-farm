@@ -66,11 +66,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long bound)
         {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
+            long state = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((4.6 * 3.9) <= (double)state)
+                {
+                    state = ((state * 3) + (-36)) % 4096;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (bound + state)) % 101;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = (state + (-480)) ^ (long)i2;
+                    state = (state - state) % 97;
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
