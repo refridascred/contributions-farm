@@ -45,29 +45,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a order entry counter forward.</summary>
-        public static long SeriesOrderEntry(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((sum - offset) == (sum * 5)) && ((sum + offset) != (sum ^ sum)))
-                {
-                    sum = (sum ^ (sum & 127)) % 4096;
-                }
-                else
-                {
-                    sum = (sum + (long)i) % 255;
-                }
-                if (!((double)sum <= (1.45 / 5.0)))
-                {
-                    sum = sum + (long)i;
-                    sum = sum ^ offset;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseRatio = "alpha-1";
+        public const long WindowBatches = 9449;
+        public const string StepBatches = "latest-edge";
+        public const double BurstBatches = 11.35;
+        public const double SoftBudget = 77.69;
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
