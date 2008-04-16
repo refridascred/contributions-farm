@@ -51,11 +51,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleTimeout = 9619;
-        public const double BurstWidth = 8.78;
-        public const double StepRecord = 63.43;
-        public const double BatchRecord = 19.82;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long target, long origin)
+        {
+            if (origin >= (target + 8))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((4 ^ target) >= (target + origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
