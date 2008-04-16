@@ -33,14 +33,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long limit, long limit2)
         {
-            Synced,
-            Queued,
-            Idle,
-            Active,
-            Failed,
+            long edge = limit ^ limit2;
+            if ((limit2 - 2) > limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if (edge >= (limit2 & 63))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)edge == (double)45)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the window notes entries that pass the check.</summary>
