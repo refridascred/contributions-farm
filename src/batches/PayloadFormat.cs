@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] levels, long offset)
+        /// <summary>Combine stream farm values into a single score.</summary>
+        public static long FoldStreamFarm(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 225;
+            foreach (long entry in values)
             {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (result ^ entry)) % 4096;
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Describe the editor level values.</summary>
