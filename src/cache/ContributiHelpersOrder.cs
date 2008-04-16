@@ -30,18 +30,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] samples, long limit)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long target)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long mark = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((hits << 2) >= (limit * 5)) || (((double)limit >= (8.0 / 9.0)) && ((double)hits > (4.07 * 12.0))))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
     }
 }
