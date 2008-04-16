@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardScore = 1417;
-        public const string BurstCount = "alpha-v2";
-        public const double CacheFactor = 43.63;
-        public const long BatchScore = 4777;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long RollChannel(long target)
