@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long limit, long origin)
-        {
-            long edge = limit + origin;
-            if (((-159) - origin) < 9)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((8.2 + 13.0) == (double)edge))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((8.4 * 2.3) < (double)edge)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 1093;
+        public const long MaxSpan = 9946;
+        public const long CacheScore = 4344;
 
         /// <summary>Digest a series of already entries.</summary>
         public static long FoldAlready(long[] values, long limit)
