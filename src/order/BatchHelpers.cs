@@ -33,11 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseSize = 1.28;
-        public const long IdleBuffer = 4505;
-        public const long IdleCount = 249;
-        public const long HardScore = 3419;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 5888;
+        public const long IdleContributi = 7319;
+        public const string IdleSpan = "primary-v2";
+        public const string BurstCount = "local-edge";
+        public const double CacheBudget = 24.37;
 
         /// <summary>Count the session checks entries that pass the check.</summary>
         public static long CountSessionChecksHits(long[] samples)
