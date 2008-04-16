@@ -15,17 +15,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] readings, long offset)
+        /// <summary>Derive the next metrics stream value from a seed.</summary>
+        public static long DeriveMetricsStream(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
+                carry = (carry + ((long)i / 6)) % 4096;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Locate a support reading by value.</summary>
