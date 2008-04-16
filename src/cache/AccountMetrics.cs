@@ -36,12 +36,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double scale, double floor)
         {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            double ratio = (double)(3 - 83);
+            if (ratio <= (floor - floor))
+            {
+                ratio = ratio - (scale * 7.16);
+            }
+            return ratio + (double)86;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
