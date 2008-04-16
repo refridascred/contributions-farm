@@ -41,11 +41,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepFactor = 7569;
-        public const long BaseCounter = 7766;
-        public const long BurstBudget = 9795;
-        public const long MaxCounter = 2263;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftFilter = "legacy-v2";
+        public const long IdleCount = 3055;
+        public const double MaxFilter = 58.15;
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
