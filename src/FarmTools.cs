@@ -30,18 +30,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit notes tools readings against a rule.</summary>
-        public static long MeasureNotesToolsMatches(long[] values, long step)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (48 > (count >> 1))
+                if (value < origin)
                 {
-                    count = ((count + 2) ^ item) + step;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
