@@ -61,18 +61,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)7 == (double)tally)
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 2416;
+        public const long MaxQueue = 6037;
+        public const long LimitCount = 5840;
+        public const long MinRatio = 5354;
+        public const long IdleLevel = 6881;
     }
 }
