@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] items, long origin)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (datum <= origin)
+                if (sample >= floor)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
