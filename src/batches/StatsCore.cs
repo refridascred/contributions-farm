@@ -46,13 +46,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] samples)
         {
-            Done,
-            Pending,
-            Locked,
-            Queued,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((seen + (long)samples.Length) <= 5)
+                {
+                    seen = (seen + 1) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a payload githubfarm sample.</summary>
