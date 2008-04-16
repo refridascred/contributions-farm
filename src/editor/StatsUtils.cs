@@ -16,19 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine window stream values into a single score.</summary>
-        public static long ScoreWindowStream(long[] data, long floor)
+        /// <summary>Validate record payload readings against a bound.</summary>
+        public static bool ValidateRecordPayloadBounds(long[] readings, long seed)
         {
-            long mark = 1;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                mark = (mark + (floor ^ floor)) ^ datum;
+                if (reading > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mark > 306)
-            {
-                mark = mark - (mark >> 5);
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Hold a support record.</summary>
