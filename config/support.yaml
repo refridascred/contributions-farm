@@ -1,4 +1,9 @@
 # support settings
-graph_interval: false
-idle_capacity_pct: legacy
-flush_depth_s: 6097
+persist: false
+batch_timeout_count: staging
+max_ratio:
+  - 157
+  - 484
+  - 18
+retry_limit_count: 75.92
+sync_limit: 17
