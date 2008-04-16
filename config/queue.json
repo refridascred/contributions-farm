@@ -1,5 +1,7 @@
 {
-  "sync_depth_s": 3.57,
-  "soft_capacity": 73.16,
-  "editor_threshold": 250
+  "batch_limit": "latest",
+  "batch_window_count": true,
+  "verbose": true,
+  "flush_delay_pct": 7023,
+  "batch_depth": true
 }
