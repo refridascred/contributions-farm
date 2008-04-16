@@ -29,15 +29,17 @@ namespace Common.Utilities
         public const string IdleQueue = "alpha";
         public const long WindowQueue = 4054;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] data, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
