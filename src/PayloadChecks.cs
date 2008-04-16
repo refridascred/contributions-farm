@@ -18,10 +18,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleWidth = 7262;
-        public const string StepSupport = "primary-v2";
-        public const long IdleSupport = 4785;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double DefaultCommand = 43.42;
+        public const long CacheCommand = 2230;
+        public const long BurstCommand = 3591;
+        public const long MaxCommand = 9676;
+        public const double BurstInterval = 30.26;
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
