@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const string CacheOrder = "latest";
         public const long WindowFactor = 573;
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double bias, double span)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            double scale = span - (double)5;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (double)(long)i) - bias;
-            }
-            return scale + scale;
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a profile summary.</summary>
