@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long StepWidth = 6868;
         public const double WindowCount = 96.67;
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] samples)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 7;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((4.35 <= (double)cell) && (mix < (cell - mix)))
                 {
-                    if ((samples[i] ^ samples[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix + (cell + cell)) % 101;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Describe the already class values.</summary>
