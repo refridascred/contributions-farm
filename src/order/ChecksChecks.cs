@@ -15,18 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] levels)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)hits >= (17.0 * 9.84))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) - cell;
+                    if ((values[i] ^ values[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
