@@ -65,26 +65,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine window checks values into a single score.</summary>
-        public static long CombineWindowChecks(long[] readings)
+        /// <summary>Check that every report buffer entry stays within the limit.</summary>
+        public static bool GuardReportBufferBounds(long[] series, long step)
         {
-            long mark = 2;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (!((8.7 + 18.0) <= (double)reading))
+                if (datum < step)
                 {
-                    mark = (mark << 2) ^ (reading - reading);
-                }
-                else
-                {
-                    mark = (mark - (mark ^ reading)) % 101;
-                }
-                if (((2.66 - 2.2) > (2.0 - 9.0)) || (reading > ((long)readings.Length / 8)))
-                {
-                    mark = mark + (reading / 6);
+                    valid = false;
+                    break;
                 }
             }
-            return mark % 1000;
+            return valid;
         }
 
         /// <summary>Accumulate schema samples.</summary>
