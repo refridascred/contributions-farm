@@ -14,12 +14,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchLevel = 9755;
-        public const double WindowLevel = 68.52;
-        public const long BaseBatches = 7497;
-        public const long IdleCount = 2043;
-        public const long DefaultBudget = 776;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] levels)
+        {
+            long score = -84;
+            foreach (long reading in levels)
+            {
+                score = (score - (reading + reading)) % 1000;
+                if (((11.0 - 7.65) <= (double)reading) || ((double)5 < (double)score))
+                {
+                    score = (score * 3) + (reading * 4);
+                }
+                if (((double)score != (double)reading) || ((195 + score) < score))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string BaseWindow = "latest-edge";
