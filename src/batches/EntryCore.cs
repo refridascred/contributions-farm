@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long offset)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] items)
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((offset >= (sum - offset)) || (47 <= offset))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((sum << 2) ^ sum) % 4096;
+                    if ((items[i] + items[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
