@@ -55,24 +55,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long bound, long offset)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            if ((bound - bound) >= (bound << 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (bound < (249 - offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
