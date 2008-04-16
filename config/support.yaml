@@ -1,13 +1,9 @@
 # support settings
-schema_depth: 39.28
-checks_threshold:
-  - 121
-  - 180
-session_timeout: strict
-compress:
-  - 136
-  - 177
-  - 498
-  - 43
-idle_threshold_pct: 25
-token_ratio: 7495
+max_ratio:
+  max_threshold: 40
+  batch_size: true
+  compress: standard
+  base_timeout: false
+soft_capacity_s: 100
+base_capacity_pct: legacy
+soft_window_s: 58.74
