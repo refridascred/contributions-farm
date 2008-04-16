@@ -39,19 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum >= (2.95 * 14.0))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 5082;
+        public const long MinSpan = 8089;
+        public const double IdleSupport = 1.36;
+        public const long RetrySupport = 7147;
+        public const long DefaultSupport = 2862;
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long FindSupportIndex(long[] values, long step)
