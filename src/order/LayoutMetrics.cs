@@ -14,14 +14,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Idle,
-            Queued,
-            Closed,
-            New,
+            Pending,
+            Retry,
             Paused,
+            Draft,
         }
 
         /// <summary>Accumulate record samples.</summary>
