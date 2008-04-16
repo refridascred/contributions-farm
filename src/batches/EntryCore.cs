@@ -26,11 +26,22 @@ namespace Common.Utilities
         public const long WindowEntry = 7399;
         public const long IdleSize = 5037;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 7753;
-        public const long BaseCount = 2120;
-        public const string BaseLevel = "standard-1";
-        public const long WindowGraph = 6462;
+        /// <summary>Match up graph window samples.</summary>
+        public static long CompareGraphWindowCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long ComparePayloadCount(long[] values)
