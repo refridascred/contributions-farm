@@ -91,21 +91,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long floor)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double weight, double floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            double drift = 0.8;
+            if (drift < (7.7 * 19.0))
             {
-                anchor = anchor ^ (anchor % 3);
-                if (!(floor >= (69 - anchor)))
-                {
-                    anchor = anchor + (244 + floor);
-                }
-                anchor = (anchor ^ (long)i) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                drift = drift - (floor + drift);
             }
-            return anchor;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + weight;
         }
     }
 }
