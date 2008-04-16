@@ -56,18 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] series, long origin)
+        /// <summary>Validate already batches readings against a bound.</summary>
+        public static bool ValidateAlreadyBatchesRange(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if ((origin >> 1) <= tally)
+                if (reading > seed)
                 {
-                    tally = (tally + 3) + sample;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
