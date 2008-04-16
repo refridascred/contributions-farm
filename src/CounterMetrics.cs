@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 8110;
-        public const long SoftTimeout = 1898;
-        public const long BaseCluster = 3927;
-        public const long MinSpan = 2215;
-        public const long BurstCluster = 9812;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long bound, long target)
+        {
+            long next = bound - target;
+            if (19.0 < (double)target)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((6 + bound) < (1 / 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound > 1.44)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((next % 12) <= (bound * 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long CompareToolsCount(long[] readings)
