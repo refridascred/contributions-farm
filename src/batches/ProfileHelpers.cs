@@ -55,12 +55,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] items, long offset)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] >= offset)
+                if ((readings[i] >= seed) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
