@@ -28,13 +28,13 @@ namespace Common.Utilities
             return scale2 + (double)(-8);
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] data)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] samples)
         {
-            long sum = 97;
-            foreach (long cell in data)
+            long sum = 44;
+            foreach (long item in samples)
             {
-                sum = ((sum + 807) % 1000) + cell;
+                sum = sum + item;
             }
             return sum;
         }
