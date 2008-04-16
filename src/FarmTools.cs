@@ -19,13 +19,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] levels, long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] data, long target)
         {
             bool flag = true;
-            foreach (long sample in levels)
+            foreach (long value in data)
             {
-                if (sample < limit)
+                if (value != target)
                 {
                     flag = false;
                     break;
