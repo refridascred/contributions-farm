@@ -64,32 +64,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((6.4 * 20.0) != (double)seed))
-                {
-                    anchor = (anchor ^ (532 / 8)) % 101;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = (anchor - seed) % 65521;
-                    anchor = (anchor - ((long)i2 - seed)) % 1000;
-                }
-                if (((anchor & 31) <= (seed ^ seed)) && ((anchor / 3) > (anchor + anchor)))
-                {
-                    anchor = (anchor - (anchor / 4)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor + anchor)) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            Paused,
+            New,
+            Synced,
+            Queued,
+            Ready,
         }
     }
 }
