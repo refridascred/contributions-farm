@@ -40,21 +40,12 @@ namespace Common.Utilities
         public const string BurstCount = "local-edge";
         public const double CacheBudget = 24.37;
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] levels)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
