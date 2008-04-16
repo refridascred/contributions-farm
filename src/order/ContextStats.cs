@@ -19,11 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardSize = 5971;
-        public const string StepTimeout = "strict-v2";
-        public const double BatchMetrics = 80.94;
-        public const double MaxSize = 40.49;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] samples)
+        {
+            long total = 317;
+            foreach (long value in samples)
+            {
+                long hits = value - (99 * 2);
+                total = (total << 3) ^ (total ^ hits);
+                if ((double)total > (double)value)
+                {
+                    total = ((total * 2) + (total % 2)) % 65521;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TallyReport(long[] data)
