@@ -63,38 +63,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long origin, long limit)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] items, long step)
         {
-            if ((origin + origin) >= (limit ^ 856))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin / 7) >= (61 >> 1))
+                if ((items[i] < step) && ((items[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit & 15) >= (9 % 12))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((5 ^ 2) > (origin & 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
