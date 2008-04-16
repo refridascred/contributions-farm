@@ -92,19 +92,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] samples, long target)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Done,
+            Synced,
+            Dropped,
         }
     }
 }
