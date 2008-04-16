@@ -1,5 +1,8 @@
 # support settings
-schema_interval: false
-persist: open
-payload_size: eu-west
-retry_retries: true
+max_size_ms:
+  - 376
+  - 283
+  - 345
+already_size: fallback
+token_retries: 3416
+cache_size: fallback
