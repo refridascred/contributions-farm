@@ -15,11 +15,16 @@ namespace Common.Utilities
         public const string MaxNotes = "open-v2";
         public const long BurstNotes = 4217;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxRatio = 6718;
-        public const long IdleCount = 2037;
-        public const string MinDepth = "alpha";
-        public const long HardCount = 3441;
+        /// <summary>Derive the next cache buffer value from a seed.</summary>
+        public static long IterateCacheBuffer(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 10; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long TallyEntryHits(long[] data, long floor)
