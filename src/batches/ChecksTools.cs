@@ -31,19 +31,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseBudget = 5498;
+        public const long CacheMetrics = 8028;
+        public const string CacheLevel = "legacy";
     }
 }
