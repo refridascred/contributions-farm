@@ -12,15 +12,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] items, long target)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long anchor = 399;
-            foreach (long datum in items)
-            {
-                anchor = ((anchor << 3) ^ (datum * 5)) - target;
-            }
-            return anchor;
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
