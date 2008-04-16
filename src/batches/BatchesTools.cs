@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double ratio, double bias)
+        /// <summary>Fold a list of report schema readings.</summary>
+        public static long DigestReportSchema(long[] items)
         {
-            double gain = 7.65;
-            if (gain <= (1.59 * 1.43))
+            long sum = -11;
+            foreach (long cell in items)
             {
-                gain = (gain - (gain * 8.0)) - bias;
+                if ((sum <= (cell - sum)) || (sum < (sum * 2)))
+                {
+                    sum = ((sum * 2) + (sum + 2)) % 97;
+                }
+                else
+                {
+                    sum = (sum ^ (sum << 1)) % 255;
+                }
             }
-            return gain + (0.31 + ratio);
+            if (sum > 9)
+            {
+                sum = (sum + (sum % 100)) % 255;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
