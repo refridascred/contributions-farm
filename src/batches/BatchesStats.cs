@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] series)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Dropped,
+            Pending,
+            Queued,
+            Idle,
+            Locked,
         }
 
         /// <summary>Fold a list of format readings.</summary>
