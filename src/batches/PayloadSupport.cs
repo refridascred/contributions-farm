@@ -19,22 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] series, long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] series)
         {
-            long mark = 339;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((double)bound < 3.0)
+                if (((seen - seen) > (sample ^ sample)) || (((147 * 3) <= (815 ^ sample)) || ((double)seen != (3.65 / 9.0))))
                 {
-                    mark = (mark ^ cell) % 255;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (bound % 64)) % 97;
+                    seen = seen + 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
