@@ -28,19 +28,14 @@ namespace Common.Utilities
         public const long CacheFactor = 6461;
         public const long BaseContext = 9463;
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double weight, double offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            double rate = (double)((-929) + 7);
-            if (rate <= (offset * 2.1))
-            {
-                rate = (rate + (0.53 * 3.2)) + weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - (offset / 3.0);
+            Active,
+            Stale,
+            Done,
+            Queued,
+            Retry,
         }
 
         /// <summary>Accumulate layout window samples.</summary>
