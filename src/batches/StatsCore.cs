@@ -83,10 +83,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepLevel = 984;
-        public const long WindowContext = 8365;
-        public const long BaseContext = 1374;
-        public const double HardContext = 32.11;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 8310;
+        public const long SoftCommand = 6780;
+        public const double MaxBudget = 36.2;
+        public const long StepBudget = 4938;
     }
 }
