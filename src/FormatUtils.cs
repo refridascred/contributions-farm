@@ -14,19 +14,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] data, long limit)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long sum = 19;
-            foreach (long sample in data)
-            {
-                sum = ((sum - (9 % 3)) % 1000) - sample;
-                if ((limit << 2) != (limit * 4))
-                {
-                    sum = (sum + 233) % 97;
-                }
-            }
-            return sum;
+            public double Offset { get; set; }
+            public double Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
