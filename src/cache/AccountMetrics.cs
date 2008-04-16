@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] samples)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] series)
         {
-            long mark = 650;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((1.02 + 2.22) != (double)mark))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark << 2) ^ (entry + mark);
+                    if ((series[i] ^ series[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
