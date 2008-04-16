@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardAlready = "fallback";
-        public const long MinAlready = 5460;
-        public const long RetryAlready = 4292;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Stale,
+            Locked,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseCounter = 219;
