@@ -18,11 +18,18 @@ namespace Common.Utilities
         public const long CacheSize = 187;
         public const string CacheWidth = "open-edge";
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] samples)
         {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (9 < (hits & 63))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
     }
 }
