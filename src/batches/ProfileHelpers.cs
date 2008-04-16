@@ -63,12 +63,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            long acc = 816;
+            foreach (long datum in data)
+            {
+                acc = (acc * 4) + (650 * 4);
+                if ((acc + datum) == (acc % 12))
+                {
+                    acc = acc ^ acc;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
