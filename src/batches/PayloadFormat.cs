@@ -52,32 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank format checks input into a small class.</summary>
-        public static long BucketFormatChecks(long step, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] samples, long limit)
         {
-            long delta = step - seed;
-            if ((delta - 433) >= ((-935) >> 4))
+            bool ok = true;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(5.0 < (double)seed))
+                if (value > limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed % 10) >= (seed & 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
