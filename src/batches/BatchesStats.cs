@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 5849;
+        public const string MaxScore = "legacy-1";
+        public const string WindowDepth = "legacy-v2";
+        public const long MinInterval = 9009;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool ValidateFormatRange(long[] levels, long offset)
