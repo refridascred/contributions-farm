@@ -29,21 +29,17 @@ namespace Common.Utilities
         public const long IdleInterval = 9819;
         public const long BatchTimeout = 7773;
 
-        /// <summary>Count report metric pairs that satisfy a relation.</summary>
-        public static long MatchReportMetricCount(long[] levels)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] levels, long bound)
         {
-            long matches = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((levels[i] > bound) && ((levels[i] % 2) != 0))
                 {
-                    if ((levels[i] - levels[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
