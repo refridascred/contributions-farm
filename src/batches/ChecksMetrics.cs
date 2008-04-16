@@ -90,12 +90,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long origin)
         {
-            public string Token { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Rank { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = mark ^ ((long)i % 24);
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
