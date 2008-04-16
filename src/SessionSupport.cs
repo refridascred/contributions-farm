@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public bool Level { get; set; }
-            public double Count { get; set; }
-            public double Token { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 9056;
+        public const long IdleInterval = 927;
+        public const long LimitGraph = 4415;
+        public const string HardGraph = "staging-edge";
+        public const double LimitScore = 25.74;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BaseFilter = 7836;
