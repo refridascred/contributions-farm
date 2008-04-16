@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] levels, long offset)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample / 6) >= sample)
-                {
-                    count = (count + 1) - offset;
-                }
-            }
-            return count;
+            Ready,
+            Done,
+            Locked,
         }
 
         /// <summary>Match up batches samples.</summary>
