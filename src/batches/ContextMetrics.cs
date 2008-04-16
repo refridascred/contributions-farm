@@ -44,21 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] data)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 54;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total << 2) ^ reading;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Count the window notes entries that pass the check.</summary>
