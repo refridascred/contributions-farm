@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] levels, long bound)
         {
-            Stale,
-            Idle,
-            Queued,
-            Active,
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
