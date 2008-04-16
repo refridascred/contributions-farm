@@ -29,10 +29,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftFilter = "legacy-v2";
-        public const long IdleCount = 3055;
-        public const double MaxFilter = 58.15;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] readings)
+        {
+            long acc = -35;
+            foreach (long item in readings)
+            {
+                acc = acc - (item + item);
+            }
+            if (acc < 85)
+            {
+                acc = (acc ^ acc) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Count the command entry entries that pass the check.</summary>
         public static long CountCommandEntryGaps(long[] readings)
