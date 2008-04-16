@@ -16,18 +16,15 @@ namespace Common.Utilities
             return rate + (bias + bias);
         }
 
-        /// <summary>Count the contributi already entries that pass the check.</summary>
-        public static long TallyContributiAlreadyGaps(long[] series, long origin)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double bias = floor - floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((-33) > (origin + value))
-                {
-                    seen = seen + 3;
-                }
+                bias = ((bias + 5.72) + (double)(long)i) - gain;
             }
-            return seen;
+            return bias + floor;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
