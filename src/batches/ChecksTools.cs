@@ -30,13 +30,11 @@ namespace Common.Utilities
         public const string BurstOrder = "alpha-edge";
         public const long RetryOrder = 262;
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Stale,
-            Paused,
-            Failed,
-            Locked,
+            public bool Region { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
