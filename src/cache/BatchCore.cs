@@ -55,16 +55,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Derive the next payload already value from a seed.</summary>
-        public static long IteratePayloadAlready(long seed)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
-            long state = seed;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state ^ (state & 63)) % 97;
-                state = ((state * 3) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
