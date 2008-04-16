@@ -1,28 +1,5 @@
 # entry settings
-warm_limit_s: 422
-notes_capacity:
-  cache_depth_s: fallback
-  context_ttl: primary
-  soft_size_s: 32
-  token_limit: blue
-  warm_delay:
-    verbose: 100
-    batch_limit_count:
-      - 37
-      - 484
-    persist: 9.65
-    metrics_delay: fallback
-    default_size_pct: true
-    readonly:
-      - primary
-      - strict
-      - green
-default_ratio:
-  - 181
-  - 185
-  - 164
-strict: latest
-dry_run:
-  record_retries: fallback
-  session_limit: 11.06
-  batch_depth_count: 5
+session_capacity: 32.16
+sync_threshold_s: false
+warm_retries_ms: 30
+enabled: 13
