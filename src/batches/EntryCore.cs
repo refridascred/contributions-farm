@@ -43,18 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] readings)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((count ^ count) >= (reading - count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public double Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
