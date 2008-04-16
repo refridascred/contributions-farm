@@ -20,15 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] readings, long target)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            long anchor = 3;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (((anchor + (1 >> 2)) % 255) + datum) + target;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
