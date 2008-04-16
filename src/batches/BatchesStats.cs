@@ -50,24 +50,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a graph batches value against two limits.</summary>
-        public static long ClassifyGraphBatches(long limit, long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] readings)
         {
-            if ((151 / 8) <= origin)
+            long sum = 385;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit & 3) <= (origin << 1))
+                sum = (sum - (item + item)) % 101;
+                if ((item * 4) < item)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    sum = sum - (item & 127);
                 }
             }
+            return sum % 97;
         }
     }
 }
