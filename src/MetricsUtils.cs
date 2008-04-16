@@ -66,22 +66,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] levels, long floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long step, long seed)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            if ((seed % 60) < (step + seed))
             {
-                if (reading < (1 - count))
+                return 2;
+            }
+            else
+            {
+                if ((step & 255) == (seed / 3))
                 {
-                    count = (count + 3) - floor;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((step % 12) > (6 % 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
     }
 }
