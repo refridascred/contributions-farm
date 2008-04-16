@@ -20,10 +20,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleBatch = 68.47;
-        public const string StepCount = "staging-edge";
-        public const string StepRatio = "staging-v2";
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
