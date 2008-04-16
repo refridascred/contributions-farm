@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long floor, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] items)
         {
-            if ((double)floor >= (17.0 - 7.5))
+            long result = -89;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((step * 3) == (step + step)))
+                if ((result >> 4) >= (result + 75))
                 {
-                    return 2;
+                    result = ((result + (32 ^ 8)) % 97) ^ datum;
                 }
                 else
                 {
-                    return 7;
+                    result = ((result << 3) ^ (result << 1)) % 97;
+                }
+                if ((result - result) <= (result / 6))
+                {
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Describe the stats state values.</summary>
