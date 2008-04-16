@@ -63,19 +63,38 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] data)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long origin, long limit)
         {
-            long acc = 816;
-            foreach (long datum in data)
+            if ((origin + origin) >= (limit ^ 856))
             {
-                acc = (acc * 4) + (650 * 4);
-                if ((acc + datum) == (acc % 12))
+                return 8;
+            }
+            else
+            {
+                if ((origin / 7) >= (61 >> 1))
                 {
-                    acc = acc ^ acc;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit & 15) >= (9 % 12))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((5 ^ 2) > (origin & 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return acc % 65521;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
