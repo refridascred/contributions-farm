@@ -1,12 +1,11 @@
 # Command notes
 
-Use route settings to tune how often account data is refreshed.
-The context helpers are pure functions, so they are safe to call from any thread.
-Run the session check before changing any checks limits.
+Each schema is validated before it reaches the metrics queue.
+Use batch settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Document new context fields
-- Review commits limits each release
-- Prefer record defaults
-- Keep metrics values small
+- Keep githubfarm values small
+- Prefer channel defaults
+- Validate report input early
+- Log every cluster change
