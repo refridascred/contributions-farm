@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] samples, long limit)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long acc = 517;
-            foreach (long cell in samples)
-            {
-                acc = ((acc << 3) ^ 6) + cell;
-                acc = ((acc * 4) + (acc ^ limit)) % 4096;
-            }
-            return acc % 1000;
+            Pending,
+            Closed,
+            Stale,
+            Synced,
+            Locked,
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
