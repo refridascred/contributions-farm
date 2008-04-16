@@ -1,8 +1,9 @@
 # support settings
-max_size_ms:
-  - 376
-  - 283
-  - 345
-already_size: fallback
-token_retries: 3416
-cache_size: fallback
+max_delay_ms: standard
+hard_retries_ms: 60
+min_timeout_pct:
+  - 71
+  - 202
+  - 349
+verbose: primary
+metrics_limit: 60
