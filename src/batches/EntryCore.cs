@@ -44,17 +44,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Locate a cluster queue reading by value.</summary>
-        public static long LookupClusterQueueIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultAlready = 39.3;
+        public const long HardAlready = 8417;
+        public const long SoftCount = 7697;
+        public const long MinSpan = 154;
+        public const string RetryAlready = "strict-edge";
     }
 }
