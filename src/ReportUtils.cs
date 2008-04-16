@@ -43,12 +43,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 7916;
+        public const long BurstDepth = 7001;
+        public const double StepGraph = 93.26;
+        public const string MaxGraph = "cached-1";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchDepth = 1518;
