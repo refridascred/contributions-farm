@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchRatio = 1249;
+        public const string IdleStream = "open";
+        public const double BurstStream = 55.75;
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long RollChannel(long target)
