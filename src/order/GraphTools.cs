@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryInterval = 1291;
-        public const long BaseCache = 792;
-        public const long SoftCache = 2;
-        public const long BaseCount = 5886;
-        public const long WindowCache = 1357;
+        /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
+        public static long TallySchemaGithubfarmMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((double)item == (7.35 - 2.0))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next report value.</summary>
         public static double AdjustReport(double gain, double bias)
