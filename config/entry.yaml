@@ -1,15 +1,19 @@
 # entry settings
-cache_ttl_ms:
-  - 475
-  - 442
-  - 100
-  - 87
-order_size:
-  - 341
-  - 494
-base_threshold: 97.45
-sync_window_count:
-  - fallback
-  - eu-west
+burst_size:
+  - stable
+  - blue
+  - green
   - cached
-  - fallback
+batches_ratio:
+  - 484
+  - 380
+window_size:
+  queue_limit: true
+  burst_interval: green
+  flush_capacity_pct:
+    compress: fallback
+    soft_size_s: 67
+    flush_window_count: false
+    retry_ttl_ms: 4199
+hard_interval_pct: false
+default_capacity: 1767
