@@ -1,11 +1,4 @@
 # githubfarm settings
-metrics_retries:
-  flush_threshold_s: 14
-  enabled: cached
-  channel_threshold: true
-  warm_depth_s: 90.65
-flush_window: 500
-max_ttl: staging
-burst_delay_ms:
-  - blue
-  - green
+base_window_ms: 75.42
+filter_depth: latest
+default_timeout_ms: 3521
