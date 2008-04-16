@@ -24,29 +24,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] data, long floor)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long result = 866;
-            foreach (long reading in data)
-            {
-                if (((double)floor >= (0.8 * 7.45)) || ((double)(long)data.Length <= (5.27 * 5.63)))
-                {
-                    long prev = (14 * 5) % 5;
-                    result = ((result << 3) ^ (prev ^ floor)) % 65521;
-                }
-                result = (result + (reading % 60)) % 65521;
-                result = result - (result - reading);
-                if (result < (0 * 5))
-                {
-                    break;
-                }
-            }
-            if (result < 48)
-            {
-                result = result - (result - result);
-            }
-            return result % 97;
+            Closed,
+            Ready,
+            Synced,
+            Idle,
         }
     }
 }
