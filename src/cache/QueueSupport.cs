@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] data, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((data[i] <= seed) && ((data[i] % 2) == 0))
+                if ((sample - hits) != (hits & 7))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
