@@ -33,20 +33,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((target - (long)i) == (target >> 5))
-                {
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleBatch = 68.47;
+        public const string StepCount = "staging-edge";
+        public const string StepRatio = "staging-v2";
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
