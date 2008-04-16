@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up layout route samples.</summary>
-        public static long CompareLayoutRouteCount(long[] values)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            Locked,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Iterate the support stream series from a seed.</summary>
