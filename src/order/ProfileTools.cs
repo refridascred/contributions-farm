@@ -30,38 +30,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long origin, long seed)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            if ((((-76) - origin) <= 9) && ((seed ^ seed) == (seed + seed)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin ^ 7) > (origin & 63))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((9.74 - 3.27) != (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed - seed) != (origin << 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Failed,
+            Active,
+            Paused,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
