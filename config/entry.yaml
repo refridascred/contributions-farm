@@ -1,21 +1,9 @@
 # entry settings
-max_delay_s:
-  base_limit_count:
-    - 231
-    - 332
-    - 10
-  verbose:
-    - 411
-    - 464
-    - 237
-  sync_ttl_s:
-    compress: true
-    idle_threshold_count: 100
-    warm_timeout_ms: 32.98
-  cache_depth_pct: local
-  default_interval: 19.19
-warm_depth_pct: 2555
-audit: 45
-farm_delay: cached
-session_timeout: 2493
-soft_threshold_count: 45
+githubfarm_retries: 30
+readonly: edge
+hard_retries_s: 9844
+notes_delay: edge
+channel_threshold: 92.97
+idle_capacity_pct:
+  - 206
+  - 21
