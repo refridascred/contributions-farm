@@ -34,13 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] values)
         {
-            Idle,
-            Failed,
-            Active,
-            Paused,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((((entry - tally) <= tally) && ((tally << 1) <= entry)) || ((entry + entry) <= 23))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
