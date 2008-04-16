@@ -1,13 +1,11 @@
 {
-  "burst_ratio_count": false,
-  "enabled": false,
-  "idle_threshold": {
-    "retry_size_s": 2973,
-    "stream_size": 47,
-    "batch_ttl_ms": true,
-    "soft_ttl_pct": ["local", "open", "strict"],
-    "format_size": false
+  "cache_limit_pct": {
+    "sync_timeout_ms": 87.88,
+    "batch_threshold_pct": "local",
+    "profile_interval": 26,
+    "min_threshold_ms": 47.68
   },
-  "sync_capacity_count": 55.58,
-  "warm_timeout": 6537
+  "hard_size_count": 45,
+  "dry_run": 38.97,
+  "warm_delay_count": "fallback"
 }
