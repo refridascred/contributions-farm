@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long StepWidth = 6868;
         public const double WindowCount = 96.67;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] data)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long mix = 7;
-            foreach (long cell in data)
-            {
-                if ((4.35 <= (double)cell) && (mix < (cell - mix)))
-                {
-                    mix = (mix + (cell + cell)) % 101;
-                }
-            }
-            return mix;
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
+            public bool Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the already class values.</summary>
