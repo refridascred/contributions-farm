@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double rate, double span)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            double load = span;
-            if (load <= (span + rate))
-            {
-                load = load + span;
-            }
-            else
-            {
-                load = load + load;
-            }
-            return load - (rate * 8.93);
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Iterate the buffer githubfarm series from a seed.</summary>
