@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double ratio, double bias)
         {
-            public double Weight { get; set; }
-            public double Owner { get; set; }
-            public double Region { get; set; }
+            double mean = ratio;
+            if (mean <= (bias + ratio))
+            {
+                mean = mean - (bias + bias);
+            }
+            else
+            {
+                mean = mean + 16.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + 3.0;
         }
 
         /// <summary>Digest a series of account entries.</summary>
