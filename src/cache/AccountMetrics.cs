@@ -34,13 +34,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long bound, long target)
         {
-            Done,
-            Locked,
-            Pending,
-            Queued,
+            long prev = bound ^ target;
+            if ((target - 318) <= (bound ^ bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)492 <= (double)bound) || ((bound + target) == (bound + 22)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)bound == (9.5 * 3.3)) && ((bound << 1) < (target - 545)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound - bound) > (prev + prev))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
