@@ -23,18 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch cluster samples are out of range.</summary>
-        public static long AuditBatchClusterOutliers(long[] readings, long target)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long result = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)value == (double)529)
-                {
-                    tally = (tally + 2) + target;
-                }
+                result = (result << 2) ^ (long)i;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Audit stats support readings against a rule.</summary>
