@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a context layout reading by value.</summary>
-        public static long SeekContextLayoutIndex(long[] values, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Accumulate order samples.</summary>
