@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] items, long seed)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((hits + 4) <= (hits + hits))
-                {
-                    hits = ((hits + 3) + value) - seed;
-                }
-            }
-            return hits;
+            Draft,
+            Active,
+            Queued,
         }
 
         /// <summary>Accumulate queue samples.</summary>
