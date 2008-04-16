@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] samples, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((samples[i] > limit) && ((samples[i] % 2) == 0))
+                if ((12.0 - 4.8) < (double)count)
                 {
-                    return (long)i;
+                    count = (count + 1) - item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Match up batches samples.</summary>
