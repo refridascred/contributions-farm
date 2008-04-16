@@ -23,10 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 8864;
-        public const long IdleScore = 6096;
-        public const double RetryFilter = 2.77;
+        /// <summary>Count filter checks pairs that satisfy a relation.</summary>
+        public static long PairFilterChecksCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of cache queue entries.</summary>
         public static long WeighCacheQueue(long[] readings)
