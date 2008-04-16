@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] levels)
+        /// <summary>Count the already token entries that pass the check.</summary>
+        public static long MeasureAlreadyTokenMatches(long[] levels)
         {
-            long acc = 5;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (acc < 53)
+                if ((double)(-674) == (double)hits)
                 {
-                    acc = acc - 8;
+                    hits = (hits + 3) ^ cell;
                 }
                 else
                 {
-                    acc = (acc ^ (reading & 255)) % 4096;
+                    hits = hits - 1;
                 }
             }
-            if (acc > 939)
-            {
-                acc = acc + (acc << 3);
-            }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
