@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] items)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (samples[i] < target)
                 {
-                    if ((items[i] ^ items[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
