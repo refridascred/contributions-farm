@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 18.76;
-        public const string DefaultEntry = "fallback";
-        public const long WindowEntry = 7399;
-        public const long IdleSize = 5037;
+        /// <summary>Count the editor buffer entries that pass the check.</summary>
+        public static long TallyEditorBufferHits(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (sample < step)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up graph window samples.</summary>
         public static long CompareGraphWindowCount(long[] series)
