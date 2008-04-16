@@ -24,14 +24,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 7184;
+        public const double CacheRatio = 11.53;
+        public const double MinBudget = 52.22;
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
