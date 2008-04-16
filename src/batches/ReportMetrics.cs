@@ -27,18 +27,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] items, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (((double)sample < (double)hits) || ((0.59 - 9.0) <= (1.0 + 13.0)))
+                if ((cell % 100) > (cell + tally))
                 {
-                    hits = (hits + 1) - origin;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
