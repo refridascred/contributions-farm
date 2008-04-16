@@ -1,7 +1,5 @@
 {
-  "flush_threshold_s": "strict",
-  "report_size": "fallback",
-  "base_limit_pct": 2611,
-  "dry_run": 250,
-  "idle_ratio_ms": 60
+  "sync_retries": "edge",
+  "soft_depth": false,
+  "max_ratio_count": "primary"
 }
