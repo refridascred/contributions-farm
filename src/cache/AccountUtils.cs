@@ -15,15 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] values)
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (((long)values.Length < seen) && (((seen - seen) < (cell / 6)) || ((cell ^ seen) < 2)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
