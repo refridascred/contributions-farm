@@ -54,12 +54,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] series, long limit)
         {
-            New,
-            Ready,
-            Active,
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
