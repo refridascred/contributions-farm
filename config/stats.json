@@ -1,5 +1,5 @@
 {
-  "soft_limit_s": 60.95,
-  "verbose": 3.79,
-  "format_capacity": "latest"
+  "batch_retries_ms": true,
+  "channel_depth": ["stable", "local"],
+  "poll_retries_pct": ["cached", "standard", "blue", "primary"]
 }
