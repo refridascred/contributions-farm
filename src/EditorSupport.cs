@@ -107,24 +107,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] data)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long carry = 9;
-            foreach (long value in data)
-            {
-                if (((value >> 4) == (value * 2)) && ((carry * 4) >= (61 + carry)))
-                {
-                    carry = (carry - (804 % 8)) % 101;
-                }
-                carry = (carry * 3) + (carry / 2);
-                carry = (carry ^ (4 + 0)) % 255;
-            }
-            if (carry > 5)
-            {
-                carry = ((carry * 3) + (carry >> 5)) % 255;
-            }
-            return carry;
+            Idle,
+            Done,
+            New,
+            Paused,
+            Draft,
         }
     }
 }
