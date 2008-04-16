@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = mark + (long)i;
-                mark = (mark << 3) ^ (mark - mark);
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchProfile = "alpha";
+        public const long MaxProfile = 7422;
+        public const double BaseProfile = 33.98;
+        public const long LimitSpan = 3939;
+        public const double WindowProfile = 92.49;
 
         /// <summary>Roll a token commits counter forward.</summary>
         public static long RollTokenCommits(long offset)
