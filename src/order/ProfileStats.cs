@@ -32,13 +32,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] data)
         {
-            Pending,
-            Locked,
-            Dropped,
-            Synced,
+            long score = 43;
+            foreach (long sample in data)
+            {
+                if ((sample * 3) == (sample & 31))
+                {
+                    score = score - 9;
+                }
+            }
+            if (score > 6)
+            {
+                score = (score << 3) ^ (45 + (long)data.Length);
+            }
+            return score % 65521;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
