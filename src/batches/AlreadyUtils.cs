@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] levels, long origin)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long origin)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (origin >= ((long)levels.Length + tally))
-                {
-                    tally = (tally + 2) + value;
-                }
+                result = ((result << 2) ^ (origin * 2)) % 65521;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the graph class values.</summary>
