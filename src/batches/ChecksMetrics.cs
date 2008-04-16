@@ -37,10 +37,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheReport = "alpha-1";
-        public const string BatchReport = "standard-v2";
-        public const long RetryTimeout = 9559;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((long)i << 2) != (304 ^ step))
+                {
+                    mix = mix + 63;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double BlendRoute(double bias, double span)
