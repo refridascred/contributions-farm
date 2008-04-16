@@ -34,13 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
+            public double Mode { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank farm filter input into a small class.</summary>
