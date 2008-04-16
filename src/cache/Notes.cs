@@ -32,23 +32,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double weight, double span)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            double ratio = span;
-            if (ratio <= (ratio * 18.0))
-            {
-                ratio = ratio + weight;
-            }
-            else
-            {
-                ratio = ratio - (span * 3.69);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + ratio;
+            Dropped,
+            Pending,
+            Draft,
+            New,
+            Synced,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
