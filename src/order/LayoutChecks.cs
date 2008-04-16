@@ -57,11 +57,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public bool Size { get; set; }
-            public string Weight { get; set; } = "";
+            Closed,
+            Idle,
+            Active,
+            Ready,
+            Failed,
         }
 
         /// <summary>Roll a account counter forward.</summary>
