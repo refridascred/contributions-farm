@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long BurstContext = 720;
         public const string LimitBudget = "local-v2";
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] levels, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 700;
+            foreach (long datum in readings)
             {
-                if (levels[i] < floor)
+                if (1.3 < (double)result)
                 {
-                    return (long)i;
+                    result = (((result * 3) + (result + 2)) % 101) + datum;
                 }
             }
-            return -1;
+            if (result > 82)
+            {
+                result = ((result << 2) ^ result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
