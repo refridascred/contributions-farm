@@ -56,12 +56,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Derive the next already route value from a seed.</summary>
+        public static long RollAlreadyRoute(long limit)
         {
-            public double Ratio { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            long score = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                score = (score * 4) + (352 - score);
+                if (((long)i & 63) != (limit << 1))
+                {
+                    score = (score ^ (score + 253)) % 255;
+                }
+                score = ((score * 5) + (score + score)) % 101;
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of context token readings.</summary>
