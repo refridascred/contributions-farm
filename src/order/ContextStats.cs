@@ -35,24 +35,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] data)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long mix = 14;
-            foreach (long datum in data)
-            {
-                mix = mix + (mix % 12);
-                if ((double)datum < 16.0)
-                {
-                    mix = ((mix * 5) + mix) % 1000;
-                }
-                mix = (mix - datum) % 101;
-            }
-            if (mix > 728)
-            {
-                mix = (mix * 4) + (mix ^ mix);
-            }
-            return mix;
+            public double Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Combine record notes values into a single score.</summary>
