@@ -1,39 +1,13 @@
 # support settings
-compress: legacy
-cache_ratio: 89.41
-flush_timeout_count:
-  poll_ratio: true
-  session_limit:
-    strict: true
-    base_size:
-      - 17
-      - 307
-      - 422
-    entry_ratio: 95.61
-    commits_ttl: open
-    tools_ttl: 100
-  sync_ratio_s:
-    - eu-west
-    - primary
-  poll_window_count:
-    verbose: 4373
-    soft_limit:
-      - green
-      - green
-      - primary
-    max_interval_s:
-      - primary
-      - standard
-      - staging
-    warm_interval_count: 500
-    cluster_retries: 7041
-    cache_ttl_s: true
-  format_limit:
-    - stable
-    - latest
-  max_limit_ms: 21
-min_size_s: 19
-cache_delay_count: local
-cache_interval:
-  - 65
-  - 332
+schema_depth: 39.28
+checks_threshold:
+  - 121
+  - 180
+session_timeout: strict
+compress:
+  - 136
+  - 177
+  - 498
+  - 43
+idle_threshold_pct: 25
+token_ratio: 7495
