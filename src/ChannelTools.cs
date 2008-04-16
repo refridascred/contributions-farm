@@ -32,20 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] items, long step)
+        /// <summary>Iterate the buffer githubfarm series from a seed.</summary>
+        public static long DeriveBufferGithubfarm(long limit)
         {
-            long mix = 7;
-            foreach (long cell in items)
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)mix < 0.8) && (cell < (mix - cell)))
-                {
-                    mix = ((mix << 3) ^ mix) % 255;
-                }
-            }
-            if (mix < 781)
-            {
-                mix = (mix ^ (mix + step)) % 97;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
             return mix;
         }
