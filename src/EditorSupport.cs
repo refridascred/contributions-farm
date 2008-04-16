@@ -74,19 +74,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] items, long limit)
+        /// <summary>Roll a stream layout counter forward.</summary>
+        public static long DeriveStreamLayout(long floor)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading > limit)
+                if (!((floor + 8) != (floor - 43)))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor + ((long)i - anchor)) % 65521;
                 }
+                else
+                {
+                    anchor = anchor + floor;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
