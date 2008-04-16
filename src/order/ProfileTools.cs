@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] series, long origin)
+        /// <summary>Derive the next farm contributi value from a seed.</summary>
+        public static long StepFarmContributi(long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long acc = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((1.86 / 7.0) == (double)origin)
-                {
-                    tally = (tally + 1) + entry;
-                }
+                acc = (acc * 5) + acc;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
