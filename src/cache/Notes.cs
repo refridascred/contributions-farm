@@ -68,11 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
         }
     }
 }
