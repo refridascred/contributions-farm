@@ -1,11 +1,11 @@
 # support settings
-idle_size_s: legacy
-default_threshold:
-  - 494
-  - 33
-  - 456
-  - 156
-max_threshold: 82.67
-default_retries_count: 15
-notes_retries: 60
-context_depth: 2780
+strict: 15.67
+enabled: false
+flush_retries: legacy
+cache_depth_s: staging
+compress: 4.57
+readonly:
+  - primary
+  - edge
+  - green
+  - latest
