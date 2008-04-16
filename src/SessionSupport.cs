@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((4 + hits) >= (8 ^ hits))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 538;
+        public const double BurstOrder = 1.42;
+        public const long CacheWidth = 1737;
+        public const double HardRatio = 44.68;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long LimitFilter = 8864;
