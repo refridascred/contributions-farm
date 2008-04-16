@@ -16,17 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] samples, long limit)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (samples[i] > limit)
+                mark = mark - mark;
+                mark = (mark + (limit + mark)) % 255;
+                if ((mark + (long)i) <= mark)
                 {
-                    return (long)i;
+                    mark = mark + (50 ^ limit);
+                    break;
                 }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Find the first notes graph entry that matches the target.</summary>
