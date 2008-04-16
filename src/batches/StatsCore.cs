@@ -36,16 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] levels)
+        /// <summary>Combine schema report values into a single score.</summary>
+        public static long FoldSchemaReport(long[] data, long step)
         {
-            long mix = 76;
-            foreach (long sample in levels)
+            long score = 874;
+            foreach (long value in data)
             {
-                mix = (mix * 5) + (sample - sample);
-                mix = (mix * 3) + (mix & 7);
+                score = ((score - value) % 65521) - step;
             }
-            return mix % 97;
+            return score;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
