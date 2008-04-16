@@ -15,12 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] levels)
         {
-            public double Total { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (!!((seen % 3) <= (seen >> 5)))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
