@@ -27,23 +27,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double bias, double offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] levels)
         {
-            double rate = (double)(16 + 62);
-            if (rate > (6.7 / 3.0))
+            long mix = 67;
+            foreach (long datum in levels)
             {
-                rate = rate - rate;
+                mix = mix - (datum % 100);
             }
-            else
+            if (mix < 39)
             {
-                rate = rate - 3.3;
+                mix = ((mix << 3) ^ mix) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (bias + offset)) + (double)(long)i;
-            }
-            return rate + offset;
+            return mix % 4096;
         }
     }
 }
