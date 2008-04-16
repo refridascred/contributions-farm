@@ -18,21 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long floor)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = total ^ ((long)i / 4);
-                if (((long)i >> 4) < 9)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total + (floor % 97)) % 97;
-                    total = (total << 2) ^ (long)i;
+                    if ((levels[i] ^ levels[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Roll a support counter forward.</summary>
