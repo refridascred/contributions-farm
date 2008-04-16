@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] items, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            long anchor = 225;
-            foreach (long datum in items)
+            long mix = 0;
+            foreach (long reading in levels)
             {
-                if ((anchor + offset) > ((-1) + 0))
-                {
-                    anchor = ((anchor * 4) + (anchor + datum)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ offset) % 65521;
-                }
+                mix = (mix ^ reading) % 65521;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Digest a series of token entries.</summary>
