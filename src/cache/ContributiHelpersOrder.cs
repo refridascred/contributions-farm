@@ -30,21 +30,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Match up format cluster samples.</summary>
-        public static long PairFormatClusterCount(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((hits << 2) >= (limit * 5)) || (((double)limit >= (8.0 / 9.0)) && ((double)hits > (4.07 * 12.0))))
                 {
-                    if ((values[i] + values[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
