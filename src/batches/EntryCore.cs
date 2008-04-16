@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Locked,
-            New,
-            Queued,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepFormat = 54.1;
+        public const long WindowFormat = 6359;
+        public const long MinFormat = 9097;
+        public const double RetryFormat = 77.53;
+        public const long BurstFormat = 9711;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
