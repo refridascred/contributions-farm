@@ -23,17 +23,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] levels, long target)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long bound, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)offset == (13.0 + 3.03))
             {
-                if (levels[i] >= target)
+                return 2;
+            }
+            else
+            {
+                if (92 <= (offset * 3))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
