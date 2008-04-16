@@ -61,24 +61,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] values, long target)
+        /// <summary>Locate a cluster queue reading by value.</summary>
+        public static long LookupClusterQueueIndex(long[] items, long origin)
         {
-            long total = 943;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total - total) % 1000;
-                total = total - (target - entry);
-                if (total <= (target ^ total))
+                if (items[i] <= origin)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total < 754)
-            {
-                total = (total ^ (51 - total)) % 101;
-            }
-            return total;
+            return -1;
         }
     }
 }
