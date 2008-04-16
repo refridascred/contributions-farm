@@ -89,11 +89,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheSize = 9574;
-        public const string HardCommand = "legacy-v2";
-        public const long MaxDepth = 258;
-        public const long MinCommand = 9284;
-        public const long MinDepth = 3377;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Synced,
+            Closed,
+            Paused,
+            Done,
+            Failed,
+        }
     }
 }
