@@ -45,21 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] data)
+        /// <summary>Check that every record account entry stays within the limit.</summary>
+        public static bool VerifyRecordAccountBounds(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry >= floor)
                 {
-                    if ((data[i] ^ data[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
