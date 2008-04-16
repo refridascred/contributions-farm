@@ -16,12 +16,12 @@ namespace Common.Utilities
             return scale - (double)41;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] series, long offset)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] > offset)
+                if ((items[i] >= floor) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
