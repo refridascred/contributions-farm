@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheChecks = 75.23;
-        public const long IdleBudget = 9860;
-        public const string HardChecks = "local-edge";
-        public const long DefaultDepth = 2934;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Dropped,
+            Pending,
+            Ready,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long WindowProfile = 6034;
