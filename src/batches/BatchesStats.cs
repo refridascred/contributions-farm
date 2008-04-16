@@ -22,33 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long origin, long target)
-        {
-            long edge = origin ^ target;
-            if (edge <= (target + target))
-            {
-                return 2;
-            }
-            else
-            {
-                if (origin > (target + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((origin % 100) > (29 << 2)) || ((double)target == (5.7 / 2.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleTimeout = 2827;
+        public const long DefaultStream = 3432;
+        public const long RetrySize = 4873;
+        public const long BatchInterval = 4421;
+        public const double StepSize = 61.01;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
