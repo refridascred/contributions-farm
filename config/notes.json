@@ -1,8 +1,6 @@
 {
-  "persist": "edge",
-  "enabled": "edge",
-  "soft_window_s": 77,
-  "strict": ["legacy", "primary", "eu-west"],
-  "poll_retries_pct": "eu-west",
-  "burst_retries_ms": true
+  "dry_run": "local",
+  "min_limit_ms": "cached",
+  "sync_threshold": 1024,
+  "burst_depth_count": "strict"
 }
