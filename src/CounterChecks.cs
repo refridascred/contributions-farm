@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the session format entries that pass the check.</summary>
-        public static long AuditSessionFormatOutliers(long[] readings)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((matches << 1) < (matches - datum))
+                if ((((9.8 / 7.0) >= (double)seen) && (seed > seen)) && ((long)items.Length > (datum % 16)))
                 {
-                    matches = matches + 1;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Classify a payload support pair into a bucket.</summary>
