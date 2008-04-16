@@ -50,15 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batch contributi values into a single score.</summary>
-        public static long WeighBatchContributi(long[] series)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] data, long step)
         {
-            long mark = 8;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long reading in data)
             {
-                mark = (((mark << 3) ^ (419 * 4)) % 101) - item;
+                if ((0.7 / 5.0) <= (double)count)
+                {
+                    count = ((count + 2) + reading) - step;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
