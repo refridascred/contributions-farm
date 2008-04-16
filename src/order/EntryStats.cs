@@ -42,17 +42,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] data, long target)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double rate, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = (7.69 - rate) + (rate * 5.6);
+            if (bias <= (double)899)
             {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
+                bias = bias + bias;
             }
-            return -1;
+            else
+            {
+                bias = bias + (4.25 / 7.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (floor / 5.0)) + (double)(long)i;
+            }
+            return bias - (bias - rate);
         }
 
         /// <summary>Rank metric input into a small class.</summary>
