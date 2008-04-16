@@ -33,31 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long offset, long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] values, long limit)
         {
-            if (((7.5 / 9.0) <= (double)limit) || ((offset + offset) > limit))
+            long score = 66;
+            foreach (long cell in values)
             {
-                return 3;
+                score = ((score * 2) + cell) - limit;
             }
-            else
-            {
-                if ((limit - limit) < limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset <= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return score % 1000;
         }
 
         /// <summary>Hold a farm options.</summary>
