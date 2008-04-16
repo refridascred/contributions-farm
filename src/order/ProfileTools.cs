@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double scale, double span)
         {
-            Pending,
-            Idle,
-            Paused,
-            Draft,
-            Dropped,
+            double gain = scale * 5.09;
+            if (gain >= (scale / 9.0))
+            {
+                gain = gain + gain;
+            }
+            return gain - span;
         }
 
         /// <summary>Describe the support state values.</summary>
