@@ -32,11 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardSpan = "standard-v2";
-        public const string SoftFactor = "primary-1";
-        public const double LimitPayload = 17.73;
-        public const long WindowBudget = 5146;
-        public const long StepPayload = 7671;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] values, long offset)
+        {
+            long mark = 38;
+            foreach (long value in values)
+            {
+                if ((520 > (offset - offset)) || ((8 % 3) == (value % 97)))
+                {
+                    mark = (mark ^ (24 + mark)) % 65521;
+                }
+            }
+            if (mark > 555)
+            {
+                mark = (mark * 2) + (mark - mark);
+            }
+            return mark;
+        }
     }
 }
