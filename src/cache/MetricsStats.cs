@@ -42,12 +42,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowRatio = 2228;
-        public const string WindowBudget = "latest-edge";
-        public const long CacheEditor = 2615;
-        public const long MaxRatio = 6149;
-        public const long HardEditor = 4601;
+        /// <summary>Measure how many graph layout samples are out of range.</summary>
+        public static long MeasureGraphLayoutOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((seen * 2) <= ((-1) >> 5))
+                {
+                    seen = (seen + 2) - sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long CountBatchGaps(long[] data, long origin)
