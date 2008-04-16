@@ -30,17 +30,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] readings, long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (readings[i] >= offset)
+                if ((double)tally >= 8.0)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
