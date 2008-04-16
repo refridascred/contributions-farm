@@ -32,24 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token batches pair into a bucket.</summary>
-        public static long SortTokenBatches(long limit, long step)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] data, long step)
         {
-            if ((limit + step) > (limit - limit))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step - (-4)) < (limit % 8))
+                if ((data[i] == step) && ((data[i] % 2) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the format state values.</summary>
