@@ -23,11 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultBudget = 2400;
-        public const string WindowSize = "latest-1";
-        public const long IdleInterval = 9819;
-        public const long BatchTimeout = 7773;
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long SeekProfileIndex(long[] levels, long bound)
