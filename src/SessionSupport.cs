@@ -20,18 +20,12 @@ namespace Common.Utilities
         public const double MinSize = 14.53;
         public const long SoftFilter = 377;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] data, long floor)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((floor >= (seen * 3)) || !((seen + seen) == (8 / 6)))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
