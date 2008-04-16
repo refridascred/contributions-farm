@@ -27,22 +27,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] data, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (entry <= (7 >> 4))
+                if (sample <= (55 & 31))
                 {
-                    seen = (seen + 1) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 3) + step;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Adjust a queue reading.</summary>
