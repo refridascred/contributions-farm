@@ -1,12 +1,13 @@
 # Command notes
 
-The metric module keeps account values in sync with the buffer cache.
-Keep contributi and metric names short and lowercase.
-When a notes fails, the order handler retries a few times before giving up.
+Use metric settings to tune how often already data is refreshed.
+Each githubfarm is validated before it reaches the metric queue.
+
+Use token settings to tune how often graph data is refreshed.
+When a notes fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep order values small
-- Document new schema fields
-- Validate editor input early
-- Log every cache change
+- Review format limits each release
+- Validate batch input early
+- Prefer context defaults
