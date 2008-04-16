@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] data, long seed)
+        /// <summary>Derive the next payload session value from a seed.</summary>
+        public static long DerivePayloadSession(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (data[i] < seed)
+                if ((limit + limit) == (mark + mark))
                 {
-                    return (long)i;
+                    mark = mark - limit;
                 }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mark = (mark - (mark << 1)) + (long)i2;
+                }
+                mark = (mark * 5) + (limit % 3);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
