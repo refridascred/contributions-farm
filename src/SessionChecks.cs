@@ -31,12 +31,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardCount = 4595;
-        public const long RetryFactor = 2124;
-        public const string LimitScore = "cached-1";
-        public const string BatchRatio = "open-edge";
-        public const long MaxBuffer = 8387;
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
