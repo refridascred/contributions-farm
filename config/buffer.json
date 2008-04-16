@@ -1,6 +1,15 @@
 {
-  "persist": "staging",
-  "burst_ratio_count": 83.31,
-  "readonly": "green",
-  "soft_window": true
+  "sync_timeout_count": ["primary", "cached", "blue", "strict"],
+  "flush_size": 30,
+  "batch_interval_ms": true,
+  "metrics_window": 15,
+  "entry_delay": true,
+  "compress": {
+    "flush_capacity_pct": "open",
+    "soft_limit": "open",
+    "default_delay_ms": 2017,
+    "hard_delay_pct": [122, 302],
+    "idle_threshold_s": 83,
+    "idle_ratio_pct": 70.3
+  }
 }
