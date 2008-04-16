@@ -31,18 +31,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of channel contributi readings.</summary>
-        public static long TotalChannelContributi(long[] items)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long total = 5;
-            foreach (long entry in items)
-            {
-                if ((643 + total) <= (entry + entry))
-                {
-                    total = (total + (28 >> 1)) % 101;
-                }
-            }
-            return total;
+            Pending,
+            Stale,
+            Retry,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Accumulate checks samples.</summary>
