@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] data)
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((210 << 2) == (value & 63))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
