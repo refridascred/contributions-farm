@@ -40,13 +40,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long seed, long offset)
         {
-            public long Size { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public double Score { get; set; }
+            long prev = seed ^ offset;
+            if (seed >= (prev + 22))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((prev << 1) <= (offset << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the queue mode values.</summary>
