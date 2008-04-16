@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseBudget = 8898;
-        public const double RetryLevel = 83.29;
-        public const long BurstRatio = 5764;
-        public const string CacheCount = "fallback-1";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 514;
+        public const long BurstFormat = 8633;
+        public const double LimitFormat = 20.03;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LocateEditorIndex(long[] readings, long bound)
