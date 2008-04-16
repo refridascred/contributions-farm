@@ -27,12 +27,12 @@ namespace Common.Utilities
         public const string BurstOrder = "alpha-edge";
         public const long RetryOrder = 262;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
+            Paused,
             Ready,
-            Locked,
-            Retry,
+            Done,
         }
     }
 }
