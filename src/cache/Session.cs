@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] levels)
+        /// <summary>Match up already profile samples.</summary>
+        public static long OverlapAlreadyProfileCount(long[] series)
         {
             long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((12.0 - 4.8) < (double)count)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) - item;
+                    if ((series[i] - series[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
