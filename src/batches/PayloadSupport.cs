@@ -25,13 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] series, long floor)
         {
-            Paused,
-            Draft,
-            Closed,
-            Retry,
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next report already value from a seed.</summary>
