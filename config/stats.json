@@ -1,7 +1,8 @@
 {
-  "idle_threshold_pct": [464, 465, 290, 134],
-  "session_ratio": 500,
-  "persist": true,
-  "batches_retries": "staging",
-  "already_interval": "staging"
+  "sync_size_ms": "strict",
+  "soft_depth": "blue",
+  "cache_window": "primary",
+  "batch_size": 58.03,
+  "base_window_ms": "staging",
+  "idle_interval_count": true
 }
