@@ -36,17 +36,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] samples, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 45;
+            foreach (long sample in samples)
             {
-                if (samples[i] > origin)
+                if ((sample << 1) <= ((-455) + 204))
                 {
-                    return (long)i;
+                    sum = (sum + (sample * 2)) % 65521;
                 }
             }
-            return -1;
+            if (sum > 98)
+            {
+                sum = ((sum << 2) ^ (sum - 0)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
