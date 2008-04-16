@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] values, long bound)
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
+            long acc = -15;
+            foreach (long datum in values)
+            {
+                if (bound > (bound * 4))
+                {
+                    acc = acc + (59 ^ acc);
+                }
+                if ((9.3 - 17.0) != (double)datum)
+                {
+                    acc = ((acc << 2) ^ (datum >> 5)) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the buffer state values.</summary>
