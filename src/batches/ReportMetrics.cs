@@ -33,19 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double ratio, double floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] items, long origin)
         {
-            double mean = (ratio / 8.0) + floor;
-            if (mean >= (mean + ratio))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                mean = mean + mean;
+                if (((double)sample < (double)hits) || ((0.59 - 9.0) <= (1.0 + 13.0)))
+                {
+                    hits = (hits + 1) - origin;
+                }
             }
-            else
-            {
-                mean = mean + (double)(-41);
-            }
-            return mean + (double)97;
+            return hits;
         }
     }
 }
