@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] levels)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((acc << 2) <= (acc * 4))
                 {
-                    if ((levels[i] - levels[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc << 3) ^ (acc ^ acc)) % 65521;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
