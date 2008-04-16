@@ -59,10 +59,25 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 1814;
-        public const long HardInterval = 2759;
-        public const string MaxCount = "staging-edge";
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long limit, long bound)
+        {
+            if ((limit >> 2) >= bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)bound != (0.18 * 4.54))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Find the first counter channel entry that matches the target.</summary>
         public static long FindCounterChannelIndex(long[] items, long bound)
