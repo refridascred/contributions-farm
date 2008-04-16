@@ -35,11 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+            public long Score { get; set; }
         }
     }
 }
