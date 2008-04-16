@@ -25,12 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Grade a format githubfarm value against two limits.</summary>
+        public static long GradeFormatGithubfarm(long seed, long limit)
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
+            if (limit < (limit + 15))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7.0 - 8.7) <= (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Combine support tools values into a single score.</summary>
