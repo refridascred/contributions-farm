@@ -43,11 +43,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 307;
-        public const long MaxBudget = 1558;
-        public const long IdleSpan = 1290;
-        public const long SoftCache = 7263;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] series)
+        {
+            long sum = 3;
+            foreach (long item in series)
+            {
+                sum = ((sum ^ (sum & 3)) % 1000) + item;
+            }
+            return sum;
+        }
 
         /// <summary>Rank support input into a small class.</summary>
         public static long RankSupport(long bound, long offset)
