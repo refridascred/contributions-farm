@@ -32,23 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order batch readings.</summary>
-        public static long WeighOrderBatch(long[] levels)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] samples)
         {
-            long state = 870;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = state ^ (25 % 64);
-                if ((320 >= (datum + 606)) && ((datum - 2) != (state + 827)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state - datum) % 1000;
-                }
-                if (!((double)datum <= (9.7 + 6.4)))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
