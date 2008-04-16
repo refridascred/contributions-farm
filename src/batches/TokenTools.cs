@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Rank entry record input into a small class.</summary>
+        public static long ClassifyEntryRecord(long origin, long limit)
         {
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
+            long bound = origin - limit;
+            if (!((bound << 3) >= (bound + limit)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((4 / 6) != (limit << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Iterate the payload order series from a seed.</summary>
