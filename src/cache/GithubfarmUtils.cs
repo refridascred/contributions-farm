@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter editor entries.</summary>
-        public static long ScoreFilterEditor(long[] items)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long mark = 421;
-            foreach (long entry in items)
-            {
-                if (mark <= entry)
-                {
-                    mark = ((mark * 5) + (entry >> 2)) % 1000;
-                }
-            }
-            return mark % 1000;
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
