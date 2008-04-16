@@ -60,23 +60,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Grade a filter profile value against two limits.</summary>
+        public static long BucketFilterProfile(long seed, long limit)
         {
-            long mark = -15;
-            foreach (long datum in values)
+            if ((64 - seed) > (98 >> 2))
             {
-                mark = (mark * 5) + datum;
-                if (((1.31 / 6.0) < (double)mark) && ((mark << 3) <= (datum / 5)))
+                return 1;
+            }
+            else
+            {
+                if ((double)seed < (14.0 / 5.0))
                 {
-                    mark = ((mark * 3) + (mark >> 5)) % 4096;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (mark > 6)
-            {
-                mark = mark - mark;
-            }
-            return mark;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
