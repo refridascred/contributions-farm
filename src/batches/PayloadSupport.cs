@@ -40,19 +40,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next report already value from a seed.</summary>
-        public static long SeriesReportAlready(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((step ^ mark) <= (step & 15)) && ((double)233 <= (double)(long)i))
-                {
-                    mark = (mark - (step ^ (long)i)) % 101;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchFactor = 42.93;
+        public const long DefaultFactor = 1042;
+        public const long MaxAlready = 7183;
+        public const string DefaultAlready = "staging-1";
+        public const string BatchSize = "alpha-edge";
     }
 }
