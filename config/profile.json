@@ -1,7 +1,7 @@
 {
-  "enabled": "stable",
-  "counter_threshold": false,
-  "soft_ratio": 40.43,
-  "metric_ttl": false,
-  "batch_interval": "local"
+  "flush_threshold_s": "strict",
+  "report_size": "fallback",
+  "base_limit_pct": 2611,
+  "dry_run": 250,
+  "idle_ratio_ms": 60
 }
