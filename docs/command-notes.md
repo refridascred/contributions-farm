@@ -1,15 +1,13 @@
 # Command notes
 
-The payload helpers are pure functions, so they are safe to call from any thread.
-Each batches is validated before it reaches the editor queue.
-Each payload is validated before it reaches the token queue.
+Run the metric check before changing any notes limits.
+Each cluster is validated before it reaches the record queue.
 
-The report module keeps graph values in sync with the token cache.
-Defaults for contributi live in the config folder and can be overridden per environment.
+Use commits settings to tune how often stream data is refreshed.
+When a githubfarm fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Keep layout values small
-- Review format limits each release
-- Document new already fields
+- Log every batch change
+- Validate route input early
+- Keep token values small
