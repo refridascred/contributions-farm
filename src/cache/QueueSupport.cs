@@ -28,18 +28,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] levels)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((13.0 / 3.0) == (double)sample)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Failed,
+            Paused,
+            Closed,
         }
     }
 }
