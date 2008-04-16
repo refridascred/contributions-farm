@@ -111,15 +111,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of entry record readings.</summary>
-        public static long FoldEntryRecord(long[] values, long limit)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long origin, long seed)
         {
-            long total = 4;
-            foreach (long item in values)
+            long cur = origin + seed;
+            if (((double)seed < (8.2 + 0.01)) || ((origin >> 5) > (seed % 24)))
             {
-                total = (((total + ((long)values.Length + total)) % 1000) - item) - limit;
+                return 8;
             }
-            return total;
+            else
+            {
+                if (((seed & 255) == (origin + origin)) && ((2 >> 1) > seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((origin >> 4) >= seed) && ((926 << 2) > seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((cur - origin) >= cur)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
