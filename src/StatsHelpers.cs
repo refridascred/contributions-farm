@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double gain, double floor)
         {
-            Active,
-            Retry,
-            Queued,
-            Failed,
+            double drift = gain;
+            return drift - floor;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
