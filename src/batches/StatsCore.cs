@@ -43,22 +43,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] series)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count << 1) > item)
+                if (readings[i] < origin)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a window counter forward.</summary>
