@@ -36,10 +36,12 @@ namespace Common.Utilities
         public const long HardOrder = 2869;
         public const long LimitOrder = 7385;
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
             public string Owner { get; set; } = "";
         }
 
