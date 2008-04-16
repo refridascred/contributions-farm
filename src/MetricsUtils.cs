@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double scale, double floor)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            double scale2 = (double)(47 % 12);
-            if (scale2 > (double)97)
-            {
-                scale2 = ((scale2 + scale2) - scale) - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 + 6.3) + (double)(long)i;
-            }
-            return scale2 + (double)(-8);
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
