@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long seed)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public long Level { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
