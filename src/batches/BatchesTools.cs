@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double rate, double floor)
         {
-            Dropped,
-            Synced,
-            Draft,
+            double rate2 = floor;
+            if (rate2 > (rate2 + rate))
+            {
+                rate2 = rate2 - (floor / 9.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = rate2 - (double)(long)i;
+            }
+            return rate2 + floor;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
