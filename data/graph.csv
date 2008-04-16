@@ -1,9 +1,7 @@
-id,token,active,state
-1,582,591,blue
-2,44.91,936,strict
-3,local,613,legacy
-4,blue,959,green
-5,standard,745,strict
-6,876,6.57,cached
-7,strict,555,309
-8,102,715,814
+id,rank,label,token,level
+1,27.8,90.29,cached,open
+2,13.57,48.15,10.83,873
+3,cached,10.66,24.77,54.83
+4,11.67,857,30.91,cached
+5,stable,371,664,397
+6,staging,945,legacy,legacy
