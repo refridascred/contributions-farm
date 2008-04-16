@@ -1,8 +1,6 @@
 {
-  "burst_interval": ["staging", "eu-west"],
-  "compress": "fallback",
-  "default_interval_pct": [485, 276, 91],
-  "default_ttl_count": "strict",
-  "max_ratio": 67,
-  "persist": 10.5
+  "strict": 43.26,
+  "poll_interval_count": 44.53,
+  "audit": false,
+  "verbose": "local"
 }
