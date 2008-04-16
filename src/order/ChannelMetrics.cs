@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double scale, double floor)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double weight = 1.4;
-            return (weight - scale) + floor;
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a profile snapshot.</summary>
