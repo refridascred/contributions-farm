@@ -35,31 +35,11 @@ namespace Common.Utilities
             return rate2 + bias;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long limit, long bound)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            if ((bound << 3) >= 90)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit >> 3) < 4)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound >> 1) == (bound - 36))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
