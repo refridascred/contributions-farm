@@ -43,15 +43,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double bias, double span)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] values, long step)
         {
-            double ratio = (double)(754 & 127);
-            if (ratio < 13.0)
+            long count = 0;
+            foreach (long reading in values)
             {
-                ratio = (ratio + (double)(-1)) - span;
+                if ((count * 2) >= (count - step))
+                {
+                    count = (count + 3) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return ratio + (bias + ratio);
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
