@@ -33,18 +33,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] samples)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long anchor = 912;
+            foreach (long reading in data)
             {
-                if ((14.0 / 6.0) != (double)reading)
-                {
-                    tally = tally + 1;
-                }
+                anchor = anchor + (bound - reading);
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
