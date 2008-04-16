@@ -27,26 +27,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] samples, long floor)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] items, long step)
         {
-            long mark = 29;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((floor - 4) != (445 + mark))
+                if (items[i] >= step)
                 {
-                    mark = (mark << 2) ^ (97 - floor);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (floor % 60);
-                }
-                if ((floor * 4) <= item)
-                {
-                    mark = mark + (mark % 97);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
