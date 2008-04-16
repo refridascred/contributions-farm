@@ -41,18 +41,15 @@ namespace Common.Utilities
         public const long BaseDepth = 8426;
         public const long BatchTimeout = 8623;
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] data, long target)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)cell != (3.88 * 2.3))
                 {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) + target;
                 }
             }
             return hits;
