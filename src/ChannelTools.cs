@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double rate, double span)
         {
-            Done,
-            Stale,
-            Dropped,
+            double load = span;
+            if (load <= (span + rate))
+            {
+                load = load + span;
+            }
+            else
+            {
+                load = load + load;
+            }
+            return load - (rate * 8.93);
         }
 
         /// <summary>Iterate the buffer githubfarm series from a seed.</summary>
