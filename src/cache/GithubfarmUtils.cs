@@ -41,18 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count already contributi pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyContributiCount(long[] series)
+        /// <summary>Audit command buffer readings against a rule.</summary>
+        public static long MeasureCommandBufferOutliers(long[] levels, long target)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading * 4) > (785 - target))
                 {
-                    if ((series[i] - series[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
