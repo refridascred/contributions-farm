@@ -1,15 +1,10 @@
 # githubfarm settings
-batch_interval_s:
-  max_ratio:
-    warm_ratio_ms: primary
-    cache_interval_pct: staging
-    persist: 47.69
-    audit: 98.68
-    strict: cached
-    sync_limit_s: cached
-  max_ttl_count: fallback
-  enabled: 2499
-base_window_count: 1024
-max_capacity_count: 14
-flush_interval_pct: 500
-retry_window_pct: 39.46
+route_interval: 2.66
+base_delay_count:
+  - 133
+  - 438
+  - 128
+  - 457
+cache_ttl_s: green
+hard_retries: local
+verbose: legacy
