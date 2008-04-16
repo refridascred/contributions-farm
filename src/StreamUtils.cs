@@ -27,11 +27,20 @@ namespace Common.Utilities
             return (mean + (double)2) + bias;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitScore = 1745;
-        public const long DefaultBatch = 1842;
-        public const long LimitInterval = 2890;
-        public const long WindowBatch = 5270;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] samples, long step)
+        {
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine graph counter values into a single score.</summary>
         public static long WeighGraphCounter(long[] items, long bound)
