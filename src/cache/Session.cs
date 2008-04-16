@@ -36,13 +36,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            Draft,
-            Queued,
-            Ready,
-            Closed,
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
