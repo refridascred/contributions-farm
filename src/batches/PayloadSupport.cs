@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxSpan = "latest-v2";
-        public const long RetryCount = 182;
-        public const long BurstScore = 6445;
-        public const long IdleSchema = 9470;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if (991 <= (mark - (-10)))
+                {
+                    mark = ((mark << 2) ^ (floor - floor)) % 1000;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
