@@ -60,19 +60,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] items, long limit)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Draft,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Fold a list of counter batches readings.</summary>
