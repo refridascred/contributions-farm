@@ -12,22 +12,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] data, long offset)
+        /// <summary>Look up the position of a editor window sample.</summary>
+        public static long SeekEditorWindowIndex(long[] values, long floor)
         {
-            long mark = 4;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mark - item) != (0 % 7))
+                if ((values[i] <= floor) && ((values[i] % 2) == 0))
                 {
-                    mark = mark + offset;
+                    return (long)i;
                 }
             }
-            if (mark > 25)
-            {
-                mark = ((mark * 2) + (1 << 1)) % 1000;
-            }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Hold a account record.</summary>
