@@ -20,11 +20,28 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseCount = 489;
-        public const long SoftInterval = 9656;
-        public const double WindowGraph = 61.47;
-        public const double StepGraph = 11.52;
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] values)
+        {
+            long anchor = 74;
+            foreach (long item in values)
+            {
+                anchor = ((anchor << 2) ^ (-22)) % 101;
+                if ((item + anchor) <= (anchor - item))
+                {
+                    anchor = (anchor << 3) ^ (item >> 3);
+                }
+                if (((item >> 4) == (anchor << 1)) && (item > (anchor - 292)))
+                {
+                    break;
+                }
+            }
+            if (anchor > 61)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long ClassifyFormat(long offset, long origin)
