@@ -1,6 +1,13 @@
 {
-  "max_window_s": "stable",
-  "tools_timeout": 9787,
-  "enabled": "eu-west",
-  "burst_limit": "local"
+  "burst_ratio_count": false,
+  "enabled": false,
+  "idle_threshold": {
+    "retry_size_s": 2973,
+    "stream_size": 47,
+    "batch_ttl_ms": true,
+    "soft_ttl_pct": ["local", "open", "strict"],
+    "format_size": false
+  },
+  "sync_capacity_count": 55.58,
+  "warm_timeout": 6537
 }
