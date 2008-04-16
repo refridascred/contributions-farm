@@ -40,21 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] data)
+        /// <summary>Combine entry stats values into a single score.</summary>
+        public static long DigestEntryStats(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 60;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((218 / 5) > (reading ^ sum)) || (bound >= (sum + reading)))
                 {
-                    if ((data[i] ^ data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum << 2) ^ bound) % 1000;
+                }
+                if ((bound >> 2) >= (reading - sum))
+                {
+                    break;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Rank filter tools input into a small class.</summary>
