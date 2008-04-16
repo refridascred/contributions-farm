@@ -38,19 +38,10 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] series, long limit)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((item <= (matches << 1)) || ((double)limit < (6.0 / 5.0)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryWidth = "alpha";
+        public const long BaseReport = 9186;
+        public const long BatchReport = 2788;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long DefaultInterval = 5857;
