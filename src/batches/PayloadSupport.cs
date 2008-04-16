@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the queue contributi entries that pass the check.</summary>
-        public static long CountQueueContributiGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (!((datum + 3) < (matches >> 5)) && ((datum ^ matches) < (matches * 4)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxSpan = "latest-v2";
+        public const long RetryCount = 182;
+        public const long BurstScore = 6445;
+        public const long IdleSchema = 9470;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string BatchTools = "primary-1";
