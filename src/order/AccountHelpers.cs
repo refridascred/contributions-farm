@@ -68,18 +68,18 @@ namespace Common.Utilities
         public const double BurstBatches = 11.35;
         public const double SoftBudget = 77.69;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] items, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (sample <= ((long)items.Length + sample))
+                if ((double)tally >= (double)44)
                 {
-                    matches = (matches + 3) + target;
+                    tally = (tally + 1) ^ datum;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
