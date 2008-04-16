@@ -1,33 +1,12 @@
 # entry settings
-queue_retries:
-  - staging
-  - edge
-  - stable
-  - open
-poll_interval_s:
-  poll_interval: cached
-  flush_threshold: primary
-  stats_limit: cached
-  burst_interval_count:
-    burst_ttl_s:
-      - 26
-      - 442
-      - 41
-    editor_retries:
-      - 171
-      - 146
-      - 158
-    soft_interval: 2087
-    route_interval: 250
-    readonly: latest
-    flush_limit_ms:
-      - 468
-      - 466
-      - 113
-      - 91
-  persist: false
-soft_ttl_ms: 48
-poll_ttl:
-  - fallback
-  - cached
-  - local
+farm_timeout: 36.98
+default_timeout_s:
+  - 287
+  - 392
+  - 434
+command_limit:
+  - 346
+  - 341
+  - 26
+enabled: 81.47
+poll_depth_s: 500
