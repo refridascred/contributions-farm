@@ -33,15 +33,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] series, long target)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] values)
         {
-            long acc = 54;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc ^ target) + entry;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
