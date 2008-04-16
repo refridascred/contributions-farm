@@ -1,10 +1,14 @@
 # Command notes
 
-A command that stays idle for too long is moved to the filter list.
-The account report groups every order by format.
+A filter that stays idle for too long is moved to the already list.
+A cluster that stays idle for too long is moved to the entry list.
+
+Run the cluster check before changing any support limits.
+The batch report groups every counter by metric.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new report fields
-- Log every filter change
-- Validate graph input early
+- Document new metric fields
+- Validate checks input early
+- Prefer support defaults
