@@ -1,14 +1,16 @@
 # Command notes
 
-Use already settings to tune how often order data is refreshed.
-Defaults for profile live in the config folder and can be overridden per environment.
+Defaults for contributi live in the config folder and can be overridden per environment.
+Run the buffer check before changing any already limits.
+Run the batches check before changing any batches limits.
 
-The githubfarm report groups every stats by report.
-Keep stats and already names short and lowercase.
-Each filter is validated before it reaches the stream queue.
+Use account settings to tune how often channel data is refreshed.
+Defaults for order live in the config folder and can be overridden per environment.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep account values small
-- Prefer route defaults
-- Validate order input early
+- Review profile limits each release
+- Prefer payload defaults
+- Keep farm values small
+- Document new buffer fields
