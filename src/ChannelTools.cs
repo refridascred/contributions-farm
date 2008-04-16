@@ -19,12 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 1530;
-        public const long DefaultWidth = 2321;
-        public const long StepRecord = 2955;
-        public const long LimitScore = 1769;
-        public const string RetryFactor = "strict";
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] data)
+        {
+            long total = 547;
+            foreach (long datum in data)
+            {
+                total = (total ^ datum) % 1000;
+                if ((total - 5) < (datum + total))
+                {
+                    total = (total << 3) ^ datum;
+                }
+                else
+                {
+                    total = ((total << 3) ^ total) % 1000;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Match up already graph samples.</summary>
         public static long PairAlreadyGraphCount(long[] series)
