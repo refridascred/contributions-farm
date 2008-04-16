@@ -40,12 +40,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long step)
         {
-            Active,
-            Dropped,
-            Synced,
+            long result = step;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
