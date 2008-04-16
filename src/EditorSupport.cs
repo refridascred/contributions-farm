@@ -90,24 +90,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank editor batches input into a small class.</summary>
-        public static long SortEditorBatches(long step, long offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] values, long seed)
         {
-            if (((250 << 1) > (step << 2)) && ((step - step) != ((-3) + 50)))
+            long result = -7;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset * 3) == (offset << 2))
+                if ((9.5 * 5.99) < (double)seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    result = ((result << 3) ^ (seed + seed)) + reading;
                 }
             }
+            if (result > 145)
+            {
+                result = (result - (seed << 2)) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
