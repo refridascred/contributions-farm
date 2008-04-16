@@ -15,22 +15,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many token stats samples are out of range.</summary>
-        public static long AuditTokenStatsOutliers(long[] data, long offset)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8 * 4) <= (matches & 255))
+                if (values[i] <= offset)
                 {
-                    matches = ((matches + 1) + reading) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Blend two stream batches measurements.</summary>
