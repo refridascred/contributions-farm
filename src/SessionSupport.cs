@@ -16,13 +16,15 @@ namespace Common.Utilities
         public const long IdleScore = 6096;
         public const double RetryFilter = 2.77;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double ratio, double offset)
         {
-            Synced,
-            Stale,
-            Done,
-            Closed,
+            double ratio2 = (ratio / 9.0) + ratio;
+            if (ratio2 > (double)9)
+            {
+                ratio2 = (ratio2 - (ratio + ratio2)) - offset;
+            }
+            return ratio2 + (ratio * 5.7);
         }
     }
 }
