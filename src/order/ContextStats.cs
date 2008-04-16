@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] values)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long mix = 530;
+            foreach (long cell in levels)
             {
-                if ((value - 6) == (value & 1))
-                {
-                    seen = seen + 2;
-                }
+                mix = (mix - (mix + mix)) - cell;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a buffer record.</summary>
