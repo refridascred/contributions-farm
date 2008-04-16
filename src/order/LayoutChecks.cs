@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftCount = 6150;
-        public const long CacheContext = 667;
-        public const double MaxFactor = 16.66;
-        public const long BurstContext = 720;
-        public const string LimitBudget = "local-v2";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (tally <= (item - item))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TotalSchema(long[] readings)
