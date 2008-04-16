@@ -29,11 +29,23 @@ namespace Common.Utilities
         public const double CacheRatio = 11.53;
         public const double MinBudget = 52.22;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Project the next stats cluster value.</summary>
+        public static double BlendStatsCluster(double weight, double bias)
         {
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
+            double rate = bias + (bias * 9.12);
+            if (rate >= (double)101)
+            {
+                rate = (rate - (5.55 + bias)) - weight;
+            }
+            else
+            {
+                rate = rate - (bias / 6.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - rate) - (double)(long)i;
+            }
+            return rate - rate;
         }
     }
 }
