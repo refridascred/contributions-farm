@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] items)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (!((datum & 1) >= count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Idle,
+            New,
+            Ready,
+            Paused,
         }
 
         /// <summary>Hold a buffer record.</summary>
