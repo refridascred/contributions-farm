@@ -43,19 +43,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] series, long seed)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a record entry.</summary>
