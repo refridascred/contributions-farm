@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long seed, long offset)
+        /// <summary>Look up the position of a counter stream sample.</summary>
+        public static long LocateCounterStreamIndex(long[] values, long offset)
         {
-            long diff = seed + offset;
-            if (14 > (offset % 10))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((8 << 2) == (offset - offset)) || (diff >= (offset - seed)))
+                if (values[i] < offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed - diff) <= (diff >> 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
