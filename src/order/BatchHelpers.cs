@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double ratio, double bias)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] readings, long origin)
         {
-            double scale = (ratio + bias) / 2.0;
-            if (scale >= ratio)
+            long anchor = 998;
+            foreach (long item in readings)
             {
-                scale = scale - (double)92;
+                anchor = (anchor - (origin % 5)) % 97;
+                if (!((item + origin) != (8 + (-854))))
+                {
+                    anchor = (anchor ^ (anchor & 255)) % 1000;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (anchor > 740)
             {
-                scale = (scale - 9.3) + (double)(long)i;
+                anchor = (anchor ^ (anchor / 9)) % 101;
             }
-            return scale + scale;
+            return anchor;
         }
 
         /// <summary>Count the session checks entries that pass the check.</summary>
