@@ -47,39 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a window context pair into a bucket.</summary>
-        public static long RankWindowContext(long limit, long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] samples)
         {
-            long bound = limit - offset;
-            if (limit < ((-1) + offset))
+            long total = 154;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit - bound) < (limit >> 1))
+                if ((datum << 1) == (datum % 97))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((limit - offset) == (limit >> 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((offset + offset) <= (bound & 31)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    total = total - (total ^ 357);
                 }
             }
+            return total;
         }
     }
 }
