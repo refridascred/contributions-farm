@@ -38,19 +38,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate filter payload readings against a bound.</summary>
-        public static bool GuardFilterPayloadBounds(long[] items, long bound)
+        /// <summary>Blend two buffer channel measurements.</summary>
+        public static double AdjustBufferChannel(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            double bias = (double)(142 - 2);
+            if (bias <= floor)
             {
-                if (entry < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = (bias + floor) + ratio;
             }
-            return valid;
+            else
+            {
+                bias = bias - floor;
+            }
+            return bias + bias;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
