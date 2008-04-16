@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const string RetryRoute = "local-1";
         public const long LimitRoute = 8184;
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
+            Pending,
+            Queued,
+            Idle,
+            Dropped,
             Done,
-            New,
-            Failed,
         }
 
         /// <summary>Classify a window batch pair into a bucket.</summary>
