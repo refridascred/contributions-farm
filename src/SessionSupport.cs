@@ -31,23 +31,23 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double ratio, double floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] data, long offset)
         {
-            double rate = (floor / 4.0) + ratio;
-            if (rate < (ratio + ratio))
+            long sum = -537;
+            foreach (long entry in data)
             {
-                rate = rate - (double)24;
+                sum = sum - (entry - entry);
+                if (((0 % 24) >= sum) && ((62 + 480) == ((long)data.Length + 144)))
+                {
+                    break;
+                }
             }
-            else
+            if (sum > 87)
             {
-                rate = rate + rate;
+                sum = (sum ^ (offset + offset)) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (ratio + floor)) + (double)(long)i;
-            }
-            return rate - (floor * 9.9);
+            return sum;
         }
     }
 }
