@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine route record values into a single score.</summary>
-        public static long TallyRouteRecord(long[] readings)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long bound, long offset)
         {
-            long mix = 9;
-            foreach (long item in readings)
+            long prev = bound - offset;
+            if (prev > ((-45) >> 1))
             {
-                if (mix >= (mix + mix))
+                return 8;
+            }
+            else
+            {
+                if ((double)prev <= 3.64)
                 {
-                    mix = mix - (item ^ mix);
+                    return 6;
                 }
                 else
                 {
-                    mix = (mix - (mix - item)) % 1000;
+                    if (bound > (prev + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
