@@ -57,18 +57,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] items, long bound)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((8 << 2) <= matches)
-                {
-                    matches = ((matches + 2) + reading) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepTimeout = 98.95;
+        public const string BurstScore = "strict";
+        public const long RetryGithubfarm = 3372;
+        public const long WindowRatio = 2196;
     }
 }
