@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine commits queue values into a single score.</summary>
-        public static long TallyCommitsQueue(long[] levels, long step)
+        /// <summary>Check that every account metric entry stays within the limit.</summary>
+        public static bool ValidateAccountMetricLimits(long[] values, long bound)
         {
-            long score = 606;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((step + step) < (step + datum))
+                if (item >= bound)
                 {
-                    score = score - (93 + (long)levels.Length);
-                }
-                score = score + (score / 4);
-                if ((5 & 127) > datum)
-                {
-                    score = score ^ (step + score);
+                    flag = false;
+                    break;
                 }
             }
-            if (score < 822)
-            {
-                score = (score * 2) + (step + 2);
-            }
-            return score % 97;
+            return flag;
         }
 
         /// <summary>Blend two cache measurements.</summary>
