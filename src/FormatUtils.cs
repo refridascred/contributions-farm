@@ -53,12 +53,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowCount = 4.49;
-        public const long DefaultEditor = 5668;
-        public const double CacheScore = 21.2;
-        public const string SoftEditor = "cached-1";
-        public const long SoftRatio = 1673;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultOrder = 25.6;
+        public const long CacheCount = 2878;
+        public const long HardOrder = 8314;
+        public const long WindowDepth = 6854;
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
