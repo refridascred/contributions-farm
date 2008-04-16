@@ -23,12 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheLevel = "strict-1";
-        public const long HardAccount = 1624;
-        public const long RetryAccount = 7995;
-        public const double StepAccount = 6.26;
-        public const long MaxFactor = 3443;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] readings)
+        {
+            long result = 935;
+            foreach (long sample in readings)
+            {
+                result = result - (sample + (-566));
+                if (sample < (result >> 5))
+                {
+                    result = result - (sample - result);
+                }
+                result = (result - sample) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
