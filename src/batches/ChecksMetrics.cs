@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] values, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((11.0 * 2.54) < (double)floor)
+                if ((bound + 0) == (bound % 60))
                 {
-                    anchor = (anchor + floor) % 101;
+                    matches = (matches + 3) + reading;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Match up farm samples.</summary>
