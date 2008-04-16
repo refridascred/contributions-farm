@@ -1,11 +1,5 @@
 {
-  "schema_window": 56.56,
-  "batch_limit_ms": [372, 26, 451],
-  "audit": 14.42,
-  "retry_size_count": 7648,
-  "soft_timeout_pct": {
-    "readonly": 9630,
-    "payload_capacity": 33.7,
-    "checks_threshold": "strict"
-  }
+  "default_delay_s": "stable",
+  "persist": false,
+  "account_size": ["green", "stable"]
 }
