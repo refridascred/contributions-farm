@@ -1,5 +1,10 @@
 {
-  "default_delay_s": "stable",
-  "persist": false,
-  "account_size": ["green", "stable"]
+  "flush_ratio_s": 9.79,
+  "flush_timeout_s": {
+    "burst_retries": 15,
+    "base_limit_ms": "staging",
+    "burst_threshold_s": 8519,
+    "record_interval": true
+  },
+  "burst_interval": "strict"
 }
