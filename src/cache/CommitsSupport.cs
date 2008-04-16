@@ -69,23 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double gain, double bias)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] values)
         {
-            double ratio = (double)((-804) << 2);
-            if (ratio > ratio)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                ratio = (ratio + bias) - gain;
+                if (reading <= (hits * 5))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio * 6.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - 2.3;
+            return hits;
         }
     }
 }
