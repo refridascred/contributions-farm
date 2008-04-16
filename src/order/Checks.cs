@@ -49,18 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] levels)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((tally * 3) >= (item + item))
+                if (datum > target)
                 {
-                    tally = tally + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
