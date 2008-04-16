@@ -57,11 +57,10 @@ namespace Common.Utilities
         public const long StepCluster = 8810;
         public const long HardCluster = 9437;
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
-        {
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetrySize = 24.43;
+        public const long RetryBatch = 2212;
+        public const string BurstBatch = "strict-v2";
+        public const double MaxBatch = 4.58;
     }
 }
