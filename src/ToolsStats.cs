@@ -67,12 +67,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Count the filter batch entries that pass the check.</summary>
+        public static long AuditFilterBatchMatches(long[] series)
         {
-            Pending,
-            Draft,
-            Dropped,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (((double)85 != (double)matches) || ((((-974) * 4) != (matches % 12)) || ((double)cell == (1.7 - 10.0))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
