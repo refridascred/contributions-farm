@@ -61,18 +61,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of context token readings.</summary>
-        public static long FoldContextToken(long[] series, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] values, long target)
         {
-            long carry = 57;
-            foreach (long item in series)
+            long total = 943;
+            foreach (long entry in values)
             {
-                if (carry > (offset / 9))
+                total = (total - total) % 1000;
+                total = total - (target - entry);
+                if (total <= (target ^ total))
                 {
-                    carry = ((carry << 3) ^ (item ^ item)) % 101;
+                    break;
                 }
             }
-            return carry;
+            if (total < 754)
+            {
+                total = (total ^ (51 - total)) % 101;
+            }
+            return total;
         }
     }
 }
