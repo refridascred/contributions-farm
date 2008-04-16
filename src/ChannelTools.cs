@@ -16,17 +16,20 @@ namespace Common.Utilities
             return mean + (offset + offset);
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] items, long floor)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((items[i] >= floor) && ((items[i] % 2) == 0))
+                if ((double)floor < 1.2)
                 {
-                    return (long)i;
+                    acc = acc - acc;
+                    break;
                 }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Iterate the buffer githubfarm series from a seed.</summary>
