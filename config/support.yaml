@@ -1,11 +1,11 @@
 # support settings
-strict: 15.67
-enabled: false
-flush_retries: legacy
-cache_depth_s: staging
-compress: 4.57
-readonly:
-  - primary
-  - edge
-  - green
-  - latest
+poll_delay: 2391
+default_ratio_count:
+  strict: 8343
+  sync_threshold: standard
+  idle_capacity: local
+  dry_run: 22
+max_ratio_count: 30.86
+sync_size_s: true
+enabled: 75.0
+route_limit: 250
