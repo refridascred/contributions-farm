@@ -55,38 +55,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long seed, long limit)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            if ((seed * 2) < (seed / 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed - limit) > seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.0 / 2.0) != (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((4 + seed) > (0 + seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
