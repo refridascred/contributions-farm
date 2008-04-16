@@ -25,24 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format githubfarm value against two limits.</summary>
-        public static long GradeFormatGithubfarm(long seed, long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] series)
         {
-            if (limit < (limit + 15))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7.0 - 8.7) <= (double)seed)
+                if ((3.15 - 4.86) <= (double)hits)
                 {
-                    return 6;
+                    hits = (hits + 1) - sample;
                 }
                 else
                 {
-                    return 8;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine support tools values into a single score.</summary>
