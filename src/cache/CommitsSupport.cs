@@ -56,37 +56,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a context githubfarm value against two limits.</summary>
-        public static long ClassifyContextGithubfarm(long origin, long seed)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long bound, long offset)
         {
-            long edge = origin + seed;
-            if ((edge + origin) < (77 - 744))
+            if ((bound - bound) >= (bound << 2))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((0.1 + 5.5) <= (double)seed)
+                if (bound < (249 - offset))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)origin > (7.2 / 5.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (origin <= (edge + origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
