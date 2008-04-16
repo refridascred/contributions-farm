@@ -63,12 +63,32 @@ namespace Common.Utilities
             return ratio + (bias + ratio);
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long target, long step)
         {
-            public double Flag { get; set; }
-            public double Total { get; set; }
-            public bool Owner { get; set; }
+            long prev = target - step;
+            if (!((prev - step) <= (prev ^ target)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((6 & 127) == (step + prev))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((prev ^ prev) >= step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a queue entry.</summary>
