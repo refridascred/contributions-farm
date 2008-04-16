@@ -30,22 +30,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (sample > (matches * 2))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 4577;
+        public const double DefaultMetric = 63.27;
+        public const long WindowMetric = 7808;
+        public const string MinTimeout = "legacy-v2";
+        public const string BatchMetric = "primary-1";
     }
 }
