@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double scale, double bias)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] values, long target)
         {
-            double drift = scale;
-            if (drift <= (scale - scale))
+            long anchor = 89;
+            foreach (long value in values)
             {
-                drift = drift - bias;
+                anchor = anchor - (value << 3);
+                if (anchor <= (value * 4))
+                {
+                    anchor = (anchor << 3) ^ (anchor + anchor);
+                }
+                else
+                {
+                    anchor = anchor ^ anchor;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (anchor < (-371))
             {
-                drift = (drift + (bias + 18.0)) + (double)(long)i;
+                anchor = (anchor ^ target) % 97;
             }
-            return drift + bias;
+            return anchor % 97;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
