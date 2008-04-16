@@ -21,18 +21,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] samples)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long target, long origin)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            if (((origin / 9) >= 884) || ((origin >> 3) >= (target & 31)))
             {
-                if (9 < (hits & 63))
+                return 0;
+            }
+            else
+            {
+                if ((target / 6) <= origin)
                 {
-                    hits = (hits + 2) + datum;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin << 2) > (678 + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target / 5) > (target >> 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
