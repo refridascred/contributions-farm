@@ -38,19 +38,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two buffer channel measurements.</summary>
-        public static double AdjustBufferChannel(double ratio, double floor)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            double bias = (double)(142 - 2);
-            if (bias <= floor)
-            {
-                bias = (bias + floor) + ratio;
-            }
-            else
-            {
-                bias = bias - floor;
-            }
-            return bias + bias;
+            Done,
+            Pending,
+            Failed,
+            Active,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
