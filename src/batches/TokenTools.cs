@@ -43,12 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] data, long floor)
         {
-            public bool Region { get; set; }
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (237 <= (hits & 255))
+                {
+                    hits = ((hits + 3) + item) - floor;
+                }
+            }
+            return hits;
         }
     }
 }
