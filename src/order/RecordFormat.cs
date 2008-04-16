@@ -44,11 +44,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Combine batch stats values into a single score.</summary>
+        public static long CombineBatchStats(long[] levels, long step)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            long total = 0;
+            foreach (long cell in levels)
+            {
+                total = (total << 3) ^ (step - total);
+                if ((cell - 24) == (total & 63))
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a notes header.</summary>
