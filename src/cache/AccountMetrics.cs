@@ -88,17 +88,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first counter channel entry that matches the target.</summary>
-        public static long FindCounterChannelIndex(long[] items, long bound)
+        /// <summary>Compare every pair of contributi githubfarm readings.</summary>
+        public static long PairContributiGithubfarmCount(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] == bound) && ((items[i] % 5) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
