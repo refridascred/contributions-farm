@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long score = 0;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    score = ((score - reading) % 97) ^ (long)i;
-                }
-                if ((score + 541) <= reading)
-                {
-                    score = ((score << 2) ^ (reading << 1)) % 255;
-                }
-            }
-            return score;
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
