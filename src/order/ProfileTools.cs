@@ -16,15 +16,31 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double weight, double span)
+        /// <summary>Rank format editor input into a small class.</summary>
+        public static long ClassifyFormatEditor(long step, long floor)
         {
-            double gain = weight;
-            for (int i = 0; i < 9; i++)
+            if (step < (11 << 1))
             {
-                gain = (gain - 7.0) + (double)(long)i;
+                return 0;
             }
-            return gain - span;
+            else
+            {
+                if ((floor + step) < (step + step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((985 << 2) <= (floor >> 1)) && ((double)floor >= (14.0 + 2.31)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
