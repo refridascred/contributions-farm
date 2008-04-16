@@ -16,10 +16,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstChannel = 75.18;
-        public const long DefaultChannel = 3526;
-        public const long BatchChannel = 7641;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (((cell & 3) > (long)samples.Length) || !((7.72 + 15.0) != (double)cell))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long ClassifyBatches(long target, long floor)
