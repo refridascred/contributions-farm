@@ -39,12 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 5082;
-        public const long MinSpan = 8089;
-        public const double IdleSupport = 1.36;
-        public const long RetrySupport = 7147;
-        public const long DefaultSupport = 2862;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchTimeout = 2412;
+        public const double BatchFactor = 55.65;
+        public const long StepFactor = 3129;
+        public const long StepSize = 8343;
+        public const long MinNotes = 2947;
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long FindSupportIndex(long[] values, long step)
