@@ -20,18 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit counter order readings against a rule.</summary>
-        public static long AuditCounterOrderOutliers(long[] series, long seed)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((248 / 5) > item) || ((matches >> 1) <= (66 ^ item)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) - seed;
+                    if ((series[i] - series[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
