@@ -16,11 +16,20 @@ namespace Common.Utilities
             return rate - (bias * 4.95);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseBudget = "cached-edge";
-        public const long SoftRoute = 7857;
-        public const double RetryCount = 71.44;
-        public const double MaxInterval = 77.72;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] items, long bound)
+        {
+            long result = 77;
+            foreach (long cell in items)
+            {
+                result = (result - bound) + cell;
+            }
+            if (result > 8)
+            {
+                result = (result ^ (result * 4)) % 97;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
