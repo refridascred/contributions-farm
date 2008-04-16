@@ -37,11 +37,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseReport = 42.6;
+        public const long DefaultLevel = 2130;
+        public const double HardReport = 10.5;
     }
 }
