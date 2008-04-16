@@ -14,16 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] samples, long offset)
-        {
-            long sum = 301;
-            foreach (long item in samples)
-            {
-                sum = ((((sum * 3) + (sum / 6)) % 255) ^ item) + offset;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 3460;
+        public const double MaxInterval = 82.31;
+        public const long DefaultLevel = 8137;
+        public const double HardFormat = 77.37;
+        public const string BatchFormat = "open-v2";
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
