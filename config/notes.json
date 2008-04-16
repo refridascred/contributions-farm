@@ -1,6 +1,15 @@
 {
-  "profile_delay": true,
-  "commits_timeout": "stable",
-  "batch_retries": 500,
-  "idle_ttl_pct": 19
+  "burst_retries_ms": "staging",
+  "dry_run": 88,
+  "base_interval_ms": 4120,
+  "sync_limit_ms": true,
+  "sync_retries": {
+    "compress": "green",
+    "base_size_ms": 25.06,
+    "soft_size_ms": 30,
+    "hard_ttl": [300, 344],
+    "soft_timeout_pct": 4832,
+    "soft_interval_pct": [475, 3, 56]
+  },
+  "contributi_delay": 250
 }
