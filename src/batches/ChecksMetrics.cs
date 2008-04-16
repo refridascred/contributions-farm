@@ -38,22 +38,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] values, long step)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count * 2) >= (count - step))
-                {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
