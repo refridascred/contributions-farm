@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a record channel reading.</summary>
-        public static double AdjustRecordChannel(double rate, double floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] series, long offset)
         {
-            double bias = floor;
-            if (bias > floor)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                bias = bias + rate;
+                if (datum <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (bias - floor)) + (double)(long)i;
-            }
-            return bias - (floor + bias);
+            return ok;
         }
 
         /// <summary>Accumulate queue window samples.</summary>
