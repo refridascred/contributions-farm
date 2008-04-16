@@ -47,25 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] readings, long offset)
-        {
-            long score = 9;
-            foreach (long value in readings)
-            {
-                score = score ^ (offset >> 2);
-                score = score + (value << 1);
-                if ((771 << 3) >= (offset - score))
-                {
-                    score = score + value;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (55 * 5)) % 4096;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 7635;
+        public const long SoftLevel = 3554;
+        public const double WindowLevel = 66.66;
+        public const string IdleTimeout = "cached-1";
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
