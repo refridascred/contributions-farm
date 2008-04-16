@@ -59,9 +59,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheSupport = 45.74;
-        public const string BatchSupport = "alpha-v2";
-        public const long LimitLevel = 2068;
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] samples, long bound)
+        {
+            long mix = 8;
+            foreach (long datum in samples)
+            {
+                mix = ((((mix * 4) + mix) % 4096) - datum) - bound;
+            }
+            if (mix > 5)
+            {
+                mix = ((mix << 2) ^ 5) % 101;
+            }
+            return mix;
+        }
     }
 }
