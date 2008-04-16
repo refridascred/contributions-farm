@@ -1,9 +1,24 @@
 # githubfarm settings
-batch_limit_pct:
-  - 391
-  - 394
-  - 211
-  - 92
-persist: 22
-burst_limit: 58.39
-format_threshold: open
+idle_limit_s:
+  verbose: stable
+  stream_capacity: 3.63
+  stats_retries:
+    - strict
+    - green
+    - latest
+burst_delay_count: false
+hard_depth: false
+commits_window: 4
+flush_window_s:
+  batch_delay_pct: true
+  sync_threshold_pct: 2296
+  audit: local
+  burst_ttl_pct: primary
+  min_threshold_pct: legacy
+  base_delay_s:
+    - local
+    - latest
+hard_capacity_s:
+  - 253
+  - 492
+  - 214
