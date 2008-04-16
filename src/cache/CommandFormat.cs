@@ -47,12 +47,13 @@ namespace Common.Utilities
         public const long LimitScore = 6399;
         public const double SoftTimeout = 15.44;
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public double Size { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            Draft,
+            Active,
+            Synced,
+            Ready,
         }
     }
 }
