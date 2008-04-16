@@ -62,18 +62,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] readings)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long acc = 68;
-            foreach (long reading in readings)
-            {
-                if (!(acc > (acc ^ reading)))
-                {
-                    acc = (acc ^ (acc - acc)) % 255;
-                }
-            }
-            return acc;
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
