@@ -14,10 +14,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowCount = 1497;
-        public const double LimitStream = 19.83;
-        public const long CacheDepth = 5760;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Idle,
+            Queued,
+            Closed,
+            New,
+            Paused,
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long DigestRecord(long[] samples, long floor)
