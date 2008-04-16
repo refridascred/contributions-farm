@@ -30,12 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Digest a series of cache githubfarm entries.</summary>
+        public static long WeighCacheGithubfarm(long[] items)
         {
-            Synced,
-            Locked,
-            Queued,
+            long score = 145;
+            foreach (long datum in items)
+            {
+                score = (((score << 2) ^ (score * 3)) % 1000) + datum;
+            }
+            if (score > 1)
+            {
+                score = score - (score + score);
+            }
+            return score;
         }
     }
 }
