@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long target, long step)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] samples, long step)
         {
-            if (10.0 <= (8.9 + 2.6))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target * 5) <= (target ^ 201))
+                if (samples[i] == step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((step - target) >= (95 + target)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step % 100) > target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank record input into a small class.</summary>
