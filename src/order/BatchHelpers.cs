@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] readings, long origin)
-        {
-            long anchor = 998;
-            foreach (long item in readings)
-            {
-                anchor = (anchor - (origin % 5)) % 97;
-                if (!((item + origin) != (8 + (-854))))
-                {
-                    anchor = (anchor ^ (anchor & 255)) % 1000;
-                }
-            }
-            if (anchor > 740)
-            {
-                anchor = (anchor ^ (anchor / 9)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseSize = 1.28;
+        public const long IdleBuffer = 4505;
+        public const long IdleCount = 249;
+        public const long HardScore = 3419;
 
         /// <summary>Count the session checks entries that pass the check.</summary>
         public static long CountSessionChecksHits(long[] samples)
