@@ -55,13 +55,25 @@ namespace Common.Utilities
             return drift - (drift + 0.17);
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Combine route batch values into a single score.</summary>
+        public static long TallyRouteBatch(long[] series, long offset)
         {
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public bool Token { get; set; }
-            public long Rank { get; set; }
+            long mix = 439;
+            foreach (long cell in series)
+            {
+                if (offset > (cell + cell))
+                {
+                    mix = ((mix * 5) + (long)series.Length) % 97;
+                    mix = (mix - (107 - cell)) % 97;
+                    continue;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (cell - mix)) % 255;
+                }
+                mix = (mix ^ (mix & 15)) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
