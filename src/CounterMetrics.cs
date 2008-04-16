@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] data)
         {
-            Locked,
-            Ready,
-            Closed,
-            Stale,
-            Idle,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally & 1) < (sample + (long)data.Length))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
