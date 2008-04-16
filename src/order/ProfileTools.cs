@@ -40,15 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Retry,
+            Dropped,
+            Locked,
+            Failed,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
