@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 2868;
-        public const string WindowProfile = "local";
-        public const long DefaultWidth = 1680;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long step, long origin)
+        {
+            if ((step ^ 70) != (step - origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin ^ origin) == (step * 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (origin <= (origin + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin ^ 3) == (origin & 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long FindCommitsIndex(long[] items, long floor)
