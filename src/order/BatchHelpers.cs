@@ -41,12 +41,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long offset, long target)
         {
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            long edge = offset ^ target;
+            if (((target + target) >= (target + 8)) || ((target * 3) != (target % 64)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (edge > (offset >> 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
