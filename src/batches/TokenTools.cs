@@ -26,19 +26,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the payload order series from a seed.</summary>
-        public static long RollPayloadOrder(long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long offset, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
+            long step = offset - seed;
+            if (seed < (step + offset))
             {
-                if ((mix <= 8) && ((double)mix > 3.0))
-                {
-                    mix = (mix + (seed & 31)) % 97;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if (((step ^ seed) == (step + 98)) || ((seed * 2) < (step & 1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a report entry.</summary>
