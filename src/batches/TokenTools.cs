@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next metric already value from a seed.</summary>
-        public static long SeriesMetricAlready(long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] items)
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (datum >= (seen / 6))
                 {
-                    mark = ((mark + (5 + target)) % 101) ^ (long)i2;
-                    mark = ((mark << 3) ^ (mark << 3)) % 101;
+                    seen = seen + 2;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
