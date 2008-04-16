@@ -31,11 +31,12 @@ namespace Common.Utilities
         public const string BurstOrder = "alpha-edge";
         public const long RetryOrder = 262;
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public bool Region { get; set; }
-            public double Mode { get; set; }
+            Ready,
+            Locked,
+            Retry,
         }
     }
 }
