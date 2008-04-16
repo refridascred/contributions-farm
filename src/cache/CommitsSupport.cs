@@ -26,11 +26,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public double Limit { get; set; }
-            public double Score { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
