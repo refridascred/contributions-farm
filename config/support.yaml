@@ -1,11 +1,28 @@
 # support settings
-soft_threshold: 46.98
-soft_size:
-  - open
-  - fallback
-  - strict
-compress: 30
-readonly: 53
-max_delay_s:
-  - 391
-  - 316
+token_threshold: 21
+min_limit_s:
+  - stable
+  - cached
+  - stable
+  - edge
+idle_depth_ms: cached
+enabled:
+  - 44
+  - 175
+  - 389
+  - 472
+readonly:
+  retry_interval_count: false
+  burst_ttl_count:
+    - 374
+    - 157
+    - 215
+    - 306
+  soft_limit:
+    sync_ttl: 1024
+    max_ratio_ms: true
+    burst_retries: 1024
+    max_timeout: 3.58
+    cache_threshold: eu-west
+    cache_timeout: primary
+poll_delay_count: open
