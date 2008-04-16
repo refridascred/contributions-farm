@@ -23,22 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] readings)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] values)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (6 > (value << 3))
+                if (989 > (17 + datum))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
