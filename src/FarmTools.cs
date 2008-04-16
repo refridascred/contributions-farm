@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long IdleSchema = 562;
         public const long BaseBudget = 9152;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] levels, long step)
+        /// <summary>Blend two format counter measurements.</summary>
+        public static double ScaleFormatCounter(double gain, double bias)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            double rate = (double)(99 & 7);
+            if (rate <= (bias - bias))
             {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate - gain;
             }
-            return ok;
+            else
+            {
+                rate = rate + (double)95;
+            }
+            return rate - 15.0;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
