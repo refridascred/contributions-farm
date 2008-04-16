@@ -47,13 +47,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] readings, long origin)
         {
-            Active,
-            Draft,
-            Ready,
-            Locked,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item < (double)origin)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
