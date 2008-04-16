@@ -91,15 +91,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long target)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] series)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            long total = 9;
+            foreach (long item in series)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                if (((double)total != (double)item) && ((-5) > (796 + total)))
+                {
+                    total = (total ^ (total % 8)) % 255;
+                }
+                if (1.6 < (double)total)
+                {
+                    break;
+                }
             }
-            return state;
+            if (total > 0)
+            {
+                total = total ^ ((long)series.Length ^ total);
+            }
+            return total;
         }
     }
 }
