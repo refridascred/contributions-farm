@@ -24,12 +24,20 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstToken = 5.44;
-        public const long SoftLevel = 5519;
-        public const double MaxToken = 33.89;
-        public const double IdleLevel = 58.84;
-        public const long RetryScore = 4218;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Project the next stats cluster value.</summary>
         public static double BlendStatsCluster(double weight, double bias)
