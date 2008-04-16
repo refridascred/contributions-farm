@@ -62,39 +62,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long seed, long offset)
+        /// <summary>Find the first contributi metric entry that matches the target.</summary>
+        public static long SeekContributiMetricIndex(long[] readings, long limit)
         {
-            long diff = seed ^ offset;
-            if ((double)offset > (double)seed)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (diff >= (offset + offset))
+                if ((readings[i] > limit) && ((readings[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)diff <= (14.0 / 6.0)) && ((offset + diff) > (offset % 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset * 5) >= offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the payload state values.</summary>
