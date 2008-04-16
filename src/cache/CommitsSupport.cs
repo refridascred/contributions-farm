@@ -69,15 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster stats values into a single score.</summary>
-        public static long TallyClusterStats(long[] samples, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] values)
         {
-            long carry = 39;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long value in values)
             {
-                carry = ((carry ^ (item % 12)) % 97) - step;
+                if ((matches - value) != (matches - matches))
+                {
+                    matches = matches + 1;
+                }
             }
-            return carry % 65521;
+            return matches;
         }
     }
 }
