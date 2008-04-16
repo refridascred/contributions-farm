@@ -12,11 +12,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 3895;
-        public const long RetryBudget = 6835;
-        public const double BurstAccount = 62.29;
-        public const double SoftAccount = 84.02;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Pending,
+            Failed,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long TallyAccountMatches(long[] data)
