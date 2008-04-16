@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of channel session entries.</summary>
-        public static long TallyChannelSession(long[] values, long floor)
+        /// <summary>Check that every schema cache entry stays within the limit.</summary>
+        public static bool CheckSchemaCacheLimits(long[] values, long step)
         {
-            long mix = 3;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long value in values)
             {
-                mix = (mix + (floor << 1)) % 1000;
-                if ((4.3 - 6.64) <= (7.0 + 11.0))
+                if (value >= step)
                 {
-                    continue;
-                }
-                if ((mix * 3) > (80 & 31))
-                {
-                    mix = (mix - ((-81) - item)) % 101;
-                }
-                if (((5.23 - 6.21) > (double)floor) || (item <= (item >> 1)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
