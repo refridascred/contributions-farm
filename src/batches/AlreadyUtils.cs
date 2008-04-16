@@ -12,18 +12,10 @@ namespace Common.Utilities
         public const long MaxFarm = 5226;
         public const long HardFarm = 5088;
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= offset) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftTimeout = 6623;
+        public const long SoftStats = 5941;
+        public const double MaxBudget = 21.7;
 
         /// <summary>Count the route window entries that pass the check.</summary>
         public static long TallyRouteWindowMatches(long[] readings)
