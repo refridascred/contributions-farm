@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public double Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
