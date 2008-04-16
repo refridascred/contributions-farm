@@ -36,18 +36,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many batch schema samples are out of range.</summary>
-        public static long AuditBatchSchemaMatches(long[] levels, long bound)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (6.82 <= (double)bound)
-                {
-                    seen = (seen + 3) - cell;
-                }
-            }
-            return seen;
+            Locked,
+            Queued,
+            Synced,
+            Done,
+            Active,
         }
     }
 }
