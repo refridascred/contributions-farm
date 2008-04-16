@@ -54,17 +54,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] items, long floor)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > floor) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
