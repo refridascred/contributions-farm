@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] readings)
+        /// <summary>Scale a context entry figure with a bias.</summary>
+        public static double SmoothContextEntry(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            double mean = offset;
+            if (mean < (offset * 0.18))
             {
-                if ((4.2 * 7.0) < (13.0 / 4.0))
-                {
-                    hits = (hits + 3) + value;
-                }
+                mean = (mean + offset) - rate;
             }
-            return hits;
+            return mean + (offset + offset);
         }
 
         /// <summary>Look up the position of a report sample.</summary>
