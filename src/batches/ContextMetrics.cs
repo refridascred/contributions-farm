@@ -61,11 +61,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseSpan = 4722;
-        public const double StepLevel = 63.13;
-        public const long BurstContributi = 9335;
-        public const string IdleSpan = "alpha";
-        public const string BurstFactor = "open";
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
