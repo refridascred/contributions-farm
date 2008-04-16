@@ -24,12 +24,13 @@ namespace Common.Utilities
         public const string BatchRatio = "open-edge";
         public const long MaxBuffer = 8387;
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
-            public double Owner { get; set; }
+            Pending,
+            Closed,
+            Locked,
+            Retry,
         }
     }
 }
