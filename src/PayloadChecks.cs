@@ -28,21 +28,26 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] readings)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 2;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((readings[i] - readings[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (((sum + sum) % 65521) + (long)i) - item;
+                }
+                if (!((sum + sum) < (target << 1)))
+                {
+                    sum = (sum - sum) % 1000;
                 }
             }
-            return count;
+            if (sum < 2)
+            {
+                sum = sum + (sum & 127);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
