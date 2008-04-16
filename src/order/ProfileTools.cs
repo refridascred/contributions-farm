@@ -29,21 +29,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] samples)
+        /// <summary>Compare every pair of buffer metric readings.</summary>
+        public static long MatchBufferMetricCount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) > 18)
+                    if ((series[i] ^ series[j]) < 6)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a order snapshot.</summary>
