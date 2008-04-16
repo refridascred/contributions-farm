@@ -93,17 +93,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] readings, long limit)
+        /// <summary>Rank editor batches input into a small class.</summary>
+        public static long SortEditorBatches(long step, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((250 << 1) > (step << 2)) && ((step - step) != ((-3) + 50)))
             {
-                if ((readings[i] == limit) && ((readings[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((offset * 3) == (offset << 2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the farm class values.</summary>
