@@ -1,5 +1,8 @@
 {
-  "burst_delay_s": ["cached", "green"],
-  "poll_delay_pct": "staging",
-  "soft_capacity": true
+  "batches_interval": "stable",
+  "dry_run": ["blue", "eu-west", "open", "standard"],
+  "retry_ttl": 1024,
+  "stream_ratio": [346, 246],
+  "batch_limit_count": false,
+  "strict": 73.23
 }
