@@ -47,38 +47,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long bound, long limit)
-        {
-            if ((limit % 16) >= bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit + bound) < (bound + 294))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((22 + limit) <= (87 * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound >= (limit + bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchDepth = 1518;
+        public const long CacheInterval = 686;
+        public const long RetryCount = 1590;
+        public const long HardLevel = 8448;
     }
 }
