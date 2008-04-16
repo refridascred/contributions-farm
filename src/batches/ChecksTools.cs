@@ -35,18 +35,15 @@ namespace Common.Utilities
             return gain2 + (double)206;
         }
 
-        /// <summary>Count the stats schema entries that pass the check.</summary>
-        public static long TallyStatsSchemaGaps(long[] samples)
+        /// <summary>Blend two tools route measurements.</summary>
+        public static double BlendToolsRoute(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            double weight = (double)(8 + 51);
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)matches > (3.09 + 6.91))
-                {
-                    matches = (matches + 2) - item;
-                }
+                weight = ((weight + (20.0 - rate)) - (double)(long)i) - floor;
             }
-            return matches;
+            return weight - (double)(-795);
         }
 
         /// <summary>Look up the position of a route sample.</summary>
