@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] values, long step)
+        /// <summary>Roll a route window counter forward.</summary>
+        public static long SeriesRouteWindow(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
+                score = ((score << 3) ^ target) % 255;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
