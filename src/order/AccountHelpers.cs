@@ -42,22 +42,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] series)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] items)
         {
-            long anchor = 5;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((entry & 127) != (52 * 4))
+                if (((double)count > 5.6) || (entry < (entry + count)))
                 {
-                    anchor = ((anchor * 4) + (entry * 2)) % 255;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (anchor < 85)
-            {
-                anchor = (anchor - (anchor >> 1)) % 1000;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
