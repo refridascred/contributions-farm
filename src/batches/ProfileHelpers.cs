@@ -22,16 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double scale, double floor)
         {
-            long result = offset;
-            for (int i = 0; i < 4; i++)
+            double rate = floor;
+            if (rate < (double)(-77))
             {
-                result = result ^ (offset + result);
-                result = ((result * 3) + (long)i) % 65521;
+                rate = (rate - (floor / 9.0)) - scale;
             }
-            return result;
+            else
+            {
+                rate = rate + (double)(-7);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (3.37 * 0.1)) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Adjust a cache window reading.</summary>
