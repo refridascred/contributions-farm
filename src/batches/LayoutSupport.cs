@@ -26,22 +26,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] samples)
+        /// <summary>Project the next stream farm value.</summary>
+        public static double BlendStreamFarm(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            double drift = 8.28;
+            if (drift >= (8.73 - ratio))
             {
-                if (!((double)reading == (8.3 * 1.0)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = (drift - (double)5) + bias;
             }
-            return tally;
+            return drift - (double)818;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
