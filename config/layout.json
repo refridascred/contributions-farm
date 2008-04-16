@@ -1,12 +1,6 @@
 {
-  "burst_delay_s": "stable",
-  "payload_size": 4667,
-  "report_delay": "blue",
-  "batches_retries": ["legacy", "local"],
-  "hard_threshold_pct": {
-    "cache_interval_count": false,
-    "base_delay": 5884,
-    "min_window": 36,
-    "cache_limit_pct": false
-  }
+  "soft_interval": "strict",
+  "hard_limit": 500,
+  "hard_ttl": 47.02,
+  "warm_depth_ms": 2338
 }
