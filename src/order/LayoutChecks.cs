@@ -78,13 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] values)
         {
-            Closed,
-            Retry,
-            Idle,
-            Locked,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (hits > reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
