@@ -41,20 +41,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Fold a list of format entry readings.</summary>
+        public static long CombineFormatEntry(long[] readings, long bound)
         {
-            long carry = 3;
-            foreach (long cell in data)
+            long anchor = 0;
+            foreach (long datum in readings)
             {
-                carry = ((carry * 4) + carry) % 97;
-                carry = carry - (cell - cell);
+                anchor = (anchor ^ (bound + 8)) - datum;
+                if ((double)bound >= (5.0 * 4.8))
+                {
+                    break;
+                }
             }
-            if (carry < (-3))
-            {
-                carry = (carry ^ (carry % 64)) % 1000;
-            }
-            return carry;
+            return anchor;
         }
     }
 }
