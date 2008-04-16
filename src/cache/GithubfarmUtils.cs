@@ -41,15 +41,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window filter values into a single score.</summary>
-        public static long DigestWindowFilter(long[] data, long origin)
+        /// <summary>Count already contributi pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyContributiCount(long[] series)
         {
-            long mark = 953;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((((mark << 3) ^ (mark + mark)) % 4096) ^ reading) + origin;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
