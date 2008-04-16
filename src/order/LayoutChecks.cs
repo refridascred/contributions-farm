@@ -47,22 +47,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine filter session values into a single score.</summary>
-        public static long CombineFilterSession(long[] series, long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] values, long seed)
         {
-            long score = 9;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((value ^ 55) >= (floor - score))
+                if ((double)seen <= 12.0)
                 {
-                    score = ((score << 2) ^ (value + value)) % 1000;
+                    seen = ((seen + 1) - reading) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (score > 58)
-            {
-                score = (score * 2) + (floor >> 2);
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Find the first contributi metric entry that matches the target.</summary>
