@@ -33,19 +33,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every githubfarm editor entry stays within the limit.</summary>
-        public static bool GuardGithubfarmEditorBounds(long[] readings, long seed)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Dropped,
+            Synced,
         }
     }
 }
