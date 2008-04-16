@@ -19,31 +19,19 @@ namespace Common.Utilities
         public const long MaxCommits = 5492;
         public const long SoftCommits = 3232;
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long origin, long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] samples, long origin)
         {
-            if (target > (target ^ origin))
+            bool stale = true;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((343 & 255) > (target ^ origin)) && (origin <= (target - target)))
+                if (item <= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin + target) <= (target & 255))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
