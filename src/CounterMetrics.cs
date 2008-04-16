@@ -69,10 +69,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 7379;
-        public const double LimitReport = 2.58;
-        public const long MinReport = 7522;
-        public const long WindowReport = 1539;
+        /// <summary>Project the next order contributi value.</summary>
+        public static double SmoothOrderContributi(double scale, double bias)
+        {
+            double drift = (bias * 17.0) / 3.0;
+            if (drift >= (scale - drift))
+            {
+                drift = drift + bias;
+            }
+            else
+            {
+                drift = drift - (double)0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - (drift - 5.0);
+        }
     }
 }
