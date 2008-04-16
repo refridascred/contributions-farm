@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] series, long floor)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = bias * 1.4;
+            if (weight < weight)
             {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
+                weight = weight + (bias + bias);
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (double)199) + (double)(long)i;
+            }
+            return weight + offset;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
