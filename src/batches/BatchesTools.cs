@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] readings)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] samples, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 539;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum <= 627)
                 {
-                    if ((readings[i] ^ readings[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = anchor - (anchor + 9);
                 }
             }
-            return tally;
+            if (anchor < 2)
+            {
+                anchor = (anchor + (bound / 4)) % 101;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
