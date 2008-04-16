@@ -15,24 +15,12 @@ namespace Common.Utilities
         public const string MaxNotes = "open-v2";
         public const long BurstNotes = 4217;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] samples)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long carry = 270;
-            foreach (long entry in samples)
-            {
-                if ((double)carry <= 11.0)
-                {
-                    carry = carry ^ entry;
-                    carry = ((carry * 5) + carry) % 65521;
-                }
-                carry = (carry + entry) % 97;
-            }
-            if (carry > 8)
-            {
-                carry = ((carry << 3) ^ (606 << 2)) % 101;
-            }
-            return carry % 97;
+            Draft,
+            Queued,
+            Closed,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
