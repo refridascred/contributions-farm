@@ -46,19 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] items, long origin)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] values)
         {
-            bool found = true;
-            foreach (long item in items)
+            long result = -358;
+            foreach (long datum in values)
             {
-                if (item <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result << 3) ^ (result % 24)) ^ datum;
             }
-            return found;
+            if (result > 49)
+            {
+                result = ((result << 3) ^ (3 << 3)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
