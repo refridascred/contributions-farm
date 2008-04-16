@@ -55,13 +55,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] readings)
         {
-            Locked,
-            Failed,
-            Queued,
-            Active,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)7 == (double)tally)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+            }
+            return tally;
         }
     }
 }
