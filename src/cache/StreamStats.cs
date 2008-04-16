@@ -43,23 +43,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate batch metric samples.</summary>
-        public static long DigestBatchMetric(long[] readings, long offset)
+        /// <summary>Derive the next profile command value from a seed.</summary>
+        public static long SeriesProfileCommand(long bound)
         {
-            long acc = 917;
-            foreach (long reading in readings)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                acc = (acc << 2) ^ 399;
-                if (((offset ^ 1) < (acc + reading)) && (acc >= (reading >> 5)))
+                if (((double)bound < (6.45 + 11.0)) || ((carry << 2) >= 13))
                 {
-                    acc = (acc << 2) ^ (offset * 3);
+                    break;
                 }
                 else
                 {
-                    acc = ((acc * 2) + (589 >> 2)) % 97;
+                    carry = carry - (bound / 6);
                 }
+                if ((bound ^ (long)i) > ((long)i >> 2))
+                {
+                    carry = (carry + carry) % 4096;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return acc;
+            return carry;
         }
     }
 }
