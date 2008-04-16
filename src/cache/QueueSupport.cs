@@ -38,19 +38,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionBounds(long[] samples, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (item > target)
+                if ((limit >= (seen & 7)) || (((seen * 5) > limit) || ((limit << 1) <= seen)))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
