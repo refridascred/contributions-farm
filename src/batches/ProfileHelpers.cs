@@ -22,19 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine context window values into a single score.</summary>
-        public static long FoldContextWindow(long[] values)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long offset)
         {
-            long sum = 605;
-            foreach (long reading in values)
+            long result = offset;
+            for (int i = 0; i < 4; i++)
             {
-                sum = ((sum << 3) ^ (reading << 2)) % 4096;
+                result = result ^ (offset + result);
+                result = ((result * 3) + (long)i) % 65521;
             }
-            if (sum < 524)
-            {
-                sum = ((sum * 2) + (4 + sum)) % 101;
-            }
-            return sum;
+            return result;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
