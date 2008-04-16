@@ -34,39 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long bound, long target)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double bias, double bias2)
         {
-            long prev = bound ^ target;
-            if ((target - 318) <= (bound ^ bound))
+            double gain = (double)(340 / 4);
+            if (gain <= (bias + bias))
             {
-                return 1;
+                gain = gain + (double)58;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)492 <= (double)bound) || ((bound + target) == (bound + 22)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)bound == (9.5 * 3.3)) && ((bound << 1) < (target - 545)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound - bound) > (prev + prev))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                gain = (gain + bias2) + (double)(long)i;
             }
+            return gain + bias2;
         }
 
         /// <summary>Define record limits and defaults.</summary>
