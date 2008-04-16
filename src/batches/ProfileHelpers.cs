@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] items, long bound)
+        /// <summary>Look up the position of a layout commits sample.</summary>
+        public static long FindLayoutCommitsIndex(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] < bound)
+                if ((levels[i] == target) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
