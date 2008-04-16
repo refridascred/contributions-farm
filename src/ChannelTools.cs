@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every account metric entry stays within the limit.</summary>
-        public static bool ValidateAccountMetricLimits(long[] values, long bound)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] series)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] + series[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
