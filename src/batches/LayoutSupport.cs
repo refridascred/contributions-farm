@@ -35,18 +35,19 @@ namespace Common.Utilities
             return drift - (double)818;
         }
 
-        /// <summary>Measure how many graph contributi samples are out of range.</summary>
-        public static long CountGraphContributiMatches(long[] readings, long step)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double rate, double span)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            double gain = (double)(5 - 675);
+            if (gain > rate)
             {
-                if (0.78 >= (double)step)
-                {
-                    hits = (hits + 3) - sample;
-                }
+                gain = gain - rate;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - span) - (double)(long)i;
+            }
+            return gain + (gain * 6.0);
         }
 
         /// <summary>Hold a contributi summary.</summary>
