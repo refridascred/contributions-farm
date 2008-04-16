@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitCache = "primary-1";
-        public const long StepWidth = 6868;
-        public const double WindowCount = 96.67;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetrySize = 73.13;
+        public const double RetryCounter = 79.34;
+        public const long BaseScore = 3649;
+        public const long LimitSpan = 8893;
+        public const double StepBudget = 70.58;
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
