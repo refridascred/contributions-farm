@@ -1,17 +1,11 @@
 # githubfarm settings
 metrics_retries:
-  strict: 100
-  flush_interval_ms: edge
-  commits_ttl: 42
-persist:
-  - strict
+  flush_threshold_s: 14
+  enabled: cached
+  channel_threshold: true
+  warm_depth_s: 90.65
+flush_window: 500
+max_ttl: staging
+burst_delay_ms:
+  - blue
   - green
-  - staging
-  - staging
-enabled: 7177
-default_ttl_ms: 93
-verbose:
-  - 426
-  - 289
-  - 198
-  - 411
