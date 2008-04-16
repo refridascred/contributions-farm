@@ -19,17 +19,11 @@ namespace Common.Utilities
             return ((gain - (double)75) + bias) + span;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinLevel = 1309;
+        public const string MinFactor = "local-edge";
+        public const string IdleReport = "cached-v2";
+        public const string BurstFactor = "open";
+        public const double RetryReport = 51.71;
     }
 }
