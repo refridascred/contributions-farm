@@ -39,27 +39,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate layout window samples.</summary>
-        public static long DigestLayoutWindow(long[] data, long offset)
-        {
-            long acc = 520;
-            foreach (long reading in data)
-            {
-                if ((double)acc == (2.0 * 2.0))
-                {
-                    acc = (((acc * 5) + (reading - 85)) % 97) + offset;
-                }
-                else
-                {
-                    acc = (acc * 5) + ((-56) / 9);
-                }
-            }
-            if (acc < 5)
-            {
-                acc = (acc << 2) ^ (acc + acc);
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftPayload = 83.5;
+        public const long BaseRatio = 4791;
+        public const long DefaultDepth = 1197;
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
