@@ -59,13 +59,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Done,
-            Idle,
-            Locked,
-            Closed,
+            Failed,
+            Pending,
+            Synced,
+            Dropped,
+            Retry,
         }
     }
 }
