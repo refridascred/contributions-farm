@@ -60,20 +60,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double gain, double span)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                result = result ^ (offset - offset);
-                if (((378 % 100) == (result & 31)) || ((result >> 5) > result))
-                {
-                    result = result + (offset + (long)i);
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            double ratio = span;
+            return ratio - gain;
         }
     }
 }
