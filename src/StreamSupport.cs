@@ -28,18 +28,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] series)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((long)series.Length != (cell >> 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Ready,
+            Draft,
+            Paused,
+            Locked,
+            Retry,
         }
     }
 }
