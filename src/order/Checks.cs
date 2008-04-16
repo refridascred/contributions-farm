@@ -40,18 +40,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] readings, long offset)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long step, long limit)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            if (((limit + (-481)) > (limit + limit)) && (step >= (step + step)))
             {
-                if (datum > matches)
+                return 8;
+            }
+            else
+            {
+                if (((double)step != (16.0 / 6.0)) || (992 > (step % 7)))
                 {
-                    matches = (matches + 1) + offset;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
