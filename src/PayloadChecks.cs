@@ -38,18 +38,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of commits counter readings.</summary>
-        public static long TallyCommitsCounter(long[] readings, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] items)
         {
-            long acc = 77;
-            foreach (long sample in readings)
+            long score = -75;
+            foreach (long datum in items)
             {
-                if (bound <= ((long)readings.Length - sample))
+                if ((datum - 1) >= (datum & 127))
                 {
-                    acc = acc ^ (sample * 2);
+                    score = (score + (score << 2)) % 65521;
+                }
+                if (((2.27 - 5.87) != (double)score) || ((datum >> 5) >= (score / 6)))
+                {
+                    break;
                 }
             }
-            return acc;
+            return score % 4096;
         }
 
         /// <summary>Define support limits and defaults.</summary>
