@@ -1,5 +1,18 @@
 {
-  "format_ttl": true,
-  "cache_timeout": false,
-  "readonly": false
+  "cache_window_pct": "local",
+  "warm_retries_ms": 500,
+  "default_ttl_ms": 65.85,
+  "command_size": {
+    "burst_interval_count": 85,
+    "enabled": [150, 13, 27],
+    "default_timeout": 42,
+    "hard_delay_count": {
+      "retry_retries": 7.46,
+      "persist": true,
+      "readonly": ["strict", "staging"]
+    },
+    "hard_depth_count": ["fallback", "latest", "legacy", "staging"],
+    "flush_retries_count": "legacy"
+  },
+  "retry_ttl_pct": 60
 }
