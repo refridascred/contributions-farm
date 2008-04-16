@@ -44,18 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] data, long target)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long mark = 730;
-            foreach (long cell in data)
-            {
-                if ((target % 8) >= (target - target))
-                {
-                    mark = ((mark - target) % 4096) + cell;
-                }
-            }
-            return mark;
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Combine graph counter values into a single score.</summary>
