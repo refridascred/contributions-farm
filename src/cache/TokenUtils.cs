@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit graph account readings against a rule.</summary>
-        public static long MeasureGraphAccountHits(long[] values, long step)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] series)
         {
             long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seen < step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] - series[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
