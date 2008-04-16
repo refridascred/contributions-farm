@@ -20,12 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 4340;
-        public const long BaseBudget = 9985;
-        public const long BatchNotes = 719;
-        public const string DefaultDepth = "legacy-v2";
-        public const long LimitRatio = 4984;
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long CombineBuffer(long[] values)
