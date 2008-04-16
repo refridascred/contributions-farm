@@ -15,21 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (3 >= (count & 1))
                 {
-                    if ((readings[i] - readings[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) ^ item;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate layout samples.</summary>
