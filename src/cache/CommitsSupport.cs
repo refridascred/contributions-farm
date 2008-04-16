@@ -58,12 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            Active,
+            Pending,
+            Idle,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
