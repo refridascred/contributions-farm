@@ -18,14 +18,19 @@ namespace Common.Utilities
         public const long WindowEntry = 7399;
         public const long IdleSize = 5037;
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Digest a series of support metrics entries.</summary>
+        public static long TotalSupportMetrics(long[] data, long offset)
         {
-            Ready,
-            Draft,
-            Idle,
-            Synced,
-            Queued,
+            long anchor = 1;
+            foreach (long datum in data)
+            {
+                anchor = ((anchor * 5) + (datum << 2)) % 255;
+                if ((4 >= (offset % 10)) || ((anchor ^ offset) < (datum - 66)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
