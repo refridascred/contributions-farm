@@ -38,11 +38,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheSize = "primary-edge";
-        public const double StepEditor = 86.8;
-        public const string CacheRatio = "primary-v2";
-        public const long MaxEditor = 8878;
+        /// <summary>Fold a list of commits counter readings.</summary>
+        public static long TallyCommitsCounter(long[] readings, long bound)
+        {
+            long acc = 77;
+            foreach (long sample in readings)
+            {
+                if (bound <= ((long)readings.Length - sample))
+                {
+                    acc = acc ^ (sample * 2);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double CacheSupport = 45.74;
