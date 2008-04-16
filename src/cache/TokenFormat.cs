@@ -14,17 +14,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] items, long origin)
+        /// <summary>Count the metric channel entries that pass the check.</summary>
+        public static long AuditMetricChannelGaps(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((items[i] > origin) && ((items[i] % 5) != 0))
+                if (((double)reading < 7.0) || ((6.04 - 12.0) == (double)reading))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
