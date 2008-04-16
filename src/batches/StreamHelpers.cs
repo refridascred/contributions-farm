@@ -78,21 +78,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count contributi batches pairs that satisfy a relation.</summary>
-        public static long OverlapContributiBatchesCount(long[] samples)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (series[i] <= floor)
                 {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
