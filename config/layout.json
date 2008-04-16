@@ -1,12 +1,16 @@
 {
-  "farm_threshold": [45, 308],
-  "hard_ttl": {
-    "dry_run": 70.47,
-    "sync_interval": "legacy",
-    "soft_ttl_count": 60,
-    "audit": "cached",
-    "cluster_depth": false,
-    "farm_delay": "strict"
+  "poll_limit_s": {
+    "persist": 81.53,
+    "cache_ttl_count": 12.35,
+    "max_capacity": 36.62,
+    "strict": {
+      "soft_size_ms": 9.93,
+      "flush_interval_ms": "open",
+      "hard_capacity": 637,
+      "idle_depth_count": 56
+    },
+    "cache_delay_pct": 69
   },
-  "stream_ratio": "green"
+  "compress": 302,
+  "retry_delay_pct": "blue"
 }
