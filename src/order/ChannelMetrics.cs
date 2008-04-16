@@ -25,11 +25,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            Done,
+            Ready,
+            Draft,
+            Retry,
+            Synced,
         }
     }
 }
