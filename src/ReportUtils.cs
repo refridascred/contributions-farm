@@ -28,18 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] values)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (((double)count > 0.5) && (sample <= (count + 82)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
