@@ -25,14 +25,13 @@ namespace Common.Utilities
         public const long RetryDepth = 2878;
         public const double IdleAlready = 58.5;
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Done,
-            Ready,
-            Draft,
-            Retry,
-            Synced,
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
