@@ -40,13 +40,15 @@ namespace Common.Utilities
             return ratio2 + (double)14;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Project the next counter stream value.</summary>
+        public static double AdjustCounterStream(double scale, double floor)
         {
-            Failed,
-            Retry,
-            Active,
-            Queued,
+            double ratio = scale;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (double)5) + (double)(long)i;
+            }
+            return ratio - floor;
         }
 
         /// <summary>Describe the graph kind values.</summary>
