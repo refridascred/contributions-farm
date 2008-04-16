@@ -90,16 +90,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long origin)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = mark ^ ((long)i % 24);
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Failed,
+            Draft,
+            Idle,
         }
     }
 }
