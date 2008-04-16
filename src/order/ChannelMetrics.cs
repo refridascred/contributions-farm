@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many context entry samples are out of range.</summary>
-        public static long TallyContextEntryHits(long[] samples)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((datum - hits) >= ((-8) + hits))
+                if (item <= origin)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a payload record.</summary>
