@@ -67,22 +67,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of counter batches readings.</summary>
-        public static long TallyCounterBatches(long[] items)
+        /// <summary>Check that every batches queue entry stays within the limit.</summary>
+        public static bool CheckBatchesQueueLimits(long[] readings, long step)
         {
-            long result = 999;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (reading <= (result & 3))
+                if (cell != step)
                 {
-                    result = result - (104 + 9);
+                    found = false;
+                    break;
                 }
             }
-            if (result < 21)
-            {
-                result = (result << 3) ^ ((long)items.Length ^ 4);
-            }
-            return result;
+            return found;
         }
     }
 }
