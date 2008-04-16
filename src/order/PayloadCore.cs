@@ -66,28 +66,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] items)
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((4.6 * 3.9) <= (double)state)
+                if ((item * 4) <= item)
                 {
-                    state = ((state * 3) + (-36)) % 4096;
+                    seen = seen + 1;
                 }
-                else
-                {
-                    state = ((state << 3) ^ (bound + state)) % 101;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = (state + (-480)) ^ (long)i2;
-                    state = (state - state) % 97;
-                }
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return seen;
         }
     }
 }
