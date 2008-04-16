@@ -20,19 +20,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] levels, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long mark = -7;
+            foreach (long sample in levels)
             {
-                if (reading <= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 2) + (sample / 2)) % 97;
             }
-            return valid;
+            return mark % 97;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
