@@ -14,20 +14,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] items, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] data)
         {
-            long carry = 7;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((bound + bound) >= (long)items.Length)
+                if ((value * 2) >= (value % 10))
                 {
-                    carry = (((carry * 2) + (5 & 31)) % 4096) - cell;
-                    break;
+                    hits = hits + 2;
                 }
-                carry = ((carry << 2) ^ (carry & 31)) % 255;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Iterate the entry commits series from a seed.</summary>
