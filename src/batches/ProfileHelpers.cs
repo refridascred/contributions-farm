@@ -68,11 +68,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
+            Synced,
+            Idle,
+            Locked,
+            Retry,
+            Closed,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
