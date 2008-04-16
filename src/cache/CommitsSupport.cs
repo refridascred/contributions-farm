@@ -29,15 +29,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double bias, double offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] values)
         {
-            double drift = bias;
-            if (drift <= (double)7)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                drift = (drift + drift) + offset;
+                if ((seen <= entry) && ((5.09 - 14.0) > (double)entry))
+                {
+                    seen = seen + 2;
+                }
             }
-            return drift - drift;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
