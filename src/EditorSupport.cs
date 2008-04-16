@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchProfile = "alpha";
-        public const long MaxProfile = 7422;
-        public const double BaseProfile = 33.98;
-        public const long LimitSpan = 3939;
-        public const double WindowProfile = 92.49;
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a token commits counter forward.</summary>
         public static long RollTokenCommits(long offset)
