@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the metric buffer series from a seed.</summary>
-        public static long RollMetricBuffer(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((((long)i >> 3) < (offset - offset)) && ((double)acc == (double)(long)i))
-                {
-                    acc = (acc << 2) ^ 2;
-                    break;
-                }
-                acc = (acc + (acc ^ acc)) % 1000;
-                acc = (acc * 3) + offset;
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinLevel = 6423;
+        public const string BatchFilter = "latest-edge";
+        public const long CacheSize = 6055;
+        public const long MaxWidth = 8029;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long SeriesGraph(long origin)
