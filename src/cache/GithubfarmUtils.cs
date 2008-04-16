@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] samples, long target)
+        /// <summary>Digest a series of farm filter entries.</summary>
+        public static long ScoreFarmFilter(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long total = 6;
+            foreach (long reading in samples)
             {
-                if ((8.7 >= (double)item) || (item <= (matches >> 5)))
+                if ((double)reading == (6.8 - 2.2))
                 {
-                    matches = (matches + 2) - target;
+                    total = ((total << 2) ^ (reading + total)) % 65521;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    total = ((total * 4) + (reading ^ total)) % 1000;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define support limits and defaults.</summary>
