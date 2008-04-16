@@ -22,11 +22,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryInterval = 4903;
-        public const long SoftContext = 3890;
-        public const long CacheFactor = 6461;
-        public const long BaseContext = 9463;
+        /// <summary>Iterate the support stream series from a seed.</summary>
+        public static long SeriesSupportStream(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((6 + bound) < (bound % 5))
+                {
+                    result = (result * 5) + (bound + bound);
+                }
+                else
+                {
+                    result = ((result << 2) ^ (long)i) % 255;
+                }
+                result = (result ^ (867 - result)) % 4096;
+                if ((result - result) <= (-367))
+                {
+                    result = result ^ bound;
+                }
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
