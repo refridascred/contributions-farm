@@ -35,12 +35,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Ready,
-            Active,
-            Stale,
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
