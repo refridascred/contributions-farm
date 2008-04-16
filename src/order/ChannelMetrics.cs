@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public double Count { get; set; }
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitInterval = 1699;
+        public const long IdleTools = 4370;
+        public const double IdleCount = 20.56;
 
         /// <summary>Validate order stream readings against a bound.</summary>
         public static bool GuardOrderStreamBounds(long[] values, long origin)
