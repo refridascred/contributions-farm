@@ -33,19 +33,18 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] readings, long floor)
+        /// <summary>Count the session checks entries that pass the check.</summary>
+        public static long CountSessionChecksHits(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (sample >= floor)
+                if ((datum % 16) >= tally)
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
