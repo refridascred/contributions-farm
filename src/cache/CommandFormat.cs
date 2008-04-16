@@ -33,20 +33,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double ratio, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 > (ratio + ratio))
-            {
-                bias2 = bias2 - (double)355;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (double)736) + (double)(long)i;
-            }
-            return bias2 + (double)9;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 1811;
+        public const string DefaultDepth = "fallback-v2";
+        public const long SoftContext = 8322;
+        public const long LimitContext = 4720;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string StepWidth = "latest-v2";
