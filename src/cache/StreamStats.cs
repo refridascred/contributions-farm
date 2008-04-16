@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long limit)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public double Count { get; set; }
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Combine record values into a single score.</summary>
