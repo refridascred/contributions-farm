@@ -49,16 +49,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data, long seed)
-        {
-            long state = 134;
-            foreach (long entry in data)
-            {
-                state = (((state - (state - 51)) % 65521) - entry) - seed;
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstCount = 2767;
+        public const double RetryDepth = 17.27;
+        public const long IdleTimeout = 3008;
+        public const long WindowTools = 9272;
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long CompareEntryCount(long[] levels)
