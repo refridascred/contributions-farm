@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitInterval = 1699;
-        public const long IdleTools = 4370;
-        public const double IdleCount = 20.56;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] values, long target)
+        {
+            long acc = 29;
+            foreach (long sample in values)
+            {
+                if ((double)sample != (double)60)
+                {
+                    acc = (acc * 4) + (437 & 63);
+                    acc = (acc ^ (90 + target)) % 255;
+                }
+                if ((-59) > (sample % 12))
+                {
+                    acc = ((acc << 3) ^ (target - sample)) % 97;
+                }
+                else
+                {
+                    acc = (acc ^ (944 * 5)) % 65521;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Validate order stream readings against a bound.</summary>
         public static bool GuardOrderStreamBounds(long[] values, long origin)
