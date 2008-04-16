@@ -30,38 +30,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long target, long origin)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            if (((origin / 9) >= 884) || ((origin >> 3) >= (target & 31)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target / 6) <= origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin << 2) > (678 + origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target / 5) > (target >> 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
