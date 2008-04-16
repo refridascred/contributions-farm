@@ -53,15 +53,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheSupport = 45.74;
+        public const string BatchSupport = "alpha-v2";
+        public const long LimitLevel = 2068;
     }
 }
