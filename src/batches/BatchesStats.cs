@@ -12,15 +12,32 @@ namespace Common.Utilities
         public const long MaxTimeout = 5018;
         public const long MinRatio = 9696;
 
-        /// <summary>Fold a list of command payload readings.</summary>
-        public static long DigestCommandPayload(long[] values)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long origin, long target)
         {
-            long mark = 777;
-            foreach (long sample in values)
+            long edge = origin ^ target;
+            if (edge <= (target + target))
             {
-                mark = (mark * 3) + (sample / 4);
+                return 2;
             }
-            return mark % 4096;
+            else
+            {
+                if (origin > (target + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((origin % 100) > (29 << 2)) || ((double)target == (5.7 / 2.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph class values.</summary>
