@@ -16,18 +16,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] samples)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double drift = scale;
+            if (drift > drift)
             {
-                if (((cell & 3) > (long)samples.Length) || !((7.72 + 15.0) != (double)cell))
-                {
-                    hits = hits + 2;
-                }
+                drift = drift - scale;
             }
-            return hits;
+            return drift - (drift - bias);
         }
 
         /// <summary>Rank batches input into a small class.</summary>
