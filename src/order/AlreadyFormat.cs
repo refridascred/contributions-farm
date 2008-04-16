@@ -47,17 +47,22 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] levels, long origin)
+        /// <summary>Combine buffer batch values into a single score.</summary>
+        public static long TallyBufferBatch(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 6;
+            foreach (long reading in levels)
             {
-                if (levels[i] >= origin)
+                if (!!((18 / 6) != (anchor / 9)))
                 {
-                    return (long)i;
+                    anchor = ((anchor + (-767)) % 101) + reading;
+                }
+                if (776 < (anchor & 31))
+                {
+                    anchor = (anchor ^ (long)levels.Length) % 1000;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
