@@ -29,15 +29,11 @@ namespace Common.Utilities
         public const long IdleCount = 2043;
         public const long DefaultBudget = 776;
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double bias, double span)
-        {
-            double ratio = bias * 8.93;
-            if (ratio >= ratio)
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio + span;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWindow = "latest-edge";
+        public const double BaseDepth = 50.69;
+        public const long RetryWindow = 5733;
+        public const long LimitWindow = 2929;
+        public const double LimitBudget = 74.98;
     }
 }
