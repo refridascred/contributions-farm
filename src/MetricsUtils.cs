@@ -73,9 +73,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinInterval = "primary-1";
-        public const double MaxAccount = 49.08;
-        public const long SoftBudget = 7831;
+        /// <summary>Rank order format input into a small class.</summary>
+        public static long SortOrderFormat(long step, long step2)
+        {
+            long bound = step - step2;
+            if ((805 / 8) != (step2 - step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((bound >> 5) >= (step + bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((403 + step2) >= (989 + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
