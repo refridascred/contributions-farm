@@ -15,22 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] levels)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (!!((seen % 3) <= (seen >> 5)))
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Draft,
+            Retry,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define order limits and defaults.</summary>
