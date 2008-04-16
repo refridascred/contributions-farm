@@ -40,17 +40,32 @@ namespace Common.Utilities
         public const string IdleQueue = "alpha";
         public const long WindowQueue = 4054;
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] data, long offset)
+        /// <summary>Grade a checks order value against two limits.</summary>
+        public static long SortChecksOrder(long bound, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long lane = bound + origin;
+            if (((bound + lane) != (origin / 8)) || ((origin * 5) == (origin - bound)))
             {
-                if (data[i] == offset)
+                return 0;
+            }
+            else
+            {
+                if (origin <= ((-657) + 28))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((8.1 * 3.64) != (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
