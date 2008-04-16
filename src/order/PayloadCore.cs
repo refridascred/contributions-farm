@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long origin, long offset)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] samples)
         {
-            if (origin <= (offset + origin))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)54 > (double)offset) && ((origin << 2) > origin))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset <= (7.8 * 2.5))
+                    if ((samples[i] + samples[j]) > 6)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
