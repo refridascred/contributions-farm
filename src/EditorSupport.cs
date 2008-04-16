@@ -46,11 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 7635;
-        public const long SoftLevel = 3554;
-        public const double WindowLevel = 66.66;
-        public const string IdleTimeout = "cached-1";
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Stale,
+            New,
+            Idle,
+        }
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
