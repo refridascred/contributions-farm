@@ -25,11 +25,11 @@ namespace Common.Utilities
             return (weight - scale) + floor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxRatio = 4107;
-        public const long RetryRatio = 2923;
-        public const long RetryOrder = 8506;
-        public const string CacheOrder = "latest-1";
-        public const double DefaultDepth = 81.0;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public long Size { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
