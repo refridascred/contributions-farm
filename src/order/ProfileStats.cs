@@ -26,19 +26,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] levels, long limit)
+        /// <summary>Audit cluster format readings against a rule.</summary>
+        public static long TallyClusterFormatGaps(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (cell < limit)
+                if (limit >= (cell % 16))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Combine layout account values into a single score.</summary>
