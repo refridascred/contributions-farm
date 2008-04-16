@@ -1,10 +1,6 @@
 {
-  "verbose": 250,
-  "flush_size_count": "edge",
-  "audit": "legacy",
-  "readonly": {
-    "cache_depth_count": "stable",
-    "flush_interval_pct": 81.46,
-    "audit": "blue"
-  }
+  "max_size_pct": "legacy",
+  "max_capacity_ms": 2899,
+  "persist": "legacy",
+  "base_ttl": ["staging", "stable", "stable"]
 }
