@@ -63,11 +63,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long seed)
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = (anchor - (anchor - anchor)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
