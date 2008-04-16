@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] samples)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long carry = 0;
+            foreach (long value in samples)
             {
-                if (((tally >> 4) > (tally + reading)) || ((818 >> 3) <= tally))
+                carry = ((carry + (85 >> 5)) % 101) - offset;
+                if ((carry + (long)samples.Length) < 30)
                 {
-                    tally = tally + 2;
+                    carry = ((carry << 3) ^ (value - value)) % 65521;
                 }
+                carry = (carry + carry) % 255;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Audit channel farm readings against a rule.</summary>
