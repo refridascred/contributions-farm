@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Closed,
-            Locked,
-            Idle,
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
