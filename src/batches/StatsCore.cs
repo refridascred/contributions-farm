@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long bound, long bound2)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] readings)
         {
-            if (((bound >> 1) > (8 ^ 638)) || ((bound % 3) != (bound + 735)))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound / 9) > (bound + bound)) || (4.2 <= (double)bound))
+                if ((((double)tally == (9.0 + 6.89)) && (2.3 < (double)entry)) && ((entry & 3) >= entry))
                 {
-                    return 8;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((bound - bound) <= (bound + bound2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
