@@ -53,14 +53,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long seed)
         {
-            Locked,
-            Idle,
-            Done,
-            Paused,
-            New,
+            long state = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((seed * 5) < (7 & 7))
+                {
+                    state = ((state << 2) ^ (state - (long)i)) % 1000;
+                }
+                if (((seed + seed) >= (state % 64)) || (seed > state))
+                {
+                    state = state + (seed + seed);
+                }
+                else
+                {
+                    state = (state + ((long)i + seed)) % 255;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
