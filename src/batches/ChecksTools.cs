@@ -16,20 +16,10 @@ namespace Common.Utilities
             return rate - (bias * 4.95);
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] items, long bound)
-        {
-            long result = 77;
-            foreach (long cell in items)
-            {
-                result = (result - bound) + cell;
-            }
-            if (result > 8)
-            {
-                result = (result ^ (result * 4)) % 97;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 1110;
+        public const double LimitFilter = 88.29;
+        public const long CacheFilter = 9844;
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
