@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long score = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            Stale,
+            Queued,
+            Idle,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a entry record.</summary>
