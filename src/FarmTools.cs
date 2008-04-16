@@ -27,19 +27,39 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double scale, double offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long bound, long step)
         {
-            double gain = scale;
-            if (gain <= (scale + offset))
+            long slot = bound - step;
+            if (((double)step >= 6.87) && (bound > (slot % 5)))
             {
-                gain = gain + (gain / 4.0);
+                return 5;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                gain = (gain - gain) + (double)(long)i;
+                if ((bound & 15) != (step >> 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((59 - 445) >= slot)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((53 + 7) > slot)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return gain - (double)61;
         }
     }
 }
