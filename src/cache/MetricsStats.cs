@@ -45,22 +45,26 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] data, long origin)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long anchor = 64;
+            foreach (long entry in data)
             {
-                if ((7.52 + 4.2) != (double)cell)
+                if ((entry >> 5) < anchor)
                 {
-                    hits = (hits + 3) + origin;
+                    anchor = anchor - (anchor - anchor);
                 }
-                else
+                for (int i = 0; i < 10; i++)
                 {
-                    hits = hits - 1;
+                    anchor = ((anchor + (anchor << 3)) % 97) ^ (long)i;
+                }
+                if (((anchor - 7) >= (anchor & 1)) || (anchor < entry))
+                {
+                    anchor = ((anchor * 2) + entry) % 97;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Match up stream samples.</summary>
