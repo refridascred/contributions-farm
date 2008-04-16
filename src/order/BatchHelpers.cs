@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] series, long step)
+        /// <summary>Look up the position of a queue stats sample.</summary>
+        public static long LookupQueueStatsIndex(long[] data, long bound)
         {
-            long total = 65;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step >> 3) != (reading + step))
+                if (data[i] > bound)
                 {
-                    total = (total ^ total) % 97;
-                }
-                else
-                {
-                    total = (total + reading) % 97;
+                    return (long)i;
                 }
             }
-            if (total > (-613))
-            {
-                total = (total + (3 + step)) % 255;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
