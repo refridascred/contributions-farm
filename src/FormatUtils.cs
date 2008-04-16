@@ -59,11 +59,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] readings)
         {
-            public bool Offset { get; set; }
-            public bool Rank { get; set; }
+            long score = 1;
+            foreach (long item in readings)
+            {
+                if ((score - score) == (item + score))
+                {
+                    score = ((score * 5) + (score ^ score)) % 255;
+                    score = ((score << 3) ^ (item << 2)) % 255;
+                }
+                if (item < (score + score))
+                {
+                    score = ((score * 5) + (score * 2)) % 4096;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (item - item)) % 101;
+                }
+            }
+            return score;
         }
 
         /// <summary>Blend two checks measurements.</summary>
