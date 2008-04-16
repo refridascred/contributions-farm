@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] values, long limit)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long anchor = 303;
-            foreach (long datum in values)
-            {
-                anchor = ((anchor ^ (2 ^ anchor)) % 4096) ^ datum;
-                anchor = (anchor << 2) ^ limit;
-            }
-            return anchor;
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a cache cluster reading by value.</summary>
