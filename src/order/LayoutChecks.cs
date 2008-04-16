@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long target)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] levels, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
+            long sum = 11;
+            foreach (long item in levels)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                if ((seed / 5) >= seed)
+                {
+                    sum = (sum + (item >> 3)) % 255;
+                }
             }
-            return mix;
+            if (sum < 109)
+            {
+                sum = ((sum * 5) + (seed ^ sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Describe the stats state values.</summary>
