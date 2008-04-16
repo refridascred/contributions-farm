@@ -1,5 +1,12 @@
 {
-  "readonly": 500,
-  "verbose": false,
-  "flush_ratio_pct": "edge"
+  "farm_threshold": [45, 308],
+  "hard_ttl": {
+    "dry_run": 70.47,
+    "sync_interval": "legacy",
+    "soft_ttl_count": 60,
+    "audit": "cached",
+    "cluster_depth": false,
+    "farm_delay": "strict"
+  },
+  "stream_ratio": "green"
 }
