@@ -30,11 +30,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheTimeout = 9470;
-        public const long BatchWidth = 3610;
-        public const long BurstScore = 7101;
-        public const string WindowAccount = "staging";
-        public const long DefaultAccount = 9205;
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public long Region { get; set; }
+            public double Rank { get; set; }
+            public bool Size { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
