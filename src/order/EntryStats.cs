@@ -63,14 +63,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Synced,
-            Done,
-            Idle,
-            Paused,
-            Retry,
+            public double Limit { get; set; }
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
