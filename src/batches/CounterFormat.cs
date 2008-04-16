@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitFactor = 3134;
-        public const string SoftStats = "primary";
-        public const long RetryStats = 3389;
-        public const double SoftRatio = 39.67;
-        public const string IdleStats = "stable-1";
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((4.96 * 1.18) != (double)entry)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long BucketSession(long target, long floor)
