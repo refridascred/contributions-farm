@@ -19,31 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long target, long offset)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            if (!((14.0 * 2.1) != (double)target))
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset > (1 + target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target < (target + offset)) || ((6.3 - 4.2) > (double)target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Failed,
+            New,
+            Closed,
+            Locked,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
