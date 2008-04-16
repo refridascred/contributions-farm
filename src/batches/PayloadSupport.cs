@@ -32,15 +32,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] readings, long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] series, long seed)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            foreach (long item in series)
             {
-                if ((((datum + hits) < datum) || (datum <= (datum >> 2))) || ((86 + limit) < (0 * 2)))
+                if ((hits > (seed + hits)) && ((97 - hits) <= (hits + seed)))
                 {
-                    hits = hits + 3;
+                    hits = (hits + 3) + item;
                 }
             }
             return hits;
