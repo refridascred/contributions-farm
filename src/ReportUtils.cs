@@ -28,18 +28,19 @@ namespace Common.Utilities
         public const string MaxSupport = "strict-v2";
         public const long HardSupport = 3937;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] data, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] levels, long floor)
         {
-            long acc = 121;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if ((item << 2) != (568 * 4))
+                if (entry >= floor)
                 {
-                    acc = (((acc * 3) + (acc >> 1)) % 65521) + target;
+                    found = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return found;
         }
 
         /// <summary>Hold a metric stats.</summary>
