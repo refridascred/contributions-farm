@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] readings, long step)
         {
-            Dropped,
-            New,
-            Synced,
-            Ready,
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define format limits and defaults.</summary>
