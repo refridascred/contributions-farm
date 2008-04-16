@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every record entry entry stays within the limit.</summary>
-        public static bool ValidateRecordEntryRange(long[] readings, long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long origin, long origin2)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long span = origin - origin2;
+            if ((15.0 - 6.6) >= (double)origin2)
             {
-                if (reading <= seed)
+                return 1;
+            }
+            else
+            {
+                if ((5.85 - 2.44) < (double)origin)
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((6.0 / 4.0) < (double)origin2) || ((9.0 - 8.53) == (double)span))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin2 + 7) >= (origin + span))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the session phase values.</summary>
