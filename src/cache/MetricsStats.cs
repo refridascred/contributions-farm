@@ -11,23 +11,11 @@ namespace Common.Utilities
         public const string LimitRoute = "fallback-1";
         public const long DefaultRoute = 3732;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long sum = 59;
-            foreach (long sample in series)
-            {
-                if ((sum ^ sum) != (sample + sample))
-                {
-                    sum = ((sum * 4) + (sum ^ 5)) % 4096;
-                }
-                else
-                {
-                    sum = (sum ^ 5) % 97;
-                }
-                sum = (sum * 5) + (sample + sample);
-            }
-            return sum % 1000;
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
