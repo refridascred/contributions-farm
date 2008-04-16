@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 2413;
-        public const long HardWidth = 6340;
-        public const long LimitRatio = 229;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            New,
+            Synced,
+            Done,
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterOutliers(long[] samples)
