@@ -28,11 +28,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 5861;
-        public const long IdleGithubfarm = 2648;
-        public const string CacheWidth = "fallback-1";
-        public const string BaseGithubfarm = "standard";
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] series)
+        {
+            long mix = 5;
+            foreach (long value in series)
+            {
+                mix = (((mix * 5) + (long)series.Length) % 101) ^ value;
+            }
+            if (mix < 40)
+            {
+                mix = ((mix << 3) ^ (623 & 31)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long RollCommand(long step)
