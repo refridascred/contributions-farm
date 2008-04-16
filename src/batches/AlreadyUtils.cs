@@ -29,21 +29,21 @@ namespace Common.Utilities
         public const long IdleInterval = 9819;
         public const long BatchTimeout = 7773;
 
-        /// <summary>Roll a layout tools counter forward.</summary>
-        public static long SeriesLayoutTools(long floor)
+        /// <summary>Count report metric pairs that satisfy a relation.</summary>
+        public static long MatchReportMetricCount(long[] levels)
         {
-            long state = floor;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state + (state - (long)i)) % 4096;
-                    state = ((state << 2) ^ (long)i2) % 4096;
+                    if ((levels[i] - levels[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = (state - (floor + 333)) % 4096;
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
