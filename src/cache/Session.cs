@@ -42,14 +42,15 @@ namespace Common.Utilities
         public const long IdleWidth = 8556;
         public const double LimitRatio = 58.12;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] readings, long seed)
         {
-            New,
-            Done,
-            Active,
-            Idle,
-            Paused,
+            long mix = 13;
+            foreach (long reading in readings)
+            {
+                mix = ((mix << 3) ^ (reading + 754)) + seed;
+            }
+            return mix;
         }
     }
 }
