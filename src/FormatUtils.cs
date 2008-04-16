@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long offset)
         {
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
+            long result = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                result = (result + result) % 1000;
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of route readings.</summary>
