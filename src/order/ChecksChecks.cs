@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetrySize = 8647;
-        public const long MaxStream = 7242;
-        public const long MinWidth = 6920;
-        public const long MinSpan = 9948;
-        public const long CacheStream = 311;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] series, long offset)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)value >= (double)offset)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
