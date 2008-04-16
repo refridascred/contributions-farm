@@ -45,13 +45,13 @@ namespace Common.Utilities
         public const long BurstStats = 7770;
         public const long WindowRatio = 9621;
 
-        /// <summary>Check that every record commits entry stays within the limit.</summary>
-        public static bool VerifyRecordCommitsLimits(long[] samples, long origin)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] levels, long target)
         {
             bool flag = true;
-            foreach (long reading in samples)
+            foreach (long entry in levels)
             {
-                if (reading < origin)
+                if (entry < target)
                 {
                     flag = false;
                     break;
