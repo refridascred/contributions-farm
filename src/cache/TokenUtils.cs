@@ -19,11 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftBatches = "cached-1";
-        public const long MaxSpan = 5187;
-        public const string HardSize = "open";
-        public const double HardBatches = 28.97;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Draft,
+            Active,
+            Synced,
+        }
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LookupWindowIndex(long[] series, long origin)
