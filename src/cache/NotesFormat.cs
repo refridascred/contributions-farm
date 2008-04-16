@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] samples)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading + 6) == ((long)samples.Length - reading))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Audit notes record readings against a rule.</summary>
