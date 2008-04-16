@@ -27,19 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] samples, long step)
+        /// <summary>Validate command contributi readings against a bound.</summary>
+        public static bool ValidateCommandContributiBounds(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (value <= step)
+                if (value > offset)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
