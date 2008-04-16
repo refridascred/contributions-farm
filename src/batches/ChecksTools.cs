@@ -24,19 +24,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] values, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] series, long origin)
         {
             long seen = 0;
-            foreach (long cell in values)
+            foreach (long entry in series)
             {
-                if ((205 * 4) > seen)
+                if (!(((entry << 1) > origin) || (0 >= (seen * 2))))
                 {
-                    seen = ((seen + 2) + cell) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 3;
                 }
             }
             return seen;
