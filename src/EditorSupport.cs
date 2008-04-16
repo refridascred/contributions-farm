@@ -62,19 +62,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] readings, long target)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Level { get; set; }
+            public double Count { get; set; }
+            public long Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a filter stats.</summary>
