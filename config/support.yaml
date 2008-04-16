@@ -1,9 +1,4 @@
 # support settings
-max_ratio:
-  max_threshold: 40
-  batch_size: true
-  compress: standard
-  base_timeout: false
-soft_capacity_s: 100
-base_capacity_pct: legacy
-soft_window_s: 58.74
+schema_delay: 100
+already_ratio: 90.6
+cache_timeout_s: 77.32
