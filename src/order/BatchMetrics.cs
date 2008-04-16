@@ -45,12 +45,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            Dropped,
+            Closed,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a stream info.</summary>
