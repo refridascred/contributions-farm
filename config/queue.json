@@ -1,8 +1,6 @@
 {
-  "max_window_count": 64.57,
-  "order_size": "edge",
-  "default_depth_s": 100,
-  "audit": 2.49,
-  "support_ttl": 46.27,
-  "batch_size": "fallback"
+  "min_ratio": "edge",
+  "cache_depth_count": 40.03,
+  "base_delay_s": 1643,
+  "flush_ttl_pct": [307, 37]
 }
