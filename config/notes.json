@@ -1,6 +1,6 @@
 {
-  "dry_run": "local",
-  "min_limit_ms": "cached",
-  "sync_threshold": 1024,
-  "burst_depth_count": "strict"
+  "profile_delay": true,
+  "commits_timeout": "stable",
+  "batch_retries": 500,
+  "idle_ttl_pct": 19
 }
