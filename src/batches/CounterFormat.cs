@@ -48,11 +48,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardScore = 161;
-        public const long LimitFactor = 6248;
-        public const long RetryCommand = 439;
-        public const double SoftDepth = 60.92;
-        public const string MaxCommand = "standard-v2";
+        /// <summary>Check that every checks account entry stays within the limit.</summary>
+        public static bool VerifyChecksAccountBounds(long[] values, long bound)
+        {
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
