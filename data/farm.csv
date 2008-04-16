@@ -1,11 +1,6 @@
-id,active,ratio,rank
-1,31.51,eu-west,82.19
-2,standard,green,staging
-3,primary,85.0,237
-4,eu-west,cached,primary
-5,42,885,79.36
-6,24.67,legacy,841
-7,748,green,280
-8,670,328,green
-9,671,505,legacy
-10,10.69,fallback,281
+id,active,owner
+1,802,edge
+2,13.79,796
+3,995,eu-west
+4,34.66,69.62
+5,825,legacy
