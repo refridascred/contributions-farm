@@ -32,12 +32,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long bound)
         {
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
-            public double Rank { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((acc >> 1) == ((long)i << 2))
+                {
+                    acc = (acc ^ bound) % 101;
+                }
+                else
+                {
+                    acc = (acc - 3) % 255;
+                }
+                if (!((long)i < (acc % 64)))
+                {
+                    acc = acc + (3 << 1);
+                    acc = (acc - (bound - bound)) % 101;
+                }
+                acc = (acc * 5) + acc;
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
