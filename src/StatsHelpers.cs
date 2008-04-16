@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const double BaseTimeout = 10.98;
         public const double SoftWidth = 90.6;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double ratio, double floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long step)
         {
-            double weight = (double)455 / 7.0;
-            if (weight <= (double)7)
+            long total = step;
+            for (int i = 0; i < 19; i++)
             {
-                weight = (weight - (double)(-582)) + ratio;
+                total = ((total * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (floor + 4.11)) + (double)(long)i;
-            }
-            return weight + 5.0;
+            return total;
         }
 
         /// <summary>Iterate the already cache series from a seed.</summary>
