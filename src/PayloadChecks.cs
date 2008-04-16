@@ -65,15 +65,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] samples, long origin)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            long mark = 2;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark + (datum << 1)) % 1000) - origin;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
