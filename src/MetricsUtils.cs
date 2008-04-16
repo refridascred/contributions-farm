@@ -15,19 +15,24 @@ namespace Common.Utilities
         public const string MaxNotes = "open-v2";
         public const long BurstNotes = 4217;
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double ratio, double span)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] samples)
         {
-            double ratio2 = 5.0;
-            if (ratio2 < ratio)
+            long carry = 270;
+            foreach (long entry in samples)
             {
-                ratio2 = (ratio2 - ratio) + span;
+                if ((double)carry <= 11.0)
+                {
+                    carry = carry ^ entry;
+                    carry = ((carry * 5) + carry) % 65521;
+                }
+                carry = (carry + entry) % 97;
             }
-            for (int i = 0; i < 6; i++)
+            if (carry > 8)
             {
-                ratio2 = (ratio2 + ratio) + (double)(long)i;
+                carry = ((carry << 3) ^ (606 << 2)) % 101;
             }
-            return ratio2 + (2.1 * 4.2);
+            return carry % 97;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
