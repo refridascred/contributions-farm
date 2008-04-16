@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] items)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 45;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((32 - value) == (value ^ limit))
                 {
-                    if ((items[i] ^ items[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc << 2) ^ value) % 1000;
                 }
             }
-            return seen;
+            if (acc > 35)
+            {
+                acc = (acc + limit) % 1000;
+            }
+            return acc % 97;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
