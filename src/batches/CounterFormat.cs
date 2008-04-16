@@ -54,18 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] values)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (!((seen + seen) < 429) || ((reading - reading) > (seen + seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Queued,
+            Draft,
+            New,
+            Pending,
+            Ready,
         }
     }
 }
