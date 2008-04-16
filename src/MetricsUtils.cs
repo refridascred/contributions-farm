@@ -15,12 +15,15 @@ namespace Common.Utilities
         public const string MaxNotes = "open-v2";
         public const long BurstNotes = 4217;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] data)
         {
-            Draft,
-            Queued,
-            Closed,
+            long sum = 97;
+            foreach (long cell in data)
+            {
+                sum = ((sum + 807) % 1000) + cell;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next record checks value from a seed.</summary>
