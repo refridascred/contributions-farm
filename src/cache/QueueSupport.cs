@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank command support input into a small class.</summary>
-        public static long BucketCommandSupport(long limit, long target)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] series, long origin)
         {
-            long step = limit ^ target;
-            if (!((target - 153) >= limit))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step ^ step) > (5 * 3))
+                if (((origin & 255) != (entry - hits)) && (((origin + entry) < hits) && ((double)origin < (1.2 * 19.0))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
