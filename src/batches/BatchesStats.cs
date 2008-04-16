@@ -47,19 +47,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] items, long step)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double bias, double offset)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            double rate = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = (rate + bias) + (double)(long)i;
             }
-            return ok;
+            return rate - (double)(-61);
         }
     }
 }
