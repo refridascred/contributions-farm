@@ -37,22 +37,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] samples)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] data)
         {
-            long sum = 45;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((sample << 1) <= ((-455) + 204))
+                if (((8.87 / 6.0) > (double)cell) && (matches > (matches >> 4)))
                 {
-                    sum = (sum + (sample * 2)) % 65521;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (sum > 98)
-            {
-                sum = ((sum << 2) ^ (sum - 0)) % 65521;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
