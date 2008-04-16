@@ -1,20 +1,11 @@
 {
-  "sync_ratio": "cached",
-  "persist": {
-    "payload_limit": {
-      "batches_interval": "strict",
-      "channel_capacity": "eu-west",
-      "default_capacity_count": ["fallback", "cached"],
-      "base_depth_ms": "fallback"
-    },
-    "max_retries": "legacy",
-    "persist": {
-      "strict": "edge",
-      "stats_threshold": "fallback",
-      "poll_threshold_count": 8447,
-      "burst_delay_s": 7
-    },
-    "hard_delay_s": "staging"
+  "dry_run": {
+    "persist": 87,
+    "flush_ratio_pct": [345, 77, 113],
+    "warm_interval_ms": 77,
+    "layout_timeout": true
   },
-  "base_size_count": "legacy"
+  "filter_interval": false,
+  "filter_depth": 72.58,
+  "enabled": "primary"
 }
