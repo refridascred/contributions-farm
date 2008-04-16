@@ -70,18 +70,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cache session samples.</summary>
-        public static long OverlapCacheSessionCount(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] readings)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(tally > sample) && ((68 / 3) < sample))
                 {
-                    if ((values[i] + values[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
