@@ -40,16 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] values, long step)
+        /// <summary>Roll a editor support counter forward.</summary>
+        public static long SeriesEditorSupport(long step)
         {
-            long sum = -1;
-            foreach (long reading in values)
+            long sum = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (step < 0)
+                if (!((step - 480) > 195))
                 {
-                    sum = (((sum << 3) ^ (sum ^ step)) % 1000) ^ reading;
+                    sum = (sum + sum) % 65521;
                 }
+                sum = (sum - ((long)i ^ (long)i)) % 97;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
             return sum;
         }
