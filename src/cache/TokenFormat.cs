@@ -27,15 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long floor)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Retry,
+            Ready,
+            Locked,
+            Queued,
+            Synced,
         }
     }
 }
