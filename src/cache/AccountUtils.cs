@@ -21,11 +21,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Project the next entry buffer value.</summary>
-        public static double ProjectEntryBuffer(double gain, double floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] items, long seed)
         {
-            double load = floor;
-            return (load - load) + gain;
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define support limits and defaults.</summary>
