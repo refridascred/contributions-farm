@@ -26,25 +26,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long target, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] readings, long floor)
         {
-            long step = target + seed;
-            if ((((-96) & 127) >= (971 - seed)) || ((1.6 - 1.2) > (5.9 * 9.26)))
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step > target) && ((5 ^ 4) <= seed))
+                if ((floor >> 5) != (floor ^ matches))
                 {
-                    return 2;
+                    matches = (matches + 1) ^ cell;
                 }
                 else
                 {
-                    return 8;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
