@@ -20,19 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] samples, long step)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell >= step)
+                if (data[i] < limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a commits summary.</summary>
