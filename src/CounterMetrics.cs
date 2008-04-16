@@ -33,12 +33,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 8854;
-        public const long BatchCounter = 5780;
-        public const long HardLevel = 9702;
-        public const long DefaultScore = 5894;
-        public const long LimitCount = 2462;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] data, long origin)
+        {
+            long state = 706;
+            foreach (long sample in data)
+            {
+                if (state < origin)
+                {
+                    state = state + (state + state);
+                }
+                if (((sample + sample) != (8 - state)) || ((double)origin != (8.5 / 6.0)))
+                {
+                    state = state ^ (state + sample);
+                }
+                else
+                {
+                    state = (state ^ (origin * 3)) % 1000;
+                }
+            }
+            if (state < 22)
+            {
+                state = ((state << 3) ^ (origin << 1)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BaseReport = 7379;
