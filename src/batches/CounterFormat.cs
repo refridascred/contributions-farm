@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] levels)
+        /// <summary>Check that every record entry entry stays within the limit.</summary>
+        public static bool ValidateRecordEntryRange(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if ((double)datum > 1.09)
+                if (reading <= seed)
                 {
-                    matches = matches + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Describe the session phase values.</summary>
