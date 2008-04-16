@@ -34,20 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a already githubfarm reading.</summary>
-        public static double AdjustAlreadyGithubfarm(double scale, double bias)
-        {
-            double mean = (scale - scale) * 4.4;
-            if (mean < 7.7)
-            {
-                mean = mean - (4.5 * 9.2);
-            }
-            else
-            {
-                mean = mean - 2.9;
-            }
-            return mean - bias;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 5632;
+        public const long LimitReport = 8592;
+        public const long HardReport = 3672;
+        public const long SoftReport = 5527;
+        public const string IdleReport = "latest-1";
 
         /// <summary>Digest a series of editor channel entries.</summary>
         public static long TallyEditorChannel(long[] readings)
