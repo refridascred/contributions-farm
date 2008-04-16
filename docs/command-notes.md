@@ -1,10 +1,10 @@
 # Command notes
 
-Use metrics settings to tune how often route data is refreshed.
-Keep editor and already names short and lowercase.
+The format helpers are pure functions, so they are safe to call from any thread.
+Run the account check before changing any editor limits.
 
 ## Guidelines
 
-- Document new session fields
-- Prefer already defaults
-- Review payload limits each release
+- Review cache limits each release
+- Document new layout fields
+- Keep buffer values small
