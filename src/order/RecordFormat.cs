@@ -81,11 +81,12 @@ namespace Common.Utilities
             return ratio - (double)(-905);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinFactor = 7824;
-        public const double MinInterval = 64.57;
-        public const double HardBudget = 18.56;
-        public const long CacheSpan = 5815;
-        public const double RetryWindow = 36.44;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Dropped,
+            New,
+            Paused,
+        }
     }
 }
