@@ -1,6 +1,19 @@
 {
-  "support_ttl": 30,
-  "sync_retries_s": "local",
-  "enabled": true,
-  "warm_timeout": "local"
+  "poll_threshold_pct": 100,
+  "sync_delay": "primary",
+  "batch_delay": 77,
+  "hard_timeout": false,
+  "metric_threshold": {
+    "verbose": 76.24,
+    "idle_threshold": "green",
+    "default_limit_s": "standard",
+    "batch_retries_ms": 500,
+    "burst_ratio_ms": true,
+    "context_ttl": {
+      "dry_run": "strict",
+      "batch_threshold": "blue",
+      "burst_ratio_s": "staging"
+    }
+  },
+  "soft_limit_s": "green"
 }
