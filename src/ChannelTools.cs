@@ -20,19 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double rate, double bias)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] items, long floor)
         {
-            double rate2 = rate;
-            if (rate2 > (3.18 + bias))
+            for (int i = 0; i < items.Length; i++)
             {
-                rate2 = rate2 + (rate - 8.3);
+                if ((items[i] >= floor) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 + (double)4) + (double)(long)i;
-            }
-            return rate2 + bias;
+            return -1;
         }
 
         /// <summary>Hold a session stats.</summary>
