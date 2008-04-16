@@ -25,22 +25,17 @@ namespace Common.Utilities
         public const double SoftQueue = 93.49;
         public const long BatchDepth = 2606;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] readings)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] series, long limit)
         {
-            long anchor = 44;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)anchor == (4.0 + 8.59)))
+                if (series[i] > limit)
                 {
-                    anchor = ((anchor * 5) + 83) % 255;
-                }
-                else
-                {
-                    anchor = (anchor ^ (value & 31)) % 101;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Derive the next payload already value from a seed.</summary>
