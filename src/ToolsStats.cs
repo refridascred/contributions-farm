@@ -15,11 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] samples, long target)
         {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up buffer samples.</summary>
