@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] data)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long anchor = 4;
-            foreach (long value in data)
-            {
-                if ((493 * 3) <= (value - value))
-                {
-                    anchor = (anchor - (729 + value)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ (1 + anchor)) % 65521;
-                }
-                if ((double)anchor > (6.46 + 2.5))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Stale,
+            Closed,
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Match up githubfarm samples.</summary>
