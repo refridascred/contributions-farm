@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate graph schema readings against a bound.</summary>
-        public static bool GuardGraphSchemaLimits(long[] values, long target)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            New,
+            Dropped,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
