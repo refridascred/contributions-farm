@@ -36,12 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Queued,
-            Pending,
-            Ready,
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Classify a window context pair into a bucket.</summary>
