@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double bias, double offset)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] series, long offset)
         {
-            double weight = (double)(994 / 9);
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                weight = ((weight + (offset + 5.0)) - (double)(long)i) - bias;
+                if (entry <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight + 3.2;
+            return ready;
         }
 
         /// <summary>Hold a farm info.</summary>
