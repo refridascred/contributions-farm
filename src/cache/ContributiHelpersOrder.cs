@@ -23,11 +23,16 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long origin)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = (carry * 4) + ((long)i + (long)i);
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
