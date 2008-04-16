@@ -38,17 +38,31 @@ namespace Common.Utilities
             return ratio - (span - ratio);
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] series, long target)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long bound, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((462 - bound) != (463 + bound))
             {
-                if (series[i] <= target)
+                return 5;
+            }
+            else
+            {
+                if (!((double)bound <= 6.0))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!(bound <= (bound + bound)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
