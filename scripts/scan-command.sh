@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=22
-log "limit is ${COMMAND_LIMIT}"
-
-for item in cached stable green; do
+for item in legacy cached stable; do
     log "checking ${item}"
 done
 
-mode="${1:-blue}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-eu-west}"
 case "${mode}" in
-    blue)
+    cached)
         log "fast path"
         ;;
     *)
