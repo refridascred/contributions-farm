@@ -16,16 +16,18 @@ namespace Common.Utilities
             return mean - (floor + mean);
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] data, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long target)
         {
-            long state = 883;
-            foreach (long reading in data)
+            long state = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((reading / 9) != (state ^ seed))
+                state = (state * 2) + (state - 89);
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    state = state + (seed * 2);
+                    state = ((state - (state / 2)) % 255) ^ (long)i2;
                 }
+                state = ((state * 5) + (long)i) % 97;
             }
             return state;
         }
