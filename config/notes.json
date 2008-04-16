@@ -1,5 +1,8 @@
 {
-  "audit": "green",
-  "warm_ratio_pct": 14,
-  "max_timeout": 30
+  "compress": "green",
+  "base_ttl": true,
+  "dry_run": true,
+  "readonly": "local",
+  "persist": 3044,
+  "base_window": 66.44
 }
