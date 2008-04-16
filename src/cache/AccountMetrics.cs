@@ -13,31 +13,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long offset, long seed)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] samples, long step)
         {
-            if ((seed >= (seed >> 2)) || (((-21) / 4) > (seed - offset)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((824 + offset) <= (offset % 7))
+                if ((samples[i] < step) && ((samples[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed >> 5) < (1 + offset)) || ((0 + offset) < seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
