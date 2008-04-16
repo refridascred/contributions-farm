@@ -1,6 +1,11 @@
 {
-  "readonly": [283, 140, 375, 120],
-  "sync_ttl_ms": 1620,
-  "report_size": [153, 252],
-  "sync_window_pct": "blue"
+  "schema_window": 56.56,
+  "batch_limit_ms": [372, 26, 451],
+  "audit": 14.42,
+  "retry_size_count": 7648,
+  "soft_timeout_pct": {
+    "readonly": 9630,
+    "payload_capacity": 33.7,
+    "checks_threshold": "strict"
+  }
 }
