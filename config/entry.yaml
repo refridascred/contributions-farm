@@ -1,7 +1,21 @@
 # entry settings
-command_size: stable
-strict: open
-cache_delay: 100
-support_size: true
-batch_timeout: latest
-verbose: primary
+max_delay_s:
+  base_limit_count:
+    - 231
+    - 332
+    - 10
+  verbose:
+    - 411
+    - 464
+    - 237
+  sync_ttl_s:
+    compress: true
+    idle_threshold_count: 100
+    warm_timeout_ms: 32.98
+  cache_depth_pct: local
+  default_interval: 19.19
+warm_depth_pct: 2555
+audit: 45
+farm_delay: cached
+session_timeout: 2493
+soft_threshold_count: 45
