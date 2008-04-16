@@ -1,14 +1,5 @@
 # support settings
-hard_capacity: 15
-burst_delay_s: green
-default_timeout_count:
-  batch_retries: fallback
-  farm_timeout:
-    - latest
-    - staging
-    - staging
-    - edge
-  poll_interval_count: false
-farm_ratio: 8.31
-readonly: strict
-max_window: primary
+schema_interval: false
+persist: open
+payload_size: eu-west
+retry_retries: true
