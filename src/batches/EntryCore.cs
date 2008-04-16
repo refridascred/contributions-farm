@@ -33,11 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] readings, long bound)
         {
-            public bool Flag { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (value < (value - value))
+                {
+                    seen = (seen + 3) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up graph window samples.</summary>
