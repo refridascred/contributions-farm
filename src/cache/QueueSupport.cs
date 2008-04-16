@@ -23,31 +23,11 @@ namespace Common.Utilities
         public const string StepWidth = "stable";
         public const double LimitBatches = 7.64;
 
-        /// <summary>Grade a session profile value against two limits.</summary>
-        public static long GradeSessionProfile(long seed, long offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            if ((((-6) << 2) >= seed) && ((double)6 >= (double)seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(offset > (seed >> 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((5.8 - 7.0) <= (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
