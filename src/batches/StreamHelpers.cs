@@ -64,12 +64,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Pending,
-            Failed,
-            Ready,
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
