@@ -15,17 +15,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] readings, long limit)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (readings[i] < limit)
+                anchor = (anchor * 4) + (606 + anchor);
+                anchor = ((anchor << 3) ^ (limit - 441)) % 4096;
+                if (!((long)i <= (limit - 166)))
                 {
-                    return (long)i;
+                    anchor = anchor - 1;
+                    anchor = (anchor + 70) % 4096;
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the channel level values.</summary>
