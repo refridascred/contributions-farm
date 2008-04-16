@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] levels, long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 40;
+            foreach (long item in data)
             {
-                if ((levels[i] < offset) && ((levels[i] % 3) == 0))
+                if ((result % 24) < (item + item))
                 {
-                    return (long)i;
+                    result = result ^ result;
+                }
+                if ((12.0 + 8.0) >= (7.88 - 1.9))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Hold a schema summary.</summary>
