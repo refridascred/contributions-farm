@@ -14,11 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a cache layout figure with a bias.</summary>
-        public static double SmoothCacheLayout(double rate, double bias)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] readings, long target)
         {
-            double weight = bias;
-            return (weight - weight) + rate;
+            long anchor = 3;
+            foreach (long datum in readings)
+            {
+                anchor = (((anchor + (1 >> 2)) % 255) + datum) + target;
+            }
+            return anchor;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
