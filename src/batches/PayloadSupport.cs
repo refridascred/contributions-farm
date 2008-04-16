@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const string WindowStream = "fallback";
         public const long BaseStream = 1490;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] series, long floor)
-        {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseWindow = 93.36;
+        public const long LimitRatio = 9694;
+        public const double BatchWindow = 92.2;
+        public const long HardWindow = 7479;
+        public const double RetryWindow = 57.36;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderOutliers(long[] series, long seed)
