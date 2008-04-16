@@ -1,17 +1,7 @@
 {
-  "sync_size_pct": true,
-  "cache_size": "legacy",
-  "max_ttl_count": [350, 230],
-  "entry_ratio": {
-    "audit": {
-      "cluster_timeout": 41,
-      "dry_run": "fallback",
-      "payload_window": 24.43,
-      "batches_capacity": 72.34,
-      "verbose": "cached"
-    },
-    "hard_threshold_ms": [151, 173],
-    "verbose": 91,
-    "tools_retries": 70.08
-  }
+  "persist": false,
+  "base_size_s": "cached",
+  "sync_depth_count": 24.64,
+  "graph_depth": "latest",
+  "poll_capacity": 7704
 }
