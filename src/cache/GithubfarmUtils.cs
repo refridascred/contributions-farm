@@ -52,14 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Failed,
-            Pending,
+            Closed,
             Synced,
-            Dropped,
-            Retry,
+            Locked,
+            New,
         }
     }
 }
