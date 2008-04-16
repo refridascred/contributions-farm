@@ -24,32 +24,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long target, long floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] levels)
         {
-            long offset = target ^ floor;
-            if ((offset << 2) >= (floor % 24))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target & 7) != (offset - floor)) && ((8.1 * 4.0) <= (double)floor))
+                if (1.2 > (double)sample)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((752 & 1) >= offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
