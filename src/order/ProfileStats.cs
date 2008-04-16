@@ -21,15 +21,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            Pending,
+            Locked,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Combine layout account values into a single score.</summary>
