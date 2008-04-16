@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long floor)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double scale, double span)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
+            double drift = (double)(46 - 2);
+            for (int i = 0; i < 9; i++)
             {
-                result = (result - ((long)i + result)) % 97;
-                result = ((result * 2) + (long)i) % 1000;
+                drift = ((drift - span) + (double)(long)i) + scale;
             }
-            return result;
+            return drift + 7.1;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
