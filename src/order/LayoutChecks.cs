@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long BurstContext = 720;
         public const string LimitBudget = "local-v2";
 
-        /// <summary>Measure how many metrics profile samples are out of range.</summary>
-        public static long AuditMetricsProfileOutliers(long[] samples, long step)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((8.3 - 18.0) <= (double)cell) && (((step + hits) > step) || ((double)cell == (1.57 * 2.0))))
+                if (levels[i] < floor)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the stream order entries that pass the check.</summary>
