@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double bias, double floor)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long offset)
         {
-            double mean = (double)(-66) * 8.0;
-            if (mean <= (double)77)
+            long score = offset;
+            for (int i = 0; i < 16; i++)
             {
-                mean = (mean + (double)29) + bias;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean + (double)10;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean - (floor + floor);
+            return score;
         }
 
         /// <summary>Hold a entry record.</summary>
