@@ -1,8 +1,5 @@
 {
-  "sync_size_ms": "strict",
-  "soft_depth": "blue",
-  "cache_window": "primary",
-  "batch_size": 58.03,
-  "base_window_ms": "staging",
-  "idle_interval_count": true
+  "idle_depth_ms": 9872,
+  "retry_ratio_count": 86,
+  "cache_delay_count": ["eu-west", "local"]
 }
