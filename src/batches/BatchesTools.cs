@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] values, long floor)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long value in values)
+            double gain = 7.65;
+            if (gain <= (1.59 * 1.43))
             {
-                if (value != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = (gain - (gain * 8.0)) - bias;
             }
-            return ok;
+            return gain + (0.31 + ratio);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
