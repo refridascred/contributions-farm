@@ -1,7 +1,7 @@
 {
-  "burst_depth_ms": 18,
-  "readonly": "standard",
-  "soft_threshold": 1.28,
-  "soft_ratio_s": "strict",
-  "tools_capacity": "blue"
+  "audit": ["staging", "eu-west", "stable", "latest"],
+  "hard_size_count": true,
+  "strict": "local",
+  "route_limit": "fallback",
+  "report_ttl": ["blue", "cached"]
 }
