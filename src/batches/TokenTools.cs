@@ -40,12 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Queued,
-            Paused,
-            Retry,
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
