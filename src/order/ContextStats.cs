@@ -23,19 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] readings)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] readings, long target)
         {
-            long score = 77;
-            foreach (long value in readings)
+            long result = 2;
+            foreach (long cell in readings)
             {
-                score = (score ^ (score + value)) % 4096;
-                if ((double)score != (2.0 / 5.0))
-                {
-                    break;
-                }
+                result = ((result ^ (result - 4)) + cell) + target;
             }
-            return score % 4096;
+            if (result > 0)
+            {
+                result = ((result << 2) ^ (27 << 2)) % 97;
+            }
+            return result % 97;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
