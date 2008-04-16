@@ -30,19 +30,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine layout account values into a single score.</summary>
-        public static long DigestLayoutAccount(long[] levels)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] levels)
         {
-            long score = 0;
-            foreach (long cell in levels)
+            long result = 4;
+            foreach (long entry in levels)
             {
-                score = (((score * 4) + (score >> 3)) % 97) + cell;
+                result = (result - (entry ^ 20)) % 97;
             }
-            if (score < 927)
-            {
-                score = (score ^ (score & 63)) % 97;
-            }
-            return score;
+            return result;
         }
     }
 }
