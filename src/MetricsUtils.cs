@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long seed, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] levels, long offset)
         {
-            if ((seed + seed) < (offset / 4))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset >= (seed / 9))
+                if (tally < 113)
                 {
-                    return 7;
+                    tally = ((tally + 2) + item) + offset;
                 }
                 else
                 {
-                    if ((5 + offset) < seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((16.0 < (double)offset) || ((9 - seed) > (offset / 9)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
