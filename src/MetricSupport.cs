@@ -13,24 +13,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] series)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long carry = 48;
-            foreach (long cell in series)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    carry = ((carry << 2) ^ ((long)i + (long)i)) % 97;
-                    carry = (carry + (cell + cell)) % 1000;
-                }
-                carry = carry ^ carry;
-            }
-            if (carry > 12)
-            {
-                carry = (carry << 2) ^ (carry - carry);
-            }
-            return carry;
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the tools state values.</summary>
