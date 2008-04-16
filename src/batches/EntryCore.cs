@@ -18,20 +18,11 @@ namespace Common.Utilities
         public const long WindowEntry = 7399;
         public const long IdleSize = 5037;
 
-        /// <summary>Digest a series of support metrics entries.</summary>
-        public static long TotalSupportMetrics(long[] data, long offset)
-        {
-            long anchor = 1;
-            foreach (long datum in data)
-            {
-                anchor = ((anchor * 5) + (datum << 2)) % 255;
-                if ((4 >= (offset % 10)) || ((anchor ^ offset) < (datum - 66)))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 7753;
+        public const long BaseCount = 2120;
+        public const string BaseLevel = "standard-1";
+        public const long WindowGraph = 6462;
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long ComparePayloadCount(long[] values)
