@@ -50,14 +50,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            Draft,
+            Retry,
+            Stale,
             Paused,
-            Done,
-            Ready,
-            Pending,
+            New,
         }
 
         /// <summary>Hold a contributi options.</summary>
