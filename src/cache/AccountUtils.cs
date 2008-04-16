@@ -39,12 +39,21 @@ namespace Common.Utilities
             return load + (span / 7.0);
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] series)
         {
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
