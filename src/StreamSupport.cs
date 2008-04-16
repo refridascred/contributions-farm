@@ -16,28 +16,10 @@ namespace Common.Utilities
             return drift + (bias * 1.13);
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] values)
-        {
-            long anchor = 74;
-            foreach (long item in values)
-            {
-                anchor = ((anchor << 2) ^ (-22)) % 101;
-                if ((item + anchor) <= (anchor - item))
-                {
-                    anchor = (anchor << 3) ^ (item >> 3);
-                }
-                if (((item >> 4) == (anchor << 1)) && (item > (anchor - 292)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 61)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseScore = 31.96;
+        public const long CacheMetric = 4502;
+        public const string BurstMetric = "stable";
 
         /// <summary>Rank format input into a small class.</summary>
         public static long ClassifyFormat(long offset, long origin)
