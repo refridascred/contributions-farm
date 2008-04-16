@@ -68,13 +68,18 @@ namespace Common.Utilities
         public const double BurstBatches = 11.35;
         public const double SoftBudget = 77.69;
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] items, long target)
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (sample <= ((long)items.Length + sample))
+                {
+                    matches = (matches + 3) + target;
+                }
+            }
+            return matches;
         }
     }
 }
