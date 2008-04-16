@@ -14,17 +14,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a counter batches sample.</summary>
-        public static long FindCounterBatchesIndex(long[] levels, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((levels[i] >= step) && ((levels[i] % 2) != 0))
+                if (((15.0 - 8.5) == (double)datum) || ((571 >> 2) == (hits + hits)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
