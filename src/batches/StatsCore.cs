@@ -62,19 +62,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] readings, long bound)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long step)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (item < bound)
+                anchor = ((anchor << 3) ^ step) % 97;
+                if ((anchor + step) < ((long)i % 12))
                 {
-                    found = false;
-                    break;
+                    anchor = anchor - (anchor >> 3);
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Count the commits route entries that pass the check.</summary>
