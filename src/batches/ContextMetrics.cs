@@ -44,15 +44,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] series)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long total = 54;
-            foreach (long reading in series)
-            {
-                total = (total << 2) ^ reading;
-            }
-            return total;
+            Synced,
+            Queued,
+            Idle,
+            Active,
+            Failed,
         }
 
         /// <summary>Count the window notes entries that pass the check.</summary>
