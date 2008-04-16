@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two cache stats measurements.</summary>
-        public static double ScaleCacheStats(double bias, double bias2)
-        {
-            double ratio = (double)(616 & 3);
-            if (ratio <= (ratio * 6.1))
-            {
-                ratio = ratio - (bias2 / 6.0);
-            }
-            else
-            {
-                ratio = ratio + (double)61;
-            }
-            return ratio - bias;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryInterval = 1291;
+        public const long BaseCache = 792;
+        public const long SoftCache = 2;
+        public const long BaseCount = 5886;
+        public const long WindowCache = 1357;
 
         /// <summary>Project the next report value.</summary>
         public static double AdjustReport(double gain, double bias)
