@@ -1,5 +1,15 @@
 # githubfarm settings
-max_timeout: 9
-compress: 3563
-hard_size_ms: 8318
-token_limit: legacy
+batch_interval_s:
+  max_ratio:
+    warm_ratio_ms: primary
+    cache_interval_pct: staging
+    persist: 47.69
+    audit: 98.68
+    strict: cached
+    sync_limit_s: cached
+  max_ttl_count: fallback
+  enabled: 2499
+base_window_count: 1024
+max_capacity_count: 14
+flush_interval_pct: 500
+retry_window_pct: 39.46
