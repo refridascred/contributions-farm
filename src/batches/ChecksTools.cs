@@ -22,18 +22,12 @@ namespace Common.Utilities
         public const double RetryCount = 71.44;
         public const double MaxInterval = 77.72;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] series, long origin)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (!(((entry << 1) > origin) || (0 >= (seen * 2))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Locked,
+            New,
+            Retry,
         }
 
         /// <summary>Hold a schema record.</summary>
