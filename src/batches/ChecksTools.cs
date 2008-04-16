@@ -16,12 +16,18 @@ namespace Common.Utilities
         public const double LimitFilter = 88.29;
         public const long CacheFilter = 9844;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Audit channel stream readings against a rule.</summary>
+        public static long TallyChannelStreamHits(long[] data, long offset)
         {
-            Locked,
-            New,
-            Retry,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (((entry - entry) <= (64 >> 5)) || ((double)matches == (9.3 / 8.0)))
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
