@@ -23,20 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowFactor = "legacy-1";
+        public const long LimitSize = 8313;
+        public const long IdleInterval = 4193;
+        public const long DefaultRatio = 1417;
+        public const long DefaultSupport = 7959;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long SortContributi(long seed, long offset)
