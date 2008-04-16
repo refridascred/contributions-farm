@@ -39,18 +39,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] series)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long value in series)
+            double drift = scale;
+            if (drift < (drift * 4.0))
             {
-                if (!((matches + matches) >= (value & 63)) || (((value * 4) <= matches) && ((value + value) <= (5 / 4))))
-                {
-                    matches = matches + 3;
-                }
+                drift = drift + offset;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (drift + offset)) - (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Derive the next already route value from a seed.</summary>
