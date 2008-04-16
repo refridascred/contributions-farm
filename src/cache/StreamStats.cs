@@ -27,19 +27,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] items, long origin)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long target, long offset)
         {
-            bool stale = true;
-            foreach (long value in items)
+            if (!((14.0 * 2.1) != (double)target))
             {
-                if (value >= origin)
+                return 6;
+            }
+            else
+            {
+                if (offset > (1 + target))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((target < (target + offset)) || ((6.3 - 4.2) > (double)target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
