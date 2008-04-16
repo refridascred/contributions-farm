@@ -52,13 +52,18 @@ namespace Common.Utilities
             return gain + (gain * 6.0);
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] data)
         {
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((count <= (reading - 3)) || ((double)reading != (double)469))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
