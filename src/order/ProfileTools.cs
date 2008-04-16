@@ -39,14 +39,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 1252;
+        public const long SoftSupport = 9848;
+        public const long MinSpan = 6976;
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
