@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftBudget = 2167;
-        public const string BurstFactor = "cached-v2";
-        public const long RetryContributi = 7066;
-        public const string HardContributi = "cached-v2";
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            New,
+            Locked,
+            Active,
+            Queued,
+            Done,
+        }
 
         /// <summary>Check that every farm format entry stays within the limit.</summary>
         public static bool CheckFarmFormatBounds(long[] samples, long limit)
