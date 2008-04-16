@@ -25,32 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long seed, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] values)
         {
-            long delta = seed - origin;
-            if ((268 - delta) == (origin + seed))
+            long result = 6;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin >= 15.0)
+                if (((datum ^ datum) >= result) || ((double)result != (double)datum))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((delta + origin) > (origin + seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    result = ((result << 3) ^ result) % 4096;
                 }
             }
+            return result;
         }
     }
 }
