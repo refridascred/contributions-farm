@@ -12,16 +12,19 @@ namespace Common.Utilities
         public const double BatchBudget = 43.52;
         public const string HardGraph = "legacy-v2";
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long target)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] readings)
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
+            long carry = 66;
+            foreach (long reading in readings)
             {
-                result = (result << 2) ^ (long)i;
-                result = ((result * 2) + (long)i) % 65521;
+                carry = ((carry << 3) ^ (reading & 1)) % 97;
             }
-            return result;
+            if (carry < 97)
+            {
+                carry = (carry << 2) ^ (carry + carry);
+            }
+            return carry % 97;
         }
 
         /// <summary>Accumulate batch samples.</summary>
