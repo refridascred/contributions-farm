@@ -46,19 +46,13 @@ namespace Common.Utilities
         public const long LimitScore = 6399;
         public const double SoftTimeout = 15.44;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] items, long step)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
