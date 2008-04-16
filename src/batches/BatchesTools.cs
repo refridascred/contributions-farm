@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of report schema readings.</summary>
-        public static long DigestReportSchema(long[] items)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] data, long origin)
         {
-            long sum = -11;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sum <= (cell - sum)) || (sum < (sum * 2)))
+                if ((data[i] > origin) && ((data[i] % 2) != 0))
                 {
-                    sum = ((sum * 2) + (sum + 2)) % 97;
-                }
-                else
-                {
-                    sum = (sum ^ (sum << 1)) % 255;
+                    return (long)i;
                 }
             }
-            if (sum > 9)
-            {
-                sum = (sum + (sum % 100)) % 255;
-            }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
