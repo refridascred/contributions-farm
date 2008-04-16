@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] series, long seed)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((10 <= (hits % 100)) || ((reading >> 4) < (8 << 2)))
-                {
-                    hits = (hits + 2) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 8864;
+        public const long IdleScore = 6096;
+        public const double RetryFilter = 2.77;
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
