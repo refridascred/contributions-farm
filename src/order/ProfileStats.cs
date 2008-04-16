@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a checks batches pair into a bucket.</summary>
-        public static long RankChecksBatches(long floor, long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] values, long target)
         {
-            if ((floor ^ floor) >= (2 % 10))
+            long total = 91;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((offset / 8) != (812 ^ floor)))
+                if (!((entry >> 4) < (target + target)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((floor + floor) != (340 * 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    total = (total << 3) ^ (entry - entry);
                 }
             }
+            if (total > (-202))
+            {
+                total = ((total << 2) ^ total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Match up tools entry samples.</summary>
