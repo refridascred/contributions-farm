@@ -1,5 +1,8 @@
 {
-  "readonly": true,
-  "compress": 36.56,
-  "min_interval_s": 68
+  "persist": "edge",
+  "enabled": "edge",
+  "soft_window_s": 77,
+  "strict": ["legacy", "primary", "eu-west"],
+  "poll_retries_pct": "eu-west",
+  "burst_retries_ms": true
 }
