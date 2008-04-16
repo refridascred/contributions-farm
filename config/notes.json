@@ -1,8 +1,23 @@
 {
-  "compress": "green",
-  "base_ttl": true,
-  "dry_run": true,
-  "readonly": "local",
-  "persist": 3044,
-  "base_window": 66.44
+  "strict": [480, 455, 357, 423],
+  "compress": {
+    "max_delay_s": false,
+    "tools_ttl": 52.77,
+    "retry_interval_count": "green"
+  },
+  "burst_size_pct": {
+    "enabled": 8725,
+    "hard_depth": true,
+    "stats_limit": 30,
+    "retry_timeout_count": 250,
+    "warm_limit_count": [62, 39],
+    "dry_run": "standard"
+  },
+  "warm_capacity_ms": {
+    "soft_interval_pct": 1379,
+    "flush_window_ms": 9225,
+    "stream_ratio": 62,
+    "burst_retries": "strict",
+    "warm_window": 1024
+  }
 }
