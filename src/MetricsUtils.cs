@@ -23,18 +23,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] data, long floor)
+        /// <summary>Derive the next record checks value from a seed.</summary>
+        public static long RollRecordChecks(long step)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long result = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((floor << 1) >= (floor ^ hits))
-                {
-                    hits = (hits + 3) + reading;
-                }
+                result = result - result;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
