@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank entry record input into a small class.</summary>
-        public static long ClassifyEntryRecord(long origin, long limit)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] samples)
         {
-            long bound = origin - limit;
-            if (!((bound << 3) >= (bound + limit)))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((4 / 6) != (limit << 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    if ((samples[i] + samples[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank record input into a small class.</summary>
