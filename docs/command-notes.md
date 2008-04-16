@@ -1,16 +1,15 @@
 # Command notes
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-Run the buffer check before changing any already limits.
-Run the batches check before changing any batches limits.
+Each order is validated before it reaches the command queue.
+Each window is validated before it reaches the channel queue.
+The commits report groups every context by profile.
 
-Use account settings to tune how often channel data is refreshed.
-Defaults for order live in the config folder and can be overridden per environment.
-Defaults for farm live in the config folder and can be overridden per environment.
+Keep editor and metric names short and lowercase.
+When a notes fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review profile limits each release
-- Prefer payload defaults
-- Keep farm values small
-- Document new buffer fields
+- Review metric limits each release
+- Validate batches input early
+- Log every stats change
+- Document new format fields
