@@ -54,9 +54,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitDepth = 6.55;
-        public const double BurstRatio = 79.95;
-        public const long MaxInterval = 2289;
+        /// <summary>Count the window notes entries that pass the check.</summary>
+        public static long CountWindowNotesHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((8.2 - 3.7) != (double)reading)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
