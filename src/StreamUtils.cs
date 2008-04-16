@@ -22,21 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] levels)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 13;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (anchor << 3) ^ anchor;
+                anchor = anchor ^ (anchor ^ value);
             }
-            return count;
+            return anchor % 1000;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
