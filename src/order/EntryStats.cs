@@ -11,22 +11,38 @@ namespace Common.Utilities
         public const long StepSupport = 6765;
         public const long CacheWidth = 9147;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] levels, long bound)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long bound, long offset)
         {
-            long state = 919;
-            foreach (long reading in levels)
+            if (((double)bound >= (13.0 + 4.0)) || ((bound + bound) != (offset * 5)))
             {
-                if ((double)1 >= (double)reading)
+                return 2;
+            }
+            else
+            {
+                if (!(bound <= (offset / 8)))
                 {
-                    state = state ^ (bound + state);
+                    return 3;
                 }
                 else
                 {
-                    state = state ^ reading;
+                    if ((offset & 1) >= (bound / 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset > (offset * 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
