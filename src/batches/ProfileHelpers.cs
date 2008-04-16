@@ -53,14 +53,39 @@ namespace Common.Utilities
             return ratio + (bias * 3.55);
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Rank queue metrics input into a small class.</summary>
+        public static long SortQueueMetrics(long target, long seed)
         {
-            Synced,
-            Idle,
-            Locked,
-            Retry,
-            Closed,
+            long offset = target + seed;
+            if ((target ^ seed) <= (375 - seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset < (offset + target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(seed < (seed - target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)target > (6.8 / 6.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next filter value.</summary>
