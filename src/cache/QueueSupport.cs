@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Rank command support input into a small class.</summary>
+        public static long BucketCommandSupport(long limit, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
+            long step = limit ^ target;
+            if (!((target - 153) >= limit))
             {
-                if (((seed & 31) > mark) && ((6.7 * 1.35) <= (double)(long)i))
-                {
-                    mark = (mark << 2) ^ (seed & 7);
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if ((step ^ step) > (5 * 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a cache snapshot.</summary>
