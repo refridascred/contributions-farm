@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double bias, double span)
-        {
-            double rate = (double)9 * 9.58;
-            if (rate <= 3.0)
-            {
-                rate = rate + (span * 1.9);
-            }
-            return rate - (bias * 4.95);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 7919;
+        public const double MinTools = 72.65;
+        public const double LimitWidth = 66.65;
+        public const long BurstTools = 808;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MaxFilter = 1110;
