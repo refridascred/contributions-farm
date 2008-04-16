@@ -55,14 +55,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Paused,
-            New,
-            Synced,
-            Queued,
-            Ready,
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
