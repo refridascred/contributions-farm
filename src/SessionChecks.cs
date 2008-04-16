@@ -41,13 +41,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] values, long step)
         {
-            Pending,
-            Closed,
-            Locked,
-            Retry,
+            long state = 2;
+            foreach (long reading in values)
+            {
+                state = ((state - (state * 3)) % 1000) - reading;
+                state = (state ^ step) % 4096;
+            }
+            return state % 4096;
         }
     }
 }
