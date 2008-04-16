@@ -24,18 +24,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] levels)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (1.2 > (double)sample)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Draft,
+            Done,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the order phase values.</summary>
