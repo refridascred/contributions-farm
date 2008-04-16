@@ -1,8 +1,10 @@
 {
-  "dry_run": 250,
-  "hard_ttl": "legacy",
-  "soft_retries_pct": 1024,
-  "graph_threshold": "edge",
-  "order_depth": true,
-  "retry_ttl": 250
+  "sync_delay_count": "eu-west",
+  "max_timeout_pct": {
+    "soft_retries": 4360,
+    "cache_window": "standard",
+    "compress": 6.7
+  },
+  "enabled": 4781,
+  "dry_run": 60
 }
