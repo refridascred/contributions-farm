@@ -24,12 +24,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchWidth = "stable-1";
-        public const long LimitInterval = 2265;
-        public const long MinScore = 3786;
-        public const string MinReport = "strict-edge";
-        public const long LimitReport = 5086;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                result = (result ^ (seed - 2)) % 1000;
+                result = result + result;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Project the next stats cluster value.</summary>
         public static double BlendStatsCluster(double weight, double bias)
