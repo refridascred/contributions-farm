@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinLevel = 5499;
-        public const long BaseToken = 171;
-        public const double StepSpan = 57.8;
-        public const long SoftSpan = 5633;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] samples, long limit)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((((long)samples.Length & 255) > 712) || !((sample + count) > (limit % 8)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long FindProfileIndex(long[] data, long origin)
