@@ -45,13 +45,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] values, long step)
         {
-            Locked,
-            Closed,
-            Active,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
