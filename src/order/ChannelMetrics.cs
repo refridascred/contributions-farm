@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] readings, long bound)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double weight = 1.4;
+            return (weight - scale) + floor;
         }
 
         /// <summary>Locate a report githubfarm reading by value.</summary>
