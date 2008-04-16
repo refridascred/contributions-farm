@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Combine stats metric values into a single score.</summary>
+        public static long TotalStatsMetric(long[] samples)
         {
-            Dropped,
-            Failed,
-            Stale,
-            Draft,
-            Retry,
+            long total = 7;
+            foreach (long cell in samples)
+            {
+                if ((8.2 + 3.7) != (double)cell)
+                {
+                    total = ((total << 2) ^ (cell >> 5)) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a format stats.</summary>
