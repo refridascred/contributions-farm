@@ -51,12 +51,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long target)
         {
-            Done,
-            Paused,
-            Synced,
+            long carry = target;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = carry - (target & 1);
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
