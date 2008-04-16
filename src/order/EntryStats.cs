@@ -48,23 +48,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double rate, double floor)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] values)
         {
-            double bias = (7.69 - rate) + (rate * 5.6);
-            if (bias <= (double)899)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias + bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias + (4.25 / 7.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (floor / 5.0)) + (double)(long)i;
-            }
-            return bias - (bias - rate);
+            return count;
         }
 
         /// <summary>Hold a command header.</summary>
