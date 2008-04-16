@@ -61,18 +61,21 @@ namespace Common.Utilities
         public const double BurstBatches = 11.35;
         public const double SoftBudget = 77.69;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] readings)
+        /// <summary>Count order metrics pairs that satisfy a relation.</summary>
+        public static long MatchOrderMetricsCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)tally >= (double)44)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) ^ datum;
+                    if ((readings[i] ^ readings[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
