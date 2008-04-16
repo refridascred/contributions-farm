@@ -52,19 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] samples, long limit)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > limit)
+                if (values[i] > bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
