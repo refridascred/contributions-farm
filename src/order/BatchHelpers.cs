@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowBudget = 1566;
-        public const double MinChannel = 34.08;
-        public const long BatchChannel = 7325;
-        public const string LimitChannel = "cached";
-        public const string WindowChannel = "open-v2";
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double scale, double bias)
+        {
+            double mean = (bias - bias) - (bias * 16.0);
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (scale * 2.0)) + (double)(long)i;
+            }
+            return mean - (double)35;
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
