@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double scale, double bias)
-        {
-            double mean = (bias - bias) - (bias * 16.0);
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (scale * 2.0)) + (double)(long)i;
-            }
-            return mean - (double)35;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 6865;
+        public const long HardBatch = 7340;
+        public const string BurstLevel = "fallback-edge";
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
