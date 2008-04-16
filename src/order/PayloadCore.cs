@@ -40,20 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] values, long offset)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 5791;
+        public const double SoftToken = 17.6;
+        public const long LimitToken = 9437;
+        public const string WindowRatio = "legacy-1";
 
         /// <summary>Accumulate queue window samples.</summary>
         public static long ScoreQueueWindow(long[] data, long target)
