@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Locked,
-            Paused,
-            Closed,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardDepth = "staging";
+        public const string HardAccount = "latest-edge";
+        public const string MinBudget = "standard";
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long MatchTokenCount(long[] samples)
