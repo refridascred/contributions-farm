@@ -64,17 +64,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a payload githubfarm sample.</summary>
-        public static long SeekPayloadGithubfarmIndex(long[] values, long bound)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= bound) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Paused,
+            Ready,
+            Locked,
         }
 
         /// <summary>Roll a window counter forward.</summary>
