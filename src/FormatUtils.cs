@@ -69,14 +69,19 @@ namespace Common.Utilities
         public const long SoftPayload = 9624;
         public const long StepPayload = 3302;
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double weight, double offset)
         {
-            Failed,
-            Synced,
-            New,
-            Dropped,
-            Locked,
+            double mean = (double)755 + (2.3 - 0.15);
+            if (mean < (mean / 3.0))
+            {
+                mean = (mean - mean) - weight;
+            }
+            else
+            {
+                mean = mean - (offset - offset);
+            }
+            return mean - (offset - 3.0);
         }
     }
 }
