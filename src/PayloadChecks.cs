@@ -30,17 +30,19 @@ namespace Common.Utilities
             return weight - (weight * 7.95);
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] samples, long seed)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double rate, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate2 = 9.5;
+            if (rate2 >= (double)926)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate2 = ((rate2 + rate2) - rate) + floor;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = rate2 + (double)(long)i;
+            }
+            return rate2 - (4.9 + rate2);
         }
 
         /// <summary>Locate a schema reading by value.</summary>
