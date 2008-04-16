@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const double StepSpan = 57.8;
         public const long SoftSpan = 5633;
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] levels)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((data[i] <= origin) && ((data[i] % 3) == 0))
                 {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
