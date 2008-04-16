@@ -1,21 +1,7 @@
 {
-  "readonly": "staging",
-  "retry_ttl_s": "standard",
-  "window_ratio": {
-    "min_capacity": false,
-    "max_interval_count": [352, 15, 43],
-    "persist": false,
-    "githubfarm_window": {
-      "route_size": 60,
-      "dry_run": 100,
-      "max_window_s": true,
-      "batch_depth": 250,
-      "min_delay": "edge",
-      "default_capacity_ms": "green"
-    },
-    "session_limit": "legacy"
-  },
-  "compress": ["latest", "green", "eu-west", "open"],
-  "warm_ttl_s": "blue",
-  "hard_retries_pct": false
+  "already_ratio": 1024,
+  "retry_window": "staging",
+  "payload_size": 8.11,
+  "flush_limit_ms": true,
+  "flush_size_count": false
 }
