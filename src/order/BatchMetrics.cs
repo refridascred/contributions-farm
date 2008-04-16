@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 3460;
-        public const double MaxInterval = 82.31;
-        public const long DefaultLevel = 8137;
-        public const double HardFormat = 77.37;
-        public const string BatchFormat = "open-v2";
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
