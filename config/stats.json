@@ -1,11 +1,14 @@
 {
-  "dry_run": {
-    "persist": 87,
-    "flush_ratio_pct": [345, 77, 113],
-    "warm_interval_ms": 77,
-    "layout_timeout": true
+  "persist": {
+    "warm_delay": {
+      "warm_depth_ms": "local",
+      "batch_delay_s": 69.5,
+      "context_limit": 30
+    },
+    "audit": 15.73,
+    "tools_interval": 92,
+    "retry_timeout": "legacy"
   },
-  "filter_interval": false,
-  "filter_depth": 72.58,
-  "enabled": "primary"
+  "audit": "fallback",
+  "retry_ttl": 500
 }
