@@ -1,6 +1,20 @@
 {
-  "verbose": 75,
-  "min_window_pct": 5715,
-  "enabled": "open",
-  "readonly": 14.92
+  "batch_limit_ms": 85.04,
+  "batch_depth_pct": {
+    "min_ratio": "fallback",
+    "soft_depth": {
+      "batch_window": 32,
+      "idle_capacity": "edge",
+      "base_ratio": 52.05,
+      "strict": 46.32
+    },
+    "readonly": "stable",
+    "sync_size_ms": 721,
+    "warm_capacity": 17.69,
+    "warm_limit": 17
+  },
+  "burst_threshold": 60,
+  "metrics_window": true,
+  "hard_interval": 8979,
+  "sync_size_pct": [174, 92]
 }
