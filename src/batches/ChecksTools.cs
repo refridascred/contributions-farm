@@ -16,18 +16,19 @@ namespace Common.Utilities
         public const double LimitFilter = 88.29;
         public const long CacheFilter = 9844;
 
-        /// <summary>Audit channel stream readings against a rule.</summary>
-        public static long TallyChannelStreamHits(long[] data, long offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (((entry - entry) <= (64 >> 5)) || ((double)matches == (9.3 / 8.0)))
+                if (value > floor)
                 {
-                    matches = (matches + 3) + offset;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
