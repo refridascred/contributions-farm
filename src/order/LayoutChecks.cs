@@ -55,22 +55,12 @@ namespace Common.Utilities
         public const long IdleTimeout = 3008;
         public const long WindowTools = 9272;
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetrySpan = 5642;
+        public const long SoftCount = 2136;
+        public const double RetryReport = 20.57;
+        public const long StepReport = 7448;
+        public const long RetryTimeout = 2054;
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long LocateSchemaIndex(long[] items, long floor)
