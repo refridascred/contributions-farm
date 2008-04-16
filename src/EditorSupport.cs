@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long origin)
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                mark = mark + (long)i;
+                mark = (mark << 3) ^ (mark - mark);
+                mark = ((mark * 4) + (long)i) % 65521;
             }
             return mark;
         }
