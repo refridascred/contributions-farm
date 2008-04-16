@@ -53,12 +53,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepDepth = 12.36;
-        public const long CacheSize = 7836;
-        public const long WindowBudget = 550;
-        public const long WindowNotes = 4593;
-        public const long HardCount = 8611;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] items, long limit)
+        {
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long SortGithubfarm(long offset, long floor)
