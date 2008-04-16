@@ -52,12 +52,40 @@ namespace Common.Utilities
         public const long IdleTimeout = 3008;
         public const long WindowTools = 9272;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetrySpan = 5642;
-        public const long SoftCount = 2136;
-        public const double RetryReport = 20.57;
-        public const long StepReport = 7448;
-        public const long RetryTimeout = 2054;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long seed, long offset)
+        {
+            long diff = seed ^ offset;
+            if ((double)offset > (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (diff >= (offset + offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)diff <= (14.0 / 6.0)) && ((offset + diff) > (offset % 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset * 5) >= offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
