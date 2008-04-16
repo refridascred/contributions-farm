@@ -32,22 +32,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] values)
+        /// <summary>Iterate the record command series from a seed.</summary>
+        public static long IterateRecordCommand(long floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (((4 * 5) == (hits * 3)) && ((hits + hits) >= (cell % 12)))
+                if (((score + floor) < 58) && ((double)floor <= (double)(long)i))
                 {
-                    hits = hits + 2;
+                    score = (score * 5) + (floor ^ 49);
+                    score = (score + ((long)i & 255)) % 101;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = (score ^ (score + 96)) % 101;
+                score = score ^ ((long)i ^ floor);
+                score = ((score * 3) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Accumulate batch samples.</summary>
