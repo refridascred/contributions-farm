@@ -56,19 +56,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] levels, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (reading > seed)
+                if ((hits ^ hits) <= (datum & 31))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) - bound;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
