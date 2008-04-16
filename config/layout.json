@@ -1,6 +1,7 @@
 {
-  "metric_threshold": false,
-  "base_capacity_ms": 21,
-  "idle_threshold_count": 49.65,
-  "enabled": 6
+  "burst_depth_ms": 18,
+  "readonly": "standard",
+  "soft_threshold": 1.28,
+  "soft_ratio_s": "strict",
+  "tools_capacity": "blue"
 }
