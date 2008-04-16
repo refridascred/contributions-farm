@@ -24,22 +24,12 @@ namespace Common.Utilities
         public const string StepWidth = "stable";
         public const double LimitBatches = 7.64;
 
-        /// <summary>Fold a list of session commits readings.</summary>
-        public static long CombineSessionCommits(long[] values)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long result = 3;
-            foreach (long sample in values)
-            {
-                if ((result >> 5) <= (83 << 1))
-                {
-                    result = result - result;
-                }
-                else
-                {
-                    result = (result ^ (sample * 2)) % 1000;
-                }
-            }
-            return result;
+            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
