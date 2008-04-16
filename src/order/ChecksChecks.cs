@@ -23,24 +23,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((5.38 - 6.2) != (double)(long)i) || ((offset / 7) != (offset - offset)))
-                {
-                    continue;
-                }
-                else
-                {
-                    long count2 = score;
-                    score = (score + (count2 - (long)i)) % 101;
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleInterval = "strict";
+        public const double CacheBudget = 84.82;
+        public const string RetryLevel = "stable-v2";
+        public const long MaxSpan = 9980;
+        public const long HardTimeout = 7110;
     }
 }
