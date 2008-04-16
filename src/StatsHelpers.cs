@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 1635;
-        public const double BaseTimeout = 10.98;
-        public const double SoftWidth = 90.6;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Failed,
+            Idle,
+            Draft,
+            Stale,
+            Active,
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long DeriveGraph(long step)
