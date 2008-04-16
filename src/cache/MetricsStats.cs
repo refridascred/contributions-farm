@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryWidth = "stable-edge";
-        public const long RetryRoute = 1380;
-        public const string LimitRoute = "fallback-1";
-        public const long DefaultRoute = 3732;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum % 8) <= (seen + seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
