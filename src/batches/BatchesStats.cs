@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] items)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((((tally >> 3) < (item >> 4)) || ((tally + tally) < (tally & 127))) && ((double)item > (7.61 * 15.0)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the graph class values.</summary>
