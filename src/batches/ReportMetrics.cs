@@ -38,18 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long sum = 833;
-            foreach (long cell in values)
-            {
-                if ((cell % 10) < (cell + sum))
-                {
-                    sum = ((sum << 2) ^ 59) % 101;
-                }
-            }
-            return sum;
+            Synced,
+            Locked,
+            Queued,
         }
     }
 }
