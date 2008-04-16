@@ -1,14 +1,8 @@
 {
-  "batches_timeout": "standard",
-  "readonly": 19.12,
-  "flush_interval": {
-    "batches_delay": 1065,
-    "soft_retries_count": true,
-    "audit": 2225,
-    "verbose": 29.5,
-    "retry_capacity_s": 31.24
-  },
-  "sync_interval": 82.95,
-  "dry_run": "strict",
-  "stream_delay": "staging"
+  "persist": true,
+  "batch_retries_pct": true,
+  "farm_capacity": [365, 241],
+  "format_delay": "stable",
+  "burst_threshold_s": 3168,
+  "poll_capacity_ms": 39.35
 }
