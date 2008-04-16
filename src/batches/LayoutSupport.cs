@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] series, long step)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double bias, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)(-66) * 8.0;
+            if (mean <= (double)77)
             {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (double)29) + bias;
             }
-            return -1;
+            else
+            {
+                mean = mean + (double)10;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean - (floor + floor);
         }
 
         /// <summary>Hold a entry record.</summary>
