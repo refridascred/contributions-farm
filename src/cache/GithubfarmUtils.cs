@@ -23,13 +23,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Digest a series of route channel entries.</summary>
+        public static long DigestRouteChannel(long[] readings)
         {
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
+            long score = 88;
+            foreach (long reading in readings)
+            {
+                score = (score + (490 + score)) % 4096;
+                if ((reading * 2) > reading)
+                {
+                    break;
+                }
+            }
+            if (score < 46)
+            {
+                score = ((score << 3) ^ (score >> 5)) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Combine window filter values into a single score.</summary>
