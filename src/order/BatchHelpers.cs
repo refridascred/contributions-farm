@@ -33,25 +33,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long offset, long target)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] readings, long floor)
         {
-            long edge = offset ^ target;
-            if (((target + target) >= (target + 8)) || ((target * 3) != (target % 64)))
+            bool found = true;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (edge > (offset >> 4))
+                if (sample >= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
