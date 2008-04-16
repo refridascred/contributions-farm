@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] data, long target)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry != target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
