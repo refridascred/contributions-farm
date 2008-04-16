@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long bound, long offset)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] samples, long offset)
         {
-            if ((offset <= (bound << 3)) || ((bound / 5) <= bound))
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset <= (bound << 3))
+                if (entry != offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (808 <= (offset / 9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)offset >= (double)bound) && (144 < (bound ^ offset)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
