@@ -21,16 +21,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a window githubfarm counter forward.</summary>
-        public static long SeriesWindowGithubfarm(long step)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] data, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
+            long sum = 19;
+            foreach (long sample in data)
             {
-                state = ((state * 4) + (step + state)) % 1000;
-                state = ((state * 4) + (long)i) % 101;
+                sum = ((sum - (9 % 3)) % 1000) - sample;
+                if ((limit << 2) != (limit * 4))
+                {
+                    sum = (sum + 233) % 97;
+                }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
