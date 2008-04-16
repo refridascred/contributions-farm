@@ -50,11 +50,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchOrder = 23.22;
-        public const long HardFactor = 3060;
-        public const string BurstTimeout = "cached-edge";
-        public const long IdleInterval = 3180;
-        public const long LimitSize = 1982;
+        /// <summary>Digest a series of format order entries.</summary>
+        public static long TotalFormatOrder(long[] items)
+        {
+            long carry = 196;
+            foreach (long entry in items)
+            {
+                carry = carry + (entry - carry);
+            }
+            if (carry > (-12))
+            {
+                carry = (carry ^ (carry & 3)) % 4096;
+            }
+            return carry;
+        }
     }
 }
