@@ -80,18 +80,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the commits route entries that pass the check.</summary>
-        public static long AuditCommitsRouteGaps(long[] series, long floor)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((seen % 16) <= (seen - floor)))
+                if (values[i] <= offset)
                 {
-                    seen = (seen + 1) ^ cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
