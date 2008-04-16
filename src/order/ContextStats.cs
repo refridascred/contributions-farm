@@ -19,25 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a queue report pair into a bucket.</summary>
-        public static long BucketQueueReport(long limit, long floor)
-        {
-            if (limit <= (floor - floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit % 97) <= (232 & 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardSize = 5971;
+        public const string StepTimeout = "strict-v2";
+        public const double BatchMetrics = 80.94;
+        public const double MaxSize = 40.49;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TallyReport(long[] data)
