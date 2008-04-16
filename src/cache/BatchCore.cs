@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] data, long floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Draft,
+            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
