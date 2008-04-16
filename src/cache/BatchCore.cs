@@ -36,23 +36,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] values)
+        /// <summary>Find the first route stream entry that matches the target.</summary>
+        public static long SeekRouteStreamIndex(long[] data, long bound)
         {
-            long acc = 5;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)acc != (8.0 * 4.0))
+                if ((data[i] <= bound) && ((data[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                acc = acc ^ cell;
             }
-            if (acc < 4)
-            {
-                acc = acc - acc;
-            }
-            return acc % 97;
+            return -1;
         }
     }
 }
