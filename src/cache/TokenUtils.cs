@@ -27,17 +27,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] series, long origin)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long bound, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long gap = bound ^ origin;
+            if (((bound - 88) > bound) || (gap > (origin * 4)))
             {
-                if (series[i] <= origin)
+                return 5;
+            }
+            else
+            {
+                if ((double)origin >= (0.3 * 8.1))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + gap) <= (origin - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((4 & 15) <= ((-43) - origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
