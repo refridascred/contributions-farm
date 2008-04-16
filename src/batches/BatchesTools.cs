@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] samples)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 91;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 3) + (datum - datum)) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Project the next command value.</summary>
