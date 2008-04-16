@@ -43,10 +43,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 1252;
-        public const long SoftSupport = 9848;
-        public const long MinSpan = 6976;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] readings, long floor)
+        {
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
