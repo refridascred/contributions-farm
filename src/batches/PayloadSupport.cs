@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Audit filter graph readings against a rule.</summary>
+        public static long CountFilterGraphOutliers(long[] items)
         {
-            long mark = floor;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (991 <= (mark - (-10)))
+                if ((item % 64) == (hits % 5))
                 {
-                    mark = ((mark << 2) ^ (floor - floor)) % 1000;
+                    hits = hits + 2;
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
