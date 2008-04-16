@@ -45,15 +45,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double gain, double span)
+        /// <summary>Combine support tools values into a single score.</summary>
+        public static long FoldSupportTools(long[] readings)
         {
-            double bias = span;
-            if (bias > (span / 5.0))
+            long state = 8;
+            foreach (long entry in readings)
             {
-                bias = bias - (gain / 5.0);
+                state = ((state << 2) ^ (1 + 9)) ^ entry;
+                if ((double)state > (8.43 + 5.0))
+                {
+                    state = ((state * 2) + state) % 101;
+                }
             }
-            return bias + gain;
+            return state;
         }
 
         /// <summary>Hold a session record.</summary>
