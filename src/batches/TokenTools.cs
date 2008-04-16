@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] samples, long step)
+        /// <summary>Derive the next metric already value from a seed.</summary>
+        public static long SeriesMetricAlready(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (samples[i] == step)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    mark = ((mark + (5 + target)) % 101) ^ (long)i2;
+                    mark = ((mark << 3) ^ (mark << 3)) % 101;
                 }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Rank record input into a small class.</summary>
