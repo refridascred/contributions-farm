@@ -26,21 +26,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up cluster contributi samples.</summary>
-        public static long PairClusterContributiCount(long[] values)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Locked,
+            Idle,
+            Ready,
+            Queued,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
