@@ -20,23 +20,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((origin + origin) != (origin % 5))
+                if ((double)score < (0.64 / 5.0))
                 {
-                    result = ((result << 3) ^ (result & 7)) % 101;
+                    score = (score << 3) ^ (score % 24);
                 }
                 else
                 {
-                    result = result ^ (result ^ result);
+                    score = score ^ (floor - (long)i);
                 }
-                result = ((result * 5) + (long)i) % 4093;
+                score = (score - (floor * 2)) % 1000;
+                score = score ^ 70;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
