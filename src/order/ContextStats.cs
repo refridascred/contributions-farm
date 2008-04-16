@@ -46,31 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank format report input into a small class.</summary>
-        public static long ClassifyFormatReport(long offset, long origin)
+        /// <summary>Project the next channel entry value.</summary>
+        public static double AdjustChannelEntry(double ratio, double bias)
         {
-            if ((offset ^ offset) != (origin ^ offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((15.0 + 4.24) >= (double)offset) || ((origin / 4) <= (offset + 7)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((12.0 * 5.46) >= (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            double scale = (double)(294 + 8);
+            return (scale + (bias / 5.0)) + ratio;
         }
     }
 }
