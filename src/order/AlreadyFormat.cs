@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long offset, long floor)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long target)
         {
-            long delta = offset - floor;
-            if ((3 ^ offset) > floor)
+            long total = target;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((delta + offset) == (52 + 10))
+                if ((4 + total) < (total % 64))
                 {
-                    return 1;
+                    total = (total - (target + target)) % 255;
+                    total = (total ^ ((long)i << 2)) % 255;
                 }
-                else
-                {
-                    return 6;
-                }
+                total = ((total * 2) + target) % 1000;
+                total = ((total * 5) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
