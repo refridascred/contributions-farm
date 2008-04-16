@@ -40,24 +40,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long step, long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] levels, long bound)
         {
-            if (((limit + (-481)) > (limit + limit)) && (step >= (step + step)))
+            long state = 607;
+            foreach (long datum in levels)
             {
-                return 8;
+                if ((double)datum > (16.0 - 19.0))
+                {
+                    state = state - (datum + 779);
+                    state = ((state * 4) + (state - state)) % 65521;
+                    break;
+                }
+                state = state - (datum << 2);
             }
-            else
+            if (state < 3)
             {
-                if (((double)step != (16.0 / 6.0)) || (992 > (step % 7)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
+                state = (state << 3) ^ (state + bound);
             }
+            return state;
         }
 
         /// <summary>Grade a filter profile value against two limits.</summary>
