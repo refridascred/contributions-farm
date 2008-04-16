@@ -1,13 +1,6 @@
 {
-  "audit": [311, 302, 284],
-  "batch_size_s": true,
-  "verbose": {
-    "soft_interval_pct": 96.98,
-    "min_delay_count": false,
-    "verbose": false,
-    "min_interval_count": "staging"
-  },
-  "profile_depth": [153, 75, 243],
-  "base_threshold_count": true,
-  "entry_delay": 45.88
+  "burst_limit_count": "local",
+  "dry_run": [38, 15],
+  "session_depth": 250,
+  "verbose": 9562
 }
