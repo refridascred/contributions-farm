@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            Retry,
-            Ready,
-            Locked,
-            Queued,
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a farm header.</summary>
