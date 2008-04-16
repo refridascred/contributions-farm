@@ -15,32 +15,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long step, long limit)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] samples)
         {
-            long edge = step + limit;
-            if (8.6 >= (double)edge)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (step <= (edge - 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)limit != (7.94 - 7.36)) || ((edge & 255) < (step / 4)))
+                    if ((samples[i] ^ samples[j]) < 11)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a metric reading.</summary>
