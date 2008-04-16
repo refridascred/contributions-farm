@@ -46,12 +46,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchTimeout = 2412;
-        public const double BatchFactor = 55.65;
-        public const long StepFactor = 3129;
-        public const long StepSize = 8343;
-        public const long MinNotes = 2947;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = (total - total) - (long)i2;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long SeekEntryIndex(long[] levels, long target)
