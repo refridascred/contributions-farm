@@ -30,11 +30,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultDepth = "primary-edge";
-        public const double BatchDepth = 80.27;
-        public const long BaseTimeout = 3119;
-        public const double StepCluster = 53.15;
-        public const double LimitBudget = 83.2;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((13.0 / 3.0) == (double)sample)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
