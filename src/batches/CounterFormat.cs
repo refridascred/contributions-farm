@@ -19,21 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Paused,
+            Idle,
+            Queued,
         }
 
         /// <summary>Roll a layout record counter forward.</summary>
