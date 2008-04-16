@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] readings)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] samples)
         {
-            long result = 34;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (sample >= ((-2) + result))
+                if ((((count - value) != (count % 100)) || ((73 ^ value) >= (count & 1))) && !((count + count) <= 32))
                 {
-                    result = (result ^ (result + sample)) % 65521;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (result > 9)
-            {
-                result = ((result << 2) ^ result) % 101;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
