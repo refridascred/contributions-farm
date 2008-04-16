@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] levels, long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] values)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long score = 408;
+            foreach (long sample in values)
             {
-                if (sample > bound)
+                score = score - (65 + sample);
+                if ((sample ^ sample) != (sample << 2))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            if (score > (-376))
+            {
+                score = ((score * 4) + score) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a entry record.</summary>
