@@ -42,13 +42,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public long Mode { get; set; }
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
+            Idle,
+            Closed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
