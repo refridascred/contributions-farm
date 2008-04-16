@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] samples)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long bound, long floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long cur = bound - floor;
+            if (946 < (cur / 3))
             {
-                if ((0 & 127) <= seen)
+                return 8;
+            }
+            else
+            {
+                if ((6.28 / 2.0) <= (double)floor)
                 {
-                    seen = (seen + 3) + datum;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate entry samples.</summary>
