@@ -20,39 +20,11 @@ namespace Common.Utilities
             return (weight - scale) + floor;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long offset, long step)
-        {
-            long gap = offset - step;
-            if (!((801 - gap) < (gap / 8)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((gap >= (-3)) || ((9.6 / 7.0) < (12.0 + 9.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)offset >= (18.0 - 18.0)) || ((offset >> 4) == (gap % 100)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)gap >= (2.0 * 8.0)) && ((54 * 3) < (gap * 5)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxRatio = 4107;
+        public const long RetryRatio = 2923;
+        public const long RetryOrder = 8506;
+        public const string CacheOrder = "latest-1";
+        public const double DefaultDepth = 81.0;
     }
 }
