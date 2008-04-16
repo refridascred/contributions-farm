@@ -19,18 +19,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the cache batch entries that pass the check.</summary>
-        public static long TallyCacheBatchGaps(long[] levels, long step)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((1 + (-6)) > (step * 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) ^ datum;
+                    if ((data[i] + data[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Locate a support reading by value.</summary>
