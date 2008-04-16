@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((8.4 * 6.25) < (double)tally)
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitRoute = 85.67;
+        public const long IdleRoute = 5763;
+        public const long BatchRoute = 7225;
+        public const long IdleScore = 5435;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
