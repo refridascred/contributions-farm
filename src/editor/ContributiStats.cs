@@ -26,12 +26,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 421;
-        public const string HardStats = "alpha-v2";
-        public const long WindowSize = 9523;
-        public const long HardDepth = 5761;
-        public const double BaseStats = 85.73;
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Scale a counter tools figure with a bias.</summary>
         public static double ProjectCounterTools(double weight, double floor)
