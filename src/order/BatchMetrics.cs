@@ -40,17 +40,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double weight, double offset)
         {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
+            double drift = 11.0 * 0.71;
+            if (drift < weight)
             {
-                result = (result + result) % 255;
-                result = ((result << 3) ^ (result >> 3)) % 4096;
-                result = ((result * 2) + (long)i) % 101;
+                drift = (drift + (weight / 2.0)) + offset;
             }
-            return result;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - (drift + 0.17);
         }
 
         /// <summary>Hold a order entry.</summary>
