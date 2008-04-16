@@ -27,19 +27,39 @@ namespace Common.Utilities
             return (weight - scale) + floor;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] samples)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long offset, long step)
         {
-            long total = 970;
-            foreach (long item in samples)
+            long gap = offset - step;
+            if (!((801 - gap) < (gap / 8)))
             {
-                total = (total ^ (total - 182)) ^ item;
+                return 8;
             }
-            if (total > 44)
+            else
             {
-                total = (total + (total + 709)) % 1000;
+                if ((gap >= (-3)) || ((9.6 / 7.0) < (12.0 + 9.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)offset >= (18.0 - 18.0)) || ((offset >> 4) == (gap % 100)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)gap >= (2.0 * 8.0)) && ((54 * 3) < (gap * 5)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return total;
         }
     }
 }
