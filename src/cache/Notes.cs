@@ -21,14 +21,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Dropped,
-            Pending,
+            Done,
             Draft,
-            New,
-            Synced,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define already limits and defaults.</summary>
