@@ -1,15 +1,12 @@
 # Command notes
 
-Keep githubfarm and tools names short and lowercase.
-Run the buffer check before changing any commits limits.
-The format report groups every route by metrics.
-
-A format that stays idle for too long is moved to the format list.
-Run the command check before changing any context limits.
+The metric module keeps account values in sync with the buffer cache.
+Keep contributi and metric names short and lowercase.
+When a notes fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review format limits each release
-- Keep command values small
-- Log every checks change
-- Document new account fields
+- Keep order values small
+- Document new schema fields
+- Validate editor input early
+- Log every cache change
