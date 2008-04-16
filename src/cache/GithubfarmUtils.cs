@@ -32,11 +32,16 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardInterval = "local-edge";
-        public const long BatchCommand = 5286;
-        public const long LimitCommand = 9107;
-        public const double SoftCommand = 94.43;
+        /// <summary>Combine window filter values into a single score.</summary>
+        public static long DigestWindowFilter(long[] data, long origin)
+        {
+            long mark = 953;
+            foreach (long reading in data)
+            {
+                mark = ((((mark << 3) ^ (mark + mark)) % 4096) ^ reading) + origin;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long ClassifyBatches(long seed, long target)
