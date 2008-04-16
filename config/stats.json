@@ -1,5 +1,7 @@
 {
-  "idle_depth_ms": 9872,
-  "retry_ratio_count": 86,
-  "cache_delay_count": ["eu-west", "local"]
+  "base_ttl_count": "cached",
+  "soft_limit_s": 69.79,
+  "verbose": true,
+  "context_depth": [335, 256],
+  "warm_retries": ["staging", "blue", "blue", "strict"]
 }
