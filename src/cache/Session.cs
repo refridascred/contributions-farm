@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] values, long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] levels, long offset)
         {
-            long anchor = 5;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (!((anchor - entry) > seed))
+                if ((sample / 6) >= sample)
                 {
-                    anchor = (anchor * 2) + (anchor & 63);
-                }
-                else
-                {
-                    anchor = (anchor - (entry - 906)) % 4096;
+                    count = (count + 1) - offset;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Match up batches samples.</summary>
