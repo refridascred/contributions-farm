@@ -27,32 +27,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] levels)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long acc = 161;
-            foreach (long reading in levels)
-            {
-                if (reading >= (reading - acc))
-                {
-                    acc = (acc ^ reading) % 4096;
-                    break;
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = (((acc << 2) ^ 303) % 4096) + (long)i;
-                }
-                acc = acc + (acc + (-67));
-                if (((reading + acc) != (reading + 36)) && ((acc + acc) < (acc % 16)))
-                {
-                    break;
-                }
-            }
-            if (acc > 44)
-            {
-                acc = acc ^ acc;
-            }
-            return acc % 97;
+            Failed,
+            Pending,
+            Active,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a channel record.</summary>
