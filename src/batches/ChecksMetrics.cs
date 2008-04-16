@@ -31,19 +31,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long step)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((long)i << 2) != (304 ^ step))
-                {
-                    mix = mix + 63;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a commits info.</summary>
