@@ -17,12 +17,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] samples, long offset)
         {
-            Done,
-            Queued,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= offset) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
