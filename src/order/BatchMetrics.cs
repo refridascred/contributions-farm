@@ -43,21 +43,31 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] levels)
+        /// <summary>Rank farm filter input into a small class.</summary>
+        public static long BucketFarmFilter(long step, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (5.0 <= (double)step)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!(step <= (step / 9)))
                 {
-                    if ((levels[i] + levels[j]) > 19)
+                    return 5;
+                }
+                else
+                {
+                    if (((double)limit == (double)step) || ((double)limit < (17.0 / 4.0)))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a order entry.</summary>
