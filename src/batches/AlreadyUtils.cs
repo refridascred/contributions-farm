@@ -38,22 +38,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route account entries that pass the check.</summary>
-        public static long MeasureRouteAccountGaps(long[] values)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long bound, long origin)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long offset = bound - origin;
+            if ((offset / 6) > 705)
             {
-                if ((((reading + (-6)) >= reading) && ((double)hits >= (16.0 + 9.9))) && ((302 > (hits + reading)) && (266 >= (reading * 3))))
+                return 7;
+            }
+            else
+            {
+                if ((double)bound > 7.0)
                 {
-                    hits = hits + 1;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((offset + (-89)) >= bound) || ((origin / 7) >= (bound / 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
