@@ -32,26 +32,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long seed, long offset)
-        {
-            long prev = seed ^ offset;
-            if (seed >= (prev + 22))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((prev << 1) <= (offset << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardInterval = "local-edge";
+        public const long BatchCommand = 5286;
+        public const long LimitCommand = 9107;
+        public const double SoftCommand = 94.43;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
