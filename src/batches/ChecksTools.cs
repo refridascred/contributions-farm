@@ -16,12 +16,12 @@ namespace Common.Utilities
             return rate - (bias * 4.95);
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Queued,
-            Pending,
-            Closed,
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
