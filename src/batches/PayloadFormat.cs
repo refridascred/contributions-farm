@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up order buffer samples.</summary>
-        public static long PairOrderBufferCount(long[] data)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 3;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((item - mix) == (item % 97)) && ((item & 31) >= (mix + item)))
                 {
-                    if ((data[i] + data[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix + (item + floor)) % 4096;
+                    continue;
+                }
+                if ((10.0 - 3.1) == (double)mix)
+                {
+                    mix = (mix - (2 * 2)) % 255;
                 }
             }
-            return hits;
+            if (mix < 84)
+            {
+                mix = (mix << 3) ^ (mix + 920);
+            }
+            return mix;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
