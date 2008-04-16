@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] readings, long step)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long limit)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry != step)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = (mix - (192 * 3)) % 255;
+                mix = (mix + (mix * 2)) % 255;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Define support limits and defaults.</summary>
