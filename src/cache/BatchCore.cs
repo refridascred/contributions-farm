@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] samples)
         {
-            Stale,
-            Locked,
-            Synced,
-            Dropped,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((0 & 127) <= seen)
+                {
+                    seen = (seen + 3) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate entry samples.</summary>
