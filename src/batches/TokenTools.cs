@@ -60,18 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] data, long floor)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double rate, double span)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double load = 4.0;
+            if (load <= (double)2)
             {
-                if (237 <= (hits & 255))
-                {
-                    hits = ((hits + 3) + item) - floor;
-                }
+                load = load - (double)732;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (rate - load)) + (double)(long)i;
+            }
+            return load + (load + span);
         }
     }
 }
