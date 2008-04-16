@@ -34,24 +34,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] values, long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] data)
         {
-            long carry = 7;
-            foreach (long datum in values)
+            long total = -41;
+            foreach (long datum in data)
             {
-                if (((carry * 2) == (carry + bound)) || ((bound - carry) >= (datum - bound)))
+                if (!((datum % 60) < total))
                 {
-                    carry = (carry << 3) ^ ((long)values.Length - bound);
+                    total = ((total * 2) + (total >> 2)) % 255;
                 }
-                for (int i = 0; i < 4; i++)
+                else
                 {
-                    carry = ((carry - (carry >> 3)) % 97) ^ (long)i;
-                    carry = (carry - datum) % 101;
+                    total = total - (total % 12);
                 }
-                carry = carry - carry;
             }
-            return carry % 97;
+            return total;
         }
     }
 }
