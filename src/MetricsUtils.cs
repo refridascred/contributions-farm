@@ -54,13 +54,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] levels, long floor)
         {
-            Retry,
-            Idle,
-            Failed,
-            Ready,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((15.0 / 5.0) > (double)floor)
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
