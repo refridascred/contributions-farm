@@ -49,18 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many session context samples are out of range.</summary>
-        public static long AuditSessionContextMatches(long[] levels, long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (reading > (count + step))
+                if ((tally * 3) >= (item + item))
                 {
-                    count = count + 3;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
