@@ -70,38 +70,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long target, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] items, long origin)
         {
-            if (seed >= (seed + seed))
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (target >= (target / 4))
+                if (((hits % 24) <= (138 - origin)) && ((hits + hits) != (895 / 4)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((939 < (target + seed)) && ((305 - target) <= target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target / 5) <= target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = (hits + 3) + item;
                 }
             }
+            return hits;
         }
     }
 }
