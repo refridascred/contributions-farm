@@ -40,31 +40,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank farm filter input into a small class.</summary>
-        public static long BucketFarmFilter(long step, long limit)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long floor)
         {
-            if (5.0 <= (double)step)
+            long result = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 7;
+                result = (result + result) % 255;
+                result = ((result << 3) ^ (result >> 3)) % 4096;
+                result = ((result * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (!(step <= (step / 9)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)limit == (double)step) || ((double)limit < (17.0 / 4.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Hold a order entry.</summary>
