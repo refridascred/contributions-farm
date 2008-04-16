@@ -15,12 +15,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepEntry = "legacy-v2";
-        public const long CacheSize = 3096;
-        public const string BatchFactor = "legacy";
-        public const long SoftEntry = 6586;
-        public const string BurstLevel = "staging-edge";
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] items, long limit)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Adjust a metric reading.</summary>
         public static double AdjustMetric(double weight, double span)
