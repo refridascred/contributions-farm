@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] readings)
+        /// <summary>Check that every window queue entry stays within the limit.</summary>
+        public static bool VerifyWindowQueueBounds(long[] readings, long limit)
         {
-            long mix = 91;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                mix = ((mix * 3) + (datum - datum)) % 65521;
+                if (value != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Project the next command value.</summary>
