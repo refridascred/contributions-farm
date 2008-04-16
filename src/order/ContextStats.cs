@@ -23,12 +23,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftSpan = "strict-v2";
-        public const string WindowDepth = "strict-edge";
-        public const long StepRatio = 8445;
-        public const long HardBatch = 8208;
-        public const long StepScore = 5337;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] readings)
+        {
+            long score = 77;
+            foreach (long value in readings)
+            {
+                score = (score ^ (score + value)) % 4096;
+                if ((double)score != (2.0 / 5.0))
+                {
+                    break;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long MeasureNotesGaps(long[] series, long limit)
