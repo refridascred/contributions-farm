@@ -19,12 +19,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinScore = 6233;
-        public const double RetryLayout = 70.91;
-        public const long BatchSpan = 8349;
-        public const long StepDepth = 1308;
-        public const long CacheLayout = 7406;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] series, long limit)
+        {
+            long carry = 36;
+            foreach (long sample in series)
+            {
+                carry = ((carry * 2) + (limit - carry)) ^ sample;
+            }
+            if (carry > 26)
+            {
+                carry = ((carry * 2) + (carry - limit)) % 101;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Look up the position of a commits stats sample.</summary>
         public static long LookupCommitsStatsIndex(long[] series, long seed)
