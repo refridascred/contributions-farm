@@ -1,16 +1,5 @@
 # githubfarm settings
-base_limit: 1024
-min_depth_ms: 8308
-readonly: green
-default_delay:
-  flush_ttl:
-    enabled: true
-    idle_window_s: 95.69
-    burst_delay_pct: 72
-  soft_threshold_s: latest
-  poll_interval_pct: 2670
-  poll_size:
-    - 249
-    - 173
-    - 129
-editor_depth: primary
+max_timeout: 9
+compress: 3563
+hard_size_ms: 8318
+token_limit: legacy
