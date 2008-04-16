@@ -52,11 +52,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchBudget = 8630;
-        public const string WindowFarm = "local-edge";
-        public const long StepFarm = 7383;
-        public const string CacheFarm = "standard-v2";
-        public const long BurstFarm = 3018;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseSession = "primary-v2";
+        public const long RetryLevel = 216;
+        public const long MaxInterval = 9180;
+        public const long SoftTimeout = 6344;
+        public const long BatchSession = 772;
     }
 }
