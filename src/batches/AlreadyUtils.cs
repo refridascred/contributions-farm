@@ -31,15 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine checks batch values into a single score.</summary>
-        public static long FoldChecksBatch(long[] samples, long limit)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] data, long seed)
         {
-            long mark = 654;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                mark = (mark + (value >> 3)) + limit;
+                if (reading < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark % 1000;
+            return ok;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
