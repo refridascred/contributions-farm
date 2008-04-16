@@ -1,9 +1,14 @@
 # support settings
-checks_retries: eu-west
-base_ttl_s:
-  - stable
-  - local
-audit: edge
-min_ratio_pct: 19.17
-idle_window_s: blue
-compress: 65.62
+hard_capacity: 15
+burst_delay_s: green
+default_timeout_count:
+  batch_retries: fallback
+  farm_timeout:
+    - latest
+    - staging
+    - staging
+    - edge
+  poll_interval_count: false
+farm_ratio: 8.31
+readonly: strict
+max_window: primary
