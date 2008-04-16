@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] readings, long step)
+        /// <summary>Count profile batch pairs that satisfy a relation.</summary>
+        public static long MatchProfileBatchCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
