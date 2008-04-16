@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] values, long offset)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((138 + hits) <= 4)
-                {
-                    hits = ((hits + 1) + datum) + offset;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of format readings.</summary>
