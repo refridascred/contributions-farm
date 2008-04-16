@@ -1,12 +1,10 @@
 {
-  "layout_size": 96.13,
-  "flush_interval_pct": "local",
-  "queue_capacity": "standard",
-  "flush_timeout_count": {
-    "buffer_capacity": [326, 165],
-    "burst_retries": "cached",
-    "batches_depth": 7208,
-    "enabled": 0.14
+  "poll_ratio": {
+    "metrics_capacity": 84,
+    "soft_size": "stable",
+    "channel_delay": 60,
+    "min_timeout_pct": 1199
   },
-  "farm_timeout": 46.14
+  "idle_interval": "fallback",
+  "account_ttl": "staging"
 }
