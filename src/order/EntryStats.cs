@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Measure how many metrics counter samples are out of range.</summary>
+        public static long CountMetricsCounterOutliers(long[] items)
         {
-            Done,
-            Locked,
-            Closed,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((long)items.Length << 3) < (datum + datum))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every commits format entry stays within the limit.</summary>
