@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a route window counter forward.</summary>
-        public static long SeriesRouteWindow(long target)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long score = target;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score << 3) ^ target) % 255;
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
