@@ -47,40 +47,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long offset, long step)
-        {
-            long cur = offset ^ step;
-            if ((offset >> 4) >= cur)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((cur + offset) < (step >> 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((729 * 5) <= (offset & 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step <= (79 >> 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheCount = 6410;
+        public const double MaxToken = 46.87;
+        public const long BurstToken = 5863;
+        public const long MinToken = 2326;
 
         /// <summary>Derive the next payload already value from a seed.</summary>
         public static long IteratePayloadAlready(long seed)
