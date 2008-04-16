@@ -62,11 +62,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxRoute = "open";
-        public const long LimitRoute = 1503;
-        public const string IdleScore = "alpha-v2";
-        public const string MaxFactor = "primary-1";
-        public const long BurstRoute = 9643;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
     }
 }
