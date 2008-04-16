@@ -35,12 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinFactor = 3659;
-        public const string WindowMetrics = "alpha";
-        public const long SoftMetrics = 3652;
-        public const long IdleWidth = 8556;
-        public const double LimitRatio = 58.12;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Done,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long FoldSchema(long[] readings, long seed)
