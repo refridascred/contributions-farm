@@ -22,18 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many context token samples are out of range.</summary>
-        public static long AuditContextTokenHits(long[] readings, long origin)
+        /// <summary>Fold a list of order batch readings.</summary>
+        public static long WeighOrderBatch(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long state = 870;
+            foreach (long datum in levels)
             {
-                if ((double)seen >= (5.9 + 7.4))
+                state = state ^ (25 % 64);
+                if ((320 >= (datum + 606)) && ((datum - 2) != (state + 827)))
                 {
-                    seen = ((seen + 1) + datum) + origin;
+                    state = (state - datum) % 1000;
+                }
+                if (!((double)datum <= (9.7 + 6.4)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return state % 4096;
         }
 
         /// <summary>Blend two farm measurements.</summary>
