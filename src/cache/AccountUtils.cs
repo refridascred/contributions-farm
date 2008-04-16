@@ -20,23 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double ratio, double span)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long origin)
         {
-            double load = (double)39 * 9.92;
-            if (load <= 1.0)
+            long result = origin;
+            for (int i = 0; i < 14; i++)
             {
-                load = load - (4.3 + load);
+                if (!(((result ^ (long)i) != (66 % 60)) || ((double)result <= (8.0 * 2.68))))
+                {
+                    result = (result * 4) + origin;
+                    result = (result ^ 39) % 101;
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            else
-            {
-                load = load - (span + ratio);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (8.4 / 9.0)) + (double)(long)i;
-            }
-            return load + (span / 7.0);
+            return result;
         }
 
         /// <summary>Match up counter samples.</summary>
