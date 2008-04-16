@@ -14,17 +14,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                score = score - 64;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinCommits = 70.17;
+        public const double StepBudget = 15.41;
+        public const double BurstFactor = 32.87;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
