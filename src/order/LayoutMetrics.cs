@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the metric status values.</summary>
