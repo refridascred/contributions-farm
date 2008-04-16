@@ -48,32 +48,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long limit, long seed)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long gap = limit + seed;
-            if ((-3) <= (seed & 31))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((gap >> 4) >= (seed >> 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit >= (limit - limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Queued,
+            New,
+            Failed,
+            Retry,
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
