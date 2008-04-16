@@ -23,19 +23,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double rate, double bias)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] levels, long seed)
         {
-            double gain = rate;
-            if (gain >= bias)
+            long mark = 818;
+            foreach (long value in levels)
             {
-                gain = gain + rate;
+                mark = (mark - (seed ^ seed)) ^ value;
             }
-            else
-            {
-                gain = gain + (double)630;
-            }
-            return gain + 3.0;
+            return mark % 97;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
