@@ -12,13 +12,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Audit notes record readings against a rule.</summary>
+        public static long CountNotesRecordHits(long[] items)
         {
-            New,
-            Failed,
-            Ready,
-            Done,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (seen < sample)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
