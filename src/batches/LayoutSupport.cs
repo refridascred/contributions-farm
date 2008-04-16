@@ -43,19 +43,18 @@ namespace Common.Utilities
             return drift - (double)818;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Measure how many graph contributi samples are out of range.</summary>
+        public static long CountGraphContributiMatches(long[] readings, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (0.78 >= (double)step)
                 {
-                    total = (total - total) - (long)i2;
+                    hits = (hits + 3) - sample;
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a contributi summary.</summary>
