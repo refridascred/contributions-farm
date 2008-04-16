@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((138 + hits) <= 4)
                 {
-                    if ((items[i] ^ items[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = ((hits + 1) + datum) + offset;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a window record.</summary>
