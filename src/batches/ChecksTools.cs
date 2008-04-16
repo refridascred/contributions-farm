@@ -30,25 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a filter payload pair into a bucket.</summary>
-        public static long ClassifyFilterPayload(long floor, long limit)
-        {
-            if (((limit - floor) >= (floor / 9)) && ((3.48 + 9.0) == (double)limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor - limit) > (9 % 16))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxSpan = "primary-v2";
+        public const long LimitStats = 3846;
+        public const long BaseStats = 4760;
+        public const long SoftStats = 2994;
+        public const double RetryStats = 75.06;
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
