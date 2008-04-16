@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next cluster token value.</summary>
-        public static double SmoothClusterToken(double gain, double floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] values, long origin)
         {
-            double gain2 = floor;
-            return gain2 + gain;
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Adjust a format reading.</summary>
