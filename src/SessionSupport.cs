@@ -28,15 +28,23 @@ namespace Common.Utilities
         public const long IdleScore = 6096;
         public const double RetryFilter = 2.77;
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double ratio, double offset)
+        /// <summary>Digest a series of cache queue entries.</summary>
+        public static long WeighCacheQueue(long[] readings)
         {
-            double ratio2 = (ratio / 9.0) + ratio;
-            if (ratio2 > (double)9)
+            long carry = 1;
+            foreach (long entry in readings)
             {
-                ratio2 = (ratio2 - (ratio + ratio2)) - offset;
+                for (int i = 0; i < 4; i++)
+                {
+                    carry = (((carry << 2) ^ (carry + entry)) % 101) - (long)i;
+                }
+                carry = (carry + carry) % 1000;
             }
-            return ratio2 + (ratio * 5.7);
+            if (carry > 78)
+            {
+                carry = (carry ^ (carry - 160)) % 101;
+            }
+            return carry % 1000;
         }
     }
 }
