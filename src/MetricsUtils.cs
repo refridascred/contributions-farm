@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many profile stats samples are out of range.</summary>
-        public static long TallyProfileStatsGaps(long[] items, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((datum & 7) < (datum ^ bound))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 2413;
+        public const long HardWidth = 6340;
+        public const long LimitRatio = 229;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long WindowNotes = 15;
