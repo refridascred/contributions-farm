@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] samples, long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] readings, long floor)
         {
-            long carry = 0;
-            foreach (long value in samples)
+            long acc = 32;
+            foreach (long datum in readings)
             {
-                carry = ((carry + (85 >> 5)) % 101) - offset;
-                if ((carry + (long)samples.Length) < 30)
+                if ((double)datum <= (20.0 * 18.0))
                 {
-                    carry = ((carry << 3) ^ (value - value)) % 65521;
+                    acc = (acc - (acc + datum)) % 1000;
                 }
-                carry = (carry + carry) % 255;
+                if ((floor & 31) == (96 * 4))
+                {
+                    acc = acc + (0 / 4);
+                }
             }
-            return carry;
+            if (acc > 9)
+            {
+                acc = ((acc << 3) ^ (acc - 1)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Adjust a record reading.</summary>
