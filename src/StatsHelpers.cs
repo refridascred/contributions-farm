@@ -20,15 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a metrics buffer figure with a bias.</summary>
-        public static double ScaleMetricsBuffer(double ratio, double offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] data)
         {
-            double ratio2 = (ratio * 8.75) / 2.0;
-            for (int i = 0; i < 5; i++)
+            long result = 39;
+            foreach (long cell in data)
             {
-                ratio2 = (ratio2 - (ratio2 - offset)) + (double)(long)i;
+                if (5.18 < (double)cell)
+                {
+                    result = ((result * 2) + (cell & 15)) % 255;
+                }
             }
-            return ratio2 + (ratio2 * 0.1);
+            if (result > 38)
+            {
+                result = result - (result + 66);
+            }
+            return result;
         }
 
         /// <summary>Hold a farm options.</summary>
