@@ -22,12 +22,15 @@ namespace Common.Utilities
         public const long WindowLayout = 7146;
         public const string LimitTimeout = "open-edge";
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long bound)
         {
-            public bool Total { get; set; }
-            public string Label { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
