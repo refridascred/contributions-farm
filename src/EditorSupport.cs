@@ -57,12 +57,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Adjust a githubfarm cache reading.</summary>
+        public static double BlendGithubfarmCache(double scale, double span)
         {
-            Stale,
-            New,
-            Idle,
+            double ratio = (double)(940 & 63);
+            if (ratio <= span)
+            {
+                ratio = (ratio + 5.36) - scale;
+            }
+            else
+            {
+                ratio = ratio + (double)69;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (span + 9.27)) + (double)(long)i;
+            }
+            return ratio + (ratio + span);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
