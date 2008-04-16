@@ -25,10 +25,23 @@ namespace Common.Utilities
         public const double SoftQueue = 93.49;
         public const long BatchDepth = 2606;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxStream = "alpha";
-        public const string BurstDepth = "fallback-edge";
-        public const long WindowStream = 8731;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] readings)
+        {
+            long anchor = 44;
+            foreach (long value in readings)
+            {
+                if (!((double)anchor == (4.0 + 8.59)))
+                {
+                    anchor = ((anchor * 5) + 83) % 255;
+                }
+                else
+                {
+                    anchor = (anchor ^ (value & 31)) % 101;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next payload already value from a seed.</summary>
         public static long IteratePayloadAlready(long seed)
