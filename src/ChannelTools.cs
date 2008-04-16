@@ -33,11 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowSize = 4806;
+        public const long HardSize = 2422;
+        public const long BurstSpan = 4799;
+        public const string HardStream = "fallback-edge";
     }
 }
