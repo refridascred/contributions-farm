@@ -40,13 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] items)
         {
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((item + 3) != (count + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the payload status values.</summary>
