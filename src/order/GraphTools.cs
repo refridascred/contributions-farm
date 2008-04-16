@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] levels, long target)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading >= target)
+                if ((series[i] <= floor) && ((series[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Count the already format entries that pass the check.</summary>
