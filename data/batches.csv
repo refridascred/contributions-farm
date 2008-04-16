@@ -1,8 +1,6 @@
-id,token,region,score,rank
-1,strict,802,cached,cached
-2,815,530,eu-west,65.09
-3,59.9,4.1,72.28,8.93
-4,25.2,183,538,blue
-5,451,405,64.17,blue
-6,180,green,182,47.0
-7,289,83.05,956,367
+id,owner,count,score
+1,972,latest,73.61
+2,426,standard,6.91
+3,34.36,493,eu-west
+4,681,41.58,923
+5,128,27.96,885
