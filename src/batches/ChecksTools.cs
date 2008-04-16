@@ -24,13 +24,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            public string Rank { get; set; } = "";
             public string Score { get; set; } = "";
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            public double Limit { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
     }
 }
