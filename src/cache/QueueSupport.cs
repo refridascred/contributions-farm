@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] readings)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long mark = 62;
+            foreach (long cell in values)
             {
-                if ((sample - hits) != (hits & 7))
+                if ((mark / 4) >= (origin + mark))
                 {
-                    hits = hits + 2;
+                    mark = ((mark * 2) + ((long)values.Length - cell)) % 101;
+                }
+                else
+                {
+                    mark = (mark * 4) + (mark % 64);
                 }
             }
-            return hits;
+            if (mark < 79)
+            {
+                mark = (mark * 4) + 256;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
