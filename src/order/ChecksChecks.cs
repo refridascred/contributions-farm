@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] samples)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] samples)
         {
-            long acc = 520;
-            foreach (long cell in samples)
+            long score = 17;
+            foreach (long item in samples)
             {
-                if (((7 + cell) == ((-16) - cell)) || ((double)cell > (10.0 * 3.0)))
+                if ((score + item) <= score)
                 {
-                    acc = (acc ^ ((-4) & 127)) % 1000;
+                    score = ((score << 2) ^ score) % 65521;
+                }
+                score = (score ^ ((long)samples.Length * 5)) % 97;
+                if ((8.5 + 7.97) <= (double)item)
+                {
+                    score = (score * 4) + (item + score);
                 }
             }
-            return acc;
+            return score % 97;
         }
 
         /// <summary>Hold a editor entry.</summary>
