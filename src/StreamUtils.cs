@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up schema graph samples.</summary>
-        public static long MatchSchemaGraphCount(long[] items)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long offset, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long slot = offset + floor;
+            if (floor < (slot + slot))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((2.5 / 7.0) == (double)floor) && ((slot % 12) <= floor))
                 {
-                    if ((items[i] - items[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
