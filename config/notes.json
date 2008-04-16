@@ -1,7 +1,5 @@
 {
-  "idle_delay_s": [281, 34, 210],
-  "checks_depth": "green",
-  "compress": "legacy",
-  "persist": 15.25,
-  "readonly": 90
+  "format_ttl": true,
+  "cache_timeout": false,
+  "readonly": false
 }
