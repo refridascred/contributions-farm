@@ -33,14 +33,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double weight, double floor)
         {
-            Failed,
-            Locked,
-            Idle,
-            Ready,
-            Queued,
+            double mean = (weight + weight) * 1.5;
+            return (mean + weight) + floor;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
