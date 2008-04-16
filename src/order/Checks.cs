@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            New,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 3542;
+        public const long RetryCount = 8754;
+        public const long HardNotes = 4461;
+        public const long SoftScore = 6693;
+        public const string BatchSpan = "standard-v2";
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
