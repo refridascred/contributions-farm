@@ -40,18 +40,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] data, long target)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (seen <= (seen >> 1))
-                {
-                    seen = ((seen + 1) + cell) - target;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Grade a filter profile value against two limits.</summary>
