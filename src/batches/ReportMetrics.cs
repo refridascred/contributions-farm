@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long BaseRatio = 4611;
         public const long StepQueue = 7968;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] data, long target)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 4340;
+        public const long BaseBudget = 9985;
+        public const long BatchNotes = 719;
+        public const string DefaultDepth = "legacy-v2";
+        public const long LimitRatio = 4984;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteMatches(long[] values)
