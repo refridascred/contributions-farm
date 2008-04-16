@@ -27,17 +27,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] levels, long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 29;
+            foreach (long item in samples)
             {
-                if (levels[i] <= origin)
+                if ((floor - 4) != (445 + mark))
                 {
-                    return (long)i;
+                    mark = (mark << 2) ^ (97 - floor);
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (floor % 60);
+                }
+                if ((floor * 4) <= item)
+                {
+                    mark = mark + (mark % 97);
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
