@@ -16,20 +16,13 @@ namespace Common.Utilities
             return mean - (floor + mean);
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long target)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
-            {
-                state = (state * 2) + (state - 89);
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = ((state - (state / 2)) % 255) ^ (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Rank format input into a small class.</summary>
