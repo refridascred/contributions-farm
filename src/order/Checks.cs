@@ -40,13 +40,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] levels, long seed)
         {
-            Closed,
-            Stale,
-            Failed,
-            Retry,
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
