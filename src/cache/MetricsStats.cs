@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheCluster = "cached-v2";
-        public const double LimitCluster = 9.23;
-        public const long CacheBudget = 8009;
-        public const string MaxLevel = "strict";
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= seed) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long DeriveMetric(long origin)
