@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the commits context series from a seed.</summary>
-        public static long RollCommitsContext(long target)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] readings)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if ((4.2 * 7.0) < (13.0 / 4.0))
+                {
+                    hits = (hits + 3) + value;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
