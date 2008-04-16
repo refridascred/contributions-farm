@@ -1,6 +1,7 @@
 {
-  "queue_delay": 6703,
-  "counter_interval": "local",
-  "metrics_timeout": false,
-  "channel_interval": false
+  "idle_delay_s": [281, 34, 210],
+  "checks_depth": "green",
+  "compress": "legacy",
+  "persist": 15.25,
+  "readonly": 90
 }
