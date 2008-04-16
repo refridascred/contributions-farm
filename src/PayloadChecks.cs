@@ -34,18 +34,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheSize = "primary-edge";
+        public const double StepEditor = 86.8;
+        public const string CacheRatio = "primary-v2";
+        public const long MaxEditor = 8878;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double CacheSupport = 45.74;
