@@ -34,11 +34,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            Done,
+            Locked,
+            Pending,
+            Queued,
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
