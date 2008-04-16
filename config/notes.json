@@ -1,18 +1,12 @@
 {
-  "format_depth": false,
-  "soft_ttl_ms": ["standard", "cached", "standard", "legacy"],
-  "batch_interval": true,
-  "audit": [451, 33],
-  "metric_interval": {
-    "strict": ["stable", "edge"],
-    "farm_size": 86,
-    "soft_interval_count": 82,
-    "audit": 42.13,
-    "persist": {
-      "base_depth_ms": ["standard", "staging", "staging"],
-      "graph_limit": "green",
-      "burst_ttl_s": [17, 408, 45, 35]
-    },
-    "max_window_ms": 78
-  }
+  "sync_retries_pct": "green",
+  "audit": {
+    "token_capacity": 83.41,
+    "entry_threshold": 48.57,
+    "default_ratio_pct": 3.62,
+    "readonly": 500,
+    "compress": 58.25,
+    "channel_depth": [497, 482]
+  },
+  "retry_interval_count": 100
 }
