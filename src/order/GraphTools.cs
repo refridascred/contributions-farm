@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] values, long limit)
+        /// <summary>Count the already format entries that pass the check.</summary>
+        public static long MeasureAlreadyFormatGaps(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (sample <= limit)
+                if ((1.7 - 9.0) != (double)offset)
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) - entry;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Audit schema cluster readings against a rule.</summary>
