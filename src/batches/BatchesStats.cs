@@ -26,24 +26,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a cache contributi value against two limits.</summary>
-        public static long RankCacheContributi(long limit, long limit2)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            if ((limit2 - limit2) <= (74 / 7))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.3 - 0.64) != (double)limit2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            New,
+            Locked,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Locate a already reading by value.</summary>
