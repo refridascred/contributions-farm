@@ -32,20 +32,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the account cache series from a seed.</summary>
-        public static long RollAccountCache(long offset)
+        /// <summary>Match up checks record samples.</summary>
+        public static long CompareChecksRecordCount(long[] items)
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total << 2) ^ (31 - offset)) ^ (long)i2;
-                    total = total + total;
+                    if ((items[i] ^ items[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the format state values.</summary>
