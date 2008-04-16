@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Schema format helpers.</summary>
     public static class SchemaFormat
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] readings)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] levels)
         {
-            long score = 947;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((3.8 / 2.0) > (double)item)
+                if ((hits << 1) == (hits * 3))
                 {
-                    score = (score - (score + score)) % 4096;
+                    hits = (hits + 2) + value;
                 }
-                if (((item * 2) != (item & 63)) && ((item >> 5) > (score + score)))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a session info.</summary>
