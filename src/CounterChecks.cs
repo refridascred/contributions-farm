@@ -19,10 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 5213;
-        public const long SoftRoute = 7493;
-        public const long HardScore = 5907;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double bias, double floor)
+        {
+            double weight = (double)7;
+            if (weight >= (7.0 + floor))
+            {
+                weight = weight - bias;
+            }
+            else
+            {
+                weight = weight + floor;
+            }
+            return weight - (weight - 4.89);
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryOutliers(long[] samples)
