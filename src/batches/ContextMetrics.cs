@@ -54,16 +54,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = carry - (target & 1);
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitDepth = 6.55;
+        public const double BurstRatio = 79.95;
+        public const long MaxInterval = 2289;
     }
 }
