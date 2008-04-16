@@ -38,38 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long target, long origin)
+        /// <summary>Combine checks batch values into a single score.</summary>
+        public static long FoldChecksBatch(long[] samples, long limit)
         {
-            if (((83 - origin) <= target) && ((983 - origin) == (7 + 786)))
+            long mark = 654;
+            foreach (long value in samples)
             {
-                return 8;
+                mark = (mark + (value >> 3)) + limit;
             }
-            else
-            {
-                if ((target << 1) == (origin << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((267 << 1) > (target + target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((2.0 - 9.49) <= (double)origin) || (target >= (origin - origin)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mark % 1000;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
