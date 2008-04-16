@@ -20,11 +20,18 @@ namespace Common.Utilities
         public const double MinSize = 14.53;
         public const long SoftFilter = 377;
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] data, long floor)
         {
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((floor >= (seen * 3)) || !((seen + seen) == (8 / 6)))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
         }
     }
 }
