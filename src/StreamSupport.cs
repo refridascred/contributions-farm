@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] series, long offset)
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            double drift = scale;
+            if (drift < scale)
             {
-                if (entry <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift + (1.21 / 2.0);
             }
-            return ready;
+            return drift + (bias * 1.13);
         }
 
         /// <summary>Accumulate already samples.</summary>
