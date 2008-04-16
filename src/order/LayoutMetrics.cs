@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double scale, double span)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] series, long bound)
         {
-            double drift = (double)(46 - 2);
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                drift = ((drift - span) + (double)(long)i) + scale;
+                if (entry > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift + 7.1;
+            return stale;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
