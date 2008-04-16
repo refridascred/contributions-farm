@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinLevel = 6423;
-        public const string BatchFilter = "latest-edge";
-        public const long CacheSize = 6055;
-        public const long MaxWidth = 8029;
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double rate, double floor)
+        {
+            double weight = (rate - 3.3) + (floor + floor);
+            return weight - (floor / 8.0);
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long SeriesGraph(long origin)
