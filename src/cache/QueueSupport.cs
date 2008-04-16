@@ -18,20 +18,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
             {
-                result = result ^ 2;
-                if ((double)result <= (8.7 / 3.0))
+                if (acc < (acc >> 2))
                 {
-                    result = (result << 2) ^ (result << 1);
+                    acc = (acc - ((-49) / 5)) % 101;
+                    continue;
                 }
-                result = ((result * 4) + (long)i) % 97;
+                else
+                {
+                    acc = acc + ((long)i * 2);
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
