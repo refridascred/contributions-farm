@@ -88,15 +88,23 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double bias, double floor)
+        /// <summary>Roll a metrics contributi counter forward.</summary>
+        public static long DeriveMetricsContributi(long floor)
         {
-            double ratio = bias;
-            for (int i = 0; i < 9; i++)
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
             {
-                ratio = ((ratio - ratio) + (double)(long)i) - floor;
+                if (!((5.0 - 4.7) <= (double)floor))
+                {
+                    mix = (mix - (floor + floor)) % 1000;
+                }
+                if (!(3 < (long)i))
+                {
+                    mix = mix - 21;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return ratio + (double)(-206);
+            return mix;
         }
     }
 }
