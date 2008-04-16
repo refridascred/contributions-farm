@@ -14,15 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double bias, double span)
+        /// <summary>Validate order stream readings against a bound.</summary>
+        public static bool GuardOrderStreamBounds(long[] values, long origin)
         {
-            double ratio = 1.48;
-            if (ratio < (span + span))
+            bool ready = true;
+            foreach (long cell in values)
             {
-                ratio = (ratio + ratio) + bias;
+                if (cell <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio - (span - ratio);
+            return ready;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
