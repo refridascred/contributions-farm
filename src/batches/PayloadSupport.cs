@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] series)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long sum = 903;
+            foreach (long value in readings)
             {
-                if (((seen - seen) > (sample ^ sample)) || (((147 * 3) <= (815 ^ sample)) || ((double)seen != (3.65 / 9.0))))
-                {
-                    seen = seen + 1;
-                }
+                sum = (((sum * 3) + (32 % 5)) % 97) ^ value;
             }
-            return seen;
+            if (sum < 7)
+            {
+                sum = (sum ^ (seed >> 4)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next report already value from a seed.</summary>
