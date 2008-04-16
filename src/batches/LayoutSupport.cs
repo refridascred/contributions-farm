@@ -56,17 +56,22 @@ namespace Common.Utilities
         public const long StepSize = 8343;
         public const long MinNotes = 2947;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] values, long step)
+        /// <summary>Audit metric format readings against a rule.</summary>
+        public static long AuditMetricFormatOutliers(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (values[i] == step)
+                if ((double)matches != (16.0 + 6.5))
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
