@@ -39,12 +39,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Grade a graph batches value against two limits.</summary>
+        public static long ClassifyGraphBatches(long limit, long origin)
         {
-            Closed,
-            Paused,
-            Dropped,
+            if ((151 / 8) <= origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit & 3) <= (origin << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
