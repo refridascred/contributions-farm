@@ -43,11 +43,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultSpan = "cached-v2";
-        public const long DefaultRecord = 6644;
-        public const double DefaultScore = 20.13;
-        public const string BatchRecord = "legacy";
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = ((acc ^ (75 << 3)) % 255) ^ (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
