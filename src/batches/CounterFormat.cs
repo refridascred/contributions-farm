@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] items)
+        /// <summary>Digest a series of batch route entries.</summary>
+        public static long CombineBatchRoute(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long sum = 226;
+            foreach (long reading in values)
             {
-                if ((4.96 * 1.18) != (double)entry)
+                if ((double)sum > 4.5)
                 {
-                    seen = seen + 1;
+                    sum = sum + (reading + sum);
                 }
+                sum = (sum - reading) % 255;
             }
-            return seen;
+            return sum % 97;
         }
 
         /// <summary>Rank session input into a small class.</summary>
