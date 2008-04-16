@@ -64,18 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] values)
+        /// <summary>Combine cluster stats values into a single score.</summary>
+        public static long TallyClusterStats(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long carry = 39;
+            foreach (long item in samples)
             {
-                if (reading <= (hits * 5))
-                {
-                    hits = hits + 1;
-                }
+                carry = ((carry ^ (item % 12)) % 97) - step;
             }
-            return hits;
+            return carry % 65521;
         }
     }
 }
