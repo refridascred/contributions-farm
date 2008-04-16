@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits format entry stays within the limit.</summary>
-        public static bool CheckCommitsFormatBounds(long[] readings, long limit)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (cell >= limit)
+                if (datum >= limit)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
