@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowBudget = 1566;
+        public const double MinChannel = 34.08;
+        public const long BatchChannel = 7325;
+        public const string LimitChannel = "cached";
+        public const string WindowChannel = "open-v2";
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
