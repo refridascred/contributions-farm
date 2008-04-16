@@ -33,12 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchWidth = 3591;
-        public const string BurstFormat = "local-edge";
-        public const string WindowFormat = "legacy-edge";
-        public const double StepFormat = 68.25;
-        public const string LimitFormat = "primary";
+        /// <summary>Iterate the payload order series from a seed.</summary>
+        public static long RollPayloadOrder(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((mix <= 8) && ((double)mix > 3.0))
+                {
+                    mix = (mix + (seed & 31)) % 97;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long FindAlreadyIndex(long[] samples, long bound)
