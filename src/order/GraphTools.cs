@@ -31,11 +31,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double bias, double bias2)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            double ratio = (double)642 + bias;
-            return (ratio - (ratio + ratio)) + bias2;
+            long total = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((total % 10) >= (total + (long)i))
+                {
+                    total = (total * 3) + (13 >> 4);
+                    total = (total - (bound + (long)i)) % 1000;
+                }
+                if (!((bound & 127) != (long)i))
+                {
+                    long bound2 = (long)i;
+                    total = ((total << 3) ^ (bound2 % 16)) % 101;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a schema info.</summary>
