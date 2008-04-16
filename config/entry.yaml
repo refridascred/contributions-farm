@@ -1,11 +1,15 @@
 # entry settings
-format_interval: false
-dry_run: 3450
-warm_window_ms: 89
-strict:
-  - strict
-  - open
-  - latest
-  - local
-base_ttl_pct: local
-base_ttl: true
+audit:
+  - edge
+  - blue
+checks_delay:
+  - 71
+  - 494
+  - 87
+tools_depth: 98.91
+verbose:
+  poll_depth_s: 1313
+  dry_run: eu-west
+  default_window_ms: 37.15
+  burst_retries: 4.83
+record_retries: 3304
