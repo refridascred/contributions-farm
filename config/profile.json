@@ -1,10 +1,13 @@
 {
-  "sync_delay_count": "eu-west",
-  "max_timeout_pct": {
-    "soft_retries": 4360,
-    "cache_window": "standard",
-    "compress": 6.7
+  "metric_interval": {
+    "base_depth": "primary",
+    "batch_ttl_pct": "local",
+    "warm_threshold_pct": 66.89,
+    "editor_threshold": "legacy",
+    "buffer_window": false,
+    "graph_limit": "local"
   },
-  "enabled": 4781,
-  "dry_run": 60
+  "idle_threshold_ms": false,
+  "stats_ratio": 500,
+  "default_timeout_s": ["staging", "green"]
 }
