@@ -29,17 +29,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] series, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 0;
+            foreach (long cell in items)
             {
-                if (series[i] > origin)
+                total = ((total << 2) ^ (seed & 255)) % 4096;
+                if (!((cell * 5) < cell))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (total < 99)
+            {
+                total = (total ^ (seed - total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Match up counter samples.</summary>
