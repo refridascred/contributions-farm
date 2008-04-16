@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] readings)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum % 8) <= (seen + seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public long Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a report summary.</summary>
