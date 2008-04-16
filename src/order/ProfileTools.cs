@@ -51,18 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] values, long offset)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count * 2) < (offset + count))
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
