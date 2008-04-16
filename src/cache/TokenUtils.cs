@@ -13,39 +13,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long origin, long bound)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long floor)
         {
-            long delta = origin - bound;
-            if ((824 + 5) >= bound)
+            long total = floor;
+            for (int i = 0; i < 9; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((delta << 2) > (3 + 192))
+                total = total ^ ((long)i / 4);
+                if (((long)i >> 4) < 9)
                 {
-                    return 8;
+                    total = (total + (floor % 97)) % 97;
+                    total = (total << 2) ^ (long)i;
                 }
-                else
-                {
-                    if ((double)bound > (3.8 + 4.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin >= 28) && ((delta / 9) <= (delta << 1)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Roll a support counter forward.</summary>
