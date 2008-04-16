@@ -37,15 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] items)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double rate, double floor)
         {
-            long mix = 4;
-            foreach (long reading in items)
+            double ratio = floor * 4.14;
+            if (ratio >= floor)
             {
-                mix = (((mix << 3) ^ (mix / 3)) % 4096) + reading;
+                ratio = ratio + ratio;
             }
-            return mix % 4096;
+            return ratio - rate;
         }
     }
 }
