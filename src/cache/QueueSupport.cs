@@ -27,14 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            Failed,
-            Pending,
-            Active,
-            Dropped,
-            Done,
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a channel record.</summary>
