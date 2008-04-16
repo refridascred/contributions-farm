@@ -91,19 +91,25 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double weight, double floor)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long limit, long seed)
         {
-            double drift = 0.8;
-            if (drift < (7.7 * 19.0))
+            long next = limit ^ seed;
+            if (((5 - limit) == (59 - next)) && ((2.11 + 7.71) <= (double)next))
             {
-                drift = drift - (floor + drift);
+                return 3;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                drift = (drift + drift) + (double)(long)i;
+                if ((seed >> 1) >= (seed ^ limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return drift + weight;
         }
     }
 }
