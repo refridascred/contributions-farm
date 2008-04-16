@@ -1,7 +1,8 @@
-id,state,count,active,level
-1,526,85.82,cached,edge
-2,legacy,cached,400,46.2
-3,755,12.86,cached,cached
-4,cached,27.28,25.94,94.69
-5,778,455,cached,536
-6,7.57,670,165,stable
+id,level,rank
+1,790,77.12
+2,strict,64.31
+3,562,primary
+4,91.34,90.9
+5,staging,990
+6,21.08,61.12
+7,57.97,641
