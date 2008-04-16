@@ -43,23 +43,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of profile tools entries.</summary>
-        public static long FoldProfileTools(long[] values)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long anchor = 38;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    anchor = ((anchor << 2) ^ cell) - (long)i;
-                }
-                anchor = ((anchor << 3) ^ 557) % 101;
-                if ((anchor + anchor) >= anchor)
-                {
-                    anchor = (anchor ^ cell) % 97;
-                }
-            }
-            return anchor % 65521;
+            Pending,
+            Done,
+            Ready,
+            New,
         }
     }
 }
