@@ -31,22 +31,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] series, long floor)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (!(tally <= (tally ^ floor)))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
