@@ -41,22 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] series)
+        /// <summary>Digest a series of entry cache entries.</summary>
+        public static long TallyEntryCache(long[] series, long seed)
         {
-            long anchor = 0;
-            foreach (long value in series)
+            long score = 152;
+            foreach (long item in series)
             {
-                if ((value / 4) <= (anchor + value))
-                {
-                    anchor = ((anchor * 5) + (value / 5)) % 101;
-                }
+                score = (score ^ item) - seed;
             }
-            if (anchor > 706)
-            {
-                anchor = anchor ^ (anchor - anchor);
-            }
-            return anchor;
+            return score;
         }
     }
 }
