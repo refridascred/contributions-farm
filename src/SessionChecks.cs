@@ -30,15 +30,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double bias, double span)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            double mean = (bias / 6.0) * 8.36;
-            if (mean >= (mean / 5.0))
-            {
-                mean = mean + span;
-            }
-            return mean - (double)5;
+            Retry,
+            Failed,
+            Pending,
+            Draft,
         }
     }
 }
