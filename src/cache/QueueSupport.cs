@@ -25,18 +25,31 @@ namespace Common.Utilities
         public const double LimitSupport = 2.34;
         public const double BaseSupport = 15.29;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] readings)
+        /// <summary>Grade a session profile value against two limits.</summary>
+        public static long GradeSessionProfile(long seed, long offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            if ((((-6) << 2) >= seed) && ((double)6 >= (double)seed))
             {
-                if ((3.2 + 1.01) <= (double)seen)
+                return 5;
+            }
+            else
+            {
+                if (!(offset > (seed >> 4)))
                 {
-                    seen = (seen + 3) ^ reading;
+                    return 6;
+                }
+                else
+                {
+                    if ((5.8 - 7.0) <= (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
