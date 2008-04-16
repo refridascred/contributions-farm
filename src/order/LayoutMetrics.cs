@@ -23,13 +23,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Idle,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWidth = 3927;
+        public const long BurstFactor = 4080;
+        public const long LimitWindow = 5170;
 
         /// <summary>Accumulate record samples.</summary>
         public static long DigestRecord(long[] samples, long floor)
