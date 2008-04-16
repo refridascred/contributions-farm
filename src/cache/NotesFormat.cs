@@ -28,12 +28,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
+            New,
+            Paused,
             Idle,
+            Draft,
             Active,
-            Queued,
         }
     }
 }
