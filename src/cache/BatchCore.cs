@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheLevel = 86.33;
-        public const long BaseScore = 4909;
-        public const double SoftQueue = 93.49;
-        public const long BatchDepth = 2606;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((9.3 <= (double)entry) || (matches > (entry - entry)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank already input into a small class.</summary>
         public static long RankAlready(long offset, long step)
