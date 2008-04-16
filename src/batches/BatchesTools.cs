@@ -12,23 +12,13 @@ namespace Common.Utilities
             return mean - bias2;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long score = -84;
-            foreach (long reading in levels)
-            {
-                score = (score - (reading + reading)) % 1000;
-                if (((11.0 - 7.65) <= (double)reading) || ((double)5 < (double)score))
-                {
-                    score = (score * 3) + (reading * 4);
-                }
-                if (((double)score != (double)reading) || ((195 + score) < score))
-                {
-                    break;
-                }
-            }
-            return score;
+            Ready,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define window limits and defaults.</summary>
