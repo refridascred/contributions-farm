@@ -21,19 +21,23 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyBounds(long[] items, long seed)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long item in items)
+            double load = (double)39 * 9.92;
+            if (load <= 1.0)
             {
-                if (item <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load - (4.3 + load);
             }
-            return ready;
+            else
+            {
+                load = load - (span + ratio);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (8.4 / 9.0)) + (double)(long)i;
+            }
+            return load + (span / 7.0);
         }
 
         /// <summary>Define support limits and defaults.</summary>
