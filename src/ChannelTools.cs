@@ -53,15 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the buffer githubfarm series from a seed.</summary>
-        public static long DeriveBufferGithubfarm(long limit)
+        /// <summary>Match up already graph samples.</summary>
+        public static long PairAlreadyGraphCount(long[] series)
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
