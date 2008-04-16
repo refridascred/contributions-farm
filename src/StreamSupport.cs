@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long offset, long floor)
-        {
-            if ((floor * 3) > (389 % 16))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor + floor) <= (floor << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)(-6) < (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 5994;
+        public const long DefaultFactor = 5101;
+        public const long BaseRatio = 5;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long OverlapPayloadCount(long[] samples)
