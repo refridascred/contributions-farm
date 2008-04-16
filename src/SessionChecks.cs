@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const double DefaultRoute = 6.33;
         public const long StepRoute = 8640;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Active,
-            Dropped,
-            Draft,
-            Queued,
-            Closed,
+            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
