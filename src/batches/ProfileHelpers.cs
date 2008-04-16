@@ -55,22 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits account entries that pass the check.</summary>
-        public static long TallyCommitsAccountMatches(long[] values)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((seen & 31) < (899 % 16))
-                {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public string Label { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a token snapshot.</summary>
