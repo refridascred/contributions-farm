@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] data, long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (seen >= (seen * 2))
+                if (((hits - datum) != (hits ^ datum)) && ((444 / 4) > (seed >> 2)))
                 {
-                    seen = ((seen + 3) + cell) + floor;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
