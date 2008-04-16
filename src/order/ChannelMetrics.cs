@@ -27,17 +27,19 @@ namespace Common.Utilities
             return (weight - scale) + floor;
         }
 
-        /// <summary>Locate a report githubfarm reading by value.</summary>
-        public static long LocateReportGithubfarmIndex(long[] levels, long target)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 970;
+            foreach (long item in samples)
             {
-                if ((levels[i] < target) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                total = (total ^ (total - 182)) ^ item;
             }
-            return -1;
+            if (total > 44)
+            {
+                total = (total + (total + 709)) % 1000;
+            }
+            return total;
         }
     }
 }
