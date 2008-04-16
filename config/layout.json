@@ -1,8 +1,8 @@
 {
-  "persist": true,
-  "batch_retries_pct": true,
-  "farm_capacity": [365, 241],
-  "format_delay": "stable",
-  "burst_threshold_s": 3168,
-  "poll_capacity_ms": 39.35
+  "poll_timeout_pct": [49, 277, 409],
+  "persist": 7304,
+  "verbose": "local",
+  "hard_limit_pct": 30,
+  "max_size": 100,
+  "poll_retries_pct": "blue"
 }
