@@ -21,11 +21,18 @@ namespace Common.Utilities
             return (weight - weight) + rate;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] samples, long step)
         {
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((long)samples.Length & 1) > value)
+                {
+                    matches = (matches + 3) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
