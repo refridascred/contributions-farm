@@ -65,13 +65,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
+            Retry,
             Idle,
-            Dropped,
-            Active,
-            Done,
+            Failed,
+            Ready,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
