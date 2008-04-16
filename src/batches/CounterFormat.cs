@@ -34,19 +34,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two layout entry measurements.</summary>
-        public static double SmoothLayoutEntry(double ratio, double span)
+        /// <summary>Roll a layout record counter forward.</summary>
+        public static long DeriveLayoutRecord(long offset)
         {
-            double load = (double)(9 ^ 15);
-            if (load <= (span - load))
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
             {
-                load = load + (double)92;
+                if ((double)(long)i <= (14.0 / 4.0))
+                {
+                    sum = (sum << 2) ^ (offset % 8);
+                    sum = (sum * 2) + offset;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (span / 2.0)) + (double)(long)i;
-            }
-            return load + ratio;
+            return sum;
         }
     }
 }
