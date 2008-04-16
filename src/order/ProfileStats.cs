@@ -15,12 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleFormat = "stable-edge";
-        public const double BurstFormat = 0.61;
-        public const string RetryFormat = "cached-1";
-        public const long IdleBudget = 5155;
-        public const long RetryBudget = 5575;
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Synced,
+            New,
+            Dropped,
+            Done,
+            Failed,
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmLimits(long[] levels, long limit)
