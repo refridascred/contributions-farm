@@ -15,12 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftBudget = 310;
-        public const long BatchSize = 6974;
-        public const long WindowTimeout = 5059;
-        public const long BatchBudget = 4491;
-        public const string MaxBudget = "staging";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepEntry = "legacy-v2";
+        public const long CacheSize = 3096;
+        public const string BatchFactor = "legacy";
+        public const long SoftEntry = 6586;
+        public const string BurstLevel = "staging-edge";
 
         /// <summary>Adjust a metric reading.</summary>
         public static double AdjustMetric(double weight, double span)
