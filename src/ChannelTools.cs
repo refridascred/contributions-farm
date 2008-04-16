@@ -13,23 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] data)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long total = 547;
-            foreach (long datum in data)
-            {
-                total = (total ^ datum) % 1000;
-                if ((total - 5) < (datum + total))
-                {
-                    total = (total << 3) ^ datum;
-                }
-                else
-                {
-                    total = ((total << 3) ^ total) % 1000;
-                }
-            }
-            return total;
+            Draft,
+            Done,
+            Retry,
+            Failed,
         }
 
         /// <summary>Match up already graph samples.</summary>
