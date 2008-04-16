@@ -1,24 +1,8 @@
 # support settings
-audit:
-  retry_interval_pct:
-    - edge
-    - primary
-    - staging
-  base_delay_ms: strict
-  profile_capacity: fallback
-  retry_capacity_s: false
-  default_interval_ms: latest
-  sync_delay: eu-west
-format_delay:
-  - 306
-  - 265
-  - 414
-default_limit_pct:
-  - 399
-  - 498
-  - 226
-batch_threshold_s:
-  - latest
-  - primary
-  - stable
-  - strict
+warm_limit: 500
+batch_ratio_pct: false
+audit: 20
+cache_capacity:
+  payload_ratio: local
+  default_threshold: 3
+  batch_ttl: 4411
