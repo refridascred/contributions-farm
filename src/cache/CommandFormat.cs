@@ -33,13 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            Queued,
-            New,
-            Failed,
-            Retry,
+            public long Rank { get; set; }
+            public double Score { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a contributi options.</summary>
