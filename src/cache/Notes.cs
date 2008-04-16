@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardDepth = "staging";
-        public const string HardAccount = "latest-edge";
-        public const string MinBudget = "standard";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitCache = "primary-1";
+        public const long StepWidth = 6868;
+        public const double WindowCount = 96.67;
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long MatchTokenCount(long[] samples)
