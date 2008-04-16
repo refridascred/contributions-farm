@@ -39,13 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 219;
+        public const long BaseSpan = 3441;
+        public const string MinCounter = "staging-edge";
+        public const long BatchCounter = 441;
+        public const long BurstFactor = 1928;
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
