@@ -107,39 +107,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long origin, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandBounds(long[] readings, long limit)
         {
-            long cur = origin + seed;
-            if (((double)seed < (8.2 + 0.01)) || ((origin >> 5) > (seed % 24)))
+            bool found = true;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed & 255) == (origin + origin)) && ((2 >> 1) > seed))
+                if (datum > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin >> 4) >= seed) && ((926 << 2) > seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((cur - origin) >= cur)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
