@@ -30,13 +30,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public long Region { get; set; }
-            public double Rank { get; set; }
-            public bool Size { get; set; }
-            public long Flag { get; set; }
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
