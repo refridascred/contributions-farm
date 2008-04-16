@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 6483;
-        public const double DefaultRoute = 6.33;
-        public const long StepRoute = 8640;
+        /// <summary>Blend two batch contributi measurements.</summary>
+        public static double BlendBatchContributi(double gain, double floor)
+        {
+            double weight = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = ((weight + (double)639) + (double)(long)i) + gain;
+            }
+            return weight - (double)935;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool ValidateEntryRange(long[] items, long target)
