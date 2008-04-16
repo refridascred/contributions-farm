@@ -43,24 +43,16 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long seed, long target)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long target)
         {
-            if (!((double)seed > (1.3 - 0.4)))
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                return 5;
+                anchor = (anchor * 3) + ((long)i >> 3);
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((9.11 * 8.0) < (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return anchor;
         }
     }
 }
