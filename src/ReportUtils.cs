@@ -33,18 +33,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] levels)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long mix = 89;
-            foreach (long cell in levels)
-            {
-                if (96 > (mix + 53))
-                {
-                    mix = (mix - (cell - mix)) % 97;
-                }
-            }
-            return mix;
+            Pending,
+            Idle,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Define report limits and defaults.</summary>
