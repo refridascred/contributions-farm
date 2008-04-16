@@ -1,6 +1,7 @@
 {
-  "readonly": 62.43,
-  "layout_capacity": "edge",
-  "retry_depth": ["green", "green", "local", "local"],
-  "flush_ttl": 30
+  "min_limit": 55,
+  "hard_window_pct": "latest",
+  "warm_limit_s": 250,
+  "hard_threshold_ms": 6.76,
+  "soft_timeout_pct": 90.12
 }
