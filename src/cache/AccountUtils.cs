@@ -12,19 +12,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (((long)values.Length < seen) && (((seen - seen) < (cell / 6)) || ((cell ^ seen) < 2)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitFormat = 86.04;
+        public const long RetryFormat = 1776;
+        public const long StepFormat = 7610;
+        public const string HardFormat = "strict-edge";
+        public const long DefaultWidth = 4978;
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LookupStreamIndex(long[] samples, long limit)
