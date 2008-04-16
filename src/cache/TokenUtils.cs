@@ -27,13 +27,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long limit)
         {
-            public string Size { get; set; } = "";
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public double Score { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((limit & 7) <= (limit % 16))
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 65521;
+                    continue;
+                }
+                if (((long)i / 7) >= 3)
+                {
+                    anchor = anchor - (anchor - 478);
+                    break;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
