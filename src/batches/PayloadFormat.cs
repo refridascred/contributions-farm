@@ -16,15 +16,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double scale, double bias)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            double drift = scale;
-            if (drift > drift)
-            {
-                drift = drift - scale;
-            }
-            return drift - (drift - bias);
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank batches input into a small class.</summary>
