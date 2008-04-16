@@ -13,18 +13,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit notes record readings against a rule.</summary>
-        public static long CountNotesRecordHits(long[] items)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (seen < sample)
+                if (!!((double)limit > (5.6 - 16.0)))
                 {
-                    seen = seen + 2;
+                    count = (count + 3) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Classify a window batch pair into a bucket.</summary>
