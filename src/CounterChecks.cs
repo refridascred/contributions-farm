@@ -76,10 +76,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxBudget = 423;
-        public const double WindowAlready = 93.79;
-        public const long StepAlready = 7238;
-        public const long MaxTimeout = 7039;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long seed, long step)
+        {
+            if (!(6.0 >= (double)step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((seed / 3) >= seed) && ((5.08 + 2.79) < (double)seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
