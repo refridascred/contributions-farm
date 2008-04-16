@@ -23,11 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 6380;
-        public const string HardStream = "stable-edge";
-        public const double StepSpan = 24.19;
-        public const double DefaultStream = 98.32;
+        /// <summary>Digest a series of filter editor entries.</summary>
+        public static long ScoreFilterEditor(long[] items)
+        {
+            long mark = 421;
+            foreach (long entry in items)
+            {
+                if (mark <= entry)
+                {
+                    mark = ((mark * 5) + (entry >> 2)) % 1000;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long ClassifyCluster(long limit, long floor)
