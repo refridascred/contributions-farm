@@ -16,12 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] items, long floor)
         {
-            public double Offset { get; set; }
-            public double Limit { get; set; }
-            public bool Weight { get; set; }
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
