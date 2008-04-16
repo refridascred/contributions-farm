@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double gain, double floor)
-        {
-            double drift = gain;
-            return drift - floor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 1635;
+        public const double BaseTimeout = 10.98;
+        public const double SoftWidth = 90.6;
 
         /// <summary>Adjust a queue format reading.</summary>
         public static double ScaleQueueFormat(double gain, double span)
