@@ -40,23 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cache queue entries.</summary>
-        public static long WeighCacheQueue(long[] readings)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long carry = 1;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    carry = (((carry << 2) ^ (carry + entry)) % 101) - (long)i;
-                }
-                carry = (carry + carry) % 1000;
-            }
-            if (carry > 78)
-            {
-                carry = (carry ^ (carry - 160)) % 101;
-            }
-            return carry % 1000;
+            public double Size { get; set; }
+            public double Count { get; set; }
         }
     }
 }
