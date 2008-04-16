@@ -41,35 +41,28 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long origin, long offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long bound, long seed)
         {
-            if ((698 / 6) > offset)
+            if (bound <= (seed & 255))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((double)origin != (0.5 - 2.62))
+                if ((double)seed >= (18.0 * 2.0))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)offset == (0.4 + 6.9))
+                    if ((seed % 8) < (4 >> 4))
                     {
-                        return 2;
+                        return 3;
                     }
                     else
                     {
-                        if ((origin >= (offset * 4)) || ((origin << 1) <= (origin - origin)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 1;
                     }
                 }
             }
