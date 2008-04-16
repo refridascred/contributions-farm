@@ -13,18 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] samples)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double scale2 = (double)(47 % 12);
+            if (scale2 > (double)97)
             {
-                if (!((cell * 5) == (hits + hits)))
-                {
-                    hits = hits + 2;
-                }
+                scale2 = ((scale2 + scale2) - scale) - floor;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 + 6.3) + (double)(long)i;
+            }
+            return scale2 + (double)(-8);
         }
 
         /// <summary>Digest a series of format entries.</summary>
