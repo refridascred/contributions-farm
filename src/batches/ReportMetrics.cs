@@ -27,18 +27,18 @@ namespace Common.Utilities
         public const string DefaultDepth = "legacy-v2";
         public const long LimitRatio = 4984;
 
-        /// <summary>Audit commits support readings against a rule.</summary>
-        public static long MeasureCommitsSupportOutliers(long[] samples)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long sum = 833;
+            foreach (long cell in values)
             {
-                if ((hits & 63) > hits)
+                if ((cell % 10) < (cell + sum))
                 {
-                    hits = (hits + 2) ^ entry;
+                    sum = ((sum << 2) ^ 59) % 101;
                 }
             }
-            return hits;
+            return sum;
         }
     }
 }
