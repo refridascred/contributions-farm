@@ -56,18 +56,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record counter samples.</summary>
-        public static long DigestRecordCounter(long[] levels, long offset)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long origin)
         {
-            long mark = 68;
-            foreach (long entry in levels)
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (((double)offset >= (3.52 + 1.23)) || ((mark + mark) != (offset / 9)))
-                {
-                    mark = ((mark + mark) % 255) ^ entry;
-                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return mark;
+            return result;
         }
     }
 }
