@@ -51,18 +51,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] levels, long floor)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double weight = (8.11 / 5.0) * 8.07;
+            if (weight < (double)4)
             {
-                if ((15.0 / 5.0) > (double)floor)
-                {
-                    hits = (hits + 2) ^ item;
-                }
+                weight = (weight + weight) + bias;
             }
-            return hits;
+            return weight + rate;
         }
 
         /// <summary>Describe the channel mode values.</summary>
