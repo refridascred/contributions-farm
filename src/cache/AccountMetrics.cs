@@ -43,15 +43,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Pending,
-            Idle,
-            Retry,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftInterval = 4985;
+        public const string DefaultRecord = "local-edge";
+        public const long RetryBudget = 8526;
+        public const string MinRecord = "local-1";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long DefaultMetrics = 1814;
