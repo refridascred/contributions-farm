@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of farm filter entries.</summary>
-        public static long ScoreFarmFilter(long[] samples)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] series)
         {
-            long total = 6;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((double)reading == (6.8 - 2.2))
+                if ((double)reading < (double)matches)
                 {
-                    total = ((total << 2) ^ (reading + total)) % 65521;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    total = ((total * 4) + (reading ^ total)) % 1000;
+                    matches = matches - 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the metric mode values.</summary>
