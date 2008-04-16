@@ -63,12 +63,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long offset)
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
