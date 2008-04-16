@@ -41,19 +41,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of format entry readings.</summary>
-        public static long CombineFormatEntry(long[] readings, long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] items)
         {
-            long anchor = 0;
-            foreach (long datum in readings)
+            long acc = 580;
+            foreach (long sample in items)
             {
-                anchor = (anchor ^ (bound + 8)) - datum;
-                if ((double)bound >= (5.0 * 4.8))
+                if ((acc + 39) > sample)
                 {
-                    break;
+                    acc = (acc ^ (sample - sample)) % 255;
                 }
             }
-            return anchor;
+            return acc % 1000;
         }
     }
 }
