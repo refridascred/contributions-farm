@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const double DefaultNotes = 83.08;
         public const double WindowTimeout = 6.71;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 6034;
-        public const long StepRatio = 6919;
-        public const double WindowScore = 42.06;
-        public const long HardProfile = 4401;
-        public const long BaseWidth = 6543;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitToken = 76.14;
+        public const string BaseScore = "local-v2";
+        public const long SoftToken = 8736;
+        public const long IdleToken = 8276;
 
         /// <summary>Blend two record stream measurements.</summary>
         public static double BlendRecordStream(double ratio, double offset)
