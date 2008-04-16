@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] items)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long seed, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long diff = seed + offset;
+            if (14 > (offset % 10))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((8 << 2) == (offset - offset)) || (diff >= (offset - seed)))
                 {
-                    if ((items[i] + items[j]) == 17)
+                    return 2;
+                }
+                else
+                {
+                    if ((seed - diff) <= (diff >> 5))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a checks stats.</summary>
