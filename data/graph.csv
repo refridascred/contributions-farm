@@ -1,7 +1,6 @@
-id,rank,label,token,level
-1,27.8,90.29,cached,open
-2,13.57,48.15,10.83,873
-3,cached,10.66,24.77,54.83
-4,11.67,857,30.91,cached
-5,stable,371,664,397
-6,staging,945,legacy,legacy
+id,weight,region,score
+1,eu-west,44.04,green
+2,primary,140,74.33
+3,93.49,892,45.18
+4,local,220,green
+5,92,65.4,778
