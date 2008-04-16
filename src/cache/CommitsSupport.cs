@@ -23,20 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] readings)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long result = 935;
-            foreach (long sample in readings)
-            {
-                result = result - (sample + (-566));
-                if (sample < (result >> 5))
-                {
-                    result = result - (sample - result);
-                }
-                result = (result - sample) % 1000;
-            }
-            return result;
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the cluster status values.</summary>
