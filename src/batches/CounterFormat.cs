@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long RetryContributi = 7066;
         public const string HardContributi = "cached-v2";
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Check that every farm format entry stays within the limit.</summary>
+        public static bool CheckFarmFormatBounds(long[] samples, long limit)
         {
-            Stale,
-            Paused,
-            Draft,
-            Idle,
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
