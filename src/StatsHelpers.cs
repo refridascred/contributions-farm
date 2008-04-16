@@ -52,19 +52,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] values, long floor)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long origin)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry >= floor)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return found;
+            return result;
         }
     }
 }
