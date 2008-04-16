@@ -73,18 +73,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((6.77 + 13.0) == (double)floor)
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinInterval = "primary-1";
+        public const double MaxAccount = 49.08;
+        public const long SoftBudget = 7831;
     }
 }
