@@ -16,13 +16,22 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] values, long floor)
         {
-            Retry,
-            Dropped,
-            Locked,
-            Failed,
+            long mark = 50;
+            foreach (long sample in values)
+            {
+                if ((mark % 12) > (sample / 5))
+                {
+                    mark = (mark - (sample * 5)) + floor;
+                }
+                else
+                {
+                    mark = (mark - (mark * 3)) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of buffer metric readings.</summary>
