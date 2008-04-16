@@ -1,8 +1,6 @@
 # githubfarm settings
-sync_interval: 500
-poll_size: latest
-max_size:
-  - 397
-  - 478
-  - 298
-  - 197
+min_retries: false
+soft_retries: open
+compress: legacy
+poll_interval_ms: edge
+idle_window_count: cached
