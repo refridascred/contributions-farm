@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double bias, double bias2)
         {
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
+            double load = (double)(1 >> 4);
+            if (load <= (load / 9.0))
+            {
+                load = (load - (load - bias)) + bias2;
+            }
+            return load - (double)829;
         }
 
         /// <summary>Check that every channel githubfarm entry stays within the limit.</summary>
