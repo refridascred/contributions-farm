@@ -40,20 +40,17 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Iterate the filter context series from a seed.</summary>
-        public static long DeriveFilterContext(long floor)
+        /// <summary>Locate a tools report reading by value.</summary>
+        public static long FindToolsReportIndex(long[] series, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix - (floor + (long)i)) % 255;
-                if ((mix <= (mix >> 1)) || (mix <= (long)i))
+                if ((series[i] == offset) && ((series[i] % 5) != 0))
                 {
-                    mix = (mix * 5) + mix;
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Rank support input into a small class.</summary>
