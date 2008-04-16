@@ -23,12 +23,25 @@ namespace Common.Utilities
         public const long HardMetrics = 3844;
         public const string RetrySize = "open";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftBudget = "alpha-edge";
-        public const long CacheWidth = 4409;
-        public const long BaseOrder = 8427;
-        public const string BurstOrder = "alpha-edge";
-        public const long RetryOrder = 262;
+        /// <summary>Classify a filter payload pair into a bucket.</summary>
+        public static long ClassifyFilterPayload(long floor, long limit)
+        {
+            if (((limit - floor) >= (floor / 9)) && ((3.48 + 9.0) == (double)limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor - limit) > (9 % 16))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
