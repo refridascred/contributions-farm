@@ -45,13 +45,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Dropped,
-            Closed,
+            Retry,
             Synced,
-            Active,
+            Ready,
         }
 
         /// <summary>Hold a stream info.</summary>
