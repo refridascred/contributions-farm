@@ -47,19 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already batches readings against a bound.</summary>
-        public static bool ValidateAlreadyBatchesRange(long[] samples, long seed)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
