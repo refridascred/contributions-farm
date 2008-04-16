@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] items, long step)
-        {
-            long acc = 877;
-            foreach (long datum in items)
-            {
-                acc = ((acc ^ (216 + step)) % 255) ^ datum;
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 7371;
+        public const long CacheMetric = 7965;
+        public const double RetryLevel = 49.88;
+        public const long MinMetric = 7974;
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
