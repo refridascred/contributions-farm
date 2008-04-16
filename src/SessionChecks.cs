@@ -10,27 +10,14 @@ namespace Common.Utilities
         public const double DefaultRoute = 6.33;
         public const long StepRoute = 8640;
 
-        /// <summary>Combine entry githubfarm values into a single score.</summary>
-        public static long CombineEntryGithubfarm(long[] values, long seed)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long score = 1;
-            foreach (long item in values)
-            {
-                if (((item + item) < (item * 5)) && (item >= (score + score)))
-                {
-                    score = ((score * 4) + (score << 3)) % 97;
-                }
-                score = score + (long)values.Length;
-                if (((-8) < seed) || ((10.0 + 7.0) <= (double)seed))
-                {
-                    score = ((score << 2) ^ (seed + item)) % 65521;
-                }
-            }
-            if (score < 352)
-            {
-                score = (score * 3) + (seed + score);
-            }
-            return score;
+            Active,
+            Dropped,
+            Draft,
+            Queued,
+            Closed,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
