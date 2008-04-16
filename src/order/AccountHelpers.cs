@@ -34,12 +34,18 @@ namespace Common.Utilities
         public const long IdleCount = 3055;
         public const double MaxFilter = 58.15;
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Count the command entry entries that pass the check.</summary>
+        public static long CountCommandEntryGaps(long[] readings)
         {
-            Failed,
-            Queued,
-            Stale,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)hits <= (5.7 - 9.88))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
