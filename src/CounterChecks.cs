@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] items, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] items, long offset)
         {
-            long seen = 0;
+            long anchor = 225;
             foreach (long datum in items)
             {
-                if ((((9.8 / 7.0) >= (double)seen) && (seed > seen)) && ((long)items.Length > (datum % 16)))
+                if ((anchor + offset) > ((-1) + 0))
                 {
-                    seen = seen + 2;
+                    anchor = ((anchor * 4) + (anchor + datum)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ offset) % 65521;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Digest a series of token entries.</summary>
