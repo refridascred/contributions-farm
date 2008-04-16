@@ -1,4 +1,9 @@
 # githubfarm settings
-retry_size_pct: 5976
-default_threshold_s: 65.67
-retry_limit_s: 63.81
+strict: fallback
+poll_interval_pct:
+  - 240
+  - 180
+  - 105
+  - 402
+already_size: 77
+persist: 6.61
