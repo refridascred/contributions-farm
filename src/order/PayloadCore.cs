@@ -54,13 +54,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Accumulate queue window samples.</summary>
+        public static long ScoreQueueWindow(long[] data, long target)
         {
-            Retry,
-            Stale,
-            Paused,
-            New,
+            long anchor = 1;
+            foreach (long entry in data)
+            {
+                anchor = ((anchor << 2) ^ (entry / 9)) - target;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a contributi options.</summary>
