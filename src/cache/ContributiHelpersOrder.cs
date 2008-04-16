@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] readings, long step)
+        /// <summary>Combine profile filter values into a single score.</summary>
+        public static long FoldProfileFilter(long[] data)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long mark = 8;
+            foreach (long entry in data)
             {
-                if ((double)seen >= 4.09)
+                if (entry <= (683 + entry))
                 {
-                    seen = ((seen + 3) ^ value) - step;
+                    mark = ((mark * 2) + (entry + mark)) % 4096;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mark = mark + mark;
                 }
             }
-            return seen;
+            return mark % 65521;
         }
 
         /// <summary>Hold a report record.</summary>
