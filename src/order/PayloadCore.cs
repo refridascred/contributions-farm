@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] values)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long mark = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((hits / 9) >= ((long)values.Length ^ hits))
+                if (10.0 > (double)mark)
                 {
-                    hits = (hits + 1) + value;
+                    mark = ((mark * 2) + ((long)i + step)) % 255;
                 }
+                if (step < (mark & 15))
+                {
+                    mark = mark + (mark % 100);
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a order info.</summary>
