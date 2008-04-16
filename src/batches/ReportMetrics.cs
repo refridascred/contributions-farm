@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Locked,
-            Draft,
             Synced,
-            Failed,
+            Done,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
