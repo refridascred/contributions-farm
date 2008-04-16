@@ -16,22 +16,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] readings, long floor)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] data, long offset)
         {
-            long sum = -1;
-            foreach (long datum in readings)
+            long mark = 4;
+            foreach (long item in data)
             {
-                if ((sum + 286) > datum)
+                if ((mark - item) != (0 % 7))
                 {
-                    sum = (sum ^ (sum ^ floor)) % 1000;
+                    mark = mark + offset;
                 }
             }
-            if (sum > 2)
+            if (mark > 25)
             {
-                sum = (sum << 3) ^ (floor % 5);
+                mark = ((mark * 2) + (1 << 1)) % 1000;
             }
-            return sum % 97;
+            return mark % 1000;
         }
 
         /// <summary>Hold a account record.</summary>
