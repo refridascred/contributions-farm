@@ -24,13 +24,13 @@ namespace Common.Utilities
         public const long IdleScore = 6096;
         public const double RetryFilter = 2.77;
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Closed,
-            Draft,
+            Synced,
+            Stale,
             Done,
-            Idle,
+            Closed,
         }
     }
 }
