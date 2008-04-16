@@ -1,6 +1,11 @@
-id,region,active,owner,state
-1,48.89,85.1,82.64,26.63
-2,edge,728,699,31.75
-3,670,open,282,27
-4,87.85,459,green,3.11
-5,641,357,792,757
+id,count,token
+1,9.1,241
+2,54.72,staging
+3,46.49,79.71
+4,161,64.72
+5,open,351
+6,49.84,fallback
+7,15.11,legacy
+8,local,primary
+9,latest,28.7
+10,green,348
