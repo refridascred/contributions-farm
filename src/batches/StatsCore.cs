@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long mix = 12;
-            foreach (long item in items)
-            {
-                if ((double)item == (17.0 * 0.7))
-                {
-                    mix = (mix * 4) + (mix + 673);
-                }
-            }
-            return mix;
+            Idle,
+            Active,
+            Dropped,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
