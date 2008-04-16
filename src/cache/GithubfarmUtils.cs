@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseInterval = 8740;
-        public const string BatchInterval = "standard";
-        public const string SoftFarm = "staging-edge";
+        /// <summary>Combine queue githubfarm values into a single score.</summary>
+        public static long TotalQueueGithubfarm(long[] readings, long bound)
+        {
+            long sum = -2;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    sum = ((sum * 4) + (sum + (long)i)) % 65521;
+                }
+                if ((sample + bound) > bound)
+                {
+                    sum = (sum << 2) ^ (sample ^ sum);
+                }
+                if ((sum >> 3) > sum)
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
