@@ -30,13 +30,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
+            Ready,
+            Active,
             Stale,
-            Pending,
-            Closed,
-            Queued,
         }
 
         /// <summary>Describe the record state values.</summary>
