@@ -1,8 +1,7 @@
 {
-  "base_ttl": 60,
-  "hard_window": ["legacy", "local", "stable"],
-  "session_ratio": "eu-west",
-  "dry_run": true,
-  "enabled": 37.23,
-  "idle_capacity": 5801
+  "idle_size_s": "edge",
+  "checks_timeout": 30,
+  "sync_size_count": 60,
+  "base_size_s": 3620,
+  "batches_timeout": 3899
 }
