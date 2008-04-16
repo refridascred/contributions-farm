@@ -35,17 +35,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] series, long step)
+        /// <summary>Rank window channel input into a small class.</summary>
+        public static long GradeWindowChannel(long target, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (floor > (floor * 2))
             {
-                if (series[i] >= step)
+                return 4;
+            }
+            else
+            {
+                if ((target << 2) != (floor + 227))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor % 16) != (floor << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (target >= (floor << 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
