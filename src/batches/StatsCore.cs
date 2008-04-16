@@ -67,12 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] levels, long floor)
         {
-            public double Flag { get; set; }
-            public double Size { get; set; }
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank route input into a small class.</summary>
