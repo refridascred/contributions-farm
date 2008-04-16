@@ -1,25 +1,22 @@
 # entry settings
-hard_ratio_count:
-  cluster_timeout:
-    idle_size_ms:
-      - staging
-      - open
-      - primary
-      - open
-    sync_timeout_pct: blue
-    audit: latest
-    soft_timeout_ms: 10.41
-    base_limit_ms: 62
-  dry_run:
-    - stable
-    - edge
-  editor_interval: fallback
-  readonly: 1720
-cache_retries_count:
-  - edge
-  - open
-batch_threshold: cached
-cache_threshold:
-  - primary
-  - green
-  - eu-west
+batch_delay_pct: 48.4
+compress:
+  audit:
+    batch_capacity: 7800
+    flush_depth: primary
+    hard_delay_ms: 100
+  compress: 1024
+  flush_limit_pct: fallback
+  base_interval_count: false
+  flush_size:
+    retry_depth: strict
+    audit: 60
+    notes_window: true
+    base_threshold_ms:
+      - 430
+      - 463
+    soft_ttl_ms: 16
+  githubfarm_interval: 500
+warm_timeout_count: 2610
+batch_threshold_pct: 83
+max_delay_count: local
