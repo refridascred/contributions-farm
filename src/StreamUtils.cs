@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 4347;
-        public const long IdleCounter = 9885;
-        public const string IdleCount = "latest-v2";
-        public const string IdleInterval = "staging-v2";
+        /// <summary>Match up schema graph samples.</summary>
+        public static long MatchSchemaGraphCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double AdjustPayload(double rate, double bias)
