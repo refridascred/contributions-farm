@@ -1,6 +1,5 @@
 {
-  "retry_depth_ms": "primary",
-  "soft_ratio_s": true,
-  "channel_retries": true,
-  "min_retries_count": 64
+  "sync_depth_s": 3.57,
+  "soft_capacity": 73.16,
+  "editor_threshold": 250
 }
