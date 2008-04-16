@@ -17,21 +17,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] data)
+        /// <summary>Locate a cache cluster reading by value.</summary>
+        public static long LookupCacheClusterIndex(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (readings[i] > target)
                 {
-                    if ((data[i] + data[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the order class values.</summary>
