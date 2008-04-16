@@ -50,11 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultAlready = 39.3;
-        public const long HardAlready = 8417;
-        public const long SoftCount = 7697;
-        public const long MinSpan = 154;
-        public const string RetryAlready = "strict-edge";
+        /// <summary>Combine batch contributi values into a single score.</summary>
+        public static long WeighBatchContributi(long[] series)
+        {
+            long mark = 8;
+            foreach (long item in series)
+            {
+                mark = (((mark << 3) ^ (419 * 4)) % 101) - item;
+            }
+            return mark;
+        }
     }
 }
