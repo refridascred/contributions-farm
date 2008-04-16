@@ -35,12 +35,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Locate a report githubfarm reading by value.</summary>
+        public static long LocateReportGithubfarmIndex(long[] levels, long target)
         {
-            public double Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
