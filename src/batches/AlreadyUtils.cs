@@ -49,38 +49,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long target, long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] items)
         {
-            if (!((limit + limit) >= (limit + 1)))
+            long acc = 27;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target - limit) != (limit + target))
+                if ((acc / 3) == (4 & 7))
                 {
-                    return 5;
+                    acc = (acc * 5) + reading;
                 }
                 else
                 {
-                    if ((limit - limit) >= (target * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)limit < (double)target) || ((4.0 * 6.0) <= (double)limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    acc = (acc - (acc + 15)) % 97;
                 }
             }
+            return acc;
         }
     }
 }
