@@ -26,19 +26,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] series)
+        /// <summary>Count the account farm entries that pass the check.</summary>
+        public static long CountAccountFarmHits(long[] data, long offset)
         {
-            long mix = 5;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                mix = (((mix * 5) + (long)series.Length) % 101) ^ value;
+                if (cell < (offset ^ tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (mix < 40)
-            {
-                mix = ((mix << 3) ^ (623 & 31)) % 255;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
