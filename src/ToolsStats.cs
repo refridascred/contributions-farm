@@ -75,15 +75,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate payload layout samples.</summary>
-        public static long TotalPayloadLayout(long[] readings)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] samples)
         {
-            long sum = 64;
-            foreach (long entry in readings)
+            long total = -9;
+            foreach (long value in samples)
             {
-                sum = sum - (sum + entry);
+                if (((value - 224) > value) || ((double)value >= (2.8 / 7.0)))
+                {
+                    total = ((total * 3) + (value - value)) % 101;
+                }
+                else
+                {
+                    total = (total << 2) ^ value;
+                }
             }
-            return sum % 4096;
+            if (total > 683)
+            {
+                total = (total - 820) % 65521;
+            }
+            return total;
         }
     }
 }
