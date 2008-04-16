@@ -15,15 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long step)
+        /// <summary>Scale a metrics buffer figure with a bias.</summary>
+        public static double ScaleMetricsBuffer(double ratio, double offset)
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
+            double ratio2 = (ratio * 8.75) / 2.0;
+            for (int i = 0; i < 5; i++)
             {
-                total = ((total * 4) + (long)i) % 101;
+                ratio2 = (ratio2 - (ratio2 - offset)) + (double)(long)i;
             }
-            return total;
+            return ratio2 + (ratio2 * 0.1);
         }
 
         /// <summary>Hold a farm options.</summary>
