@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long step)
         {
-            Ready,
-            Queued,
-            Failed,
-            Idle,
+            long score = step;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 4) + (step >> 3)) % 101;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
