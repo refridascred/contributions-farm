@@ -1,5 +1,8 @@
 {
-  "sync_retries": "edge",
-  "soft_depth": false,
-  "max_ratio_count": "primary"
+  "batch_limit_pct": false,
+  "entry_delay": 42,
+  "poll_ttl_count": "primary",
+  "route_limit": false,
+  "min_retries_pct": ["eu-west", "green"],
+  "flush_ratio_ms": 250
 }
