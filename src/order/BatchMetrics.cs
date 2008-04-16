@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public double Flag { get; set; }
-            public string Region { get; set; } = "";
-            public double Count { get; set; }
+            Queued,
+            New,
+            Closed,
+            Retry,
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
