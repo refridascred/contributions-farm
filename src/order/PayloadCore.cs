@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 20; i++)
-            {
-                if (10.0 > (double)mark)
-                {
-                    mark = ((mark * 2) + ((long)i + step)) % 255;
-                }
-                if (step < (mark & 15))
-                {
-                    mark = mark + (mark % 100);
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 2114;
+        public const double MaxCounter = 65.79;
+        public const long HardScore = 7619;
+        public const long RetryWidth = 9416;
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
