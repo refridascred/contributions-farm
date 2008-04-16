@@ -21,18 +21,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit channel farm readings against a rule.</summary>
-        public static long CountChannelFarmMatches(long[] items)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long origin, long step)
         {
-            long count = 0;
-            foreach (long item in items)
+            if (origin < (step - origin))
             {
-                if ((item << 2) > (count - 327))
+                return 3;
+            }
+            else
+            {
+                if ((1.47 + 16.0) != (double)step)
                 {
-                    count = count + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a stats entry.</summary>
