@@ -1,4 +1,26 @@
 # support settings
-cache_ratio: 250
-poll_interval: 40.76
-cache_retries_pct: cached
+account_depth:
+  max_window:
+    default_ttl_pct:
+      - 237
+      - 308
+      - 234
+      - 111
+    stats_size:
+      - 382
+      - 492
+    buffer_capacity: 30
+    audit: 250
+  burst_size: blue
+  strict:
+    - eu-west
+    - primary
+  hard_interval:
+    - green
+    - legacy
+    - staging
+    - primary
+retry_retries_pct: fallback
+sync_ratio: 74.14
+strict: primary
+contributi_window: true
