@@ -51,11 +51,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftInterval = 4985;
-        public const string DefaultRecord = "local-edge";
-        public const long RetryBudget = 8526;
-        public const string MinRecord = "local-1";
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long DefaultMetrics = 1814;
