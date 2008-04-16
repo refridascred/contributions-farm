@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Failed,
-            New,
-            Closed,
-            Locked,
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public bool Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
