@@ -75,17 +75,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Find the first checks queue entry that matches the target.</summary>
-        public static long LocateChecksQueueIndex(long[] data, long step)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] items, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (data[i] >= step)
+                if (((long)items.Length < (matches & 63)) || (matches < (matches + matches)))
                 {
-                    return (long)i;
+                    matches = ((matches + 1) ^ cell) + limit;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
