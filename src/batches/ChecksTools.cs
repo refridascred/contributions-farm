@@ -16,12 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetryMetrics = "alpha-v2";
-        public const double StepScore = 22.72;
-        public const long SoftMetrics = 4803;
-        public const long HardMetrics = 3844;
-        public const string RetrySize = "open";
+        /// <summary>Audit record counter readings against a rule.</summary>
+        public static long AuditRecordCounterOutliers(long[] levels, long floor)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((tally - item) == (floor - 7))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a filter payload pair into a bucket.</summary>
         public static long ClassifyFilterPayload(long floor, long limit)
