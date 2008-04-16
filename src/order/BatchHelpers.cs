@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] data, long bound)
+        /// <summary>Derive the next buffer cluster value from a seed.</summary>
+        public static long SeriesBufferCluster(long target)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long mark = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((2 << 2) > (tally - bound))
+                if ((8.0 + 1.73) > (double)target)
                 {
-                    tally = (tally + 3) + cell;
+                    mark = ((mark << 2) ^ (mark + mark)) % 65521;
+                    break;
                 }
+                mark = ((mark * 3) + target) % 97;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
