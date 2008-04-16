@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] levels, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (item <= origin)
+                if (!((datum << 3) < bound))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
