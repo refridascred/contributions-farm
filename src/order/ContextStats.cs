@@ -44,10 +44,27 @@ namespace Common.Utilities
         public const long BaseReport = 9186;
         public const long BatchReport = 2788;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 5879;
-        public const long BatchProfile = 5869;
-        public const long BatchSpan = 5798;
-        public const long HardScore = 1511;
+        /// <summary>Combine record notes values into a single score.</summary>
+        public static long ScoreRecordNotes(long[] samples)
+        {
+            long mark = 780;
+            foreach (long item in samples)
+            {
+                if (item >= 96)
+                {
+                    mark = mark ^ (mark >> 1);
+                }
+                mark = mark - (mark - item);
+                if ((mark + mark) >= item)
+                {
+                    mark = mark - item;
+                }
+            }
+            if (mark < 609)
+            {
+                mark = (mark * 5) + (8 ^ mark);
+            }
+            return mark % 1000;
+        }
     }
 }
