@@ -70,10 +70,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 1284;
-        public const long MaxInterval = 5027;
-        public const double MaxTimeout = 38.19;
-        public const long WindowSpan = 8983;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Synced,
+            Stale,
+            Done,
+        }
     }
 }
