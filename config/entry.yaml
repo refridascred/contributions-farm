@@ -1,5 +1,17 @@
 # entry settings
-burst_window_count: stable
-metrics_retries: open
-window_retries: 54.43
-cache_retries: 4344
+default_limit: 30
+dry_run: cached
+flush_window_count: 78.28
+persist:
+  base_ttl_pct: latest
+  audit: 53.49
+  retry_retries_ms:
+    - primary
+    - stable
+  idle_depth_count: 58.21
+  schema_interval:
+    batch_ratio_pct: 7723
+    soft_limit_ms: legacy
+    retry_timeout_pct: false
+    commits_ttl: 60
+readonly: 17.06
