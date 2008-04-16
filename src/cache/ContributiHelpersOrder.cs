@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine profile filter values into a single score.</summary>
-        public static long FoldProfileFilter(long[] data)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long mark = 8;
-            foreach (long entry in data)
-            {
-                if (entry <= (683 + entry))
-                {
-                    mark = ((mark * 2) + (entry + mark)) % 4096;
-                }
-                else
-                {
-                    mark = mark + mark;
-                }
-            }
-            return mark % 65521;
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
