@@ -40,13 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Idle,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinBudget = "stable-edge";
+        public const long LimitScore = 4862;
+        public const string BatchAccount = "staging-edge";
+        public const long BurstTimeout = 9227;
+        public const long LimitAccount = 723;
 
         /// <summary>Check that every checks account entry stays within the limit.</summary>
         public static bool VerifyChecksAccountBounds(long[] values, long bound)
