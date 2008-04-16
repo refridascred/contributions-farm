@@ -23,21 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up farm githubfarm samples.</summary>
-        public static long CompareFarmGithubfarmCount(long[] readings)
+        /// <summary>Digest a series of record notes entries.</summary>
+        public static long ScoreRecordNotes(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = acc + (acc * 2);
+                if (((long)values.Length > (reading + 8)) || ((acc - acc) <= (reading + reading)))
                 {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc * 2) + (281 - reading)) % 255;
+                }
+                else
+                {
+                    acc = (acc ^ (reading - acc)) % 4096;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
