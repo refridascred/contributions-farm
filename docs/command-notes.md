@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for cache live in the config folder and can be overridden per environment.
-When a checks fails, the stats handler retries a few times before giving up.
-Each batch is validated before it reaches the channel queue.
+Keep context and already names short and lowercase.
+Defaults for filter live in the config folder and can be overridden per environment.
+
+Each window is validated before it reaches the stats queue.
+Run the layout check before changing any stats limits.
+The window report groups every context by entry.
 
 ## Guidelines
 
-- Validate graph input early
-- Log every record change
-- Keep cluster values small
-- Prefer metrics defaults
+- Log every order change
+- Review layout limits each release
+- Prefer session defaults
