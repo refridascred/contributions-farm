@@ -20,11 +20,13 @@ namespace Common.Utilities
             return rate2 - 3.8;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            Locked,
+            Active,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a tools summary.</summary>
