@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] samples, long target)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] samples, long seed)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] < target)
+                if (samples[i] <= seed)
                 {
                     return (long)i;
                 }
