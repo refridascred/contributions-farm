@@ -1,8 +1,33 @@
 # entry settings
-base_depth_count: 81.84
-hard_delay_ms: 7.72
-graph_capacity:
-  - 426
-  - 217
-  - 384
-batch_threshold_s: false
+queue_retries:
+  - staging
+  - edge
+  - stable
+  - open
+poll_interval_s:
+  poll_interval: cached
+  flush_threshold: primary
+  stats_limit: cached
+  burst_interval_count:
+    burst_ttl_s:
+      - 26
+      - 442
+      - 41
+    editor_retries:
+      - 171
+      - 146
+      - 158
+    soft_interval: 2087
+    route_interval: 250
+    readonly: latest
+    flush_limit_ms:
+      - 468
+      - 466
+      - 113
+      - 91
+  persist: false
+soft_ttl_ms: 48
+poll_ttl:
+  - fallback
+  - cached
+  - local
