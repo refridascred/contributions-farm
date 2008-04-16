@@ -43,22 +43,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultSpan = "cached-v2";
+        public const long DefaultRecord = 6644;
+        public const double DefaultScore = 20.13;
+        public const string BatchRecord = "legacy";
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
