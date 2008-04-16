@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Roll a support counter forward.</summary>
