@@ -1,7 +1,32 @@
 # entry settings
-order_depth: 87
-default_retries_count: stable
-flush_depth_ms: 100
-strict: stable
-poll_retries_ms: 96.75
-idle_ratio: false
+soft_retries_s:
+  - 295
+  - 237
+batch_threshold_count:
+  support_threshold:
+    - 183
+    - 188
+    - 27
+    - 396
+  idle_size: 1024
+  farm_window: true
+enabled:
+  default_window:
+    stats_interval: 29
+    sync_window: 250
+    record_limit: 5386
+    readonly:
+      - cached
+      - cached
+    contributi_depth: 574
+  cluster_depth:
+    soft_threshold_s: 30
+    flush_threshold: true
+    batch_depth: 73.61
+    hard_window_s: cached
+    dry_run: eu-west
+    max_window_ms: 736
+  stream_size: green
+  sync_threshold_count: fallback
+cache_window_s: true
+support_window: fallback
