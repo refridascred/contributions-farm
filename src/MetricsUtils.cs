@@ -15,15 +15,19 @@ namespace Common.Utilities
         public const string MaxNotes = "open-v2";
         public const long BurstNotes = 4217;
 
-        /// <summary>Derive the next cache buffer value from a seed.</summary>
-        public static long IterateCacheBuffer(long target)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double ratio, double span)
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
+            double ratio2 = 5.0;
+            if (ratio2 < ratio)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                ratio2 = (ratio2 - ratio) + span;
             }
-            return state;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + ratio) + (double)(long)i;
+            }
+            return ratio2 + (2.1 * 4.2);
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
