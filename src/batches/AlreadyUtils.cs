@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 8193;
-        public const double WindowBudget = 13.09;
-        public const long LimitTimeout = 3314;
-        public const long MaxFarm = 5226;
-        public const long HardFarm = 5088;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long offset, long bound)
+        {
+            if ((13.0 - 3.0) <= (double)bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset > (offset >> 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound != (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftTimeout = 6623;
