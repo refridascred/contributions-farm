@@ -51,19 +51,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate order contributi readings against a bound.</summary>
-        public static bool GuardOrderContributiLimits(long[] samples, long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (reading > offset)
+                if ((count % 7) <= (entry ^ count))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Hold a order entry.</summary>
