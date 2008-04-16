@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Combine batches format values into a single score.</summary>
+        public static long CombineBatchesFormat(long[] levels)
         {
-            long acc = step;
-            for (int i = 0; i < 5; i++)
+            long state = 9;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                state = (((state << 2) ^ (state + 7)) % 4096) + reading;
             }
-            return acc;
+            if (state > 8)
+            {
+                state = (state << 2) ^ state;
+            }
+            return state;
         }
 
         /// <summary>Roll a support counter forward.</summary>
