@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((bound & 3) != (entry & 7))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleGraph = "local";
+        public const long LimitGraph = 3224;
+        public const double LimitDepth = 85.61;
+        public const double BatchBudget = 43.52;
+        public const string HardGraph = "legacy-v2";
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long StepSupport(long target)
