@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] values, long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 5;
+            foreach (long entry in values)
             {
-                if (values[i] > bound)
+                if (!((anchor - entry) > seed))
                 {
-                    return (long)i;
+                    anchor = (anchor * 2) + (anchor & 63);
+                }
+                else
+                {
+                    anchor = (anchor - (entry - 906)) % 4096;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
