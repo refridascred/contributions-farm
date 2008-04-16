@@ -71,13 +71,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Measure how many token tools samples are out of range.</summary>
+        public static long CountTokenToolsOutliers(long[] levels)
         {
-            public string Count { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item ^ 998) < seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
