@@ -35,22 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long result = 276;
+            foreach (long cell in readings)
             {
-                if ((4 ^ sample) < (tally + sample))
+                if (((offset - offset) <= (17 >> 5)) && ((double)cell > (5.0 - 4.2)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    result = (result << 2) ^ (offset * 3);
                 }
             }
-            return tally;
+            return result % 1000;
         }
     }
 }
