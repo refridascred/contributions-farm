@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double rate, double span)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            double rate2 = (double)(70 - 616);
-            return ((rate2 + rate2) + rate) + span;
+            Failed,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a window record.</summary>
