@@ -76,15 +76,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] readings, long origin)
         {
-            long mix = 8;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix << 3) ^ (52 - datum)) % 1000;
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
