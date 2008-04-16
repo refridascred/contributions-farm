@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultCount = "latest-v2";
+        public const string SoftStats = "legacy";
+        public const string SoftDepth = "standard-edge";
+        public const double IdleLevel = 84.55;
+        public const string BaseFactor = "local-1";
 
         /// <summary>Locate a cache cluster reading by value.</summary>
         public static long LookupCacheClusterIndex(long[] readings, long target)
