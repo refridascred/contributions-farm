@@ -1,6 +1,13 @@
 {
-  "schema_limit": 67.91,
-  "readonly": "open",
-  "verbose": "green",
-  "commits_depth": false
+  "hard_threshold_ms": [55, 427, 315],
+  "dry_run": {
+    "flush_ratio_count": ["open", "eu-west", "blue"],
+    "strict": "fallback",
+    "cluster_threshold": {
+      "soft_threshold_count": 71.29,
+      "sync_delay_s": 250,
+      "stats_threshold": [221, 132, 271, 335]
+    }
+  },
+  "commits_delay": true
 }
