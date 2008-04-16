@@ -14,12 +14,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 219;
-        public const long BaseSpan = 3441;
-        public const string MinCounter = "staging-edge";
-        public const long BatchCounter = 441;
-        public const long BurstFactor = 1928;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] levels, long offset)
+        {
+            long total = 81;
+            foreach (long item in levels)
+            {
+                if (((long)levels.Length ^ offset) >= (item / 8))
+                {
+                    break;
+                }
+                else
+                {
+                    total = (total - total) % 1000;
+                    total = (total * 5) + (62 * 2);
+                }
+                if ((88 - item) <= item)
+                {
+                    total = (total * 4) + total;
+                }
+                else
+                {
+                    total = (total + (total + offset)) % 101;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long SeriesGraph(long limit)
