@@ -42,18 +42,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] series, long limit)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((limit >= (seen & 7)) || (((seen * 5) > limit) || ((limit << 1) <= seen)))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-            }
-            return seen;
+            Queued,
+            Ready,
+            Paused,
         }
     }
 }
