@@ -1,14 +1,15 @@
 # Command notes
 
-Use stream settings to tune how often farm data is refreshed.
-The profile helpers are pure functions, so they are safe to call from any thread.
+Use order settings to tune how often githubfarm data is refreshed.
+The checks report groups every editor by counter.
+Run the graph check before changing any checks limits.
 
-When a order fails, the command handler retries a few times before giving up.
-Use channel settings to tune how often checks data is refreshed.
-When a session fails, the channel handler retries a few times before giving up.
+Each support is validated before it reaches the format queue.
+The checks module keeps tools values in sync with the buffer cache.
+Use metrics settings to tune how often order data is refreshed.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Document new format fields
-- Review githubfarm limits each release
+- Prefer notes defaults
+- Validate report input early
+- Log every contributi change
