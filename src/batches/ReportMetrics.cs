@@ -26,18 +26,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((hits - 1) > (hits ^ item))
-                {
-                    hits = (hits + 2) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 3728;
+        public const long DefaultSpan = 5593;
+        public const long StepWidth = 9406;
+        public const double MaxSession = 57.79;
     }
 }
