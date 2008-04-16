@@ -38,12 +38,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Measure how many farm channel samples are out of range.</summary>
+        public static long MeasureFarmChannelHits(long[] readings, long limit)
         {
-            Synced,
-            Done,
-            Pending,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (limit <= (sample - tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
