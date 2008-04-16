@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] samples, long bound)
-        {
-            long anchor = 539;
-            foreach (long datum in samples)
-            {
-                if (datum <= 627)
-                {
-                    anchor = anchor - (anchor + 9);
-                }
-            }
-            if (anchor < 2)
-            {
-                anchor = (anchor + (bound / 4)) % 101;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinCount = 2323;
+        public const double CacheScore = 30.25;
+        public const string BurstWidth = "staging-v2";
+        public const long RetryFormat = 6234;
+        public const long DefaultSize = 6283;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BatchLevel = 9755;
