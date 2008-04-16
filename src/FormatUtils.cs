@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next support payload value from a seed.</summary>
-        public static long SeriesSupportPayload(long limit)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                long span = (45 - total) % 100;
-                if ((total >> 2) == (span - span))
-                {
-                    total = total ^ (total % 3);
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Accumulate entry samples.</summary>
