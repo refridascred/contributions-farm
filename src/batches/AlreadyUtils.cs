@@ -42,22 +42,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] items)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            long acc = 27;
-            foreach (long reading in items)
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((acc / 3) == (4 & 7))
-                {
-                    acc = (acc * 5) + reading;
-                }
-                else
-                {
-                    acc = (acc - (acc + 15)) % 97;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return acc;
+            return anchor;
         }
     }
 }
