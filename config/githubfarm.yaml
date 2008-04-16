@@ -1,10 +1,22 @@
 # githubfarm settings
-route_interval: 2.66
-base_delay_count:
-  - 133
-  - 438
-  - 128
-  - 457
-cache_ttl_s: green
-hard_retries: local
-verbose: legacy
+sync_limit: true
+account_limit:
+  - fallback
+  - cached
+  - fallback
+  - open
+burst_ratio_ms: 250
+entry_depth: stable
+base_capacity:
+  - fallback
+  - green
+  - edge
+  - strict
+sync_window_pct:
+  persist:
+    - cached
+    - eu-west
+  cache_delay_s: 56.57
+  metrics_interval: 65
+  notes_retries: 9921
+  strict: 52
