@@ -1,15 +1,16 @@
 # Command notes
 
-Use batches settings to tune how often commits data is refreshed.
-Each counter is validated before it reaches the filter queue.
-When a cache fails, the batch handler retries a few times before giving up.
+Defaults for entry live in the config folder and can be overridden per environment.
+Each profile is validated before it reaches the counter queue.
+Defaults for support live in the config folder and can be overridden per environment.
 
-A cluster that stays idle for too long is moved to the filter list.
-Use token settings to tune how often layout data is refreshed.
-A batch that stays idle for too long is moved to the stream list.
+The format helpers are pure functions, so they are safe to call from any thread.
+Keep editor and metric names short and lowercase.
+A graph that stays idle for too long is moved to the stats list.
 
 ## Guidelines
 
-- Keep channel values small
-- Document new tools fields
-- Review editor limits each release
+- Prefer cluster defaults
+- Document new route fields
+- Log every metric change
+- Review record limits each release
