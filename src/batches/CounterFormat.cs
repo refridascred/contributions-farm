@@ -5,37 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long origin, long origin2)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long step, long bound)
         {
-            long span = origin - origin2;
-            if ((15.0 - 6.6) >= (double)origin2)
+            long lane = step ^ bound;
+            if (((lane / 2) == (lane - step)) || ((94 - 811) < (bound + step)))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((5.85 - 2.44) < (double)origin)
+                if (bound < 2)
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if (((6.0 / 4.0) < (double)origin2) || ((9.0 - 8.53) == (double)span))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin2 + 7) >= (origin + span))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
