@@ -21,18 +21,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit cluster format readings against a rule.</summary>
-        public static long TallyClusterFormatGaps(long[] data, long limit)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long target)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (limit >= (cell % 16))
-                {
-                    hits = hits + 2;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Combine layout account values into a single score.</summary>
