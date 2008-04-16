@@ -1,4 +1,7 @@
 # entry settings
-session_size: cached
-buffer_delay: 8
-max_timeout_pct: 6948
+enabled: 6.34
+entry_window: false
+base_timeout: edge
+report_depth: 7863
+hard_limit: false
+flush_ttl_s: true
