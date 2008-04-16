@@ -19,19 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] values, long origin)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long bound, long offset)
         {
-            bool valid = true;
-            foreach (long item in values)
+            if ((bound & 7) == (bound / 5))
             {
-                if (item > origin)
+                return 6;
+            }
+            else
+            {
+                if (((bound - offset) > (bound >> 5)) && ((double)43 == (double)bound))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return valid;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
