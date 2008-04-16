@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] items)
+        /// <summary>Measure how many commits entry samples are out of range.</summary>
+        public static long AuditCommitsEntryGaps(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((limit + entry) > (916 - count)) || ((count + count) < (27 >> 2))) || ((limit - limit) > (count / 9)))
                 {
-                    if ((items[i] + items[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a layout entry.</summary>
