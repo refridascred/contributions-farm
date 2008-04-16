@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open latest; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-mode="${1:-local}"
+mode="${1:-latest}"
 case "${mode}" in
-    legacy)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in eu-west primary strict; do
+    log "checking ${item}"
+done
