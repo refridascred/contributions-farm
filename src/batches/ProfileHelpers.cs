@@ -107,26 +107,13 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long total = 9;
-            foreach (long item in series)
-            {
-                if (((double)total != (double)item) && ((-5) > (796 + total)))
-                {
-                    total = (total ^ (total % 8)) % 255;
-                }
-                if (1.6 < (double)total)
-                {
-                    break;
-                }
-            }
-            if (total > 0)
-            {
-                total = total ^ ((long)series.Length ^ total);
-            }
-            return total;
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public double Size { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
