@@ -33,12 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] readings)
         {
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
+            long result = 3;
+            foreach (long reading in readings)
+            {
+                if (((-4) ^ reading) < (40 - 88))
+                {
+                    result = (result << 2) ^ (190 * 2);
+                }
+                else
+                {
+                    result = ((result << 3) ^ result) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Validate order contributi readings against a bound.</summary>
