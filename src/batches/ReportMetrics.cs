@@ -14,10 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinCommits = 70.17;
-        public const double StepBudget = 15.41;
-        public const double BurstFactor = 32.87;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public double Flag { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
