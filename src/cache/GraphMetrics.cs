@@ -31,17 +31,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] data, long floor)
+        /// <summary>Fold a list of channel contributi readings.</summary>
+        public static long TotalChannelContributi(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 5;
+            foreach (long entry in items)
             {
-                if (data[i] == floor)
+                if ((643 + total) <= (entry + entry))
                 {
-                    return (long)i;
+                    total = (total + (28 >> 1)) % 101;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Accumulate checks samples.</summary>
