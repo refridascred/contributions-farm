@@ -63,18 +63,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many token tools samples are out of range.</summary>
-        public static long CountTokenToolsOutliers(long[] levels)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item ^ 998) < seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public double Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
