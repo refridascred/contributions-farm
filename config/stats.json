@@ -1,5 +1,6 @@
 {
-  "cache_ttl": false,
-  "idle_timeout_s": "blue",
-  "schema_depth": "blue"
+  "cache_retries_count": "fallback",
+  "persist": 37.7,
+  "batch_timeout": "legacy",
+  "max_retries": "eu-west"
 }
