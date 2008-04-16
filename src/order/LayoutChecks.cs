@@ -59,17 +59,13 @@ namespace Common.Utilities
         public const long StepReport = 7448;
         public const long RetryTimeout = 2054;
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] items, long floor)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Retry,
+            Idle,
+            Locked,
         }
     }
 }
