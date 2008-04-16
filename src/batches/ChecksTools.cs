@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Derive the next token entry value from a seed.</summary>
+        public static long DeriveTokenEntry(long target)
         {
-            Pending,
-            Ready,
-            Dropped,
+            long result = target;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
