@@ -20,11 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheCount = 8428;
-        public const double LimitContributi = 85.97;
-        public const double RetryContributi = 66.88;
-        public const double IdleContributi = 27.87;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public double Flag { get; set; }
+            public string Region { get; set; } = "";
+            public double Count { get; set; }
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long IterateCommits(long step)
