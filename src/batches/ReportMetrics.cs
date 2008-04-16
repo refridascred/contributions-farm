@@ -24,18 +24,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] values)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long origin)
         {
-            long result = 6;
-            foreach (long datum in values)
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (((datum ^ datum) >= result) || ((double)result != (double)datum))
+                anchor = ((anchor * 2) + (origin << 2)) % 1000;
+                anchor = ((anchor << 3) ^ anchor) % 65521;
+                if ((double)anchor < 5.05)
                 {
-                    result = ((result << 3) ^ result) % 4096;
+                    anchor = (anchor * 3) + origin;
                 }
+                else
+                {
+                    anchor = (anchor ^ (2 * 3)) % 4096;
+                    anchor = anchor + anchor;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return result;
+            return anchor;
         }
     }
 }
