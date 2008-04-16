@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 4202;
-        public const double CacheRatio = 11.92;
-        public const string IdleBuffer = "alpha-1";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinLevel = 5499;
+        public const long BaseToken = 171;
+        public const double StepSpan = 57.8;
+        public const long SoftSpan = 5633;
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] levels)
