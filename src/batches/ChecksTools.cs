@@ -22,22 +22,23 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] series)
+        /// <summary>Scale a contributi order figure with a bias.</summary>
+        public static double BlendContributiOrder(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double load = offset;
+            if (load > rate)
             {
-                if (!!(matches > (sample + matches)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = load + offset;
             }
-            return matches;
+            else
+            {
+                load = load - (offset - 3.5);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + offset;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
