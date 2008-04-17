@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long MaxSpan = 9946;
         public const long CacheScore = 4344;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] values, long limit)
+        /// <summary>Count the window commits entries that pass the check.</summary>
+        public static long AuditWindowCommitsOutliers(long[] values, long offset)
         {
-            long score = 66;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                score = ((score * 2) + cell) - limit;
+                if (offset > (entry ^ seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Hold a farm options.</summary>
