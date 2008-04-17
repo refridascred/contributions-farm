@@ -27,12 +27,12 @@ namespace Common.Utilities
         public const long IdleFactor = 1176;
         public const string BatchFactor = "cached-v2";
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] values, long bound)
+        /// <summary>Look up the position of a route layout sample.</summary>
+        public static long FindRouteLayoutIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] < bound) && ((values[i] % 2) == 0))
+                if (levels[i] <= floor)
                 {
                     return (long)i;
                 }
