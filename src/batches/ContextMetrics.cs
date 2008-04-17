@@ -21,32 +21,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long target, long seed)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long slot = target + seed;
-            if ((seed - slot) < (seed + 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((682 << 2) >= (seed << 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)slot > 17.0)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            New,
+            Retry,
+            Queued,
         }
 
         /// <summary>Locate a graph commits reading by value.</summary>
