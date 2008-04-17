@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of route stats entries.</summary>
-        public static long CombineRouteStats(long[] samples)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long carry = 0;
-            foreach (long sample in samples)
-            {
-                if ((2 >> 3) <= (sample - sample))
-                {
-                    carry = (carry - (carry - 4)) % 101;
-                }
-            }
-            return carry % 1000;
+            Stale,
+            Dropped,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a batches stats.</summary>
