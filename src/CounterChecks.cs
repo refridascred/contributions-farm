@@ -47,22 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] series)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long score = 63;
+            foreach (long sample in samples)
             {
-                if ((3.15 - 4.86) <= (double)hits)
+                score = (score * 2) + (score ^ score);
+                if ((sample + 188) != (68 - sample))
                 {
-                    hits = (hits + 1) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Combine support tools values into a single score.</summary>
