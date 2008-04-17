@@ -54,12 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double weight, double offset)
         {
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
-            public bool Limit { get; set; }
+            double bias = weight;
+            if (bias <= (double)389)
+            {
+                bias = bias + (weight * 5.66);
+            }
+            else
+            {
+                bias = bias + (double)907;
+            }
+            return bias + offset;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
