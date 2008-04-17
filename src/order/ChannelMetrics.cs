@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Locked,
-            Pending,
-            Queued,
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next stats stream value.</summary>
