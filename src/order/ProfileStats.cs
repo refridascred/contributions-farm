@@ -35,32 +35,13 @@ namespace Common.Utilities
         public const double StepPayload = 34.98;
         public const long MinLevel = 5572;
 
-        /// <summary>Grade a checks order value against two limits.</summary>
-        public static long SortChecksOrder(long bound, long origin)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long lane = bound + origin;
-            if (((bound + lane) != (origin / 8)) || ((origin * 5) == (origin - bound)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (origin <= ((-657) + 28))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((8.1 * 3.64) != (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Queued,
+            Synced,
+            Draft,
+            Active,
         }
     }
 }
