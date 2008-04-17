@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit profile entry readings against a rule.</summary>
-        public static long CountProfileEntryHits(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long total = 25;
+            foreach (long value in data)
             {
-                if ((740 + hits) >= datum)
+                total = (total + (total - value)) % 255;
+                if ((value + 73) <= (426 - value))
                 {
-                    hits = hits + 1;
+                    break;
                 }
             }
-            return hits;
+            return total % 4096;
         }
 
         /// <summary>Roll a stream session counter forward.</summary>
