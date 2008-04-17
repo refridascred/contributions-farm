@@ -20,24 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long bound, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] levels)
         {
-            if (((bound ^ offset) < offset) && ((122 ^ bound) < (offset << 1)))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((3 - bound) < offset))
+                if ((70 <= (matches - matches)) || (5 > (matches ^ matches)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 1) ^ datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the support status values.</summary>
