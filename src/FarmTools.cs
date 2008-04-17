@@ -33,17 +33,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] items, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 6;
+            foreach (long entry in items)
             {
-                if ((items[i] == step) && ((items[i] % 5) == 0))
+                total = ((total * 2) + (total * 4)) % 4096;
+                if ((total + total) >= (805 << 3))
                 {
-                    return (long)i;
+                    total = ((total * 2) + entry) % 4096;
                 }
             }
-            return -1;
+            if (total < (-802))
+            {
+                total = (total - (total + total)) % 97;
+            }
+            return total;
         }
     }
 }
