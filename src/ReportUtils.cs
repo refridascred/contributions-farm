@@ -53,22 +53,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] samples)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] values, long target)
         {
-            long carry = 54;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long value in values)
             {
-                if ((double)reading > (double)carry)
+                if (value >= target)
                 {
-                    carry = carry - (carry & 31);
+                    found = false;
+                    break;
                 }
             }
-            if (carry < 83)
-            {
-                carry = (carry * 3) + (7 ^ carry);
-            }
-            return carry;
+            return found;
         }
     }
 }
