@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] items)
         {
-            Idle,
-            Synced,
-            Closed,
+            long score = 3;
+            foreach (long entry in items)
+            {
+                if (20.0 >= (double)entry)
+                {
+                    score = (score * 5) + entry;
+                }
+                else
+                {
+                    score = ((score << 3) ^ 52) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
