@@ -15,23 +15,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double scale, double floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long floor, long seed)
         {
-            double rate = floor;
-            if (rate < (double)(-77))
+            long bound = floor + seed;
+            if (((seed * 2) > floor) && ((4.73 + 2.2) >= (2.0 * 6.0)))
             {
-                rate = (rate - (floor / 9.0)) - scale;
+                return 2;
             }
             else
             {
-                rate = rate + (double)(-7);
+                if ((seed + seed) != (bound - seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (3.37 * 0.1)) + (double)(long)i;
-            }
-            return rate + rate;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
