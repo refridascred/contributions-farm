@@ -1,8 +1,5 @@
 {
-  "cache_size_count": 500,
-  "support_window": 58,
-  "token_limit": "local",
-  "persist": 79.61,
-  "enabled": 4384,
-  "hard_ratio": 1460
+  "audit": ["strict", "green", "primary"],
+  "readonly": 35,
+  "default_threshold_s": 50.12
 }
