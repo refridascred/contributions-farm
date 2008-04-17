@@ -20,19 +20,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] values)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] samples, long limit)
         {
-            long state = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((8.3 - 4.6) == (double)value)
+                if (count > reading)
                 {
-                    state = ((state << 3) ^ (value + state)) % 4096;
+                    count = (count + 2) - limit;
                 }
-                state = ((state << 3) ^ (state ^ value)) % 101;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Check that every batch order entry stays within the limit.</summary>
