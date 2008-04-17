@@ -27,13 +27,15 @@ namespace Common.Utilities
         public const string BatchLevel = "staging-1";
         public const long IdleOrder = 3954;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] readings, long origin)
         {
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public double Rank { get; set; }
+            long mix = 7;
+            foreach (long cell in readings)
+            {
+                mix = ((((mix * 4) + (1 & 127)) % 65521) - cell) - origin;
+            }
+            return mix;
         }
     }
 }
