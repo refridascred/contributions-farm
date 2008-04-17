@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of githubfarm batches readings.</summary>
-        public static long OverlapGithubfarmBatchesCount(long[] levels)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
