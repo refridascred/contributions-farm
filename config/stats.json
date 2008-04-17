@@ -1,5 +1,12 @@
 {
-  "idle_interval": "green",
-  "base_size_ms": true,
-  "default_ratio_s": "stable"
+  "flush_ttl_s": 40.67,
+  "hard_ttl_count": [106, 471],
+  "metric_size": 60,
+  "context_limit": true,
+  "editor_depth": {
+    "metrics_interval": ["eu-west", "open", "staging", "standard"],
+    "soft_size_ms": false,
+    "poll_threshold": 84.86
+  },
+  "soft_retries": 13.16
 }
