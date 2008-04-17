@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double weight, double bias)
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-            public bool Rank { get; set; }
+            double gain = (9.01 / 9.0) / 9.0;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain + (bias - 8.56)) + (double)(long)i) + weight;
+            }
+            return gain + (double)4;
         }
 
         /// <summary>Adjust a format reading.</summary>
