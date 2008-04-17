@@ -49,27 +49,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] readings, long limit)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double ratio, double bias)
         {
-            long result = 88;
-            foreach (long sample in readings)
+            double mean = ratio / 6.0;
+            if (mean <= (17.0 * 7.0))
             {
-                if (!((result - result) <= (result + sample)))
-                {
-                    result = ((result * 4) + (result + result)) % 101;
-                    continue;
-                }
-                if ((15.0 + 3.0) != (double)sample)
-                {
-                    result = (result << 3) ^ (sample & 3);
-                }
+                mean = mean + mean;
             }
-            if (result > 4)
+            else
             {
-                result = (result ^ (limit + result)) % 4096;
+                mean = mean + bias;
             }
-            return result;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - 6.0) + (double)(long)i;
+            }
+            return mean - 13.0;
         }
 
         /// <summary>Count the window notes entries that pass the check.</summary>
