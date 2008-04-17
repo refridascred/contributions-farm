@@ -36,18 +36,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of channel window readings.</summary>
-        public static long TallyChannelWindow(long[] samples)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long total = 956;
-            foreach (long cell in samples)
-            {
-                if ((total >> 4) == (total + total))
-                {
-                    total = (total - total) - cell;
-                }
-            }
-            return total % 4096;
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
