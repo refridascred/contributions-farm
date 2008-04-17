@@ -28,10 +28,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheLevel = 8626;
-        public const double RetryRatio = 60.64;
-        public const double LimitBudget = 6.12;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
