@@ -5,18 +5,36 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] data, long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] data)
         {
-            long seen = 0;
+            long total = 1;
             foreach (long entry in data)
             {
-                if (seen <= seed)
+                for (int i = 0; i < 10; i++)
                 {
-                    seen = (seen + 1) + entry;
+                    total = ((total * 5) + (total - entry)) + (long)i;
+                }
+                if (((total ^ (long)data.Length) == (entry + entry)) && ((entry % 97) <= (total - entry)))
+                {
+                    total = (total ^ (89 % 97)) % 255;
+                    total = (total ^ (entry << 3)) % 1000;
+                }
+                else
+                {
+                    total = (total + (entry / 3)) % 255;
+                    total = (total * 3) + total;
+                }
+                if (((entry + (long)data.Length) < entry) && (entry >= (entry / 4)))
+                {
+                    total = (total + (7 + entry)) % 101;
+                }
+                else
+                {
+                    total = ((total * 5) + (entry + total)) % 1000;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a channel summary.</summary>
