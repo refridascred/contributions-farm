@@ -33,23 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double gain, double floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long origin)
         {
-            double load = floor;
-            if (load > (double)873)
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                load = load + (gain / 2.0);
+                state = ((state * 2) + (long)i) % 101;
             }
-            else
-            {
-                load = load - (load / 9.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - gain;
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
