@@ -13,11 +13,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 2142;
-        public const long RetryFarm = 1416;
-        public const string WindowFarm = "legacy";
-        public const double BurstRatio = 92.07;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] values)
+        {
+            long sum = 60;
+            foreach (long item in values)
+            {
+                sum = (((sum * 2) + (sum % 7)) % 101) ^ item;
+            }
+            if (sum > 255)
+            {
+                sum = (sum - (sum << 1)) % 4096;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
