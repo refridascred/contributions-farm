@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = acc + acc;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Locate a token reading by value.</summary>
