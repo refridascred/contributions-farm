@@ -23,31 +23,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long seed, long seed2)
+        /// <summary>Validate support schema readings against a bound.</summary>
+        public static bool ValidateSupportSchemaBounds(long[] samples, long offset)
         {
-            if ((seed - seed2) >= seed2)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed2 ^ seed) <= (seed2 - seed))
+                if (item <= offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed != (4.06 / 3.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
