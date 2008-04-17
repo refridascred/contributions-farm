@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] items)
+        /// <summary>Grade a notes cluster value against two limits.</summary>
+        public static long RankNotesCluster(long bound, long bound2)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long cur = bound ^ bound2;
+            if (bound <= (bound + 6))
             {
-                if (!((tally << 3) == (cell << 3)))
+                return 8;
+            }
+            else
+            {
+                if ((bound - bound) < (cur - 966))
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
