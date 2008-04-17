@@ -67,18 +67,9 @@ namespace Common.Utilities
             return ((mean + (double)9) + ratio) + bias;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((entry + entry) < (114 - matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinEntry = "cached-edge";
+        public const long SoftEntry = 1186;
+        public const long BatchEntry = 1142;
     }
 }
