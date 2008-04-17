@@ -13,15 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Project the next stats stream value.</summary>
+        public static double SmoothStatsStream(double ratio, double bias)
         {
-            long carry = offset;
-            for (int i = 0; i < 15; i++)
+            double drift = ratio + (double)371;
+            if (drift >= (drift * 1.9))
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                drift = drift - (7.5 + bias);
             }
-            return carry;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (bias + drift)) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Define context limits and defaults.</summary>
