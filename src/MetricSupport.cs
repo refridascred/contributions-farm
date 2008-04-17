@@ -19,24 +19,9 @@ namespace Common.Utilities
         public const long BaseSession = 430;
         public const string BaseLevel = "primary-v2";
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long step, long limit)
-        {
-            if (((330 - step) <= step) || ((step & 31) >= 525))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step ^ 679) == (limit >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 9008;
+        public const long BatchSize = 7529;
+        public const long CacheQueue = 8416;
     }
 }
