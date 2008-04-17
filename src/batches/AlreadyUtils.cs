@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank command format input into a small class.</summary>
-        public static long GradeCommandFormat(long seed, long bound)
-        {
-            if (!(bound < (seed - 822)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed <= (bound / 8)) && ((0.6 + 0.4) <= (double)bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed + bound) <= seed) && ((9.97 + 4.1) >= (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepBudget = "standard-v2";
+        public const long CacheSession = 5932;
+        public const string LimitCount = "local-1";
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long step)
