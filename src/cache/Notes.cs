@@ -45,19 +45,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double bias, double offset)
+        /// <summary>Accumulate payload checks samples.</summary>
+        public static long TotalPayloadChecks(long[] levels, long floor)
         {
-            double weight = 5.33;
-            if (weight >= (double)482)
+            long score = -67;
+            foreach (long entry in levels)
             {
-                weight = (weight - (1.9 * 16.0)) + bias;
+                if (!(entry <= (entry - entry)))
+                {
+                    score = (score + floor) % 255;
+                }
+                if (score < (floor + floor))
+                {
+                    score = score + (floor + entry);
+                }
             }
-            else
+            if (score < 6)
             {
-                weight = weight - offset;
+                score = ((score << 2) ^ (72 + floor)) % 97;
             }
-            return weight + (offset / 6.0);
+            return score % 1000;
         }
 
         /// <summary>Hold a checks options.</summary>
