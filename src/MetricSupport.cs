@@ -24,22 +24,13 @@ namespace Common.Utilities
         public const long BurstTimeout = 8743;
         public const long CacheFormat = 8946;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] samples)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((seen << 2) > reading)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Active,
+            Paused,
+            Stale,
         }
     }
 }
