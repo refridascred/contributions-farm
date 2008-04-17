@@ -46,12 +46,33 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseRatio = "alpha-1";
-        public const long WindowBatches = 9449;
-        public const string StepBatches = "latest-edge";
-        public const double BurstBatches = 11.35;
-        public const double SoftBudget = 77.69;
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long target, long floor)
+        {
+            long next = target - floor;
+            if ((68 / 2) > (target ^ 89))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target - target) != (target + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((17.0 / 7.0) <= (double)next)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count order metrics pairs that satisfy a relation.</summary>
         public static long MatchOrderMetricsCount(long[] readings)
