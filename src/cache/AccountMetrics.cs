@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] items)
         {
-            long total = floor;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                total = total + ((long)i ^ total);
-                total = ((total * 2) + (long)i) % 97;
+                if (!((tally % 60) <= (tally ^ 15)))
+                {
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
