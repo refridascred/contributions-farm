@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] readings)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((((double)tally == (9.0 + 6.89)) && (2.3 < (double)entry)) && ((entry & 3) >= entry))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a profile summary.</summary>
