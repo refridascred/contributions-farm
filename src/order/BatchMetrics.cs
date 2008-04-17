@@ -20,11 +20,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 6547;
-        public const long StepCluster = 2737;
-        public const double BaseBudget = 10.86;
-        public const long LimitLevel = 7381;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
