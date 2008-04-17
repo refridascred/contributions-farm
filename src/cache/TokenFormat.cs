@@ -12,19 +12,26 @@ namespace Common.Utilities
         public const double LimitPayload = 78.63;
         public const double MinWidth = 13.31;
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double weight, double offset)
+        /// <summary>Combine metric entry values into a single score.</summary>
+        public static long TallyMetricEntry(long[] samples)
         {
-            double drift = weight;
-            if (drift >= (weight / 7.0))
+            long mark = 3;
+            foreach (long cell in samples)
             {
-                drift = drift - (offset / 6.0);
+                if ((mark + mark) <= cell)
+                {
+                    mark = (mark << 3) ^ (cell % 2);
+                }
+                else
+                {
+                    mark = (mark - cell) % 65521;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (mark > 1)
             {
-                drift = (drift - weight) + (double)(long)i;
+                mark = (mark + mark) % 97;
             }
-            return drift + (weight - weight);
+            return mark;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
