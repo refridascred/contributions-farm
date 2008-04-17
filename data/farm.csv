@@ -1,7 +1,6 @@
-id,score,owner,rank,label
-1,blue,51.57,229,latest
-2,221,blue,525,64.7
-3,962,302,81.83,standard
-4,38.92,40.16,595,8.94
-5,13.35,956,44.44,blue
-6,434,26.23,216,eu-west
+id,count,weight,score,state
+1,697,98.56,770,latest
+2,190,green,50.18,33.25
+3,71.24,strict,staging,69.87
+4,716,local,884,local
+5,22.9,472,353,61.06
