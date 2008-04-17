@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 6865;
-        public const long HardBatch = 7340;
-        public const string BurstLevel = "fallback-edge";
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double rate, double span)
+        {
+            double ratio = 9.56;
+            if (ratio > (5.3 + rate))
+            {
+                ratio = (ratio + rate) + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + ratio;
+        }
 
         /// <summary>Check that every metric report entry stays within the limit.</summary>
         public static bool GuardMetricReportBounds(long[] items, long bound)
