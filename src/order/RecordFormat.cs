@@ -59,21 +59,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] readings)
+        /// <summary>Count the account commits entries that pass the check.</summary>
+        public static long MeasureAccountCommitsGaps(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((count - sample) >= (sample << 3))
                 {
-                    if ((readings[i] - readings[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
