@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] values, long limit)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (item != limit)
+                if (6.6 > (double)tally)
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + 1) + entry) - target;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
