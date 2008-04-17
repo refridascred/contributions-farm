@@ -83,12 +83,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxGithubfarm = 88.06;
-        public const long StepGithubfarm = 9746;
-        public const long MinLevel = 607;
-        public const long IdleRatio = 1687;
-        public const double BurstFactor = 75.84;
+        /// <summary>Match up layout cache samples.</summary>
+        public static long OverlapLayoutCacheCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
