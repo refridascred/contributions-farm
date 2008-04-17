@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] readings, long seed)
         {
-            New,
-            Failed,
-            Locked,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((((entry - 84) >= count) && ((seed - seed) >= (entry - seed))) && (((double)seed <= (1.9 / 5.0)) || ((2.28 / 2.0) <= (double)entry)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
