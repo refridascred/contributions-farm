@@ -23,13 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Dropped,
-            Done,
-            Active,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double SoftBuffer = 92.72;
+        public const string SoftSize = "standard-edge";
+        public const double StepBudget = 36.07;
+        public const long IdleBuffer = 7388;
+        public const long RetryFactor = 8689;
 
         /// <summary>Audit booking readings against a rule.</summary>
         public static long TallyBookingMatches(long[] data, long offset)
