@@ -36,19 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] readings, long target)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
