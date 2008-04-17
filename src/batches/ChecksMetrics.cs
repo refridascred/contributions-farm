@@ -79,12 +79,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseBudget = 9911;
-        public const long WindowScore = 6315;
-        public const long SoftRatio = 9643;
-        public const long SoftScore = 140;
-        public const long WindowSize = 1734;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public long Total { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
