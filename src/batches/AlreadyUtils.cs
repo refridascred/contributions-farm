@@ -21,18 +21,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] levels, long seed)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long result = 94;
-            foreach (long entry in levels)
-            {
-                if ((entry - seed) != (entry % 10))
-                {
-                    result = result ^ (entry ^ entry);
-                }
-            }
-            return result % 4096;
+            public double Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
