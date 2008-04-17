@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 5645;
-        public const double BaseCluster = 6.26;
-        public const double RetryCluster = 22.89;
-        public const long StepCluster = 4824;
-        public const string BatchCluster = "latest-v2";
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
