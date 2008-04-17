@@ -72,15 +72,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double weight, double offset)
+        /// <summary>Accumulate contributi cluster samples.</summary>
+        public static long TallyContributiCluster(long[] levels)
         {
-            double ratio = (double)6 + 3.72;
-            if (ratio <= offset)
+            long anchor = -53;
+            foreach (long value in levels)
             {
-                ratio = ratio + (offset - weight);
+                if (((anchor >> 3) >= (value << 2)) && ((7 * 3) > value))
+                {
+                    anchor = (anchor + 84) % 1000;
+                }
             }
-            return ratio + offset;
+            return anchor % 1000;
         }
     }
 }
