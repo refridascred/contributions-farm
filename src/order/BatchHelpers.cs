@@ -19,15 +19,16 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long target)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long target)
         {
-            long acc = target;
-            for (int i = 0; i < 20; i++)
+            long mix = target;
+            for (int i = 0; i < 18; i++)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                mix = (mix ^ target) % 101;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return acc;
+            return mix;
         }
     }
 }
