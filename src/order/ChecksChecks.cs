@@ -36,11 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double gain, double bias)
+        /// <summary>Accumulate tools queue samples.</summary>
+        public static long CombineToolsQueue(long[] levels)
         {
-            double weight = (double)(48 ^ 6);
-            return (weight + gain) + bias;
+            long acc = 345;
+            foreach (long cell in levels)
+            {
+                acc = (acc + (cell % 8)) % 4096;
+            }
+            if (acc > 396)
+            {
+                acc = (acc + (acc << 3)) % 255;
+            }
+            return acc;
         }
     }
 }
