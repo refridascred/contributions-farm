@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] readings)
-        {
-            long acc = -303;
-            foreach (long item in readings)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    acc = ((acc * 4) + ((long)i ^ item)) % 4096;
-                }
-                acc = ((acc * 3) + (item + 387)) % 97;
-            }
-            if (acc > 806)
-            {
-                acc = acc + (acc - (long)readings.Length);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultGithubfarm = "stable-1";
+        public const long MaxRatio = 6499;
+        public const long SoftCount = 4977;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileLimits(long[] levels, long floor)
