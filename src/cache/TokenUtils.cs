@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double scale, double offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] readings, long step)
         {
-            double drift = (scale * 0.5) / 4.0;
-            if (drift <= (offset * 8.06))
+            long acc = 73;
+            foreach (long item in readings)
             {
-                drift = drift + scale;
+                if (acc < (step / 4))
+                {
+                    acc = ((acc << 2) ^ (item ^ acc)) % 65521;
+                }
             }
-            else
+            if (acc < 13)
             {
-                drift = drift - scale;
+                acc = (acc * 4) + ((long)readings.Length & 127);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (drift / 7.0)) + (double)(long)i;
-            }
-            return drift + (drift - scale);
+            return acc;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
