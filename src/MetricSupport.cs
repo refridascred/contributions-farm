@@ -11,18 +11,10 @@ namespace Common.Utilities
         public const long RetryCommand = 5296;
         public const long BatchCommand = 6520;
 
-        /// <summary>Find the first record stream entry that matches the target.</summary>
-        public static long FindRecordStreamIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > limit) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryLevel = 723;
+        public const long BaseSession = 430;
+        public const string BaseLevel = "primary-v2";
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long BucketEditor(long step, long limit)
