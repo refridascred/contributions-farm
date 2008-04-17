@@ -1,7 +1,10 @@
 {
-  "hard_ttl_ms": "open",
-  "record_timeout": [95, 244, 281],
-  "checks_retries": false,
-  "metrics_timeout": 77.98,
-  "soft_capacity_ms": "eu-west"
+  "strict": 8620,
+  "soft_depth_count": 35,
+  "persist": 250,
+  "buffer_ratio": {
+    "default_size": 3.83,
+    "enabled": [77, 13, 280],
+    "dry_run": [445, 430, 391, 122]
+  }
 }
