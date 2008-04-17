@@ -1,7 +1,12 @@
 {
-  "sync_interval": 75.35,
-  "warm_threshold": 78,
-  "metric_limit": "open",
-  "sync_limit": "local",
-  "soft_timeout_s": "primary"
+  "enabled": 9018,
+  "persist": false,
+  "batch_size": {
+    "enabled": 4,
+    "audit": "green",
+    "flush_timeout_pct": "strict"
+  },
+  "compress": 5304,
+  "base_retries_s": 5956,
+  "queue_depth": 94
 }
