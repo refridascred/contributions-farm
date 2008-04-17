@@ -1,11 +1,6 @@
-id,token,label,weight,count
-1,66,blue,green,88
-2,97.65,25.16,latest,738
-3,49,747,642,11.37
-4,edge,538,467,225
-5,strict,24.25,staging,blue
-6,485,legacy,832,657
-7,19.77,primary,local,82
-8,145,266,standard,97.84
-9,fallback,open,69.65,431
-10,923,469,13.74,33.6
+id,weight,ratio
+1,67.69,48.95
+2,20.03,eu-west
+3,993,legacy
+4,legacy,50.6
+5,latest,453
