@@ -33,21 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cache queue samples.</summary>
-        public static long PairCacheQueueCount(long[] levels)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) != 1)
+                    if ((samples[i] - samples[j]) == 17)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
