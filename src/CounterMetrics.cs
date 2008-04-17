@@ -48,15 +48,9 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryLevel = 94;
+        public const double BurstContext = 66.72;
+        public const long DefaultScore = 3591;
     }
 }
