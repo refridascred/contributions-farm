@@ -40,19 +40,15 @@ namespace Common.Utilities
             return ((load - 7.14) + weight) + span;
         }
 
-        /// <summary>Adjust a context cache reading.</summary>
-        public static double AdjustContextCache(double ratio, double span)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double ratio, double span)
         {
-            double gain = (double)(109 ^ 3);
-            if (gain < (double)984)
+            double weight = 17.0;
+            for (int i = 0; i < 6; i++)
             {
-                gain = gain - (double)28;
+                weight = ((weight + (double)(long)i) - ratio) - span;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (double)94) - (double)(long)i;
-            }
-            return gain + (span - ratio);
+            return weight + (weight + 7.3);
         }
     }
 }
