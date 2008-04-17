@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of batch route entries.</summary>
-        public static long CombineBatchRoute(long[] values)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long sum = 226;
-            foreach (long reading in values)
-            {
-                if ((double)sum > 4.5)
-                {
-                    sum = sum + (reading + sum);
-                }
-                sum = (sum - reading) % 255;
-            }
-            return sum % 97;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
