@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long RetryDepth = 26;
         public const long RetryWidth = 9489;
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] readings)
         {
-            public bool Count { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample + (long)readings.Length) != (tally + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
