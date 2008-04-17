@@ -1,6 +1,6 @@
 {
-  "dry_run": "primary",
-  "readonly": 98,
-  "idle_ratio_count": 43.62,
-  "farm_size": "green"
+  "poll_timeout": 500,
+  "retry_window_pct": false,
+  "compress": 9223,
+  "account_limit": ["latest", "standard"]
 }
