@@ -23,18 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (3 >= (count & 1))
+                if ((double)item != (15.0 * 13.0))
                 {
-                    count = (count + 3) ^ item;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate layout samples.</summary>
