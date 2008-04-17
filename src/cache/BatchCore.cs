@@ -21,18 +21,13 @@ namespace Common.Utilities
         public const long CacheChannel = 7514;
         public const double MaxInterval = 88.61;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] samples, long limit)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (count > reading)
-                {
-                    count = (count + 2) - limit;
-                }
-            }
-            return count;
+            Failed,
+            Queued,
+            Retry,
+            Paused,
         }
 
         /// <summary>Blend two notes measurements.</summary>
