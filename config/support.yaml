@@ -1,27 +1,18 @@
 # support settings
-batch_depth_s: 65.4
-channel_size:
-  strict: local
-  commits_size: 60
-  metrics_delay:
+token_delay: strict
+verbose:
+  - 127
+  - 154
+  - 144
+  - 500
+max_limit: edge
+max_threshold_count: true
+base_size_s:
+  batch_delay_count:
+    - open
     - legacy
-    - latest
-    - staging
-    - green
-  audit:
-    notes_limit: 1024
-    retry_capacity: 500
-    retry_ratio_ms: 500
-    strict: green
-    sync_delay_count:
-      - 471
-      - 146
-      - 488
-      - 314
-batch_retries_ms:
-  - 86
-  - 313
-  - 286
-max_timeout_ms: open
-base_interval: true
-soft_delay: 35.52
+  warm_depth_count: 66
+  compress:
+    - 326
+    - 150
+    - 454
