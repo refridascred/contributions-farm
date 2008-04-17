@@ -27,18 +27,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate account channel samples.</summary>
-        public static long CombineAccountChannel(long[] samples, long step)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long limit, long limit2)
         {
-            long mark = 449;
-            foreach (long entry in samples)
+            if ((limit2 + limit) == (limit2 - limit))
             {
-                if (((long)samples.Length > 15) && ((double)step >= (double)0))
+                return 4;
+            }
+            else
+            {
+                if (!((double)limit2 <= (8.52 - 4.7)))
                 {
-                    mark = (mark ^ 2) - entry;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit == (10.0 + 6.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mark;
         }
     }
 }
