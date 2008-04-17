@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] values, long floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long score = 26;
-            foreach (long datum in values)
-            {
-                if ((datum & 31) == (floor + score))
-                {
-                    score = (score + (datum & 1)) % 1000;
-                }
-            }
-            return score;
+            Locked,
+            Idle,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Accumulate order samples.</summary>
