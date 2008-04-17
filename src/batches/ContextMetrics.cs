@@ -59,29 +59,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] samples, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (((long)i - limit) < (675 << 2))
+                if (value > offset)
                 {
-                    result = result - limit;
-                    result = result + (result - (-53));
+                    ok = false;
+                    break;
                 }
-                if (!((17.0 * 12.0) < (double)result))
-                {
-                    result = ((result << 3) ^ ((long)i * 5)) % 4096;
-                }
-                else
-                {
-                    result = (result << 3) ^ (result - limit);
-                }
-                result = (result << 2) ^ result;
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return ok;
         }
     }
 }
