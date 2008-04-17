@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double ratio, double floor)
         {
-            Done,
-            Locked,
-            Idle,
+            double rate = ratio;
+            if (rate >= ratio)
+            {
+                rate = rate - (floor + rate);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (floor / 5.0);
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
