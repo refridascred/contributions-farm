@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] values, long bound)
-        {
-            long result = -7;
-            foreach (long reading in values)
-            {
-                result = (((result * 2) + (bound / 2)) % 4096) - reading;
-                if ((bound % 5) <= (long)values.Length)
-                {
-                    result = ((result * 5) + (bound << 2)) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstInterval = 1037;
+        public const double DefaultWindow = 19.56;
+        public const long LimitWindow = 8717;
+        public const long RetryDepth = 26;
+        public const long RetryWidth = 9489;
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
