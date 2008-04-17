@@ -24,25 +24,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long bound, long target)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long offset)
         {
-            long delta = bound ^ target;
-            if (target < (bound >> 4))
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target + target) >= target) && ((target + target) < (delta % 10)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return 1;
+                    state = (((state * 4) + offset) % 1000) + (long)i2;
                 }
-                else
-                {
-                    return 6;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
+            return state;
         }
     }
 }
