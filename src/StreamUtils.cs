@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Digest a series of schema metric entries.</summary>
+        public static long TallySchemaMetric(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 7;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (((sum << 2) ^ (sum % 12)) % 255) - item;
+                sum = sum + (21 - sum);
             }
-            return tally;
+            if (sum > (-7))
+            {
+                sum = sum ^ (sum - sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Accumulate cache samples.</summary>
