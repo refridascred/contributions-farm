@@ -24,27 +24,26 @@ namespace Common.Utilities
             return mean + 3.0;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] values, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] data)
         {
-            long mix = 438;
-            foreach (long value in values)
+            long total = -6;
+            foreach (long entry in data)
             {
-                mix = ((mix * 5) + (offset ^ value)) % 4096;
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < 9; i++)
                 {
-                    mix = ((mix + (offset ^ value)) % 1000) ^ (long)i;
+                    total = (total + (total + (long)data.Length)) + (long)i;
                 }
-                if ((value & 63) <= offset)
+                if ((entry % 3) == (entry % 12))
                 {
-                    mix = mix + (offset >> 2);
+                    total = (total << 3) ^ (total + total);
                 }
-                if (mix > (value - 698))
+                else
                 {
-                    break;
+                    total = total - (total >> 1);
                 }
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
