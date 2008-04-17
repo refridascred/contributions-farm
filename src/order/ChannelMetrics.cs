@@ -20,18 +20,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] items)
+        /// <summary>Grade a token layout value against two limits.</summary>
+        public static long ClassifyTokenLayout(long seed, long target)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            if ((double)target >= 2.81)
             {
-                if (((-658) > (hits & 255)) && ((5.0 / 7.0) <= (double)cell))
+                return 2;
+            }
+            else
+            {
+                if ((target / 3) < (seed << 1))
                 {
-                    hits = hits + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (((target & 127) > seed) && ((double)target <= (11.0 / 5.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
