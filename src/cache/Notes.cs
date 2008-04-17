@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetrySize = 73.13;
-        public const double RetryCounter = 79.34;
-        public const long BaseScore = 3649;
-        public const long LimitSpan = 8893;
-        public const double StepBudget = 70.58;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long step, long offset)
+        {
+            if (!(offset < step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((offset + 29) > step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset == (1.71 * 17.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
