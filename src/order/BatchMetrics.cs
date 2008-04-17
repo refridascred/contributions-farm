@@ -58,32 +58,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stats notes value against two limits.</summary>
-        public static long BucketStatsNotes(long step, long floor)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long next = step - floor;
-            if (((next - step) > (floor << 3)) || ((next % 64) > ((-895) - step)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step << 1) == (step * 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step <= (5.76 / 4.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Ready,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
