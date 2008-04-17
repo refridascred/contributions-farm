@@ -1,8 +1,5 @@
 # support settings
-flush_ttl_s: cached
-token_threshold:
-  - local
-  - strict
-  - legacy
-compress: 99
-batch_capacity: false
+counter_limit: 500
+idle_window: 77.79
+record_delay: fallback
+batch_window: strict
