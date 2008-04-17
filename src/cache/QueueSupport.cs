@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double SoftBuffer = 39.48;
         public const long RetryBuffer = 9799;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultRatio = 7709;
-        public const double DefaultOrder = 67.21;
-        public const string MaxSpan = "standard-1";
-        public const long RetryLevel = 3131;
-        public const long RetryOrder = 3539;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] data, long seed)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (!(value < (seed + value)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
