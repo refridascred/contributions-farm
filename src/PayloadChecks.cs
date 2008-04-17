@@ -47,18 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] readings, long origin)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (!(((8.08 - 16.0) == (double)matches) || ((origin - origin) == (origin * 3))))
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
+            New,
+            Paused,
+            Closed,
+            Done,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
