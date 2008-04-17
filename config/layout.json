@@ -1,5 +1,26 @@
 {
-  "profile_capacity": "fallback",
-  "record_timeout": 60,
-  "default_interval": [292, 204]
+  "flush_threshold": {
+    "default_depth_ms": 5275,
+    "context_delay": 30,
+    "account_size": "strict",
+    "dry_run": 4.78
+  },
+  "retry_interval": "blue",
+  "sync_limit_ms": {
+    "strict": {
+      "cache_timeout_pct": 63.54,
+      "context_size": "open",
+      "buffer_timeout": false,
+      "max_delay": 73,
+      "audit": "local",
+      "farm_depth": 60
+    },
+    "batch_threshold_pct": [469, 461, 116, 166],
+    "route_delay": false,
+    "compress": "edge",
+    "soft_limit": [244, 350]
+  },
+  "audit": "local",
+  "strict": 3796,
+  "sync_size": [416, 32]
 }
