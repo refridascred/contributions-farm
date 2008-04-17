@@ -1,5 +1,5 @@
 {
-  "readonly": false,
-  "sync_limit": 30,
-  "burst_limit_s": "primary"
+  "enabled": true,
+  "window_limit": "standard",
+  "cache_capacity": [307, 280, 77]
 }
