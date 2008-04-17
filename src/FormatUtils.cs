@@ -48,19 +48,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] data, long origin)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample > origin)
+                if (samples[i] > limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Find the first payload entry entry that matches the target.</summary>
