@@ -1,6 +1,5 @@
 # support settings
-enabled: 1024
-account_timeout: 23
-record_limit: stable
-compress: cached
-hard_interval_ms: 0.04
+cache_timeout_ms: false
+already_depth: open
+min_window_count: fallback
+default_threshold_s: legacy
