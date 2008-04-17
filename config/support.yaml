@@ -1,7 +1,4 @@
 # support settings
-min_capacity_s: 35.09
-audit: local
-commits_delay: primary
-support_interval: 29.43
-base_capacity_s: 4575
-base_delay: edge
+burst_window_ms: true
+buffer_ratio: eu-west
+audit: 500
