@@ -26,18 +26,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] levels)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long target)
         {
-            long state = 40;
-            foreach (long datum in levels)
+            long sum = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((state / 8) <= state)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    state = (((state * 5) + state) % 65521) ^ datum;
+                    sum = ((sum + (34 + target)) % 101) ^ (long)i2;
                 }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return state;
+            return sum;
         }
     }
 }
