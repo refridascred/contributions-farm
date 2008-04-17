@@ -46,23 +46,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double weight, double offset)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double ratio, double bias)
         {
-            double rate = (double)(93 % 5);
-            if (rate < rate)
+            double bias2 = (double)(949 % 2);
+            if (bias2 > bias)
             {
-                rate = rate - weight;
+                bias2 = (bias2 + 1.67) - ratio;
             }
-            else
-            {
-                rate = rate - (double)6;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (3.1 - offset)) + (double)(long)i;
-            }
-            return rate + offset;
+            return bias2 - (bias + 5.0);
         }
     }
 }
