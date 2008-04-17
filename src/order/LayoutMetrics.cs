@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] readings)
+        /// <summary>Audit profile entry readings against a rule.</summary>
+        public static long CountProfileEntryHits(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((reading ^ 5) != (reading - count))
+                if ((740 + hits) >= datum)
                 {
-                    count = count + 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
