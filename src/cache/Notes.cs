@@ -37,12 +37,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long floor, long limit)
         {
-            Dropped,
-            Queued,
-            Synced,
+            if (!((double)floor < (4.74 / 3.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor + limit) == ((-650) * 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Accumulate payload checks samples.</summary>
