@@ -35,12 +35,31 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long target, long limit)
         {
-            Pending,
-            Retry,
-            Active,
+            if ((7.0 / 6.0) >= (double)limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit & 3) == (241 - limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target & 3) == (target + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
