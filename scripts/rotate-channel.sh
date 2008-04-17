@@ -6,8 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=202
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-primary}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
 while [ "${count}" -lt 7 ]; do
@@ -15,6 +22,5 @@ while [ "${count}" -lt 7 ]; do
 done
 log "ran ${count} rounds"
 
-for item in blue fallback; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=282
+log "limit is ${CHANNEL_LIMIT}"
