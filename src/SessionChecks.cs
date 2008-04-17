@@ -26,19 +26,11 @@ namespace Common.Utilities
             return weight2 - 2.4;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] data, long floor)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Score { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Derive the next window already value from a seed.</summary>
