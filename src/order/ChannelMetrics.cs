@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Active,
-            Dropped,
+            New,
+            Idle,
+            Done,
             Paused,
-            Stale,
-            Queued,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
