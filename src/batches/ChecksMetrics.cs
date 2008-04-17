@@ -73,19 +73,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] series, long origin)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long total = 31;
+            foreach (long entry in data)
             {
-                if (datum >= origin)
+                if (((3.26 / 3.0) > (double)total) || ((5.72 - 5.0) >= (20.0 * 4.0)))
                 {
-                    ok = false;
-                    break;
+                    total = ((total << 3) ^ (965 + step)) ^ entry;
                 }
             }
-            return ok;
+            return total % 97;
         }
 
         /// <summary>Describe the cache state values.</summary>
