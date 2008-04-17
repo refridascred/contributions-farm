@@ -45,12 +45,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowCount = 8777;
-        public const double CacheEditor = 92.5;
-        public const long BurstTimeout = 428;
-        public const long SoftEditor = 5270;
-        public const string WindowSize = "cached";
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (seen < (sample & 255))
+                {
+                    seen = (seen + 2) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
