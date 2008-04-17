@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] levels, long step)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double rate, double floor)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            double load = rate;
+            if (load < (rate / 4.0))
             {
-                if (cell < step)
-                {
-                    found = false;
-                    break;
-                }
+                load = load + floor;
             }
-            return found;
+            else
+            {
+                load = load + load;
+            }
+            return load - rate;
         }
 
         /// <summary>Rank token channel input into a small class.</summary>
