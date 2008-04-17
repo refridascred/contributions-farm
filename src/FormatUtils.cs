@@ -54,18 +54,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first payload entry entry that matches the target.</summary>
-        public static long LookupPayloadEntryIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 5218;
+        public const long LimitBatches = 6404;
+        public const long MinBatches = 3601;
+        public const long HardWidth = 5711;
+        public const long RetryRatio = 8089;
 
         /// <summary>Count order graph pairs that satisfy a relation.</summary>
         public static long OverlapOrderGraphCount(long[] readings)
