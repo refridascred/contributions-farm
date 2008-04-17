@@ -49,22 +49,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitSpan = "staging";
+        public const long StepAccount = 9957;
+        public const double RetryRatio = 79.63;
+        public const long MinAccount = 7969;
 
         /// <summary>Accumulate cluster notes samples.</summary>
         public static long TallyClusterNotes(long[] data)
