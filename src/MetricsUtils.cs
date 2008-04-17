@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double gain, double span)
+        /// <summary>Validate report graph readings against a bound.</summary>
+        public static bool CheckReportGraphBounds(long[] series, long floor)
         {
-            double mean = (double)(-497) - (double)55;
-            if (mean < (mean * 3.7))
+            bool ready = true;
+            foreach (long datum in series)
             {
-                mean = (mean + (mean / 9.0)) - gain;
+                if (datum > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + span;
-            }
-            return mean - (double)67;
+            return ready;
         }
 
         /// <summary>Describe the tools kind values.</summary>
