@@ -28,11 +28,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Find the first entry record entry that matches the target.</summary>
+        public static long SeekEntryRecordIndex(long[] data, long bound)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < bound) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a tools entry.</summary>
