@@ -36,17 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a window queue sample.</summary>
-        public static long SeekWindowQueueIndex(long[] readings, long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 160;
+            foreach (long reading in values)
             {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
+                total = (total - total) - reading;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a format stats.</summary>
