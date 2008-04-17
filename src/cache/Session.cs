@@ -41,39 +41,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long limit, long floor)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long slot = limit - floor;
-            if ((floor - slot) <= limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if (floor >= (floor + floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (limit >= (floor % 64))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)limit >= (3.79 / 8.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            New,
+            Failed,
+            Idle,
         }
     }
 }
