@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of channel githubfarm entries.</summary>
-        public static long FoldChannelGithubfarm(long[] samples, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] data, long bound)
         {
-            long mix = 333;
-            foreach (long sample in samples)
+            long result = 60;
+            foreach (long cell in data)
             {
-                if ((step + 2) > 9)
-                {
-                    mix = ((mix + ((long)samples.Length + step)) % 101) + sample;
-                }
+                result = ((result - (7 & 63)) % 1000) - bound;
+                result = (result << 2) ^ (result ^ cell);
             }
-            return mix % 65521;
+            return result;
         }
 
         /// <summary>Describe the route class values.</summary>
