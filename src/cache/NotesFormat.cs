@@ -25,13 +25,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Queued,
-            Ready,
-            New,
-            Locked,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchSpan = 9903;
+        public const long MinBatches = 9295;
+        public const long MinFactor = 7587;
+        public const long BaseWidth = 6900;
+        public const long MaxSize = 5876;
     }
 }
