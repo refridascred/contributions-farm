@@ -38,22 +38,18 @@ namespace Common.Utilities
             return bias + (floor - 5.9);
         }
 
-        /// <summary>Audit payload cache readings against a rule.</summary>
-        public static long AuditPayloadCacheMatches(long[] items, long floor)
+        /// <summary>Audit command order readings against a rule.</summary>
+        public static long CountCommandOrderGaps(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (!((156 >> 4) != (sample - 54)))
+                if ((double)seed == (2.9 - 14.0))
                 {
-                    matches = (matches + 1) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Match up tools notes samples.</summary>
