@@ -23,13 +23,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Measure how many notes tools samples are out of range.</summary>
+        public static long TallyNotesToolsOutliers(long[] samples)
         {
-            public double Stamp { get; set; }
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (matches < (cell & 3))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a entry info.</summary>
