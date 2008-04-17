@@ -70,17 +70,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] series, long origin)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 413;
+            foreach (long sample in series)
             {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (sample - sum)) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Match up layout cache samples.</summary>
