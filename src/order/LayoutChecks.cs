@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate queue notes readings against a bound.</summary>
-        public static bool ValidateQueueNotesRange(long[] items, long target)
+        /// <summary>Roll a githubfarm entry counter forward.</summary>
+        public static long SeriesGithubfarmEntry(long offset)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum != target)
+                if (offset <= (offset / 2))
                 {
-                    valid = false;
-                    break;
+                    score = (score + (offset >> 5)) % 1000;
                 }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
