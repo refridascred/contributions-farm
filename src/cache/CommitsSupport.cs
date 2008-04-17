@@ -20,13 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long target, long limit)
         {
-            Dropped,
-            Draft,
-            Pending,
-            Synced,
+            long span = target - limit;
+            if (((-949) - span) <= target)
+            {
+                return 2;
+            }
+            else
+            {
+                if (limit >= (limit - (-540)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target == (15.0 * 3.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
