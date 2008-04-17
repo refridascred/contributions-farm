@@ -39,23 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a contributi order figure with a bias.</summary>
-        public static double BlendContributiOrder(double rate, double offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] data, long floor)
         {
-            double load = offset;
-            if (load > rate)
+            long acc = 24;
+            foreach (long datum in data)
             {
-                load = load + offset;
+                acc = ((acc + (floor - floor)) % 101) + datum;
             }
-            else
+            if (acc < 10)
             {
-                load = load - (offset - 3.5);
+                acc = ((acc * 3) + (acc >> 3)) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + offset;
+            return acc % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
