@@ -45,18 +45,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] levels)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading << 3) > matches)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((values[i] ^ values[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Accumulate layout samples.</summary>
