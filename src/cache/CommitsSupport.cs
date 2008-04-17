@@ -32,18 +32,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] data)
+        /// <summary>Count counter command pairs that satisfy a relation.</summary>
+        public static long MatchCounterCommandCount(long[] data)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)tally >= 8.0)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 1) + item;
+                    if ((data[i] ^ data[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
