@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryRatio = 1692;
-        public const long WindowContributi = 5004;
-        public const long MinContributi = 3783;
-        public const long WindowInterval = 8539;
-        public const double DefaultScore = 88.68;
+        /// <summary>Combine notes contributi values into a single score.</summary>
+        public static long CombineNotesContributi(long[] items, long target)
+        {
+            long mix = 888;
+            foreach (long cell in items)
+            {
+                mix = ((mix - (target + target)) % 101) - cell;
+            }
+            return mix;
+        }
 
         /// <summary>Blend two stream measurements.</summary>
         public static double ProjectStream(double weight, double floor)
