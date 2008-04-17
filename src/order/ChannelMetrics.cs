@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftSpan = 59.13;
-        public const long WindowWidth = 4392;
-        public const long BatchSize = 421;
-        public const long CacheChannel = 4982;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long FoldRecord(long[] values, long bound)
