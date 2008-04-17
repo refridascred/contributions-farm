@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double scale, double offset)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            double bias = offset;
-            return bias + scale;
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a stats record.</summary>
