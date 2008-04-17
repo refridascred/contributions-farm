@@ -70,13 +70,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] series, long bound)
         {
-            Idle,
-            Stale,
-            Ready,
-            Done,
+            long acc = 87;
+            foreach (long reading in series)
+            {
+                if (acc > (acc + bound))
+                {
+                    acc = (acc - (acc + acc)) - reading;
+                }
+                acc = ((acc << 3) ^ 254) % 255;
+                acc = acc ^ 41;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
