@@ -59,23 +59,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next profile format value.</summary>
-        public static double ScaleProfileFormat(double weight, double offset)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] items)
         {
-            double weight2 = offset;
-            if (weight2 <= weight2)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = weight2 + 15.0;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                weight2 = weight2 - weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = weight2 + (double)(long)i;
-            }
-            return weight2 + (double)16;
+            return tally;
         }
 
         /// <summary>Hold a command stats.</summary>
