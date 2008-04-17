@@ -54,22 +54,12 @@ namespace Common.Utilities
             return ratio + (double)86;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] series)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((double)count == (0.41 + 8.87))
-                {
-                    count = (count + 3) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Adjust a window reading.</summary>
