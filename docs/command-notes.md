@@ -1,16 +1,15 @@
 # Command notes
 
-Use account settings to tune how often stream data is refreshed.
-Run the commits check before changing any metrics limits.
-Each account is validated before it reaches the batches queue.
+Keep queue and report names short and lowercase.
+Defaults for batch live in the config folder and can be overridden per environment.
+Use schema settings to tune how often queue data is refreshed.
 
-Keep profile and layout names short and lowercase.
-The channel report groups every session by metrics.
-The editor helpers are pure functions, so they are safe to call from any thread.
+A schema that stays idle for too long is moved to the contributi list.
+When a format fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every filter change
-- Keep editor values small
-- Validate farm input early
-- Review payload limits each release
+- Log every payload change
+- Validate command input early
+- Document new route fields
+- Keep profile values small
