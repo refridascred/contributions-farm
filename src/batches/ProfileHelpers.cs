@@ -18,21 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] samples)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (series[i] > floor)
                 {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
