@@ -42,22 +42,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long bound)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = (acc << 2) ^ (bound ^ bound);
-                if (!((double)acc <= (double)bound))
-                {
-                    acc = (acc << 3) ^ acc;
-                    acc = (acc + ((-36) + bound)) % 255;
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Scale a entry editor figure with a bias.</summary>
