@@ -1,6 +1,9 @@
 # support settings
-stats_capacity: 97.14
-default_ttl_count: eu-west
-cache_capacity: true
-sync_window_count: 500
-token_depth: standard
+min_timeout_ms:
+  - primary
+  - fallback
+  - green
+readonly: true
+enabled: true
+audit: 5631
+editor_depth: 82.41
