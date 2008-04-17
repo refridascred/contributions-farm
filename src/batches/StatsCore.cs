@@ -32,19 +32,25 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] levels, long step)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long seed)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell != step)
+                acc = ((acc << 2) ^ (seed + acc)) % 4096;
+                if (!((double)(long)i >= (7.7 - 0.5)))
                 {
-                    valid = false;
-                    break;
+                    acc = (acc + (seed % 5)) % 1000;
+                    acc = ((acc * 3) + (seed ^ (long)i)) % 4096;
                 }
+                else
+                {
+                    acc = (acc * 3) + (acc >> 5);
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Accumulate checks samples.</summary>
