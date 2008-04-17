@@ -69,13 +69,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Paused,
-            Stale,
-            Closed,
-            Pending,
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
