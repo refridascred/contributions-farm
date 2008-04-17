@@ -28,18 +28,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] values, long bound)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double weight, double span)
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((sample * 4) <= sample)
-                {
-                    count = (count + 2) + bound;
-                }
-            }
-            return count;
+            double load = (double)(25 / 6);
+            return ((load - 7.14) + weight) + span;
         }
 
         /// <summary>Adjust a context cache reading.</summary>
