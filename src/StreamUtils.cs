@@ -33,21 +33,16 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long target)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long origin)
         {
-            long result = target;
-            for (int i = 0; i < 10; i++)
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
             {
-                result = result - (target << 3);
-                result = (result << 2) ^ result;
-                if (!(target < result))
-                {
-                    result = result + (result << 2);
-                }
-                result = ((result * 2) + (long)i) % 97;
+                mix = mix - (origin + (long)i);
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Hold a already stats.</summary>
