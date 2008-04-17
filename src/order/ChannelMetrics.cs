@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] levels, long origin)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Pending,
+            Queued,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
