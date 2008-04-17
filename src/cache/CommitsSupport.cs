@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] readings)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long state = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((seen - 681) <= reading)
-                {
-                    seen = seen + 3;
-                }
+                state = ((state << 2) ^ 48) % 101;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Find the first command batch entry that matches the target.</summary>
