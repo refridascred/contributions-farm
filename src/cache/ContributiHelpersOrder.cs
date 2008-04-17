@@ -5,29 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] values, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                long cur = (seed << 3) << 2;
-                if (((long)i - (long)i) != (cur / 9))
+                if (((7 - 21) == (583 - entry)) || ((8.02 - 19.0) == (double)matches))
                 {
-                    cur = (cur * 2) + (seed * 4);
-                    mix = mix - (long)i;
+                    matches = (matches + 2) + target;
                 }
-                else
-                {
-                    cur = ((cur << 2) ^ (long)i) % 97;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = (mix ^ (seed + seed)) + (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Blend two stream measurements.</summary>
