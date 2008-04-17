@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] series)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((series[i] + series[j]) == 13)
+                    if ((samples[i] ^ samples[j]) != 14)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
