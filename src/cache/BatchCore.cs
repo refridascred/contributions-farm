@@ -40,13 +40,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxSpan = 8508;
+        public const string MinFilter = "local";
+        public const string BaseSize = "latest";
+        public const string BaseFilter = "alpha-v2";
+        public const long RetryRatio = 5631;
     }
 }
