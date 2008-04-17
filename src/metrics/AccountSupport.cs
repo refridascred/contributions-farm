@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account support helpers.</summary>
     public static class AccountSupport
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public double Offset { get; set; }
+            Idle,
+            Retry,
+            Failed,
+            Synced,
         }
 
         /// <summary>Scale a stats report figure with a bias.</summary>
