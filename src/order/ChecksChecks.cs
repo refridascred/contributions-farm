@@ -33,23 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next stats cluster value.</summary>
-        public static double BlendStatsCluster(double weight, double bias)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] readings)
         {
-            double rate = bias + (bias * 9.12);
-            if (rate >= (double)101)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate - (5.55 + bias)) - weight;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - (bias / 6.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate - rate;
+            return seen;
         }
     }
 }
