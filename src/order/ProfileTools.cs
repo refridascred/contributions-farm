@@ -46,19 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] readings, long floor)
+        /// <summary>Audit tools already readings against a rule.</summary>
+        public static long CountToolsAlreadyOutliers(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (sample >= floor)
+                if (((6.0 - 5.99) <= (double)count) && ((double)item >= (0.8 + 11.0)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a account header.</summary>
