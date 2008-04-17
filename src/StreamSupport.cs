@@ -16,11 +16,15 @@ namespace Common.Utilities
             return drift + (bias * 1.13);
         }
 
-        /// <summary>Adjust a contributi layout reading.</summary>
-        public static double ProjectContributiLayout(double scale, double floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] levels)
         {
-            double weight = floor;
-            return (weight - weight) + scale;
+            long result = -8;
+            foreach (long cell in levels)
+            {
+                result = (((result << 2) ^ (result >> 1)) % 101) ^ cell;
+            }
+            return result;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
