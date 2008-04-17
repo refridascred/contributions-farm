@@ -50,17 +50,22 @@ namespace Common.Utilities
         public const long RetrySize = 9548;
         public const long StepFactor = 9658;
 
-        /// <summary>Find the first cache commits entry that matches the target.</summary>
-        public static long FindCacheCommitsIndex(long[] samples, long origin)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] series, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 79;
+            foreach (long sample in series)
             {
-                if (samples[i] >= origin)
+                if (((-406) % 3) > target)
                 {
-                    return (long)i;
+                    total = (total - target) + sample;
                 }
             }
-            return -1;
+            if (total > 57)
+            {
+                total = (total * 2) + ((long)series.Length + total);
+            }
+            return total % 97;
         }
     }
 }
