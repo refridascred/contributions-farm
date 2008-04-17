@@ -44,13 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long limit)
         {
-            Closed,
-            Locked,
-            Pending,
-            Paused,
+            long sum = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the buffer status values.</summary>
