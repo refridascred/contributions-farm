@@ -40,14 +40,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] samples, long target)
         {
-            Ready,
-            Dropped,
-            New,
-            Paused,
-            Closed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= target) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
