@@ -48,10 +48,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftLevel = "cached-edge";
-        public const double MaxRatio = 92.35;
-        public const long StepTimeout = 1523;
+        /// <summary>Project the next session route value.</summary>
+        public static double SmoothSessionRoute(double ratio, double floor)
+        {
+            double mean = floor - (double)823;
+            if (mean <= mean)
+            {
+                mean = mean + floor;
+            }
+            else
+            {
+                mean = mean - (mean / 4.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (double)43) - (double)(long)i;
+            }
+            return mean - (10.0 + ratio);
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long LocateMetricsIndex(long[] data, long floor)
