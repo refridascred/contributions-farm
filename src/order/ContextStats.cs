@@ -57,19 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route payload readings against a bound.</summary>
-        public static bool CheckRoutePayloadRange(long[] data, long step)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Done,
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Match up tools notes samples.</summary>
