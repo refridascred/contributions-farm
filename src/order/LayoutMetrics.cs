@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] levels, long target)
+        /// <summary>Validate editor contributi readings against a bound.</summary>
+        public static bool VerifyEditorContributiLimits(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if ((levels[i] > target) && ((levels[i] % 3) != 0))
+                if (item >= origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
