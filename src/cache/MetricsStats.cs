@@ -45,17 +45,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] readings, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((readings[i] == origin) && ((readings[i] % 5) == 0))
+                if ((reading << 3) > matches)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate layout samples.</summary>
