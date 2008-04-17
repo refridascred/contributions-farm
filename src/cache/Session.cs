@@ -61,18 +61,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] samples, long step)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long floor, long step)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long bound = floor - step;
+            if (((double)floor <= 4.0) && ((939 * 5) < step))
             {
-                if ((double)item > (double)step)
+                return 7;
+            }
+            else
+            {
+                if (((floor & 255) < (floor & 127)) && ((floor + bound) >= bound))
                 {
-                    seen = seen + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (step > (floor + floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((10.0 - 6.6) >= (double)bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
