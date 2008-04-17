@@ -19,24 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long seed, long bound)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            if ((7.0 * 6.0) == (double)bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((375 + bound) != (bound >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Total { get; set; }
+            public double Size { get; set; }
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
