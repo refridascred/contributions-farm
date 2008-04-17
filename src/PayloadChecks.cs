@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double gain, double bias)
         {
-            Stale,
-            Pending,
-            Closed,
+            double mean = (double)(340 - (-3));
+            return (mean - (bias * 4.97)) + gain;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
