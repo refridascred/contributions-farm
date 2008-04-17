@@ -1,12 +1,7 @@
 {
-  "dry_run": {
-    "persist": 1024,
-    "warm_size": "fallback",
-    "burst_ttl_pct": "latest",
-    "metrics_capacity": 100
-  },
-  "soft_ttl": false,
-  "readonly": "strict",
-  "sync_timeout_ms": ["blue", "open", "strict", "strict"],
-  "cache_interval": false
+  "profile_capacity": 41,
+  "stream_size": "primary",
+  "flush_size_pct": true,
+  "batch_depth": 64.5,
+  "stream_timeout": 30
 }
