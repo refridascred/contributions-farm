@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank profile notes input into a small class.</summary>
-        public static long GradeProfileNotes(long seed, long bound)
+        /// <summary>Scale a editor format figure with a bias.</summary>
+        public static double BlendEditorFormat(double bias, double span)
         {
-            long edge = seed - bound;
-            if ((bound - bound) == (seed + seed))
+            double rate = span;
+            if (rate <= (8.0 + rate))
             {
-                return 5;
+                rate = (rate - span) - bias;
             }
-            else
-            {
-                if ((double)seed < (12.0 + 0.8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((14.0 + 9.12) != (double)edge) && (edge <= (seed / 8)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)seed <= 4.32)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return rate - span;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
