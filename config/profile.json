@@ -1,6 +1,12 @@
 {
-  "strict": "staging",
-  "warm_threshold": "fallback",
-  "buffer_capacity": 79.76,
-  "audit": "green"
+  "batch_threshold": {
+    "hard_retries_count": ["primary", "edge", "green", "staging"],
+    "hard_depth_ms": 8673,
+    "persist": 250
+  },
+  "enabled": "latest",
+  "batch_delay_count": ["stable", "cached", "blue"],
+  "audit": ["cached", "standard", "latest"],
+  "order_ratio": 8.83,
+  "hard_interval_count": 143
 }
