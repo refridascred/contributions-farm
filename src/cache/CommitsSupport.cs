@@ -67,19 +67,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] samples, long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long offset)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell <= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (anchor - (anchor - 93)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return stale;
+            return anchor;
         }
     }
 }
