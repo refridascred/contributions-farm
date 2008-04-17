@@ -66,24 +66,13 @@ namespace Common.Utilities
         public const long MinScore = 3020;
         public const string BurstStream = "primary-1";
 
-        /// <summary>Digest a series of payload cluster entries.</summary>
-        public static long TotalPayloadCluster(long[] data)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long total = 6;
-            foreach (long cell in data)
-            {
-                total = (total << 2) ^ (total >> 1);
-                total = (total + (cell & 15)) % 255;
-                if ((cell - 95) >= total)
-                {
-                    total = total + cell;
-                }
-            }
-            if (total < 34)
-            {
-                total = (total ^ (11 ^ total)) % 4096;
-            }
-            return total;
+            public double Size { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
