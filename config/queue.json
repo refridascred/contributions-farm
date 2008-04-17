@@ -1,5 +1,13 @@
 {
-  "base_timeout": "edge",
-  "warm_interval": "strict",
-  "cache_interval": true
+  "retry_retries": "stable",
+  "idle_capacity_count": 75.21,
+  "default_depth_pct": 61.61,
+  "hard_interval_ms": [27, 30, 382],
+  "flush_retries": 65,
+  "default_ttl": {
+    "metrics_ratio": "latest",
+    "min_window": "latest",
+    "account_ttl": 7100,
+    "compress": "strict"
+  }
 }
