@@ -32,9 +32,23 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 1327;
-        public const string RetryChannel = "open-v2";
-        public const long WindowTimeout = 9952;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] values)
+        {
+            long score = 116;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    score = ((((score << 2) ^ (score % 97)) % 97) ^ (long)i) ^ sample;
+                }
+                score = score ^ (453 + score);
+            }
+            if (score < 86)
+            {
+                score = (score + (score - score)) % 97;
+            }
+            return score;
+        }
     }
 }
