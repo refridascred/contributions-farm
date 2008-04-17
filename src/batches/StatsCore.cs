@@ -47,17 +47,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] readings, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (readings[i] < origin)
+                if ((242 << 3) > (step & 31))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Adjust a profile reading.</summary>
