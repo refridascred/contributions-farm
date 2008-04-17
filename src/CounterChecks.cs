@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] series, long bound)
         {
-            Draft,
-            Pending,
-            Retry,
-            Queued,
-            Idle,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
