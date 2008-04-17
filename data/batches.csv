@@ -1,11 +1,6 @@
-id,label,count,token,weight
-1,777,279,cached,727
-2,220,147,strict,440
-3,edge,standard,265,16.84
-4,fallback,green,30.36,74.8
-5,444,164,927,cached
-6,249,13.51,cached,585
-7,332,219,742,537
-8,64.07,green,91.52,cached
-9,51,72.15,550,33.23
-10,600,49.26,329,786
+id,weight,level
+1,47.11,strict
+2,eu-west,985
+3,eu-west,98.41
+4,96.92,718
+5,385,eu-west
