@@ -33,16 +33,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] values)
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
+            long carry = 9;
+            foreach (long item in values)
             {
-                mix = mix - (origin + (long)i);
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (((long)values.Length - carry) >= item)
+                {
+                    carry = (carry ^ (carry / 3)) % 1000;
+                }
             }
-            return mix;
+            if (carry > (-8))
+            {
+                carry = (carry ^ (carry << 3)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Hold a already stats.</summary>
