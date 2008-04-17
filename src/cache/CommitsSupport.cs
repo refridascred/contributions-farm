@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] samples)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if ((((count - value) != (count % 100)) || ((73 ^ value) >= (count & 1))) && !((count + count) <= 32))
+                if (entry > origin)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the command class values.</summary>
