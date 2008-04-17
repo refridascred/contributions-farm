@@ -32,19 +32,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] levels, long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long acc = -38;
+            foreach (long entry in values)
             {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc ^ (85 + acc)) ^ entry) - origin;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
