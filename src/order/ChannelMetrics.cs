@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] items, long seed)
         {
-            public bool Weight { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
+            long mark = 9;
+            foreach (long cell in items)
+            {
+                mark = mark ^ (2 + cell);
+                mark = mark - (cell & 31);
+            }
+            if (mark < 0)
+            {
+                mark = (mark * 5) + seed;
+            }
+            return mark;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
