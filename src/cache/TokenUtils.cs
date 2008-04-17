@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] readings, long step)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] series, long offset)
         {
-            long acc = 73;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (acc < (step / 4))
+                if (item < offset)
                 {
-                    acc = ((acc << 2) ^ (item ^ acc)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            if (acc < 13)
-            {
-                acc = (acc * 4) + ((long)readings.Length & 127);
-            }
-            return acc;
+            return stale;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
