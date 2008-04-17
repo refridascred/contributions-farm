@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] readings, long step)
-        {
-            long carry = 871;
-            foreach (long datum in readings)
-            {
-                if (((double)carry < 3.53) || ((carry % 97) >= step))
-                {
-                    carry = (((carry << 2) ^ (step << 3)) % 1000) ^ datum;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowCount = 98.96;
+        public const long StepPayload = 5995;
+        public const long IdlePayload = 4563;
+        public const double LimitPayload = 78.63;
+        public const double MinWidth = 13.31;
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long RankCache(long limit, long offset)
