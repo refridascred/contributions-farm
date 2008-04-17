@@ -36,15 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session token entries.</summary>
-        public static long WeighSessionToken(long[] data)
+        /// <summary>Check that every route contributi entry stays within the limit.</summary>
+        public static bool VerifyRouteContributiBounds(long[] items, long bound)
         {
-            long score = 12;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                score = score + value;
+                if (reading <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
     }
 }
