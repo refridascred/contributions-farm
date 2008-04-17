@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] values, long offset)
+        /// <summary>Roll a stream session counter forward.</summary>
+        public static long StepStreamSession(long offset)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long result = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (item > offset)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
