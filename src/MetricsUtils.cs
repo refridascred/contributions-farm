@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const long MaxToken = 6146;
         public const long HardToken = 2856;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] series)
         {
-            Done,
-            Synced,
-            Dropped,
-            Pending,
-            Retry,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((double)matches >= (4.3 / 4.0))
+                {
+                    matches = (matches + 1) - cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
