@@ -1,13 +1,20 @@
 {
-  "retry_ratio": "strict",
-  "audit": "standard",
-  "cache_ratio_s": {
-    "retry_retries_ms": true,
-    "dry_run": {
-      "poll_limit_s": 51,
-      "strict": [123, 474, 482],
-      "idle_window": 255
-    },
-    "max_ttl_s": 1024
+  "default_depth_s": "local",
+  "default_depth_count": {
+    "cache_interval_ms": [245, 326],
+    "poll_capacity_s": "open",
+    "readonly": true,
+    "max_ttl_ms": ["legacy", "cached"]
+  },
+  "payload_depth": 38,
+  "readonly": "stable",
+  "hard_timeout_s": 45,
+  "enabled": {
+    "githubfarm_timeout": 60,
+    "sync_depth_s": "blue",
+    "audit": "blue",
+    "readonly": 76,
+    "editor_timeout": 12.72,
+    "idle_size_ms": 26
   }
 }
