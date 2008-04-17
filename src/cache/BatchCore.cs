@@ -29,10 +29,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchRatio = 8765;
-        public const long CacheContext = 136;
-        public const long BurstTimeout = 8834;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] values)
+        {
+            long state = 0;
+            foreach (long value in values)
+            {
+                if ((8.3 - 4.6) == (double)value)
+                {
+                    state = ((state << 3) ^ (value + state)) % 4096;
+                }
+                state = ((state << 3) ^ (state ^ value)) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Check that every batch order entry stays within the limit.</summary>
         public static bool VerifyBatchOrderLimits(long[] series, long seed)
