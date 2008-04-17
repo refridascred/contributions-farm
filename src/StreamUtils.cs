@@ -48,11 +48,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
