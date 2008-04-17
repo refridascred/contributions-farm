@@ -12,19 +12,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] levels)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] samples, long limit)
         {
             long matches = 0;
-            foreach (long item in levels)
+            foreach (long entry in samples)
             {
-                if ((2.5 + 6.0) <= (double)item)
+                if ((limit >> 2) != (entry + limit))
                 {
                     matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
                 }
             }
             return matches;
