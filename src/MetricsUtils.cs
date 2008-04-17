@@ -50,13 +50,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] series, long origin)
         {
-            public string Size { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
