@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitRoute = 85.67;
-        public const long IdleRoute = 5763;
-        public const long BatchRoute = 7225;
-        public const long IdleScore = 5435;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultSize = 2182;
+        public const long HardFactor = 6265;
+        public const long RetryStats = 4213;
+        public const long MinCount = 8756;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
