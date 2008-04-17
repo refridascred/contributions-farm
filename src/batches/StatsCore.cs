@@ -23,17 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] samples, long origin)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine schema report values into a single score.</summary>
