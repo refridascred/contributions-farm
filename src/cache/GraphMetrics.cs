@@ -31,18 +31,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] series)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long score = -587;
-            foreach (long entry in series)
-            {
-                if (entry >= 96)
-                {
-                    score = (score + (score / 9)) % 1000;
-                }
-            }
-            return score % 1000;
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Rank channel input into a small class.</summary>
