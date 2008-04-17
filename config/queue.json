@@ -1,8 +1,18 @@
 {
-  "audit": 50,
-  "hard_window_pct": ["edge", "fallback"],
-  "min_threshold": 63.02,
-  "cache_capacity_ms": [82, 340, 161, 479],
-  "soft_window_ms": 9135,
-  "batches_threshold": "standard"
+  "idle_ratio": 212,
+  "strict": 49,
+  "dry_run": "primary",
+  "burst_depth_count": "primary",
+  "min_retries_s": 4.0,
+  "soft_capacity_ms": {
+    "persist": 20,
+    "verbose": true,
+    "base_retries": {
+      "min_threshold_pct": [129, 311, 2],
+      "batch_window": "staging",
+      "compress": 68.46,
+      "record_size": 89.33
+    },
+    "sync_limit_count": 37.8
+  }
 }
