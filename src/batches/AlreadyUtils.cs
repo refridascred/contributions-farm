@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepBudget = "standard-v2";
-        public const long CacheSession = 5932;
-        public const string LimitCount = "local-1";
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long step)
