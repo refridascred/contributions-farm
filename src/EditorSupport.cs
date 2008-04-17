@@ -19,22 +19,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitWidth = 6073;
+        public const double BaseSpan = 42.82;
+        public const long RetryAccount = 5435;
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long SeekQueueIndex(long[] values, long step)
