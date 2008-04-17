@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdlePayload = "standard-edge";
+        public const long MaxBudget = 3550;
+        public const long BatchPayload = 7338;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long GradeCounter(long target, long target2)
