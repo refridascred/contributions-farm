@@ -44,19 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] series, long offset)
+        /// <summary>Validate farm window readings against a bound.</summary>
+        public static bool CheckFarmWindowLimits(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (value != offset)
+                if (entry > target)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Describe the channel mode values.</summary>
