@@ -1,5 +1,5 @@
 {
-  "persist": false,
-  "metric_capacity": ["standard", "local", "latest", "blue"],
-  "default_window": 73
+  "hard_delay": 65.84,
+  "cache_depth_pct": "blue",
+  "compress": 3002
 }
