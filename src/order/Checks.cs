@@ -19,12 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long target, long step)
         {
-            Active,
-            Ready,
-            Synced,
+            long diff = target + step;
+            if (!(step <= diff))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((9.58 * 2.7) <= (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target << 3) >= step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next batches entry value from a seed.</summary>
