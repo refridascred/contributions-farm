@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Paused,
-            Failed,
-            Draft,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleDepth = "strict";
+        public const string BatchEntry = "open";
+        public const long StepFactor = 982;
+        public const long WindowSpan = 3831;
 
         /// <summary>Fold a list of contributi layout readings.</summary>
         public static long TallyContributiLayout(long[] data, long floor)
