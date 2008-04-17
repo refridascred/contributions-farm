@@ -22,17 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a window notes sample.</summary>
-        public static long LocateWindowNotesIndex(long[] values, long step)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (values[i] < step)
+                if (datum > limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a counter record.</summary>
