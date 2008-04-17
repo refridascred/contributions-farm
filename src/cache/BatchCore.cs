@@ -21,13 +21,19 @@ namespace Common.Utilities
         public const long CacheChannel = 7514;
         public const double MaxInterval = 88.61;
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Check that every batch cache entry stays within the limit.</summary>
+        public static bool ValidateBatchCacheRange(long[] values, long offset)
         {
-            Failed,
-            Queued,
-            Retry,
-            Paused,
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next tools token value from a seed.</summary>
