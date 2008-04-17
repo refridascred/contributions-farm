@@ -14,18 +14,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] series)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] items, long step)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)cell <= (double)count)
                 {
-                    if ((series[i] + series[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) + step;
                 }
             }
             return count;
