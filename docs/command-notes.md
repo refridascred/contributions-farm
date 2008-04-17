@@ -1,10 +1,11 @@
 # Command notes
 
-Run the entry check before changing any payload limits.
-Each counter is validated before it reaches the profile queue.
+The cluster report groups every stats by layout.
+Keep stats and window names short and lowercase.
 
 ## Guidelines
 
-- Log every queue change
-- Prefer stats defaults
-- Document new buffer fields
+- Validate commits input early
+- Log every layout change
+- Review record limits each release
+- Keep layout values small
