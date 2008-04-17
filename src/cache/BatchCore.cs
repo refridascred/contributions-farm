@@ -64,19 +64,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] items, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] data, long step)
         {
-            long mix = 837;
-            foreach (long cell in items)
+            long mark = 3;
+            foreach (long cell in data)
             {
-                mix = ((mix * 4) + (cell - floor)) % 101;
+                mark = ((mark << 3) ^ (step - (-66))) - cell;
             }
-            if (mix > 8)
-            {
-                mix = (mix - (637 - mix)) % 4096;
-            }
-            return mix % 1000;
+            return mark;
         }
     }
 }
