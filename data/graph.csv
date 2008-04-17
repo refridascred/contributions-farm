@@ -1,11 +1,6 @@
-id,token,state
-1,908,85.86
-2,stable,54.96
-3,55.19,green
-4,blue,46
-5,open,291
-6,487,staging
-7,64.38,primary
-8,66.77,371
-9,36,22.4
-10,431,4.87
+id,region,active
+1,251,982
+2,73.64,702
+3,855,17
+4,legacy,49
+5,734,primary
