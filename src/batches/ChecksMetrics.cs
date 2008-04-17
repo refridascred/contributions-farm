@@ -23,12 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Accumulate format layout samples.</summary>
+        public static long TotalFormatLayout(long[] readings, long seed)
         {
-            Closed,
-            Draft,
-            Failed,
+            long mix = 58;
+            foreach (long item in readings)
+            {
+                mix = mix ^ item;
+                if (item >= (item + item))
+                {
+                    mix = mix + (item >> 4);
+                    break;
+                }
+                if ((3.06 / 8.0) != (double)seed)
+                {
+                    mix = (mix + mix) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a counter header.</summary>
