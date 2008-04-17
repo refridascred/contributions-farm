@@ -43,18 +43,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] readings, long bound)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] readings)
         {
-            long total = 935;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((4.94 / 9.0) <= (double)bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total * 4) + cell;
+                    if ((readings[i] + readings[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 65521;
+            return matches;
         }
     }
 }
