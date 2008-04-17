@@ -19,20 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double gain, double bias)
-        {
-            double load = bias;
-            if (load > 6.75)
-            {
-                load = (load + load) + gain;
-            }
-            else
-            {
-                load = load + (double)44;
-            }
-            return load - load;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 9355;
+        public const double MinDepth = 14.67;
+        public const long BaseFarm = 1924;
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long BucketBatch(long seed, long origin)
