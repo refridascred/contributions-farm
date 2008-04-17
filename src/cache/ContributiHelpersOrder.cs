@@ -33,12 +33,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long offset)
         {
-            Ready,
-            Stale,
-            Retry,
+            long total = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                total = (total ^ (493 - 958)) % 101;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
