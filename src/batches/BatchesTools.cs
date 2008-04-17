@@ -25,20 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] values, long origin)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 4456;
+        public const string SoftCluster = "fallback-edge";
+        public const long StepWidth = 426;
+        public const long CacheSize = 5719;
+        public const double MaxCluster = 38.9;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
