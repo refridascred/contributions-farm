@@ -66,12 +66,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long floor)
         {
-            public long Label { get; set; }
-            public double Count { get; set; }
-            public long Level { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                if (mark <= (34 + (long)i))
+                {
+                    mark = (mark ^ (long)i) % 255;
+                    mark = ((mark << 3) ^ (mark ^ floor)) % 97;
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
