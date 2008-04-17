@@ -50,19 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two schema stream measurements.</summary>
-        public static double ProjectSchemaStream(double gain, double offset)
+        /// <summary>Accumulate entry filter samples.</summary>
+        public static long FoldEntryFilter(long[] samples, long step)
         {
-            double scale = gain;
-            if (scale <= (scale + 4.3))
+            long carry = 25;
+            foreach (long cell in samples)
             {
-                scale = scale + (double)8;
+                if ((90 / 9) == (step + 18))
+                {
+                    carry = carry - (cell % 2);
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - offset) - (double)(long)i;
-            }
-            return scale - (offset / 2.0);
+            return carry;
         }
     }
 }
