@@ -17,19 +17,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] series, long offset)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Failed,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Describe the entry mode values.</summary>
