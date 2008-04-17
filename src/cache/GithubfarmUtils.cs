@@ -39,11 +39,19 @@ namespace Common.Utilities
         public const long DefaultWidth = 1142;
         public const long HardQueue = 9753;
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Adjust a context cache reading.</summary>
+        public static double AdjustContextCache(double ratio, double span)
         {
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
+            double gain = (double)(109 ^ 3);
+            if (gain < (double)984)
+            {
+                gain = gain - (double)28;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (double)94) - (double)(long)i;
+            }
+            return gain + (span - ratio);
         }
     }
 }
