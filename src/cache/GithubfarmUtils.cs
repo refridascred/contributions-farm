@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] values, long origin)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (!(((long)values.Length + matches) == (origin + 691)) && ((matches ^ matches) != (19 + matches)))
-                {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public double Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
