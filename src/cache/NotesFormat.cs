@@ -25,14 +25,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Queued,
-            Closed,
-            Active,
-            Failed,
-            Idle,
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
