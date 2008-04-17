@@ -50,13 +50,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Locked,
-            Closed,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitRecord = "standard-edge";
+        public const long BaseScore = 4641;
+        public const double RetrySpan = 14.86;
+        public const long IdleScore = 973;
+        public const string SoftRecord = "cached-1";
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool GuardStreamLimits(long[] samples, long offset)
