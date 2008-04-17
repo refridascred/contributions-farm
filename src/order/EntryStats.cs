@@ -28,19 +28,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] data, long step)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((307 - tally) == (193 >> 5))
-                {
-                    tally = ((tally + 1) + entry) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 9910;
+        public const long BatchBatches = 6196;
+        public const long StepFactor = 3860;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string MaxLevel = "primary-v2";
