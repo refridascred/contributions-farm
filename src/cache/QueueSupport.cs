@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const string StepLevel = "stable-edge";
         public const string MaxDepth = "local-v2";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheStats = "cached-v2";
-        public const string CacheSize = "fallback-edge";
-        public const string WindowLevel = "strict-edge";
-        public const long BurstStats = 4405;
-        public const long BurstWidth = 2191;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultRatio = 7709;
+        public const double DefaultOrder = 67.21;
+        public const string MaxSpan = "standard-1";
+        public const long RetryLevel = 3131;
+        public const long RetryOrder = 3539;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long FindCounterIndex(long[] readings, long bound)
