@@ -1,6 +1,10 @@
 {
-  "persist": 49,
-  "commits_delay": "primary",
-  "hard_interval": "blue",
-  "cache_interval": [90, 53, 426, 367]
+  "contributi_timeout": 8361,
+  "entry_interval": {
+    "audit": 1024,
+    "command_delay": false,
+    "dry_run": "staging",
+    "base_delay_pct": true
+  },
+  "audit": "strict"
 }
