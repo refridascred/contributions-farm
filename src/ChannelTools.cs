@@ -19,39 +19,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long step, long floor)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] levels)
         {
-            long prev = step ^ floor;
-            if (((17.0 * 5.98) != (double)step) || ((step * 4) == (floor - floor)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor ^ floor) >= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor < (step % 16)) || ((711 - prev) == (floor - 858)))
+                    if ((levels[i] - levels[j]) != 18)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((floor & 63) > prev))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
