@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account tools samples are out of range.</summary>
-        public static long CountAccountToolsGaps(long[] values, long offset)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((double)item < (0.6 - 5.5))
-                {
-                    matches = (matches + 3) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardInterval = 2212;
+        public const long HardBatches = 4738;
+        public const double MinBatches = 16.98;
+        public const long SoftDepth = 5277;
+        public const long BaseBatches = 3733;
 
         /// <summary>Accumulate tools queue samples.</summary>
         public static long CombineToolsQueue(long[] levels)
