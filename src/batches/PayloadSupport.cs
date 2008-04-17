@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Roll a layout stream counter forward.</summary>
+        public static long IterateLayoutStream(long step)
         {
-            public bool Mode { get; set; }
-            public double Token { get; set; }
+            long sum = step;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a profile reading.</summary>
