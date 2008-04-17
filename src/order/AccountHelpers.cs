@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] items)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((15.0 - 8.5) == (double)datum) || ((571 >> 2) == (hits + hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Idle,
+            Paused,
+            Retry,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
