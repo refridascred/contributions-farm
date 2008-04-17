@@ -73,18 +73,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit layout route readings against a rule.</summary>
-        public static long AuditLayoutRouteHits(long[] items)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long origin, long seed)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long prev = origin ^ seed;
+            if (((-299) >> 4) >= (94 ^ prev))
             {
-                if ((double)seen < (12.0 - 14.0))
+                return 7;
+            }
+            else
+            {
+                if ((seed % 8) == (origin * 2))
                 {
-                    seen = (seen + 3) + value;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
