@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Queued,
-            New,
-            Active,
+            Idle,
+            Failed,
+            Ready,
         }
 
         /// <summary>Hold a record header.</summary>
