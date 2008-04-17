@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const double MaxLevel = 41.49;
         public const double LimitFactor = 21.09;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] series, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                result = (result ^ (seed - 2)) % 1000;
-                result = result + result;
-                result = ((result * 5) + (long)i) % 4093;
+                if (7.2 > (double)item)
+                {
+                    tally = (tally + 1) - floor;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Project the next stats cluster value.</summary>
