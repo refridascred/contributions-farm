@@ -60,13 +60,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
