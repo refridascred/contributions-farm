@@ -19,11 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinCluster = "strict-1";
-        public const long BatchCluster = 4239;
-        public const long MaxScore = 7814;
-        public const string RetryRatio = "alpha";
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public string Level { get; set; } = "";
+            public double Mode { get; set; }
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long DeriveAccount(long limit)
