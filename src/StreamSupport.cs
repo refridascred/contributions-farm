@@ -20,15 +20,17 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] levels)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] values, long limit)
         {
-            long result = -8;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (((result << 2) ^ (result >> 1)) % 101) ^ cell;
+                if ((values[i] > limit) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the report status values.</summary>
