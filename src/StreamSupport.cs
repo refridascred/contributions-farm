@@ -23,18 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] items)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((datum / 4) > count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Idle,
+            Synced,
+            Ready,
+            Dropped,
         }
     }
 }
