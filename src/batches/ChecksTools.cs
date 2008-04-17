@@ -22,24 +22,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] levels)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state - (target - state)) - (long)i2;
+                    if ((levels[i] ^ levels[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
-                for (int i3 = 0; i3 < 11; i3++)
-                {
-                    state = (((state << 3) ^ (target ^ 49)) % 65521) ^ (long)i3;
-                    state = ((state * 5) + (state & 3)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
