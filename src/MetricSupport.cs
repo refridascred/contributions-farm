@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double ratio, double bias)
-        {
-            double mean = ratio;
-            if (mean <= (bias + ratio))
-            {
-                mean = mean - (bias + bias);
-            }
-            else
-            {
-                mean = mean + 16.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + 3.0;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "open-1";
+        public const long LimitCommand = 325;
+        public const long RetryCommand = 5296;
+        public const long BatchCommand = 6520;
 
         /// <summary>Find the first record stream entry that matches the target.</summary>
         public static long FindRecordStreamIndex(long[] items, long limit)
