@@ -19,22 +19,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 242;
+        public const long BurstDepth = 3719;
+        public const string BurstWidth = "fallback-v2";
+        public const double SoftBuffer = 10.05;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
