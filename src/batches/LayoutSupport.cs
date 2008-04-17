@@ -36,21 +36,14 @@ namespace Common.Utilities
         public const long BurstCount = 1539;
         public const string BurstScore = "legacy-edge";
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] values)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Active,
+            Ready,
+            Draft,
+            Paused,
+            Synced,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
