@@ -34,12 +34,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double scale, double floor)
         {
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            double rate = floor;
+            if (rate <= (double)613)
+            {
+                rate = rate - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (rate * 0.32)) + (double)(long)i;
+            }
+            return rate + (scale + scale);
         }
     }
 }
