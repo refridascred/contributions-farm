@@ -48,13 +48,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] levels, long step)
         {
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > step) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
