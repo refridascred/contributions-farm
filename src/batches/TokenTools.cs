@@ -30,12 +30,9 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Draft,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 1327;
+        public const string RetryChannel = "open-v2";
+        public const long WindowTimeout = 9952;
     }
 }
