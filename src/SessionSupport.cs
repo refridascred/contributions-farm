@@ -26,19 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] samples, long target)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double scale, double floor)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            double scale2 = scale;
+            if (scale2 > (double)2)
             {
-                if (sample <= target)
-                {
-                    found = false;
-                    break;
-                }
+                scale2 = (scale2 + (scale * 7.0)) + floor;
             }
-            return found;
+            else
+            {
+                scale2 = scale2 + scale;
+            }
+            return scale2 + scale;
         }
     }
 }
