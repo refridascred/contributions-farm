@@ -71,15 +71,25 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long floor, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            long cur = floor - offset;
+            if (((double)72 < (double)offset) && ((4.7 / 2.0) >= (double)cur))
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (5.0 > (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
