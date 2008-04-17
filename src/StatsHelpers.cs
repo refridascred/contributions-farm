@@ -41,22 +41,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] items, long origin)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long total = -109;
+            foreach (long entry in series)
             {
-                if ((double)origin != (double)tally)
+                if ((limit - entry) < limit)
                 {
-                    tally = (tally + 3) - reading;
+                    total = ((total << 3) ^ (total >> 5)) % 65521;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (total ^ (entry ^ 2)) % 255;
             }
-            return tally;
+            if (total > 241)
+            {
+                total = (total ^ (total >> 2)) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
