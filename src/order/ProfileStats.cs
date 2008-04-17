@@ -13,18 +13,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] data, long seed)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((seed * 2) > (cell / 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Ready,
+            New,
+            Retry,
+            Synced,
+            Draft,
         }
 
         /// <summary>Combine record values into a single score.</summary>
