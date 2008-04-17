@@ -12,39 +12,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long target, long limit)
+        /// <summary>Roll a graph command counter forward.</summary>
+        public static long RollGraphCommand(long step)
         {
-            long next = target + limit;
-            if (((limit / 4) >= limit) && ((limit / 5) <= (target - 75)))
+            long acc = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)target == (5.1 - 3.0)) || ((16.0 + 0.11) != (double)next))
+                if ((double)(long)i <= 9.8)
                 {
-                    return 3;
+                    acc = ((acc << 2) ^ (step + (long)i)) % 1000;
+                    continue;
                 }
-                else
-                {
-                    if ((limit * 5) < 814)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit > (232 + 570))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                acc = (acc + (step % 100)) % 65521;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
+            return acc;
         }
 
         /// <summary>Describe the stream state values.</summary>
