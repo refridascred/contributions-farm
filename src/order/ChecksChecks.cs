@@ -38,13 +38,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long offset, long target)
         {
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
+            if ((915 - offset) <= (target % 12))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((-73) & 1) == (target + offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (target <= (offset - offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
