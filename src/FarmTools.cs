@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] values, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] levels, long target)
         {
-            long anchor = 584;
-            foreach (long entry in values)
+            long total = 3;
+            foreach (long reading in levels)
             {
-                anchor = ((anchor - (anchor + limit)) % 255) ^ entry;
+                total = (total + target) % 1000;
+                total = (total << 2) ^ (reading + total);
+                if ((double)32 == (double)target)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (total > 77)
+            {
+                total = total + (total + 4);
+            }
+            return total;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
