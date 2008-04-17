@@ -1,7 +1,15 @@
 {
-  "command_ttl": 2456,
-  "default_ttl_s": 8045,
-  "sync_ttl": false,
-  "default_window": 9.81,
-  "max_interval_pct": [67, 46, 59, 465]
+  "cache_ttl_count": 43.01,
+  "burst_threshold": true,
+  "idle_timeout_pct": {
+    "idle_interval": 80.42,
+    "record_timeout": [351, 164, 33],
+    "default_depth_s": "open",
+    "verbose": {
+      "retry_window_ms": [497, 175],
+      "batch_window": ["local", "cached"],
+      "warm_retries_s": 30
+    },
+    "burst_interval": 2850
+  }
 }
