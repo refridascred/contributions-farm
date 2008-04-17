@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] items, long step)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((step << 3) <= (entry % 60))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
