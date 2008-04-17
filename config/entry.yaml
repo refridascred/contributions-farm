@@ -1,31 +1,7 @@
 # entry settings
-warm_retries: 10.81
-context_ttl: 39.14
-dry_run:
-  flush_ttl_count:
-    - 426
-    - 297
-    - 215
-    - 391
-  max_ratio_pct: 44
-  graph_delay: standard
-  cache_ratio:
-    idle_ttl_count:
-      - cached
-      - edge
-    poll_delay_ms: 7390
-    hard_ratio_pct: staging
-    cache_threshold:
-      - 354
-      - 497
-      - 70
-      - 102
-  compress: 1024
-burst_threshold_ms: 500
-retry_ttl: 36.43
-warm_retries_s:
-  cache_ratio_s:
-    - local
-    - latest
-  persist: staging
-  channel_retries: 46
+flush_depth_count: stable
+retry_capacity_ms:
+  - primary
+  - latest
+poll_depth_pct: 88.19
+min_threshold_count: false
