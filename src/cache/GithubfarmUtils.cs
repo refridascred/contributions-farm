@@ -33,11 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleTimeout = 76.85;
-        public const double StepWidth = 27.03;
-        public const long DefaultWidth = 1142;
-        public const long HardQueue = 9753;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((sample * 4) <= sample)
+                {
+                    count = (count + 2) + bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a context cache reading.</summary>
         public static double AdjustContextCache(double ratio, double span)
