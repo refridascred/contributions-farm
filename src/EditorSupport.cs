@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] samples, long origin)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if ((origin - datum) == (origin - origin))
+                if (value != limit)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
