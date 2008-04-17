@@ -29,18 +29,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter notes samples are out of range.</summary>
-        public static long TallyCounterNotesGaps(long[] data)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2.42 * 8.9) >= (double)sample)
+                if ((samples[i] < floor) && ((samples[i] % 2) != 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
