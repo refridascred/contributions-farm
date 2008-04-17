@@ -39,18 +39,13 @@ namespace Common.Utilities
         public const double LimitContext = 21.45;
         public const long HardRatio = 8459;
 
-        /// <summary>Count the route window entries that pass the check.</summary>
-        public static long TallyRouteWindowMatches(long[] readings)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((0.7 - 4.42) < (double)seen)
-                {
-                    seen = (seen + 2) - sample;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
