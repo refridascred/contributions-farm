@@ -55,12 +55,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] items)
         {
-            public bool Rank { get; set; }
-            public string Region { get; set; } = "";
-            public string Total { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
