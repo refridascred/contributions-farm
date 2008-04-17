@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long origin, long step)
+        /// <summary>Roll a counter token counter forward.</summary>
+        public static long DeriveCounterToken(long origin)
         {
-            if ((step - 6) > (step << 2))
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.14 / 4.0) != (double)step)
+                long step = (origin & 255) + (origin * 4);
+                if (((origin ^ 70) < (sum % 7)) && ((step + sum) == (637 >> 4)))
                 {
-                    return 5;
+                    sum = ((sum * 4) + (51 * 5)) % 65521;
+                    break;
                 }
-                else
-                {
-                    if (((step / 2) > origin) && (step >= origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
