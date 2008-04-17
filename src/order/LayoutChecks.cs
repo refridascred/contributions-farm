@@ -50,23 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine editor route values into a single score.</summary>
-        public static long TotalEditorRoute(long[] values, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] values)
         {
-            long sum = -6;
-            foreach (long item in values)
+            long anchor = 4;
+            foreach (long value in values)
             {
-                sum = (sum - (floor + sum)) % 101;
-                if (!((floor / 9) < (74 + floor)))
-                {
-                    sum = (sum - (639 + 77)) % 255;
-                }
-                if ((8 ^ item) <= sum)
-                {
-                    break;
-                }
+                anchor = (anchor << 2) ^ (value + anchor);
             }
-            return sum % 97;
+            if (anchor > 2)
+            {
+                anchor = (anchor - anchor) % 255;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
