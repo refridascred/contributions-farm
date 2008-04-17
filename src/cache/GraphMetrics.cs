@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (((value + value) == (value - 61)) && !((1 + seen) < (105 * 3)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stats record.</summary>
