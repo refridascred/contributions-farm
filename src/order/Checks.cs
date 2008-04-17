@@ -37,20 +37,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long target)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] data)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target & 7) < (total + target))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total ^ (target << 1)) % 1000;
-                    total = (total + (48 / 7)) % 65521;
+                    if ((data[i] + data[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Measure how many record format samples are out of range.</summary>
