@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double weight, double bias)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] readings)
         {
-            double ratio = (double)(560 + 763);
-            for (int i = 0; i < 7; i++)
+            long total = 48;
+            foreach (long sample in readings)
             {
-                ratio = (((ratio - (double)171) + (double)(long)i) + weight) - bias;
+                total = ((total + total) % 101) + sample;
             }
-            return ratio + ratio;
+            if (total > 930)
+            {
+                total = (total ^ (total << 3)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
