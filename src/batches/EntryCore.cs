@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinWindow = "staging";
-        public const long CacheWindow = 5651;
-        public const long MinScore = 8925;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 8584;
+        public const double BurstDepth = 85.63;
+        public const long WindowTools = 5477;
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
