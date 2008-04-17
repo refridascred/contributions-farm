@@ -37,18 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] series, long step)
+        /// <summary>Iterate the metric token series from a seed.</summary>
+        public static long IterateMetricToken(long bound)
         {
-            long count = 0;
-            foreach (long item in series)
+            long result = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (((item <= (item >> 4)) && ((item * 3) >= (step << 3))) && ((count * 3) != (step - count)))
-                {
-                    count = count + 2;
-                }
+                long hits = (bound + bound) + ((long)i >> 5);
+                result = (result + hits) % 101;
+                result = (result + result) % 1000;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
