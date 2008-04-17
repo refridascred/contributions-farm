@@ -56,19 +56,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every profile window entry stays within the limit.</summary>
-        public static bool VerifyProfileWindowLimits(long[] series, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (entry >= step)
+                if ((double)target >= (3.97 / 9.0))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) + cell;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
