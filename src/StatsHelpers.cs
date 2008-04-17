@@ -52,16 +52,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] series)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] samples)
         {
-            long state = 5;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                state = state + (state >> 2);
-                state = state ^ (293 + reading);
+                if ((seen < (value + value)) && !((1.96 + 8.0) != (double)value))
+                {
+                    seen = seen + 2;
+                }
             }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Digest a series of format entries.</summary>
