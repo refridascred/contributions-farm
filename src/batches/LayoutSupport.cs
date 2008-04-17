@@ -66,10 +66,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultSession = "alpha-edge";
-        public const double MinSession = 16.57;
-        public const long MaxSession = 4158;
+        /// <summary>Rank entry cluster input into a small class.</summary>
+        public static long BucketEntryCluster(long target, long target2)
+        {
+            if ((target * 4) < (target2 << 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((6 + 9) > (target2 - target2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target2 << 1) > target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyOutliers(long[] readings)
