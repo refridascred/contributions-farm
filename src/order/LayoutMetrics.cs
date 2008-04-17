@@ -20,11 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            Idle,
+            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Check that every stats metric entry stays within the limit.</summary>
