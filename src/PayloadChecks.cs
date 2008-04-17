@@ -53,11 +53,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 5356;
-        public const long LimitOrder = 8597;
-        public const double IdleScore = 77.92;
-        public const string BatchOrder = "standard-edge";
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] series, long target)
+        {
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long AuditPayloadOutliers(long[] samples)
