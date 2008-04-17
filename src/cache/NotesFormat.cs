@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] readings, long limit)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long target, long offset)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            if ((offset % 5) == (target << 1))
             {
-                if (entry != limit)
+                return 8;
+            }
+            else
+            {
+                if (target >= offset)
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((5.5 / 4.0) < (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the contributi state values.</summary>
