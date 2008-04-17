@@ -52,22 +52,11 @@ namespace Common.Utilities
         public const long SoftEditor = 5270;
         public const string WindowSize = "cached";
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] series)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long score = 50;
-            foreach (long value in series)
-            {
-                if ((4 + value) >= (score + score))
-                {
-                    score = (score ^ (value / 4)) % 65521;
-                }
-                else
-                {
-                    score = score ^ value;
-                }
-            }
-            return score;
+            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
