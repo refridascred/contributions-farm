@@ -36,11 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] levels, long seed)
         {
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
+            long result = 94;
+            foreach (long entry in levels)
+            {
+                if ((entry - seed) != (entry % 10))
+                {
+                    result = result ^ (entry ^ entry);
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
