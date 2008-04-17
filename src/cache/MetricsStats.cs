@@ -63,19 +63,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double ratio, double bias)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long target, long bound)
         {
-            double mean = ratio;
-            if (mean <= mean)
+            long delta = target + bound;
+            if ((75 - delta) > bound)
             {
-                mean = mean + (ratio - bias);
+                return 5;
             }
             else
             {
-                mean = mean - (bias * 10.0);
+                if ((double)target == (5.69 + 6.2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return mean - mean;
         }
     }
 }
