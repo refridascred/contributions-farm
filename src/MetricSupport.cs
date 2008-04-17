@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchTimeout = 9540;
-        public const double LimitScore = 37.7;
-        public const long BaseBatch = 6663;
-        public const double MinBudget = 34.42;
-        public const string SoftBatch = "standard";
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Dropped,
+            Active,
+            Stale,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Fold a list of cluster account readings.</summary>
         public static long ScoreClusterAccount(long[] data)
