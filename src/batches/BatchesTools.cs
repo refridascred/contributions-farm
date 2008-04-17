@@ -37,14 +37,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleSize = 2386;
+        public const long MaxBudget = 6627;
+        public const string LimitContext = "alpha";
+        public const long WindowContext = 5981;
+        public const string MinContext = "primary-v2";
 
         /// <summary>Adjust a command reading.</summary>
         public static double ProjectCommand(double bias, double bias2)
