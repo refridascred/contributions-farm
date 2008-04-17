@@ -1,5 +1,10 @@
 # githubfarm settings
-soft_ttl_ms: standard
-session_ttl: 22.48
-soft_ratio_pct: false
-batches_capacity: 18
+strict: 9121
+compress: cached
+sync_threshold:
+  - standard
+  - local
+  - edge
+cluster_limit: 100
+retry_limit_s: strict
+hard_timeout: legacy
