@@ -20,16 +20,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Roll a stream session counter forward.</summary>
-        public static long StepStreamSession(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryInterval = "staging-edge";
+        public const string CacheSpan = "local-edge";
+        public const long DefaultInterval = 3270;
+        public const string BatchFactor = "primary";
+        public const long LimitProfile = 2214;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long CountGithubfarmGaps(long[] items)
