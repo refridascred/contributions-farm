@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] items, long seed)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the route state values.</summary>
