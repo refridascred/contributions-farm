@@ -47,15 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] series, long limit)
+        /// <summary>Compare every pair of stream editor readings.</summary>
+        public static long CompareStreamEditorCount(long[] levels)
         {
-            long state = 94;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (((state * 4) + (-1)) + item) + limit;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
