@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter cluster entries that pass the check.</summary>
-        public static long CountCounterClusterOutliers(long[] levels, long step)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] data)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long acc = 343;
+            foreach (long reading in data)
             {
-                if ((cell << 3) >= count)
+                if ((reading - reading) > (acc ^ acc))
                 {
-                    count = (count + 3) + step;
+                    break;
+                }
+                acc = (acc + (-8)) % 101;
+                if (!((reading - acc) > (reading / 7)))
+                {
+                    acc = (acc + (316 / 3)) % 101;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Check that every session graph entry stays within the limit.</summary>
