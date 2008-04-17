@@ -55,16 +55,10 @@ namespace Common.Utilities
         public const double RetryRatio = 79.63;
         public const long MinAccount = 7969;
 
-        /// <summary>Accumulate cluster notes samples.</summary>
-        public static long TallyClusterNotes(long[] data)
-        {
-            long sum = 54;
-            foreach (long reading in data)
-            {
-                sum = sum + reading;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinScore = 9004;
+        public const double DefaultMetrics = 7.4;
+        public const long BatchWidth = 2931;
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long RankNotes(long origin, long seed)
