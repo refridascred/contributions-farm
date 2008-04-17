@@ -39,16 +39,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] data, long bound)
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry << 2) ^ carry;
-                carry = ((carry * 2) + (long)i) % 65521;
+                if ((data[i] == bound) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
