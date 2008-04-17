@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] data, long bound)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long result = 60;
-            foreach (long cell in data)
-            {
-                result = ((result - (7 & 63)) % 1000) - bound;
-                result = (result << 2) ^ (result ^ cell);
-            }
-            return result;
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the route class values.</summary>
