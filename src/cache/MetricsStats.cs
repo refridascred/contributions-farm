@@ -39,21 +39,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] values)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = rate;
+            if (bias > floor)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = bias - (18.0 - bias);
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (double)3) + (double)(long)i;
+            }
+            return bias + (bias / 8.0);
         }
 
         /// <summary>Rank format input into a small class.</summary>
