@@ -21,19 +21,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] readings, long target)
+        /// <summary>Count the batches report entries that pass the check.</summary>
+        public static long CountBatchesReportMatches(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (datum != target)
+                if (!((double)matches < (6.65 + 16.0)))
                 {
-                    valid = false;
-                    break;
+                    matches = ((matches + 2) - item) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a token stats.</summary>
