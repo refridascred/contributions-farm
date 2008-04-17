@@ -12,38 +12,15 @@ namespace Common.Utilities
         public const double BaseSpan = 89.56;
         public const long LimitCache = 3936;
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long target, long limit)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long origin)
         {
-            if (limit <= (limit + limit))
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
             {
-                return 7;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((0 << 1) == (limit + 456))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.1 / 3.0) == (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)target != (double)limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
