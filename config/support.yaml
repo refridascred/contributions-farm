@@ -1,5 +1,7 @@
 # support settings
-cache_timeout_ms: false
-already_depth: open
-min_window_count: fallback
-default_threshold_s: legacy
+min_delay: primary
+max_threshold_count: edge
+checks_timeout: 95.29
+retry_limit_pct: stable
+enabled: latest
+max_ttl_count: 25
