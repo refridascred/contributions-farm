@@ -80,19 +80,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] series)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] samples)
         {
             long hits = 0;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value <= (value % 8))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] ^ samples[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
