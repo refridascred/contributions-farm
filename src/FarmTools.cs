@@ -14,12 +14,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitInterval = 2774;
-        public const long IdleChannel = 9764;
-        public const string CacheScore = "local-edge";
-        public const long BatchSpan = 550;
-        public const double MaxChannel = 58.36;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long WeighFilter(long[] series)
