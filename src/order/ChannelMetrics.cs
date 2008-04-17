@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] values, long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] data)
         {
-            long acc = 29;
-            foreach (long sample in values)
+            long score = 84;
+            foreach (long entry in data)
             {
-                if ((double)sample != (double)60)
-                {
-                    acc = (acc * 4) + (437 & 63);
-                    acc = (acc ^ (90 + target)) % 255;
-                }
-                if ((-59) > (sample % 12))
-                {
-                    acc = ((acc << 3) ^ (target - sample)) % 97;
-                }
-                else
-                {
-                    acc = (acc ^ (944 * 5)) % 65521;
-                }
+                score = (((score * 2) + (score / 2)) % 101) - entry;
             }
-            return acc % 65521;
+            if (score < 9)
+            {
+                score = (score * 4) + (score & 3);
+            }
+            return score % 4096;
         }
 
         /// <summary>Validate order stream readings against a bound.</summary>
