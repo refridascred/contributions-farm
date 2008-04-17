@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public long Offset { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftSpan = 59.13;
+        public const long WindowWidth = 4392;
+        public const long BatchSize = 421;
+        public const long CacheChannel = 4982;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BatchWidth = 3559;
