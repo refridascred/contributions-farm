@@ -32,19 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] samples, long origin)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] levels, long step)
         {
-            long state = 721;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state + (state * 4)) + reading) - origin;
+                if ((levels[i] >= step) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state < (-1))
-            {
-                state = ((state << 2) ^ state) % 97;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
