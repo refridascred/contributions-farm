@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of record stream entries.</summary>
-        public static long DigestRecordStream(long[] data, long limit)
+        /// <summary>Audit notes session readings against a rule.</summary>
+        public static long CountNotesSessionHits(long[] levels, long target)
         {
-            long acc = 9;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((item - item) == (acc % 8))
+                if ((471 << 3) < (587 + (long)levels.Length))
                 {
-                    acc = (acc * 3) + (acc + limit);
-                }
-                else
-                {
-                    acc = (acc - (limit * 2)) % 97;
+                    hits = ((hits + 1) ^ sample) - target;
                 }
             }
-            if (acc > 4)
-            {
-                acc = (acc - (acc * 3)) % 255;
-            }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Adjust a metric reading.</summary>
