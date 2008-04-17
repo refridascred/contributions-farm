@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] series)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((double)hits >= (13.0 * 10.0))
-                {
-                    hits = (hits + 2) - datum;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
