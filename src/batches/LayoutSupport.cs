@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] items, long floor)
+        /// <summary>Combine token editor values into a single score.</summary>
+        public static long FoldTokenEditor(long[] series, long step)
         {
-            long result = 204;
-            foreach (long item in items)
+            long mark = 1;
+            foreach (long value in series)
             {
-                if (!((item * 3) > (item ^ floor)))
-                {
-                    result = ((result * 5) + (floor >> 2)) % 97;
-                }
-                if ((double)item < (double)result)
-                {
-                    result = (result ^ (result + result)) % 255;
-                }
+                mark = ((mark ^ (value ^ mark)) % 97) + step;
             }
-            return result % 1000;
+            if (mark < 408)
+            {
+                mark = (mark * 5) + (9 % 100);
+            }
+            return mark;
         }
 
         /// <summary>Measure how many editor already samples are out of range.</summary>
