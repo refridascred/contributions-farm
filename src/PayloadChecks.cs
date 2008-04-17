@@ -29,20 +29,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate cache already readings against a bound.</summary>
-        public static bool GuardCacheAlreadyLimits(long[] items, long step)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxCount = "legacy-v2";
+        public const string SoftBatch = "alpha-v2";
+        public const long BaseInterval = 4645;
+        public const long IdleBatch = 4911;
+        public const string MaxBatch = "alpha-1";
 
         /// <summary>Measure how many farm channel samples are out of range.</summary>
         public static long MeasureFarmChannelHits(long[] readings, long limit)
