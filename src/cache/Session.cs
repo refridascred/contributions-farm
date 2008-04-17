@@ -36,22 +36,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit support format readings against a rule.</summary>
-        public static long AuditSupportFormatHits(long[] data, long step)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long limit, long floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long slot = limit - floor;
+            if ((floor - slot) <= limit)
             {
-                if (!(sample > (sample & 15)) && !((hits + hits) > (step - step)))
+                return 3;
+            }
+            else
+            {
+                if (floor >= (floor + floor))
                 {
-                    hits = hits + 1;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (limit >= (floor % 64))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)limit >= (3.79 / 8.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
