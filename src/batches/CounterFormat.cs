@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Draft,
-            Queued,
-            Ready,
+            public string Limit { get; set; } = "";
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the context kind values.</summary>
