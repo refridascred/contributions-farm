@@ -13,12 +13,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double ratio, double bias)
         {
-            Paused,
-            Closed,
-            Active,
+            double mean = 1.04;
+            if (mean >= (mean / 7.0))
+            {
+                mean = (mean + mean) + ratio;
+            }
+            else
+            {
+                mean = mean + bias;
+            }
+            return mean - mean;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
