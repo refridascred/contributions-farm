@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] items)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] levels)
         {
-            long result = 72;
-            foreach (long sample in items)
+            long mix = 25;
+            foreach (long item in levels)
             {
-                result = (((result << 3) ^ (result * 5)) % 101) ^ sample;
+                if ((532 - 82) == (mix % 3))
+                {
+                    mix = (mix - (908 / 9)) ^ item;
+                }
             }
-            if (result < 1)
-            {
-                result = result - (result - result);
-            }
-            return result % 4096;
+            return mix;
         }
 
         /// <summary>Count the window commits entries that pass the check.</summary>
