@@ -43,15 +43,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double ratio, double bias)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double gain = (3.2 * 8.3) - (4.0 / 7.0);
-            if (gain <= 2.6)
-            {
-                gain = (gain + 1.97) - bias;
-            }
-            return gain - (gain - ratio);
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of command readings.</summary>
