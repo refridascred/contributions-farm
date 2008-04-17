@@ -29,32 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long origin, long origin2)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] readings, long bound)
         {
-            long cur = origin ^ origin2;
-            if (cur > (cur * 5))
+            bool found = true;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (cur > origin)
+                if (reading < bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((cur % 2) != (origin2 - cur)) || (origin2 <= (origin + origin2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Rank entry cluster input into a small class.</summary>
