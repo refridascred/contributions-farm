@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next farm contributi value from a seed.</summary>
-        public static long StepFarmContributi(long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] samples, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                acc = (acc * 5) + acc;
-                acc = ((acc * 2) + (long)i) % 97;
+                if (datum <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
