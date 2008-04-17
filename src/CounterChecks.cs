@@ -72,16 +72,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] readings)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long anchor = 9;
-            foreach (long datum in readings)
-            {
-                anchor = (anchor - anchor) % 1000;
-                anchor = (anchor + (datum - anchor)) % 65521;
-            }
-            return anchor;
+            public double Level { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
