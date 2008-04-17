@@ -27,31 +27,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long limit, long limit2)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            if ((limit2 + limit) == (limit2 - limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)limit2 <= (8.52 - 4.7)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit == (10.0 + 6.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Done,
+            Active,
+            New,
+            Retry,
         }
     }
 }
