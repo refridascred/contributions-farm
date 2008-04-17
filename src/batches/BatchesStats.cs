@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Audit batches route readings against a rule.</summary>
+        public static long CountBatchesRouteMatches(long[] data, long seed)
         {
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((double)value > (double)6)
+                {
+                    tally = (tally + 3) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the channel class values.</summary>
