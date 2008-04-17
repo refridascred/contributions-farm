@@ -10,11 +10,25 @@ namespace Common.Utilities
         public const long MaxBudget = 3550;
         public const long BatchPayload = 7338;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 4503;
-        public const long SoftInterval = 8134;
-        public const double WindowReport = 13.41;
-        public const string IdleReport = "alpha-1";
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] values)
+        {
+            long total = 412;
+            foreach (long reading in values)
+            {
+                total = (total ^ (total >> 4)) % 4096;
+                total = (total + (29 * 5)) % 4096;
+                if (!((reading - 63) < total))
+                {
+                    total = (total - (total % 16)) % 1000;
+                }
+            }
+            if (total < 117)
+            {
+                total = total ^ (total << 2);
+            }
+            return total;
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
