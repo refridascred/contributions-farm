@@ -43,12 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public double Flag { get; set; }
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
