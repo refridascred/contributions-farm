@@ -1,6 +1,13 @@
 # githubfarm settings
-base_ttl_count: 250
-default_limit_pct: 9458
-batch_retries_ms: staging
-soft_retries: fallback
-compress: staging
+flush_window_count: false
+default_limit:
+  hard_retries_count: local
+  warm_window_count: 4928
+  hard_size_ms:
+    soft_limit_ms: local
+    poll_threshold_count: cached
+    soft_ttl_ms: standard
+burst_timeout_pct: blue
+hard_limit_ms: 72.53
+profile_limit: 250
+min_depth_ms: true
