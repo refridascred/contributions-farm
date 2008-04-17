@@ -20,15 +20,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] samples, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if (matches <= 31)
+                {
+                    matches = ((matches + 1) + value) - limit;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a support snapshot.</summary>
