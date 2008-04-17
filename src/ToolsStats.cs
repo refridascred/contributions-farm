@@ -50,12 +50,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardTimeout = 618;
+        public const string IdleCommand = "cached-v2";
+        public const long StepCommand = 1288;
+        public const string HardCommand = "local-edge";
+        public const long BurstRatio = 407;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyHits(long[] items)
