@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] values, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (entry > floor)
+                if ((matches + 19) > (origin * 3))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Blend two layout measurements.</summary>
