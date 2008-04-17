@@ -1,5 +1,9 @@
 # support settings
-checks_retries: cached
-base_delay_ms: 4829
-hard_retries_s: strict
-verbose: green
+tools_timeout: 69
+warm_size:
+  - 486
+  - 109
+cache_timeout_count: primary
+sync_interval: staging
+hard_delay_count: 5138
+retry_timeout: 25
