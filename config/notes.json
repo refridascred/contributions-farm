@@ -1,12 +1,12 @@
 {
-  "enabled": 9018,
-  "persist": false,
-  "batch_size": {
-    "enabled": 4,
-    "audit": "green",
-    "flush_timeout_pct": "strict"
+  "flush_ratio_count": {
+    "base_delay_pct": 500,
+    "warm_retries_pct": "strict",
+    "max_depth_ms": 59,
+    "route_interval": 100,
+    "buffer_window": ["fallback", "open"],
+    "max_threshold_pct": 92
   },
-  "compress": 5304,
-  "base_retries_s": 5956,
-  "queue_depth": 94
+  "burst_ttl_pct": 500,
+  "sync_limit_s": "cached"
 }
