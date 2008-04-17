@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a window stats value against two limits.</summary>
-        public static long SortWindowStats(long origin, long offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] levels, long target)
         {
-            long span = origin + offset;
-            if (!((origin / 6) == (span % 100)))
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset <= (span - origin))
+                if (entry > target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a entry info.</summary>
