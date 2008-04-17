@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] data, long origin)
+        /// <summary>Derive the next session report value from a seed.</summary>
+        public static long IterateSessionReport(long seed)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Project the next already value.</summary>
