@@ -13,19 +13,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] readings, long offset)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Pending,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the filter mode values.</summary>
