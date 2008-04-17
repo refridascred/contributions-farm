@@ -28,10 +28,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 9910;
-        public const long BatchBatches = 6196;
-        public const long StepFactor = 3860;
+        /// <summary>Find the first notes route entry that matches the target.</summary>
+        public static long LookupNotesRouteIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string MaxLevel = "primary-v2";
