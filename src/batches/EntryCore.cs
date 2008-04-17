@@ -63,19 +63,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] values, long limit)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long total = 119;
-            foreach (long entry in values)
-            {
-                total = ((total ^ limit) % 97) + entry;
-            }
-            if (total < (-91))
-            {
-                total = (total + (total % 24)) % 101;
-            }
-            return total;
+            Draft,
+            Pending,
+            Queued,
+            Retry,
+            Done,
         }
     }
 }
