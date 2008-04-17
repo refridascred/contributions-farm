@@ -25,13 +25,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] items)
         {
-            public bool Count { get; set; }
-            public double Owner { get; set; }
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
+            long acc = 1;
+            foreach (long item in items)
+            {
+                if ((acc * 4) > acc)
+                {
+                    acc = (acc + (item / 7)) % 255;
+                }
+            }
+            return acc % 1000;
         }
     }
 }
