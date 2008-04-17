@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long bound, long floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] data, long target)
         {
-            long cur = bound - floor;
-            if (946 < (cur / 3))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6.28 / 2.0) <= (double)floor)
+                if (data[i] >= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
