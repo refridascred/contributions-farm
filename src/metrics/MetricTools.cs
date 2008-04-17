@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric tools helpers.</summary>
     public static class MetricTools
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepSize = 19.31;
+        public const double WindowInterval = 43.47;
+        public const long DefaultSize = 3337;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double BaseTimeout = 36.81;
