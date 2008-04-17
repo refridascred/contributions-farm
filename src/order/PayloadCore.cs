@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long offset = floor ^ step;
+            if ((double)offset < (8.77 - 3.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((step / 8) >= (step - floor))
                 {
-                    if ((samples[i] + samples[j]) > 6)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor == (5.1 / 2.0))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
