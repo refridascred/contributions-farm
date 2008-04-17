@@ -59,22 +59,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] items)
+        /// <summary>Grade a stats notes value against two limits.</summary>
+        public static long BucketStatsNotes(long step, long floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long next = step - floor;
+            if (((next - step) > (floor << 3)) || ((next % 64) > ((-895) - step)))
             {
-                if (seen <= (value ^ 281))
+                return 4;
+            }
+            else
+            {
+                if ((step << 1) == (step * 2))
                 {
-                    seen = seen + 3;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((double)step <= (5.76 / 4.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a stats stats.</summary>
