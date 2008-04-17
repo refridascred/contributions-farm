@@ -14,19 +14,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every queue checks entry stays within the limit.</summary>
-        public static bool ValidateQueueChecksBounds(long[] series, long bound)
+        /// <summary>Find the first graph layout entry that matches the target.</summary>
+        public static long LookupGraphLayoutIndex(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell <= bound)
+                if (items[i] < origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a notes info.</summary>
