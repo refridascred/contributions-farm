@@ -76,32 +76,10 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Classify a stream token pair into a bucket.</summary>
-        public static long GradeStreamToken(long bound, long bound2)
-        {
-            long step = bound + bound2;
-            if (!((bound2 >> 1) > (bound ^ bound)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step + bound2) != (bound + bound2)) && ((step + step) < bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound2 * 4) >= (bound % 60)) || (bound2 > (step - bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 3855;
+        public const double CacheMetrics = 81.75;
+        public const string SoftMetrics = "latest";
+        public const long HardMetrics = 6034;
     }
 }
