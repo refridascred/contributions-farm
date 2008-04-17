@@ -22,19 +22,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] data, long seed)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] data)
         {
-            long anchor = 793;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seed + seed) > (anchor / 9))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor * 5) + (seed + reading);
+                    if ((data[i] + data[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = (anchor + (reading & 15)) % 255;
             }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
