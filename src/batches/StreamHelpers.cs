@@ -69,14 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long seed)
         {
-            Idle,
-            Locked,
-            Closed,
-            Draft,
-            Queued,
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
