@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public string Level { get; set; } = "";
+            long mix = 537;
+            foreach (long sample in series)
+            {
+                mix = (mix * 2) + (mix + mix);
+                if ((sample & 127) > (sample + mix))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of record readings.</summary>
