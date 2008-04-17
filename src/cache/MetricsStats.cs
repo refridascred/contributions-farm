@@ -19,11 +19,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((count * 4) != (count ^ 178)) || ((value + value) == (count & 31)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a metric summary.</summary>
