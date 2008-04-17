@@ -47,18 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] data)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry + entry) >= 61)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((levels[i] - levels[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
