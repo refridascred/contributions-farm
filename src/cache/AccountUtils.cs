@@ -34,12 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] levels, long limit)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
-            public double Stamp { get; set; }
+            long mark = -9;
+            foreach (long value in levels)
+            {
+                if ((4.6 + 16.0) < (double)mark)
+                {
+                    mark = ((mark * 4) + value) - limit;
+                }
+            }
+            return mark;
         }
     }
 }
