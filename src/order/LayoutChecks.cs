@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] values)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long result = 445;
+            foreach (long item in levels)
             {
-                if (cell >= (tally % 16))
-                {
-                    tally = tally + 3;
-                }
+                result = (((result - ((-543) - 8)) % 4096) - item) - bound;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
