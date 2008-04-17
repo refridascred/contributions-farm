@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long StepLevel = 3577;
         public const string BatchSize = "alpha-1";
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Paused,
-            Draft,
-            Active,
+            public string Score { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
