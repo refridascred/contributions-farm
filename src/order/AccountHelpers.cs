@@ -16,11 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long step)
         {
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
+            long sum = step;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum << 2) ^ (step % 5)) % 255;
+                sum = ((sum * 4) + sum) % 4096;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the order mode values.</summary>
