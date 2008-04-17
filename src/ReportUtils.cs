@@ -29,14 +29,14 @@ namespace Common.Utilities
         public const double RetryRatio = 60.64;
         public const double LimitBudget = 6.12;
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Dropped,
-            New,
+            Idle,
+            Pending,
             Retry,
-            Active,
             Closed,
+            Dropped,
         }
 
         /// <summary>Describe the filter class values.</summary>
