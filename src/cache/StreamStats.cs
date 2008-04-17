@@ -18,12 +18,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] items, long seed)
         {
-            Active,
-            New,
-            Synced,
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
