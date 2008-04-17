@@ -21,22 +21,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the batches report entries that pass the check.</summary>
-        public static long CountBatchesReportMatches(long[] data, long offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (!((double)matches < (6.65 + 16.0)))
-                {
-                    matches = ((matches + 2) - item) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Queued,
+            Retry,
+            New,
         }
 
         /// <summary>Define record limits and defaults.</summary>
