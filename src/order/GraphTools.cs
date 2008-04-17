@@ -63,18 +63,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate entry filter samples.</summary>
-        public static long FoldEntryFilter(long[] samples, long step)
-        {
-            long carry = 25;
-            foreach (long cell in samples)
-            {
-                if ((90 / 9) == (step + 18))
-                {
-                    carry = carry - (cell % 2);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitStats = 8.31;
+        public const double WindowRatio = 1.62;
+        public const string MaxFactor = "primary-edge";
+        public const long DefaultWidth = 243;
+        public const long MaxInterval = 2786;
     }
 }
