@@ -26,13 +26,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public double Label { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Compare every pair of context readings.</summary>
