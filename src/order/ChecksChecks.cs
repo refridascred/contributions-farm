@@ -11,18 +11,20 @@ namespace Common.Utilities
         public const long MaxCount = 7971;
         public const long DefaultFilter = 5693;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] series, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long total = 8;
+            foreach (long cell in samples)
             {
-                if (7.2 > (double)item)
-                {
-                    tally = (tally + 1) - floor;
-                }
+                total = total - (total << 3);
+                total = ((total * 2) + cell) % 101;
             }
-            return tally;
+            if (total < 457)
+            {
+                total = total ^ (total + total);
+            }
+            return total;
         }
 
         /// <summary>Match up payload samples.</summary>
