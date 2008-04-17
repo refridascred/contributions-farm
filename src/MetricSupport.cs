@@ -37,18 +37,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] readings, long origin)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long step, long limit)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            if (((330 - step) <= step) || ((step & 31) >= 525))
             {
-                if ((double)item < (double)origin)
+                return 7;
+            }
+            else
+            {
+                if ((step ^ 679) == (limit >> 4))
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
     }
 }
