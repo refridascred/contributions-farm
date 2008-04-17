@@ -21,21 +21,16 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] values)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 318;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (acc - acc) - item;
+                acc = acc - (acc * 2);
             }
-            return hits;
+            return acc % 1000;
         }
 
         /// <summary>Blend two cache editor measurements.</summary>
