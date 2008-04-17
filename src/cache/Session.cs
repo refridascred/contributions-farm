@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] samples)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((item <= (item - item)) || (item <= (item & 1)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next report value.</summary>
