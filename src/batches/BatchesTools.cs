@@ -19,22 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] series)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] levels, long step)
         {
-            long mark = 37;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((4.36 * 4.0) != (double)item)
+                if (cell > step)
                 {
-                    mark = ((mark << 3) ^ item) % 1000;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ mark) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Adjust a command reading.</summary>
