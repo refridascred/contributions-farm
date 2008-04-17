@@ -62,22 +62,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of layout support readings.</summary>
-        public static long ScoreLayoutSupport(long[] samples, long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] items)
         {
-            long mix = 19;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((double)mix <= (double)sample)
+                if (39 <= (entry ^ entry))
                 {
-                    mix = mix + (mix + mix);
-                }
-                if ((sample - mix) < (limit / 4))
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return mix % 1000;
+            return hits;
         }
     }
 }
