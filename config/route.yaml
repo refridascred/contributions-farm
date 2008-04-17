@@ -1,13 +1,7 @@
 # route settings
-default_limit_count: legacy
-soft_delay_count:
-  - local
-  - blue
-  - edge
-burst_ratio_ms: legacy
-account_timeout: 500
-cache_window:
-  - 499
-  - 91
-  - 387
-  - 27
+warm_depth: 500
+batch_threshold_ms: 2688
+idle_depth_pct: 21.17
+burst_timeout_count: stable
+max_capacity_s: open
+dry_run: true
