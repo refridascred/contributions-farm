@@ -13,15 +13,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] samples, long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] levels)
         {
             long tally = 0;
-            foreach (long cell in samples)
+            foreach (long cell in levels)
             {
-                if (5.1 >= (double)cell)
+                if (((double)tally <= (double)cell) && ((2 > (cell << 3)) || (cell > (5 << 1))))
                 {
-                    tally = (tally + 2) - offset;
+                    tally = tally + 3;
                 }
             }
             return tally;
