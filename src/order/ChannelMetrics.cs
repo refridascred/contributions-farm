@@ -20,29 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a token layout value against two limits.</summary>
-        public static long ClassifyTokenLayout(long seed, long target)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long bound, long offset)
         {
-            if ((double)target >= 2.81)
+            if (((bound ^ offset) < offset) && ((122 ^ bound) < (offset << 1)))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if ((target / 3) < (seed << 1))
+                if (!((3 - bound) < offset))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if (((target & 127) > seed) && ((double)target <= (11.0 / 5.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 6;
                 }
             }
         }
