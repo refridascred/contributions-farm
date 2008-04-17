@@ -33,14 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Locked,
-            Ready,
-            Failed,
-            Active,
-            Idle,
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
