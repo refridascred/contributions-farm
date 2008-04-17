@@ -19,20 +19,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long origin)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = ((state << 3) ^ 0) - (long)i2;
-                }
-                state = (state + ((long)i ^ origin)) % 255;
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            public long Limit { get; set; }
+            public double Token { get; set; }
+            public double Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the graph mode values.</summary>
