@@ -55,11 +55,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Match up tools notes samples.</summary>
+        public static long MatchToolsNotesCount(long[] data)
         {
-            public bool Weight { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
