@@ -51,21 +51,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Compare every pair of metric schema readings.</summary>
-        public static long MatchMetricSchemaCount(long[] values)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample > origin)
                 {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Match up batch samples.</summary>
