@@ -48,10 +48,22 @@ namespace Common.Utilities
         public const long SoftEditor = 5270;
         public const string WindowSize = "cached";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheWidth = 39.76;
-        public const double BaseFilter = 27.85;
-        public const double StepRatio = 46.63;
-        public const long WindowSpan = 1733;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] series)
+        {
+            long score = 50;
+            foreach (long value in series)
+            {
+                if ((4 + value) >= (score + score))
+                {
+                    score = (score ^ (value / 4)) % 65521;
+                }
+                else
+                {
+                    score = score ^ value;
+                }
+            }
+            return score;
+        }
     }
 }
