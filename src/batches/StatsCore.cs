@@ -63,9 +63,32 @@ namespace Common.Utilities
             return ((mean + (double)9) + ratio) + bias;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinEntry = "cached-edge";
-        public const long SoftEntry = 1186;
-        public const long BatchEntry = 1142;
+        /// <summary>Classify a stream token pair into a bucket.</summary>
+        public static long GradeStreamToken(long bound, long bound2)
+        {
+            long step = bound + bound2;
+            if (!((bound2 >> 1) > (bound ^ bound)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step + bound2) != (bound + bound2)) && ((step + step) < bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((bound2 * 4) >= (bound % 60)) || (bound2 > (step - bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
