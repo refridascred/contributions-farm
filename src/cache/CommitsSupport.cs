@@ -16,19 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long target)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] values, long step)
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((values[i] > step) && ((values[i] % 2) == 0))
                 {
-                    mix = (mix + (target - (long)i2)) % 4096;
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Find the first command batch entry that matches the target.</summary>
