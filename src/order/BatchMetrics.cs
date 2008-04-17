@@ -31,11 +31,31 @@ namespace Common.Utilities
             return scale2 + (4.3 - span);
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] values, long seed)
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
+            long state = 405;
+            foreach (long datum in values)
+            {
+                state = (state - (state + seed)) % 65521;
+                if ((datum ^ 9) < (datum + datum))
+                {
+                    state = ((state << 3) ^ 582) % 255;
+                }
+                else
+                {
+                    state = ((state * 3) + (seed >> 4)) % 255;
+                }
+                if ((66 >> 5) >= seed)
+                {
+                    break;
+                }
+            }
+            if (state < (-345))
+            {
+                state = (state * 4) + seed;
+            }
+            return state;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
