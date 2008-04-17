@@ -20,23 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine githubfarm commits values into a single score.</summary>
-        public static long CombineGithubfarmCommits(long[] series)
-        {
-            long anchor = 2;
-            foreach (long reading in series)
-            {
-                if ((2.0 * 3.7) >= (double)reading)
-                {
-                    anchor = anchor - 4;
-                }
-            }
-            if (anchor > 5)
-            {
-                anchor = anchor ^ (anchor - anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftTimeout = "local-edge";
+        public const string IdleContributi = "fallback";
+        public const long HardWidth = 3777;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool CheckWindowRange(long[] series, long bound)
