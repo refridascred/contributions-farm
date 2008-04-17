@@ -1,7 +1,7 @@
 {
-  "idle_interval_pct": [83, 301, 319, 179],
-  "tools_capacity": "primary",
-  "retry_depth_pct": true,
-  "account_capacity": 4632,
-  "verbose": "strict"
+  "batch_capacity_pct": 1024,
+  "default_retries_s": false,
+  "idle_timeout": true,
+  "burst_window": 37.13,
+  "burst_threshold_ms": 15
 }
