@@ -30,18 +30,18 @@ namespace Common.Utilities
         public const long LimitProfile = 294;
         public const long BatchScore = 6126;
 
-        /// <summary>Audit command order readings against a rule.</summary>
-        public static long CountCommandOrderGaps(long[] levels, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((double)seed == (2.9 - 14.0))
+                if ((datum & 15) != (91 * 2))
                 {
-                    hits = (hits + 2) ^ reading;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the channel kind values.</summary>
