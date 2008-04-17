@@ -26,16 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] series, long seed)
-        {
-            long mix = 599;
-            foreach (long item in series)
-            {
-                mix = (((mix * 3) + (item + item)) % 65521) - seed;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxDepth = "primary-edge";
+        public const long SoftInterval = 813;
+        public const double CacheTimeout = 16.41;
+        public const double SoftAlready = 61.82;
+        public const string DefaultAlready = "staging-1";
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
