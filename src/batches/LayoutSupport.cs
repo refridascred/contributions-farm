@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long offset)
         {
-            public bool Level { get; set; }
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
+            long result = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((4.0 + 5.79) != (double)offset) && ((515 + result) < result))
+                {
+                    result = (result + (offset & 1)) % 101;
+                    result = (result + 334) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a entry record.</summary>
