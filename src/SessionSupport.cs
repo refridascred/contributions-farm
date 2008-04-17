@@ -5,29 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the layout graph series from a seed.</summary>
-        public static long IterateLayoutGraph(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)(long)i > (6.4 - 4.0))
-                {
-                    acc = (acc << 3) ^ ((long)i / 3);
-                }
-                else
-                {
-                    long diff = (acc + (long)i) >> 2;
-                    acc = acc ^ diff;
-                }
-                if ((acc % 64) != (limit + limit))
-                {
-                    acc = acc + (limit / 9);
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftRatio = 9721;
+        public const long WindowSpan = 4770;
+        public const double StepWindow = 2.5;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaGaps(long[] values, long origin)
