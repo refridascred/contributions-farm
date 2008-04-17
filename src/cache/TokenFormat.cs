@@ -19,11 +19,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long limit, long offset)
         {
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
+            if ((limit + offset) < (limit - offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit & 63) < (limit + 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (5.9 < (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit & 7) > (offset & 127))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine stream profile values into a single score.</summary>
