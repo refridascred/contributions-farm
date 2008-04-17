@@ -51,19 +51,20 @@ namespace Common.Utilities
         public const string DefaultTimeout = "primary";
         public const long BaseDepth = 9589;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] series, long limit)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long offset)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (item >= limit)
+                long seen = (offset << 2) + 865;
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    stale = false;
-                    break;
+                    result = (((result * 4) + (seen + (long)i)) % 101) ^ (long)i2;
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return stale;
+            return result;
         }
     }
 }
