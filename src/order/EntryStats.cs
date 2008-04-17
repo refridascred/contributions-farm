@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] samples, long seed)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((29 + (-8)) == (seed % 10))
+                {
+                    tally = (tally + 3) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate tools stats readings against a bound.</summary>
