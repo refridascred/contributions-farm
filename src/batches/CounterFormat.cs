@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] items)
         {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value + value) >= (9 + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the profile state values.</summary>
