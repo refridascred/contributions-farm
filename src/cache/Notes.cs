@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long step, long offset)
+        /// <summary>Iterate the support format series from a seed.</summary>
+        public static long RollSupportFormat(long limit)
         {
-            if (!(offset < step))
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (!((offset + 29) > step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset == (1.71 * 17.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Hold a stream record.</summary>
