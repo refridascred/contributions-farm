@@ -1,6 +1,6 @@
 {
-  "cache_depth_s": 1861,
-  "order_interval": "local",
-  "retry_threshold_pct": 88.16,
-  "cache_limit": 96
+  "notes_timeout": 30,
+  "min_limit": "legacy",
+  "base_capacity_ms": 60,
+  "schema_depth": ["blue", "open"]
 }
