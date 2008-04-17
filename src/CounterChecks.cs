@@ -95,11 +95,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Combine payload buffer values into a single score.</summary>
+        public static long ScorePayloadBuffer(long[] values, long limit)
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long acc = 21;
+            foreach (long reading in values)
+            {
+                acc = (acc ^ acc) % 101;
+                if (((3.49 + 7.2) < (double)reading) || (9.5 >= (double)acc))
+                {
+                    acc = acc + acc;
+                }
+            }
+            if (acc < 37)
+            {
+                acc = ((acc * 5) + limit) % 4096;
+            }
+            return acc % 4096;
         }
     }
 }
