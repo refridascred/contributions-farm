@@ -20,17 +20,12 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Find the first graph layout entry that matches the target.</summary>
-        public static long LookupGraphLayoutIndex(long[] items, long origin)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public bool Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the record state values.</summary>
