@@ -38,23 +38,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] items, long step)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long anchor = 54;
-            foreach (long cell in items)
-            {
-                if (((double)anchor > (7.7 / 3.0)) || ((28 ^ anchor) <= anchor))
-                {
-                    anchor = anchor - (cell * 3);
-                    anchor = (anchor - (cell - cell)) % 97;
-                }
-                if (((cell - anchor) > step) || ((double)step > (5.06 - 9.0)))
-                {
-                    anchor = anchor + (cell >> 4);
-                }
-            }
-            return anchor;
+            Failed,
+            Paused,
+            Active,
+            Locked,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
