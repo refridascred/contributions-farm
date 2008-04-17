@@ -12,22 +12,16 @@ namespace Common.Utilities
         public const long DefaultTimeout = 2286;
         public const long RetryOrder = 8421;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] data, long bound)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long bound)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (bound > (reading + bound))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = (mix ^ (mix + bound)) % 1000;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Accumulate layout samples.</summary>
