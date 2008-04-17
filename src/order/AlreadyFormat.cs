@@ -22,15 +22,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double ratio, double bias)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double gain, double bias)
         {
-            double weight = bias;
-            if (weight <= bias)
+            double load = bias;
+            if (load > 6.75)
             {
-                weight = (weight + (bias * 2.2)) - ratio;
+                load = (load + load) + gain;
             }
-            return weight - (double)7;
+            else
+            {
+                load = load + (double)44;
+            }
+            return load - load;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
