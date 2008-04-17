@@ -26,17 +26,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardBudget = "latest-1";
+        public const long CacheGithubfarm = 8478;
+        public const string CacheScore = "local";
+        public const long SoftGithubfarm = 2505;
+        public const long BaseWidth = 8296;
     }
 }
