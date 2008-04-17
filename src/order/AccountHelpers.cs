@@ -26,18 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] data)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] samples, long step)
         {
-            long state = -8;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if (((double)state != (double)reading) || ((reading / 5) <= (reading % 5)))
+                if (item > step)
                 {
-                    state = state - (reading - state);
+                    stale = false;
+                    break;
                 }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
