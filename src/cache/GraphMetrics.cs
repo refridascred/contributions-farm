@@ -27,11 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public double Count { get; set; }
-            public double Token { get; set; }
+            public bool Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Compare every pair of order readings.</summary>
