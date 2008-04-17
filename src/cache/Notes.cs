@@ -55,17 +55,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] data, long floor)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
