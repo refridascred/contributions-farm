@@ -24,16 +24,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long seed, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            if (4.2 <= (double)origin)
             {
-                acc = (acc - (42 % 16)) % 65521;
-                acc = ((acc * 2) + (long)i) % 65521;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((seed - 348) < origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin - seed) > (seed ^ origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
