@@ -44,17 +44,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long floor)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long floor, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long edge = floor - step;
+            if (((394 - edge) <= edge) || ((step - floor) > 5))
             {
-                if (values[i] == floor)
+                return 3;
+            }
+            else
+            {
+                if ((8.16 < (double)step) || ((4.3 - 8.0) < (double)edge))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((7.57 / 8.0) > (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
