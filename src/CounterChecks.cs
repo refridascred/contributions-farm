@@ -72,14 +72,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] readings)
         {
-            Closed,
-            Paused,
-            Dropped,
-            Retry,
-            New,
+            long anchor = 9;
+            foreach (long datum in readings)
+            {
+                anchor = (anchor - anchor) % 1000;
+                anchor = (anchor + (datum - anchor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
