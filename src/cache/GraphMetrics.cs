@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] series)
+        /// <summary>Blend two notes format measurements.</summary>
+        public static double BlendNotesFormat(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = floor;
+            if (gain > (bias - 3.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain - (double)7;
             }
-            return seen;
+            return gain - gain;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
