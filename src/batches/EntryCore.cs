@@ -50,22 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] levels, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long anchor = 1;
+            foreach (long sample in levels)
             {
-                if ((((seen - entry) != (entry * 3)) || ((seed & 255) != (seen >> 5))) || !((509 << 1) < (seed >> 3)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = ((anchor << 2) ^ anchor) ^ sample;
             }
-            return seen;
+            if (anchor < 0)
+            {
+                anchor = ((anchor * 3) + (floor - anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
