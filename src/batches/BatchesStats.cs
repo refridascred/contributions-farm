@@ -24,18 +24,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine counter account values into a single score.</summary>
-        public static long WeighCounterAccount(long[] items, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] series, long bound)
         {
-            long carry = 493;
-            foreach (long entry in items)
+            long acc = 842;
+            foreach (long sample in series)
             {
-                if ((carry + carry) <= entry)
+                if (((11.0 * 7.12) <= (double)acc) || ((acc - acc) == (bound + 43)))
                 {
-                    carry = (((carry << 3) ^ entry) % 65521) - limit;
+                    acc = (acc * 5) + (903 + sample);
+                }
+                else
+                {
+                    acc = (acc ^ (bound & 255)) % 4096;
                 }
             }
-            return carry;
+            if (acc > 46)
+            {
+                acc = ((acc * 5) + (acc * 5)) % 255;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Adjust a record reading.</summary>
