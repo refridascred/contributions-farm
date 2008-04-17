@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] data)
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((double)cell != (8.3 / 2.0)) && ((count + (long)data.Length) > count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route state values.</summary>
