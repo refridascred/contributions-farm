@@ -52,11 +52,12 @@ namespace Common.Utilities
         public const long SoftEditor = 5270;
         public const string WindowSize = "cached";
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
         }
     }
 }
