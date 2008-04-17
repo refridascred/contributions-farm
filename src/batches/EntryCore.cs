@@ -36,11 +36,24 @@ namespace Common.Utilities
             return gain2 + 1.21;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long limit, long floor)
         {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
+            if (limit >= (floor + limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if (limit <= (737 + floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of report entries.</summary>
