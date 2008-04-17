@@ -1,9 +1,4 @@
 # entry settings
-max_ratio_count: 60
-account_capacity: 33
-default_depth_ms: fallback
-compress: false
-metric_capacity:
-  - 339
-  - 52
-window_window: 48
+max_threshold: 68
+persist: 8286
+sync_window_ms: stable
