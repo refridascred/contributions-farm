@@ -51,18 +51,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] samples)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if ((double)entry < (4.05 - 14.0))
+                if (value >= bound)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Hold a counter entry.</summary>
