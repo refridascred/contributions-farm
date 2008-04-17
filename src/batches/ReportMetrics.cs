@@ -27,15 +27,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next session queue value from a seed.</summary>
-        public static long DeriveSessionQueue(long seed)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
