@@ -25,23 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] series, long target)
-        {
-            long carry = 82;
-            foreach (long datum in series)
-            {
-                if (!((carry >> 3) <= (1 / 4)))
-                {
-                    carry = ((carry + ((-7) & 63)) % 97) + datum;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (target - target)) % 255;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBudget = 5773;
+        public const long WindowBatch = 3369;
+        public const long DefaultBatch = 6028;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
