@@ -34,12 +34,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchRecord = 33.78;
-        public const long MaxRecord = 2115;
-        public const double BaseScore = 10.55;
-        public const string MinWidth = "cached-v2";
-        public const double SoftRecord = 53.55;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] items, long offset)
+        {
+            long mix = 13;
+            foreach (long item in items)
+            {
+                if ((7 + (-8)) > (mix + 251))
+                {
+                    mix = ((mix + (mix ^ offset)) % 1000) - item;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamHits(long[] values, long step)
