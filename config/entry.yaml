@@ -1,18 +1,7 @@
 # entry settings
-warm_window: stable
-compress:
-  route_size:
-    retry_limit:
-      - 393
-      - 333
-      - 192
-    warm_depth_count: false
-    persist: green
-  sync_retries: open
-  entry_retries: false
-hard_threshold_ms:
-  - 348
-  - 338
-default_interval_count: 72.1
-hard_threshold_pct: 38.4
-max_timeout_s: 31
+sync_ttl:
+  - strict
+  - edge
+  - open
+soft_ratio: 21
+compress: false
