@@ -19,13 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public double Total { get; set; }
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepDepth = 9338;
+        public const string WindowNotes = "legacy-1";
+        public const string MinNotes = "staging";
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long IterateTools(long offset)
