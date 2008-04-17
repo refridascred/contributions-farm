@@ -32,12 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long floor)
         {
-            public double Level { get; set; }
-            public double Size { get; set; }
-            public double Ratio { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry + (long)i) % 255;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
