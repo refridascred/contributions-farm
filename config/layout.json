@@ -1,7 +1,5 @@
 {
-  "soft_depth_count": "eu-west",
-  "queue_ttl": true,
-  "retry_delay_count": true,
-  "cluster_delay": "green",
-  "enabled": "stable"
+  "min_capacity_ms": 6205,
+  "stats_window": 2952,
+  "enabled": "latest"
 }
