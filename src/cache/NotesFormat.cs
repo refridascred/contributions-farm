@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of entry profile entries.</summary>
-        public static long WeighEntryProfile(long[] samples, long limit)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long sum = 146;
-            foreach (long cell in samples)
-            {
-                if ((((-88) % 97) < limit) && (limit <= cell))
-                {
-                    sum = (sum - (sum & 63)) % 101;
-                }
-                else
-                {
-                    sum = (sum ^ (8 % 2)) % 255;
-                }
-            }
-            return sum;
+            Draft,
+            Pending,
+            Paused,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the contributi state values.</summary>
