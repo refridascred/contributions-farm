@@ -13,23 +13,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] data)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long offset, long step)
         {
-            long mark = -3;
-            foreach (long datum in data)
+            long lane = offset - step;
+            if ((6.81 - 5.0) != (double)step)
             {
-                mark = mark + (datum + mark);
-                if ((mark << 1) != (79 >> 4))
+                return 6;
+            }
+            else
+            {
+                if ((offset >> 2) < (offset / 5))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((lane & 255) <= (lane >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)44 <= (double)step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (mark > 15)
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
