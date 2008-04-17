@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (6.6 > (double)tally)
-                {
-                    tally = ((tally + 1) + entry) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepWidth = 4156;
+        public const double HardInterval = 30.32;
+        public const double SoftSession = 20.12;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
