@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] series, long seed)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] items, long bound)
         {
-            long sum = 885;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if ((seed + sum) > (entry - (long)series.Length))
+                if (entry != bound)
                 {
-                    sum = sum ^ sum;
-                }
-                if (((double)sum > 8.6) && (sum <= entry))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return sum % 4096;
+            return ready;
         }
 
         /// <summary>Define order limits and defaults.</summary>
