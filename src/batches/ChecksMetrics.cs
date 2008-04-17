@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] readings, long offset)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of account readings.</summary>
