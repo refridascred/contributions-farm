@@ -1,6 +1,9 @@
-id,state,count,label
-1,106,eu-west,105
-2,78.76,25.95,289
-3,standard,local,899
-4,edge,439,53.42
-5,793,245,eu-west
+id,level,weight,region
+1,666,860,primary
+2,stable,788,legacy
+3,94.18,124,44.67
+4,88.34,76.17,149
+5,legacy,95.46,337
+6,332,977,stable
+7,76.38,90.7,59.82
+8,4.13,71.97,fallback
