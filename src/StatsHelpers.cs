@@ -33,17 +33,19 @@ namespace Common.Utilities
         public const long BaseDepth = 8426;
         public const long BatchTimeout = 8623;
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] readings, long seed)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 883;
+            foreach (long datum in data)
             {
-                if ((readings[i] == seed) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                state = (state - datum) % 4096;
             }
-            return -1;
+            if (state > 8)
+            {
+                state = (state ^ (limit + limit)) % 1000;
+            }
+            return state;
         }
     }
 }
