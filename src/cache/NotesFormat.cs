@@ -11,14 +11,17 @@ namespace Common.Utilities
         public const long HardScore = 7713;
         public const string MinTimeout = "strict";
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Look up the position of a session tools sample.</summary>
+        public static long SeekSessionToolsIndex(long[] series, long limit)
         {
-            Pending,
-            Idle,
-            Stale,
-            Done,
-            Queued,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a session tools reading.</summary>
