@@ -40,10 +40,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 63.64;
-        public const string MinFilter = "local-v2";
-        public const long StepFilter = 4361;
-        public const long BaseSize = 3592;
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
