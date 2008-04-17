@@ -21,19 +21,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the report stream entries that pass the check.</summary>
-        public static long AuditReportStreamOutliers(long[] items)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] readings)
         {
             long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((count + value) == (count + count)) || !((value ^ value) >= value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
