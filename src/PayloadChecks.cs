@@ -36,19 +36,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] items, long offset)
-        {
-            long mix = 13;
-            foreach (long item in items)
-            {
-                if ((7 + (-8)) > (mix + 251))
-                {
-                    mix = ((mix + (mix ^ offset)) % 1000) - item;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 5356;
+        public const long LimitOrder = 8597;
+        public const double IdleScore = 77.92;
+        public const string BatchOrder = "standard-edge";
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long AuditPayloadOutliers(long[] samples)
