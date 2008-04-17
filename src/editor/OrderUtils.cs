@@ -42,17 +42,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] data, long bound)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Closed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Iterate the stats metrics series from a seed.</summary>
