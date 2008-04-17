@@ -87,13 +87,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
             Active,
-            Pending,
+            Closed,
             Failed,
-            Queued,
         }
     }
 }
