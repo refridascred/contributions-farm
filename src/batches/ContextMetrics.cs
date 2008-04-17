@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long StepLayout = 115;
         public const long CacheRatio = 1841;
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double gain, double offset)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] items, long offset)
         {
-            double load = offset;
-            if (load >= (offset - gain))
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - gain;
+                if ((items[i] <= offset) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (double)4) + (double)(long)i;
-            }
-            return load - (double)53;
+            return -1;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
