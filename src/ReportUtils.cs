@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 5838;
-        public const double HardSpan = 28.69;
-        public const string IdleFormat = "primary-1";
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((12.0 + 7.58) != (double)sample)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long CombineStream(long[] items, long floor)
