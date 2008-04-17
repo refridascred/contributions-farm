@@ -28,12 +28,33 @@ namespace Common.Utilities
         public const double LimitBudget = 8.32;
         public const long IdleCommits = 4603;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseAccount = 96.95;
-        public const double DefaultAccount = 32.24;
-        public const long SoftFactor = 1905;
-        public const string MinAccount = "strict-edge";
-        public const long IdleFactor = 6821;
+        /// <summary>Classify a session buffer pair into a bucket.</summary>
+        public static long GradeSessionBuffer(long offset, long step)
+        {
+            long gap = offset ^ step;
+            if (offset < (gap >> 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((gap + offset) > 20)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((-4) * 4) <= (step ^ 96))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a stream layout counter forward.</summary>
         public static long DeriveStreamLayout(long floor)
