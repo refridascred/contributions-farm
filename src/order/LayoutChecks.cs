@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] samples, long bound)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long origin)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc << 3) ^ (long)i) % 97;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
