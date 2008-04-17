@@ -1,15 +1,10 @@
 # Command notes
 
-Run the format check before changing any already limits.
-Each metrics is validated before it reaches the already queue.
-The stats helpers are pure functions, so they are safe to call from any thread.
-
-Run the command check before changing any commits limits.
-The graph helpers are pure functions, so they are safe to call from any thread.
-Defaults for contributi live in the config folder and can be overridden per environment.
+A batch that stays idle for too long is moved to the stream list.
+The buffer report groups every batch by cache.
 
 ## Guidelines
 
-- Log every filter change
-- Validate stats input early
-- Prefer tools defaults
+- Document new layout fields
+- Review editor limits each release
+- Log every metrics change
