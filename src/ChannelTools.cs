@@ -19,13 +19,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Ready,
-            Active,
-            Locked,
-            Paused,
+            public double Stamp { get; set; }
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a entry info.</summary>
