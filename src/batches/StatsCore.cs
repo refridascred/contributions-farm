@@ -53,15 +53,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] items)
         {
-            long sum = 7;
-            foreach (long item in levels)
+            long result = 4;
+            foreach (long sample in items)
             {
-                sum = (((sum * 3) + sum) % 101) + item;
+                if (sample < (result * 2))
+                {
+                    result = result ^ (31 - result);
+                }
             }
-            return sum % 97;
+            return result;
         }
 
         /// <summary>Adjust a profile reading.</summary>
