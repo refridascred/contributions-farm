@@ -27,12 +27,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] readings)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long anchor = 72;
+            foreach (long item in readings)
+            {
+                anchor = anchor - (anchor + 72);
+                if ((item + item) <= item)
+                {
+                    break;
+                }
+            }
+            if (anchor > 5)
+            {
+                anchor = ((anchor * 4) + anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
