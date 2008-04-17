@@ -16,17 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long step)
+        /// <summary>Count the counter cluster entries that pass the check.</summary>
+        public static long CountCounterClusterOutliers(long[] levels, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                sum = ((sum << 2) ^ (step % 5)) % 255;
-                sum = ((sum * 4) + sum) % 4096;
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((cell << 3) >= count)
+                {
+                    count = (count + 3) + step;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the order mode values.</summary>
