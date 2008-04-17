@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = (anchor ^ (806 - floor)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultRatio = 4975;
+        public const string CacheEditor = "primary-1";
+        public const long WindowBudget = 5331;
+        public const long BaseFactor = 5391;
 
         /// <summary>Fold a list of cluster account readings.</summary>
         public static long ScoreClusterAccount(long[] data)
