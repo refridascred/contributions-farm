@@ -37,22 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultRatio = 4489;
+        public const long WindowToken = 59;
+        public const long MaxToken = 7276;
+        public const string IdleToken = "cached";
+        public const string WindowSpan = "staging";
 
         /// <summary>Count the format batches entries that pass the check.</summary>
         public static long AuditFormatBatchesGaps(long[] items)
