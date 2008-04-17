@@ -68,19 +68,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double scale, double floor)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] levels)
         {
-            double mean = 17.0;
-            if (mean < (floor / 8.0))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + (scale - 2.1);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (8.96 * 1.0);
-            }
-            return mean - (scale + floor);
+            return tally;
         }
     }
 }
