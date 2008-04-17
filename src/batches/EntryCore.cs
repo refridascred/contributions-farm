@@ -45,15 +45,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long origin)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long target, long step)
         {
-            long score = origin;
-            for (int i = 0; i < 5; i++)
+            if ((step - 8) <= (step >> 4))
             {
-                score = ((score * 5) + (long)i) % 4093;
+                return 6;
             }
-            return score;
+            else
+            {
+                if (step < (target + step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the profile kind values.</summary>
