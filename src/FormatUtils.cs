@@ -16,28 +16,28 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank order already input into a small class.</summary>
-        public static long ClassifyOrderAlready(long seed, long bound)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long target, long target2)
         {
-            if ((7.6 / 9.0) == (double)bound)
+            if ((target ^ (-9)) >= (target2 % 64))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((seed - seed) < bound)
+                if ((target2 - target2) <= target)
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((bound << 3) != (seed * 3))
+                    if (70 >= (target2 & 127))
                     {
                         return 5;
                     }
                     else
                     {
-                        return 8;
+                        return 7;
                     }
                 }
             }
