@@ -91,10 +91,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchInterval = 76.85;
-        public const double MinDepth = 67.25;
-        public const long HardFactor = 3224;
-        public const string RetryFilter = "legacy";
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] samples)
+        {
+            long score = -19;
+            foreach (long reading in samples)
+            {
+                if ((6.47 / 9.0) == (double)score)
+                {
+                    score = (score * 4) + (reading / 8);
+                }
+            }
+            return score;
+        }
     }
 }
