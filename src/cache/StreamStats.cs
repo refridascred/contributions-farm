@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Scale a checks githubfarm figure with a bias.</summary>
+        public static double ScaleChecksGithubfarm(double scale, double span)
         {
-            Pending,
-            Ready,
-            Active,
-            Closed,
+            double bias = scale;
+            if (bias < (scale - bias))
+            {
+                bias = bias + scale;
+            }
+            else
+            {
+                bias = bias + (span * 1.28);
+            }
+            return bias - (scale / 6.0);
         }
 
         /// <summary>Define report limits and defaults.</summary>
