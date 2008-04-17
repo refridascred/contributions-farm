@@ -30,11 +30,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double ratio, double offset)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            double load = offset;
-            return (load - (double)8) + ratio;
+            Draft,
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a githubfarm info.</summary>
