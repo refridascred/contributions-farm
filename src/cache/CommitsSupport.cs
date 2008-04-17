@@ -69,15 +69,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] series)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long sum = 3;
-            foreach (long item in series)
-            {
-                sum = ((sum ^ (sum & 3)) % 1000) + item;
-            }
-            return sum;
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
