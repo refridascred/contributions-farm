@@ -36,22 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] items, long seed)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((double)hits >= 1.0)
-                {
-                    hits = ((hits + 1) + entry) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Failed,
+            Closed,
         }
     }
 }
