@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultRatio = 4975;
-        public const string CacheEditor = "primary-1";
-        public const long WindowBudget = 5331;
-        public const long BaseFactor = 5391;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchTimeout = 9540;
+        public const double LimitScore = 37.7;
+        public const long BaseBatch = 6663;
+        public const double MinBudget = 34.42;
+        public const string SoftBatch = "standard";
 
         /// <summary>Fold a list of cluster account readings.</summary>
         public static long ScoreClusterAccount(long[] data)
