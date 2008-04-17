@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                long gap = limit * 4;
-                mix = (mix ^ limit) % 65521;
-                if (!((gap % 16) != (limit >> 1)))
-                {
-                    long gap2 = (long)i ^ (mix * 3);
-                    gap = ((gap << 3) ^ ((long)i ^ gap2)) % 97;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a notes stats.</summary>
