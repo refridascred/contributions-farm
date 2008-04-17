@@ -49,21 +49,17 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] readings)
+        /// <summary>Look up the position of a githubfarm schema sample.</summary>
+        public static long LocateGithubfarmSchemaIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (samples[i] >= seed)
                 {
-                    if ((readings[i] + readings[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
