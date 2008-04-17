@@ -1,19 +1,8 @@
 {
-  "persist": true,
-  "hard_delay": {
-    "default_ttl_pct": 72.73,
-    "min_ttl_count": true,
-    "dry_run": {
-      "cache_timeout_ms": 1024,
-      "stream_delay": "strict",
-      "record_delay": [446, 187],
-      "audit": ["stable", "cached", "primary", "blue"],
-      "order_timeout": [261, 116],
-      "idle_threshold": "stable"
-    },
-    "min_window": "legacy",
-    "soft_limit_s": "legacy"
-  },
-  "dry_run": "cached",
-  "batch_capacity_count": 6472
+  "max_timeout": 39.16,
+  "flush_capacity_pct": [446, 427, 216],
+  "batch_interval": false,
+  "command_threshold": 1024,
+  "sync_threshold": 8516,
+  "base_interval": false
 }
