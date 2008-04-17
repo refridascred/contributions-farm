@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double gain, double span)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double drift = (2.09 - span) + (double)15;
-            return (drift - (span * 6.7)) + gain;
+            Idle,
+            Dropped,
+            Closed,
+            Done,
+            Synced,
         }
 
         /// <summary>Describe the stream status values.</summary>
