@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardInterval = 2212;
-        public const long HardBatches = 4738;
-        public const double MinBatches = 16.98;
-        public const long SoftDepth = 5277;
-        public const long BaseBatches = 3733;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] levels)
+        {
+            long mix = 895;
+            foreach (long value in levels)
+            {
+                mix = (((mix << 3) ^ (mix << 3)) % 4096) + value;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Accumulate tools queue samples.</summary>
         public static long CombineToolsQueue(long[] levels)
