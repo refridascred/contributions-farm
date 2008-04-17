@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double LimitPayload = 78.63;
         public const double MinWidth = 13.31;
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double weight, double offset)
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public double Label { get; set; }
+            double drift = weight;
+            if (drift >= (weight / 7.0))
+            {
+                drift = drift - (offset / 6.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - weight) + (double)(long)i;
+            }
+            return drift + (weight - weight);
         }
 
         /// <summary>Combine cache stream values into a single score.</summary>
