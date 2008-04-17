@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] items, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (datum > limit)
+                if (seed >= (seen - item))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
