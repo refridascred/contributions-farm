@@ -19,10 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 9355;
-        public const double MinDepth = 14.67;
-        public const long BaseFarm = 1924;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string MinMetric = "open-1";
