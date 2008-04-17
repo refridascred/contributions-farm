@@ -48,18 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] levels, long floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((6.5 / 9.0) < (double)floor)
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
+            Dropped,
+            Paused,
+            Closed,
+            Failed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
