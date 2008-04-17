@@ -50,13 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Count the format batches entries that pass the check.</summary>
+        public static long AuditFormatBatchesGaps(long[] items)
         {
-            Paused,
-            Ready,
-            Queued,
-            Active,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((8 + seen) > (datum << 2))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
