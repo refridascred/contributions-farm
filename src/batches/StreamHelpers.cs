@@ -14,13 +14,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Synced,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryReport = "latest-v2";
+        public const long SoftCount = 7476;
+        public const long MaxReport = 6591;
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
