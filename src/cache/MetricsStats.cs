@@ -45,24 +45,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long step, long seed)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] readings, long origin)
         {
-            if ((double)step > (9.51 - 7.66))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed % 8) > step) || ((seed - step) >= (-3)))
+                if ((readings[i] == origin) && ((readings[i] % 5) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
