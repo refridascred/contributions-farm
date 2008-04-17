@@ -12,21 +12,16 @@ namespace Common.Utilities
         public const double SoftBuffer = 39.48;
         public const long RetryBuffer = 9799;
 
-        /// <summary>Match up support queue samples.</summary>
-        public static long CompareSupportQueueCount(long[] series)
+        /// <summary>Roll a metric context counter forward.</summary>
+        public static long SeriesMetricContext(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (mix * 5) + mix;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the stats mode values.</summary>
