@@ -32,21 +32,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count counter command pairs that satisfy a relation.</summary>
-        public static long MatchCounterCommandCount(long[] data)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((8.0 * 7.44) < (double)hits)
                 {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    hits = ((hits + 1) + cell) - floor;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
