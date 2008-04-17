@@ -16,15 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double weight, double bias)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long target)
         {
-            double ratio = weight;
-            for (int i = 0; i < 9; i++)
+            long mix = target;
+            for (int i = 0; i < 18; i++)
             {
-                ratio = (ratio - (weight - ratio)) + (double)(long)i;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = (mix + (target - (long)i2)) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return ratio - bias;
+            return mix;
         }
 
         /// <summary>Hold a record snapshot.</summary>
