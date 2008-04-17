@@ -25,21 +25,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] values)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((values[i] + values[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state + (long)i2;
                 }
+                state = state - (state >> 1);
+                state = state + state;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Adjust a record reading.</summary>
