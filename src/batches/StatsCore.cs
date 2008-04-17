@@ -60,18 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] values, long seed)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (cell < (tally << 2))
-                {
-                    tally = (tally + 3) + seed;
-                }
-            }
-            return tally;
+            double mean = 4.65;
+            return ((mean + (double)9) + ratio) + bias;
         }
 
         /// <summary>Describe the payload class values.</summary>
