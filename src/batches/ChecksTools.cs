@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] data, long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] levels, long floor)
         {
-            long acc = 24;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                acc = ((acc + (floor - floor)) % 101) + datum;
+                if ((6.5 / 9.0) < (double)floor)
+                {
+                    tally = (tally + 3) + item;
+                }
             }
-            if (acc < 10)
-            {
-                acc = ((acc * 3) + (acc >> 3)) % 1000;
-            }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
