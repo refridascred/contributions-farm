@@ -25,18 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] samples)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((((1.24 / 3.0) > (double)tally) || ((datum - tally) <= (datum ^ tally))) && ((tally - datum) > (datum * 3)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Accumulate metrics samples.</summary>
