@@ -31,12 +31,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] data, long step)
         {
-            Active,
-            Dropped,
-            Synced,
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
