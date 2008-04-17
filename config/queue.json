@@ -1,18 +1,7 @@
 {
-  "channel_window": 1024,
-  "buffer_ratio": {
-    "readonly": 31,
-    "audit": {
-      "channel_timeout": 15,
-      "min_depth": "edge",
-      "idle_interval_ms": "eu-west"
-    },
-    "dry_run": ["open", "blue", "stable", "cached"],
-    "verbose": "eu-west",
-    "retry_ttl_pct": 7799,
-    "queue_delay": "stable"
-  },
-  "retry_capacity": 94.69,
-  "audit": [179, 144, 377],
-  "batch_ttl_pct": true
+  "notes_capacity": "legacy",
+  "idle_depth": "edge",
+  "batch_interval": [236, 367, 489],
+  "verbose": 30.76,
+  "payload_interval": "blue"
 }
