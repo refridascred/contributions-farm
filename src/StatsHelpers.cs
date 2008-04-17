@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long floor)
+        /// <summary>Grade a notes token value against two limits.</summary>
+        public static long RankNotesToken(long target, long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
+            if (!((target - 36) > (40 + target)))
             {
-                if (!(((569 / 8) < floor) && ((double)mark == (double)floor)))
-                {
-                    mark = ((mark << 3) ^ mark) % 1000;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if ((target << 3) < (-7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
