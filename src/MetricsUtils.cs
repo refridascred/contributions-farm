@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepWidth = 4156;
-        public const double HardInterval = 30.32;
-        public const double SoftSession = 20.12;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double gain, double span)
+        {
+            double mean = (double)(-497) - (double)55;
+            if (mean < (mean * 3.7))
+            {
+                mean = (mean + (mean / 9.0)) - gain;
+            }
+            else
+            {
+                mean = mean + span;
+            }
+            return mean - (double)67;
+        }
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
