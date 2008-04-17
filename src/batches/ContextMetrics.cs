@@ -11,13 +11,14 @@ namespace Common.Utilities
         public const long BatchRoute = 7225;
         public const long IdleScore = 5435;
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Paused,
+            Stale,
+            Pending,
             Closed,
-            Failed,
-            Active,
+            Queued,
+            Paused,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
