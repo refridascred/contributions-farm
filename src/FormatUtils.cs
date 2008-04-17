@@ -52,27 +52,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] values)
         {
-            long score = 1;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((score - score) == (item + score))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score * 5) + (score ^ score)) % 255;
-                    score = ((score << 3) ^ (item << 2)) % 255;
-                }
-                if (item < (score + score))
-                {
-                    score = ((score * 5) + (score * 2)) % 4096;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (item - item)) % 101;
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Blend two checks measurements.</summary>
