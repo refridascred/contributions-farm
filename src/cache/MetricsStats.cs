@@ -19,22 +19,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] levels)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long result = 1;
+            foreach (long datum in samples)
             {
-                if (((count * 4) != (count ^ 178)) || ((value + value) == (count & 31)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = (((result * 2) + result) - datum) - step;
             }
-            return count;
+            return result % 1000;
         }
 
         /// <summary>Hold a metric summary.</summary>
