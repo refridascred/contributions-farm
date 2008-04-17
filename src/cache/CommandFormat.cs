@@ -36,13 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long origin)
         {
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            long result = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i3 = 0; i3 < 3; i3++)
+                {
+                    result = ((result + result) % 1000) + (long)i3;
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
