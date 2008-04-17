@@ -27,18 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the channel buffer entries that pass the check.</summary>
-        public static long CountChannelBufferGaps(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (((entry % 16) != (seen + entry)) && ((double)(long)readings.Length <= (6.71 * 7.0)))
+                if (!((13 - 18) == (matches + sample)))
                 {
-                    seen = seen + 2;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
