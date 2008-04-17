@@ -22,18 +22,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] values)
+        /// <summary>Digest a series of notes context entries.</summary>
+        public static long ScoreNotesContext(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long state = 29;
+            foreach (long item in items)
             {
-                if (!((double)749 != (double)matches))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
+                state = ((state * 3) + (item - item)) % 255;
             }
-            return matches;
+            return state % 1000;
         }
     }
 }
