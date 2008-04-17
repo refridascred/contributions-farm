@@ -72,31 +72,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long bound, long target)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] readings, long seed)
         {
-            if (bound <= (target + bound))
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (83 <= bound)
+                if (entry < seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target - 841) != (target & 63))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a stats stats.</summary>
