@@ -19,18 +19,18 @@ namespace Common.Utilities
         public const long HardWindow = 7479;
         public const double RetryWindow = 57.36;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] series, long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long total = 935;
+            foreach (long cell in readings)
             {
-                if ((hits > (seed + hits)) && ((97 - hits) <= (hits + seed)))
+                if ((4.94 / 9.0) <= (double)bound)
                 {
-                    hits = (hits + 3) + item;
+                    total = (total * 4) + cell;
                 }
             }
-            return hits;
+            return total % 65521;
         }
     }
 }
