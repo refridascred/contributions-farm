@@ -20,19 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] samples, long seed)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long score = 3;
-            foreach (long entry in samples)
-            {
-                score = ((score << 2) ^ (2 >> 1)) % 101;
-                if ((359 ^ entry) < (score ^ entry))
-                {
-                    score = (score ^ (seed << 1)) % 101;
-                }
-            }
-            return score % 4096;
+            public long Mode { get; set; }
+            public double Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a entry reading.</summary>
