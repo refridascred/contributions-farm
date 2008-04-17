@@ -1,7 +1,21 @@
 {
-  "hard_limit_s": [14, 438, 451, 310],
-  "idle_delay_s": false,
-  "batch_delay_ms": 37,
-  "max_threshold": false,
-  "context_ttl": 12
+  "warm_threshold": false,
+  "max_capacity": 95,
+  "verbose": {
+    "burst_window": ["local", "edge"],
+    "persist": 100,
+    "cache_interval_pct": {
+      "enabled": 4.21,
+      "soft_size_ms": false,
+      "verbose": 53.18,
+      "soft_interval_pct": false,
+      "sync_limit_ms": 92
+    },
+    "compress": ["staging", "cached", "legacy", "fallback"],
+    "sync_ttl": "green",
+    "token_window": "latest"
+  },
+  "min_window": "staging",
+  "strict": ["blue", "strict", "latest", "strict"],
+  "token_ttl": ["cached", "standard", "local", "local"]
 }
