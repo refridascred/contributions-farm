@@ -1,7 +1,8 @@
-id,ratio,active,score
-1,strict,55.09,blue
-2,545,35.49,fallback
-3,11.5,80.2,138
-4,821,primary,42.56
-5,2.42,standard,891
-6,211,staging,61.14
+id,ratio,state,weight,active
+1,919,868,fallback,858
+2,eu-west,open,latest,blue
+3,79.42,751,111,585
+4,76.22,658,70.55,fallback
+5,77.76,71.4,884,60
+6,6.93,cached,260,405
+7,blue,733,edge,62.38
