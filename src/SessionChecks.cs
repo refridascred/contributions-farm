@@ -41,21 +41,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the tools report series from a seed.</summary>
-        public static long SeriesToolsReport(long bound)
+        /// <summary>Derive the next window already value from a seed.</summary>
+        public static long StepWindowAlready(long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
+            long mark = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                mark = (mark + 777) % 101;
+                if ((mark > limit) || (limit >= (mark ^ mark)))
                 {
-                    acc = ((acc ^ 353) % 1000) + (long)i2;
+                    mark = ((mark << 2) ^ mark) % 255;
                 }
-                acc = acc + acc;
-                acc = (acc << 3) ^ (bound + bound);
-                acc = ((acc * 5) + (long)i) % 1000;
+                if ((limit + limit) >= (long)i)
+                {
+                    mark = (mark * 4) + (limit + (long)i);
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return acc;
+            return mark;
         }
     }
 }
