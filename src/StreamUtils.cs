@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of schema metric entries.</summary>
-        public static long TallySchemaMetric(long[] samples)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long origin, long step)
         {
-            long sum = 7;
-            foreach (long item in samples)
+            if ((step - 6) > (step << 2))
             {
-                sum = (((sum << 2) ^ (sum % 12)) % 255) - item;
-                sum = sum + (21 - sum);
+                return 4;
             }
-            if (sum > (-7))
+            else
             {
-                sum = sum ^ (sum - sum);
+                if ((8.14 / 4.0) != (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((step / 2) > origin) && (step >= origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return sum % 65521;
         }
 
         /// <summary>Describe the graph mode values.</summary>
