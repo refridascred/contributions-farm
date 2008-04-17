@@ -32,15 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] values)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long sum = 4;
-            foreach (long value in values)
-            {
-                sum = (sum << 2) ^ value;
-            }
-            return sum;
+            Dropped,
+            Ready,
+            Retry,
+            Closed,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
