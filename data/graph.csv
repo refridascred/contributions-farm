@@ -1,6 +1,9 @@
-id,region,active
-1,251,982
-2,73.64,702
-3,855,17
-4,legacy,49
-5,734,primary
+id,owner,score,token,level
+1,latest,60.03,93.47,218
+2,green,11.73,114,152
+3,legacy,423,latest,787
+4,48.91,93.05,64,188
+5,54,293,legacy,open
+6,447,541,26.59,legacy
+7,75.9,279,green,open
+8,open,primary,759,12.59
