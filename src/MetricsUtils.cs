@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate report graph readings against a bound.</summary>
-        public static bool CheckReportGraphBounds(long[] series, long floor)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxDepth = 8977;
+        public const double MaxRatio = 30.04;
+        public const long MaxToken = 6146;
+        public const long HardToken = 2856;
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
