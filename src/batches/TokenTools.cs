@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitLevel = 7067;
+        public const long IdleSession = 8193;
+        public const string StepWidth = "primary-v2";
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long DigestSchema(long[] readings, long target)
