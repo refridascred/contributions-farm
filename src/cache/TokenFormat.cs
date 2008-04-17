@@ -20,11 +20,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
+            Pending,
+            Idle,
+            Closed,
+            Synced,
+            Ready,
         }
     }
 }
