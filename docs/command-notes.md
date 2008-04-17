@@ -1,10 +1,11 @@
 # Command notes
 
-When a command fails, the account handler retries a few times before giving up.
-The buffer report groups every order by filter.
+Each support is validated before it reaches the schema queue.
+Use cluster settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Prefer profile defaults
+- Keep cache values small
+- Document new metric fields
 - Review account limits each release
-- Log every stats change
+- Log every queue change
