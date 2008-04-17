@@ -1,6 +1,10 @@
-id,rank,level
-1,staging,714
-2,784,8.96
-3,100,666
-4,57.95,primary
-5,129,674
+id,rank,count,state,label
+1,green,green,21.75,38
+2,97,open,924,72.94
+3,617,20.87,stable,58
+4,strict,stable,54.24,blue
+5,944,794,staging,480
+6,staging,17.15,885,fallback
+7,119,61.67,edge,50.34
+8,legacy,928,green,24.61
+9,371,907,stable,287
