@@ -31,22 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] values, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] values)
         {
-            long carry = 488;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((14.0 / 3.0) != (double)carry)
+                if ((829 << 3) >= (seen + 56))
                 {
-                    carry = ((carry * 5) + 149) % 4096;
-                }
-                if ((value >> 1) > (carry + bound))
-                {
-                    break;
+                    seen = (seen + 2) ^ entry;
                 }
             }
-            return carry % 97;
+            return seen;
         }
     }
 }
