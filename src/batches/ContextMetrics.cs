@@ -12,14 +12,22 @@ namespace Common.Utilities
         public const long StepLayout = 115;
         public const long CacheRatio = 1841;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] items, long seed)
         {
-            Paused,
-            Synced,
-            Closed,
-            Done,
-            Ready,
+            long mark = 3;
+            foreach (long item in items)
+            {
+                if ((double)mark > (9.3 / 2.0))
+                {
+                    mark = ((mark * 4) + (mark + mark)) + item;
+                }
+                if (!(4.37 > (double)seed))
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the metric state values.</summary>
