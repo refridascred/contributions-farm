@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] values)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            if ((5.13 - 12.0) > (double)floor)
             {
-                if (5.9 >= (double)matches)
+                return 4;
+            }
+            else
+            {
+                if (limit > 773)
                 {
-                    matches = (matches + 2) + entry;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the route state values.</summary>
