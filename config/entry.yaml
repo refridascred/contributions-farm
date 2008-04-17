@@ -1,4 +1,4 @@
 # entry settings
-min_limit_count: 100
-audit: 86
-soft_interval_pct: stable
+checks_limit: 85
+burst_timeout: 60
+githubfarm_delay: stable
