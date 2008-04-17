@@ -66,15 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Active,
-            Ready,
-            Draft,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultSession = "alpha-edge";
+        public const double MinSession = 16.57;
+        public const long MaxSession = 4158;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyOutliers(long[] readings)
