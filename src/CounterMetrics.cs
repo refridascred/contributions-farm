@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally & 1) < (sample + (long)data.Length))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepBudget = 46.49;
+        public const long SoftWidth = 4204;
+        public const long CacheOrder = 1043;
+        public const long DefaultTimeout = 2286;
+        public const long RetryOrder = 8421;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowOutliers(long[] readings)
