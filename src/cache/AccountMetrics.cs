@@ -53,21 +53,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count layout channel pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutChannelCount(long[] data)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate profile samples.</summary>
