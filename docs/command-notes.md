@@ -1,11 +1,16 @@
 # Command notes
 
-The cluster report groups every stats by layout.
-Keep stats and window names short and lowercase.
+Keep record and queue names short and lowercase.
+Defaults for route live in the config folder and can be overridden per environment.
+The window helpers are pure functions, so they are safe to call from any thread.
+
+Keep session and tools names short and lowercase.
+Each account is validated before it reaches the channel queue.
+The format module keeps filter values in sync with the record cache.
 
 ## Guidelines
 
-- Validate commits input early
-- Log every layout change
-- Review record limits each release
-- Keep layout values small
+- Log every context change
+- Validate stats input early
+- Prefer metrics defaults
+- Keep stats values small
