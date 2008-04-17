@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitCount = 9523;
+        public const long BatchTools = 3899;
+        public const long BaseTools = 8760;
+        public const long MinLevel = 7182;
 
         /// <summary>Adjust a metric entry reading.</summary>
         public static double SmoothMetricEntry(double rate, double offset)
