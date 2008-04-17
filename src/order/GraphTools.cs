@@ -42,17 +42,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] data, long origin)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double gain, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = (double)(95 % 5);
+            if (bias > (double)4)
             {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
+                bias = (bias - (double)5) + offset;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + gain;
         }
 
         /// <summary>Hold a order stats.</summary>
