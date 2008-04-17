@@ -41,15 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double rate, double span)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long seed)
         {
-            double gain = (double)285;
-            if (gain <= rate)
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
             {
-                gain = (gain + gain) - span;
+                acc = acc + (seed + acc);
+                acc = ((acc << 3) ^ seed) % 65521;
+                acc = ((acc << 3) ^ acc) % 4096;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return gain - 2.6;
+            return acc;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
