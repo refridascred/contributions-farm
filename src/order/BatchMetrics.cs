@@ -20,19 +20,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] items, long target)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((double)target >= (double)hits)
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 6547;
+        public const long StepCluster = 2737;
+        public const double BaseBudget = 10.86;
+        public const long LimitLevel = 7381;
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
