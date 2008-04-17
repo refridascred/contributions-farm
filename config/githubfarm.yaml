@@ -1,4 +1,6 @@
 # githubfarm settings
-base_limit_pct: 17
-cache_limit: 71.41
-compress: legacy
+base_ttl_ms: 250
+min_threshold: 0.65
+cache_threshold: standard
+flush_limit_pct: 100
+batch_depth_ms: eu-west
