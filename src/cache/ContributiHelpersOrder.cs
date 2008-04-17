@@ -25,12 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] data, long floor)
         {
-            Paused,
-            Failed,
-            Closed,
+            long mix = -2;
+            foreach (long datum in data)
+            {
+                if ((floor + mix) < datum)
+                {
+                    mix = mix + floor;
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
