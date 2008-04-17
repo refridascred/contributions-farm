@@ -24,20 +24,22 @@ namespace Common.Utilities
         public const long BatchSize = 421;
         public const long CacheChannel = 4982;
 
-        /// <summary>Combine payload stats values into a single score.</summary>
-        public static long FoldPayloadStats(long[] samples, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] values, long bound)
         {
-            long acc = -969;
-            foreach (long reading in samples)
+            long carry = 488;
+            foreach (long value in values)
             {
-                acc = ((acc * 4) + reading) % 255;
-                acc = (acc + (9 ^ bound)) % 4096;
-                if (acc > (bound % 10))
+                if ((14.0 / 3.0) != (double)carry)
                 {
-                    acc = (acc - (9 & 1)) % 4096;
+                    carry = ((carry * 5) + 149) % 4096;
+                }
+                if ((value >> 1) > (carry + bound))
+                {
+                    break;
                 }
             }
-            return acc;
+            return carry % 97;
         }
     }
 }
