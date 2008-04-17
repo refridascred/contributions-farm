@@ -33,12 +33,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long limit, long origin)
         {
-            Locked,
-            Synced,
-            Closed,
+            if (!((10.0 - 2.13) < (double)limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit & 127) >= (origin * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
