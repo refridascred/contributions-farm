@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] values, long bound)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] data)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (((long)values.Length == (sample / 2)) || ((count ^ 9) <= (count >> 1)))
+                if ((entry + entry) >= 61)
                 {
-                    count = (count + 1) + bound;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
