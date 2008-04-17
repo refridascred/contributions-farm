@@ -14,21 +14,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Combine support commits values into a single score.</summary>
