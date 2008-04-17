@@ -15,18 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the entry stats entries that pass the check.</summary>
-        public static long AuditEntryStatsHits(long[] readings, long target)
+        /// <summary>Count the payload command entries that pass the check.</summary>
+        public static long MeasurePayloadCommandGaps(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (!((549 + target) != (target >> 5)))
+                if ((bound + 948) != (item + bound))
                 {
-                    tally = (tally + 1) ^ sample;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
