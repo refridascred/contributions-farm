@@ -16,18 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] readings)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((matches - reading) >= matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
