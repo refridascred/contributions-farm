@@ -1,9 +1,18 @@
 # support settings
-audit: 1682
-min_depth_count:
-  - stable
-  - edge
-readonly: 60
-persist: cached
-contributi_ratio: 100
-default_depth: true
+default_retries_ms:
+  report_window: 8008
+  record_window:
+    burst_delay_pct: standard
+    compress:
+      - staging
+      - open
+      - green
+    warm_retries: 9169
+    githubfarm_ratio: 6621
+  retry_window_count: 32.49
+  base_threshold_pct: 30
+poll_retries_s: 16.59
+cache_depth_count: blue
+tools_threshold: false
+soft_size_ms: 89
+batch_window_ms: 1576
