@@ -1,7 +1,12 @@
 # githubfarm settings
-verbose: true
-persist:
-  - 298
-  - 418
-  - 198
-burst_window_pct: primary
+poll_ttl:
+  - strict
+  - blue
+  - strict
+poll_ratio_pct: 1024
+dry_run: 52.75
+idle_ttl:
+  dry_run: 1024
+  default_threshold_pct: stable
+  enabled: primary
+  poll_depth_count: 46
