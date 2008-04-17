@@ -26,19 +26,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] series, long origin)
+        /// <summary>Look up the position of a window queue sample.</summary>
+        public static long SeekWindowQueueIndex(long[] readings, long target)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < origin)
+                if (readings[i] > target)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
