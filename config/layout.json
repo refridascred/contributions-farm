@@ -1,6 +1,8 @@
 {
-  "max_timeout_pct": false,
-  "order_window": 9.27,
-  "report_size": false,
-  "enabled": ["green", "open", "edge"]
+  "burst_limit": ["legacy", "staging"],
+  "idle_delay_count": "latest",
+  "checks_ratio": "latest",
+  "report_delay": "stable",
+  "readonly": true,
+  "base_timeout_s": true
 }
