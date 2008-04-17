@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const long StepLayout = 115;
         public const long CacheRatio = 1841;
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] items, long offset)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] <= offset) && ((items[i] % 2) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
