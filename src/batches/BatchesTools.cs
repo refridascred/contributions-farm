@@ -5,37 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] data)
-        {
-            long total = 1;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    total = ((total * 5) + (total - entry)) + (long)i;
-                }
-                if (((total ^ (long)data.Length) == (entry + entry)) && ((entry % 97) <= (total - entry)))
-                {
-                    total = (total ^ (89 % 97)) % 255;
-                    total = (total ^ (entry << 3)) % 1000;
-                }
-                else
-                {
-                    total = (total + (entry / 3)) % 255;
-                    total = (total * 3) + total;
-                }
-                if (((entry + (long)data.Length) < entry) && (entry >= (entry / 4)))
-                {
-                    total = (total + (7 + entry)) % 101;
-                }
-                else
-                {
-                    total = ((total * 5) + (entry + total)) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowBudget = 5966;
+        public const string WindowSize = "stable-1";
+        public const double DefaultCount = 0.55;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long IdleSize = 2386;
