@@ -42,24 +42,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long limit, long seed)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            if ((double)limit == (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed >= (17.0 / 6.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Region { get; set; }
+            public bool Token { get; set; }
+            public double Weight { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
