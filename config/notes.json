@@ -1,6 +1,6 @@
 {
-  "poll_timeout": 500,
-  "retry_window_pct": false,
-  "compress": 9223,
-  "account_limit": ["latest", "standard"]
+  "cache_ratio": 3.67,
+  "checks_ttl": 42.84,
+  "sync_window": "standard",
+  "retry_ttl_s": false
 }
