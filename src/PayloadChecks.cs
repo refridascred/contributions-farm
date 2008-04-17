@@ -48,24 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long limit, long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] readings, long origin)
         {
-            if (!((10.0 - 2.13) < (double)limit))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit & 127) >= (origin * 4))
+                if (!(((8.08 - 16.0) == (double)matches) || ((origin - origin) == (origin * 3))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 1) + reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
