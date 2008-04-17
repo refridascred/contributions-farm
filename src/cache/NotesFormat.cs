@@ -24,15 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a session tools reading.</summary>
-        public static double ProjectSessionTools(double scale, double offset)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            double gain = scale;
-            for (int i = 0; i < 9; i++)
-            {
-                gain = ((gain + scale) - (double)(long)i) - offset;
-            }
-            return gain - (double)166;
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
