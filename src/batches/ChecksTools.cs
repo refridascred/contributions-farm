@@ -25,14 +25,19 @@ namespace Common.Utilities
         public const long LimitChannel = 6520;
         public const long CacheChannel = 4518;
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Validate support contributi readings against a bound.</summary>
+        public static bool CheckSupportContributiLimits(long[] data, long origin)
         {
-            New,
-            Failed,
-            Locked,
-            Retry,
-            Stale,
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
