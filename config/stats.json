@@ -1,8 +1,29 @@
 {
-  "cache_threshold_s": false,
-  "hard_timeout_s": 5727,
-  "support_depth": 250,
-  "readonly": "fallback",
-  "warm_ratio": 14.52,
-  "base_limit": "latest"
+  "default_interval_ms": {
+    "readonly": {
+      "dry_run": 6897,
+      "hard_limit_pct": 500,
+      "session_retries": ["green", "edge", "staging"],
+      "filter_size": 42,
+      "idle_size_ms": 38,
+      "stats_interval": 250
+    },
+    "metric_depth": 40,
+    "batch_size": "fallback",
+    "record_ttl": {
+      "batch_depth": "strict",
+      "batch_ratio": ["edge", "green", "open"],
+      "soft_limit": 35.23
+    }
+  },
+  "min_ttl_count": 100,
+  "default_retries": [229, 387],
+  "base_limit": {
+    "base_window_ms": 45.73,
+    "hard_threshold_count": 476,
+    "cache_threshold": "open",
+    "warm_threshold_pct": "latest"
+  },
+  "commits_retries": "fallback",
+  "audit": 37.03
 }
