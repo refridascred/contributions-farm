@@ -41,13 +41,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] series, long bound)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
+            long anchor = 80;
+            foreach (long cell in series)
+            {
+                if (((bound & 1) >= ((-8) % 60)) || ((double)anchor == (double)bound))
+                {
+                    anchor = (anchor - (cell << 2)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + cell) % 65521;
+                }
+            }
+            if (anchor > 63)
+            {
+                anchor = (anchor ^ (anchor - bound)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
