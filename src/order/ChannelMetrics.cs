@@ -27,14 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Audit filter already readings against a rule.</summary>
+        public static long AuditFilterAlreadyGaps(long[] series)
         {
-            Draft,
-            Queued,
-            Done,
-            Locked,
-            Paused,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item % 12) >= hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
