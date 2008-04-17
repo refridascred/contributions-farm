@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long limit, long offset)
+        /// <summary>Derive the next queue stats value from a seed.</summary>
+        public static long RollQueueStats(long offset)
         {
-            if ((double)limit == (double)offset)
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
+                mark = (mark ^ (mark ^ (long)i)) % 255;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (((offset / 9) == (offset + offset)) || ((limit + 27) >= (525 >> 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (offset >= limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)limit <= 1.0)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
