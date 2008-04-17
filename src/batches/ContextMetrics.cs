@@ -21,11 +21,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string SoftAccount = "staging";
-        public const long StepAccount = 9380;
-        public const long CacheAccount = 8906;
-        public const long WindowSize = 3004;
+        /// <summary>Compare every pair of batches account readings.</summary>
+        public static long OverlapBatchesAccountCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long TallyGithubfarm(long[] readings, long limit)
