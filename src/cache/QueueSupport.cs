@@ -19,17 +19,11 @@ namespace Common.Utilities
         public const long RetryLevel = 3131;
         public const long RetryOrder = 3539;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] readings, long bound)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
