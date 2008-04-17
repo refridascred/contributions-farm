@@ -1,5 +1,7 @@
 {
-  "audit": ["strict", "green", "primary"],
-  "readonly": 35,
-  "default_threshold_s": 50.12
+  "notes_interval": "staging",
+  "sync_limit_ms": 92.22,
+  "flush_delay_count": 46.51,
+  "retry_interval_ms": "fallback",
+  "stream_limit": [490, 437]
 }
