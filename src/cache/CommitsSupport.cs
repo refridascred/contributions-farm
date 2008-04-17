@@ -51,19 +51,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (!((value - origin) != (origin >> 3)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowWidth = 4261;
+        public const string CacheFactor = "stable-edge";
+        public const long BurstReport = 1154;
+        public const long MaxReport = 1950;
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long DeriveCluster(long offset)
