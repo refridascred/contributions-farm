@@ -33,19 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] data, long floor)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            double mean = scale;
+            if (mean < (3.0 * 2.0))
             {
-                if (reading >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean + 6.04) + floor;
             }
-            return flag;
+            else
+            {
+                mean = mean + (double)219;
+            }
+            return mean - 3.2;
         }
     }
 }
