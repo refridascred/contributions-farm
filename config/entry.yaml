@@ -1,4 +1,10 @@
 # entry settings
-burst_depth_pct: true
-strict: 1024
-notes_capacity: eu-west
+queue_interval: true
+min_ratio_ms:
+  - 218
+  - 192
+dry_run: 24
+notes_timeout: 74.16
+flush_ttl_pct:
+  - 224
+  - 227
