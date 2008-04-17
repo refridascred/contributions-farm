@@ -1,8 +1,9 @@
-id,weight,label
-1,standard,19.07
-2,local,736
-3,edge,172
-4,68.39,48.5
-5,primary,60.26
-6,91.44,14.56
-7,green,684
+id,token,level,score,owner
+1,35.77,687,941,780
+2,599,770,369,651
+3,71.08,307,775,fallback
+4,49.42,primary,126,308
+5,917,797,green,19.92
+6,primary,blue,73.71,848
+7,156,67.08,71.76,804
+8,open,strict,990,869
