@@ -37,9 +37,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryLevel = 94;
-        public const double BurstContext = 66.72;
-        public const long DefaultScore = 3591;
+        /// <summary>Derive the next farm order value from a seed.</summary>
+        public static long RollFarmOrder(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
