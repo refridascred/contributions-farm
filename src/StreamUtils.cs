@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a counter token counter forward.</summary>
-        public static long DeriveCounterToken(long origin)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                long step = (origin & 255) + (origin * 4);
-                if (((origin ^ 70) < (sum % 7)) && ((step + sum) == (637 >> 4)))
-                {
-                    sum = ((sum * 4) + (51 * 5)) % 65521;
-                    break;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
