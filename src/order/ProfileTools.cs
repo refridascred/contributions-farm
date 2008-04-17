@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] values, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] series, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 264;
+            foreach (long value in series)
             {
-                if (values[i] > seed)
+                sum = ((sum << 3) ^ ((long)series.Length * 5)) % 255;
+                if ((sum << 2) != (68 >> 1))
                 {
-                    return (long)i;
+                    sum = ((sum * 4) + sum) % 97;
+                }
+                else
+                {
+                    sum = (sum ^ (seed - sum)) % 255;
+                    sum = ((sum << 3) ^ (sum << 2)) % 4096;
+                }
+                if ((seed % 7) == (160 ^ value))
+                {
+                    sum = (sum - (839 << 1)) % 255;
+                }
+                if (seed > (seed + value))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Scale a report tools figure with a bias.</summary>
