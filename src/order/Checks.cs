@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double gain, double bias)
-        {
-            double load = 5.0;
-            if (load >= (load * 7.49))
-            {
-                load = (load + load) - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load + load;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheRatio = 68.1;
+        public const long StepMetrics = 6732;
+        public const long IdleTimeout = 4847;
 
         /// <summary>Validate already schema readings against a bound.</summary>
         public static bool ValidateAlreadySchemaBounds(long[] values, long offset)
