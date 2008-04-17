@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const string MaxTimeout = "fallback-edge";
         public const long SoftBuffer = 5638;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] data, long seed)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            long sum = 52;
-            foreach (long item in data)
+            long mark = 93;
+            foreach (long reading in levels)
             {
-                sum = ((sum * 4) + (item + seed)) % 255;
-                if ((sum + item) == (sum - item))
-                {
-                    break;
-                }
+                mark = ((mark ^ (93 & 3)) % 97) + reading;
             }
-            return sum;
+            return mark % 65521;
         }
 
         /// <summary>Check that every record account entry stays within the limit.</summary>
