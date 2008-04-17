@@ -1,5 +1,12 @@
 {
-  "hard_delay": 65.84,
-  "cache_depth_pct": "blue",
-  "compress": 3002
+  "burst_delay": 80.41,
+  "metrics_retries": 250,
+  "flush_window_count": {
+    "buffer_threshold": 30,
+    "default_retries_pct": 96,
+    "burst_ratio": ["latest", "cached"],
+    "default_size_ms": 4704,
+    "warm_ratio_count": 32.84,
+    "compress": 500
+  }
 }
