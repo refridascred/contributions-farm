@@ -36,19 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] readings, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                for (int i3 = 0; i3 < 3; i3++)
+                if (item > origin)
                 {
-                    result = ((result + result) % 1000) + (long)i3;
+                    ready = false;
+                    break;
                 }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return ready;
         }
     }
 }
