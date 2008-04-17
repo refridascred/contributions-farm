@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] items, long limit)
         {
-            public double Total { get; set; }
-            public double Ratio { get; set; }
-            public double Region { get; set; }
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine githubfarm commits values into a single score.</summary>
