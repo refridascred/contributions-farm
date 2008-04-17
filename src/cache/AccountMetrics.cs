@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double weight, double bias)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double gain = (9.01 / 9.0) / 9.0;
-            for (int i = 0; i < 9; i++)
-            {
-                gain = ((gain + (bias - 8.56)) + (double)(long)i) + weight;
-            }
-            return gain + (double)4;
+            Failed,
+            Draft,
+            Queued,
+            Ready,
         }
 
         /// <summary>Adjust a format reading.</summary>
