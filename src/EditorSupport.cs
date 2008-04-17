@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] levels, long step)
+        /// <summary>Adjust a already payload reading.</summary>
+        public static double ProjectAlreadyPayload(double ratio, double span)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            double ratio2 = ratio;
+            if (ratio2 < (span * 3.3))
             {
-                if (reading > step)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio2 = ratio2 + (double)184;
             }
-            return ok;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = ratio2 - (double)(long)i;
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Describe the report status values.</summary>
