@@ -62,19 +62,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] values, long target)
+        /// <summary>Fold a list of layout support readings.</summary>
+        public static long ScoreLayoutSupport(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long value in values)
+            long mix = 19;
+            foreach (long sample in samples)
             {
-                if (value >= target)
+                if ((double)mix <= (double)sample)
                 {
-                    found = false;
+                    mix = mix + (mix + mix);
+                }
+                if ((sample - mix) < (limit / 4))
+                {
                     break;
                 }
             }
-            return found;
+            return mix % 1000;
         }
     }
 }
