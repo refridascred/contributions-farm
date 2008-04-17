@@ -13,18 +13,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] readings, long floor)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((0.82 * 17.0) == (double)floor)
-                {
-                    count = (count + 2) + entry;
-                }
-            }
-            return count;
+            Draft,
+            New,
+            Closed,
+            Stale,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
