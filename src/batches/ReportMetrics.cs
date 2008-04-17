@@ -27,24 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the session already series from a seed.</summary>
-        public static long IterateSessionAlready(long step)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] levels)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = ((acc ^ ((long)i * 4)) % 1000) ^ (long)i2;
+                    if ((levels[i] - levels[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if ((double)acc <= 4.0)
-                {
-                    acc = (acc * 2) + step;
-                    continue;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return hits;
         }
     }
 }
