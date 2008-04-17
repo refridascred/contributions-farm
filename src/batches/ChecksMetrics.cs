@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long floor, long step)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] readings, long offset)
         {
-            long prev = floor + step;
-            if (((double)(-35) == (double)prev) && (prev > (floor - prev)))
+            bool found = true;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((645 + step) > (step << 3))
+                if (cell <= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((prev - 97) <= 74) || ((step * 5) < (step ^ 23)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Fold a list of account readings.</summary>
