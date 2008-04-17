@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const double HardSpan = 28.69;
         public const string IdleFormat = "primary-1";
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] values, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long total = 359;
+            foreach (long entry in items)
             {
-                if ((51 ^ origin) > 6)
+                if ((entry & 255) == (floor << 3))
                 {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = (total + (entry - total)) % 101;
                 }
             }
-            return hits;
+            return total % 1000;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
