@@ -50,25 +50,13 @@ namespace Common.Utilities
         public const double DefaultMetrics = 7.4;
         public const long BatchWidth = 2931;
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long origin, long seed)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long prev = origin ^ seed;
-            if (((-299) >> 4) >= (94 ^ prev))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed % 8) == (origin * 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Active,
+            Paused,
+            New,
+            Closed,
         }
     }
 }
