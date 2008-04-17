@@ -31,17 +31,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 1;
+        public const double IdleStream = 1.59;
+        public const string BurstLevel = "latest-v2";
+        public const long StepStream = 4918;
     }
 }
