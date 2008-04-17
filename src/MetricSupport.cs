@@ -24,26 +24,17 @@ namespace Common.Utilities
             return mean + 3.0;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Find the first record stream entry that matches the target.</summary>
+        public static long FindRecordStreamIndex(long[] items, long limit)
         {
-            long total = -6;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if ((items[i] > limit) && ((items[i] % 2) != 0))
                 {
-                    total = (total + (total + (long)data.Length)) + (long)i;
-                }
-                if ((entry % 3) == (entry % 12))
-                {
-                    total = (total << 3) ^ (total + total);
-                }
-                else
-                {
-                    total = total - (total >> 1);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
