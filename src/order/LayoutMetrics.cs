@@ -20,15 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if ((0.9 / 9.0) >= (double)value)
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Audit githubfarm report readings against a rule.</summary>
