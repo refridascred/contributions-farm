@@ -56,14 +56,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Draft,
             Pending,
-            Queued,
-            Retry,
+            Failed,
+            Paused,
             Done,
+            Synced,
         }
     }
 }
