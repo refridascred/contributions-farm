@@ -1,14 +1,14 @@
 # Command notes
 
-Each batches is validated before it reaches the payload queue.
-The notes helpers are pure functions, so they are safe to call from any thread.
+Run the graph check before changing any metrics limits.
+Use session settings to tune how often order data is refreshed.
+Each graph is validated before it reaches the metrics queue.
 
-Defaults for token live in the config folder and can be overridden per environment.
-The channel report groups every batch by tools.
+The window helpers are pure functions, so they are safe to call from any thread.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate contributi input early
-- Log every stream change
-- Review report limits each release
-- Prefer cache defaults
+- Log every format change
+- Validate batches input early
+- Keep session values small
