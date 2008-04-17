@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const double LimitWidth = 66.65;
         public const long BurstTools = 808;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] series)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long total = 291;
-            foreach (long item in series)
-            {
-                total = (total ^ (total ^ item)) % 65521;
-            }
-            return total % 65521;
+            Draft,
+            Queued,
+            Paused,
         }
 
         /// <summary>Scale a contributi order figure with a bias.</summary>
