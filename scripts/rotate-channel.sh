@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict latest fallback edge; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-green}"
+mode="${1:-blue}"
 case "${mode}" in
-    stable)
+    edge)
         log "fast path"
         ;;
     *)
