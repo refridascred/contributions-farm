@@ -30,21 +30,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up layout order samples.</summary>
-        public static long MatchLayoutOrderCount(long[] data)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((144 << 2) <= (datum >> 1))
                 {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the filter kind values.</summary>
