@@ -1,13 +1,8 @@
 {
-  "min_retries": 57.66,
-  "warm_threshold_ms": 1024,
-  "warm_limit_s": 30,
-  "strict": {
-    "batch_retries_pct": "staging",
-    "readonly": 61,
-    "batch_limit_s": false,
-    "burst_size": false,
-    "flush_interval_ms": 85
-  },
-  "burst_ratio_count": false
+  "queue_ratio": 12.56,
+  "order_ttl": 29.04,
+  "default_timeout_s": 2525,
+  "compress": 74,
+  "metric_depth": 45.69,
+  "window_capacity": [74, 69]
 }
