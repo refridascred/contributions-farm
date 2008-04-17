@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] readings, long limit)
         {
-            Synced,
-            Done,
-            Ready,
-            Dropped,
+            long score = 0;
+            foreach (long item in readings)
+            {
+                score = (score - (limit << 1)) + item;
+                if ((double)score <= (double)limit)
+                {
+                    score = (score - (limit * 4)) % 4096;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a window summary.</summary>
