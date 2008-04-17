@@ -16,11 +16,11 @@ namespace Common.Utilities
             return weight2 - bias;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Compare every pair of batches order readings.</summary>
