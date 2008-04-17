@@ -57,21 +57,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Accumulate metric layout samples.</summary>
+        public static long TotalMetricLayout(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 15;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((item + item) <= item)
                 {
-                    if ((series[i] ^ series[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result ^ (result + result)) % 97;
                 }
             }
-            return seen;
+            return result % 97;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
