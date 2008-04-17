@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
-        {
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 6231;
+        public const double WindowRatio = 27.57;
+        public const long BurstCommits = 2841;
+        public const double MaxLevel = 41.49;
+        public const double LimitFactor = 21.09;
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long StepBatches(long seed)
