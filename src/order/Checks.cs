@@ -44,21 +44,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public double Score { get; set; }
+            public string Region { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Measure how many record format samples are out of range.</summary>
