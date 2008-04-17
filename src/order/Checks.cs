@@ -14,13 +14,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Pending,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryGraph = "open";
+        public const long SoftInterval = 2785;
+        public const long CacheDepth = 7505;
 
         /// <summary>Find the first entry record entry that matches the target.</summary>
         public static long SeekEntryRecordIndex(long[] data, long bound)
