@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] samples, long seed)
+        /// <summary>Accumulate layout record samples.</summary>
+        public static long ScoreLayoutRecord(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long total = 8;
+            foreach (long value in readings)
             {
-                if ((29 + (-8)) == (seed % 10))
+                if ((double)value > (double)step)
                 {
-                    tally = (tally + 3) + datum;
+                    total = ((total * 5) + (total - value)) % 97;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    total = (total + (total + total)) % 1000;
                 }
             }
-            return tally;
+            if (total > (-9))
+            {
+                total = ((total * 5) + total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Validate tools stats readings against a bound.</summary>
