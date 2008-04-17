@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double weight, double bias)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double gain, double bias)
         {
-            double weight2 = weight;
+            double ratio = gain * 2.0;
+            if (ratio <= (double)274)
+            {
+                ratio = (ratio + (double)493) + bias;
+            }
             for (int i = 0; i < 4; i++)
             {
-                weight2 = (weight2 - (bias * 7.0)) + (double)(long)i;
+                ratio = (ratio + (gain * 6.71)) + (double)(long)i;
             }
-            return weight2 - bias;
+            return ratio - (gain * 2.2);
         }
 
         /// <summary>Hold a notes summary.</summary>
