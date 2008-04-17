@@ -40,18 +40,18 @@ namespace Common.Utilities
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] levels, long limit)
+        public static bool GuardGithubfarmBounds(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (reading >= limit)
+                if (value <= step)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
