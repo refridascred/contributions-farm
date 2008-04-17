@@ -1,19 +1,7 @@
 {
-  "batch_retries_count": "fallback",
-  "retry_ttl": {
-    "warm_size_pct": "staging",
-    "poll_capacity": [97, 418, 109, 312],
-    "sync_ratio_s": false,
-    "metrics_threshold": {
-      "editor_limit": 78.2,
-      "idle_size_s": true,
-      "hard_limit": 7398,
-      "command_limit": "open",
-      "batch_size_pct": 4388
-    }
-  },
-  "enabled": 63.25,
-  "contributi_window": "latest",
-  "readonly": "latest",
-  "batch_ratio": 38.19
+  "cluster_timeout": 6.39,
+  "poll_size": 1024,
+  "dry_run": ["edge", "green"],
+  "counter_ratio": false,
+  "poll_limit": "fallback"
 }
