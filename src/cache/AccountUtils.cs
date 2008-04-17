@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Retry,
-            Locked,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 13;
+        public const double StepSpan = 12.92;
+        public const string LimitLevel = "primary-1";
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
