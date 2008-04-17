@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Audit stats already readings against a rule.</summary>
+        public static long TallyStatsAlreadyGaps(long[] values)
         {
-            Locked,
-            Dropped,
-            Pending,
-            Stale,
-            Idle,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (((double)seen <= 1.74) && ((seen + 331) != (87 + seen)))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
