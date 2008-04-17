@@ -1,11 +1,5 @@
 # githubfarm settings
-min_ttl_count:
-  enabled: 60
-  burst_window_pct: 85
-  warm_capacity_count:
-    - 290
-    - 254
-    - 66
-  retry_ttl: 80.08
-compress: 6720
-flush_timeout_pct: 2.25
+poll_delay: 35
+batch_delay_s: edge
+warm_window_pct: 5.99
+metric_size: 87
