@@ -42,11 +42,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two window command measurements.</summary>
-        public static double ProjectWindowCommand(double scale, double offset)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] data, long origin)
         {
-            double bias = offset;
-            return (bias - 20.0) + scale;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
