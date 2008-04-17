@@ -56,39 +56,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long bound, long origin)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double bias, double offset)
         {
-            long step = bound ^ origin;
-            if (!((944 / 3) >= (origin >> 5)))
+            double mean = offset;
+            if (mean > (double)8)
             {
-                return 6;
+                mean = mean - bias;
             }
             else
             {
-                if ((double)bound < (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin + 816) >= step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound >= (origin >> 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                mean = mean + 4.0;
             }
+            return mean - (offset / 9.0);
         }
     }
 }
