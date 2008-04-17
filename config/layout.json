@@ -1,27 +1,7 @@
 {
-  "record_delay": {
-    "layout_size": {
-      "cache_window_s": true,
-      "retry_depth_ms": "blue",
-      "command_window": false,
-      "idle_interval_ms": 89.25,
-      "metrics_interval": [469, 170, 482, 211]
-    },
-    "strict": 84.35,
-    "buffer_window": 7230,
-    "max_capacity": 95.18,
-    "burst_ratio_pct": "standard"
-  },
-  "strict": 1522,
-  "enabled": true,
-  "poll_depth": 6870,
-  "min_window_s": {
-    "cache_ttl": "cached",
-    "verbose": ["green", "eu-west", "fallback"],
-    "batch_retries_count": 60,
-    "flush_retries": "blue",
-    "burst_interval_ms": [491, 52, 272, 293],
-    "audit": "stable"
-  },
-  "report_interval": 1024
+  "queue_limit": 78,
+  "idle_ttl": true,
+  "route_delay": 22,
+  "flush_depth_s": false,
+  "poll_ttl": 5956
 }
