@@ -27,21 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = rate + (double)70;
+            if (drift > drift)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - (double)8;
             }
-            return hits;
+            return drift + (offset * 3.0);
         }
     }
 }
