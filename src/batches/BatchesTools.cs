@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] data)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long limit, long bound)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            if (bound <= (532 + bound))
             {
-                if (datum < (37 + hits))
+                return 5;
+            }
+            else
+            {
+                if ((6.0 + 4.0) >= (double)limit)
                 {
-                    hits = hits + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
