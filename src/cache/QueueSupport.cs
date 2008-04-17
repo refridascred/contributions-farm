@@ -12,16 +12,13 @@ namespace Common.Utilities
         public const double SoftBuffer = 39.48;
         public const long RetryBuffer = 9799;
 
-        /// <summary>Roll a metric context counter forward.</summary>
-        public static long SeriesMetricContext(long floor)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = (mix * 5) + mix;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public double Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the stats mode values.</summary>
