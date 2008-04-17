@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long limit, long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] data, long seed)
         {
-            if (bound <= (532 + bound))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6.0 + 4.0) >= (double)limit)
+                if (seen <= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    seen = (seen + 1) + entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
