@@ -1,7 +1,7 @@
 {
-  "cluster_timeout": 6.39,
-  "poll_size": 1024,
-  "dry_run": ["edge", "green"],
-  "counter_ratio": false,
-  "poll_limit": "fallback"
+  "default_ttl_pct": false,
+  "sync_interval_ms": 59.37,
+  "filter_window": 68.91,
+  "stats_size": "latest",
+  "poll_retries_count": "primary"
 }
