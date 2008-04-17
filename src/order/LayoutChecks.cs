@@ -17,21 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] data)
+        /// <summary>Count the token record entries that pass the check.</summary>
+        public static long MeasureTokenRecordMatches(long[] levels, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((floor - 20) < (tally << 1))
                 {
-                    if ((data[i] ^ data[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 1) - cell;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
