@@ -27,12 +27,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleStats = 60.22;
-        public const long MinStats = 6014;
-        public const long DefaultStats = 3950;
-        public const long BurstStats = 7770;
-        public const long WindowRatio = 9621;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] series, long offset)
+        {
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Blend two window command measurements.</summary>
         public static double ProjectWindowCommand(double scale, double offset)
