@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] values)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((double)value == (2.75 / 8.0))
+                if (datum <= origin)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Hold a schema entry.</summary>
