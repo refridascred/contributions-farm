@@ -88,39 +88,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a batch route value against two limits.</summary>
-        public static long GradeBatchRoute(long bound, long target)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long prev = bound ^ target;
-            if ((5.0 - 2.7) == (double)bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((prev + 121) <= prev)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((3 + prev) > bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)bound != (double)(-67))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Active,
+            Pending,
+            Failed,
+            Queued,
         }
     }
 }
