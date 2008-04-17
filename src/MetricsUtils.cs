@@ -34,15 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double rate, double bias)
+        /// <summary>Fold a list of buffer account readings.</summary>
+        public static long FoldBufferAccount(long[] readings, long seed)
         {
-            double weight = (8.11 / 5.0) * 8.07;
-            if (weight < (double)4)
+            long result = 406;
+            foreach (long value in readings)
             {
-                weight = (weight + weight) + bias;
+                result = ((result * 2) + (value % 24)) - seed;
             }
-            return weight + rate;
+            if (result < 2)
+            {
+                result = (result * 2) + (1 >> 1);
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the channel mode values.</summary>
