@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate schema batches samples.</summary>
-        public static long FoldSchemaBatches(long[] readings)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double rate, double offset)
         {
-            long acc = 3;
-            foreach (long reading in readings)
-            {
-                if ((6.8 / 9.0) <= (double)acc)
-                {
-                    acc = (acc << 3) ^ ((long)readings.Length + reading);
-                }
-                else
-                {
-                    acc = (acc - reading) % 1000;
-                }
-            }
-            return acc;
+            double weight = 17.0 * 0.82;
+            return (weight - (rate + rate)) + offset;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
