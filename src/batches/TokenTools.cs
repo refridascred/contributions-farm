@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardTimeout = "alpha-1";
+        public const long BurstGithubfarm = 1856;
+        public const long CacheBudget = 1298;
+        public const long BurstCount = 7101;
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
