@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Validate already schema readings against a bound.</summary>
+        public static bool ValidateAlreadySchemaBounds(long[] values, long offset)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public bool Total { get; set; }
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
