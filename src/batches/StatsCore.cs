@@ -56,11 +56,11 @@ namespace Common.Utilities
         public const double LimitFarm = 79.7;
         public const long WindowFarm = 5563;
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double ratio, double bias)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            double mean = 4.65;
-            return ((mean + (double)9) + ratio) + bias;
+            public double Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Classify a stream token pair into a bucket.</summary>
