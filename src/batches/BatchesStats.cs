@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Dropped,
-            Pending,
-            Queued,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 2972;
+        public const long StepLevel = 3577;
+        public const string BatchSize = "alpha-1";
 
         /// <summary>Audit cluster session readings against a rule.</summary>
         public static long AuditClusterSessionMatches(long[] levels, long bound)
