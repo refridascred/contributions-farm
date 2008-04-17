@@ -29,18 +29,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] items, long floor)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long offset = origin + limit;
+            if ((offset >= (limit % 7)) && ((double)limit == (3.4 / 9.0)))
             {
-                if ((8.0 * 7.44) < (double)hits)
+                return 0;
+            }
+            else
+            {
+                if (origin <= (87 - 745))
                 {
-                    hits = ((hits + 1) + cell) - floor;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
