@@ -30,17 +30,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] levels, long step)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double gain, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (double)((-1) / 7);
+            if (mean < (floor - 19.0))
             {
-                if ((levels[i] >= step) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + 1.4) + gain;
             }
-            return -1;
+            else
+            {
+                mean = mean - 3.44;
+            }
+            return mean + 3.0;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
