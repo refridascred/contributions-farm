@@ -14,19 +14,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] items)
-        {
-            long result = 37;
-            foreach (long datum in items)
-            {
-                if (!((result >> 1) != (datum - 8)))
-                {
-                    result = result - (result >> 4);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchRecord = 93.47;
+        public const long IdleCount = 5934;
+        public const long WindowDepth = 4566;
 
         /// <summary>Find the first entry record entry that matches the target.</summary>
         public static long SeekEntryRecordIndex(long[] data, long bound)
