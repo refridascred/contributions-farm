@@ -29,13 +29,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public bool Region { get; set; }
-            public double Total { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
