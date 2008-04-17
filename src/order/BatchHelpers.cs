@@ -19,15 +19,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] items, long target)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] levels)
         {
             long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((value * 2) >= value)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 1) - target;
+                    if ((levels[i] ^ levels[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
