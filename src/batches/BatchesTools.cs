@@ -14,12 +14,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleSize = 2386;
-        public const long MaxBudget = 6627;
-        public const string LimitContext = "alpha";
-        public const long WindowContext = 5981;
-        public const string MinContext = "primary-v2";
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Pending,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelOutliers(long[] values, long bound)
