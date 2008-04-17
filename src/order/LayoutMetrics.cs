@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate editor contributi readings against a bound.</summary>
-        public static bool VerifyEditorContributiLimits(long[] data, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (item >= origin)
+                if ((hits << 1) < hits)
                 {
-                    flag = false;
-                    break;
+                    hits = ((hits + 1) ^ item) - floor;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Describe the window kind values.</summary>
