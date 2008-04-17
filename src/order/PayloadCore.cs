@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every counter account entry stays within the limit.</summary>
-        public static bool GuardCounterAccountBounds(long[] values, long offset)
+        /// <summary>Audit farm batch readings against a rule.</summary>
+        public static long CountFarmBatchMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (reading > offset)
+                if (((sample + 17) > ((-7) ^ 841)) && (((1.6 + 2.76) >= (double)sample) || ((hits & 3) > sample)))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
