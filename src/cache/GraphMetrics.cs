@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double scale, double offset)
         {
-            Ready,
-            Failed,
-            Active,
-            Idle,
+            double bias = offset;
+            return bias + scale;
         }
 
         /// <summary>Hold a stats record.</summary>
