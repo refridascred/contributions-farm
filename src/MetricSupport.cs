@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstCommand = "open-1";
-        public const long LimitCommand = 325;
-        public const long RetryCommand = 5296;
-        public const long BatchCommand = 6520;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Queued,
+            Closed,
+            Active,
+            Idle,
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long RetryLevel = 723;
