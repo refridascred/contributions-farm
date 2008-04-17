@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a window stats.</summary>
