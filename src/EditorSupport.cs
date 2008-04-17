@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] readings, long limit)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] items)
         {
-            long acc = 45;
-            foreach (long value in readings)
+            long anchor = 5;
+            foreach (long reading in items)
             {
-                if ((32 - value) == (value ^ limit))
+                if (reading < (anchor >> 1))
                 {
-                    acc = ((acc << 2) ^ value) % 1000;
+                    anchor = (anchor << 3) ^ (4 % 97);
                 }
             }
-            if (acc > 35)
-            {
-                acc = (acc + limit) % 1000;
-            }
-            return acc % 97;
+            return anchor;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
