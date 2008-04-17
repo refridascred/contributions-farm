@@ -82,13 +82,15 @@ namespace Common.Utilities
         public const long MinScore = 3020;
         public const string BurstStream = "primary-1";
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Iterate the commits counter series from a seed.</summary>
+        public static long DeriveCommitsCounter(long origin)
         {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public double Size { get; set; }
-            public string Flag { get; set; } = "";
+            long score = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
