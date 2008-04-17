@@ -33,11 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] readings)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long sum = 901;
+            foreach (long sample in readings)
+            {
+                if (((double)sum <= (15.0 + 4.5)) && ((double)sum >= (double)7))
+                {
+                    sum = ((sum - 0) % 255) ^ sample;
+                }
+                if ((2.0 * 2.4) < (double)sum)
+                {
+                    sum = (sum << 3) ^ 32;
+                }
+            }
+            if (sum > 831)
+            {
+                sum = (sum << 2) ^ (sum / 8);
+            }
+            return sum;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
