@@ -34,22 +34,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] series, long origin)
         {
-            long total = -41;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (!((datum % 60) < total))
+                if ((tally + entry) == ((long)series.Length >> 3))
                 {
-                    total = ((total * 2) + (total >> 2)) % 255;
-                }
-                else
-                {
-                    total = total - (total % 12);
+                    tally = (tally + 2) - origin;
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
