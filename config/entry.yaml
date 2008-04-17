@@ -1,4 +1,6 @@
 # entry settings
-command_capacity: true
-metric_size: 7024
-warm_limit: latest
+batch_interval: 60
+default_ttl: 60
+flush_interval: 7018
+verbose: 79
+burst_size: false
