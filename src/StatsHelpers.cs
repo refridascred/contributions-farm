@@ -25,10 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBudget = 5773;
-        public const long WindowBatch = 3369;
-        public const long DefaultBatch = 6028;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Paused,
+            Active,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
