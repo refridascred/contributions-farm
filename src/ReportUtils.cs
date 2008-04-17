@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] readings)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((12.0 + 7.58) != (double)sample)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
