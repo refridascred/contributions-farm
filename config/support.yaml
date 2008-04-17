@@ -1,5 +1,6 @@
 # support settings
-poll_window: 36
-min_ttl_s: 84
-sync_depth_ms: 4784
-idle_threshold: 38.76
+stats_capacity: 97.14
+default_ttl_count: eu-west
+cache_capacity: true
+sync_window_count: 500
+token_depth: standard
