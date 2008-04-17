@@ -30,18 +30,15 @@ namespace Common.Utilities
             return gain + 14.0;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] values, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long state = 94;
+            foreach (long item in series)
             {
-                if ((5 ^ count) < (sample / 8))
-                {
-                    count = (count + 2) + target;
-                }
+                state = (((state * 4) + (-1)) + item) + limit;
             }
-            return count;
+            return state % 97;
         }
 
         /// <summary>Describe the token state values.</summary>
