@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftRatio = 9721;
-        public const long WindowSpan = 4770;
-        public const double StepWindow = 2.5;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public long Count { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaGaps(long[] values, long origin)
