@@ -19,11 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public double Limit { get; set; }
-            public double Owner { get; set; }
+            Active,
+            Dropped,
+            Ready,
+            Queued,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
