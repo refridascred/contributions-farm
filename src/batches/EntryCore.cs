@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long CacheWindow = 5651;
         public const long MinScore = 8925;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
+                if (cell < step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Rank report input into a small class.</summary>
