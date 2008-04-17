@@ -1,9 +1,6 @@
-id,active,token
-1,10.57,133
-2,983,green
-3,617,63.44
-4,primary,2.43
-5,146,778
-6,open,standard
-7,stable,762
-8,709,open
+id,score,label,weight
+1,85.36,20.95,13.94
+2,stable,174,383
+3,669,363,eu-west
+4,eu-west,open,54.36
+5,206,legacy,standard
