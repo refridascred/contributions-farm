@@ -63,12 +63,10 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            New,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchFactor = 7329;
+        public const long LimitFactor = 20;
+        public const double HardQueue = 50.84;
+        public const long WindowQueue = 7765;
     }
 }
