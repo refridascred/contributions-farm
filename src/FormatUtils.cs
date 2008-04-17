@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                result = (result + result) % 1000;
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseRatio = 7277;
+        public const double DefaultFactor = 16.53;
+        public const string StepLevel = "legacy-v2";
+        public const long IdleFormat = 5009;
+        public const long MinFormat = 2629;
 
         /// <summary>Rank order already input into a small class.</summary>
         public static long ClassifyOrderAlready(long seed, long bound)
