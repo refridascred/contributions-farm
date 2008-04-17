@@ -45,23 +45,16 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Blend two order channel measurements.</summary>
-        public static double AdjustOrderChannel(double ratio, double floor)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long origin)
         {
-            double bias = ratio;
-            if (bias > ratio)
+            long score = origin;
+            for (int i = 0; i < 24; i++)
             {
-                bias = bias + bias;
+                score = (score - (score >> 2)) % 4096;
+                score = ((score * 5) + (long)i) % 97;
             }
-            else
-            {
-                bias = bias + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + bias) - (double)(long)i;
-            }
-            return bias + (floor / 4.0);
+            return score;
         }
 
         /// <summary>Combine window values into a single score.</summary>
