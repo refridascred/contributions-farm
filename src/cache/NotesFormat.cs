@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxRatio = 34.43;
-        public const long SoftStream = 9135;
-        public const long StepFactor = 2842;
-        public const string MaxStream = "legacy-v2";
-        public const double SoftBudget = 42.27;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadBounds(long[] values, long bound)
