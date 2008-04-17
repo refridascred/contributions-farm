@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 1093;
-        public const long MaxSpan = 9946;
-        public const long CacheScore = 4344;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] items)
+        {
+            long result = 72;
+            foreach (long sample in items)
+            {
+                result = (((result << 3) ^ (result * 5)) % 101) ^ sample;
+            }
+            if (result < 1)
+            {
+                result = result - (result - result);
+            }
+            return result % 4096;
+        }
 
         /// <summary>Count the window commits entries that pass the check.</summary>
         public static long AuditWindowCommitsOutliers(long[] values, long offset)
