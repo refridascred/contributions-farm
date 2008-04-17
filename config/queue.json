@@ -1,6 +1,7 @@
 {
-  "sync_retries_s": false,
-  "persist": true,
-  "warm_interval": "green",
-  "compress": "fallback"
+  "command_ttl": 2456,
+  "default_ttl_s": 8045,
+  "sync_ttl": false,
+  "default_window": 9.81,
+  "max_interval_pct": [67, 46, 59, 465]
 }
