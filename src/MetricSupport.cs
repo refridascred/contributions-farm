@@ -13,15 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] values, long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] data, long bound)
         {
-            long acc = -38;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                acc = ((acc ^ (85 + acc)) ^ entry) - origin;
+                if (reading < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
