@@ -19,22 +19,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] samples)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((21 << 2) <= item)
+                if (seen > (seen - seen))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
