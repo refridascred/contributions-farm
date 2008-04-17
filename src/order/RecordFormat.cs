@@ -69,18 +69,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] levels, long target)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)target >= (3.97 / 9.0))
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
