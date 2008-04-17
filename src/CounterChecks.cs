@@ -51,22 +51,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] series, long bound)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long acc = 37;
-            foreach (long cell in series)
-            {
-                if ((acc - 6) < (acc & 63))
-                {
-                    acc = (acc * 5) + (acc >> 4);
-                }
-                if (((bound + acc) != (cell & 127)) || ((double)cell > (14.0 - 3.1)))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
+            Draft,
+            Active,
+            New,
+            Failed,
         }
 
         /// <summary>Describe the report level values.</summary>
