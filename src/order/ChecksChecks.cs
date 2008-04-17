@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 6231;
-        public const double WindowRatio = 27.57;
-        public const long BurstCommits = 2841;
-        public const double MaxLevel = 41.49;
-        public const double LimitFactor = 21.09;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((199 > (value % 5)) && (count >= (362 / 2)))
+                {
+                    count = (count + 1) - bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryOutliers(long[] series, long floor)
