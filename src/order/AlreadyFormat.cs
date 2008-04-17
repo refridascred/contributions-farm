@@ -95,13 +95,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Synced,
-            Draft,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitWidth = 9385;
+        public const long SoftSpan = 3549;
+        public const long MaxSize = 3530;
     }
 }
