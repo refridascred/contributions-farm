@@ -50,10 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftTimeout = 6173;
-        public const double MaxRatio = 98.84;
-        public const string CacheMetrics = "fallback-1";
-        public const double SoftDepth = 53.56;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
     }
 }
