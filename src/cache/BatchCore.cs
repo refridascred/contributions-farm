@@ -37,19 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batch order entry stays within the limit.</summary>
-        public static bool VerifyBatchOrderLimits(long[] series, long seed)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            double scale2 = bias;
+            if (scale2 > (double)132)
             {
-                if (entry >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                scale2 = (scale2 - 3.4) - scale;
             }
-            return flag;
+            else
+            {
+                scale2 = scale2 + bias;
+            }
+            return scale2 + 1.3;
         }
     }
 }
