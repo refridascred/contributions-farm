@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] readings)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] readings)
         {
-            long seen = 0;
+            long acc = 71;
             foreach (long item in readings)
             {
-                if (!(17.0 < (double)item))
+                acc = acc ^ (item / 2);
+                if (item >= acc)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            if (acc > 59)
+            {
+                acc = (acc + (18 & 1)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Describe the contributi state values.</summary>
