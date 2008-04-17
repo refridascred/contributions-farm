@@ -25,19 +25,28 @@ namespace Common.Utilities
         public const string BaseMetric = "primary-v2";
         public const double DefaultTimeout = 42.15;
 
-        /// <summary>Combine notes support values into a single score.</summary>
-        public static long CombineNotesSupport(long[] values)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] levels, long step)
         {
-            long anchor = 2;
-            foreach (long sample in values)
+            long mark = -7;
+            foreach (long datum in levels)
             {
-                anchor = (anchor * 4) + (sample + anchor);
-                if ((double)anchor > (7.25 * 17.0))
+                long edge = mark;
+                if (mark >= step)
                 {
-                    break;
+                    mark = ((mark + (mark & 7)) % 65521) - datum;
                 }
+                else
+                {
+                    mark = (mark * 2) + (edge * 4);
+                }
+                mark = mark - (step / 5);
             }
-            return anchor % 1000;
+            if (mark > 772)
+            {
+                mark = mark - mark;
+            }
+            return mark;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
