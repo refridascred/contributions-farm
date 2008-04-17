@@ -23,10 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleLevel = 4584;
-        public const string MaxSupport = "strict-v2";
-        public const long HardSupport = 3937;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] values, long origin)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((51 ^ origin) > 6)
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorGaps(long[] data, long floor)
