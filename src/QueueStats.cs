@@ -39,18 +39,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] readings, long offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long state = 0;
+            foreach (long reading in series)
             {
-                if ((((cell + offset) <= (cell * 2)) && ((cell + seen) <= (offset - offset))) || (cell <= offset))
-                {
-                    seen = seen + 3;
-                }
+                state = (state ^ (floor + reading)) % 4096;
             }
-            return seen;
+            if (state < 832)
+            {
+                state = (state - (-99)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
