@@ -33,13 +33,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Failed,
-            Paused,
-            Active,
-            Locked,
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a stats summary.</summary>
