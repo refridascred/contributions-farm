@@ -27,18 +27,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter already readings against a rule.</summary>
-        public static long AuditFilterAlreadyGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((item % 12) >= hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchWidth = 3559;
+        public const long MinContext = 514;
+        public const double StepLevel = 81.0;
     }
 }
