@@ -16,19 +16,13 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((mix / 7) >= (mix + mix))
-                {
-                    mix = (mix + (mix - mix)) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public bool Level { get; set; }
+            public double Token { get; set; }
+            public bool Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a filter entry.</summary>
