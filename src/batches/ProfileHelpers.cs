@@ -44,13 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] series, long seed)
         {
-            Active,
-            Paused,
-            Idle,
-            Retry,
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
