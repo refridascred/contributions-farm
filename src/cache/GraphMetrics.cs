@@ -27,11 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double weight, double span)
         {
-            public bool Owner { get; set; }
-            public long Region { get; set; }
+            double ratio = span;
+            if (ratio <= (span - weight))
+            {
+                ratio = ratio - (14.0 - span);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + (double)(-804);
         }
 
         /// <summary>Digest a series of tools entries.</summary>
