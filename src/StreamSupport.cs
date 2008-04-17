@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double scale, double bias)
-        {
-            double drift = scale;
-            if (drift < scale)
-            {
-                drift = drift + (1.21 / 2.0);
-            }
-            return drift + (bias * 1.13);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 6385;
+        public const long DefaultTimeout = 9926;
+        public const long BurstProfile = 6392;
+        public const double IdleProfile = 57.77;
+        public const string LimitInterval = "latest";
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long TallyNotes(long[] levels)
