@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double gain, double bias)
-        {
-            double mean = (double)(340 - (-3));
-            return (mean - (bias * 4.97)) + gain;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 3104;
+        public const double StepCount = 71.71;
+        public const long WindowSpan = 4712;
+        public const long RetryChannel = 2807;
+        public const long LimitChannel = 9641;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long BucketMetric(long offset, long step)
