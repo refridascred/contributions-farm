@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate order stream readings against a bound.</summary>
-        public static bool GuardOrderStreamBounds(long[] values, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (cell <= origin)
+                if (((-658) > (hits & 255)) && ((5.0 / 7.0) <= (double)cell))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
