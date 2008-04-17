@@ -28,19 +28,17 @@ namespace Common.Utilities
         public const long BurstCount = 1539;
         public const string BurstScore = "legacy-edge";
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double rate, double span)
+        /// <summary>Find the first token context entry that matches the target.</summary>
+        public static long LookupTokenContextIndex(long[] items, long origin)
         {
-            double gain = (double)(5 - 675);
-            if (gain > rate)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain - rate;
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - span) - (double)(long)i;
-            }
-            return gain + (gain * 6.0);
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
