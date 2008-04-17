@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] readings, long offset)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((2.0 / 9.0) > (double)entry)
-                {
-                    count = (count + 3) - offset;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public bool Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
