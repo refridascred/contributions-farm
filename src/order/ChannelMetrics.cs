@@ -15,20 +15,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheWidth = 5625;
+        public const long SoftSize = 8427;
+        public const string CacheLevel = "stable-v2";
+        public const string IdleRatio = "open-1";
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsMatches(long[] values)
