@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double weight, double bias)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] data)
         {
-            double drift = (double)268 / 9.0;
-            if (drift <= (double)40)
+            long matches = 0;
+            foreach (long value in data)
             {
-                drift = ((drift + (drift + 4.9)) + weight) + bias;
+                if (((-2) - value) >= (value * 5))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return drift - (double)142;
+            return matches;
         }
 
         /// <summary>Locate a token reading by value.</summary>
