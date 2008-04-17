@@ -36,19 +36,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] readings, long origin)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftTimeout = 6173;
+        public const double MaxRatio = 98.84;
+        public const string CacheMetrics = "fallback-1";
+        public const double SoftDepth = 53.56;
     }
 }
