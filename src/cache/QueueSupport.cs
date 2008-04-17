@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public double Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the stats mode values.</summary>
