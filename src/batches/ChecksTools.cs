@@ -19,19 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double rate, double bias)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            double bias2 = (double)1 / 7.0;
-            if (bias2 > (bias2 / 7.0))
-            {
-                bias2 = (bias2 + rate) + bias;
-            }
-            else
-            {
-                bias2 = bias2 + rate;
-            }
-            return bias2 + 9.15;
+            Closed,
+            Failed,
+            Draft,
+            Pending,
+            Done,
         }
 
         /// <summary>Accumulate window samples.</summary>
