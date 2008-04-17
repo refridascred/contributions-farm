@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] data, long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((data[i] <= origin) && ((data[i] % 3) == 0))
+                if ((0 + offset) <= (8 >> 1))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
