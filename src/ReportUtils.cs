@@ -42,11 +42,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 1119;
-        public const long BaseEditor = 9652;
-        public const long IdleDepth = 185;
-        public const long WindowEditor = 1565;
+        /// <summary>Combine command payload values into a single score.</summary>
+        public static long TotalCommandPayload(long[] data, long origin)
+        {
+            long state = 4;
+            foreach (long value in data)
+            {
+                if (!((9.62 - 11.0) < (double)value))
+                {
+                    state = (state ^ (value + value)) - origin;
+                }
+                else
+                {
+                    state = (state - (975 << 1)) % 65521;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiOutliers(long[] data)
