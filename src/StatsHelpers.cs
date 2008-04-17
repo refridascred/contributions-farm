@@ -34,23 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of checks command readings.</summary>
-        public static long CombineChecksCommand(long[] samples)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] items, long origin)
         {
-            long mark = 27;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                mark = ((mark ^ (mark >> 3)) % 65521) - entry;
-                if (!((mark & 255) >= 6))
+                if ((double)origin != (double)tally)
                 {
-                    mark = mark + (mark / 3);
+                    tally = (tally + 3) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (mark > 0)
-            {
-                mark = (mark - (mark % 5)) % 65521;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Accumulate batch samples.</summary>
