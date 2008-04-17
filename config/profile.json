@@ -1,6 +1,9 @@
 {
-  "strict": "local",
-  "verbose": 21.06,
-  "audit": [305, 343],
-  "idle_capacity": 86.46
+  "default_limit_pct": 6,
+  "soft_retries_s": "cached",
+  "compress": {
+    "idle_ttl_pct": false,
+    "dry_run": "standard",
+    "base_retries_s": 17
+  }
 }
