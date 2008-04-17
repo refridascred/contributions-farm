@@ -24,19 +24,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Grade a schema profile value against two limits.</summary>
-        public static long RankSchemaProfile(long floor, long offset)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long bound, long target)
         {
-            long delta = floor - offset;
-            if (((double)floor < (7.9 - 9.0)) && ((floor - delta) <= (45 * 3)))
+            long delta = bound ^ target;
+            if (target < (bound >> 4))
             {
                 return 4;
             }
             else
             {
-                if ((double)floor == (11.0 * 4.91))
+                if (((target + target) >= target) && ((target + target) < (delta % 10)))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
