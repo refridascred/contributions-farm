@@ -69,12 +69,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
