@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] items)
+        /// <summary>Adjust a buffer batch reading.</summary>
+        public static double BlendBufferBatch(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = (bias / 7.0) + (1.5 - weight);
+            if (bias2 >= bias2)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = bias2 - 9.2;
             }
-            return seen;
+            return bias2 + weight;
         }
 
         /// <summary>Define account limits and defaults.</summary>
