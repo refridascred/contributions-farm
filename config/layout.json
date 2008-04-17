@@ -1,19 +1,8 @@
 {
-  "poll_threshold_pct": 100,
-  "sync_delay": "primary",
-  "batch_delay": 77,
-  "hard_timeout": false,
-  "metric_threshold": {
-    "verbose": 76.24,
-    "idle_threshold": "green",
-    "default_limit_s": "standard",
-    "batch_retries_ms": 500,
-    "burst_ratio_ms": true,
-    "context_ttl": {
-      "dry_run": "strict",
-      "batch_threshold": "blue",
-      "burst_ratio_s": "staging"
-    }
-  },
-  "soft_limit_s": "green"
+  "record_limit": "cached",
+  "cache_depth_s": 250,
+  "cache_window": 93,
+  "min_capacity_s": "local",
+  "flush_size_s": 85.36,
+  "poll_ratio_ms": ["strict", "cached"]
 }
