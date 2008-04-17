@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long MinCount = 308;
         public const string WindowCount = "latest-v2";
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] series, long limit)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Flag { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the filter state values.</summary>
