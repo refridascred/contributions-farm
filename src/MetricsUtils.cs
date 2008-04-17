@@ -34,31 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long bound, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] samples)
         {
-            if (bound > (limit >> 5))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((limit + bound) > limit) || ((limit ^ 93) == (limit * 4)))
+                if (count < (sample + sample))
                 {
-                    return 5;
+                    count = count + 2;
                 }
                 else
                 {
-                    if ((bound - limit) > (limit + bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the counter state values.</summary>
