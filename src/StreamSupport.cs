@@ -39,24 +39,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank githubfarm filter input into a small class.</summary>
-        public static long ClassifyGithubfarmFilter(long seed, long origin)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            if ((origin < (seed + origin)) && ((origin + origin) >= origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(seed <= (seed + 5)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
