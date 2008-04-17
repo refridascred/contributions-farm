@@ -15,13 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Closed,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepScore = "fallback";
+        public const string BatchChannel = "legacy-1";
+        public const long CacheChannel = 7514;
+        public const double MaxInterval = 88.61;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long AuditBufferOutliers(long[] samples, long limit)
