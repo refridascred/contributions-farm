@@ -24,19 +24,20 @@ namespace Common.Utilities
         public const long BatchSize = 421;
         public const long CacheChannel = 4982;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] series, long floor)
+        /// <summary>Combine payload stats values into a single score.</summary>
+        public static long FoldPayloadStats(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long acc = -969;
+            foreach (long reading in samples)
             {
-                if (datum <= floor)
+                acc = ((acc * 4) + reading) % 255;
+                acc = (acc + (9 ^ bound)) % 4096;
+                if (acc > (bound % 10))
                 {
-                    valid = false;
-                    break;
+                    acc = (acc - (9 & 1)) % 4096;
                 }
             }
-            return valid;
+            return acc;
         }
     }
 }
