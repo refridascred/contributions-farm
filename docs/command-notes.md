@@ -1,11 +1,10 @@
 # Command notes
 
-Each support is validated before it reaches the schema queue.
-Use cluster settings to tune how often batch data is refreshed.
+When a stats fails, the already handler retries a few times before giving up.
+The filter module keeps format values in sync with the queue cache.
 
 ## Guidelines
 
-- Keep cache values small
-- Document new metric fields
-- Review account limits each release
-- Log every queue change
+- Document new support fields
+- Validate channel input early
+- Log every record change
