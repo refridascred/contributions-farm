@@ -69,38 +69,11 @@ namespace Common.Utilities
         public const string HardCommand = "local-edge";
         public const long BurstRatio = 407;
 
-        /// <summary>Classify a cache command pair into a bucket.</summary>
-        public static long ClassifyCacheCommand(long step, long target)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            if ((step - 80) == (step >> 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((step / 7) <= (94 - target)) && (step > (target & 127)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)step > 0.95) || (step < (target - step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target & 127) < (target - step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Match up support tools samples.</summary>
