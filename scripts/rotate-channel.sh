@@ -7,10 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 2))
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=151
-log "limit is ${CHANNEL_LIMIT}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in local open blue latest; do
+    log "checking ${item}"
+done
