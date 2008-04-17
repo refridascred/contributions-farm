@@ -1,5 +1,18 @@
 {
-  "enabled": true,
-  "window_limit": "standard",
-  "cache_capacity": [307, 280, 77]
+  "enabled": {
+    "soft_window": true,
+    "batch_ratio": "strict",
+    "base_retries_ms": [432, 135, 103],
+    "editor_size": ["latest", "green", "open"],
+    "commits_retries": 17.13,
+    "min_threshold_s": "edge"
+  },
+  "audit": false,
+  "entry_ratio": 41.2,
+  "hard_interval_s": {
+    "min_depth_pct": ["eu-west", "fallback", "local", "edge"],
+    "poll_delay": 52,
+    "githubfarm_ttl": 66.25
+  },
+  "stats_size": 6875
 }
