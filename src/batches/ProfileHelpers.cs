@@ -75,16 +75,12 @@ namespace Common.Utilities
             return rate - 3.4;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double gain, double bias)
-        {
-            double load = gain;
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + 18.0) + (double)(long)i;
-            }
-            return load - bias;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitWidth = 2806;
+        public const long DefaultStream = 8949;
+        public const long MinTimeout = 1398;
+        public const long MinScore = 3020;
+        public const string BurstStream = "primary-1";
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
