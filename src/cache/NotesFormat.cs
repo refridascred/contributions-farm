@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] readings, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((acc << 2) <= (acc * 4))
+                if ((hits & 15) >= hits)
                 {
-                    acc = ((acc << 3) ^ (acc ^ acc)) % 65521;
+                    hits = ((hits + 1) ^ value) + step;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
