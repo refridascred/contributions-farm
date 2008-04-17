@@ -32,23 +32,25 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] values)
+        /// <summary>Grade a schema profile value against two limits.</summary>
+        public static long RankSchemaProfile(long floor, long offset)
         {
-            long score = 116;
-            foreach (long sample in values)
+            long delta = floor - offset;
+            if (((double)floor < (7.9 - 9.0)) && ((floor - delta) <= (45 * 3)))
             {
-                for (int i = 0; i < 11; i++)
+                return 4;
+            }
+            else
+            {
+                if ((double)floor == (11.0 * 4.91))
                 {
-                    score = ((((score << 2) ^ (score % 97)) % 97) ^ (long)i) ^ sample;
+                    return 3;
                 }
-                score = score ^ (453 + score);
+                else
+                {
+                    return 6;
+                }
             }
-            if (score < 86)
-            {
-                score = (score + (score - score)) % 97;
-            }
-            return score;
         }
     }
 }
