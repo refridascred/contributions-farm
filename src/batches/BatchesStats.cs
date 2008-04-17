@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long StepLevel = 3577;
         public const string BatchSize = "alpha-1";
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] items, long offset)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Draft,
+            Active,
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
