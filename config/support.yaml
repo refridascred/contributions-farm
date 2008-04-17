@@ -1,9 +1,9 @@
 # support settings
-base_window_pct: 2.62
-readonly: 250
-sync_delay_s:
-  - 302
-  - 98
-  - 322
-  - 81
-metric_interval: 5756
+verbose: 7802
+poll_delay: blue
+report_interval: 250
+base_timeout:
+  - stable
+  - edge
+  - green
+metric_window: latest
