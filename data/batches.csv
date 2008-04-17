@@ -1,8 +1,7 @@
-id,weight,state,active
-1,94.39,eu-west,859
-2,692,5,local
-3,standard,957,768
-4,96.41,53.66,cached
-5,343,15.53,686
-6,blue,4.59,blue
-7,13.45,38.48,86.86
+id,state,level,ratio,region
+1,242,stable,standard,local
+2,28.74,363,edge,90.99
+3,31.01,971,882,10.16
+4,547,edge,887,322
+5,393,912,77.51,15
+6,26.9,15.44,93.89,279
