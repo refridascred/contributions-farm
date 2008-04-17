@@ -1,14 +1,7 @@
 # support settings
-soft_window: 9.36
-persist: local
-base_interval_count:
-  - 65
-  - 451
-  - 179
-  - 211
-readonly:
-  - standard
-  - local
-  - fallback
-report_ratio: primary
-idle_size_count: eu-west
+min_capacity_s: 35.09
+audit: local
+commits_delay: primary
+support_interval: 29.43
+base_capacity_s: 4575
+base_delay: edge
