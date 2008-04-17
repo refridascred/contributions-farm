@@ -15,21 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] levels)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading > offset)
                 {
-                    if ((levels[i] ^ levels[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
