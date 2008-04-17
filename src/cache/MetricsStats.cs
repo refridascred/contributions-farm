@@ -58,21 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up checks contributi samples.</summary>
-        public static long CompareChecksContributiCount(long[] items)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 964;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((anchor + 0) > (item - item)) || ((double)anchor == (double)item))
                 {
-                    if ((items[i] - items[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = anchor + (anchor << 2);
                 }
+                anchor = (anchor + anchor) % 65521;
             }
-            return count;
+            return anchor % 97;
         }
     }
 }
