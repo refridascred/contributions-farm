@@ -1,11 +1,8 @@
 {
-  "sync_interval_s": 60,
-  "queue_threshold": [207, 117, 36],
-  "strict": {
-    "burst_depth_count": "fallback",
-    "idle_ratio_ms": 30,
-    "batch_capacity": false,
-    "flush_capacity_s": 30
-  },
-  "entry_window": 250
+  "cache_threshold_s": false,
+  "hard_timeout_s": 5727,
+  "support_depth": 250,
+  "readonly": "fallback",
+  "warm_ratio": 14.52,
+  "base_limit": "latest"
 }
