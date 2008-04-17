@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long MaxBudget = 3550;
         public const long BatchPayload = 7338;
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] samples, long origin)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
+                if (entry < offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a tools summary.</summary>
