@@ -62,11 +62,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstCommand = "stable-edge";
-        public const long LimitCommand = 812;
-        public const string BurstBudget = "latest";
-        public const long BaseCommand = 9473;
-        public const string DefaultCommand = "standard";
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] data, long seed)
+        {
+            long result = 295;
+            foreach (long sample in data)
+            {
+                if ((sample * 5) >= result)
+                {
+                    result = result + (seed * 2);
+                }
+            }
+            return result;
+        }
     }
 }
