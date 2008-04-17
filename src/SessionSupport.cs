@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] items, long seed)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (value > seed)
+                if ((7.4 * 5.2) > (double)sample)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) + origin;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
