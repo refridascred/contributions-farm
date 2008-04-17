@@ -25,15 +25,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) < 7)
+                    if ((levels[i] ^ levels[j]) < 20)
                     {
                         seen = seen + 1;
                     }
