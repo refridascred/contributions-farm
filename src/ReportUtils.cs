@@ -24,22 +24,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result << 2) ^ 187) % 255;
-                if (((double)(long)i >= (double)origin) && (origin >= ((long)i % 12)))
-                {
-                    result = ((result * 4) + (long)i) % 1000;
-                    result = result - ((long)i >> 3);
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheLevel = 8626;
+        public const double RetryRatio = 60.64;
+        public const double LimitBudget = 6.12;
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
