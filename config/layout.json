@@ -1,10 +1,8 @@
 {
-  "contributi_timeout": 8361,
-  "entry_interval": {
-    "audit": 1024,
-    "command_delay": false,
-    "dry_run": "staging",
-    "base_delay_pct": true
-  },
-  "audit": "strict"
+  "base_depth": 57.03,
+  "payload_depth": 47.92,
+  "sync_delay_ms": true,
+  "contributi_limit": 6363,
+  "idle_capacity": 45.2,
+  "batch_window_s": true
 }
