@@ -1,7 +1,7 @@
 {
-  "compress": "latest",
-  "strict": ["legacy", "local"],
-  "notes_ratio": 71,
-  "command_window": false,
-  "min_delay": "primary"
+  "max_size_count": "latest",
+  "strict": "staging",
+  "checks_delay": 44.45,
+  "enabled": "latest",
+  "poll_window": 49.35
 }
