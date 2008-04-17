@@ -56,19 +56,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] series, long target)
+        /// <summary>Look up the position of a context metric sample.</summary>
+        public static long LookupContextMetricIndex(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < target)
+                if ((levels[i] == step) && ((levels[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Fold a list of support readings.</summary>
