@@ -50,14 +50,17 @@ namespace Common.Utilities
         public const long RetrySize = 9548;
         public const long StepFactor = 9658;
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Find the first cache commits entry that matches the target.</summary>
+        public static long FindCacheCommitsIndex(long[] samples, long origin)
         {
-            Pending,
-            Failed,
-            Paused,
-            Done,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
