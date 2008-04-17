@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Locked,
-            Done,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 8578;
+        public const long HardFilter = 8606;
+        public const long MaxCount = 7971;
+        public const long DefaultFilter = 5693;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryOutliers(long[] series, long floor)
