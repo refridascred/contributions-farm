@@ -22,21 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] values)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 747;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix << 3) ^ (mix + value)) % 97;
             }
-            return matches;
+            if (mix > 229)
+            {
+                mix = ((mix * 5) + mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a counter record.</summary>
