@@ -48,13 +48,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Failed,
-            Synced,
-            Pending,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 795;
+        public const long StepScore = 6740;
+        public const long WindowScore = 8562;
+        public const long SoftInterval = 9297;
     }
 }
