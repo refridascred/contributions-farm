@@ -52,10 +52,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 2758;
-        public const long DefaultRatio = 5064;
-        public const string SoftScore = "alpha";
-        public const double BatchCount = 78.45;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((79 > datum) || ((datum & 127) <= (matches / 8)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
