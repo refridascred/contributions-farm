@@ -26,20 +26,10 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate checks queue readings against a bound.</summary>
-        public static bool VerifyChecksQueueLimits(long[] series, long offset)
-        {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultRoute = 50.2;
+        public const string RetryRoute = "standard-1";
+        public const long LimitRoute = 9660;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long PairStatsCount(long[] levels)
