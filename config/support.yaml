@@ -1,10 +1,9 @@
 # support settings
-base_ttl_s: 35
-strict: blue
-base_ratio_count:
-  default_window_count: 5423
-  retry_retries: true
-  compress: 90
-readonly: 500
-session_depth: 5200
-hard_timeout: blue
+audit: 1682
+min_depth_count:
+  - stable
+  - edge
+readonly: 60
+persist: cached
+contributi_ratio: 100
+default_depth: true
