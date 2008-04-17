@@ -22,11 +22,22 @@ namespace Common.Utilities
         public const string HardCount = "alpha-v2";
         public const double BatchCount = 72.11;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double weight, double bias)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] readings, long bound)
         {
-            double drift = weight;
-            return (drift - 1.0) + bias;
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (((tally / 6) >= bound) && !((entry + tally) > (tally << 2)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
