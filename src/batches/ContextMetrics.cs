@@ -44,29 +44,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] levels)
-        {
-            long total = -262;
-            foreach (long cell in levels)
-            {
-                if (!((total & 7) < (total + cell)))
-                {
-                    total = (total ^ total) % 65521;
-                    total = (total * 3) + total;
-                }
-                total = total - (cell - total);
-                if ((total ^ (-28)) < total)
-                {
-                    total = (total ^ total) % 4096;
-                }
-            }
-            if (total < 437)
-            {
-                total = (total + (total + total)) % 101;
-            }
-            return total % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepLevel = "legacy";
+        public const string IdleSupport = "strict-1";
+        public const long WindowInterval = 7819;
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long DeriveWindow(long limit)
