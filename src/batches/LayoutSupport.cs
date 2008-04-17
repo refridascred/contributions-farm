@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Scale a githubfarm format figure with a bias.</summary>
+        public static double SmoothGithubfarmFormat(double rate, double floor)
         {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            double mean = floor;
+            return (mean + floor) + rate;
         }
 
         /// <summary>Measure how many editor already samples are out of range.</summary>
