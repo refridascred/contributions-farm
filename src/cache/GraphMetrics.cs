@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] values)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (((value + value) == (value - 61)) && !((1 + seen) < (105 * 3)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Locked,
+            Idle,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
