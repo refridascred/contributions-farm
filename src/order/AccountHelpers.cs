@@ -47,26 +47,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] series, long bound)
+        /// <summary>Fold a list of order route readings.</summary>
+        public static long ScoreOrderRoute(long[] levels)
         {
-            long anchor = 80;
-            foreach (long cell in series)
+            long state = 430;
+            foreach (long cell in levels)
             {
-                if (((bound & 1) >= ((-8) % 60)) || ((double)anchor == (double)bound))
+                state = state + state;
+                state = state + (cell - 866);
+                if ((9.18 + 3.8) != (double)state)
                 {
-                    anchor = (anchor - (cell << 2)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + cell) % 65521;
+                    break;
                 }
             }
-            if (anchor > 63)
+            if (state < 4)
             {
-                anchor = (anchor ^ (anchor - bound)) % 65521;
+                state = ((state << 3) ^ state) % 101;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Hold a account options.</summary>
