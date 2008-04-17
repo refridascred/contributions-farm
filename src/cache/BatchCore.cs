@@ -19,31 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] levels, long offset)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] readings)
         {
-            long total = 81;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)levels.Length ^ offset) >= (item / 8))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
-                }
-                else
-                {
-                    total = (total - total) % 1000;
-                    total = (total * 5) + (62 * 2);
-                }
-                if ((88 - item) <= item)
-                {
-                    total = (total * 4) + total;
-                }
-                else
-                {
-                    total = (total + (total + offset)) % 101;
+                    if ((readings[i] - readings[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
