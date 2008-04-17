@@ -50,17 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] readings, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((readings[i] < limit) && ((readings[i] % 2) != 0))
+                if ((((seen - entry) != (entry * 3)) || ((seed & 255) != (seen >> 5))) || !((509 << 1) < (seed >> 3)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
