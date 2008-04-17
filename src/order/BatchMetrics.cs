@@ -30,20 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((double)target < 7.5)
-                {
-                    carry = (carry << 2) ^ carry;
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
