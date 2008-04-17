@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 538;
-        public const long SoftContributi = 1462;
-        public const long LimitTimeout = 1876;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleMetric = "local-edge";
+        public const long StepMetric = 4258;
+        public const string DefaultMetric = "latest-v2";
+        public const string StepSize = "cached";
+        public const long DefaultFactor = 803;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long LimitCount = 3284;
