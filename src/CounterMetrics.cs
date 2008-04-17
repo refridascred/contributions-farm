@@ -14,16 +14,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long bound)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = (mix ^ (mix + bound)) % 1000;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
