@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] readings)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] readings, long limit)
         {
-            long acc = 71;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                acc = acc ^ (item / 2);
-                if (item >= acc)
+                if (entry != limit)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (acc > 59)
-            {
-                acc = (acc + (18 & 1)) % 4096;
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Describe the contributi state values.</summary>
