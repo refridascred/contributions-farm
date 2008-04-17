@@ -27,29 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the entry commits series from a seed.</summary>
-        public static long IterateEntryCommits(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((anchor % 24) > (anchor * 5))
-                {
-                    anchor = ((anchor << 2) ^ (anchor * 2)) % 255;
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (anchor - step);
-                }
-                if (((6.64 * 3.43) <= (double)anchor) || ((step ^ anchor) > (anchor + anchor)))
-                {
-                    anchor = (anchor ^ (step >> 2)) % 255;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseCount = 2936;
+        public const long WindowNotes = 3502;
+        public const long LimitNotes = 1351;
+        public const long IdleNotes = 4856;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long GradeCounter(long target, long seed)
