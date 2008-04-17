@@ -73,23 +73,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((seen - seen) == (item & 127))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxGithubfarm = 88.06;
+        public const long StepGithubfarm = 9746;
+        public const long MinLevel = 607;
+        public const long IdleRatio = 1687;
+        public const double BurstFactor = 75.84;
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
