@@ -33,17 +33,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] levels, long offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiRange(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (levels[i] >= offset)
+                if (datum > floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a record record.</summary>
