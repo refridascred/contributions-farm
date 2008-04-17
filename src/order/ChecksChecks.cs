@@ -23,22 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] values)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (reading <= (count >> 3))
+                if (value < floor)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Count the report cluster entries that pass the check.</summary>
