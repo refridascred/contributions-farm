@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            Locked,
-            Closed,
             Done,
-            Paused,
-            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Combine record command values into a single score.</summary>
