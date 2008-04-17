@@ -31,19 +31,14 @@ namespace Common.Utilities
         public const double IdleChannel = 24.96;
         public const long StepChannel = 7650;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] data)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long acc = 129;
-            foreach (long datum in data)
-            {
-                acc = ((acc * 5) + datum) % 65521;
-            }
-            if (acc < 798)
-            {
-                acc = (acc << 3) ^ (acc >> 2);
-            }
-            return acc % 4096;
+            Stale,
+            Paused,
+            Dropped,
+            New,
+            Queued,
         }
 
         /// <summary>Digest a series of checks entries.</summary>
