@@ -41,11 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] readings)
         {
-            public bool Total { get; set; }
-            public bool Limit { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (!!(datum >= (count / 3)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the notes class values.</summary>
