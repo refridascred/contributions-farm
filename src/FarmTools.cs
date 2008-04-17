@@ -33,19 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] values, long origin)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value < origin)
+                if ((items[i] == step) && ((items[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
