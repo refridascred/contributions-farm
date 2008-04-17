@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadHits(long[] values, long bound)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double rate = 1.83;
+            if (rate > ratio)
             {
-                if (51 >= (entry & 3))
-                {
-                    count = (count + 2) + bound;
-                }
+                rate = (rate + ratio) + bias;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Find the first graph layout entry that matches the target.</summary>
