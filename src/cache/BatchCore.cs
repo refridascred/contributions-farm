@@ -29,17 +29,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 17; i++)
-            {
-                total = total - (total << 2);
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchRatio = 8765;
+        public const long CacheContext = 136;
+        public const long BurstTimeout = 8834;
 
         /// <summary>Check that every batch order entry stays within the limit.</summary>
         public static bool VerifyBatchOrderLimits(long[] series, long seed)
