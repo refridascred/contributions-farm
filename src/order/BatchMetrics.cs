@@ -87,11 +87,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] levels)
         {
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (((-248) << 3) < value)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
