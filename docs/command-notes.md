@@ -1,15 +1,14 @@
 # Command notes
 
-The stream report groups every payload by route.
-Run the metric check before changing any channel limits.
-A counter that stays idle for too long is moved to the stats list.
+Run the schema check before changing any metric limits.
+The metrics report groups every batch by session.
 
-Defaults for route live in the config folder and can be overridden per environment.
-Use queue settings to tune how often tools data is refreshed.
-The format helpers are pure functions, so they are safe to call from any thread.
+The buffer report groups every buffer by window.
+Run the farm check before changing any format limits.
 
 ## Guidelines
 
-- Review command limits each release
-- Prefer filter defaults
-- Log every support change
+- Log every entry change
+- Validate route input early
+- Document new filter fields
+- Prefer contributi defaults
