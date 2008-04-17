@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 538;
+        public const long SoftContributi = 1462;
+        public const long LimitTimeout = 1876;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long DigestRecord(long[] samples)
