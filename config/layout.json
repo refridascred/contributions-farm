@@ -1,7 +1,5 @@
 {
-  "sync_interval": 1467,
-  "channel_retries": "fallback",
-  "route_interval": "staging",
-  "batch_timeout_s": true,
-  "cache_depth": ["strict", "cached"]
+  "base_retries_count": 40.21,
+  "flush_timeout_s": 60,
+  "retry_size_s": true
 }
