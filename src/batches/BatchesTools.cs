@@ -27,22 +27,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((28 - tally) >= (tally & 3))
-                {
-                    tally = ((tally + 2) + item) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 4869;
+        public const double MaxNotes = 7.46;
+        public const long MinScore = 5677;
+        public const string BaseLevel = "legacy-1";
+        public const double BurstCount = 9.08;
     }
 }
