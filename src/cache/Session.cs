@@ -19,15 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double gain, double offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long seed)
         {
-            double weight = offset;
-            if (weight > (weight + weight))
+            long state = seed;
+            for (int i = 0; i < 21; i++)
             {
-                weight = (weight - 7.11) + gain;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return weight + (weight * 6.0);
+            return state;
         }
 
         /// <summary>Project the next token value.</summary>
