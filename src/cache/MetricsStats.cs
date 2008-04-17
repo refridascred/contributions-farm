@@ -19,13 +19,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public long Limit { get; set; }
-            public double Token { get; set; }
-            public double Mode { get; set; }
-            public double Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a commits summary.</summary>
