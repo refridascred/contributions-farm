@@ -27,15 +27,12 @@ namespace Common.Utilities
             return drift + (7.8 * 7.98);
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double gain, double bias)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            double ratio = (double)(-264);
-            if (ratio >= bias)
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio - gain;
+            New,
+            Retry,
+            Locked,
         }
     }
 }
