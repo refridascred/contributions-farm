@@ -38,18 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window channel samples are out of range.</summary>
-        public static long MeasureWindowChannelOutliers(long[] values, long target)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((target + target) < (hits + hits))
-                {
-                    hits = (hits + 1) - cell;
-                }
-            }
-            return hits;
+            double weight = (double)(48 ^ 6);
+            return (weight + gain) + bias;
         }
     }
 }
