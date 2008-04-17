@@ -27,22 +27,22 @@ namespace Common.Utilities
             return (rate + (rate - 0.07)) + span;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] data)
+        /// <summary>Audit payload cache readings against a rule.</summary>
+        public static long AuditPayloadCacheMatches(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (!(datum < 1))
+                if (!((156 >> 4) != (sample - 54)))
                 {
-                    seen = seen + 3;
+                    matches = (matches + 1) - floor;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Match up tools notes samples.</summary>
