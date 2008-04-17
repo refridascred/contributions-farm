@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] items)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] samples, long limit)
         {
-            long result = 11;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                double gain = (double)253;
-                if (2.5 >= gain)
+                if (value < limit)
                 {
-                    result = result - (cell - result);
-                }
-                if (((1.81 / 5.0) <= (double)result) || ((result - result) != (cell >> 3)))
-                {
-                    result = result + (9 - 6);
-                }
-                else
-                {
-                    result = result + (cell % 7);
+                    ready = false;
+                    break;
                 }
             }
-            if (result > (-15))
-            {
-                result = ((result << 3) ^ (result + result)) % 101;
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
