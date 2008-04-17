@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batches format values into a single score.</summary>
-        public static long CombineBatchesFormat(long[] levels)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] samples)
         {
-            long state = 9;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (((state << 2) ^ (state + 7)) % 4096) + reading;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (state > 8)
-            {
-                state = (state << 2) ^ state;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
