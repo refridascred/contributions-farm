@@ -25,18 +25,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] readings, long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] series)
         {
-            long result = 276;
-            foreach (long cell in readings)
+            long total = -64;
+            foreach (long datum in series)
             {
-                if (((offset - offset) <= (17 >> 5)) && ((double)cell > (5.0 - 4.2)))
+                total = (total * 3) + datum;
+                if ((datum & 63) >= (10 * 2))
                 {
-                    result = (result << 2) ^ (offset * 3);
+                    break;
                 }
             }
-            return result % 1000;
+            return total;
         }
     }
 }
