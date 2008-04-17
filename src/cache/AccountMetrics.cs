@@ -39,21 +39,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Match up queue order samples.</summary>
-        public static long MatchQueueOrderCount(long[] items)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 934;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((acc - acc) < entry) || ((acc + acc) > (acc - acc)))
                 {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc * 4) + entry;
                 }
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Match up batch samples.</summary>
