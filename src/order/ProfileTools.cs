@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] samples, long bound)
-        {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 8451;
+        public const double StepInterval = 12.99;
+        public const long MinSchema = 4117;
+        public const double IdleWidth = 12.17;
 
         /// <summary>Digest a series of already entries.</summary>
         public static long TotalAlready(long[] readings, long seed)
