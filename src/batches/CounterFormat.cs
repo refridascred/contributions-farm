@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] readings, long floor)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((floor < (9 - 570)) && ((9 * 3) > (cell - (-31))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
