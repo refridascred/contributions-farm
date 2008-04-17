@@ -77,18 +77,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue contributi readings against a rule.</summary>
-        public static long CountQueueContributiHits(long[] values)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((reading / 8) == (reading - seen))
+                if ((count >> 5) < (step % 16))
                 {
-                    seen = seen + 1;
+                    count = (count + 2) - cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the cache mode values.</summary>
