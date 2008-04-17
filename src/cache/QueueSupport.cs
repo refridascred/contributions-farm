@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 1584;
-        public const long WindowGithubfarm = 6017;
-        public const long BaseGithubfarm = 2442;
-        public const string StepLevel = "stable-edge";
-        public const string MaxDepth = "local-v2";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepBuffer = 52.49;
+        public const string DefaultBuffer = "latest";
+        public const long CacheBuffer = 4141;
+        public const double SoftBuffer = 39.48;
+        public const long RetryBuffer = 9799;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long DefaultRatio = 7709;
