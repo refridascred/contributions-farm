@@ -25,13 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] samples)
         {
-            public double Level { get; set; }
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((((1.24 / 3.0) > (double)tally) || ((datum - tally) <= (datum ^ tally))) && ((tally - datum) > (datum * 3)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
