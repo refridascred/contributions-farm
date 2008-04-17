@@ -1,4 +1,24 @@
 # entry settings
-warm_limit_count: latest
-persist: primary
-base_window_s: 100
+metrics_size: 92.57
+token_threshold: 87
+burst_ratio_ms: 8722
+layout_limit:
+  base_size: fallback
+  max_threshold_pct: 500
+  sync_interval_ms: green
+  readonly:
+    verbose: strict
+    profile_limit: 40.73
+    min_delay_s: stable
+    filter_window: 7672
+  flush_ratio_count:
+    - latest
+    - strict
+    - staging
+  burst_limit_s:
+    - 149
+    - 123
+    - 76
+    - 140
+persist: local
+burst_ttl_s: stable
