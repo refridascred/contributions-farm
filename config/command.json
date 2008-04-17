@@ -1,15 +1,6 @@
 {
-  "compress": {
-    "min_retries_pct": "cached",
-    "sync_size": 60,
-    "warm_interval": 2.69,
-    "dry_run": "strict",
-    "cache_interval": ["cached", "legacy", "strict"],
-    "hard_ratio_count": 78
-  },
-  "poll_limit_s": "fallback",
-  "sync_capacity": true,
-  "burst_size": "open",
-  "flush_size_s": false,
-  "persist": "staging"
+  "hard_delay_s": "staging",
+  "layout_ratio": false,
+  "entry_capacity": 70.8,
+  "sync_capacity": [145, 405]
 }
