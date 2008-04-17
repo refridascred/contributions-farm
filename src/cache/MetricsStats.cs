@@ -36,22 +36,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] data, long target)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (target > cell)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Dropped,
+            Ready,
+            Done,
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
