@@ -25,19 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double ratio, double bias)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long target, long target2)
         {
-            double bias2 = bias;
-            if (bias2 > bias2)
+            long span = target ^ target2;
+            if (!((18.0 / 3.0) == (double)target))
             {
-                bias2 = bias2 - (ratio + bias);
+                return 8;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                bias2 = (bias2 - bias) + (double)(long)i;
+                if ((span ^ target) == (target2 / 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target2 <= (target + 17))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((-101) ^ target) >= target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return bias2 + (double)47;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
