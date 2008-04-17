@@ -41,19 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] data, long limit)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double weight, double span)
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double load = (double)(24 % 5);
+            return ((load + 6.0) + weight) + span;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
