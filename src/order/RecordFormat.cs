@@ -20,11 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftLevel = 7.75;
-        public const double MaxRatio = 32.26;
-        public const long RetryTimeout = 3516;
-        public const string BatchLevel = "fallback-1";
+        /// <summary>Validate queue record readings against a bound.</summary>
+        public static bool GuardQueueRecordLimits(long[] data, long limit)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long FoldCluster(long[] levels, long step)
