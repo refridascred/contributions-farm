@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const long MaxBudget = 3550;
         public const long BatchPayload = 7338;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 4503;
+        public const long SoftInterval = 8134;
+        public const double WindowReport = 13.41;
+        public const string IdleReport = "alpha-1";
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
