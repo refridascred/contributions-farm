@@ -37,16 +37,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next order record value from a seed.</summary>
-        public static long RollOrderRecord(long floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                result = result + (long)i;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            Failed,
+            New,
+            Synced,
+            Paused,
         }
     }
 }
