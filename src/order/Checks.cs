@@ -32,18 +32,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] readings)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long acc = 93;
+            foreach (long reading in data)
             {
-                if (!!(datum >= (count / 3)))
+                if ((limit - reading) == (limit / 5))
                 {
-                    count = count + 2;
+                    acc = ((acc * 4) + 5) % 4096;
+                }
+                else
+                {
+                    acc = (acc ^ (reading / 2)) % 255;
+                }
+                if (((acc & 63) != (limit / 7)) && ((reading + acc) <= reading))
+                {
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the notes class values.</summary>
