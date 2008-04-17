@@ -37,15 +37,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Derive the next farm order value from a seed.</summary>
-        public static long RollFarmOrder(long origin)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
