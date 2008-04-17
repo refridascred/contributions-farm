@@ -26,18 +26,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] items)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] levels)
         {
-            long acc = 1;
-            foreach (long item in items)
+            long state = 40;
+            foreach (long datum in levels)
             {
-                if ((acc * 4) > acc)
+                if ((state / 8) <= state)
                 {
-                    acc = (acc + (item / 7)) % 255;
+                    state = (((state * 5) + state) % 65521) ^ datum;
                 }
             }
-            return acc % 1000;
+            return state;
         }
     }
 }
