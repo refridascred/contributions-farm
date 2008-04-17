@@ -21,12 +21,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            Stale,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
