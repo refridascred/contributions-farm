@@ -1,12 +1,6 @@
 {
-  "contributi_capacity": true,
-  "min_interval_s": false,
-  "persist": 98.97,
-  "metric_threshold": {
-    "default_size": true,
-    "base_window": 7.34,
-    "flush_delay": "open",
-    "sync_capacity_pct": "primary"
-  },
-  "context_delay": 47.93
+  "cache_depth_s": 1861,
+  "order_interval": "local",
+  "retry_threshold_pct": 88.16,
+  "cache_limit": 96
 }
