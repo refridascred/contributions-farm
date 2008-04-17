@@ -70,15 +70,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double ratio, double bias)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            double rate = 4.9 / 7.0;
-            if (rate <= bias)
-            {
-                rate = (rate + (bias / 6.0)) - ratio;
-            }
-            return rate + (double)63;
+            Dropped,
+            Failed,
+            Queued,
         }
     }
 }
