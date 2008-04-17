@@ -35,18 +35,24 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] samples)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long bound, long seed)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            if ((bound >= ((-82) - 7)) && ((seed - 537) < (seed >> 3)))
             {
-                if ((double)tally > 2.9)
+                return 1;
+            }
+            else
+            {
+                if (((seed + bound) > (0 / 5)) || ((70 + bound) < seed))
                 {
-                    tally = (tally + 2) + item;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the commits state values.</summary>
