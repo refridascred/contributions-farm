@@ -1,5 +1,5 @@
 {
-  "poll_interval": "local",
-  "strict": 4193,
-  "idle_retries": "eu-west"
+  "sync_limit_ms": "legacy",
+  "warm_capacity": 14.2,
+  "verbose": 500
 }
