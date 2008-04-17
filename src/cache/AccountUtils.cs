@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine support token values into a single score.</summary>
-        public static long DigestSupportToken(long[] readings, long offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long limit)
         {
-            long acc = 3;
-            foreach (long reading in readings)
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
             {
-                acc = (acc ^ offset) % 255;
-                if ((reading > offset) || ((8.0 - 6.5) == (double)offset))
+                long gap = limit * 4;
+                mix = (mix ^ limit) % 65521;
+                if (!((gap % 16) != (limit >> 1)))
                 {
-                    acc = (acc << 2) ^ offset;
+                    long gap2 = (long)i ^ (mix * 3);
+                    gap = ((gap << 3) ^ ((long)i ^ gap2)) % 97;
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return acc % 97;
+            return mix;
         }
 
         /// <summary>Hold a notes stats.</summary>
