@@ -1,15 +1,6 @@
 # githubfarm settings
-base_interval:
-  schema_ttl: 77.85
-  format_interval: 30
-  notes_depth: 100
-  default_interval_ms: 62.85
-  enabled: 18
-cache_capacity: 80
-default_threshold_count: true
-persist:
-  - 282
-  - 125
-  - 297
-  - 263
-flush_retries_s: 9332
+base_ttl_count: 250
+default_limit_pct: 9458
+batch_retries_ms: staging
+soft_retries: fallback
+compress: staging
