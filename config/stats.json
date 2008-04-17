@@ -1,12 +1,8 @@
 {
-  "batch_ttl": {
-    "soft_retries_ms": 8038,
-    "base_retries_count": 3856,
-    "sync_size_pct": ["standard", "eu-west"]
-  },
-  "profile_size": ["strict", "stable"],
-  "retry_delay_ms": true,
-  "poll_ratio_pct": 71.71,
-  "poll_delay_s": [82, 427, 221],
-  "flush_window_count": 9750
+  "cache_size_count": 500,
+  "support_window": 58,
+  "token_limit": "local",
+  "persist": 79.61,
+  "enabled": 4384,
+  "hard_ratio": 1460
 }
