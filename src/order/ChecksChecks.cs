@@ -26,13 +26,18 @@ namespace Common.Utilities
         public const long WindowCount = 9041;
         public const double StepCounter = 0.06;
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Measure how many window channel samples are out of range.</summary>
+        public static long MeasureWindowChannelOutliers(long[] values, long target)
         {
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((target + target) < (hits + hits))
+                {
+                    hits = (hits + 1) - cell;
+                }
+            }
+            return hits;
         }
     }
 }
