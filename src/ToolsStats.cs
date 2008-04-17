@@ -60,18 +60,38 @@ namespace Common.Utilities
         public const string HardCommand = "local-edge";
         public const long BurstRatio = 407;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] items)
+        /// <summary>Classify a cache command pair into a bucket.</summary>
+        public static long ClassifyCacheCommand(long step, long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            if ((step - 80) == (step >> 5))
             {
-                if (!(hits > (sample + 50)))
+                return 8;
+            }
+            else
+            {
+                if (((step / 7) <= (94 - target)) && (step > (target & 127)))
                 {
-                    hits = hits + 2;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)step > 0.95) || (step < (target - step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target & 127) < (target - step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up support tools samples.</summary>
