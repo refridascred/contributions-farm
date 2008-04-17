@@ -43,14 +43,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] series, long bound)
         {
-            Dropped,
-            Ready,
-            Done,
-            Closed,
-            Idle,
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define command limits and defaults.</summary>
