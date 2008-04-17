@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long HardScore = 7713;
         public const string MinTimeout = "strict";
 
-        /// <summary>Look up the position of a session tools sample.</summary>
-        public static long SeekSessionToolsIndex(long[] series, long limit)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if (series[i] <= limit)
+                if (entry <= bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a entry header.</summary>
