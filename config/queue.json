@@ -1,6 +1,5 @@
 {
-  "notes_timeout": 30,
-  "min_limit": "legacy",
-  "base_capacity_ms": 60,
-  "schema_depth": ["blue", "open"]
+  "poll_window_pct": 21.56,
+  "min_timeout": [490, 264],
+  "max_capacity_count": 2.47
 }
