@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double rate, double floor)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            double bias = rate;
-            if (bias > (bias * 6.8))
-            {
-                bias = bias - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - 1.0) + (double)(long)i;
-            }
-            return bias + bias;
+            New,
+            Failed,
+            Locked,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
