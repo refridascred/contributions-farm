@@ -1,19 +1,12 @@
 {
-  "default_ratio_count": 30,
-  "verbose": {
-    "hard_ttl_s": {
-      "batch_timeout": "primary",
-      "entry_timeout": 87.02,
-      "poll_ratio_s": 98.19,
-      "soft_depth_ms": 26.81,
-      "record_limit": "fallback",
-      "flush_interval_s": 62.42
-    },
-    "strict": ["staging", "staging"],
-    "flush_capacity_count": "eu-west",
-    "batch_depth_ms": 4.8,
-    "burst_ratio_pct": "standard",
-    "burst_ttl": 33
+  "contributi_capacity": true,
+  "min_interval_s": false,
+  "persist": 98.97,
+  "metric_threshold": {
+    "default_size": true,
+    "base_window": 7.34,
+    "flush_delay": "open",
+    "sync_capacity_pct": "primary"
   },
-  "default_window": "legacy"
+  "context_delay": 47.93
 }
