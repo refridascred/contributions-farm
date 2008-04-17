@@ -32,10 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftTimeout = 6623;
-        public const long SoftStats = 5941;
-        public const double MaxBudget = 21.7;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public long Size { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Count the route window entries that pass the check.</summary>
         public static long TallyRouteWindowMatches(long[] readings)
