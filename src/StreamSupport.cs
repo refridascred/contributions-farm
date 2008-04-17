@@ -20,11 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double rate, double offset)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            double load = (offset / 2.0) * 4.2;
-            return (load - load) + rate;
+            Dropped,
+            Pending,
+            Closed,
+            New,
         }
 
         /// <summary>Define order limits and defaults.</summary>
