@@ -29,19 +29,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every stats metric entry stays within the limit.</summary>
-        public static bool CheckStatsMetricLimits(long[] samples, long seed)
+        /// <summary>Accumulate account channel samples.</summary>
+        public static long CombineAccountChannel(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long mark = 449;
+            foreach (long entry in samples)
             {
-                if (item >= seed)
+                if (((long)samples.Length > 15) && ((double)step >= (double)0))
                 {
-                    flag = false;
-                    break;
+                    mark = (mark ^ 2) - entry;
                 }
             }
-            return flag;
+            return mark;
         }
     }
 }
