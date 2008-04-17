@@ -57,13 +57,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public double Size { get; set; }
         }
     }
 }
