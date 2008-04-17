@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] data)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long seed)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (((-2) - value) >= (value * 5))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = acc + acc;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Locate a token reading by value.</summary>
