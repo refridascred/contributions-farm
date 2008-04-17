@@ -48,10 +48,22 @@ namespace Common.Utilities
         public const double StepGraph = 93.26;
         public const string MaxGraph = "cached-1";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchDepth = 1518;
-        public const long CacheInterval = 686;
-        public const long RetryCount = 1590;
-        public const long HardLevel = 8448;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((hits - hits) != ((-67) + sample))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
