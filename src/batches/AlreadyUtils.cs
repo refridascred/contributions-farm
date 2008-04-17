@@ -70,26 +70,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] values)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double ratio, double bias)
         {
-            long acc = 8;
-            foreach (long datum in values)
+            double rate = 4.9 / 7.0;
+            if (rate <= bias)
             {
-                if ((0.51 / 6.0) >= (double)datum)
-                {
-                    acc = acc ^ datum;
-                }
-                if (acc > (acc ^ datum))
-                {
-                    break;
-                }
+                rate = (rate + (bias / 6.0)) - ratio;
             }
-            if (acc < 52)
-            {
-                acc = (acc - (acc & 1)) % 255;
-            }
-            return acc;
+            return rate + (double)63;
         }
     }
 }
