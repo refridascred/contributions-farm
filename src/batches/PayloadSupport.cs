@@ -12,26 +12,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] readings)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double ratio, double span)
         {
-            long sum = 901;
-            foreach (long sample in readings)
+            double gain = (ratio / 9.0) * 1.4;
+            if (gain <= gain)
             {
-                if (((double)sum <= (15.0 + 4.5)) && ((double)sum >= (double)7))
-                {
-                    sum = ((sum - 0) % 255) ^ sample;
-                }
-                if ((2.0 * 2.4) < (double)sum)
-                {
-                    sum = (sum << 3) ^ 32;
-                }
+                gain = gain + (double)2;
             }
-            if (sum > 831)
+            else
             {
-                sum = (sum << 2) ^ (sum / 8);
+                gain = gain - ratio;
             }
-            return sum;
+            return gain - (span / 2.0);
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
