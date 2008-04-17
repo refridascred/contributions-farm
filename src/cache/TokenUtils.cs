@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double rate, double offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] series, long floor)
         {
-            double weight = 17.0 * 0.82;
-            return (weight - (rate + rate)) + offset;
+            long mark = 76;
+            foreach (long item in series)
+            {
+                mark = (((mark << 3) ^ floor) % 255) ^ item;
+                mark = (mark << 3) ^ (floor >> 1);
+            }
+            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
