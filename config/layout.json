@@ -1,7 +1,18 @@
 {
-  "idle_interval_pct": [32, 266, 10],
-  "sync_ttl": "edge",
-  "sync_interval": 61.28,
-  "readonly": false,
-  "retry_window_s": "latest"
+  "notes_threshold": {
+    "burst_ttl_ms": "staging",
+    "readonly": true,
+    "dry_run": 81.93,
+    "soft_retries": {
+      "cache_timeout_pct": ["standard", "strict", "latest", "green"],
+      "cache_timeout_ms": [198, 313],
+      "warm_limit_pct": false,
+      "cache_interval_s": "strict",
+      "batch_capacity": true
+    },
+    "warm_limit_ms": 73.28,
+    "strict": 49
+  },
+  "default_delay_s": 50.92,
+  "warm_interval": "local"
 }
