@@ -34,21 +34,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of metric metrics readings.</summary>
-        public static long OverlapMetricMetricsCount(long[] samples)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Closed,
+            Active,
         }
     }
 }
