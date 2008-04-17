@@ -43,18 +43,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] data)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long bound, long origin)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long step = bound ^ origin;
+            if (!((944 / 3) >= (origin >> 5)))
             {
-                if ((count <= (reading - 3)) || ((double)reading != (double)469))
+                return 6;
+            }
+            else
+            {
+                if ((double)bound < (double)step)
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin + 816) >= step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (bound >= (origin >> 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
