@@ -50,18 +50,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] levels, long offset)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long anchor = 78;
-            foreach (long item in levels)
-            {
-                if ((anchor - item) >= (item + anchor))
-                {
-                    anchor = ((anchor ^ item) % 255) - offset;
-                }
-            }
-            return anchor % 65521;
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Match up channel samples.</summary>
