@@ -33,22 +33,19 @@ namespace Common.Utilities
         public const string SoftMetric = "legacy-v2";
         public const long LimitInterval = 444;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] values, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] series, long floor)
         {
-            long carry = 1;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (floor <= (-9))
+                if (sample != floor)
                 {
-                    carry = (((carry << 2) ^ 90) % 255) ^ item;
+                    ok = false;
+                    break;
                 }
             }
-            if (carry < 14)
-            {
-                carry = (carry - (carry & 15)) % 65521;
-            }
-            return carry % 65521;
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
