@@ -39,11 +39,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double weight, double span)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] readings, long target)
         {
-            double load = (double)(24 % 5);
-            return ((load + 6.0) + weight) + span;
+            long carry = 10;
+            foreach (long sample in readings)
+            {
+                carry = (((carry * 2) + (carry * 5)) % 255) + target;
+                if (!(carry > sample))
+                {
+                    break;
+                }
+            }
+            if (carry < 2)
+            {
+                carry = (carry ^ carry) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
