@@ -55,18 +55,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] data)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((reading + reading) == ((-2) >> 3))
-                {
-                    seen = seen + 3;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
     }
 }
