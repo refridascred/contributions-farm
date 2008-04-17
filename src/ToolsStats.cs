@@ -33,12 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardContributi = "local-v2";
-        public const string StepSize = "legacy-v2";
-        public const long RetryContributi = 1174;
-        public const long CacheSpan = 986;
-        public const double WindowRatio = 61.74;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading + reading) > ((-171) + 8)) && (tally > (tally - (long)samples.Length)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long SeekBatchesIndex(long[] data, long step)
