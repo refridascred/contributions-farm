@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 1805;
-        public const long StepSize = 5929;
-        public const string StepAccount = "local-v2";
-        public const long RetryAccount = 9375;
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
