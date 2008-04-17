@@ -43,22 +43,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] values, long step)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long step = floor + origin;
+            if (origin > (step - 25))
             {
-                if ((242 << 3) > (step & 31))
+                return 6;
+            }
+            else
+            {
+                if ((807 << 1) <= (step & 1))
                 {
-                    seen = (seen + 2) - sample;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((floor + origin) < floor) && ((origin << 2) >= (floor - step)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Adjust a profile reading.</summary>
