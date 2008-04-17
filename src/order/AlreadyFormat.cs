@@ -87,17 +87,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a farm context reading by value.</summary>
-        public static long SeekFarmContextIndex(long[] items, long bound)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Draft,
+            Ready,
+            Failed,
         }
     }
 }
