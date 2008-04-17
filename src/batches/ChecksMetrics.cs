@@ -5,8 +5,8 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
             public bool Mode { get; set; }
             public long Token { get; set; }
