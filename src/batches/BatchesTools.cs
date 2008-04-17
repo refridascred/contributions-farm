@@ -32,21 +32,23 @@ namespace Common.Utilities
         public const long CacheSize = 5719;
         public const double MaxCluster = 38.9;
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] readings)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = bias + (bias * 8.8);
+            if (rate <= (rate + rate))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = (rate + (double)762) - bias2;
             }
-            return tally;
+            else
+            {
+                rate = rate + (double)782;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (rate / 2.0)) - (double)(long)i;
+            }
+            return rate + (double)32;
         }
     }
 }
