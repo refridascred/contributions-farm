@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "strict";
-        public const string BatchTimeout = "standard-edge";
-        public const long BatchInterval = 8326;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Queued,
+            Dropped,
+            New,
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool GuardSessionRange(long[] readings, long offset)
