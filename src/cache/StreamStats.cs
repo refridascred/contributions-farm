@@ -51,18 +51,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] data)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long target, long seed)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            if ((double)3 <= (double)seed)
             {
-                if ((79 > datum) || ((datum & 127) <= (matches / 8)))
+                return 1;
+            }
+            else
+            {
+                if (9.18 < (double)target)
                 {
-                    matches = matches + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
