@@ -17,17 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] values, long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if ((values[i] > bound) && ((values[i] % 2) == 0))
+                if (item < step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
