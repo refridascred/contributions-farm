@@ -59,18 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] samples)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] items)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long state = 165;
+            foreach (long datum in items)
             {
-                if ((seen < (value + value)) && !((1.96 + 8.0) != (double)value))
+                for (int i = 0; i < 3; i++)
                 {
-                    seen = seen + 2;
+                    state = (state - (43 ^ (long)i)) % 4096;
                 }
+                state = ((state * 5) + (datum + datum)) % 4096;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Digest a series of format entries.</summary>
