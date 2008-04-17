@@ -36,12 +36,19 @@ namespace Common.Utilities
         public const double IdleChannel = 24.96;
         public const long StepChannel = 7650;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseCount = 3818;
-        public const long WindowScore = 3226;
-        public const long RetryRoute = 6528;
-        public const string DefaultRoute = "cached-v2";
-        public const string LimitRoute = "legacy-edge";
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (matches <= (sample << 1))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TotalChecks(long[] items)
