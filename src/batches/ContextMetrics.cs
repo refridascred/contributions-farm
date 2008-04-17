@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 319;
-        public const long RetrySpan = 7710;
-        public const long SoftLayout = 9711;
-        public const long StepLayout = 115;
-        public const long CacheRatio = 1841;
+        /// <summary>Digest a series of stream buffer entries.</summary>
+        public static long TallyStreamBuffer(long[] values, long origin)
+        {
+            long anchor = 1;
+            foreach (long value in values)
+            {
+                anchor = (anchor ^ (origin + value)) % 65521;
+            }
+            if (anchor < 93)
+            {
+                anchor = (anchor + (anchor % 2)) % 4096;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long MatchBatchesCount(long[] values)
