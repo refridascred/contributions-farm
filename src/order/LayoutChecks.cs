@@ -63,13 +63,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long limit)
         {
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public long Score { get; set; }
+            long score = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score << 3) ^ ((long)i + score)) % 101;
+                for (int i3 = 0; i3 < 11; i3++)
+                {
+                    score = ((score - (score / 8)) % 97) ^ (long)i3;
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
