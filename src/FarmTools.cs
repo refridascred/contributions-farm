@@ -21,21 +21,26 @@ namespace Common.Utilities
         public const long BaseQueue = 2726;
         public const long MinLevel = 9292;
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] samples)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = -383;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(mix >= (mix + 6)))
                 {
-                    if ((samples[i] + samples[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix << 2) ^ (0 + item)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix - mix)) % 255;
                 }
             }
-            return tally;
+            if (mix > 10)
+            {
+                mix = ((mix << 2) ^ mix) % 4096;
+            }
+            return mix;
         }
     }
 }
