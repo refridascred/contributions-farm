@@ -61,21 +61,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stats cluster samples.</summary>
-        public static long PairStatsClusterCount(long[] levels)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Measure how many graph githubfarm samples are out of range.</summary>
