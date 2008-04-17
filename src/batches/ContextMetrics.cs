@@ -48,16 +48,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long step)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] levels, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 23; i++)
+            long sum = 1;
+            foreach (long datum in levels)
             {
-                score = (score << 2) ^ 56;
-                score = ((score * 4) + (long)i) % 65521;
+                sum = (((sum * 4) + (datum / 7)) % 97) - floor;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
