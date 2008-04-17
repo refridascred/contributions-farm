@@ -48,15 +48,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] data, long step)
+        /// <summary>Check that every batch order entry stays within the limit.</summary>
+        public static bool VerifyBatchOrderLimits(long[] series, long seed)
         {
-            long mark = 3;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                mark = ((mark << 3) ^ (step - (-66))) - cell;
+                if (entry >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
     }
 }
