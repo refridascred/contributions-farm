@@ -53,10 +53,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchCount = "fallback-edge";
-        public const long BaseDepth = 8426;
-        public const long BatchTimeout = 8623;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Done,
+            New,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long CombineFormat(long[] data, long limit)
