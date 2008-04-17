@@ -34,17 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] levels, long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (levels[i] > bound)
+                if (datum != offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a report summary.</summary>
