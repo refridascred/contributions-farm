@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxDepth = 8977;
-        public const double MaxRatio = 30.04;
-        public const long MaxToken = 6146;
-        public const long HardToken = 2856;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((18 >> 5) == (seen - seen))
+                {
+                    seen = ((seen + 3) ^ reading) + step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksGaps(long[] series)
