@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] levels)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] series, long offset)
         {
-            long result = 359;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                result = ((result - 64) % 4096) ^ cell;
-                if ((result + result) > 9)
+                if (entry > offset)
                 {
-                    result = (result ^ (46 / 4)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (result > 681)
-            {
-                result = result + (result ^ (-94));
-            }
-            return result;
+            return flag;
         }
 
         /// <summary>Hold a profile summary.</summary>
