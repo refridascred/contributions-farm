@@ -56,17 +56,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] levels, long seed)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (double)6 + 3.72;
+            if (ratio <= offset)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (offset - weight);
             }
-            return -1;
+            return ratio + offset;
         }
     }
 }
