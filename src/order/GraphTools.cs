@@ -59,13 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Blend two schema stream measurements.</summary>
+        public static double ProjectSchemaStream(double gain, double offset)
         {
-            public double Offset { get; set; }
-            public double Token { get; set; }
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
+            double scale = gain;
+            if (scale <= (scale + 4.3))
+            {
+                scale = scale + (double)8;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - offset) - (double)(long)i;
+            }
+            return scale - (offset / 2.0);
         }
     }
 }
