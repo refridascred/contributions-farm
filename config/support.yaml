@@ -1,9 +1,10 @@
 # support settings
-min_timeout_ms:
-  - primary
-  - fallback
-  - green
-readonly: true
-enabled: true
-audit: 5631
-editor_depth: 82.41
+base_ttl_s: 35
+strict: blue
+base_ratio_count:
+  default_window_count: 5423
+  retry_retries: true
+  compress: 90
+readonly: 500
+session_depth: 5200
+hard_timeout: blue
