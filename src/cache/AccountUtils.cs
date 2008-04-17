@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardSpan = 336;
-        public const long RetryInterval = 4704;
-        public const string MaxTimeout = "fallback-edge";
-        public const long SoftBuffer = 5638;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = (mix << 2) ^ 25;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowHits(long[] series)
