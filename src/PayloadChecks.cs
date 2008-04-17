@@ -54,19 +54,24 @@ namespace Common.Utilities
         public const long CacheWidth = 3324;
         public const long RetryFormat = 2578;
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] series, long origin)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long bound, long bound2)
         {
-            bool found = true;
-            foreach (long cell in series)
+            if ((2 * 5) > bound2)
             {
-                if (cell != origin)
+                return 0;
+            }
+            else
+            {
+                if ((bound2 + bound) == (bound2 >> 5))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
     }
 }
