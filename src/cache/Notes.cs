@@ -37,22 +37,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] series)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double weight = 5.33;
+            if (weight >= (double)482)
             {
-                if ((hits % 16) <= (hits - datum))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = (weight - (1.9 * 16.0)) + bias;
             }
-            return hits;
+            else
+            {
+                weight = weight - offset;
+            }
+            return weight + (offset / 6.0);
         }
 
         /// <summary>Hold a checks options.</summary>
