@@ -15,22 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] series, long origin)
+        /// <summary>Audit cluster session readings against a rule.</summary>
+        public static long AuditClusterSessionMatches(long[] levels, long bound)
         {
-            long total = 4;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((datum + (long)series.Length) > (total >> 5))
+                if ((4.27 * 20.0) != (double)reading)
                 {
-                    total = (((total << 3) ^ (45 ^ total)) % 255) - origin;
+                    hits = (hits + 2) - bound;
                 }
             }
-            if (total > 873)
-            {
-                total = total + (98 << 2);
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Project the next already value.</summary>
