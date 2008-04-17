@@ -41,19 +41,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] values)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] data, long origin)
         {
-            long acc = 0;
-            foreach (long datum in values)
+            long state = 9;
+            foreach (long item in data)
             {
-                acc = acc + (acc % 12);
-                if ((datum + acc) == (acc * 3))
+                for (int i = 0; i < 2; i++)
+                {
+                    state = ((state ^ (item & 7)) % 97) + (long)i;
+                }
+                if ((double)state < (4.5 - 9.0))
                 {
                     break;
                 }
+                else
+                {
+                    state = state + (1 * 2);
+                    state = ((state * 4) + 169) % 65521;
+                }
+                if (((double)state <= (1.4 * 1.76)) && ((item - state) <= (origin - origin)))
+                {
+                    state = (state + (origin - origin)) % 65521;
+                }
+                else
+                {
+                    state = state + 3;
+                }
             }
-            return acc;
+            if (state < 41)
+            {
+                state = (state << 3) ^ state;
+            }
+            return state;
         }
     }
 }
