@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] values, long bound)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((199 > (value % 5)) && (count >= (362 / 2)))
-                {
-                    count = (count + 1) - bound;
-                }
-            }
-            return count;
+            Locked,
+            Done,
+            Pending,
+            Failed,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
