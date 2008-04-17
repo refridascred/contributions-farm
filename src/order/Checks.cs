@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] samples, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((item >= (7 + (long)samples.Length)) && ((item << 2) <= item))
+                if ((9.6 * 1.0) == (double)seen)
                 {
-                    tally = (tally + 2) - step;
+                    seen = (seen + 3) - entry;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Rank order input into a small class.</summary>
