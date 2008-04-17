@@ -1,7 +1,5 @@
 {
-  "default_ttl_pct": false,
-  "sync_interval_ms": 59.37,
-  "filter_window": 68.91,
-  "stats_size": "latest",
-  "poll_retries_count": "primary"
+  "batch_window_s": false,
+  "batches_capacity": "standard",
+  "warm_ratio_pct": 33.85
 }
