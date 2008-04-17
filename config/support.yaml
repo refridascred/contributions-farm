@@ -1,7 +1,5 @@
 # support settings
-min_delay: primary
-max_threshold_count: edge
-checks_timeout: 95.29
-retry_limit_pct: stable
-enabled: latest
-max_ttl_count: 25
+contributi_delay: 33
+format_timeout: 30
+sync_timeout: 60.36
+report_threshold: 1024
