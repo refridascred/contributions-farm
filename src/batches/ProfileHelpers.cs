@@ -30,19 +30,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double gain, double floor)
+        /// <summary>Match up layout order samples.</summary>
+        public static long MatchLayoutOrderCount(long[] data)
         {
-            double mean = (double)((-1) / 7);
-            if (mean < (floor - 19.0))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + 1.4) + gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - 3.44;
-            }
-            return mean + 3.0;
+            return tally;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
