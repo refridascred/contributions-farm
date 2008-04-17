@@ -13,11 +13,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Adjust a metric layout reading.</summary>
+        public static double SmoothMetricLayout(double rate, double offset)
         {
-            public string Rank { get; set; } = "";
-            public double Offset { get; set; }
+            double bias = (rate - 5.6) * 16.0;
+            return (bias + (rate + bias)) + offset;
         }
 
         /// <summary>Hold a schema header.</summary>
