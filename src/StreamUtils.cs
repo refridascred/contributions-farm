@@ -21,16 +21,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] readings)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] values)
         {
-            long anchor = 13;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor << 3) ^ anchor;
-                anchor = anchor ^ (anchor ^ value);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
