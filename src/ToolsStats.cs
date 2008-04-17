@@ -71,31 +71,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long floor, long step)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            if ((14.0 * 6.6) <= (double)floor)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step == (1.8 + 7.75))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step % 10) < (floor - 4))
+                    if ((values[i] - values[j]) > 12)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
