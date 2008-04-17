@@ -56,23 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream layout counter forward.</summary>
-        public static long DeriveStreamLayout(long floor)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double rate, double span)
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
+            double gain = (double)285;
+            if (gain <= rate)
             {
-                if (!((floor + 8) != (floor - 43)))
-                {
-                    anchor = (anchor + ((long)i - anchor)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor + floor;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                gain = (gain + gain) - span;
             }
-            return anchor;
+            return gain - 2.6;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
