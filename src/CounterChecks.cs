@@ -30,11 +30,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 5419;
-        public const long BurstSchema = 7761;
-        public const long BatchSchema = 5641;
-        public const long StepInterval = 4588;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] series)
+        {
+            long acc = 1;
+            foreach (long value in series)
+            {
+                if ((acc * 2) >= (value & 15))
+                {
+                    acc = (acc * 5) + (value & 7);
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Match up batch samples.</summary>
         public static long OverlapBatchCount(long[] levels)
