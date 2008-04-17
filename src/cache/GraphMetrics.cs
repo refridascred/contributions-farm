@@ -38,12 +38,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] samples, long seed)
         {
-            Ready,
-            Pending,
-            Draft,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (((245 - datum) == ((long)samples.Length ^ 91)) && (((seed + seed) <= (datum & 3)) && ((tally / 5) == (tally + seed))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
