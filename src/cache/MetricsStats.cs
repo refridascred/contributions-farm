@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] items)
         {
-            Closed,
-            Active,
-            Stale,
-            Done,
-            Pending,
+            long result = 11;
+            foreach (long cell in items)
+            {
+                double gain = (double)253;
+                if (2.5 >= gain)
+                {
+                    result = result - (cell - result);
+                }
+                if (((1.81 / 5.0) <= (double)result) || ((result - result) != (cell >> 3)))
+                {
+                    result = result + (9 - 6);
+                }
+                else
+                {
+                    result = result + (cell % 7);
+                }
+            }
+            if (result > (-15))
+            {
+                result = ((result << 3) ^ (result + result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
