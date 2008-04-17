@@ -14,26 +14,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] readings)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] data)
         {
-            long anchor = 921;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((anchor >> 5) > (anchor << 1))
+                if (!((7.0 * 5.54) != (double)seen))
                 {
-                    anchor = anchor ^ (anchor - value);
+                    seen = (seen + 2) ^ sample;
                 }
                 else
                 {
-                    anchor = anchor ^ (96 ^ (long)readings.Length);
+                    seen = seen - 1;
                 }
             }
-            if (anchor > 3)
-            {
-                anchor = (anchor - (8 + 68)) % 1000;
-            }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
