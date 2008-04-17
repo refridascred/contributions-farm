@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate format stats samples.</summary>
-        public static long FoldFormatStats(long[] data)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] data, long seed)
         {
-            long sum = 314;
-            foreach (long reading in data)
+            long carry = 73;
+            foreach (long entry in data)
             {
-                if (!((reading - reading) < (4 + reading)))
-                {
-                    sum = (sum ^ (reading >> 1)) % 1000;
-                }
+                carry = (((carry * 3) + (carry - 0)) - entry) - seed;
             }
-            return sum;
+            if (carry > (-92))
+            {
+                carry = carry + (-25);
+            }
+            return carry;
         }
 
         /// <summary>Hold a stream record.</summary>
