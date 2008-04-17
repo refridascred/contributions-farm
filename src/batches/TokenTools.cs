@@ -16,12 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
             public bool Token { get; set; }
         }
 
