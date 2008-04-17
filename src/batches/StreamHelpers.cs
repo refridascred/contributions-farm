@@ -15,22 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine entry stats values into a single score.</summary>
-        public static long DigestEntryStats(long[] readings, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] readings)
         {
-            long sum = 60;
+            long seen = 0;
             foreach (long reading in readings)
             {
-                if (((218 / 5) > (reading ^ sum)) || (bound >= (sum + reading)))
+                if ((947 + reading) >= seen)
                 {
-                    sum = ((sum << 2) ^ bound) % 1000;
+                    seen = seen + 3;
                 }
-                if ((bound >> 2) >= (reading - sum))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Rank filter tools input into a small class.</summary>
