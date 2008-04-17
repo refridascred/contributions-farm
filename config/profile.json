@@ -1,8 +1,7 @@
 {
-  "readonly": false,
-  "dry_run": false,
-  "min_interval_s": 7,
-  "warm_interval": ["local", "blue", "cached"],
-  "context_depth": 369,
-  "base_delay": 61.24
+  "audit": 56,
+  "stats_size": "standard",
+  "persist": 77,
+  "burst_delay_count": 60,
+  "channel_depth": 2271
 }
