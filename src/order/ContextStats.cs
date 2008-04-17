@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of cluster window entries.</summary>
-        public static long ScoreClusterWindow(long[] samples)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] values, long floor)
         {
-            long total = 100;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((double)cell > (0.4 * 9.29))
+                if (entry > floor)
                 {
-                    total = (total - (89 * 2)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            if (total > 5)
-            {
-                total = ((total * 3) + total) % 255;
-            }
-            return total % 65521;
+            return ok;
         }
 
         /// <summary>Compare every pair of queue farm readings.</summary>
