@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] data)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] series)
         {
-            long total = 25;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total + (total - value)) % 255;
-                if ((value + 73) <= (426 - value))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] + series[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
