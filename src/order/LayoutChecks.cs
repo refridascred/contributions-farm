@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a githubfarm entry counter forward.</summary>
-        public static long SeriesGithubfarmEntry(long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] values)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (offset <= (offset / 2))
+                if (cell >= (tally % 16))
                 {
-                    score = (score + (offset >> 5)) % 1000;
+                    tally = tally + 3;
                 }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
