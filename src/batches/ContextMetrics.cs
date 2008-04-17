@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultSize = 2182;
-        public const long HardFactor = 6265;
-        public const long RetryStats = 4213;
-        public const long MinCount = 8756;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 319;
+        public const long RetrySpan = 7710;
+        public const long SoftLayout = 9711;
+        public const long StepLayout = 115;
+        public const long CacheRatio = 1841;
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
