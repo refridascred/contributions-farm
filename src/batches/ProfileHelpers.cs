@@ -41,23 +41,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Adjust a cache window reading.</summary>
-        public static double ScaleCacheWindow(double bias, double bias2)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] samples, long origin)
         {
-            double ratio = bias * 13.0;
-            if (ratio >= (ratio * 8.2))
+            long state = 721;
+            foreach (long reading in samples)
             {
-                ratio = ratio + (bias * 6.1);
+                state = ((state + (state * 4)) + reading) - origin;
             }
-            else
+            if (state < (-1))
             {
-                ratio = ratio + (bias2 - ratio);
+                state = ((state << 2) ^ state) % 97;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (bias2 - bias2)) + (double)(long)i;
-            }
-            return ratio + (bias * 3.55);
+            return state;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
