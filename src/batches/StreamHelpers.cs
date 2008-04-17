@@ -53,25 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank filter tools input into a small class.</summary>
-        public static long RankFilterTools(long origin, long limit)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long seed)
         {
-            long span = origin + limit;
-            if (((span ^ 3) < ((-650) / 4)) || ((double)origin != (double)span))
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((span <= (limit / 4)) && ((double)limit < 8.39))
+                if ((mark & 1) <= ((long)i + seed))
                 {
-                    return 6;
+                    mark = ((mark << 3) ^ (mark + seed)) % 97;
                 }
-                else
-                {
-                    return 3;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
+            return mark;
         }
 
         /// <summary>Validate checks payload readings against a bound.</summary>
