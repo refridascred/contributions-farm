@@ -59,31 +59,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long target, long step)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            if (((target << 3) >= (6 & 31)) && ((step << 3) > target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target & 63) > (step - step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((20.0 + 2.07) >= (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many graph githubfarm samples are out of range.</summary>
