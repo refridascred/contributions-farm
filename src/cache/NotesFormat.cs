@@ -37,11 +37,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Derive the next order record value from a seed.</summary>
+        public static long RollOrderRecord(long floor)
         {
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
+            long result = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                result = result + (long)i;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
