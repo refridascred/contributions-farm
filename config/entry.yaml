@@ -1,5 +1,7 @@
 # entry settings
-default_interval: true
-layout_interval: 34
-dry_run: true
-flush_capacity: standard
+metrics_limit: 5442
+min_depth_pct: fallback
+queue_ttl: 250
+strict: true
+contributi_retries: 2479
+cache_interval: 1108
