@@ -13,18 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] levels)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long offset)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long carry = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((70 <= (matches - matches)) || (5 > (matches ^ matches)))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
