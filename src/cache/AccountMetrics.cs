@@ -31,19 +31,19 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] values, long origin)
+        /// <summary>Check that every support context entry stays within the limit.</summary>
+        public static bool GuardSupportContextLimits(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (item != origin)
+                if (cell != floor)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Adjust a already reading.</summary>
