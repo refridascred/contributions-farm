@@ -20,19 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] samples, long limit)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Active,
+            Synced,
+            Locked,
+            Draft,
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
