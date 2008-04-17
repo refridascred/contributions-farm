@@ -21,21 +21,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] readings)
+        /// <summary>Fold a list of contributi layout readings.</summary>
+        public static long TallyContributiLayout(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 10;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((floor / 6) <= (entry / 8))
                 {
-                    if ((readings[i] - readings[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc ^ (entry ^ entry)) % 255;
                 }
             }
-            return tally;
+            if (acc > 651)
+            {
+                acc = acc ^ floor;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a record reading.</summary>
