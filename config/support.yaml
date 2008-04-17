@@ -1,9 +1,31 @@
 # support settings
-tools_timeout: 69
-warm_size:
-  - 486
-  - 109
-cache_timeout_count: primary
-sync_interval: staging
-hard_delay_count: 5138
-retry_timeout: 25
+order_ratio:
+  compress: 30
+  cluster_threshold: 100
+  min_delay_s: true
+  context_timeout: true
+max_timeout:
+  soft_window_count: true
+  persist:
+    hard_window:
+      - fallback
+      - green
+      - cached
+    max_retries_ms: 1024
+    strict: 500
+  queue_limit: edge
+  flush_threshold: strict
+  readonly:
+    - 10
+    - 295
+  flush_depth_ms:
+    - 218
+    - 369
+    - 217
+persist: green
+cache_delay:
+  - 25
+  - 201
+  - 198
+  - 144
+burst_threshold_s: 86.76
