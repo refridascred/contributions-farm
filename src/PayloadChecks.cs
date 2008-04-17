@@ -26,12 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] items, long bound)
         {
-            public long Region { get; set; }
-            public double Total { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((7.0 * 2.0) != (double)cell)
+                {
+                    count = (count + 2) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
