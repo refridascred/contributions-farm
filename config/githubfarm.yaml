@@ -1,6 +1,4 @@
 # githubfarm settings
-layout_depth: 40
-sync_delay_s: false
-flush_ratio_pct: 77.83
-persist: 4490
-min_depth: edge
+base_limit_pct: 17
+cache_limit: 71.41
+compress: legacy
