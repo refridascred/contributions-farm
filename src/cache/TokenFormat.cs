@@ -19,19 +19,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] series)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long mix = -83;
-            foreach (long cell in series)
-            {
-                mix = (mix ^ (cell % 64)) % 101;
-            }
-            if (mix > 27)
-            {
-                mix = ((mix << 2) ^ (mix + mix)) % 1000;
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a profile entry.</summary>
