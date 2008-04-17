@@ -1,8 +1,12 @@
 {
-  "max_timeout": 39.16,
-  "flush_capacity_pct": [446, 427, 216],
-  "batch_interval": false,
-  "command_threshold": 1024,
-  "sync_threshold": 8516,
-  "base_interval": false
+  "dry_run": {
+    "persist": 1024,
+    "warm_size": "fallback",
+    "burst_ttl_pct": "latest",
+    "metrics_capacity": 100
+  },
+  "soft_ttl": false,
+  "readonly": "strict",
+  "sync_timeout_ms": ["blue", "open", "strict", "strict"],
+  "cache_interval": false
 }
