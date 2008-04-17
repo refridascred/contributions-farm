@@ -1,12 +1,7 @@
 # support settings
-farm_ratio: 3176
-retry_capacity_pct:
-  already_interval:
-    - stable
-    - strict
-  report_timeout: strict
-  default_threshold_count: stable
-  soft_depth: edge
-  soft_timeout_pct: 26.15
-idle_depth: fallback
-audit: false
+flush_retries: 2
+hard_window_pct:
+  - 472
+  - 495
+  - 383
+tools_timeout: false
