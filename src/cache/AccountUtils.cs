@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const string MaxTimeout = "fallback-edge";
         public const long SoftBuffer = 5638;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] items)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] series)
         {
             long hits = 0;
-            foreach (long cell in items)
+            foreach (long datum in series)
             {
-                if (6.04 >= (double)hits)
+                if ((double)hits >= (13.0 * 10.0))
                 {
-                    hits = (hits + 2) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 2) - datum;
                 }
             }
             return hits;
