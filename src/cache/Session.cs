@@ -34,15 +34,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long origin)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long offset, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            if ((offset ^ offset) <= (87 >> 5))
             {
-                state = ((state * 2) + (long)i) % 101;
+                return 1;
             }
-            return state;
+            else
+            {
+                if (((19.0 - 5.7) >= (double)target) || ((double)target >= (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
