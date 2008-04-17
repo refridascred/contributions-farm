@@ -29,12 +29,22 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Measure how many command account samples are out of range.</summary>
+        public static long MeasureCommandAccountHits(long[] levels)
         {
-            Closed,
-            Draft,
-            Dropped,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (value <= (127 % 64))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
