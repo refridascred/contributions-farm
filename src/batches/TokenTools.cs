@@ -51,9 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardSize = 858;
-        public const double BaseFarm = 97.17;
-        public const long BaseInterval = 6193;
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Pending,
+            Retry,
+            Active,
+        }
     }
 }
