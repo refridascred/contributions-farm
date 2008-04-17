@@ -58,9 +58,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchSize = 9960;
-        public const long MaxDepth = 9722;
-        public const long DefaultScore = 40;
+        /// <summary>Compare every pair of support commits readings.</summary>
+        public static long PairSupportCommitsCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
