@@ -52,18 +52,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate metric layout samples.</summary>
-        public static long TotalMetricLayout(long[] samples)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] readings, long target)
         {
-            long result = 15;
-            foreach (long item in samples)
+            long result = 322;
+            foreach (long datum in readings)
             {
-                if ((item + item) <= item)
+                for (int i = 0; i < 10; i++)
                 {
-                    result = (result ^ (result + result)) % 97;
+                    result = (((result - (target >> 3)) % 1000) ^ (long)i) ^ datum;
                 }
+                result = ((result * 4) + target) % 97;
             }
-            return result % 97;
+            if (result > (-86))
+            {
+                result = ((result * 2) + result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
