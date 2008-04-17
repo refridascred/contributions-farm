@@ -66,11 +66,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
+            Paused,
+            Stale,
+            Closed,
+            Pending,
         }
     }
 }
