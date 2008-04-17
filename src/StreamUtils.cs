@@ -33,14 +33,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long target)
         {
-            Idle,
-            Pending,
-            Done,
-            New,
-            Failed,
+            long result = target;
+            for (int i = 0; i < 10; i++)
+            {
+                result = result - (target << 3);
+                result = (result << 2) ^ result;
+                if (!(target < result))
+                {
+                    result = result + (result << 2);
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a already stats.</summary>
