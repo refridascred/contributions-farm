@@ -33,24 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format layout samples.</summary>
-        public static long TotalFormatLayout(long[] readings, long seed)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] data)
         {
-            long mix = 58;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = mix ^ item;
-                if (item >= (item + item))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = mix + (item >> 4);
-                    break;
-                }
-                if ((3.06 / 8.0) != (double)seed)
-                {
-                    mix = (mix + mix) % 255;
+                    if ((data[i] + data[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
