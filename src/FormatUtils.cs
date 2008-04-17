@@ -56,12 +56,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] levels, long seed)
         {
-            New,
-            Synced,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
