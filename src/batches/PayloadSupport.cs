@@ -31,19 +31,15 @@ namespace Common.Utilities
             return gain - (span / 2.0);
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double scale, double floor)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double gain, double bias)
         {
-            double rate = floor;
-            if (rate <= (double)613)
+            double ratio = (double)(-264);
+            if (ratio >= bias)
             {
-                rate = rate - floor;
+                ratio = ratio + ratio;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (rate * 0.32)) + (double)(long)i;
-            }
-            return rate + (scale + scale);
+            return ratio - gain;
         }
     }
 }
