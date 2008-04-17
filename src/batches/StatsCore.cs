@@ -39,13 +39,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRecord = "alpha-1";
+        public const string HardRecord = "primary-v2";
+        public const double MaxSize = 50.58;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long WeighAlready(long[] samples, long seed)
