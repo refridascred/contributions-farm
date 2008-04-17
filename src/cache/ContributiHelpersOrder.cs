@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinSize = 8567;
-        public const long StepDepth = 6473;
-        public const long StepSize = 8309;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryRatio = 1692;
+        public const long WindowContributi = 5004;
+        public const long MinContributi = 3783;
+        public const long WindowInterval = 8539;
+        public const double DefaultScore = 88.68;
 
         /// <summary>Blend two stream measurements.</summary>
         public static double ProjectStream(double weight, double floor)
