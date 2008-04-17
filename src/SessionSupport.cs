@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] data, long limit)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
