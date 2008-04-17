@@ -1,9 +1,4 @@
 # githubfarm settings
-hard_threshold: green
-compress:
-  - 27
-  - 147
-  - 127
-  - 131
-max_capacity: 38.46
-strict: 1024
+soft_retries_pct: 6043
+max_depth: 58.01
+verbose: 93
