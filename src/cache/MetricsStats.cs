@@ -50,11 +50,24 @@ namespace Common.Utilities
         public const long CachePayload = 290;
         public const long BaseCount = 8800;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetryCache = 69.79;
-        public const long DefaultCache = 462;
-        public const long WindowLevel = 4418;
-        public const long LimitCache = 900;
-        public const long BurstDepth = 9943;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long target, long step)
+        {
+            if (((target << 3) == (step / 7)) || ((target ^ step) < target))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((target & 255) <= 20))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
