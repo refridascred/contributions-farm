@@ -1,5 +1,11 @@
 # githubfarm settings
-poll_delay: 35
-batch_delay_s: edge
-warm_window_pct: 5.99
-metric_size: 87
+buffer_depth:
+  - standard
+  - stable
+profile_size: false
+batch_ttl: 6878
+token_interval: standard
+dry_run:
+  - 303
+  - 434
+  - 214
