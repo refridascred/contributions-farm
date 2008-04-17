@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] values, long limit)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] samples)
         {
-            long total = 501;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total - (total + total)) ^ cell;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (total < 8)
-            {
-                total = ((total << 2) ^ (limit & 63)) % 255;
-            }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Describe the notes class values.</summary>
