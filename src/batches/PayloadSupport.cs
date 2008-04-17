@@ -43,21 +43,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] readings)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading + reading) == ((-2) >> 3))
                 {
-                    if ((readings[i] + readings[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
