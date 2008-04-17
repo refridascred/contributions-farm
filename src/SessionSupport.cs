@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] items)
+        /// <summary>Digest a series of profile schema entries.</summary>
+        public static long TallyProfileSchema(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 54;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((carry * 2) >= (item + carry))
                 {
-                    if ((items[i] + items[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry << 2) ^ (seed ^ carry);
+                }
+                else
+                {
+                    carry = (carry ^ (carry % 97)) % 4096;
+                }
+                if ((carry - carry) <= (item & 3))
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
