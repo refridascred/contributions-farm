@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryInterval = 5459;
-        public const long CacheChecks = 222;
-        public const long SoftBudget = 4014;
-        public const double MinChecks = 56.45;
-        public const long BurstTimeout = 6565;
+        /// <summary>Digest a series of entry profile entries.</summary>
+        public static long WeighEntryProfile(long[] samples, long limit)
+        {
+            long sum = 146;
+            foreach (long cell in samples)
+            {
+                if ((((-88) % 97) < limit) && (limit <= cell))
+                {
+                    sum = (sum - (sum & 63)) % 101;
+                }
+                else
+                {
+                    sum = (sum ^ (8 % 2)) % 255;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
