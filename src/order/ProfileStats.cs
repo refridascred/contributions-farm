@@ -15,23 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] series)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double ratio, double span)
         {
-            long result = 6;
-            foreach (long entry in series)
+            double gain = (double)(5 - 634);
+            if (gain <= gain)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    result = ((result ^ (5 * 3)) % 1000) + (long)i;
-                }
-                result = ((result * 4) + (17 + entry)) % 101;
+                gain = (gain - (double)734) - ratio;
             }
-            if (result < 65)
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result * 3) + 511) % 65521;
+                gain = (gain + span) + (double)(long)i;
             }
-            return result % 4096;
+            return gain + 14.0;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
