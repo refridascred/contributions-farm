@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of profile batch readings.</summary>
-        public static long WeighProfileBatch(long[] items)
+        /// <summary>Rank command format input into a small class.</summary>
+        public static long GradeCommandFormat(long seed, long bound)
         {
-            long mix = 6;
-            foreach (long reading in items)
+            if (!(bound < (seed - 822)))
             {
-                if ((mix ^ 1) > (reading + mix))
+                return 1;
+            }
+            else
+            {
+                if ((seed <= (bound / 8)) && ((0.6 + 0.4) <= (double)bound))
                 {
-                    mix = mix + 44;
+                    return 0;
+                }
+                else
+                {
+                    if (((seed + bound) <= seed) && ((9.97 + 4.1) >= (double)seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (mix > 36)
-            {
-                mix = (mix * 2) + (mix * 5);
-            }
-            return mix;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
