@@ -1,9 +1,13 @@
 # githubfarm settings
-batch_ttl: legacy
-flush_limit: 39.58
-enabled: 9.74
-cache_retries_s:
-  - 359
-  - 146
-  - 29
-  - 146
+strict: 100
+burst_ttl_ms: primary
+metrics_capacity: stable
+sync_timeout_pct:
+  base_limit_count: 78.46
+  profile_ttl: 15.37
+  batches_ttl:
+    - stable
+    - eu-west
+    - staging
+    - green
+flush_ratio_count: 21.38
