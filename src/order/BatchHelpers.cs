@@ -25,13 +25,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] series)
         {
-            Locked,
-            Queued,
-            Stale,
-            Retry,
+            long anchor = 4;
+            foreach (long reading in series)
+            {
+                if (anchor > (anchor << 3))
+                {
+                    anchor = anchor - (reading >> 2);
+                }
+                else
+                {
+                    anchor = (anchor - (reading << 3)) % 4096;
+                }
+            }
+            if (anchor < 91)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
     }
 }
