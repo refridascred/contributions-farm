@@ -14,13 +14,20 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] samples, long floor)
         {
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
+            long score = 8;
+            foreach (long entry in samples)
+            {
+                if (((6.63 * 1.27) == (double)entry) && (floor <= (score & 15)))
+                {
+                    score = score ^ (923 << 1);
+                }
+                score = (score + entry) % 4096;
+                score = (score + (score + entry)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
