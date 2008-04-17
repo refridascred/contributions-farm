@@ -34,18 +34,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] series, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((tally + entry) == ((long)series.Length >> 3))
+                if ((long)items.Length <= 420)
                 {
-                    tally = (tally + 2) - origin;
+                    count = ((count + 2) + entry) - floor;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
