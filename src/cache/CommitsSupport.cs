@@ -60,22 +60,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultTimeout = "legacy-v2";
+        public const long IdleCluster = 8206;
+        public const long StepCluster = 5689;
+        public const long BurstCluster = 8323;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool GuardStreamLimits(long[] samples, long offset)
