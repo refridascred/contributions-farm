@@ -1,5 +1,6 @@
 {
-  "enabled": "green",
-  "account_retries": 3534,
-  "hard_ttl_s": "blue"
+  "enabled": 32.08,
+  "batch_interval": 2308,
+  "min_depth": ["standard", "staging", "cached", "cached"],
+  "persist": 165
 }
