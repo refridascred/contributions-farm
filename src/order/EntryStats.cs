@@ -42,21 +42,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] values)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = result + (result << 1);
+                if (seed <= ((-57) ^ result))
                 {
-                    if ((values[i] - values[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result + (result + (long)i);
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
