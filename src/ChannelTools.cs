@@ -31,18 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] readings)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell << 1) < cell)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double drift = weight;
+            return (drift - 1.0) + bias;
         }
     }
 }
