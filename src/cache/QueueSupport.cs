@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const string StepLevel = "stable-edge";
         public const string MaxDepth = "local-v2";
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheStats = "cached-v2";
+        public const string CacheSize = "fallback-edge";
+        public const string WindowLevel = "strict-edge";
+        public const long BurstStats = 4405;
+        public const long BurstWidth = 2191;
 
         /// <summary>Compare every pair of batches order readings.</summary>
         public static long CompareBatchesOrderCount(long[] readings)
