@@ -1,8 +1,6 @@
 {
-  "already_depth": 500,
-  "retry_ratio_pct": "legacy",
-  "cache_depth": 6,
-  "max_size_ms": 31.31,
-  "burst_capacity": true,
-  "burst_depth_pct": "blue"
+  "default_delay": 24.05,
+  "schema_threshold": "open",
+  "hard_depth": 55.88,
+  "enabled": 100
 }
