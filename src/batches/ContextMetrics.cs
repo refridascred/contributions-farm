@@ -29,17 +29,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a graph commits reading by value.</summary>
-        public static long FindGraphCommitsIndex(long[] series, long floor)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
+                score = (score << 2) ^ 56;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count the window notes entries that pass the check.</summary>
