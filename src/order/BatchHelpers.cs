@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxSize = 8348;
-        public const double WindowCount = 12.05;
-        public const long DefaultBuffer = 7252;
-        public const double CacheBuffer = 43.58;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Queued,
+            New,
+            Active,
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
