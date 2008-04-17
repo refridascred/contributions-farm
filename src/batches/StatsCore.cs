@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Dropped,
-            New,
-            Failed,
+            public double Token { get; set; }
+            public double Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the filter mode values.</summary>
