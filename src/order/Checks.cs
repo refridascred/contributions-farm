@@ -51,17 +51,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of record tools entries.</summary>
-        public static long WeighRecordTools(long[] readings)
+        /// <summary>Measure how many record format samples are out of range.</summary>
+        public static long TallyRecordFormatMatches(long[] items)
         {
-            long result = 28;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                result = (result << 2) ^ (68 / 7);
-                result = (result ^ (8 & 63)) % 101;
-                result = ((result << 2) ^ (result - cell)) % 101;
+                if ((seen + entry) <= seen)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
