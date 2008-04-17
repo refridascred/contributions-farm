@@ -41,19 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate tools queue samples.</summary>
-        public static long CombineToolsQueue(long[] levels)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] data)
         {
-            long acc = 345;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                acc = (acc + (cell % 8)) % 4096;
+                if ((tally % 5) <= tally)
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (acc > 396)
-            {
-                acc = (acc + (acc << 3)) % 255;
-            }
-            return acc;
+            return tally;
         }
     }
 }
