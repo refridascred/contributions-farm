@@ -20,18 +20,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] values)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] items, long target)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((value * 2) >= value)
                 {
-                    if ((values[i] ^ values[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) - target;
                 }
             }
             return count;
