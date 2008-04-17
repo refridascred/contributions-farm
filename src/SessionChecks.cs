@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepCount = 71.26;
-        public const long BatchStats = 8671;
-        public const string WindowStats = "fallback-edge";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 1805;
+        public const long StepSize = 5929;
+        public const string StepAccount = "local-v2";
+        public const long RetryAccount = 9375;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstNotes = 7961;
