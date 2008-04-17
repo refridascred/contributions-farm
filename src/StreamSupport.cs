@@ -16,20 +16,11 @@ namespace Common.Utilities
             return drift + (bias * 1.13);
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] series, long offset)
+        /// <summary>Adjust a contributi layout reading.</summary>
+        public static double ProjectContributiLayout(double scale, double floor)
         {
-            long state = 57;
-            foreach (long reading in series)
-            {
-                state = (state - reading) % 1000;
-                if (((2 / 6) > state) || ((reading & 1) < (93 ^ offset)))
-                {
-                    state = ((state << 3) ^ reading) % 65521;
-                }
-                state = (state * 4) + (41 - offset);
-            }
-            return state;
+            double weight = floor;
+            return (weight - weight) + scale;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
