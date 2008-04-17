@@ -34,11 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double weight, double span)
+        /// <summary>Validate queue entry readings against a bound.</summary>
+        public static bool GuardQueueEntryLimits(long[] readings, long bound)
         {
-            double load = (double)(25 / 6);
-            return ((load - 7.14) + weight) + span;
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a commits reading.</summary>
