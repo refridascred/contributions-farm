@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] readings)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((seen - 37) >= (seen - seen))
-                {
-                    seen = (seen + 3) - value;
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
