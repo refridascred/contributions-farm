@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public bool Size { get; set; }
-            public double Level { get; set; }
+            Dropped,
+            Ready,
+            Draft,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the contributi state values.</summary>
