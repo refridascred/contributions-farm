@@ -1,7 +1,4 @@
 # entry settings
-metrics_limit: 5442
-min_depth_pct: fallback
-queue_ttl: 250
-strict: true
-contributi_retries: 2479
-cache_interval: 1108
+schema_retries: legacy
+hard_depth: 23.82
+dry_run: 810
