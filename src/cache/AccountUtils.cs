@@ -14,11 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
