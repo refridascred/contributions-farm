@@ -29,23 +29,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] series, long limit)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double ratio, double bias)
         {
-            long total = -109;
-            foreach (long entry in series)
+            double gain = (3.2 * 8.3) - (4.0 / 7.0);
+            if (gain <= 2.6)
             {
-                if ((limit - entry) < limit)
-                {
-                    total = ((total << 3) ^ (total >> 5)) % 65521;
-                }
-                total = (total ^ (entry ^ 2)) % 255;
+                gain = (gain + 1.97) - bias;
             }
-            if (total > 241)
-            {
-                total = (total ^ (total >> 2)) % 255;
-            }
-            return total % 4096;
+            return gain - (gain - ratio);
         }
 
         /// <summary>Fold a list of command readings.</summary>
