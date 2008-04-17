@@ -14,12 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepQueue = "standard-edge";
-        public const long RetryQueue = 535;
-        public const long CacheQueue = 7469;
-        public const long BaseQueue = 2726;
-        public const long MinLevel = 9292;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitInterval = 2774;
+        public const long IdleChannel = 9764;
+        public const string CacheScore = "local-edge";
+        public const long BatchSpan = 550;
+        public const double MaxChannel = 58.36;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long WeighFilter(long[] series)
