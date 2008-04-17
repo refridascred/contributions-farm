@@ -55,13 +55,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
-            public bool Ratio { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry + (floor + (long)i)) % 255;
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
