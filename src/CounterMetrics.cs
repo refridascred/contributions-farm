@@ -44,18 +44,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] data, long limit)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long floor)
         {
-            long anchor = 121;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum + limit) < (limit + anchor))
+                if (values[i] == floor)
                 {
-                    anchor = (anchor << 3) ^ anchor;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
