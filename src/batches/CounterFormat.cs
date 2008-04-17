@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] readings, long floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((floor < (9 - 570)) && ((9 * 3) > (cell - (-31))))
+                if (datum >= seed)
                 {
-                    tally = tally + 2;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
