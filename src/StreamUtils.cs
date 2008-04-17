@@ -33,15 +33,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Blend two cache editor measurements.</summary>
-        public static double ScaleCacheEditor(double gain, double bias)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            double weight = bias;
-            if (weight > bias)
-            {
-                weight = (weight + (double)60) - gain;
-            }
-            return weight - (weight - weight);
+            Idle,
+            Pending,
+            Done,
+            New,
+            Failed,
         }
 
         /// <summary>Hold a already stats.</summary>
