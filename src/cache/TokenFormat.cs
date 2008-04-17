@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 6622;
         public const string SoftDepth = "standard-1";
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long bound)
         {
-            public bool Weight { get; set; }
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a profile entry.</summary>
