@@ -45,16 +45,16 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long target)
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
+            long total = target;
+            for (int i = 0; i < 17; i++)
             {
-                score = (score - (score >> 2)) % 4096;
-                score = ((score * 5) + (long)i) % 97;
+                total = total - (total << 2);
+                total = ((total * 5) + (long)i) % 101;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Combine window values into a single score.</summary>
