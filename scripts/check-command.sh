@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local open primary stable; do
+mode="${1:-eu-west}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in stable legacy blue cached; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
