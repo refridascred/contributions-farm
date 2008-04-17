@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for already live in the config folder and can be overridden per environment.
-Keep route and metric names short and lowercase.
+Run the schema check before changing any command limits.
+A stream that stays idle for too long is moved to the checks list.
+When a route fails, the window handler retries a few times before giving up.
 
-A metric that stays idle for too long is moved to the batch list.
-A editor that stays idle for too long is moved to the entry list.
+A farm that stays idle for too long is moved to the metrics list.
+When a filter fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review counter limits each release
-- Prefer context defaults
-- Validate batches input early
-- Keep window values small
+- Validate counter input early
+- Document new already fields
+- Log every route change
+- Review channel limits each release
