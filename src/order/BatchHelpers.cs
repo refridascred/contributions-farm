@@ -18,39 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long offset, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] readings)
         {
-            long prev = offset ^ seed;
-            if (((prev + seed) <= seed) && ((3.7 / 6.0) != (double)offset))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((615 + 99) > (prev + seed))
+                if (0 >= (entry >> 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((prev - prev) <= (seed + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (prev > (prev * 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
