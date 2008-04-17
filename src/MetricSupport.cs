@@ -16,20 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 3007;
+        public const string BaseFormat = "cached-1";
+        public const long BurstTimeout = 8743;
+        public const long CacheFormat = 8946;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountOutliers(long[] samples)
