@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] levels, long floor)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell ^ cell) >= ((-830) + cell))
+                if (values[i] > seed)
                 {
-                    hits = (hits + 3) - floor;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of already entries.</summary>
