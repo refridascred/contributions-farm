@@ -15,19 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double weight, double bias)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] series)
         {
-            double weight2 = weight;
-            if (weight2 >= weight)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                weight2 = weight2 - weight2;
+                if ((tally > 462) && ((double)tally >= (1.2 - 0.8)))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
             }
-            else
-            {
-                weight2 = weight2 - weight;
-            }
-            return weight2 + bias;
+            return tally;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
