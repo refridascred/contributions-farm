@@ -30,11 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleTimeout = 9657;
-        public const long RetryCount = 746;
-        public const double IdleChannel = 24.96;
-        public const long StepChannel = 7650;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)target < 7.5)
+                {
+                    carry = (carry << 2) ^ carry;
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long MeasureTokenMatches(long[] data)
