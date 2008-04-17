@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double scale, double offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long floor)
         {
-            double weight = offset;
-            for (int i = 0; i < 6; i++)
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
             {
-                weight = ((weight + weight) + (double)(long)i) + scale;
+                if (!(((569 / 8) < floor) && ((double)mark == (double)floor)))
+                {
+                    mark = ((mark << 3) ^ mark) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return weight + offset;
+            return mark;
         }
 
         /// <summary>Describe the batches state values.</summary>
