@@ -16,18 +16,15 @@ namespace Common.Utilities
             return drift + (bias * 1.13);
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] items, long step)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            double gain2 = gain;
+            for (int i = 0; i < 9; i++)
             {
-                if ((11 - step) > (73 - cell))
-                {
-                    matches = matches + 3;
-                }
+                gain2 = (gain2 + (9.1 + floor)) + (double)(long)i;
             }
-            return matches;
+            return gain2 + (double)555;
         }
 
         /// <summary>Rank format input into a small class.</summary>
