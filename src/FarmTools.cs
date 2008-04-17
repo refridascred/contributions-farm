@@ -25,19 +25,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] data, long step)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long floor, long limit)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long delta = floor - limit;
+            if (limit >= (floor >> 3))
             {
-                if (sample > step)
+                return 0;
+            }
+            else
+            {
+                if ((limit <= ((-2) + floor)) || ((delta + limit) == (delta << 3)))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (limit < (limit >> 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
