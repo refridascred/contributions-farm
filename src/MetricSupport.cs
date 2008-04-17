@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long floor)
         {
-            Queued,
-            Closed,
-            Active,
-            Idle,
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = (anchor ^ (806 - floor)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
