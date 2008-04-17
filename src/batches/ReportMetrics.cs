@@ -36,13 +36,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Iterate the session already series from a seed.</summary>
+        public static long IterateSessionAlready(long step)
         {
-            public string Rank { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
+            long acc = step;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = ((acc ^ ((long)i * 4)) % 1000) ^ (long)i2;
+                }
+                if ((double)acc <= 4.0)
+                {
+                    acc = (acc * 2) + step;
+                    continue;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
