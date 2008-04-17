@@ -19,21 +19,17 @@ namespace Common.Utilities
         public const long BurstStats = 4405;
         public const long BurstWidth = 2191;
 
-        /// <summary>Compare every pair of batches order readings.</summary>
-        public static long CompareBatchesOrderCount(long[] readings)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] readings, long bound)
         {
-            long matches = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (readings[i] == bound)
                 {
-                    if ((readings[i] ^ readings[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
