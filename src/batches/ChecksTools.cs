@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultReport = "stable";
-        public const long HardFactor = 5786;
-        public const long StepSize = 6242;
-        public const long BurstCount = 194;
-        public const double WindowTimeout = 6.13;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Validate checks queue readings against a bound.</summary>
         public static bool VerifyChecksQueueLimits(long[] series, long offset)
