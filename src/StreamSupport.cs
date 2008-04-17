@@ -15,11 +15,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            Stale,
+            Locked,
+            Draft,
+            Done,
         }
 
         /// <summary>Digest a series of notes context entries.</summary>
