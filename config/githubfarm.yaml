@@ -1,46 +1,11 @@
 # githubfarm settings
-soft_retries_count:
-  warm_timeout_ms: 1024
-  idle_ratio_ms: 36
-  base_retries_pct:
-    hard_size: latest
-    poll_size:
-      - cached
-      - blue
-      - legacy
-      - cached
-    audit:
-      - green
-      - green
-      - eu-west
-  retry_limit_ms:
-    - 458
-    - 425
-    - 381
-  poll_window_s: local
-  warm_limit_pct: legacy
-compress:
-  persist:
-    readonly: 34.51
-    strict: 37
-    dry_run:
-      - 145
-      - 194
-      - 255
-      - 445
-    soft_ttl_pct: false
-  sync_ttl_count: open
-  command_window: legacy
-report_threshold:
-  sync_threshold_pct: 57.81
-  warm_size_s: stable
-  order_ratio:
-    - 40
-    - 426
-  verbose: blue
-farm_timeout: strict
-warm_window_count:
-  - 75
-  - 324
-  - 394
-  - 344
+min_ttl_count:
+  enabled: 60
+  burst_window_pct: 85
+  warm_capacity_count:
+    - 290
+    - 254
+    - 66
+  retry_ttl: 80.08
+compress: 6720
+flush_timeout_pct: 2.25
