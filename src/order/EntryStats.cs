@@ -40,18 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record graph entries that pass the check.</summary>
-        public static long TallyRecordGraphMatches(long[] series)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (tally >= (sample % 100))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double gain = floor;
+            return (gain + (3.79 - gain)) + bias;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
