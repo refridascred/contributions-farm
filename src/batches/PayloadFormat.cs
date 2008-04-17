@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double bias, double offset)
         {
-            public long Mode { get; set; }
-            public double Token { get; set; }
-            public long Count { get; set; }
+            double scale = (double)(-975) + offset;
+            if (scale < bias)
+            {
+                scale = scale + (scale - scale);
+            }
+            else
+            {
+                scale = scale + (double)926;
+            }
+            return scale + (offset * 9.44);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
