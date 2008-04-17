@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Synced,
-            Stale,
+            Paused,
             Closed,
+            Ready,
         }
 
         /// <summary>Describe the window state values.</summary>
