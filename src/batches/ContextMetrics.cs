@@ -57,19 +57,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] samples, long offset)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long limit)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (value > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = sum + (85 + limit);
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return ok;
+            return sum;
         }
     }
 }
