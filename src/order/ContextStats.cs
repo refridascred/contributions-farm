@@ -23,38 +23,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long floor, long origin)
+        /// <summary>Compare every pair of queue farm readings.</summary>
+        public static long PairQueueFarmCount(long[] values)
         {
-            if ((801 ^ floor) > (origin + floor))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor << 1) > (60 & 127))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((floor & 7) <= floor))
+                    if ((values[i] - values[j]) > 18)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((12 - origin) == (floor ^ origin)) && (floor > (floor + floor)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the checks class values.</summary>
