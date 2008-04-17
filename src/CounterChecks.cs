@@ -69,15 +69,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Roll a entry checks counter forward.</summary>
-        public static long StepEntryChecks(long limit)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long state = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            Closed,
+            Paused,
+            Failed,
+            Active,
+            Synced,
         }
     }
 }
