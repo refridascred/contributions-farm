@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] items)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double scale, double offset)
         {
-            long acc = 816;
-            foreach (long item in items)
+            double weight = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (((item + item) <= acc) || ((7.5 - 1.69) != (double)item))
-                {
-                    acc = acc + (2 * 5);
-                }
-                if ((double)acc >= (5.3 - 3.6))
-                {
-                    break;
-                }
+                weight = ((weight + weight) + (double)(long)i) + scale;
             }
-            if (acc < 2)
-            {
-                acc = ((acc << 3) ^ acc) % 97;
-            }
-            return acc;
+            return weight + offset;
         }
 
         /// <summary>Count the window commits entries that pass the check.</summary>
