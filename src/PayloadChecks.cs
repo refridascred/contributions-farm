@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstInterval = 1037;
-        public const double DefaultWindow = 19.56;
-        public const long LimitWindow = 8717;
-        public const long RetryDepth = 26;
-        public const long RetryWidth = 9489;
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Active,
+            Failed,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatOutliers(long[] readings)
