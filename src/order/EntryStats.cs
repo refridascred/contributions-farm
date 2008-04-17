@@ -42,12 +42,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double bias, double floor)
-        {
-            double gain = floor;
-            return (gain + (3.79 - gain)) + bias;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxLevel = "primary-v2";
+        public const long HardRoute = 2287;
+        public const double LimitRoute = 71.44;
+        public const long CacheDepth = 3051;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long WeighCluster(long[] series, long offset)
