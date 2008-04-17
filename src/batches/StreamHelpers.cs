@@ -23,12 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            New,
-            Retry,
-            Queued,
+            Synced,
+            Idle,
+            Pending,
         }
 
         /// <summary>Count the report stream entries that pass the check.</summary>
