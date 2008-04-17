@@ -19,10 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepDepth = 9338;
-        public const string WindowNotes = "legacy-1";
-        public const string MinNotes = "staging";
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] samples, long bound)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (!((reading >> 4) == (78 & 7)))
+                {
+                    hits = (hits + 1) - bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long IterateTools(long offset)
