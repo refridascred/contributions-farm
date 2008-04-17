@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftAlready = 47.76;
-        public const string WindowAlready = "cached";
-        public const long HardFactor = 6144;
-        public const long MaxAlready = 2894;
-        public const double DefaultAlready = 2.42;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] samples, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaHits(long[] samples, long offset)
