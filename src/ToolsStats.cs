@@ -27,27 +27,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] levels)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long anchor = 3;
-            foreach (long reading in levels)
-            {
-                anchor = ((anchor << 2) ^ (reading % 100)) % 101;
-                if (anchor <= (anchor / 6))
-                {
-                    anchor = (anchor + anchor) % 101;
-                }
-                if ((double)reading > (1.1 - 9.92))
-                {
-                    break;
-                }
-            }
-            if (anchor > 856)
-            {
-                anchor = (anchor - (anchor & 127)) % 255;
-            }
-            return anchor % 97;
+            Dropped,
+            Ready,
+            Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define command limits and defaults.</summary>
