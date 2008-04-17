@@ -27,19 +27,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double rate, double floor)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long bound)
         {
-            double load = rate;
-            if (load < (rate / 4.0))
+            long score = bound;
+            for (int i = 0; i < 5; i++)
             {
-                load = load + floor;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            else
-            {
-                load = load + load;
-            }
-            return load - rate;
+            return score;
         }
 
         /// <summary>Fold a list of commits entry readings.</summary>
