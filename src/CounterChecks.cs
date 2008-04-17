@@ -23,19 +23,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] samples)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] data)
         {
-            long score = 63;
-            foreach (long sample in samples)
+            long total = 84;
+            foreach (long datum in data)
             {
-                score = (score * 2) + (score ^ score);
-                if ((sample + 188) != (68 - sample))
+                total = (total << 2) ^ (total % 64);
+                total = (total ^ (total - total)) % 97;
+                if (((datum / 9) >= datum) && ((total + datum) != (total >> 4)))
                 {
                     break;
                 }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Combine support tools values into a single score.</summary>
