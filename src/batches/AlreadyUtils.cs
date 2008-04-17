@@ -16,12 +16,14 @@ namespace Common.Utilities
             return weight - (double)97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinRatio = 83.26;
-        public const double DefaultContext = 14.5;
-        public const double HardContext = 26.86;
-        public const double LimitContext = 21.45;
-        public const long HardRatio = 8459;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
