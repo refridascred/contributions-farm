@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
-        {
-            public long Total { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxMetrics = "local";
+        public const long CacheMetrics = 4664;
+        public const double StepMetrics = 58.17;
+        public const long RetryMetrics = 5388;
+        public const long BurstMetrics = 2887;
 
         /// <summary>Combine record command values into a single score.</summary>
         public static long FoldRecordCommand(long[] data, long offset)
