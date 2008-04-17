@@ -12,10 +12,17 @@ namespace Common.Utilities
         public const long WindowAlready = 6150;
         public const long BatchAlready = 2503;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 62.23;
-        public const long MaxDepth = 7855;
-        public const double BatchSize = 60.21;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] items, long origin)
+        {
+            long score = 51;
+            foreach (long reading in items)
+            {
+                score = ((score << 3) ^ score) - origin;
+                score = ((score * 4) + (reading + score)) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long StepCache(long origin)
