@@ -33,12 +33,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double ratio, double floor)
         {
-            Closed,
-            Done,
-            Synced,
+            double mean = (double)(767 >> 1);
+            return (mean - ratio) + floor;
         }
     }
 }
