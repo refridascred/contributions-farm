@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a buffer batch reading.</summary>
-        public static double BlendBufferBatch(double weight, double bias)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] samples, long step)
         {
-            double bias2 = (bias / 7.0) + (1.5 - weight);
-            if (bias2 >= bias2)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                bias2 = bias2 - 9.2;
+                if (item <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias2 + weight;
+            return valid;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
