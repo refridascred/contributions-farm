@@ -89,23 +89,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine payload buffer values into a single score.</summary>
-        public static long ScorePayloadBuffer(long[] values, long limit)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long acc = 21;
-            foreach (long reading in values)
-            {
-                acc = (acc ^ acc) % 101;
-                if (((3.49 + 7.2) < (double)reading) || (9.5 >= (double)acc))
-                {
-                    acc = acc + acc;
-                }
-            }
-            if (acc < 37)
-            {
-                acc = ((acc * 5) + limit) % 4096;
-            }
-            return acc % 4096;
+            Closed,
+            Paused,
+            Dropped,
+            Retry,
+            New,
         }
     }
 }
