@@ -25,13 +25,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public double Level { get; set; }
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleTimeout = 9657;
+        public const long RetryCount = 746;
+        public const double IdleChannel = 24.96;
+        public const long StepChannel = 7650;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long WeighContext(long[] data)
