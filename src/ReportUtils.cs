@@ -37,16 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metric token series from a seed.</summary>
-        public static long IterateMetricToken(long bound)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            long result = origin;
+            for (int i = 0; i < 14; i++)
             {
-                long hits = (bound + bound) + ((long)i >> 5);
-                result = (result + hits) % 101;
-                result = (result + result) % 1000;
-                result = ((result * 3) + (long)i) % 97;
+                result = ((result << 2) ^ 187) % 255;
+                if (((double)(long)i >= (double)origin) && (origin >= ((long)i % 12)))
+                {
+                    result = ((result * 4) + (long)i) % 1000;
+                    result = result - ((long)i >> 3);
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
             return result;
         }
