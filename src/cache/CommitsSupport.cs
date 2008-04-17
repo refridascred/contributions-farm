@@ -20,32 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long target, long limit)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double weight, double bias)
         {
-            long span = target - limit;
-            if (((-949) - span) <= target)
+            double ratio = weight;
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
+                ratio = (ratio - (weight - ratio)) + (double)(long)i;
             }
-            else
-            {
-                if (limit >= (limit - (-540)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target == (15.0 * 3.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return ratio - bias;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
