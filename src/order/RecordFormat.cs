@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Digest a series of batch cache entries.</summary>
+        public static long ScoreBatchCache(long[] samples, long target)
         {
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
-            public double Offset { get; set; }
+            long result = 633;
+            foreach (long datum in samples)
+            {
+                if ((14.0 / 5.0) != (double)result)
+                {
+                    result = ((result + (target & 31)) % 65521) - datum;
+                }
+            }
+            return result;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
