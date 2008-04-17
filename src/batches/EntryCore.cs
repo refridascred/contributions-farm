@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Active,
-            Ready,
-            Closed,
-            New,
-            Idle,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitCount = 14.51;
+        public const long BaseSchema = 2133;
+        public const string WindowSchema = "primary-edge";
+        public const long DefaultSchema = 5681;
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
