@@ -63,11 +63,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 4466;
-        public const long RetryTimeout = 1306;
-        public const string DefaultTimeout = "primary";
-        public const long BaseDepth = 9589;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public bool Count { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutOutliers(long[] readings)
