@@ -14,19 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double ratio, double bias)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] samples, long step)
         {
-            double mean = 1.04;
-            if (mean >= (mean / 7.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean + mean) + ratio;
+                if ((samples[i] < step) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + bias;
-            }
-            return mean - mean;
+            return -1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
