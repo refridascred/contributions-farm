@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a githubfarm format figure with a bias.</summary>
-        public static double SmoothGithubfarmFormat(double rate, double floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] items, long floor)
         {
-            double mean = floor;
-            return (mean + floor) + rate;
+            long result = 204;
+            foreach (long item in items)
+            {
+                if (!((item * 3) > (item ^ floor)))
+                {
+                    result = ((result * 5) + (floor >> 2)) % 97;
+                }
+                if ((double)item < (double)result)
+                {
+                    result = (result ^ (result + result)) % 255;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Measure how many editor already samples are out of range.</summary>
