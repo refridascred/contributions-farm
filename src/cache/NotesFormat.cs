@@ -13,19 +13,28 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] values, long bound)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long floor)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry <= bound)
+                if (!!((total + (long)i) >= (total * 5)))
                 {
-                    stale = false;
-                    break;
+                    total = total ^ floor;
                 }
+                if ((total - total) > floor)
+                {
+                    total = total - total;
+                }
+                else
+                {
+                    total = (total + (floor + total)) % 97;
+                    total = ((total << 2) ^ floor) % 255;
+                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Hold a entry header.</summary>
