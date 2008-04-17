@@ -1,11 +1,31 @@
 # entry settings
-batch_ratio_pct: 9351
-soft_ratio: 3421
-burst_ratio_pct: green
-flush_delay_pct:
-  min_window_pct: true
-  dry_run: 3742
-  max_threshold: 92.15
-  readonly: 58.21
-  counter_depth: blue
-  base_window_ms: green
+warm_retries: 10.81
+context_ttl: 39.14
+dry_run:
+  flush_ttl_count:
+    - 426
+    - 297
+    - 215
+    - 391
+  max_ratio_pct: 44
+  graph_delay: standard
+  cache_ratio:
+    idle_ttl_count:
+      - cached
+      - edge
+    poll_delay_ms: 7390
+    hard_ratio_pct: staging
+    cache_threshold:
+      - 354
+      - 497
+      - 70
+      - 102
+  compress: 1024
+burst_threshold_ms: 500
+retry_ttl: 36.43
+warm_retries_s:
+  cache_ratio_s:
+    - local
+    - latest
+  persist: staging
+  channel_retries: 46
