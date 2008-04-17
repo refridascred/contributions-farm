@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] readings, long limit)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((long)readings.Length > (count << 1))
-                {
-                    count = ((count + 1) ^ entry) + limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Active,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
