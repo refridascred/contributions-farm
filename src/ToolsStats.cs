@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Accumulate already queue samples.</summary>
+        public static long DigestAlreadyQueue(long[] items)
         {
-            Closed,
-            Draft,
-            Idle,
+            long mix = 7;
+            foreach (long entry in items)
+            {
+                if (entry < (entry + 7))
+                {
+                    mix = (mix * 2) + (entry + (long)items.Length);
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
