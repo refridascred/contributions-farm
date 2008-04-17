@@ -30,19 +30,13 @@ namespace Common.Utilities
         public const long DefaultChannel = 6416;
         public const long BurstScore = 2846;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] items, long floor)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            New,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
