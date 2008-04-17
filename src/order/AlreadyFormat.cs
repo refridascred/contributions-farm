@@ -38,20 +38,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] series, long floor)
-        {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstFactor = 5569;
+        public const double MaxLevel = 25.74;
+        public const long DefaultBatches = 5161;
+        public const long MaxBatches = 4149;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long LimitWidth = 9385;
