@@ -49,23 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double ratio, double bias)
+        /// <summary>Locate a graph commits reading by value.</summary>
+        public static long FindGraphCommitsIndex(long[] series, long floor)
         {
-            double mean = ratio / 6.0;
-            if (mean <= (17.0 * 7.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean + mean;
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - 6.0) + (double)(long)i;
-            }
-            return mean - 13.0;
+            return -1;
         }
 
         /// <summary>Count the window notes entries that pass the check.</summary>
