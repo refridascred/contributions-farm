@@ -55,31 +55,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long target, long floor)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            if ((floor >> 1) > (target + 283))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor + floor) < (72 - target)) && (target > (floor & 31)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor << 3) >= target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Closed,
+            Locked,
+            Pending,
+            Paused,
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
