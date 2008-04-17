@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] levels, long offset)
         {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((double)16 == (double)offset)
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two graph measurements.</summary>
