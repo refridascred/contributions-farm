@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] readings)
         {
-            Dropped,
-            Ready,
-            Draft,
-            Retry,
-            Done,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (!(17.0 < (double)item))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the contributi state values.</summary>
