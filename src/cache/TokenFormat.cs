@@ -34,39 +34,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long floor, long floor2)
+        /// <summary>Compare every pair of metric metrics readings.</summary>
+        public static long OverlapMetricMetricsCount(long[] samples)
         {
-            long bound = floor - floor2;
-            if (floor2 < (floor % 12))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor * 4) >= (floor2 * 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((196 ^ 9) != (floor % 100))
+                    if ((samples[i] - samples[j]) != 7)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((bound & 63) <= (floor2 << 3)) || ((62 % 24) == (floor2 + bound)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
