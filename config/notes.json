@@ -1,7 +1,7 @@
 {
-  "schema_window": ["legacy", "green"],
-  "base_window": false,
-  "editor_ttl": 1291,
-  "default_ttl_count": 60,
-  "default_ratio_count": "green"
+  "sync_interval": 75.35,
+  "warm_threshold": 78,
+  "metric_limit": "open",
+  "sync_limit": "local",
+  "soft_timeout_s": "primary"
 }
