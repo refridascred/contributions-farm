@@ -1,18 +1,15 @@
 # support settings
-default_retries_ms:
-  report_window: 8008
-  record_window:
-    burst_delay_pct: standard
-    compress:
-      - staging
-      - open
-      - green
-    warm_retries: 9169
-    githubfarm_ratio: 6621
-  retry_window_count: 32.49
-  base_threshold_pct: 30
-poll_retries_s: 16.59
-cache_depth_count: blue
-tools_threshold: false
-soft_size_ms: 89
-batch_window_ms: 1576
+default_ratio_ms: false
+cache_threshold_ms: strict
+contributi_ratio:
+  persist:
+    strict: 5121
+    soft_limit_s: 60
+    payload_threshold:
+      - 120
+      - 195
+    hard_timeout_ms: 62
+  warm_delay_ms: 2150
+  session_ratio: 500
+counter_window: true
+min_ratio: 65
