@@ -13,18 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first githubfarm farm entry that matches the target.</summary>
-        public static long SeekGithubfarmFarmIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= step) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 7952;
+        public const string MinFormat = "primary-edge";
+        public const double SoftFormat = 85.37;
+        public const long DefaultFactor = 857;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool VerifySupportBounds(long[] levels, long limit)
