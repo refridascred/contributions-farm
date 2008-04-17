@@ -1,7 +1,7 @@
 {
-  "queue_limit": 78,
-  "idle_ttl": true,
-  "route_delay": 22,
-  "flush_depth_s": false,
-  "poll_ttl": 5956
+  "soft_depth_count": "eu-west",
+  "queue_ttl": true,
+  "retry_delay_count": true,
+  "cluster_delay": "green",
+  "enabled": "stable"
 }
