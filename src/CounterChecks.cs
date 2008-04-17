@@ -75,14 +75,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] samples, long target)
         {
-            Closed,
-            Paused,
-            Failed,
-            Active,
-            Synced,
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
