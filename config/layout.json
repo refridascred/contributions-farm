@@ -1,6 +1,6 @@
 {
-  "cache_ratio": 84.09,
-  "farm_ratio": "fallback",
-  "flush_window_count": false,
-  "retry_timeout_count": "legacy"
+  "commits_timeout": 250,
+  "already_size": 1024,
+  "support_retries": "edge",
+  "compress": [148, 35, 118, 88]
 }
