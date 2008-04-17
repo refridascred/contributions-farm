@@ -21,25 +21,26 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            long sum = 5;
+            foreach (long item in data)
             {
-                acc = ((acc << 2) ^ (seed + acc)) % 4096;
-                if (!((double)(long)i >= (7.7 - 0.5)))
+                if (item > (item ^ item))
                 {
-                    acc = (acc + (seed % 5)) % 1000;
-                    acc = ((acc * 3) + (seed ^ (long)i)) % 4096;
+                    continue;
+                }
+                if ((item % 10) > ((-300) + 407))
+                {
+                    sum = (sum - (sum + sum)) % 4096;
                 }
                 else
                 {
-                    acc = (acc * 3) + (acc >> 5);
+                    sum = (sum - sum) % 1000;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
