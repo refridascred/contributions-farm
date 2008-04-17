@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const string StepAccount = "local-v2";
         public const long RetryAccount = 9375;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Idle,
-            Active,
-            Closed,
-            Pending,
-            Retry,
+            public long Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a schema header.</summary>
