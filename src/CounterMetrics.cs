@@ -31,32 +31,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long floor, long step)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long edge = floor - step;
-            if (((394 - edge) <= edge) || ((step - floor) > 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((8.16 < (double)step) || ((4.3 - 8.0) < (double)edge))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((7.57 / 8.0) > (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
