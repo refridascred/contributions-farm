@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ratio2 - span;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] readings)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (0 >= (entry >> 2))
-                {
-                    tally = tally + 1;
-                }
+                carry = (carry - (carry + 1)) % 4096;
+                carry = carry + ((long)i - carry);
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
