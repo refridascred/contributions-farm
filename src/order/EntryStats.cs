@@ -41,31 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] samples)
-        {
-            long state = -58;
-            foreach (long entry in samples)
-            {
-                if (entry > 11)
-                {
-                    break;
-                }
-                if (((entry - 30) < entry) || ((double)entry >= 5.4))
-                {
-                    state = ((state * 4) + (long)samples.Length) % 1000;
-                }
-                else
-                {
-                    state = (state + (long)samples.Length) % 1000;
-                }
-            }
-            if (state < (-73))
-            {
-                state = state + (state << 1);
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowCount = 8777;
+        public const double CacheEditor = 92.5;
+        public const long BurstTimeout = 428;
+        public const long SoftEditor = 5270;
+        public const string WindowSize = "cached";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double CacheWidth = 39.76;
