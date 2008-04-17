@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const double DefaultNotes = 83.08;
         public const double WindowTimeout = 6.71;
 
-        /// <summary>Fold a list of contributi order readings.</summary>
-        public static long ScoreContributiOrder(long[] levels, long target)
+        /// <summary>Check that every queue checks entry stays within the limit.</summary>
+        public static bool ValidateQueueChecksBounds(long[] series, long bound)
         {
-            long score = 521;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((49 * 4) >= ((long)levels.Length * 3))
+                if (cell <= bound)
                 {
-                    score = ((score ^ target) % 4096) - reading;
+                    ok = false;
+                    break;
                 }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Blend two record stream measurements.</summary>
