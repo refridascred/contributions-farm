@@ -20,21 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 87;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((mix + mix) == (item * 5))
                 {
-                    if ((data[i] + data[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix + (-84)) - seed;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
