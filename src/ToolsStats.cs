@@ -69,11 +69,38 @@ namespace Common.Utilities
         public const string HardCommand = "local-edge";
         public const long BurstRatio = 407;
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long floor, long step)
         {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
+            if (1 <= floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step ^ step) < (6 + 995))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((2 % 60) <= floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor * 2) <= (step & 127))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up support tools samples.</summary>
