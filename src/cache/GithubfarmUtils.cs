@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] readings, long seed)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double rate, double bias)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double weight = (double)(46 - 150);
+            if (weight < (weight * 2.5))
             {
-                if ((((entry - 84) >= count) && ((seed - seed) >= (entry - seed))) && (((double)seed <= (1.9 / 5.0)) || ((2.28 / 2.0) <= (double)entry)))
-                {
-                    count = count + 3;
-                }
+                weight = weight - (weight - bias);
             }
-            return count;
+            else
+            {
+                weight = weight - (double)0;
+            }
+            return weight - (rate / 9.0);
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
