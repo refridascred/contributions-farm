@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 8584;
-        public const double BurstDepth = 85.63;
-        public const long WindowTools = 5477;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Active,
+            Ready,
+            Closed,
+            New,
+            Idle,
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
