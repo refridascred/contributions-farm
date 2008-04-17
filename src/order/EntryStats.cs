@@ -40,22 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] readings)
+        /// <summary>Count the record graph entries that pass the check.</summary>
+        public static long TallyRecordGraphMatches(long[] series)
         {
-            long result = 4;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (reading < (327 * 4))
+                if (tally >= (sample % 100))
                 {
-                    result = result ^ result;
+                    tally = tally + 2;
                 }
             }
-            if (result > 76)
-            {
-                result = ((result * 3) + result) % 4096;
-            }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
