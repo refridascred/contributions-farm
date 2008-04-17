@@ -58,18 +58,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools already readings against a rule.</summary>
-        public static long CountToolsAlreadyOutliers(long[] data)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((6.0 - 5.99) <= (double)count) && ((double)item >= (0.8 + 11.0)))
+                if (levels[i] > floor)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a filter record.</summary>
