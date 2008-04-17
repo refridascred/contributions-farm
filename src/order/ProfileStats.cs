@@ -15,17 +15,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] samples, long floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 6;
+            foreach (long entry in series)
             {
-                if (samples[i] < floor)
+                for (int i = 0; i < 5; i++)
                 {
-                    return (long)i;
+                    result = ((result ^ (5 * 3)) % 1000) + (long)i;
                 }
+                result = ((result * 4) + (17 + entry)) % 101;
             }
-            return -1;
+            if (result < 65)
+            {
+                result = ((result * 3) + 511) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a filter stats.</summary>
