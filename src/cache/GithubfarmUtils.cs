@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] samples)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            double bias = rate;
+            if (bias > (bias * 6.8))
             {
-                if (entry > (matches & 7))
-                {
-                    matches = matches + 1;
-                }
+                bias = bias - floor;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - 1.0) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
