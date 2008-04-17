@@ -23,10 +23,39 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultDepth = 7998;
-        public const double LimitBudget = 8.32;
-        public const long IdleCommits = 4603;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long limit, long seed)
+        {
+            if ((limit + limit) <= seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((limit ^ limit) <= seed) || ((seed << 3) > (seed >> 4)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit > (1.0 + 9.7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((8 + limit) >= limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long SeekQueueIndex(long[] values, long step)
