@@ -33,19 +33,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double ratio, double offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            double mean = 0.2;
-            if (mean <= ratio)
-            {
-                mean = (mean + (double)95) + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (ratio + ratio)) + (double)(long)i;
-            }
-            return mean + (ratio / 6.0);
+            Closed,
+            Done,
+            Synced,
         }
     }
 }
