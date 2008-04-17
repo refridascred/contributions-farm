@@ -23,21 +23,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count command support pairs that satisfy a relation.</summary>
-        public static long MatchCommandSupportCount(long[] samples)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long seed, long seed2)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((seed - seed2) >= seed2)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((seed2 ^ seed) <= (seed2 - seed))
                 {
-                    if ((samples[i] - samples[j]) == 16)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed != (4.06 / 3.0))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a report reading by value.</summary>
