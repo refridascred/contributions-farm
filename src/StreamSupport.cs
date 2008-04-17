@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 6385;
-        public const long DefaultTimeout = 9926;
-        public const long BurstProfile = 6392;
-        public const double IdleProfile = 57.77;
-        public const string LimitInterval = "latest";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 1201;
+        public const long SoftWidth = 1173;
+        public const double MaxLevel = 76.4;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long TallyNotes(long[] levels)
