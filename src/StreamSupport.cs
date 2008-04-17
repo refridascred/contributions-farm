@@ -20,13 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Paused,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchFarm = "open-1";
+        public const long BatchDepth = 1749;
+        public const long MaxFarm = 6922;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MaxOrder = 9584;
