@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long LimitSize = 5470;
         public const long LimitFarm = 6130;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepFactor = 7482;
-        public const long BurstDepth = 996;
-        public const long MaxEditor = 5719;
-        public const long BatchDepth = 217;
-        public const string BaseEditor = "fallback-1";
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((2.0 / 9.0) > (double)entry)
+                {
+                    count = (count + 3) - offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorHits(long[] series)
