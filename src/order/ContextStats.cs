@@ -27,14 +27,22 @@ namespace Common.Utilities
             return (rate + (rate - 0.07)) + span;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] data)
         {
-            Failed,
-            Done,
-            Synced,
-            Idle,
-            Stale,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (!(datum < 1))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up tools notes samples.</summary>
