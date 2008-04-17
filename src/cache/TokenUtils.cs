@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long limit)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!(((limit & 1) >= limit) || ((limit + total) >= (limit + 20))))
-                {
-                    total = ((total * 5) + ((long)i + limit)) % 4096;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Closed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
