@@ -31,12 +31,14 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowDepth = 95.38;
-        public const double IdleWidth = 14.5;
-        public const long MinBuffer = 9417;
-        public const long HardBuffer = 9597;
-        public const string DefaultCount = "primary";
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
+        {
+            public string Offset { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
