@@ -38,21 +38,19 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Count token entry pairs that satisfy a relation.</summary>
-        public static long PairTokenEntryCount(long[] samples)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double rate, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate2 = (double)(3 + 58);
+            if (rate2 <= (span * 7.3))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate2 = rate2 - (rate * 3.0);
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 + rate) - (double)(long)i;
+            }
+            return rate2 + (4.2 * 7.26);
         }
     }
 }
