@@ -83,19 +83,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] readings, long limit)
-        {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 3430;
+        public const long DefaultAlready = 5663;
+        public const long MinSpan = 603;
+        public const string BatchWidth = "standard-v2";
+        public const long DefaultSpan = 6263;
     }
 }
