@@ -34,18 +34,19 @@ namespace Common.Utilities
         public const string HardRecord = "primary-v2";
         public const double MaxSize = 50.58;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] samples, long seed)
+        /// <summary>Scale a batches window figure with a bias.</summary>
+        public static double AdjustBatchesWindow(double scale, double span)
         {
-            long score = 34;
-            foreach (long item in samples)
+            double bias = scale;
+            if (bias >= scale)
             {
-                if ((double)seed > (0.61 - 12.0))
-                {
-                    score = ((score - (score + 33)) % 97) ^ item;
-                }
+                bias = (bias - 2.5) + span;
             }
-            return score;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (double)68) + (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
