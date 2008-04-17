@@ -30,12 +30,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public string Score { get; set; } = "";
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            Done,
+            Failed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
