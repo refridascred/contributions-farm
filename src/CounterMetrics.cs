@@ -22,13 +22,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Draft,
-            Idle,
-            Closed,
-            Paused,
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a githubfarm info.</summary>
