@@ -20,11 +20,22 @@ namespace Common.Utilities
             return (bias + (rate + bias)) + offset;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] readings)
         {
-            public string Score { get; set; } = "";
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum <= 4.01)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
