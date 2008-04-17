@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const double HardInterval = 30.32;
         public const double SoftSession = 20.12;
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public bool Total { get; set; }
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
+            Done,
+            Synced,
+            Dropped,
+            Pending,
+            Retry,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
