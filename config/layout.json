@@ -1,18 +1,7 @@
 {
-  "idle_ttl_ms": "primary",
-  "idle_capacity_count": ["strict", "blue", "stable"],
-  "compress": {
-    "sync_delay_count": 6159,
-    "route_limit": 30,
-    "min_capacity": 85.06,
-    "hard_ttl_count": ["local", "staging", "open"],
-    "flush_retries": [339, 360]
-  },
-  "default_limit_ms": 7763,
-  "flush_window_ms": {
-    "base_threshold": "edge",
-    "entry_ttl": 29,
-    "burst_window_s": 17.78,
-    "tools_threshold": 1024
-  }
+  "sync_ratio_count": "cached",
+  "readonly": "local",
+  "strict": "green",
+  "min_timeout_count": [403, 302, 338],
+  "filter_window": "eu-west"
 }
