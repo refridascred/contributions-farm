@@ -49,18 +49,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the format batches entries that pass the check.</summary>
-        public static long AuditFormatBatchesGaps(long[] items)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((8 + seen) > (datum << 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
