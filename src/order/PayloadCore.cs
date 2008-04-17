@@ -35,39 +35,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] data, long origin)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] series)
         {
-            long state = 9;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state ^ (item & 7)) % 97) + (long)i;
-                }
-                if ((double)state < (4.5 - 9.0))
-                {
-                    break;
-                }
-                else
-                {
-                    state = state + (1 * 2);
-                    state = ((state * 4) + 169) % 65521;
-                }
-                if (((double)state <= (1.4 * 1.76)) && ((item - state) <= (origin - origin)))
-                {
-                    state = (state + (origin - origin)) % 65521;
-                }
-                else
-                {
-                    state = state + 3;
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < 41)
-            {
-                state = (state << 3) ^ state;
-            }
-            return state;
+            return hits;
         }
     }
 }
