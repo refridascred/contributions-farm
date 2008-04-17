@@ -1,5 +1,22 @@
 # support settings
-contributi_delay: 33
-format_timeout: 30
-sync_timeout: 60.36
-report_threshold: 1024
+retry_timeout: latest
+record_threshold: 48.69
+readonly:
+  - 168
+  - 464
+  - 182
+already_ttl:
+  batch_size_ms: fallback
+  max_interval_pct: open
+  base_limit_count:
+    - eu-west
+    - latest
+stats_ttl:
+  readonly: eu-west
+  idle_size_count:
+    burst_size: 2585
+    retry_capacity_ms: open
+    min_ttl_s: 1751
+    soft_threshold_pct: false
+  soft_threshold: 5.26
+enabled: false
