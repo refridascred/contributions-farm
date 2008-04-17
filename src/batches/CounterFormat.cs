@@ -23,11 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BaseFilter = "standard-1";
-        public const string SoftCount = "open-1";
-        public const long CacheFilter = 7346;
-        public const long RetryFilter = 9497;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] samples, long bound)
+        {
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long CombineFormat(long[] readings, long origin)
