@@ -23,12 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] values, long bound)
         {
-            public bool Token { get; set; }
-            public bool Level { get; set; }
-            public string Stamp { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a route checks reading by value.</summary>
