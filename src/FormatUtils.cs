@@ -20,18 +20,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] items)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (item > (441 / 8))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Active,
+            Locked,
+            Failed,
         }
 
         /// <summary>Hold a tools summary.</summary>
