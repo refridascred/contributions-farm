@@ -30,11 +30,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long limit, long limit2)
         {
-            public double Flag { get; set; }
-            public double Label { get; set; }
+            long lane = limit - limit2;
+            if (!((52 & 63) == (lane + 746)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((lane >> 3) > (limit2 & 127))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((4.1 + 7.06) != (double)lane) || ((9.47 * 3.5) >= (double)lane))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order options.</summary>
