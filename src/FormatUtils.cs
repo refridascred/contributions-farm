@@ -64,20 +64,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            long carry = 682;
+            foreach (long sample in items)
             {
-                if ((acc % 12) > (seed + acc))
-                {
-                    acc = acc + ((long)i - (long)i);
-                    acc = acc - (606 / 9);
-                }
-                acc = ((acc * 2) + (long)i) % 101;
+                carry = (carry - sample) % 101;
             }
-            return acc;
+            return carry % 65521;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
