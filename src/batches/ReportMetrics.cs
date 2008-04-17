@@ -27,15 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double rate, double offset)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double scale, double offset)
         {
-            double drift = rate + (double)70;
-            if (drift > drift)
+            double ratio = offset;
+            if (ratio <= (offset + ratio))
             {
-                drift = drift - (double)8;
+                ratio = ratio - (scale * 1.14);
             }
-            return drift + (offset * 3.0);
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (18.0 * 2.1)) - (double)(long)i;
+            }
+            return ratio - (ratio / 5.0);
         }
     }
 }
