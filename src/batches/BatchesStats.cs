@@ -18,21 +18,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = state + (long)i2;
+                    if ((readings[i] - readings[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = state - (state >> 1);
-                state = state + state;
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Adjust a record reading.</summary>
