@@ -36,21 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
