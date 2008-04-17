@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] levels)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum >> 4) <= 40)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the session phase values.</summary>
