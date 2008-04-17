@@ -14,10 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryLevel = 723;
-        public const long BaseSession = 430;
-        public const string BaseLevel = "primary-v2";
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (((1.23 / 6.0) == (double)count) || (((7.3 - 17.0) == (double)entry) || ((0.08 - 3.6) < (double)count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long HardQueue = 9008;
