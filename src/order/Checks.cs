@@ -47,21 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batches entry value from a seed.</summary>
-        public static long SeriesBatchesEntry(long target)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] items, long target)
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (target < (4 - anchor))
+                if (items[i] == target)
                 {
-                    anchor = anchor ^ (anchor & 255);
-                    continue;
+                    return (long)i;
                 }
-                anchor = ((anchor << 3) ^ target) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
