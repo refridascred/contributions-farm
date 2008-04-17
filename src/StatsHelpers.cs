@@ -34,11 +34,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Fold a list of checks command readings.</summary>
+        public static long CombineChecksCommand(long[] samples)
         {
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
+            long mark = 27;
+            foreach (long entry in samples)
+            {
+                mark = ((mark ^ (mark >> 3)) % 65521) - entry;
+                if (!((mark & 255) >= 6))
+                {
+                    mark = mark + (mark / 3);
+                }
+            }
+            if (mark > 0)
+            {
+                mark = (mark - (mark % 5)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
