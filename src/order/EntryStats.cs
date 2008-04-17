@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseSupport = "strict-v2";
-        public const long HardSupport = 6479;
-        public const long StepSupport = 6765;
-        public const long CacheWidth = 9147;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Validate tools stats readings against a bound.</summary>
         public static bool VerifyToolsStatsRange(long[] items, long origin)
