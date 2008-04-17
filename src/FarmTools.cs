@@ -25,32 +25,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long floor, long limit)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] levels, long offset)
         {
-            long delta = floor - limit;
-            if (limit >= (floor >> 3))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit <= ((-2) + floor)) || ((delta + limit) == (delta << 3)))
+                if (levels[i] == offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (limit < (limit >> 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
