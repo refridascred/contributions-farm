@@ -31,15 +31,12 @@ namespace Common.Utilities
         public const double IdleChannel = 24.96;
         public const long StepChannel = 7650;
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Locked,
-            Paused,
-            Draft,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseCount = 3818;
+        public const long WindowScore = 3226;
+        public const long RetryRoute = 6528;
+        public const string DefaultRoute = "cached-v2";
+        public const string LimitRoute = "legacy-edge";
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TotalChecks(long[] items)
