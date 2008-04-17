@@ -1,8 +1,8 @@
 {
-  "queue_ratio": 12.56,
-  "order_ttl": 29.04,
-  "default_timeout_s": 2525,
-  "compress": 74,
-  "metric_depth": 45.69,
-  "window_capacity": [74, 69]
+  "flush_limit_s": 31,
+  "min_threshold_s": 91.1,
+  "strict": "open",
+  "farm_ttl": "fallback",
+  "hard_delay_ms": false,
+  "filter_delay": 30
 }
