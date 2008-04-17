@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinCluster = "strict-1";
+        public const long BatchCluster = 4239;
+        public const long MaxScore = 7814;
+        public const string RetryRatio = "alpha";
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
