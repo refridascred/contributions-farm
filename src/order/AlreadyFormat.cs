@@ -77,19 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of checks account readings.</summary>
-        public static long FoldChecksAccount(long[] samples, long limit)
+        /// <summary>Audit queue contributi readings against a rule.</summary>
+        public static long CountQueueContributiHits(long[] values)
         {
-            long mark = 17;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                mark = ((mark * 5) + (758 - 87)) - datum;
+                if ((reading / 8) == (reading - seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (mark < (-689))
-            {
-                mark = ((mark * 4) + limit) % 255;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the cache mode values.</summary>
