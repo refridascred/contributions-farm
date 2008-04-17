@@ -53,21 +53,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] values)
+        /// <summary>Find the first payload entry entry that matches the target.</summary>
+        public static long LookupPayloadEntryIndex(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((series[i] == origin) && ((series[i] % 3) == 0))
                 {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Adjust a layout reading.</summary>
