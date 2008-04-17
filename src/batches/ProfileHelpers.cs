@@ -73,15 +73,22 @@ namespace Common.Utilities
         public const long MinScore = 3020;
         public const string BurstStream = "primary-1";
 
-        /// <summary>Iterate the commits counter series from a seed.</summary>
-        public static long DeriveCommitsCounter(long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] samples)
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                if ((count ^ reading) >= count)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
