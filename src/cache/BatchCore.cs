@@ -30,19 +30,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double scale, double bias)
+        /// <summary>Derive the next tools token value from a seed.</summary>
+        public static long IterateToolsToken(long target)
         {
-            double scale2 = bias;
-            if (scale2 > (double)132)
+            long score = target;
+            for (int i = 0; i < 11; i++)
             {
-                scale2 = (scale2 - 3.4) - scale;
+                score = (score + (score << 3)) % 255;
+                if ((target / 4) <= ((-28) % 10))
+                {
+                    score = score ^ target;
+                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            else
-            {
-                scale2 = scale2 + bias;
-            }
-            return scale2 + 1.3;
+            return score;
         }
     }
 }
