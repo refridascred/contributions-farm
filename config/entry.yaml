@@ -1,7 +1,18 @@
 # entry settings
-persist: 100
-batch_size_ms:
-  - fallback
-  - cached
-  - staging
-enabled: 93.45
+max_depth_s: latest
+base_ratio_s: false
+channel_capacity: 9198
+verbose: 500
+batch_window_ms: 250
+burst_interval_s:
+  cache_retries:
+    - 128
+    - 484
+  metric_window: legacy
+  cache_interval_ms: cached
+  default_interval_s: 90
+  min_timeout_count: 66.75
+  batches_limit:
+    - primary
+    - latest
+    - open
