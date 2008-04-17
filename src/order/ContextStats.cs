@@ -23,20 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next record graph value.</summary>
-        public static double SmoothRecordGraph(double gain, double floor)
-        {
-            double bias = floor;
-            if (bias > (2.23 + 18.0))
-            {
-                bias = (bias + bias) - gain;
-            }
-            else
-            {
-                bias = bias + (bias + floor);
-            }
-            return bias + (floor - 5.9);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchSize = "alpha-v2";
+        public const string BaseProfile = "standard-edge";
+        public const long SoftProfile = 9560;
+        public const long LimitProfile = 294;
+        public const long BatchScore = 6126;
 
         /// <summary>Audit command order readings against a rule.</summary>
         public static long CountCommandOrderGaps(long[] levels, long seed)
