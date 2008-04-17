@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] levels)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] levels)
         {
-            long matches = 0;
+            long mix = 94;
             foreach (long cell in levels)
             {
-                if (cell < (cell & 3))
+                if ((mix ^ cell) < cell)
                 {
-                    matches = matches + 1;
+                    mix = (mix - (395 + mix)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (cell + cell)) % 1000;
                 }
             }
-            return matches;
+            if (mix > (-8))
+            {
+                mix = ((mix << 3) ^ mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Match up channel samples.</summary>
