@@ -60,19 +60,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] items, long origin)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Draft,
+            Failed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Find the first profile support entry that matches the target.</summary>
