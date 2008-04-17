@@ -54,12 +54,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 1932;
-        public const string BatchNotes = "open-v2";
-        public const string DefaultSize = "fallback";
-        public const long WindowWidth = 513;
-        public const long LimitNotes = 5661;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Dropped,
+            New,
+            Retry,
+            Active,
+            Closed,
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
