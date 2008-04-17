@@ -20,15 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double rate, double bias)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            double load = (rate - bias) - (rate + rate);
-            if (load <= (load + 6.7))
-            {
-                load = load + bias;
-            }
-            return load - (load * 9.2);
+            Failed,
+            Done,
+            Retry,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
