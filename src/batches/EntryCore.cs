@@ -37,32 +37,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long limit, long limit2)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double gain, double span)
         {
-            long lane = limit - limit2;
-            if (!((52 & 63) == (lane + 746)))
+            double gain2 = span;
+            if (gain2 > gain2)
             {
-                return 3;
+                gain2 = gain2 + (0.6 - gain);
             }
-            else
-            {
-                if ((lane >> 3) > (limit2 & 127))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((4.1 + 7.06) != (double)lane) || ((9.47 * 3.5) >= (double)lane))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return gain2 + 1.21;
         }
 
         /// <summary>Hold a order options.</summary>
