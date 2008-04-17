@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a editor format figure with a bias.</summary>
-        public static double BlendEditorFormat(double bias, double span)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] samples)
         {
-            double rate = span;
-            if (rate <= (8.0 + rate))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                rate = (rate - span) - bias;
+                if ((item <= (item - item)) || (item <= (item & 1)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return rate - span;
+            return hits;
         }
 
         /// <summary>Project the next report value.</summary>
