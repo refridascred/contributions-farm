@@ -61,17 +61,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] values, long limit)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long target, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((672 + seed) < (-2))
             {
-                if (values[i] > limit)
+                return 2;
+            }
+            else
+            {
+                if ((target - 84) < (target - seed))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
