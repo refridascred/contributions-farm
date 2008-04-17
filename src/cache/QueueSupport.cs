@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public string Level { get; set; } = "";
-            public double Mode { get; set; }
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
+            public bool Total { get; set; }
+            public bool Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Roll a account counter forward.</summary>
