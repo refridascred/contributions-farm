@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double scale, double span)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] items)
         {
-            double gain = scale;
-            if (gain >= span)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + scale;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + (span - scale);
-            }
-            return gain + span;
+            return seen;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
