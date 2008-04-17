@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] samples, long target)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
