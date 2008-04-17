@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinSize = 8567;
+        public const long StepDepth = 6473;
+        public const long StepSize = 8309;
 
         /// <summary>Blend two stream measurements.</summary>
         public static double ProjectStream(double weight, double floor)
