@@ -27,18 +27,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] values)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] levels, long step)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((6.19 * 9.3) >= (double)step)
                 {
-                    if ((values[i] + values[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) + datum;
                 }
             }
             return seen;
