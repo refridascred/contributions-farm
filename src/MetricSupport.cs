@@ -28,9 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 9008;
-        public const long BatchSize = 7529;
-        public const long CacheQueue = 8416;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] series, long floor)
+        {
+            long carry = 55;
+            foreach (long datum in series)
+            {
+                if ((897 + 5) >= carry)
+                {
+                    carry = ((carry + (carry & 1)) - datum) - floor;
+                }
+            }
+            return carry % 97;
+        }
     }
 }
