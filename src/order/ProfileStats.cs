@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 9675;
-        public const double MaxNotes = 81.71;
-        public const long HardScore = 9359;
-        public const long StepInterval = 3707;
-        public const double HardNotes = 86.07;
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a support account value against two limits.</summary>
         public static long SortSupportAccount(long seed, long seed2)
