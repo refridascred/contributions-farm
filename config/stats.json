@@ -1,6 +1,5 @@
 {
-  "enabled": 32.08,
-  "batch_interval": 2308,
-  "min_depth": ["standard", "staging", "cached", "cached"],
-  "persist": 165
+  "cluster_timeout": 60,
+  "soft_size_ms": "green",
+  "dry_run": ["latest", "open"]
 }
