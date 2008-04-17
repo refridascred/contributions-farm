@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinTools = "staging-edge";
-        public const long MaxSpan = 7433;
-        public const long SoftTools = 1639;
-        public const long DefaultSize = 3229;
-        public const string CacheTimeout = "legacy-edge";
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public bool Mode { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long FoldFormat(long[] readings)
