@@ -73,18 +73,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] data, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] levels)
         {
-            long total = 31;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (((3.26 / 3.0) > (double)total) || ((5.72 - 5.0) >= (20.0 * 4.0)))
+                if ((seen - seen) == (item & 127))
                 {
-                    total = ((total << 3) ^ (965 + step)) ^ entry;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Describe the layout mode values.</summary>
