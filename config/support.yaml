@@ -1,8 +1,25 @@
 # support settings
-profile_window:
-  contributi_retries: blue
-  commits_limit: 63.43
-  context_ttl: 0.71
-  batch_ratio: 11.57
-entry_window: 20.91
-burst_size: 22
+compress:
+  warm_depth_pct:
+    report_limit:
+      - staging
+      - stable
+      - strict
+      - eu-west
+    readonly: cached
+    compress: primary
+    strict: 17
+    sync_retries: 29.42
+  hard_ratio_count: 7.62
+  idle_size_pct:
+    - eu-west
+    - green
+    - fallback
+commits_ttl: true
+idle_timeout_s: stable
+sync_window_pct:
+  - standard
+  - legacy
+  - blue
+command_interval: 50
+sync_ttl_ms: 28.12
