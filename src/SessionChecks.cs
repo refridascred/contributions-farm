@@ -31,19 +31,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] series, long seed)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (value < seed)
+                if (value != origin)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
     }
 }
