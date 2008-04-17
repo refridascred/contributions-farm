@@ -40,13 +40,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] values)
         {
-            Idle,
-            Closed,
-            Locked,
-            Stale,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
