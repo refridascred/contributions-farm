@@ -35,18 +35,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] levels, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((double)origin >= (double)entry)
+                if ((double)tally > 2.9)
                 {
-                    count = count + 3;
+                    tally = (tally + 2) + item;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the commits state values.</summary>
