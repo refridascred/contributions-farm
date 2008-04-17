@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const double MinChecks = 56.45;
         public const long BurstTimeout = 6565;
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] data, long limit)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Idle,
+            Stale,
+            Done,
+            Queued,
         }
 
         /// <summary>Digest a series of session entries.</summary>
