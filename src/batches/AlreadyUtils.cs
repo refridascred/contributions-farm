@@ -44,12 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Dropped,
-            Failed,
-            Queued,
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
