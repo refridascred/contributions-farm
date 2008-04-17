@@ -25,11 +25,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Digest a series of channel buffer entries.</summary>
+        public static long ScoreChannelBuffer(long[] data)
         {
-            public double Region { get; set; }
-            public double Count { get; set; }
+            long anchor = 9;
+            foreach (long reading in data)
+            {
+                if ((double)anchor != (0.1 + 8.06))
+                {
+                    anchor = (anchor << 2) ^ (anchor + reading);
+                }
+                if ((reading - reading) <= reading)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
