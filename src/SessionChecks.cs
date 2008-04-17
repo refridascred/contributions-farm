@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const string StepAccount = "local-v2";
         public const long RetryAccount = 9375;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double bias, double span)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            double mean = span / 2.0;
-            if (mean < 3.91)
-            {
-                mean = (mean - mean) - bias;
-            }
-            else
-            {
-                mean = mean - span;
-            }
-            return mean + (10.0 * 9.6);
+            public string Rank { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a schema header.</summary>
