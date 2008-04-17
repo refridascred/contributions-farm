@@ -49,15 +49,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double ratio, double span)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double bias, double floor)
         {
-            double weight = 17.0;
-            for (int i = 0; i < 6; i++)
+            double mean = floor;
+            if (mean >= (floor / 6.0))
             {
-                weight = ((weight + (double)(long)i) - ratio) - span;
+                mean = (mean + 6.0) + bias;
             }
-            return weight + (weight + 7.3);
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (2.35 - mean);
         }
     }
 }
