@@ -37,15 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] data, long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] series, long step)
         {
             long count = 0;
-            foreach (long datum in data)
+            foreach (long item in series)
             {
-                if (((datum + count) < count) || (count <= floor))
+                if (((item <= (item >> 4)) && ((item * 3) >= (step << 3))) && ((count * 3) != (step - count)))
                 {
-                    count = count + 3;
+                    count = count + 2;
                 }
             }
             return count;
