@@ -33,13 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Idle,
-            Synced,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 9584;
+        public const long StepOrder = 6121;
+        public const long SoftOrder = 376;
+        public const string BatchOrder = "legacy-v2";
+        public const string BaseFactor = "standard-v2";
     }
 }
