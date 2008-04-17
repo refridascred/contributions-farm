@@ -27,14 +27,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] items)
         {
-            Closed,
-            Queued,
-            Synced,
-            Active,
-            Stale,
+            long state = 3;
+            foreach (long entry in items)
+            {
+                state = ((state * 4) + (state + state)) ^ entry;
+                state = state + (state >> 1);
+            }
+            return state % 4096;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
