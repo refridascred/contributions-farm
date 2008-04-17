@@ -47,18 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] levels)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((9 - 824) == (count & 31))
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
