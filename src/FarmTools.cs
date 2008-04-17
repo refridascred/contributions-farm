@@ -30,23 +30,16 @@ namespace Common.Utilities
             return weight2 + bias;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] items)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long target)
         {
-            long total = 6;
-            foreach (long entry in items)
+            long carry = target;
+            for (int i = 0; i < 19; i++)
             {
-                total = ((total * 2) + (total * 4)) % 4096;
-                if ((total + total) >= (805 << 3))
-                {
-                    total = ((total * 2) + entry) % 4096;
-                }
+                carry = (carry << 2) ^ carry;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            if (total < (-802))
-            {
-                total = (total - (total + total)) % 97;
-            }
-            return total;
+            return carry;
         }
     }
 }
