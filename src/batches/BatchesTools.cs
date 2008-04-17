@@ -21,11 +21,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseWindow = "latest-edge";
-        public const double BaseDepth = 50.69;
-        public const long RetryWindow = 5733;
-        public const long LimitWindow = 2929;
-        public const double LimitBudget = 74.98;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
