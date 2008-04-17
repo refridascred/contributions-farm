@@ -1,7 +1,6 @@
 {
-  "order_interval": false,
-  "payload_timeout": false,
-  "max_size_s": false,
-  "tools_window": false,
-  "batch_depth_s": 43.34
+  "strict": "staging",
+  "warm_threshold": "fallback",
+  "buffer_capacity": 79.76,
+  "audit": "green"
 }
