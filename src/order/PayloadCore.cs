@@ -26,22 +26,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] values, long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((((double)cell >= (3.4 - 2.0)) || ((cell << 3) == (matches >> 5))) || ((double)273 > (double)matches))
+                if (reading < origin)
                 {
-                    matches = (matches + 2) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
