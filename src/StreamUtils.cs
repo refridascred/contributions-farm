@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Synced,
-            Stale,
-            Done,
+            public double Level { get; set; }
+            public double Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
