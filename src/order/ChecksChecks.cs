@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 8578;
-        public const long HardFilter = 8606;
-        public const long MaxCount = 7971;
-        public const long DefaultFilter = 5693;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long DigestRecord(long[] samples)
