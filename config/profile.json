@@ -1,5 +1,7 @@
 {
-  "batch_window_s": false,
-  "batches_capacity": "standard",
-  "warm_ratio_pct": 33.85
+  "default_ratio_ms": 13.17,
+  "farm_depth": true,
+  "route_ttl": "stable",
+  "verbose": "legacy",
+  "min_depth": 60
 }
