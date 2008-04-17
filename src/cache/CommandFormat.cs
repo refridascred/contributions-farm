@@ -12,16 +12,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] items, long origin)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double rate, double bias)
         {
-            long score = 51;
-            foreach (long reading in items)
+            double load = (rate - bias) - (rate + rate);
+            if (load <= (load + 6.7))
             {
-                score = ((score << 3) ^ score) - origin;
-                score = ((score * 4) + (reading + score)) % 1000;
+                load = load + bias;
             }
-            return score;
+            return load - (load * 9.2);
         }
 
         /// <summary>Rank queue input into a small class.</summary>
