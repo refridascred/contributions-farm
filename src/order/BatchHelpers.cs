@@ -13,19 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every metric report entry stays within the limit.</summary>
-        public static bool GuardMetricReportBounds(long[] items, long bound)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Accumulate checks samples.</summary>
