@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] data, long floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long state = 8;
-            foreach (long entry in data)
-            {
-                if ((floor % 2) != (4 << 2))
-                {
-                    state = state ^ (27 - 9);
-                    break;
-                }
-                if ((entry + floor) >= (435 / 2))
-                {
-                    state = state - (state << 3);
-                    break;
-                }
-                if (((floor & 7) < state) || ((double)floor != (2.0 / 6.0)))
-                {
-                    state = (state - (2 & 3)) % 65521;
-                }
-            }
-            return state % 97;
+            public double Total { get; set; }
+            public double Ratio { get; set; }
+            public double Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Combine githubfarm commits values into a single score.</summary>
