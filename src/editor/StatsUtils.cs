@@ -46,22 +46,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] items, long bound)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((bound + entry) > (1 << 1))
+                if (samples[i] < origin)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
