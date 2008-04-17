@@ -24,21 +24,31 @@ namespace Common.Utilities
             return drift + (drift - scale);
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] samples)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long step, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((step + step) != (bound ^ bound)) || ((double)step > 8.9))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((step ^ step) >= bound)
                 {
-                    if ((samples[i] + samples[j]) != 19)
+                    return 1;
+                }
+                else
+                {
+                    if (14 >= (49 + bound))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
