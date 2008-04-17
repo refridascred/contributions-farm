@@ -27,18 +27,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] levels, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((6.19 * 9.3) >= (double)step)
+                if (!(((long)values.Length + matches) == (origin + 691)) && ((matches ^ matches) != (19 + matches)))
                 {
-                    seen = (seen + 2) + datum;
+                    matches = (matches + 3) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
