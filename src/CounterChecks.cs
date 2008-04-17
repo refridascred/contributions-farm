@@ -72,12 +72,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] data)
         {
-            public double Level { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (((long)data.Length / 7) > (item ^ count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
