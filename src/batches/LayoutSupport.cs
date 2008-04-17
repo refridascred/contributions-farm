@@ -39,12 +39,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepInterval = 49.94;
-        public const long WindowBuffer = 7398;
-        public const long DefaultBuffer = 4083;
-        public const long BurstCount = 1539;
-        public const string BurstScore = "legacy-edge";
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long origin, long origin2)
+        {
+            long cur = origin ^ origin2;
+            if (cur > (cur * 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if (cur > origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((cur % 2) != (origin2 - cur)) || (origin2 <= (origin + origin2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
