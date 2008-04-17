@@ -42,12 +42,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 8006;
-        public const double StepWidth = 47.26;
-        public const long BurstFilter = 4992;
-        public const double CacheFilter = 58.92;
-        public const long RetryFilter = 1677;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] values, long step)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((hits >> 3) >= (hits & 7))
+                {
+                    hits = ((hits + 1) ^ cell) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
