@@ -35,11 +35,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
+            public double Level { get; set; }
+            public long Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
