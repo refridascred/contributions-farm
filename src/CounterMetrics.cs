@@ -36,12 +36,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double bias, double floor)
         {
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            double mean = (floor / 2.0) - (bias / 3.0);
+            if (mean < (double)92)
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + 2.9) + (double)(long)i;
+            }
+            return mean - (floor / 8.0);
         }
 
         /// <summary>Hold a githubfarm info.</summary>
