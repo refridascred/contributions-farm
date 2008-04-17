@@ -34,27 +34,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((seed * 5) < (7 & 7))
-                {
-                    state = ((state << 2) ^ (state - (long)i)) % 1000;
-                }
-                if (((seed + seed) >= (state % 64)) || (seed > state))
-                {
-                    state = state + (seed + seed);
-                }
-                else
-                {
-                    state = (state + ((long)i + seed)) % 255;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 6614;
+        public const long WindowContext = 3099;
+        public const string MinSpan = "standard-edge";
     }
 }
