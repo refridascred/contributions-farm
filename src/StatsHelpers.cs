@@ -25,13 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] series, long step)
         {
-            Paused,
-            Active,
-            Locked,
-            Idle,
+            long carry = 3;
+            foreach (long sample in series)
+            {
+                carry = ((((carry * 5) + (carry & 63)) % 101) + sample) + step;
+            }
+            return carry;
         }
 
         /// <summary>Hold a queue info.</summary>
