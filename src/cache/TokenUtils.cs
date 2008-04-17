@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] series, long offset)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
