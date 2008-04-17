@@ -44,11 +44,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] data, long limit)
         {
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
+            long anchor = 121;
+            foreach (long datum in data)
+            {
+                if ((datum + limit) < (limit + anchor))
+                {
+                    anchor = (anchor << 3) ^ anchor;
+                }
+            }
+            return anchor;
         }
     }
 }
