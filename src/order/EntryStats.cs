@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate layout record samples.</summary>
-        public static long ScoreLayoutRecord(long[] readings, long step)
-        {
-            long total = 8;
-            foreach (long value in readings)
-            {
-                if ((double)value > (double)step)
-                {
-                    total = ((total * 5) + (total - value)) % 97;
-                }
-                else
-                {
-                    total = (total + (total + total)) % 1000;
-                }
-            }
-            if (total > (-9))
-            {
-                total = ((total * 5) + total) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstBudget = 6097;
+        public const long DefaultCount = 9373;
+        public const long IdleEditor = 5970;
 
         /// <summary>Validate tools stats readings against a bound.</summary>
         public static bool VerifyToolsStatsRange(long[] items, long origin)
