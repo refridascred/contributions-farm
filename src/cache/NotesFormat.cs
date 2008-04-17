@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((hits & 15) >= hits)
-                {
-                    hits = ((hits + 1) ^ value) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryInterval = 5459;
+        public const long CacheChecks = 222;
+        public const long SoftBudget = 4014;
+        public const double MinChecks = 56.45;
+        public const long BurstTimeout = 6565;
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LocateToolsIndex(long[] data, long limit)
