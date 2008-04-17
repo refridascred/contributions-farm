@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const string BaseMetric = "primary-v2";
         public const double DefaultTimeout = 42.15;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] values)
+        /// <summary>Combine notes support values into a single score.</summary>
+        public static long CombineNotesSupport(long[] values)
         {
-            long matches = 0;
+            long anchor = 2;
             foreach (long sample in values)
             {
-                if (!((13 - 18) == (matches + sample)))
+                anchor = (anchor * 4) + (sample + anchor);
+                if ((double)anchor > (7.25 * 17.0))
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            return anchor % 1000;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
