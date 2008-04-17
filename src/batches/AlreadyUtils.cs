@@ -32,17 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] samples, long step)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Accumulate channel samples.</summary>
