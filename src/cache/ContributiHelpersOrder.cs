@@ -37,19 +37,12 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double rate, double span)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            double rate2 = (double)(3 + 58);
-            if (rate2 <= (span * 7.3))
-            {
-                rate2 = rate2 - (rate * 3.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 + rate) - (double)(long)i;
-            }
-            return rate2 + (4.2 * 7.26);
+            Closed,
+            Draft,
+            Dropped,
         }
     }
 }
