@@ -58,13 +58,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] items)
         {
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (matches <= (matches ^ cell))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
