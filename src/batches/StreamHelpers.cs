@@ -69,22 +69,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit githubfarm contributi readings against a rule.</summary>
-        public static long TallyGithubfarmContributiOutliers(long[] values)
+        /// <summary>Measure how many stats batch samples are out of range.</summary>
+        public static long AuditStatsBatchOutliers(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((((datum ^ 18) != (hits / 3)) && ((7.29 - 16.0) >= (double)datum)) || ((6 > (datum + hits)) && ((double)datum > (0.91 * 15.0))))
+                if (!(((2.0 * 8.0) > (double)bound) && ((18.0 * 5.56) >= (double)bound)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 1) + entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
