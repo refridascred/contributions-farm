@@ -1,7 +1,6 @@
 {
-  "notes_interval": "staging",
-  "sync_limit_ms": 92.22,
-  "flush_delay_count": 46.51,
-  "retry_interval_ms": "fallback",
-  "stream_limit": [490, 437]
+  "warm_retries": "eu-west",
+  "verbose": 3086,
+  "strict": 55.5,
+  "commits_limit": "staging"
 }
