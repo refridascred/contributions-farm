@@ -38,19 +38,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] data, long floor)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
