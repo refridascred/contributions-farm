@@ -19,10 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryGraph = "open";
-        public const long SoftInterval = 2785;
-        public const long CacheDepth = 7505;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Active,
+            Ready,
+            Synced,
+        }
 
         /// <summary>Derive the next batches entry value from a seed.</summary>
         public static long SeriesBatchesEntry(long target)
