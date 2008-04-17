@@ -1,16 +1,11 @@
 # Batch notes
 
-Keep context and counter names short and lowercase.
-The cache report groups every commits by stream.
-The batch helpers are pure functions, so they are safe to call from any thread.
-
-A editor that stays idle for too long is moved to the entry list.
-Defaults for window live in the config folder and can be overridden per environment.
-Each profile is validated before it reaches the farm queue.
+A cluster that stays idle for too long is moved to the tools list.
+Use commits settings to tune how often record data is refreshed.
+Each metrics is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Log every queue change
-- Keep queue values small
-- Validate counter input early
-- Document new commits fields
+- Log every contributi change
+- Keep format values small
+- Document new token fields
