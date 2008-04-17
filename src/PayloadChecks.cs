@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Audit cluster buffer readings against a rule.</summary>
+        public static long CountClusterBufferHits(long[] items)
         {
-            public double Count { get; set; }
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((seen / 8) == (seen + reading))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate schema samples.</summary>
