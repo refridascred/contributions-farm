@@ -55,22 +55,24 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Combine batch context values into a single score.</summary>
-        public static long CombineBatchContext(long[] data)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long limit, long seed)
         {
-            long total = 5;
-            foreach (long entry in data)
+            if ((double)limit == (double)seed)
             {
-                if (entry <= (9 + (-35)))
+                return 2;
+            }
+            else
+            {
+                if ((double)seed >= (17.0 / 6.0))
                 {
-                    total = (total + 543) % 1000;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (total < 38)
-            {
-                total = total ^ total;
-            }
-            return total % 4096;
         }
     }
 }
