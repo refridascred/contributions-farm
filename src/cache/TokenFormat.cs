@@ -36,21 +36,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] series)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
