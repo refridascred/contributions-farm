@@ -25,12 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Dropped,
+            Synced,
+            Failed,
             Closed,
-            Active,
+            Queued,
+            Done,
         }
     }
 }
