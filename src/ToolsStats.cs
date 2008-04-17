@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] data, long floor)
         {
-            Pending,
-            Done,
-            Paused,
+            long state = 8;
+            foreach (long entry in data)
+            {
+                if ((floor % 2) != (4 << 2))
+                {
+                    state = state ^ (27 - 9);
+                    break;
+                }
+                if ((entry + floor) >= (435 / 2))
+                {
+                    state = state - (state << 3);
+                    break;
+                }
+                if (((floor & 7) < state) || ((double)floor != (2.0 / 6.0)))
+                {
+                    state = (state - (2 & 3)) % 65521;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Accumulate already queue samples.</summary>
