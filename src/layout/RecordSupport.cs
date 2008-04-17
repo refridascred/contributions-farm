@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record support helpers.</summary>
     public static class RecordSupport
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] values, long bound)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] values, long limit)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] < bound)
+                if (values[i] >= limit)
                 {
                     return (long)i;
                 }
