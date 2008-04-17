@@ -20,30 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long bound, long limit)
+        /// <summary>Grade a command schema value against two limits.</summary>
+        public static long GradeCommandSchema(long bound, long limit)
         {
-            long cur = bound - limit;
-            if (!((5.0 / 8.0) != (double)bound))
+            if (!(5.22 < (double)bound))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((cur + 0) > limit)
+                if (!((limit - limit) >= (limit << 3)))
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    if ((6 ^ bound) >= (limit - cur))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 4;
                 }
             }
         }
