@@ -19,13 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] levels)
         {
-            Dropped,
-            Ready,
-            Draft,
-            Failed,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((2.5 + 6.0) <= (double)item)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
