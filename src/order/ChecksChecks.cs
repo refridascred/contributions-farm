@@ -41,19 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate layout batch readings against a bound.</summary>
-        public static bool ValidateLayoutBatchBounds(long[] data, long seed)
+        /// <summary>Count the report cluster entries that pass the check.</summary>
+        public static long MeasureReportClusterGaps(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (sample >= seed)
+                if ((6.7 - 5.52) != (double)floor)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) - entry;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
