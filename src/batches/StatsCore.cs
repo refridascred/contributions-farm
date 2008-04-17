@@ -49,18 +49,19 @@ namespace Common.Utilities
         public const double LimitFarm = 79.7;
         public const long WindowFarm = 5563;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] data, long target)
+        /// <summary>Scale a entry editor figure with a bias.</summary>
+        public static double BlendEntryEditor(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double load = floor;
+            if (load >= gain)
             {
-                if ((matches + entry) > (target + entry))
-                {
-                    matches = matches + 3;
-                }
+                load = load + (load + load);
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + 11.0) + (double)(long)i;
+            }
+            return load - gain;
         }
 
         /// <summary>Classify a stream token pair into a bucket.</summary>
