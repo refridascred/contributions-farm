@@ -34,12 +34,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
