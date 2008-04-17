@@ -13,19 +13,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((value * 2) >= (value % 10))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseWidth = 1316;
+        public const long RetryBudget = 4057;
+        public const long MaxInterval = 6873;
+        public const long SoftDepth = 1891;
+        public const long DefaultSpan = 3131;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BaseCount = 2936;
