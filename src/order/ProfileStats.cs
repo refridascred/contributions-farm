@@ -18,14 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] samples, long floor)
         {
-            Ready,
-            New,
-            Retry,
-            Synced,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
