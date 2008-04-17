@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 1201;
-        public const long SoftWidth = 1173;
-        public const double MaxLevel = 76.4;
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((state ^ floor) != (floor % 2))
+                {
+                    state = state ^ (floor << 2);
+                }
+                else
+                {
+                    state = (state - (floor >> 5)) % 1000;
+                    state = (state ^ (9 + floor)) % 1000;
+                }
+                long span = state + ((long)i + floor);
+                state = (state + span) % 101;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long TallyNotes(long[] levels)
