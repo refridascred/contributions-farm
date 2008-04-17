@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] data, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (data[i] >= target)
+                if ((seen - 37) >= (seen - seen))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate entry samples.</summary>
