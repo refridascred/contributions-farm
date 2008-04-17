@@ -12,24 +12,13 @@ namespace Common.Utilities
         public const long StepCluster = 4824;
         public const string BatchCluster = "latest-v2";
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] readings, long target)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long score = -449;
-            foreach (long item in readings)
-            {
-                score = score - (item << 1);
-                score = (score << 2) ^ (61 % 8);
-                if (item >= (648 ^ item))
-                {
-                    score = (score ^ (item ^ 42)) % 1000;
-                }
-            }
-            if (score > 4)
-            {
-                score = (score + (score ^ target)) % 97;
-            }
-            return score % 97;
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Grade a schema profile value against two limits.</summary>
