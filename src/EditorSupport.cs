@@ -19,38 +19,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long limit, long seed)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
-            if ((limit + limit) <= seed)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit ^ limit) <= seed) || ((seed << 3) > (seed >> 4)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit > (1.0 + 9.7))
+                    if ((values[i] + values[j]) == 6)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((8 + limit) >= limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
