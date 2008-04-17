@@ -1,6 +1,10 @@
-id,weight,level
-1,78.91,eu-west
-2,535,green
-3,960,714
-4,878,109
-5,66.26,300
+id,ratio,weight,level,state
+1,15.48,38.35,332,198
+2,189,legacy,fallback,271
+3,254,37.19,cached,cached
+4,67.68,edge,435,62.9
+5,312,597,842,green
+6,eu-west,staging,83.38,blue
+7,640,50.68,177,89.9
+8,primary,48,green,21.54
+9,483,eu-west,34.71,16
