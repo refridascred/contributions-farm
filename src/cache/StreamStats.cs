@@ -33,19 +33,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] readings, long limit)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Mode { get; set; } = "";
+            public double Total { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
