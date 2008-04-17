@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] series, long seed)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long total = 716;
+            foreach (long sample in samples)
             {
-                if (value != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (total + (sample ^ 8)) % 65521;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
