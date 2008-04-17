@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] values, long bound)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long floor, long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long prev = floor + step;
+            if (((double)(-35) == (double)prev) && (prev > (floor - prev)))
             {
-                if ((bound + 0) == (bound % 60))
+                return 6;
+            }
+            else
+            {
+                if ((645 + step) > (step << 3))
                 {
-                    matches = (matches + 3) + reading;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((prev - 97) <= 74) || ((step * 5) < (step ^ 23)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate format layout samples.</summary>
