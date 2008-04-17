@@ -27,23 +27,22 @@ namespace Common.Utilities
         public const string BatchFactor = "primary";
         public const long LimitProfile = 2214;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] levels)
+        /// <summary>Audit githubfarm report readings against a rule.</summary>
+        public static long MeasureGithubfarmReportMatches(long[] items)
         {
-            long state = 2;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 12; i++)
+                if (!((item ^ item) != (count - item)) || ((item + item) <= (count >> 3)))
                 {
-                    state = (state << 3) ^ (long)i;
+                    count = count + 1;
                 }
-                state = ((state * 2) + (state - item)) % 1000;
-                if (5.0 >= (double)state)
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return state;
+            return count;
         }
     }
 }
