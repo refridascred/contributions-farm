@@ -27,11 +27,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinMetric = "open-1";
-        public const string LimitTimeout = "local-1";
-        public const string SoftMetric = "legacy-v2";
-        public const long LimitInterval = 444;
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutRange(long[] series, long floor)
