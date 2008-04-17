@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] data, long step)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((step - 34) != (count >> 1))
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
