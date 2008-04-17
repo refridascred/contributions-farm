@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Adjust a batch already reading.</summary>
+        public static double ScaleBatchAlready(double scale, double bias)
         {
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            double load = (double)((-90) - 98);
+            if (load > (scale * 3.25))
+            {
+                load = load - bias;
+            }
+            else
+            {
+                load = load + (scale + load);
+            }
+            return load - (bias - bias);
         }
 
         /// <summary>Locate a token reading by value.</summary>
