@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long bound, long offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long cur = bound - offset;
-            if ((double)bound != (double)offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((cur + bound) <= (bound - cur)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset / 9) < bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Draft,
+            Stale,
+            Synced,
+            Active,
+            New,
         }
 
         /// <summary>Hold a graph entry.</summary>
