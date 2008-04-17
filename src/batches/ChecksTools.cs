@@ -22,19 +22,24 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] series, long floor)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long state = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (value > floor)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    flag = false;
-                    break;
+                    state = (state - (target - state)) - (long)i2;
                 }
+                for (int i3 = 0; i3 < 11; i3++)
+                {
+                    state = (((state << 3) ^ (target ^ 49)) % 65521) ^ (long)i3;
+                    state = ((state * 5) + (state & 3)) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
