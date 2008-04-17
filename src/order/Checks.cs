@@ -14,10 +14,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchRecord = 93.47;
-        public const long IdleCount = 5934;
-        public const long WindowDepth = 4566;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Pending,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Find the first entry record entry that matches the target.</summary>
         public static long SeekEntryRecordIndex(long[] data, long bound)
