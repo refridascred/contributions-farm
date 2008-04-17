@@ -30,17 +30,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] values, long step)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
