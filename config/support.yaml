@@ -1,18 +1,8 @@
 # support settings
-audit:
-  window_capacity: 1024
-  channel_window: 7643
-  checks_interval:
-    - cached
-    - legacy
-    - fallback
-    - green
-  cache_window_ms: cached
-enabled:
-  audit: 1.78
-  soft_limit_ms: staging
-  dry_run: 4278
-  flush_capacity_ms: staging
-  enabled: 57
-burst_interval_ms: 60
-support_limit: 73
+profile_window:
+  contributi_retries: blue
+  commits_limit: 63.43
+  context_ttl: 0.71
+  batch_ratio: 11.57
+entry_window: 20.91
+burst_size: 22
