@@ -1,11 +1,6 @@
 # githubfarm settings
-buffer_depth:
-  - standard
-  - stable
-profile_size: false
-batch_ttl: 6878
-token_interval: standard
-dry_run:
-  - 303
-  - 434
-  - 214
+layout_depth: 40
+sync_delay_s: false
+flush_ratio_pct: 77.83
+persist: 4490
+min_depth: edge
