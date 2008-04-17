@@ -20,17 +20,11 @@ namespace Common.Utilities
             return ratio2 - span;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = (carry - (carry + 1)) % 4096;
-                carry = carry + ((long)i - carry);
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
