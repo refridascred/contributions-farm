@@ -36,15 +36,15 @@ namespace Common.Utilities
             return (mean + weight) + floor;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double bias, double offset)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long target)
         {
-            double rate = offset;
-            for (int i = 0; i < 5; i++)
+            long mark = target;
+            for (int i = 0; i < 17; i++)
             {
-                rate = (rate + bias) + (double)(long)i;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return rate - (double)(-61);
+            return mark;
         }
     }
 }
