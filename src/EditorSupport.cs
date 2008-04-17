@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] series, long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (reading >= step)
+                if (reading > step)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
