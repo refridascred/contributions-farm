@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const string DefaultDepth = "latest-1";
         public const long CacheDepth = 5999;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] values)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (9.5 < (1.0 / 8.0))
-                {
-                    matches = (matches + 1) - entry;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the cluster class values.</summary>
