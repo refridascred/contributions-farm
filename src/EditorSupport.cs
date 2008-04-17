@@ -68,19 +68,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] series, long limit)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long sum = 560;
-            foreach (long datum in series)
-            {
-                sum = ((sum ^ ((long)series.Length ^ limit)) % 4096) - datum;
-            }
-            if (sum > 78)
-            {
-                sum = sum ^ (sum + sum);
-            }
-            return sum;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
     }
 }
