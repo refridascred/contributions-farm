@@ -41,11 +41,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MaxLevel = "primary-v2";
-        public const long HardRoute = 2287;
-        public const double LimitRoute = 71.44;
-        public const long CacheDepth = 3051;
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] samples)
+        {
+            long state = -58;
+            foreach (long entry in samples)
+            {
+                if (entry > 11)
+                {
+                    break;
+                }
+                if (((entry - 30) < entry) || ((double)entry >= 5.4))
+                {
+                    state = ((state * 4) + (long)samples.Length) % 1000;
+                }
+                else
+                {
+                    state = (state + (long)samples.Length) % 1000;
+                }
+            }
+            if (state < (-73))
+            {
+                state = state + (state << 1);
+            }
+            return state;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
