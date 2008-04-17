@@ -34,18 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] levels, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] samples)
         {
-            long mark = -9;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((4.6 + 16.0) < (double)mark)
+                if ((21 << 2) <= item)
                 {
-                    mark = ((mark * 4) + value) - limit;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
