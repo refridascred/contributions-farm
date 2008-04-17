@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] values)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (((double)cell != (8.3 / 2.0)) && ((count + (long)data.Length) > count))
+                if (5.9 >= (double)matches)
                 {
-                    count = count + 1;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the route state values.</summary>
