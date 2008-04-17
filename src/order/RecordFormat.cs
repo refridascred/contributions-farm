@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the entry editor series from a seed.</summary>
-        public static long DeriveEntryEditor(long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] levels, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 14; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if (entry <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
