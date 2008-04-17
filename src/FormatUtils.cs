@@ -47,18 +47,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsGaps(long[] samples, long step)
+        /// <summary>Compare every pair of metric schema readings.</summary>
+        public static long MatchMetricSchemaCount(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (7 >= (hits << 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = ((hits + 1) + entry) + step;
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Match up batch samples.</summary>
