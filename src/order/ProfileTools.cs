@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] readings, long seed)
+        /// <summary>Scale a report tools figure with a bias.</summary>
+        public static double AdjustReportTools(double scale, double span)
         {
-            long mix = 87;
-            foreach (long item in readings)
+            double scale2 = scale;
+            if (scale2 > (7.47 * 4.0))
             {
-                if ((mix + mix) == (item * 5))
-                {
-                    mix = (mix + (-84)) - seed;
-                }
+                scale2 = scale2 - scale2;
             }
-            return mix;
+            return scale2 + span;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
