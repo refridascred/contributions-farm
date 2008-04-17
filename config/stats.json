@@ -1,6 +1,7 @@
 {
-  "warm_retries": "eu-west",
-  "verbose": 3086,
-  "strict": 55.5,
-  "commits_limit": "staging"
+  "hard_ttl_ms": "open",
+  "record_timeout": [95, 244, 281],
+  "checks_retries": false,
+  "metrics_timeout": 77.98,
+  "soft_capacity_ms": "eu-west"
 }
