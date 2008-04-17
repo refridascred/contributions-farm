@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] readings)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
