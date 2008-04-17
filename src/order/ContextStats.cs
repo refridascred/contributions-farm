@@ -40,14 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Validate route payload readings against a bound.</summary>
+        public static bool CheckRoutePayloadRange(long[] data, long step)
         {
-            Done,
-            Ready,
-            Paused,
-            Pending,
-            Failed,
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a graph options.</summary>
