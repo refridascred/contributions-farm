@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 6622;
         public const string SoftDepth = "standard-1";
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] readings, long step)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= step) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a tools record.</summary>
