@@ -45,19 +45,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] samples, long origin)
-        {
-            long acc = 4;
-            foreach (long entry in samples)
-            {
-                if ((double)entry <= (double)origin)
-                {
-                    acc = ((acc * 2) + acc) % 4096;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 4466;
+        public const long RetryTimeout = 1306;
+        public const string DefaultTimeout = "primary";
+        public const long BaseDepth = 9589;
 
         /// <summary>Count order metrics pairs that satisfy a relation.</summary>
         public static long MatchOrderMetricsCount(long[] readings)
