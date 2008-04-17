@@ -20,18 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 5250;
+        public const string SoftLevel = "local-1";
+        public const double LimitEntry = 64.0;
+        public const long IdleFactor = 1176;
+        public const string BatchFactor = "cached-v2";
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long LocateCacheIndex(long[] values, long bound)
