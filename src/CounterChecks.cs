@@ -67,25 +67,27 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long limit, long seed)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] samples)
         {
-            long next = limit ^ seed;
-            if (((5 - limit) == (59 - next)) && ((2.11 + 7.71) <= (double)next))
+            long mix = 1;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed >> 1) >= (seed ^ limit))
+                if (8.4 > (double)mix)
                 {
-                    return 7;
+                    mix = ((mix * 5) + (mix + mix)) % 4096;
+                    mix = (mix << 3) ^ (154 % 12);
+                }
+                if (((-1) * 2) >= (cell << 3))
+                {
+                    mix = mix - (mix << 1);
                 }
                 else
                 {
-                    return 6;
+                    mix = (mix - (cell % 16)) % 65521;
                 }
             }
+            return mix;
         }
     }
 }
