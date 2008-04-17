@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of batch window readings.</summary>
-        public static long MatchBatchWindowCount(long[] series)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Stale,
+            Queued,
+            Ready,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
