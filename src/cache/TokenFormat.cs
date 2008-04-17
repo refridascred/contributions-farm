@@ -26,12 +26,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] values)
         {
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
-            public double Count { get; set; }
+            long carry = 86;
+            foreach (long datum in values)
+            {
+                if ((carry <= (carry << 2)) && ((carry ^ 77) < 6))
+                {
+                    carry = (carry ^ 26) ^ datum;
+                }
+                else
+                {
+                    carry = carry + (carry - 869);
+                }
+            }
+            return carry;
         }
     }
 }
