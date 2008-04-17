@@ -31,18 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] series, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] items, long seed)
         {
-            long carry = 55;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((897 + 5) >= carry)
+                if ((double)hits >= 1.0)
                 {
-                    carry = ((carry + (carry & 1)) - datum) - floor;
+                    hits = ((hits + 1) + entry) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return carry % 97;
+            return hits;
         }
     }
 }
