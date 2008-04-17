@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long offset, long bound)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double rate, double bias)
         {
-            if ((13.0 - 3.0) <= (double)bound)
+            double weight = (double)(0 + 86);
+            if (weight < (9.4 + 7.41))
             {
-                return 6;
+                weight = (weight + bias) - rate;
             }
-            else
-            {
-                if (offset > (offset >> 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound != (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return weight - (double)97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
