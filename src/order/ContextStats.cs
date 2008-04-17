@@ -52,21 +52,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up tools notes samples.</summary>
-        public static long MatchToolsNotesCount(long[] data)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (levels[i] < offset)
                 {
-                    if ((data[i] + data[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
