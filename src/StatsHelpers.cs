@@ -16,18 +16,13 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Count the window commits entries that pass the check.</summary>
-        public static long AuditWindowCommitsOutliers(long[] values, long offset)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (offset > (entry ^ seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Stale,
+            Active,
+            Closed,
+            Done,
         }
 
         /// <summary>Accumulate notes samples.</summary>
