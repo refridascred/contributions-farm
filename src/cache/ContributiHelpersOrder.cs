@@ -38,17 +38,21 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Look up the position of a githubfarm schema sample.</summary>
-        public static long LocateGithubfarmSchemaIndex(long[] samples, long seed)
+        /// <summary>Count token entry pairs that satisfy a relation.</summary>
+        public static long PairTokenEntryCount(long[] samples)
         {
+            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] >= seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
