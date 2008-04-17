@@ -16,20 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of tools window entries.</summary>
-        public static long ScoreToolsWindow(long[] levels, long floor)
-        {
-            long carry = -189;
-            foreach (long reading in levels)
-            {
-                carry = (((carry * 3) + (2 + 33)) % 97) + reading;
-            }
-            if (carry > 47)
-            {
-                carry = (carry - (floor - 104)) % 255;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseDepth = 5555;
+        public const long CacheBudget = 6380;
+        public const double BaseStats = 88.06;
+        public const long CacheLevel = 8417;
 
         /// <summary>Measure how many command account samples are out of range.</summary>
         public static long MeasureCommandAccountHits(long[] levels)
