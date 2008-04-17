@@ -28,12 +28,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public bool Token { get; set; }
-            public double Total { get; set; }
-            public double Label { get; set; }
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
