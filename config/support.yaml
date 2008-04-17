@@ -1,9 +1,40 @@
 # support settings
-verbose: 7802
-poll_delay: blue
-report_interval: 250
-base_timeout:
-  - stable
-  - edge
-  - green
-metric_window: latest
+layout_retries: 39.43
+stats_size: fallback
+sync_interval_s: true
+cache_depth:
+  verbose:
+    - standard
+    - cached
+    - primary
+    - blue
+  flush_delay:
+    - legacy
+    - primary
+    - staging
+    - strict
+  sync_capacity: false
+  checks_interval:
+    enabled: 9503
+    base_delay: stable
+    base_timeout_ms: latest
+    batch_retries_ms: local
+    flush_interval_ms: 30
+  poll_capacity_pct: 1024
+soft_interval_ms: 74
+burst_size:
+  sync_window_count: 500
+  channel_ttl: 8622
+  hard_window_s:
+    token_limit: primary
+    verbose: true
+    filter_retries: 40
+    tools_capacity: 3286
+    min_ratio_count: 100
+    min_threshold: 1842
+  stream_retries:
+    - 160
+    - 9
+    - 421
+    - 167
+  poll_retries_ms: 36.35
