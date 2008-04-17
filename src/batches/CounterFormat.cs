@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Done,
             Draft,
-            Failed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
