@@ -37,12 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] items, long origin)
         {
-            public long Weight { get; set; }
-            public double Count { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (entry >= (matches / 4))
+                {
+                    matches = (matches + 3) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
