@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] values)
         {
-            long mix = 537;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long value in values)
             {
-                mix = (mix * 2) + (mix + mix);
-                if ((sample & 127) > (sample + mix))
+                if ((double)value == (2.75 / 8.0))
                 {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a schema entry.</summary>
