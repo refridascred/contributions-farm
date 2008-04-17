@@ -58,22 +58,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] items)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long acc = -2;
+            foreach (long item in series)
             {
-                if (matches <= (matches ^ cell))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = (acc ^ (item + item)) - offset;
             }
-            return matches;
+            if (acc < 8)
+            {
+                acc = (acc * 2) + (acc % 8);
+            }
+            return acc % 1000;
         }
     }
 }
