@@ -16,12 +16,40 @@ namespace Common.Utilities
             return bias - (double)230;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string HardBuffer = "staging-edge";
-        public const long MinBudget = 5297;
-        public const string IdleBuffer = "stable-edge";
-        public const long HardSize = 2355;
-        public const long BatchBudget = 3863;
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long target, long limit)
+        {
+            long next = target + limit;
+            if (((limit / 4) >= limit) && ((limit / 5) <= (target - 75)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)target == (5.1 - 3.0)) || ((16.0 + 0.11) != (double)next))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit * 5) < 814)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit > (232 + 570))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long LookupSchemaIndex(long[] samples, long origin)
