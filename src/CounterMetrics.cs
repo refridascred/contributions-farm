@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next queue stats value from a seed.</summary>
-        public static long RollQueueStats(long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] items, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                mark = (mark ^ (mark ^ (long)i)) % 255;
-                mark = ((mark * 2) + (long)i) % 65521;
+                if ((step << 3) <= (entry % 60))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
