@@ -20,14 +20,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] series, long floor)
         {
-            Synced,
-            Retry,
-            Ready,
-            Failed,
-            New,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (sample < (sample + 54))
+                {
+                    tally = (tally + 2) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
