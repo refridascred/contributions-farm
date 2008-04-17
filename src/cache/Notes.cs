@@ -25,31 +25,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] items, long target)
+        /// <summary>Audit counter layout readings against a rule.</summary>
+        public static long TallyCounterLayoutMatches(long[] values, long target)
         {
-            long total = 39;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((total & 3) >= (datum & 7))
+                if ((7.6 + 6.73) <= (double)tally)
                 {
-                    total = (total + (total - total)) % 255;
-                    break;
-                }
-                if (((datum << 3) <= target) && ((datum - target) <= (total / 9)))
-                {
-                    total = (total - 520) % 65521;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total - total)) % 4096;
-                }
-                if (datum < (datum + target))
-                {
-                    total = total ^ (target + datum);
+                    tally = ((tally + 2) - entry) - target;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
