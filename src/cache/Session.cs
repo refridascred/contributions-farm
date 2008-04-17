@@ -30,15 +30,23 @@ namespace Common.Utilities
             return weight + (weight * 6.0);
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long target)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double gain, double floor)
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
+            double load = floor;
+            if (load > (double)873)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                load = load + (gain / 2.0);
             }
-            return sum;
+            else
+            {
+                load = load - (load / 9.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - gain;
         }
 
         /// <summary>Describe the session class values.</summary>
