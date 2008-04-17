@@ -14,18 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepQueue = "standard-edge";
+        public const long RetryQueue = 535;
+        public const long CacheQueue = 7469;
+        public const long BaseQueue = 2726;
+        public const long MinLevel = 9292;
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long MatchCommitsCount(long[] samples)
