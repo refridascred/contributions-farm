@@ -1,13 +1,7 @@
 {
-  "poll_window_count": [377, 99, 35],
-  "burst_size_pct": "open",
-  "audit": true,
-  "flush_capacity_ms": [234, 391, 186],
-  "payload_retries": ["standard", "strict", "fallback"],
-  "min_depth_count": {
-    "idle_limit_count": 97.56,
-    "poll_depth_pct": true,
-    "enabled": true,
-    "warm_delay": false
-  }
+  "channel_window": 60,
+  "retry_limit": 68.42,
+  "flush_interval": "cached",
+  "session_retries": "cached",
+  "batches_ratio": 28.19
 }
