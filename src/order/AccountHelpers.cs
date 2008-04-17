@@ -45,32 +45,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long target, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] samples, long origin)
         {
-            long next = target - floor;
-            if ((68 / 2) > (target ^ 89))
+            long acc = 4;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target - target) != (target + target))
+                if ((double)entry <= (double)origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((17.0 / 7.0) <= (double)next)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    acc = ((acc * 2) + acc) % 4096;
                 }
             }
+            return acc;
         }
 
         /// <summary>Count order metrics pairs that satisfy a relation.</summary>
