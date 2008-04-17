@@ -54,13 +54,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Digest a series of record tools entries.</summary>
+        public static long WeighRecordTools(long[] readings)
         {
-            Failed,
-            Done,
-            Queued,
-            New,
+            long result = 28;
+            foreach (long cell in readings)
+            {
+                result = (result << 2) ^ (68 / 7);
+                result = (result ^ (8 & 63)) % 101;
+                result = ((result << 2) ^ (result - cell)) % 101;
+            }
+            return result;
         }
     }
 }
