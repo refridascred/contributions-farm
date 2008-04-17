@@ -57,21 +57,29 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of support commits readings.</summary>
-        public static long PairSupportCommitsCount(long[] levels)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((long)i - limit) < (675 << 2))
                 {
-                    if ((levels[i] ^ levels[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = result - limit;
+                    result = result + (result - (-53));
                 }
+                if (!((17.0 * 12.0) < (double)result))
+                {
+                    result = ((result << 3) ^ ((long)i * 5)) % 4096;
+                }
+                else
+                {
+                    result = (result << 3) ^ (result - limit);
+                }
+                result = (result << 2) ^ result;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
     }
 }
