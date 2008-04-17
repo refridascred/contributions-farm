@@ -1,18 +1,12 @@
 # support settings
-token_delay: strict
-verbose:
-  - 127
-  - 154
-  - 144
-  - 500
-max_limit: edge
-max_threshold_count: true
-base_size_s:
-  batch_delay_count:
-    - open
-    - legacy
-  warm_depth_count: 66
-  compress:
-    - 326
-    - 150
-    - 454
+farm_ratio: 3176
+retry_capacity_pct:
+  already_interval:
+    - stable
+    - strict
+  report_timeout: strict
+  default_threshold_count: stable
+  soft_depth: edge
+  soft_timeout_pct: 26.15
+idle_depth: fallback
+audit: false
