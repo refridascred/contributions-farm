@@ -21,17 +21,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a filter support counter forward.</summary>
-        public static long SeriesFilterSupport(long step)
+        /// <summary>Measure how many editor already samples are out of range.</summary>
+        public static long TallyEditorAlreadyHits(long[] items, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                mark = (mark - mark) % 1000;
-                mark = mark - ((long)i >> 3);
-                mark = ((mark * 3) + (long)i) % 1000;
+                if ((value + floor) <= floor)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
