@@ -1,7 +1,10 @@
 # entry settings
-sync_ttl:
+checks_size:
+  - blue
+  - fallback
+sync_interval_pct: 59.99
+soft_retries:
   - strict
-  - edge
-  - open
-soft_ratio: 21
-compress: false
+  - local
+  - blue
+  - staging
