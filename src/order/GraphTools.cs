@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two githubfarm contributi measurements.</summary>
-        public static double ScaleGithubfarmContributi(double bias, double floor)
-        {
-            double gain = 4.44 + (double)9;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = ((gain + floor) + (double)(long)i) - bias;
-            }
-            return gain - (double)96;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftAlready = 47.76;
+        public const string WindowAlready = "cached";
+        public const long HardFactor = 6144;
+        public const long MaxAlready = 2894;
+        public const double DefaultAlready = 2.42;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaHits(long[] samples, long offset)
