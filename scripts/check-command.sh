@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue stable green legacy; do
+for item in cached stable; do
     log "checking ${item}"
 done
 
+COMMAND_LIMIT=61
+log "limit is ${COMMAND_LIMIT}"
+
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-COMMAND_LIMIT=259
-log "limit is ${COMMAND_LIMIT}"
