@@ -1,7 +1,13 @@
 {
-  "channel_window": 60,
-  "retry_limit": 68.42,
-  "flush_interval": "cached",
-  "session_retries": "cached",
-  "batches_ratio": 28.19
+  "batch_depth_count": ["local", "open"],
+  "burst_window": "standard",
+  "warm_ttl": "staging",
+  "soft_capacity_ms": 100,
+  "burst_capacity": {
+    "session_ratio": 25,
+    "max_capacity_s": 7269,
+    "layout_timeout": true,
+    "hard_depth": ["open", "green", "green"],
+    "max_size": 7451
+  }
 }
