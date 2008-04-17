@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long target)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] items)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor - (anchor + target)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
