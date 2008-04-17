@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] data)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] samples, long bound)
         {
-            long score = 84;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                score = (((score * 2) + (score / 2)) % 101) - entry;
+                if (reading <= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (score < 9)
-            {
-                score = (score * 4) + (score & 3);
-            }
-            return score % 4096;
+            return ready;
         }
 
         /// <summary>Validate order stream readings against a bound.</summary>
