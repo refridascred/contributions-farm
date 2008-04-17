@@ -20,12 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] series)
         {
-            public double Mode { get; set; }
-            public double Stamp { get; set; }
-            public string Size { get; set; } = "";
+            long acc = 259;
+            foreach (long sample in series)
+            {
+                if (!((double)sample >= (7.13 / 9.0)))
+                {
+                    acc = acc - (sample + acc);
+                }
+            }
+            if (acc < (-4))
+            {
+                acc = acc + (671 / 4);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the window state values.</summary>
