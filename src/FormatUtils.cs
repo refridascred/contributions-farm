@@ -17,22 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] levels, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] data)
         {
-            long state = 75;
-            foreach (long datum in levels)
+            long sum = 584;
+            foreach (long reading in data)
             {
-                if ((state * 4) != (49 - datum))
+                if ((sum + sum) >= reading)
                 {
-                    state = (state ^ (42 >> 1)) % 255;
+                    sum = (sum ^ (sum - reading)) % 101;
                 }
             }
-            if (state < 672)
-            {
-                state = ((state << 2) ^ (seed << 3)) % 97;
-            }
-            return state % 97;
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
