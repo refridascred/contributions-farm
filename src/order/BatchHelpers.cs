@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double ratio, double span)
-        {
-            double ratio2 = span;
-            if (ratio2 < (0.2 / 6.0))
-            {
-                ratio2 = (ratio2 - (double)74) - ratio;
-            }
-            else
-            {
-                ratio2 = ratio2 - (double)(-7);
-            }
-            return ratio2 - span;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxSize = 8348;
+        public const double WindowCount = 12.05;
+        public const long DefaultBuffer = 7252;
+        public const double CacheBuffer = 43.58;
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
