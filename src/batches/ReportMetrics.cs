@@ -24,21 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] values)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = 0.2;
+            if (mean <= ratio)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean + (double)95) + offset;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (ratio + ratio)) + (double)(long)i;
+            }
+            return mean + (ratio / 6.0);
         }
     }
 }
