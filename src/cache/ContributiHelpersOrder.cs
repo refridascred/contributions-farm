@@ -5,12 +5,29 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long seed)
         {
-            Closed,
-            Queued,
-            Retry,
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                long cur = (seed << 3) << 2;
+                if (((long)i - (long)i) != (cur / 9))
+                {
+                    cur = (cur * 2) + (seed * 4);
+                    mix = mix - (long)i;
+                }
+                else
+                {
+                    cur = ((cur << 2) ^ (long)i) % 97;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mix = (mix ^ (seed + seed)) + (long)i2;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a profile record.</summary>
