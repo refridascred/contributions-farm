@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long target)
+        /// <summary>Digest a series of record stream entries.</summary>
+        public static long DigestRecordStream(long[] data, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
+            long acc = 9;
+            foreach (long item in data)
             {
-                if ((4 + total) < (total % 64))
+                if ((item - item) == (acc % 8))
                 {
-                    total = (total - (target + target)) % 255;
-                    total = (total ^ ((long)i << 2)) % 255;
+                    acc = (acc * 3) + (acc + limit);
                 }
-                total = ((total * 2) + target) % 1000;
-                total = ((total * 5) + (long)i) % 101;
+                else
+                {
+                    acc = (acc - (limit * 2)) % 97;
+                }
             }
-            return total;
+            if (acc > 4)
+            {
+                acc = (acc - (acc * 3)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Adjust a metric reading.</summary>
