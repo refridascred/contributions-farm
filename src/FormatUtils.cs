@@ -20,24 +20,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] samples)
         {
-            long total = 412;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                total = (total ^ (total >> 4)) % 4096;
-                total = (total + (29 * 5)) % 4096;
-                if (!((reading - 63) < total))
+                if ((cell & 7) <= cell)
                 {
-                    total = (total - (total % 16)) % 1000;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (total < 117)
-            {
-                total = total ^ (total << 2);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a tools summary.</summary>
