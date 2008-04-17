@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=265
+BUFFER_LIMIT=254
 log "limit is ${BUFFER_LIMIT}"
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 2))
+for item in staging latest open strict; do
+    log "checking ${item}"
 done
-log "total ${total}"
