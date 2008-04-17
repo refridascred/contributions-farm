@@ -1,8 +1,11 @@
 {
-  "min_threshold_count": true,
-  "warm_timeout_count": false,
-  "strict": 500,
-  "flush_depth": false,
-  "burst_limit": "standard",
-  "batch_window": 16.03
+  "sync_interval_s": 60,
+  "queue_threshold": [207, 117, 36],
+  "strict": {
+    "burst_depth_count": "fallback",
+    "idle_ratio_ms": 30,
+    "batch_capacity": false,
+    "flush_capacity_s": 30
+  },
+  "entry_window": 250
 }
