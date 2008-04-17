@@ -26,10 +26,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 8210;
-        public const long SoftReport = 1615;
-        public const long MaxReport = 3036;
-        public const string BaseFactor = "stable";
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] readings, long target)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((target - item) == (tally - tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
