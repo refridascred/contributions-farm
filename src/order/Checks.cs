@@ -48,18 +48,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit metrics stats readings against a rule.</summary>
-        public static long AuditMetricsStatsMatches(long[] levels)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen ^ reading) < (long)levels.Length)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Failed,
+            Done,
+            Queued,
+            New,
         }
     }
 }
