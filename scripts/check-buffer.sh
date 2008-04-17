@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=462
+log "limit is ${BUFFER_LIMIT}"
+
+for item in open strict; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 4))
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
