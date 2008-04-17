@@ -19,13 +19,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            Draft,
+            Stale,
+            Pending,
+            Idle,
+            Failed,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
