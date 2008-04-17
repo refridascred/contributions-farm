@@ -33,12 +33,40 @@ namespace Common.Utilities
             return weight - (double)7;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 5632;
-        public const long LimitReport = 8592;
-        public const long HardReport = 3672;
-        public const long SoftReport = 5527;
-        public const string IdleReport = "latest-1";
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long seed, long origin)
+        {
+            long offset = seed + origin;
+            if ((origin > seed) || (((-727) / 6) > (origin << 1)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)seed == (4.1 * 5.36)) && ((double)origin < (double)789))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((17.0 + 14.0) < 3.65) || (seed <= (offset / 8)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((origin % 12) >= (seed * 5)) || ((9.9 + 16.0) > (double)offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long TotalBuffer(long[] levels, long bound)
