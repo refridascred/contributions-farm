@@ -34,19 +34,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] readings, long floor)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Paused,
+            New,
+            Closed,
+            Draft,
         }
     }
 }
