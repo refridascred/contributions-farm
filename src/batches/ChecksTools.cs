@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double rate, double bias)
         {
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            double bias2 = (double)1 / 7.0;
+            if (bias2 > (bias2 / 7.0))
+            {
+                bias2 = (bias2 + rate) + bias;
+            }
+            else
+            {
+                bias2 = bias2 + rate;
+            }
+            return bias2 + 9.15;
         }
 
         /// <summary>Define route limits and defaults.</summary>
