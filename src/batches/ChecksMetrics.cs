@@ -68,15 +68,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the queue schema series from a seed.</summary>
-        public static long RollQueueSchema(long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] values)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if ((3 << 1) >= (datum % 7))
+                {
+                    matches = matches + 3;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a buffer options.</summary>
