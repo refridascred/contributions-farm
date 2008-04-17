@@ -33,12 +33,20 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string SoftAccount = "staging";
-        public const long HardAccount = 9627;
-        public const string LimitAccount = "legacy-edge";
-        public const double LimitBudget = 64.53;
-        public const long IdleBudget = 303;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] data)
+        {
+            long acc = 129;
+            foreach (long datum in data)
+            {
+                acc = ((acc * 5) + datum) % 65521;
+            }
+            if (acc < 798)
+            {
+                acc = (acc << 3) ^ (acc >> 2);
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TotalChecks(long[] items)
