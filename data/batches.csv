@@ -1,6 +1,11 @@
-id,level,owner,state,active
-1,554,413,cached,cached
-2,open,69.95,latest,green
-3,562,strict,730,600
-4,29.92,82.76,legacy,legacy
-5,176,eu-west,green,27.84
+id,active,ratio
+1,staging,48.05
+2,local,blue
+3,64.3,502
+4,80.83,strict
+5,stable,959
+6,strict,686
+7,66,eu-west
+8,560,88.04
+9,888,145
+10,168,752
