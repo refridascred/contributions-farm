@@ -1,7 +1,14 @@
 # entry settings
-min_interval_pct:
-  - 336
-  - 98
-  - 296
-hard_ratio: fallback
-min_window_ms: staging
+min_delay:
+  format_delay:
+    - green
+    - strict
+    - latest
+    - green
+  base_interval_pct: blue
+  strict: 60
+metrics_ratio: true
+hard_interval_pct: 7642
+batch_ratio: latest
+compress: 7058
+flush_ratio_pct: false
