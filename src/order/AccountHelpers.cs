@@ -41,21 +41,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
