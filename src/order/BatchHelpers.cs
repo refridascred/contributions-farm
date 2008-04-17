@@ -18,12 +18,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstBuffer = "latest-1";
-        public const string BatchSize = "standard";
-        public const string CacheLevel = "local";
-        public const string BatchBuffer = "primary-edge";
-        public const long CacheBuffer = 538;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long offset, long seed)
+        {
+            long prev = offset ^ seed;
+            if (((prev + seed) <= seed) && ((3.7 / 6.0) != (double)offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((615 + 99) > (prev + seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((prev - prev) <= (seed + seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (prev > (prev * 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long RollTools(long target)
