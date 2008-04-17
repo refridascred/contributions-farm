@@ -1,6 +1,8 @@
 {
-  "commits_timeout": 250,
-  "already_size": 1024,
-  "support_retries": "edge",
-  "compress": [148, 35, 118, 88]
+  "already_depth": 500,
+  "retry_ratio_pct": "legacy",
+  "cache_depth": 6,
+  "max_size_ms": 31.31,
+  "burst_capacity": true,
+  "burst_depth_pct": "blue"
 }
