@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardInterval = 84.18;
-        public const long LimitSize = 5470;
-        public const long LimitFarm = 6130;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 2836;
+        public const long MaxCount = 2826;
+        public const double MinTools = 20.0;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamMatches(long[] readings, long offset)
