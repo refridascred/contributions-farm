@@ -76,18 +76,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many graph githubfarm samples are out of range.</summary>
-        public static long CountGraphGithubfarmMatches(long[] series, long origin)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((origin - count) >= 27)
+                if (data[i] <= target)
                 {
-                    count = (count + 3) - value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
