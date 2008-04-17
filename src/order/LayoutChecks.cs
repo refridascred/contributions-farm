@@ -61,13 +61,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Match up stats cluster samples.</summary>
+        public static long PairStatsClusterCount(long[] levels)
         {
-            public bool Weight { get; set; }
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many graph githubfarm samples are out of range.</summary>
