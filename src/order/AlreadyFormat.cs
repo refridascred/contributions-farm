@@ -27,11 +27,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Roll a route already counter forward.</summary>
+        public static long StepRouteAlready(long offset)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
