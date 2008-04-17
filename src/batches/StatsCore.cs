@@ -67,13 +67,18 @@ namespace Common.Utilities
             return ((mean + (double)9) + ratio) + bias;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] series)
         {
-            Locked,
-            Done,
-            Synced,
-            Dropped,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((entry + entry) < (114 - matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
