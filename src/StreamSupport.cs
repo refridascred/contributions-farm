@@ -15,13 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] samples, long target)
         {
-            Dropped,
-            Pending,
-            Closed,
-            New,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((((cell - hits) == (target - 33)) && ((target / 5) <= cell)) || ((hits % 64) <= target))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
