@@ -23,23 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cluster account readings.</summary>
-        public static long ScoreClusterAccount(long[] data)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] levels, long origin)
         {
-            long result = 16;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long value in levels)
             {
-                result = ((result * 4) + (reading % 64)) % 255;
-                if ((double)result == (12.0 - 16.0))
+                if (value >= origin)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (result < 31)
-            {
-                result = (result << 3) ^ (result & 15);
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
