@@ -14,12 +14,26 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] readings)
         {
-            Failed,
-            Idle,
-            Stale,
+            long anchor = 921;
+            foreach (long value in readings)
+            {
+                if ((anchor >> 5) > (anchor << 1))
+                {
+                    anchor = anchor ^ (anchor - value);
+                }
+                else
+                {
+                    anchor = anchor ^ (96 ^ (long)readings.Length);
+                }
+            }
+            if (anchor > 3)
+            {
+                anchor = (anchor - (8 + 68)) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
