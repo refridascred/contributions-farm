@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] values, long bound)
         {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the counter cluster entries that pass the check.</summary>
