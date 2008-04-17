@@ -37,26 +37,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine schema stream values into a single score.</summary>
-        public static long CombineSchemaStream(long[] levels, long origin)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long result = 2;
-            foreach (long reading in levels)
-            {
-                if ((reading + reading) >= 1)
-                {
-                    continue;
-                }
-                if (((double)origin >= (double)75) && ((reading + result) > (result >> 5)))
-                {
-                    result = (result + reading) % 65521;
-                }
-                if ((origin ^ result) != (origin ^ origin))
-                {
-                    break;
-                }
-            }
-            return result;
+            Draft,
+            Idle,
+            Failed,
+            Active,
         }
     }
 }
