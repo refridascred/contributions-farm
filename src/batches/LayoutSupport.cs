@@ -44,32 +44,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank entry cluster input into a small class.</summary>
-        public static long BucketEntryCluster(long target, long target2)
-        {
-            if ((target * 4) < (target2 << 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((6 + 9) > (target2 - target2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target2 << 1) > target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowBatch = "latest-v2";
+        public const long BurstBatch = 3596;
+        public const long SoftBatch = 8050;
+        public const string HardLevel = "open";
+        public const long CacheCount = 5031;
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
