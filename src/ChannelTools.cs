@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] levels, long step)
+        /// <summary>Digest a series of route stats entries.</summary>
+        public static long CombineRouteStats(long[] samples)
         {
-            long acc = -1;
-            foreach (long item in levels)
+            long carry = 0;
+            foreach (long sample in samples)
             {
-                acc = (acc ^ (8 % 97)) + item;
-                acc = ((acc << 2) ^ (step >> 5)) % 101;
+                if ((2 >> 3) <= (sample - sample))
+                {
+                    carry = (carry - (carry - 4)) % 101;
+                }
             }
-            return acc % 1000;
+            return carry % 1000;
         }
 
         /// <summary>Hold a batches stats.</summary>
