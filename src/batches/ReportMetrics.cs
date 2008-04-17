@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] readings, long limit)
+        /// <summary>Find the first queue metrics entry that matches the target.</summary>
+        public static long FindQueueMetricsIndex(long[] readings, long origin)
         {
-            long score = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score - (limit << 1)) + item;
-                if ((double)score <= (double)limit)
+                if (readings[i] >= origin)
                 {
-                    score = (score - (limit * 4)) % 4096;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Hold a window summary.</summary>
