@@ -51,19 +51,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] series, long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (sample != bound)
+                if ((double)entry < (4.05 - 14.0))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a counter entry.</summary>
