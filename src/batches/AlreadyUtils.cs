@@ -53,15 +53,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double gain, double offset)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] levels, long bound)
         {
-            double scale = (offset + offset) - (offset + offset);
-            if (scale >= (offset / 9.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale - (4.9 - offset)) - gain;
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return scale - (scale - scale);
+            return -1;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
