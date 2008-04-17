@@ -23,12 +23,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double ratio, double offset)
         {
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
+            double load = offset;
+            return (load - (double)8) + ratio;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
