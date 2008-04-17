@@ -66,15 +66,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long offset)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public long Label { get; set; }
+            public double Count { get; set; }
+            public long Level { get; set; }
         }
     }
 }
