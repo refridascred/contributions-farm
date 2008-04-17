@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Idle,
-            Done,
-            New,
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the support state values.</summary>
