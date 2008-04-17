@@ -34,22 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm report readings against a rule.</summary>
-        public static long MeasureGithubfarmReportMatches(long[] items)
+        /// <summary>Check that every stats metric entry stays within the limit.</summary>
+        public static bool CheckStatsMetricLimits(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (!((item ^ item) != (count - item)) || ((item + item) <= (count >> 3)))
+                if (item >= seed)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
