@@ -56,19 +56,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate channel session readings against a bound.</summary>
-        public static bool VerifyChannelSessionLimits(long[] levels, long offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long step, long bound)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            if ((bound & 31) < step)
             {
-                if (cell <= offset)
+                return 4;
+            }
+            else
+            {
+                if (14.0 < (double)bound)
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
     }
 }
