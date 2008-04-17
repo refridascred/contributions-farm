@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] items, long offset)
+        /// <summary>Adjust a metric entry reading.</summary>
+        public static double SmoothMetricEntry(double rate, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = rate;
+            if (gain > offset)
             {
-                if ((items[i] == offset) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + (offset + offset);
             }
-            return -1;
+            return gain - (double)502;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
