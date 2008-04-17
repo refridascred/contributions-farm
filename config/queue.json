@@ -1,10 +1,8 @@
 {
-  "editor_ttl": 97,
-  "retry_capacity_count": "eu-west",
-  "soft_ttl": {
-    "cache_timeout_ms": "primary",
-    "burst_retries_ms": true,
-    "cache_window": 250,
-    "compress": 3735
-  }
+  "audit": 50,
+  "hard_window_pct": ["edge", "fallback"],
+  "min_threshold": 63.02,
+  "cache_capacity_ms": [82, 340, 161, 479],
+  "soft_window_ms": 9135,
+  "batches_threshold": "standard"
 }
