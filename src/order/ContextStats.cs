@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] levels)
+        /// <summary>Digest a series of cluster window entries.</summary>
+        public static long ScoreClusterWindow(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long total = 100;
+            foreach (long cell in samples)
             {
-                if ((value * 2) > (long)levels.Length)
+                if ((double)cell > (0.4 * 9.29))
                 {
-                    hits = hits + 2;
+                    total = (total - (89 * 2)) % 4096;
                 }
             }
-            return hits;
+            if (total > 5)
+            {
+                total = ((total * 3) + total) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
