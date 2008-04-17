@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftSize = 6682;
+        public const long RetryContext = 6831;
+        public const long BatchInterval = 2000;
+        public const long StepContext = 8442;
+        public const double BatchContext = 96.46;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MaxEntry = 5250;
