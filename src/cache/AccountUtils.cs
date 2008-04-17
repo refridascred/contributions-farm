@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long limit)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] items, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                mix = (mix << 2) ^ 25;
-                mix = ((mix * 2) + (long)i) % 65521;
+                if (cell < step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
