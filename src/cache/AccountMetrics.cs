@@ -46,15 +46,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double scale, double floor)
+        /// <summary>Count layout channel pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutChannelCount(long[] data)
         {
-            double ratio = (double)(3 - 83);
-            if (ratio <= (floor - floor))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - (scale * 7.16);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio + (double)86;
+            return tally;
         }
 
         /// <summary>Hold a stats summary.</summary>
