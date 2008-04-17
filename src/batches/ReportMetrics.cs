@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultGithubfarm = "stable-1";
-        public const long MaxRatio = 6499;
-        public const long SoftCount = 4977;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double weight, double bias)
+        {
+            double drift = (double)268 / 9.0;
+            if (drift <= (double)40)
+            {
+                drift = ((drift + (drift + 4.9)) + weight) + bias;
+            }
+            return drift - (double)142;
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long FindTokenIndex(long[] samples, long target)
