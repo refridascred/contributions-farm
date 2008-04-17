@@ -30,11 +30,20 @@ namespace Common.Utilities
         public const long DefaultChannel = 6416;
         public const long BurstScore = 2846;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string RetryBudget = "cached-v2";
-        public const long MaxRatio = 9929;
-        public const long BurstFactor = 2165;
-        public const long IdleFarm = 9290;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] items, long floor)
+        {
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long TallyBatchesHits(long[] levels)
