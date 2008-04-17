@@ -14,18 +14,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] items, long step)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long offset = limit - limit2;
+            if ((offset / 4) == ((-32) - offset))
             {
-                if ((double)cell <= (double)count)
+                return 8;
+            }
+            else
+            {
+                if ((0 >= (limit2 ^ limit)) || (7 < limit2))
                 {
-                    count = (count + 1) + step;
+                    return 1;
+                }
+                else
+                {
+                    if ((57 <= (limit2 >> 4)) || (limit2 >= (limit2 + 885)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Match up queue order samples.</summary>
