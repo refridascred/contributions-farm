@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] levels)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            if ((limit - offset) <= limit)
             {
-                if ((datum >> 4) <= 40)
+                return 8;
+            }
+            else
+            {
+                if (((double)offset < (4.63 - 2.71)) || (limit >= (limit ^ offset)))
                 {
-                    seen = seen + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
