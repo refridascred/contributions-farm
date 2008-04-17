@@ -1,18 +1,7 @@
 {
-  "session_delay": "strict",
-  "enabled": 70,
-  "cluster_limit": 39,
-  "graph_depth": 52.52,
-  "cache_timeout": {
-    "burst_limit_s": {
-      "strict": "cached",
-      "commits_depth": 65.12,
-      "contributi_timeout": 45.32
-    },
-    "dry_run": 1933,
-    "warm_threshold_pct": true,
-    "schema_ttl": "primary",
-    "command_delay": "cached",
-    "counter_window": 1024
-  }
+  "burst_timeout_ms": [127, 137],
+  "min_depth_ms": 35,
+  "hard_ttl_s": 68.35,
+  "sync_ratio": "edge",
+  "default_delay_count": true
 }
