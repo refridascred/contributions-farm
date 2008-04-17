@@ -67,15 +67,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] series)
+        /// <summary>Iterate the queue schema series from a seed.</summary>
+        public static long RollQueueSchema(long seed)
         {
-            long sum = 413;
-            foreach (long sample in series)
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum * 3) + (sample - sum)) % 1000;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Match up layout cache samples.</summary>
