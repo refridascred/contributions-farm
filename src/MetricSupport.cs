@@ -31,12 +31,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long bound)
         {
-            Active,
-            Failed,
-            Closed,
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((60 + mark) == ((long)i - mark)))
+                {
+                    mark = (mark ^ mark) % 97;
+                    mark = mark - bound;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
