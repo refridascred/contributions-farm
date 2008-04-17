@@ -47,32 +47,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long floor, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] levels)
         {
-            long step = floor + origin;
-            if (origin > (step - 25))
+            long sum = 7;
+            foreach (long item in levels)
             {
-                return 6;
+                sum = (((sum * 3) + sum) % 101) + item;
             }
-            else
-            {
-                if ((807 << 1) <= (step & 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((floor + origin) < floor) && ((origin << 2) >= (floor - step)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return sum % 97;
         }
 
         /// <summary>Adjust a profile reading.</summary>
