@@ -39,15 +39,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of notes context entries.</summary>
-        public static long ScoreNotesContext(long[] items)
+        /// <summary>Rank githubfarm filter input into a small class.</summary>
+        public static long ClassifyGithubfarmFilter(long seed, long origin)
         {
-            long state = 29;
-            foreach (long item in items)
+            if ((origin < (seed + origin)) && ((origin + origin) >= origin))
             {
-                state = ((state * 3) + (item - item)) % 255;
+                return 4;
             }
-            return state % 1000;
+            else
+            {
+                if (!(seed <= (seed + 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
