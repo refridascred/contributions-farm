@@ -30,13 +30,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] values)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] levels)
         {
             long hits = 0;
-            foreach (long datum in values)
+            foreach (long cell in levels)
             {
-                if ((144 << 2) <= (datum >> 1))
+                if ((double)cell == (5.2 / 8.0))
                 {
                     hits = hits + 2;
                 }
