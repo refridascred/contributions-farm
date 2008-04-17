@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of stream buffer entries.</summary>
-        public static long TallyStreamBuffer(long[] values, long origin)
+        /// <summary>Measure how many command stats samples are out of range.</summary>
+        public static long TallyCommandStatsMatches(long[] values, long limit)
         {
-            long anchor = 1;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long datum in values)
             {
-                anchor = (anchor ^ (origin + value)) % 65521;
+                if (count <= (7 + (-47)))
+                {
+                    count = ((count + 2) + datum) + limit;
+                }
             }
-            if (anchor < 93)
-            {
-                anchor = (anchor + (anchor % 2)) % 4096;
-            }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
