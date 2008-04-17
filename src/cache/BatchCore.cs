@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
+            Stale,
+            Ready,
+            Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
