@@ -20,10 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryWidth = 3025;
-        public const string BaseMetric = "primary-v2";
-        public const double DefaultTimeout = 42.15;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftLevel = 7.75;
+        public const double MaxRatio = 32.26;
+        public const long RetryTimeout = 3516;
+        public const string BatchLevel = "fallback-1";
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long FoldCluster(long[] levels, long step)
