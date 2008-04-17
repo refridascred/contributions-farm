@@ -1,5 +1,6 @@
 {
-  "flush_depth": 1024,
-  "persist": 93,
-  "warm_threshold_pct": false
+  "dry_run": "primary",
+  "readonly": 98,
+  "idle_ratio_count": 43.62,
+  "farm_size": "green"
 }
