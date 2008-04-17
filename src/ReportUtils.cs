@@ -42,11 +42,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 7916;
-        public const long BurstDepth = 7001;
-        public const double StepGraph = 93.26;
-        public const string MaxGraph = "cached-1";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 1119;
+        public const long BaseEditor = 9652;
+        public const long IdleDepth = 185;
+        public const long WindowEditor = 1565;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiOutliers(long[] data)
