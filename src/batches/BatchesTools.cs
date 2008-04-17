@@ -27,11 +27,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 4869;
-        public const double MaxNotes = 7.46;
-        public const long MinScore = 5677;
-        public const string BaseLevel = "legacy-1";
-        public const double BurstCount = 9.08;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Ready,
+            Dropped,
+            New,
+            Paused,
+            Closed,
+        }
     }
 }
