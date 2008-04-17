@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] levels, long floor)
         {
-            Dropped,
-            Queued,
-            Retry,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell ^ cell) >= ((-830) + cell))
+                {
+                    hits = (hits + 3) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of already entries.</summary>
