@@ -21,16 +21,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] samples)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long acc = 318;
-            foreach (long item in samples)
-            {
-                acc = (acc - acc) - item;
-                acc = acc - (acc * 2);
-            }
-            return acc % 1000;
+            Synced,
+            Stale,
+            Done,
         }
 
         /// <summary>Combine token values into a single score.</summary>
