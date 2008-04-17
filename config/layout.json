@@ -1,20 +1,6 @@
 {
-  "compress": "latest",
-  "cache_retries_pct": ["primary", "edge", "eu-west", "stable"],
-  "audit": {
-    "batch_delay": 1,
-    "enabled": "eu-west",
-    "persist": 2734,
-    "burst_capacity_pct": {
-      "checks_size": "primary",
-      "hard_delay_count": ["cached", "strict", "primary", "blue"],
-      "base_ttl_count": 9300,
-      "sync_delay_s": "staging",
-      "sync_window": 21
-    },
-    "strict": 30,
-    "base_capacity_pct": 9367
-  },
-  "hard_timeout": 36,
-  "cache_window_count": 67.05
+  "batch_timeout": "standard",
+  "flush_capacity": true,
+  "warm_delay_pct": "latest",
+  "min_interval": 32.96
 }
