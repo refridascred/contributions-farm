@@ -83,11 +83,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 3430;
-        public const long DefaultAlready = 5663;
-        public const long MinSpan = 603;
-        public const string BatchWidth = "standard-v2";
-        public const long DefaultSpan = 6263;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] levels)
+        {
+            long mark = 41;
+            foreach (long item in levels)
+            {
+                mark = (mark ^ item) % 255;
+                mark = (mark ^ ((long)levels.Length - (-2))) % 97;
+                mark = (mark * 5) + item;
+            }
+            if (mark < 971)
+            {
+                mark = ((mark * 4) + mark) % 4096;
+            }
+            return mark;
+        }
     }
 }
