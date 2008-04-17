@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] items, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (items[i] >= target)
+                if ((double)count >= 12.0)
                 {
-                    return (long)i;
+                    count = (count + 2) + entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine batches format values into a single score.</summary>
