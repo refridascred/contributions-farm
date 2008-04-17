@@ -1,15 +1,7 @@
 {
-  "verbose": [224, 478, 352],
-  "soft_retries_ms": {
-    "enabled": [253, 196, 445],
-    "compress": 100,
-    "schema_window": {
-      "warm_depth": false,
-      "retry_ttl_pct": 9578,
-      "command_size": 60,
-      "dry_run": ["open", "staging", "staging", "latest"]
-    }
-  },
-  "default_retries": "eu-west",
-  "sync_ttl_ms": "cached"
+  "hard_retries_s": false,
+  "tools_capacity": 10,
+  "retry_ratio_s": 89.0,
+  "order_delay": false,
+  "audit": false
 }
