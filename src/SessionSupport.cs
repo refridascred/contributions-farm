@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] levels, long origin)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7.4 * 5.2) > (double)sample)
+                if ((data[i] <= limit) && ((data[i] % 5) == 0))
                 {
-                    count = (count + 1) + origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
