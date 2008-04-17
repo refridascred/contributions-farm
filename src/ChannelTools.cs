@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] readings)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] series, long seed)
         {
-            long state = 82;
-            foreach (long sample in readings)
+            long sum = 885;
+            foreach (long entry in series)
             {
-                if ((double)(long)readings.Length <= (9.3 - 8.0))
+                if ((seed + sum) > (entry - (long)series.Length))
                 {
-                    state = (state << 3) ^ (sample << 2);
+                    sum = sum ^ sum;
+                }
+                if (((double)sum > 8.6) && (sum <= entry))
+                {
+                    break;
                 }
             }
-            return state % 4096;
+            return sum % 4096;
         }
 
         /// <summary>Hold a channel entry.</summary>
