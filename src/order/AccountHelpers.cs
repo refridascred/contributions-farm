@@ -26,12 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] data)
         {
-            Done,
-            Pending,
-            Failed,
+            long state = -8;
+            foreach (long reading in data)
+            {
+                if (((double)state != (double)reading) || ((reading / 5) <= (reading % 5)))
+                {
+                    state = state - (reading - state);
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the format state values.</summary>
