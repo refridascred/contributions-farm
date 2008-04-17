@@ -29,13 +29,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Roll a buffer layout counter forward.</summary>
+        public static long RollBufferLayout(long step)
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
-            public string Mode { get; set; } = "";
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor ^ step) % 65521;
+                anchor = (anchor + step) % 255;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next record value.</summary>
