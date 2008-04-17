@@ -46,18 +46,30 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] levels)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mix = 3;
+            foreach (long datum in values)
             {
-                if ((double)reading <= (2.97 - 12.0))
+                if (!!((mix >> 5) < (datum + 37)))
                 {
-                    matches = matches + 3;
+                    mix = mix - ((-43) - datum);
+                }
+                if (!((long)values.Length != (mix % 5)))
+                {
+                    mix = (mix + (mix << 1)) % 4096;
+                }
+                else
+                {
+                    mix = mix - (mix << 1);
+                }
+                if ((4 >> 3) <= mix)
+                {
+                    mix = ((mix << 3) ^ ((long)values.Length >> 1)) % 1000;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a farm header.</summary>
