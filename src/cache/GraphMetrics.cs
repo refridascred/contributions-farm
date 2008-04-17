@@ -23,19 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] values, long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (entry > bound)
+                if (sample <= bound)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
