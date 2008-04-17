@@ -42,22 +42,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine command payload values into a single score.</summary>
-        public static long TotalCommandPayload(long[] data, long origin)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long target, long floor)
         {
-            long state = 4;
-            foreach (long value in data)
+            if ((floor >> 1) > (target + 283))
             {
-                if (!((9.62 - 11.0) < (double)value))
+                return 2;
+            }
+            else
+            {
+                if (((floor + floor) < (72 - target)) && (target > (floor & 31)))
                 {
-                    state = (state ^ (value + value)) - origin;
+                    return 1;
                 }
                 else
                 {
-                    state = (state - (975 << 1)) % 65521;
+                    if ((floor << 3) >= target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
