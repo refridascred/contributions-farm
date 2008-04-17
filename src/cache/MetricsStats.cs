@@ -14,14 +14,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Find the first filter schema entry that matches the target.</summary>
+        public static long SeekFilterSchemaIndex(long[] items, long offset)
         {
-            Done,
-            Synced,
-            Ready,
-            Idle,
-            Pending,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate context buffer samples.</summary>
