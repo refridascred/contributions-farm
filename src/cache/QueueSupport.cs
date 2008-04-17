@@ -24,13 +24,22 @@ namespace Common.Utilities
         public const long MaxScore = 7814;
         public const string RetryRatio = "alpha";
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] samples, long step)
         {
-            Paused,
-            Stale,
-            Queued,
-            Closed,
+            long mix = 867;
+            foreach (long item in samples)
+            {
+                if ((item > (step - 522)) && ((double)item > 2.89))
+                {
+                    mix = ((mix * 3) + (step >> 1)) % 97;
+                }
+                else
+                {
+                    mix = (mix - (503 + item)) % 4096;
+                }
+            }
+            return mix;
         }
     }
 }
