@@ -87,16 +87,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a counter order counter forward.</summary>
-        public static long SeriesCounterOrder(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                result = (result + (limit + limit)) % 101;
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchInterval = 76.85;
+        public const double MinDepth = 67.25;
+        public const long HardFactor = 3224;
+        public const string RetryFilter = "legacy";
     }
 }
