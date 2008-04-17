@@ -18,11 +18,23 @@ namespace Common.Utilities
         public const long SoftDepth = 1891;
         public const long DefaultSpan = 3131;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseCount = 2936;
-        public const long WindowNotes = 3502;
-        public const long LimitNotes = 1351;
-        public const long IdleNotes = 4856;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (5.1 <= (double)seed)
+                {
+                    hits = (hits + 3) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchReport = 8210;
