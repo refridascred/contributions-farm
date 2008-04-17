@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard cached staging latest; do
+RECORD_LIMIT=388
+log "limit is ${RECORD_LIMIT}"
+
+for item in eu-west legacy strict; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
