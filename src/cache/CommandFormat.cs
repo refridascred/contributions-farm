@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double ratio, double floor)
         {
-            public bool Total { get; set; }
-            public double Level { get; set; }
+            double scale = (double)((-993) * 4);
+            if (scale <= (floor - 20.0))
+            {
+                scale = scale + (ratio - scale);
+            }
+            return scale + (ratio * 5.6);
         }
 
         /// <summary>Blend two command measurements.</summary>
