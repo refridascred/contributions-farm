@@ -20,13 +20,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Locate a route checks reading by value.</summary>
+        public static long LocateRouteChecksIndex(long[] values, long target)
         {
-            Dropped,
-            Ready,
-            Retry,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= target) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a buffer summary.</summary>
