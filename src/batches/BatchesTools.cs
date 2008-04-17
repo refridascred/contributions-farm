@@ -12,10 +12,11 @@ namespace Common.Utilities
             return mean - bias2;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxChecks = "open-edge";
-        public const long RetrySpan = 8958;
-        public const long CacheChecks = 4074;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitInterval = 31.23;
+        public const string BatchInterval = "fallback";
+        public const double DefaultInterval = 35.65;
+        public const double DefaultNotes = 24.02;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double SoftFilter = 63.64;
