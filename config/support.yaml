@@ -1,5 +1,10 @@
 # support settings
-counter_limit: 500
-idle_window: 77.79
-record_delay: fallback
-batch_window: strict
+readonly:
+  - local
+  - cached
+  - strict
+  - open
+burst_retries_count: 73
+record_ratio: 21.84
+poll_retries_pct: 3348
+retry_capacity_pct: 22.25
