@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] values)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = -303;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((values[i] ^ values[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc * 4) + ((long)i ^ item)) % 4096;
                 }
+                acc = ((acc * 3) + (item + 387)) % 97;
             }
-            return count;
+            if (acc > 806)
+            {
+                acc = acc + (acc - (long)readings.Length);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Combine record command values into a single score.</summary>
