@@ -28,18 +28,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit counter layout readings against a rule.</summary>
-        public static long TallyCounterLayoutMatches(long[] values, long target)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((7.6 + 6.73) <= (double)tally)
-                {
-                    tally = ((tally + 2) - entry) - target;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public double Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
