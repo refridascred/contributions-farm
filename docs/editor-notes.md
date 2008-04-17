@@ -1,11 +1,11 @@
 # Editor notes
 
-The command report groups every tools by route.
-Keep profile and contributi names short and lowercase.
+When a profile fails, the session handler retries a few times before giving up.
+Keep session and farm names short and lowercase.
 
 ## Guidelines
 
-- Keep editor values small
-- Log every counter change
-- Document new buffer fields
-- Prefer already defaults
+- Keep buffer values small
+- Validate support input early
+- Review layout limits each release
+- Document new batch fields
