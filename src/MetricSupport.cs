@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Derive the next record batch value from a seed.</summary>
+        public static long IterateRecordBatch(long floor)
         {
-            Stale,
-            Pending,
-            Queued,
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
