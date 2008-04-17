@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] items, long floor)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long total = 359;
-            foreach (long entry in items)
-            {
-                if ((entry & 255) == (floor << 3))
-                {
-                    total = (total + (entry - total)) % 101;
-                }
-            }
-            return total % 1000;
+            Dropped,
+            Ready,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
