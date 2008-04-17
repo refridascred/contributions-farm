@@ -31,19 +31,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] levels, long origin)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long target)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long mark = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (value != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = mark + (target & 127);
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return ok;
+            return mark;
         }
     }
 }
