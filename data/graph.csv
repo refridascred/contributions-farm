@@ -1,6 +1,10 @@
-id,state,region,label,count
-1,91.89,208,932,primary
-2,standard,strict,366,92.88
-3,blue,strict,63.34,853
-4,green,23.85,3.31,eu-west
-5,109,27.43,553,51.6
+id,level,weight
+1,800,305
+2,1.76,127
+3,571,255
+4,24.32,legacy
+5,468,26.03
+6,50.66,edge
+7,53.42,cached
+8,924,1.98
+9,21.05,6.08
