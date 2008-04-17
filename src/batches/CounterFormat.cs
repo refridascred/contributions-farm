@@ -29,12 +29,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            Active,
-            Done,
-            Paused,
+            public bool Mode { get; set; }
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
