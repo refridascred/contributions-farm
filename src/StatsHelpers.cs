@@ -59,19 +59,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] items)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] readings, long bound)
         {
-            long state = 165;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                if (readings[i] > bound)
                 {
-                    state = (state - (43 ^ (long)i)) % 4096;
+                    return (long)i;
                 }
-                state = ((state * 5) + (datum + datum)) % 4096;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
