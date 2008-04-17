@@ -33,24 +33,10 @@ namespace Common.Utilities
         public const long LimitNotes = 1351;
         public const long IdleNotes = 4856;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long target, long seed)
-        {
-            if ((double)3 <= (double)seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if (9.18 < (double)target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 7433;
+        public const double CacheTimeout = 4.47;
+        public const long HardSize = 1950;
+        public const long LimitBudget = 6691;
     }
 }
