@@ -30,12 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
+            public long Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
