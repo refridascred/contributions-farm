@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of batch cache entries.</summary>
-        public static long ScoreBatchCache(long[] samples, long target)
+        /// <summary>Iterate the entry editor series from a seed.</summary>
+        public static long DeriveEntryEditor(long floor)
         {
-            long result = 633;
-            foreach (long datum in samples)
+            long score = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((14.0 / 5.0) != (double)result)
-                {
-                    result = ((result + (target & 31)) % 65521) - datum;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
