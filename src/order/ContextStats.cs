@@ -46,27 +46,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine record notes values into a single score.</summary>
-        public static long ScoreRecordNotes(long[] samples)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long mark = 780;
-            foreach (long item in samples)
-            {
-                if (item >= 96)
-                {
-                    mark = mark ^ (mark >> 1);
-                }
-                mark = mark - (mark - item);
-                if ((mark + mark) >= item)
-                {
-                    mark = mark - item;
-                }
-            }
-            if (mark < 609)
-            {
-                mark = (mark * 5) + (8 ^ mark);
-            }
-            return mark % 1000;
+            public bool Weight { get; set; }
+            public long Region { get; set; }
         }
     }
 }
