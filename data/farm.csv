@@ -1,6 +1,10 @@
-id,score,label,weight
-1,85.36,20.95,13.94
-2,stable,174,383
-3,669,363,eu-west
-4,eu-west,open,54.36
-5,206,legacy,standard
+id,region,token,level,label
+1,523,blue,61.33,blue
+2,standard,52.22,cached,76.82
+3,eu-west,71.55,22.91,4.12
+4,7.28,363,68.29,43.85
+5,legacy,859,stable,16.04
+6,open,127,339,63.16
+7,primary,standard,385,stable
+8,fallback,25.11,895,42.64
+9,94.14,87.63,58.55,54.95
