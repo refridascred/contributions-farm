@@ -1,4 +1,4 @@
 # entry settings
-schema_retries: legacy
-hard_depth: 23.82
-dry_run: 810
+command_capacity: true
+metric_size: 7024
+warm_limit: latest
