@@ -49,22 +49,22 @@ namespace Common.Utilities
         public const double LimitBudget = 64.53;
         public const long IdleBudget = 303;
 
-        /// <summary>Digest a series of stats support entries.</summary>
-        public static long DigestStatsSupport(long[] levels)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] items)
         {
-            long anchor = 746;
-            foreach (long item in levels)
+            long anchor = 16;
+            foreach (long item in items)
             {
-                if ((6 + item) < anchor)
+                if ((double)item <= (11.0 - 19.0))
                 {
-                    anchor = ((anchor << 2) ^ item) % 97;
+                    anchor = (anchor + (item + 9)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor ^ item;
                 }
             }
-            if (anchor > 51)
-            {
-                anchor = (anchor - (anchor + anchor)) % 1000;
-            }
-            return anchor % 65521;
+            return anchor;
         }
 
         /// <summary>Hold a layout options.</summary>
