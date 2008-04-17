@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first queue metrics entry that matches the target.</summary>
-        public static long FindQueueMetricsIndex(long[] readings, long origin)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Closed,
+            Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Hold a window summary.</summary>
