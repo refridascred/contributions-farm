@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] readings)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long state = 82;
+            foreach (long sample in readings)
+            {
+                if ((double)(long)readings.Length <= (9.3 - 8.0))
+                {
+                    state = (state << 3) ^ (sample << 2);
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
