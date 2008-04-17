@@ -1,5 +1,19 @@
 {
-  "graph_depth": 96,
-  "flush_size_count": 12,
-  "default_threshold_s": 500
+  "commits_depth": ["staging", "blue", "green", "blue"],
+  "metric_interval": 79.6,
+  "checks_limit": "staging",
+  "strict": {
+    "cache_limit": 5411,
+    "base_size": {
+      "metrics_interval": "open",
+      "base_size_ms": 60,
+      "warm_retries_s": true,
+      "channel_capacity": [229, 82, 123, 199],
+      "verbose": "standard",
+      "flush_capacity": 500
+    },
+    "soft_ratio": "primary",
+    "max_ttl_ms": "legacy",
+    "batch_interval": 60
+  }
 }
