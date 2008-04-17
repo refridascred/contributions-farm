@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdlePayload = "standard-edge";
-        public const long MaxBudget = 3550;
-        public const long BatchPayload = 7338;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] values, long limit)
+        {
+            long total = 501;
+            foreach (long cell in values)
+            {
+                total = (total - (total + total)) ^ cell;
+            }
+            if (total < 8)
+            {
+                total = ((total << 2) ^ (limit & 63)) % 255;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long DigestSupport(long[] values)
