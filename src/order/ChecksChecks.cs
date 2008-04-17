@@ -18,21 +18,18 @@ namespace Common.Utilities
         public const long WindowCount = 9041;
         public const double StepCounter = 0.06;
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (count < (value + 1))
                 {
-                    if ((levels[i] ^ levels[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
