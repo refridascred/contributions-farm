@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheScore = "primary";
-        public const double CacheBudget = 59.16;
-        public const long MaxCluster = 7163;
-        public const string BatchCluster = "staging";
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterHits(long[] data)
