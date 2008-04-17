@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] items)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((item - seen) <= (seen * 4))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Idle,
+            Closed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Check that every queue checks entry stays within the limit.</summary>
