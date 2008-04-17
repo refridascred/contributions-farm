@@ -33,18 +33,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] series, long floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            if (bound > (limit >> 5))
             {
-                if (sample < (sample + 54))
+                return 2;
+            }
+            else
+            {
+                if (((limit + bound) > limit) || ((limit ^ 93) == (limit * 4)))
                 {
-                    tally = (tally + 2) + floor;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound - limit) > (limit + bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
