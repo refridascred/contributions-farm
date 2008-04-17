@@ -29,13 +29,18 @@ namespace Common.Utilities
         public const long CacheFilter = 7346;
         public const long RetryFilter = 9497;
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] readings, long origin)
         {
-            public bool Mode { get; set; }
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            long mix = 378;
+            foreach (long entry in readings)
+            {
+                if ((double)origin > (double)mix)
+                {
+                    mix = (mix ^ ((long)readings.Length - mix)) ^ entry;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
