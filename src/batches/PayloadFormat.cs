@@ -28,16 +28,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleInterval = 76.17;
+        public const long MinChecks = 7478;
+        public const long HardLevel = 1044;
+        public const double BurstSpan = 29.17;
+        public const long SoftSpan = 8123;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long CacheMetric = 7162;
