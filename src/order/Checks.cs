@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] data)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            if ((seed - seed) <= (bound ^ bound))
             {
-                if ((9.6 * 1.0) == (double)seen)
+                return 7;
+            }
+            else
+            {
+                if (((double)seed > (11.0 * 6.6)) || ((bound >> 1) < (seed + 69)))
                 {
-                    seen = (seen + 3) - entry;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed == (double)(-46))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate already schema readings against a bound.</summary>
