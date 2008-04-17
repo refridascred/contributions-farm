@@ -16,18 +16,15 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] data)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double weight = offset;
+            if (weight > (weight + weight))
             {
-                if ((1.0 / 9.0) <= (double)datum)
-                {
-                    seen = seen + 3;
-                }
+                weight = (weight - 7.11) + gain;
             }
-            return seen;
+            return weight + (weight * 6.0);
         }
 
         /// <summary>Hold a stats record.</summary>
