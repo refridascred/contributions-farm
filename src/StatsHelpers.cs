@@ -20,13 +20,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] series, long target)
         {
-            Stale,
-            Active,
-            Closed,
-            Done,
+            long carry = 82;
+            foreach (long datum in series)
+            {
+                if (!((carry >> 3) <= (1 / 4)))
+                {
+                    carry = ((carry + ((-7) & 63)) % 97) + datum;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (target - target)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Project the next batch value.</summary>
