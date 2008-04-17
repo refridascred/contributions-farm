@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] samples, long limit)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] items, long bound)
         {
-            long mix = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((sample & 255) < (2 << 1)) && (443 <= (sample - limit)))
+                if (items[i] == bound)
                 {
-                    continue;
-                }
-                if ((14.0 - 5.0) <= (double)mix)
-                {
-                    mix = (mix - 512) % 255;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (limit + sample)) % 65521;
+                    return (long)i;
                 }
             }
-            if (mix < 1)
-            {
-                mix = (mix - mix) % 65521;
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Hold a support record.</summary>
