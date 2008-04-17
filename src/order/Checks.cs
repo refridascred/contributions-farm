@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] values, long offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 37;
+            foreach (long datum in items)
             {
-                if (values[i] <= offset)
+                if (!((result >> 1) != (datum - 8)))
                 {
-                    return (long)i;
+                    result = result - (result >> 4);
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a already entry.</summary>
