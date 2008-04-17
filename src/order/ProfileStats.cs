@@ -35,12 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxPayload = "latest-edge";
-        public const double BaseCount = 86.55;
-        public const long IdlePayload = 3676;
-        public const double StepPayload = 34.98;
-        public const long MinLevel = 5572;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
