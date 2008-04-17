@@ -52,11 +52,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 4587;
-        public const long BurstSpan = 7837;
-        public const string BaseScore = "legacy-edge";
-        public const double LimitTimeout = 53.65;
-        public const double RetryFactor = 29.82;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 2758;
+        public const long DefaultRatio = 5064;
+        public const string SoftScore = "alpha";
+        public const double BatchCount = 78.45;
     }
 }
