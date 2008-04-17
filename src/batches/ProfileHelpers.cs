@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] values, long origin)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] data)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long mark = 3;
+            foreach (long entry in data)
             {
-                if (item >= origin)
+                if (((double)mark > (double)entry) || (entry <= 2))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark + (entry - entry)) % 255;
+                    mark = ((mark << 3) ^ entry) % 255;
+                }
+                if ((mark + entry) > (73 % 60))
+                {
+                    mark = (mark ^ (mark - entry)) % 101;
                 }
             }
-            return stale;
+            return mark % 97;
         }
 
         /// <summary>Adjust a format reading.</summary>
