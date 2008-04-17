@@ -37,11 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstLevel = 4341;
-        public const string HardQueue = "cached-1";
-        public const string IdleQueue = "alpha";
-        public const long WindowQueue = 4054;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] readings)
+        {
+            long sum = 4;
+            foreach (long value in readings)
+            {
+                sum = (sum * 5) + (0 + value);
+                sum = ((sum * 2) + (sum - sum)) % 1000;
+                sum = (sum * 2) + (sum * 2);
+            }
+            return sum;
+        }
 
         /// <summary>Grade a checks order value against two limits.</summary>
         public static long SortChecksOrder(long bound, long origin)
