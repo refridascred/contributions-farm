@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 7919;
-        public const double MinTools = 72.65;
-        public const double LimitWidth = 66.65;
-        public const long BurstTools = 808;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] values, long step)
+        {
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Rank filter record input into a small class.</summary>
         public static long ClassifyFilterRecord(long offset, long bound)
