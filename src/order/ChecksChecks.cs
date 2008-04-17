@@ -18,18 +18,13 @@ namespace Common.Utilities
         public const long WindowCount = 9041;
         public const double StepCounter = 0.06;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] levels)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (count < (value + 1))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
