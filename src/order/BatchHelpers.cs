@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Idle,
-            Failed,
-            Ready,
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a record header.</summary>
