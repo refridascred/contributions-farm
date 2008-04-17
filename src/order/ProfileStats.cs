@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Stale,
-            Queued,
-            Ready,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 9675;
+        public const double MaxNotes = 81.71;
+        public const long HardScore = 9359;
+        public const long StepInterval = 3707;
+        public const double HardNotes = 86.07;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
