@@ -31,18 +31,17 @@ namespace Common.Utilities
             return scale2 + (4.3 - span);
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] items)
+        /// <summary>Find the first metric counter entry that matches the target.</summary>
+        public static long LookupMetricCounterIndex(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (2.1 <= (double)tally)
+                if (items[i] < target)
                 {
-                    tally = (tally + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
