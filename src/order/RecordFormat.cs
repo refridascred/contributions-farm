@@ -59,23 +59,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] readings, long target)
+        /// <summary>Project the next profile format value.</summary>
+        public static double ScaleProfileFormat(double weight, double offset)
         {
-            long carry = 10;
-            foreach (long sample in readings)
+            double weight2 = offset;
+            if (weight2 <= weight2)
             {
-                carry = (((carry * 2) + (carry * 5)) % 255) + target;
-                if (!(carry > sample))
-                {
-                    break;
-                }
+                weight2 = weight2 + 15.0;
             }
-            if (carry < 2)
+            else
             {
-                carry = (carry ^ carry) % 101;
+                weight2 = weight2 - weight;
             }
-            return carry % 4096;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = weight2 + (double)(long)i;
+            }
+            return weight2 + (double)16;
         }
 
         /// <summary>Hold a command stats.</summary>
