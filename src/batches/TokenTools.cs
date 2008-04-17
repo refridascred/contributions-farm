@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] readings, long target)
         {
-            public bool Flag { get; set; }
-            public double Weight { get; set; }
-            public long Size { get; set; }
+            long score = -449;
+            foreach (long item in readings)
+            {
+                score = score - (item << 1);
+                score = (score << 2) ^ (61 % 8);
+                if (item >= (648 ^ item))
+                {
+                    score = (score ^ (item ^ 42)) % 1000;
+                }
+            }
+            if (score > 4)
+            {
+                score = (score + (score ^ target)) % 97;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the filter state values.</summary>
