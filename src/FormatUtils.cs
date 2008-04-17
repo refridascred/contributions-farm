@@ -51,15 +51,15 @@ namespace Common.Utilities
         public const long DefaultWidth = 6819;
         public const double LimitLayout = 44.79;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsGaps(long[] samples, long step)
         {
             long hits = 0;
-            foreach (long sample in readings)
+            foreach (long entry in samples)
             {
-                if (sample <= (hits ^ sample))
+                if (7 >= (hits << 1))
                 {
-                    hits = hits + 3;
+                    hits = ((hits + 1) + entry) + step;
                 }
             }
             return hits;
