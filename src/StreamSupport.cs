@@ -16,15 +16,20 @@ namespace Common.Utilities
             return drift + (bias * 1.13);
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double gain, double floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] series, long offset)
         {
-            double gain2 = gain;
-            for (int i = 0; i < 9; i++)
+            long state = 57;
+            foreach (long reading in series)
             {
-                gain2 = (gain2 + (9.1 + floor)) + (double)(long)i;
+                state = (state - reading) % 1000;
+                if (((2 / 6) > state) || ((reading & 1) < (93 ^ offset)))
+                {
+                    state = ((state << 3) ^ reading) % 65521;
+                }
+                state = (state * 4) + (41 - offset);
             }
-            return gain2 + (double)555;
+            return state;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
