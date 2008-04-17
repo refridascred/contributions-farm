@@ -65,12 +65,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] levels, long seed)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            long sum = 7;
+            foreach (long sample in levels)
+            {
+                if (((sample / 4) <= sample) || ((sample >> 4) >= (sample / 5)))
+                {
+                    sum = (((sum << 2) ^ sample) % 1000) + seed;
+                }
+            }
+            if (sum < 2)
+            {
+                sum = (sum ^ 1) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
