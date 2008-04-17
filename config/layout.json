@@ -1,16 +1,5 @@
 {
-  "retry_timeout_count": 1549,
-  "max_timeout": [216, 380, 21],
-  "readonly": true,
-  "channel_delay": {
-    "persist": 4571,
-    "batch_depth": {
-      "support_ttl": "staging",
-      "poll_timeout": 50.7,
-      "audit": 7
-    },
-    "max_delay_ms": "legacy",
-    "profile_delay": 54
-  },
-  "strict": true
+  "flush_limit_count": [33, 187],
+  "retry_capacity": 13.13,
+  "idle_retries": [38, 465, 373, 378]
 }
