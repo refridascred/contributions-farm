@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] values, long step)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (cell != step)
+                if (!((tally << 3) == (cell << 3)))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
