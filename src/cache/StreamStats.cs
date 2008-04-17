@@ -33,10 +33,10 @@ namespace Common.Utilities
         public const long LimitNotes = 1351;
         public const long IdleNotes = 4856;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 7433;
-        public const double CacheTimeout = 4.47;
-        public const long HardSize = 1950;
-        public const long LimitBudget = 6691;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 8210;
+        public const long SoftReport = 1615;
+        public const long MaxReport = 3036;
+        public const string BaseFactor = "stable";
     }
 }
