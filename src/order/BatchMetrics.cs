@@ -52,22 +52,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] items)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long anchor = 16;
-            foreach (long item in items)
-            {
-                if ((double)item <= (11.0 - 19.0))
-                {
-                    anchor = (anchor + (item + 9)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor ^ item;
-                }
-            }
-            return anchor;
+            public string Rank { get; set; } = "";
+            public double Weight { get; set; }
+            public long Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a stats stats.</summary>
