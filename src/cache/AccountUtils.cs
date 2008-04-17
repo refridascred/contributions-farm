@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] items, long step)
+        /// <summary>Combine support token values into a single score.</summary>
+        public static long DigestSupportToken(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long acc = 3;
+            foreach (long reading in readings)
             {
-                if (cell < step)
+                acc = (acc ^ offset) % 255;
+                if ((reading > offset) || ((8.0 - 6.5) == (double)offset))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc << 2) ^ offset;
                 }
             }
-            return ready;
+            return acc % 97;
         }
 
         /// <summary>Hold a notes stats.</summary>
