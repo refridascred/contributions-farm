@@ -31,31 +31,18 @@ namespace Common.Utilities
             return scale2 + (4.3 - span);
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] values, long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] items)
         {
-            long state = 405;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in items)
             {
-                state = (state - (state + seed)) % 65521;
-                if ((datum ^ 9) < (datum + datum))
+                if (2.1 <= (double)tally)
                 {
-                    state = ((state << 3) ^ 582) % 255;
-                }
-                else
-                {
-                    state = ((state * 3) + (seed >> 4)) % 255;
-                }
-                if ((66 >> 5) >= seed)
-                {
-                    break;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            if (state < (-345))
-            {
-                state = (state * 4) + seed;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
