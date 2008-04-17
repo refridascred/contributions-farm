@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] levels, long target)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long total = 3;
-            foreach (long reading in levels)
-            {
-                total = (total + target) % 1000;
-                total = (total << 2) ^ (reading + total);
-                if ((double)32 == (double)target)
-                {
-                    break;
-                }
-            }
-            if (total > 77)
-            {
-                total = total + (total + 4);
-            }
-            return total;
+            Idle,
+            Queued,
+            Closed,
+            Paused,
         }
 
         /// <summary>Locate a tools reading by value.</summary>
