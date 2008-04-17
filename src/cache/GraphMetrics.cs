@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstDepth = 9960;
-        public const double MinCount = 75.85;
-        public const double DefaultNotes = 83.08;
-        public const double WindowTimeout = 6.71;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Check that every queue checks entry stays within the limit.</summary>
         public static bool ValidateQueueChecksBounds(long[] series, long bound)
