@@ -16,13 +16,18 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] items, long target)
         {
-            public bool Level { get; set; }
-            public double Token { get; set; }
-            public bool Offset { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((double)target >= (double)hits)
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
