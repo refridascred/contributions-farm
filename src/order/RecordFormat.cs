@@ -13,21 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] items)
+        /// <summary>Scale a farm schema figure with a bias.</summary>
+        public static double AdjustFarmSchema(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = (double)(58 - 78);
+            if (mean >= 8.0)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean - (span + mean)) + scale;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + span) - (double)(long)i;
+            }
+            return mean + (double)9;
         }
 
         /// <summary>Combine support commits values into a single score.</summary>
