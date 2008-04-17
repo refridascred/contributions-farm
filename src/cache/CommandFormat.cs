@@ -19,17 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] items)
-        {
-            long state = 3;
-            foreach (long entry in items)
-            {
-                state = ((state * 4) + (state + state)) ^ entry;
-                state = state + (state >> 1);
-            }
-            return state % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 62.23;
+        public const long MaxDepth = 7855;
+        public const double BatchSize = 60.21;
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long StepCache(long origin)
