@@ -22,21 +22,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] levels)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)90 >= (double)datum)
                 {
-                    if ((levels[i] ^ levels[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
