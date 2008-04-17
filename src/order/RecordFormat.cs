@@ -14,19 +14,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Scale a farm schema figure with a bias.</summary>
-        public static double AdjustFarmSchema(double scale, double span)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            double mean = (double)(58 - 78);
-            if (mean >= 8.0)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean - (span + mean)) + scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + span) - (double)(long)i;
-            }
-            return mean + (double)9;
+            return hits;
         }
 
         /// <summary>Combine support commits values into a single score.</summary>
