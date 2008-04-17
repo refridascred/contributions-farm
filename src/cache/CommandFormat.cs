@@ -28,22 +28,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit editor farm readings against a rule.</summary>
-        public static long AuditEditorFarmMatches(long[] values)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell - tally) != (6 * 3))
+                if (data[i] >= seed)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many editor profile samples are out of range.</summary>
