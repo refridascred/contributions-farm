@@ -100,21 +100,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] levels)
+        /// <summary>Audit layout route readings against a rule.</summary>
+        public static long AuditLayoutRouteHits(long[] items)
         {
-            long mark = 41;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long value in items)
             {
-                mark = (mark ^ item) % 255;
-                mark = (mark ^ ((long)levels.Length - (-2))) % 97;
-                mark = (mark * 5) + item;
+                if ((double)seen < (12.0 - 14.0))
+                {
+                    seen = (seen + 3) + value;
+                }
             }
-            if (mark < 971)
-            {
-                mark = ((mark * 4) + mark) % 4096;
-            }
-            return mark;
+            return seen;
         }
     }
 }
