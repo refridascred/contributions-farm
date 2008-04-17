@@ -36,9 +36,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 6614;
-        public const long WindowContext = 3099;
-        public const string MinSpan = "standard-edge";
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long target, long offset)
+        {
+            if (offset >= (target + target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target + target) == (offset + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
