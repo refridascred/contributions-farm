@@ -95,12 +95,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Active,
-            Closed,
-            Failed,
+            public double Limit { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
