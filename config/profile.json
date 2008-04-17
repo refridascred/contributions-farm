@@ -1,7 +1,7 @@
 {
-  "audit": 56,
-  "stats_size": "standard",
-  "persist": 77,
-  "burst_delay_count": 60,
-  "channel_depth": 2271
+  "sync_retries_count": 59,
+  "default_timeout_pct": 75.96,
+  "cache_capacity": "local",
+  "min_timeout_ms": "local",
+  "max_threshold_count": "cached"
 }
