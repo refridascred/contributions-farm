@@ -43,20 +43,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] samples)
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (!((60 + mark) == ((long)i - mark)))
+                if ((seen << 2) > reading)
                 {
-                    mark = (mark ^ mark) % 97;
-                    mark = mark - bound;
+                    seen = seen + 2;
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
