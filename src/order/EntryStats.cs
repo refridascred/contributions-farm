@@ -67,13 +67,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Dropped,
-            Idle,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheWidth = 39.76;
+        public const double BaseFilter = 27.85;
+        public const double StepRatio = 46.63;
+        public const long WindowSpan = 1733;
     }
 }
