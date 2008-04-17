@@ -34,16 +34,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] samples, long step)
-        {
-            long result = 647;
-            foreach (long sample in samples)
-            {
-                result = (((result - result) % 97) + sample) + step;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchRecord = 33.78;
+        public const long MaxRecord = 2115;
+        public const double BaseScore = 10.55;
+        public const string MinWidth = "cached-v2";
+        public const double SoftRecord = 53.55;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamHits(long[] values, long step)
