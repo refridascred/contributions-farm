@@ -33,18 +33,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] readings, long target)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] readings, long limit)
         {
-            long tally = 0;
+            bool ready = true;
             foreach (long item in readings)
             {
-                if ((target - item) == (tally - tally))
+                if (item != limit)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
