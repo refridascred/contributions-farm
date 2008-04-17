@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first route stream entry that matches the target.</summary>
-        public static long LookupRouteStreamIndex(long[] levels, long origin)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= origin) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Done,
+            Draft,
+            New,
+            Active,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
