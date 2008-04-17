@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] data)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long seed)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((210 << 2) == (value & 63))
-                {
-                    matches = matches + 3;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the report state values.</summary>
