@@ -44,10 +44,19 @@ namespace Common.Utilities
         public const double RetryRatio = 79.63;
         public const long MinAccount = 7969;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinScore = 9004;
-        public const double DefaultMetrics = 7.4;
-        public const long BatchWidth = 2931;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] levels, long origin)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)origin >= (double)entry)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
