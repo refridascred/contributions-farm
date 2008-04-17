@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] samples, long limit)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Synced,
+            Idle,
+            Closed,
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
