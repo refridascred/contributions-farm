@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] data)
+        /// <summary>Match up metrics commits samples.</summary>
+        public static long MatchMetricsCommitsCount(long[] levels)
         {
-            long mark = 3;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)mark > (double)entry) || (entry <= 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark + (entry - entry)) % 255;
-                    mark = ((mark << 3) ^ entry) % 255;
-                }
-                if ((mark + entry) > (73 % 60))
-                {
-                    mark = (mark ^ (mark - entry)) % 101;
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Adjust a format reading.</summary>
