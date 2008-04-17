@@ -24,11 +24,24 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstCount = 8050;
-        public const string RetryAccount = "stable-v2";
-        public const string IdleAccount = "primary";
-        public const long StepAccount = 1995;
-        public const long CacheFactor = 5111;
+        /// <summary>Rank report metrics input into a small class.</summary>
+        public static long RankReportMetrics(long offset, long floor)
+        {
+            if ((floor - offset) <= floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)floor != (4.0 + 18.0)) && (2 <= (181 + floor)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
