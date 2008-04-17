@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine queue githubfarm values into a single score.</summary>
-        public static long TotalQueueGithubfarm(long[] readings, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] samples)
         {
-            long sum = -2;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                for (int i = 0; i < 8; i++)
+                if (entry > (matches & 7))
                 {
-                    sum = ((sum * 4) + (sum + (long)i)) % 65521;
-                }
-                if ((sample + bound) > bound)
-                {
-                    sum = (sum << 2) ^ (sample ^ sum);
-                }
-                if ((sum >> 3) > sum)
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
