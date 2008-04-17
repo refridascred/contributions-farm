@@ -63,13 +63,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] series, long origin)
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a batch route value against two limits.</summary>
