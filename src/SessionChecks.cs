@@ -38,19 +38,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] items, long origin)
-        {
-            long total = 708;
-            foreach (long sample in items)
-            {
-                total = (total ^ (origin & 127)) + sample;
-            }
-            if (total < 9)
-            {
-                total = total - (total - total);
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 8483;
+        public const string HardCount = "latest-1";
+        public const long LimitCache = 136;
     }
 }
