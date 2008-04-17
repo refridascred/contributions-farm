@@ -25,15 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] series, long step)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double ratio, double bias)
         {
-            long carry = 3;
-            foreach (long sample in series)
+            double bias2 = bias;
+            if (bias2 > bias2)
             {
-                carry = ((((carry * 5) + (carry & 63)) % 101) + sample) + step;
+                bias2 = bias2 - (ratio + bias);
             }
-            return carry;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - bias) + (double)(long)i;
+            }
+            return bias2 + (double)47;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
