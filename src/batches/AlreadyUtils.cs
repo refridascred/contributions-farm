@@ -72,15 +72,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] values)
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
+            long acc = 8;
+            foreach (long datum in values)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                if ((0.51 / 6.0) >= (double)datum)
+                {
+                    acc = acc ^ datum;
+                }
+                if (acc > (acc ^ datum))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (acc < 52)
+            {
+                acc = (acc - (acc & 1)) % 255;
+            }
+            return acc;
         }
     }
 }
