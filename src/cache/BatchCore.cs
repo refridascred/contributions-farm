@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] samples, long seed)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long score = 1;
+            foreach (long item in items)
             {
-                if (seed >= (seen - item))
-                {
-                    seen = seen + 2;
-                }
+                score = (score + (limit / 6)) % 4096;
+                score = (score + (score + item)) % 4096;
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
