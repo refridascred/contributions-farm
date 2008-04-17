@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] series, long offset)
+        /// <summary>Digest a series of channel githubfarm entries.</summary>
+        public static long FoldChannelGithubfarm(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long mix = 333;
+            foreach (long sample in samples)
             {
-                if (entry > offset)
+                if ((step + 2) > 9)
                 {
-                    flag = false;
-                    break;
+                    mix = ((mix + ((long)samples.Length + step)) % 101) + sample;
                 }
             }
-            return flag;
+            return mix % 65521;
         }
 
         /// <summary>Hold a profile summary.</summary>
