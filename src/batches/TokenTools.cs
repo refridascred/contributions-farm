@@ -16,12 +16,12 @@ namespace Common.Utilities
             return bias - (double)230;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
+            public long Size { get; set; }
+            public bool Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a checks stats.</summary>
