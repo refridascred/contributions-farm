@@ -69,38 +69,22 @@ namespace Common.Utilities
         public const string HardCommand = "local-edge";
         public const long BurstRatio = 407;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long floor, long step)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] data, long seed)
         {
-            if (1 <= floor)
+            long state = -143;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step ^ step) < (6 + 995))
+                if (((item * 5) >= (state << 2)) && ((long)data.Length > (state - seed)))
                 {
-                    return 7;
+                    state = (state - (seed & 15)) % 255;
                 }
                 else
                 {
-                    if ((2 % 60) <= floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor * 2) <= (step & 127))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = (state - (seed << 2)) % 101;
                 }
             }
+            return state % 97;
         }
 
         /// <summary>Match up support tools samples.</summary>
