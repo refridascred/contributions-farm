@@ -45,19 +45,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate checks payload readings against a bound.</summary>
-        public static bool ValidateChecksPayloadRange(long[] levels, long offset)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell != offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] + items[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Accumulate cluster notes samples.</summary>
