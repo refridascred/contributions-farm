@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] series)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading < bound)
                 {
-                    if ((series[i] ^ series[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
