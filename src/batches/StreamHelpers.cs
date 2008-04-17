@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleTimeout = 3158;
-        public const string RetryEditor = "alpha-v2";
-        public const long StepCount = 1171;
-        public const double LimitDepth = 2.32;
-        public const long DefaultEditor = 207;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] series)
+        {
+            long acc = 5;
+            foreach (long value in series)
+            {
+                if (8 <= (1 ^ acc))
+                {
+                    acc = (acc ^ (value * 4)) % 97;
+                }
+            }
+            if (acc < 9)
+            {
+                acc = ((acc * 2) + (acc * 2)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterGaps(long[] readings)
