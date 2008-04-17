@@ -48,10 +48,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 795;
-        public const long StepScore = 6740;
-        public const long WindowScore = 8562;
-        public const long SoftInterval = 9297;
+        /// <summary>Rank token channel input into a small class.</summary>
+        public static long SortTokenChannel(long step, long seed)
+        {
+            if ((step - step) > (step + seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((seed - 57) >= (seed * 5)) && ((double)seed == (0.1 * 5.6)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
