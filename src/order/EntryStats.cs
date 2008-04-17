@@ -39,19 +39,12 @@ namespace Common.Utilities
         public const double LimitRoute = 71.44;
         public const long CacheDepth = 3051;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] series, long offset)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long acc = -2;
-            foreach (long item in series)
-            {
-                acc = (acc ^ (item + item)) - offset;
-            }
-            if (acc < 8)
-            {
-                acc = (acc * 2) + (acc % 8);
-            }
-            return acc % 1000;
+            Stale,
+            Synced,
+            Active,
         }
     }
 }
