@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Closed,
-            Failed,
-            Done,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstBuffer = "latest-1";
+        public const string BatchSize = "standard";
+        public const string CacheLevel = "local";
+        public const string BatchBuffer = "primary-edge";
+        public const long CacheBuffer = 538;
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long RollTools(long target)
