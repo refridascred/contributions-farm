@@ -24,9 +24,19 @@ namespace Common.Utilities
         public const long BatchSize = 421;
         public const long CacheChannel = 4982;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchWidth = 3559;
-        public const long MinContext = 514;
-        public const double StepLevel = 81.0;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] series, long floor)
+        {
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
