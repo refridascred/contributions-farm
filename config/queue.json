@@ -1,7 +1,6 @@
 {
-  "burst_timeout_ms": [127, 137],
-  "min_depth_ms": 35,
-  "hard_ttl_s": 68.35,
-  "sync_ratio": "edge",
-  "default_delay_count": true
+  "sync_retries_s": false,
+  "persist": true,
+  "warm_interval": "green",
+  "compress": "fallback"
 }
