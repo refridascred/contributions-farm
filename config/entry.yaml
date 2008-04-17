@@ -1,5 +1,9 @@
 # entry settings
-max_interval: 30
-max_interval_ms: primary
-batch_retries: false
-poll_capacity_s: open
+context_threshold: 83.88
+soft_size:
+  - 39
+  - 414
+farm_delay: 500
+poll_depth: 37.35
+soft_limit_s: 90.09
+warm_timeout: false
