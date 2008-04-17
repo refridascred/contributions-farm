@@ -33,22 +33,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] data, long bound)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long seed)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long state = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)6 <= (double)cell)
+                if ((10 >> 5) < seed)
                 {
-                    seen = (seen + 2) + bound;
+                    state = state - (state & 127);
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
     }
 }
