@@ -30,23 +30,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] readings)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long anchor = 72;
-            foreach (long item in readings)
-            {
-                anchor = anchor - (anchor + 72);
-                if ((item + item) <= item)
-                {
-                    break;
-                }
-            }
-            if (anchor > 5)
-            {
-                anchor = ((anchor * 4) + anchor) % 65521;
-            }
-            return anchor;
+            Idle,
+            Failed,
+            Queued,
+            Done,
+            Locked,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
