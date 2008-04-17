@@ -1,8 +1,6 @@
 {
-  "flush_limit_s": 31,
-  "min_threshold_s": 91.1,
-  "strict": "open",
-  "farm_ttl": "fallback",
-  "hard_delay_ms": false,
-  "filter_delay": 30
+  "flush_ratio": "fallback",
+  "compress": 97,
+  "retry_depth": "latest",
+  "flush_limit": ["eu-west", "edge"]
 }
