@@ -29,19 +29,31 @@ namespace Common.Utilities
         public const long CacheChannel = 7514;
         public const double MaxInterval = 88.61;
 
-        /// <summary>Check that every batch cache entry stays within the limit.</summary>
-        public static bool ValidateBatchCacheRange(long[] values, long offset)
+        /// <summary>Grade a token cache value against two limits.</summary>
+        public static long GradeTokenCache(long origin, long target)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            if ((double)target == (double)567)
             {
-                if (cell < offset)
+                return 1;
+            }
+            else
+            {
+                if (((7 << 1) != (origin & 255)) && ((origin << 3) == (target + target)))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin << 3) <= (origin ^ target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a format summary.</summary>
