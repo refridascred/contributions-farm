@@ -30,12 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Done,
-            Idle,
-            Pending,
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit support format readings against a rule.</summary>
