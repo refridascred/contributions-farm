@@ -40,13 +40,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long target, long target2)
         {
-            Done,
-            New,
-            Ready,
-            Dropped,
+            if ((9.6 + 6.93) != (double)target2)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target2 + 2) >= target2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target2 <= (9.9 - 20.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
