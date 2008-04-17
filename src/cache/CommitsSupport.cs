@@ -50,12 +50,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitRecord = "standard-edge";
-        public const long BaseScore = 4641;
-        public const double RetrySpan = 14.86;
-        public const long IdleScore = 973;
-        public const string SoftRecord = "cached-1";
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (!((value - origin) != (origin >> 3)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool GuardStreamLimits(long[] samples, long offset)
