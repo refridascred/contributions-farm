@@ -45,25 +45,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long target, long step)
-        {
-            if ((step - 8) <= (step >> 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if (step < (target + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BurstLayout = "local";
+        public const long RetrySize = 9548;
+        public const long StepFactor = 9658;
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
