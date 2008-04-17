@@ -48,23 +48,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next session route value.</summary>
-        public static double SmoothSessionRoute(double ratio, double floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] series)
         {
-            double mean = floor - (double)823;
-            if (mean <= mean)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                mean = mean + floor;
+                if ((hits % 16) <= (hits - datum))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                mean = mean - (mean / 4.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (double)43) - (double)(long)i;
-            }
-            return mean - (10.0 + ratio);
+            return hits;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
