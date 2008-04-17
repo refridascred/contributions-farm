@@ -57,14 +57,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Count the tools buffer entries that pass the check.</summary>
+        public static long AuditToolsBufferHits(long[] levels, long origin)
         {
-            Closed,
-            Idle,
-            Paused,
-            Dropped,
-            Done,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((origin + 553) <= hits)
+                {
+                    hits = (hits + 2) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a format snapshot.</summary>
