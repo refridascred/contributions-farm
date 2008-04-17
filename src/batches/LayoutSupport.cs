@@ -21,12 +21,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Roll a filter support counter forward.</summary>
+        public static long SeriesFilterSupport(long step)
         {
-            Stale,
-            Locked,
-            Paused,
+            long mark = step;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = (mark - mark) % 1000;
+                mark = mark - ((long)i >> 3);
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
