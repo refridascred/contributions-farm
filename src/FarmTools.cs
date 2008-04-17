@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Idle,
-            Queued,
-            Closed,
-            Paused,
+            Ready,
+            Synced,
+            Failed,
+            Stale,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
