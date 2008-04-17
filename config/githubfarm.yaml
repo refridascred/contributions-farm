@@ -1,14 +1,10 @@
 # githubfarm settings
-layout_timeout: 30.41
-warm_limit_pct:
-  cache_ratio_pct: 92.28
-  record_window:
-    - local
-    - eu-west
-  report_interval: edge
-  flush_interval: primary
-  sync_ttl_s: true
-  format_limit: standard
-hard_retries_s: 77
-checks_window: strict
-compress: eu-west
+warm_depth:
+  - cached
+  - legacy
+  - standard
+hard_interval_count:
+  - 107
+  - 22
+idle_capacity_count: false
+readonly: 30
