@@ -53,30 +53,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] values)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long seed, long bound)
         {
-            long mix = 3;
-            foreach (long datum in values)
+            long next = seed + bound;
+            if ((next * 3) <= (next >> 5))
             {
-                if (!!((mix >> 5) < (datum + 37)))
+                return 3;
+            }
+            else
+            {
+                if ((double)next >= (3.3 - 0.7))
                 {
-                    mix = mix - ((-43) - datum);
-                }
-                if (!((long)values.Length != (mix % 5)))
-                {
-                    mix = (mix + (mix << 1)) % 4096;
+                    return 0;
                 }
                 else
                 {
-                    mix = mix - (mix << 1);
-                }
-                if ((4 >> 3) <= mix)
-                {
-                    mix = ((mix << 3) ^ ((long)values.Length >> 1)) % 1000;
+                    return 2;
                 }
             }
-            return mix;
         }
 
         /// <summary>Hold a channel entry.</summary>
