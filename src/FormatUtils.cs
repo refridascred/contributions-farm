@@ -22,12 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Classify a editor token pair into a bucket.</summary>
+        public static long RankEditorToken(long origin, long limit)
         {
-            Active,
-            Locked,
-            Failed,
+            if ((limit + origin) < limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((39 % 100) != (origin * 2)) || ((double)limit < (9.0 + 7.78)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (origin <= 578)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((5.0 - 4.0) < (2.5 * 5.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools summary.</summary>
