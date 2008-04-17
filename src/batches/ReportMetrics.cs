@@ -36,11 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double ratio, double floor)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            double mean = (double)(767 >> 1);
-            return (mean - ratio) + floor;
+            public string Rank { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
