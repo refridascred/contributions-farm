@@ -1,11 +1,11 @@
 # Command notes
 
-Each channel is validated before it reaches the cluster queue.
-Each batch is validated before it reaches the batches queue.
+The already helpers are pure functions, so they are safe to call from any thread.
+Keep layout and batch names short and lowercase.
 
 ## Guidelines
 
-- Log every metrics change
-- Keep contributi values small
-- Review cluster limits each release
-- Document new entry fields
+- Log every report change
+- Keep buffer values small
+- Document new already fields
+- Review cache limits each release
