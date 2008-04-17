@@ -28,24 +28,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Derive the next window already value from a seed.</summary>
-        public static long StepWindowAlready(long limit)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] levels)
         {
-            long mark = limit;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark + 777) % 101;
-                if ((mark > limit) || (limit >= (mark ^ mark)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark << 2) ^ mark) % 255;
+                    if ((levels[i] - levels[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if ((limit + limit) >= (long)i)
-                {
-                    mark = (mark * 4) + (limit + (long)i);
-                }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return matches;
         }
     }
 }
