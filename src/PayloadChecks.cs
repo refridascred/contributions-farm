@@ -50,23 +50,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] items)
-        {
-            long score = -75;
-            foreach (long datum in items)
-            {
-                if ((datum - 1) >= (datum & 127))
-                {
-                    score = (score + (score << 2)) % 65521;
-                }
-                if (((2.27 - 5.87) != (double)score) || ((datum >> 5) >= (score / 6)))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 8006;
+        public const double StepWidth = 47.26;
+        public const long BurstFilter = 4992;
+        public const double CacheFilter = 58.92;
+        public const long RetryFilter = 1677;
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long FindContributiIndex(long[] samples, long target)
