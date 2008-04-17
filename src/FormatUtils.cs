@@ -78,23 +78,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double gain, double offset)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            double gain2 = gain;
-            if (gain2 < (double)715)
-            {
-                gain2 = gain2 + (double)68;
-            }
-            else
-            {
-                gain2 = gain2 - (offset - 15.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 - gain2) + (double)(long)i;
-            }
-            return gain2 + (double)93;
+            New,
+            Synced,
+            Pending,
         }
     }
 }
