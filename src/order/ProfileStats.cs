@@ -24,14 +24,23 @@ namespace Common.Utilities
             return mean + (mean + mean);
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Scale a already route figure with a bias.</summary>
+        public static double SmoothAlreadyRoute(double gain, double span)
         {
-            Synced,
-            New,
-            Dropped,
-            Done,
-            Failed,
+            double mean = (double)59 / 3.0;
+            if (mean < 9.03)
+            {
+                mean = (mean - mean) - gain;
+            }
+            else
+            {
+                mean = mean + (span / 7.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - 0.6) - (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
