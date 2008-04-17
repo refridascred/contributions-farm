@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Pending,
-            Done,
-            Draft,
-            New,
-            Active,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxRatio = 34.43;
+        public const long SoftStream = 9135;
+        public const long StepFactor = 2842;
+        public const string MaxStream = "legacy-v2";
+        public const double SoftBudget = 42.27;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool GuardPayloadBounds(long[] values, long bound)
