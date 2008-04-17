@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] data, long target)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((5.56 + 0.2) <= (double)target)
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
+            Pending,
+            Ready,
+            Active,
+            Closed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
