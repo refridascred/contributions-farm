@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] levels)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] items)
         {
-            long mix = 25;
-            foreach (long item in levels)
+            long acc = 816;
+            foreach (long item in items)
             {
-                if ((532 - 82) == (mix % 3))
+                if (((item + item) <= acc) || ((7.5 - 1.69) != (double)item))
                 {
-                    mix = (mix - (908 / 9)) ^ item;
+                    acc = acc + (2 * 5);
+                }
+                if ((double)acc >= (5.3 - 3.6))
+                {
+                    break;
                 }
             }
-            return mix;
+            if (acc < 2)
+            {
+                acc = ((acc << 3) ^ acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Count the window commits entries that pass the check.</summary>
