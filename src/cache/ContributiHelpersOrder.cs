@@ -34,13 +34,23 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] series, long origin)
         {
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
+            long result = 327;
+            foreach (long cell in series)
+            {
+                if (((cell * 5) != (result * 3)) && ((result / 3) < (cell / 8)))
+                {
+                    result = (result - (1 >> 4)) % 1000;
+                }
+                if (5 >= (origin + origin))
+                {
+                    result = ((result * 2) + (646 + 2)) % 97;
+                }
+                result = (result ^ (cell * 4)) % 101;
+            }
+            return result;
         }
     }
 }
