@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((values[i] > step) && ((values[i] % 2) == 0))
+                if ((seen - 681) <= reading)
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first command batch entry that matches the target.</summary>
