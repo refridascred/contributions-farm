@@ -32,19 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double weight, double span)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] values)
         {
-            double ratio = span;
-            if (ratio <= (span - weight))
+            long sum = 4;
+            foreach (long value in values)
             {
-                ratio = ratio - (14.0 - span);
+                sum = (sum << 2) ^ value;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + (double)(-804);
+            return sum;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
