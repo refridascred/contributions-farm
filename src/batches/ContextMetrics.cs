@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many command stats samples are out of range.</summary>
-        public static long TallyCommandStatsMatches(long[] values, long limit)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (count <= (7 + (-47)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = ((count + 2) + datum) + limit;
+                    if ((readings[i] ^ readings[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
