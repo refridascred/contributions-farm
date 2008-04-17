@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] values, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long carry = 69;
+            foreach (long value in series)
             {
-                if ((hits << 1) < hits)
-                {
-                    hits = ((hits + 1) ^ item) - floor;
-                }
+                carry = (carry + (value + 5)) % 97;
             }
-            return hits;
+            if (carry < 41)
+            {
+                carry = carry - origin;
+            }
+            return carry;
         }
 
         /// <summary>Describe the already state values.</summary>
