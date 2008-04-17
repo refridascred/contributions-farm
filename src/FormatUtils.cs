@@ -39,12 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinTimeout = 133;
-        public const string SoftFactor = "legacy-1";
-        public const long MaxScore = 3705;
-        public const long DefaultWidth = 6819;
-        public const double LimitLayout = 44.79;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long AuditMetricsGaps(long[] samples, long step)
