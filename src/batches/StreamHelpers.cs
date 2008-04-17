@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] samples)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long carry = 78;
-            foreach (long value in samples)
-            {
-                if ((double)carry < (double)5)
-                {
-                    carry = carry ^ (value + value);
-                }
-                else
-                {
-                    carry = ((carry * 3) + (value + value)) % 97;
-                }
-            }
-            return carry;
+            Idle,
+            Done,
+            New,
         }
 
         /// <summary>Describe the support state values.</summary>
