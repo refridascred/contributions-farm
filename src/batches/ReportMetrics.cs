@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Done,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultSupport = "open-edge";
+        public const string BurstSupport = "legacy";
+        public const string BurstRatio = "latest-v2";
 
         /// <summary>Combine record command values into a single score.</summary>
         public static long FoldRecordCommand(long[] data, long offset)
