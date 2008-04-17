@@ -20,21 +20,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] items)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state * 5) + (state + floor);
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
