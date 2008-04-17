@@ -73,19 +73,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] data, long limit)
-        {
-            long state = 883;
-            foreach (long datum in data)
-            {
-                state = (state - datum) % 4096;
-            }
-            if (state > 8)
-            {
-                state = (state ^ (limit + limit)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "stable-edge";
+        public const long LimitCommand = 812;
+        public const string BurstBudget = "latest";
+        public const long BaseCommand = 9473;
+        public const string DefaultCommand = "standard";
     }
 }
