@@ -24,15 +24,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine record command values into a single score.</summary>
-        public static long FoldRecordCommand(long[] data, long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] levels, long floor)
         {
-            long anchor = 205;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                anchor = ((anchor + (cell - (-97))) % 101) + offset;
+                if (value < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Adjust a route reading.</summary>
