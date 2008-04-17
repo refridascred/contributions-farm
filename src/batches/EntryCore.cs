@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long CacheWindow = 5651;
         public const long MinScore = 8925;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] series, long limit)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((559 - 52) <= (reading & 7))
+                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
                 {
-                    tally = (tally + 1) + limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count command support pairs that satisfy a relation.</summary>
