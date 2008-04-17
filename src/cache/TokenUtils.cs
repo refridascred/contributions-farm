@@ -33,19 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double scale, double floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] values, long bound)
         {
-            double mean = scale;
-            if (mean < (3.0 * 2.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean + 6.04) + floor;
+                if ((values[i] < bound) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (double)219;
-            }
-            return mean - 3.2;
+            return -1;
         }
     }
 }
