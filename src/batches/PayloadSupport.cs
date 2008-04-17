@@ -34,15 +34,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long target)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
