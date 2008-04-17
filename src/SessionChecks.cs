@@ -27,13 +27,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Accumulate metrics counter samples.</summary>
+        public static long TotalMetricsCounter(long[] series)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            long score = -53;
+            foreach (long value in series)
+            {
+                score = ((score * 2) + (3 + value)) % 4096;
+            }
+            return score % 65521;
         }
     }
 }
