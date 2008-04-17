@@ -35,26 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] data, long limit)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long target)
         {
-            long acc = 93;
-            foreach (long reading in data)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((limit - reading) == (limit / 5))
+                if ((target & 7) < (total + target))
                 {
-                    acc = ((acc * 4) + 5) % 4096;
+                    total = (total ^ (target << 1)) % 1000;
+                    total = (total + (48 / 7)) % 65521;
                 }
-                else
-                {
-                    acc = (acc ^ (reading / 2)) % 255;
-                }
-                if (((acc & 63) != (limit / 7)) && ((reading + acc) <= reading))
-                {
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Digest a series of record tools entries.</summary>
