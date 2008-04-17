@@ -16,11 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseDepth = 5555;
-        public const long CacheBudget = 6380;
-        public const double BaseStats = 88.06;
-        public const long CacheLevel = 8417;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Paused,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Roll a farm tools counter forward.</summary>
         public static long SeriesFarmTools(long floor)
