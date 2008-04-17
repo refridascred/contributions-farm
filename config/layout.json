@@ -1,7 +1,5 @@
 {
-  "max_size_count": "latest",
-  "strict": "staging",
-  "checks_delay": 44.45,
-  "enabled": "latest",
-  "poll_window": 49.35
+  "profile_capacity": "fallback",
+  "record_timeout": 60,
+  "default_interval": [292, 204]
 }
