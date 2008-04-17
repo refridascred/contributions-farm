@@ -27,15 +27,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] readings, long origin)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] values, long target)
         {
-            long mix = 7;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((((mix * 4) + (1 & 127)) % 65521) - cell) - origin;
+                if ((values[i] >= target) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
