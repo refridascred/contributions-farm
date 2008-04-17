@@ -34,18 +34,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] items, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if ((long)items.Length <= 420)
+                if (value < floor)
                 {
-                    count = ((count + 2) + entry) - floor;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
