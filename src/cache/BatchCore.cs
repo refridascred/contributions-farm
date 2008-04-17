@@ -72,17 +72,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a stream queue reading by value.</summary>
-        public static long SeekStreamQueueIndex(long[] values, long floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 837;
+            foreach (long cell in items)
             {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (cell - floor)) % 101;
             }
-            return -1;
+            if (mix > 8)
+            {
+                mix = (mix - (637 - mix)) % 4096;
+            }
+            return mix % 1000;
         }
     }
 }
