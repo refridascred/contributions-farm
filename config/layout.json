@@ -1,14 +1,6 @@
 {
-  "hard_delay": {
-    "idle_size": [338, 407, 371],
-    "tools_capacity": true,
-    "window_size": 25.46,
-    "audit": false
-  },
-  "warm_ttl_pct": {
-    "warm_ratio_s": "legacy",
-    "token_interval": false,
-    "verbose": "green"
-  },
-  "buffer_timeout": "staging"
+  "cache_ratio": 84.09,
+  "farm_ratio": "fallback",
+  "flush_window_count": false,
+  "retry_timeout_count": "legacy"
 }
