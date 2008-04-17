@@ -39,10 +39,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheFilter = 41.64;
-        public const long LimitScore = 6399;
-        public const double SoftTimeout = 15.44;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = (acc - (42 % 16)) % 65521;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
