@@ -16,15 +16,19 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Adjust a metric entry reading.</summary>
-        public static double SmoothMetricEntry(double rate, double offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] levels, long target)
         {
-            double gain = rate;
-            if (gain > offset)
+            bool found = true;
+            foreach (long value in levels)
             {
-                gain = gain + (offset + offset);
+                if (value >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return gain - (double)502;
+            return found;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
