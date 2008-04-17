@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] data, long floor)
         {
-            Dropped,
-            Synced,
-            Queued,
-            Failed,
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
