@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepBudget = 46.49;
-        public const long SoftWidth = 4204;
-        public const long CacheOrder = 1043;
-        public const long DefaultTimeout = 2286;
-        public const long RetryOrder = 8421;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((limit + (-3)) <= (limit << 1))
+                {
+                    mix = (mix * 2) + (mix & 7);
+                }
+                mix = (mix * 2) + (mix + mix);
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long RollSession(long bound)
