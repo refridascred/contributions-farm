@@ -62,22 +62,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] levels, long seed)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long sum = 7;
-            foreach (long sample in levels)
-            {
-                if (((sample / 4) <= sample) || ((sample >> 4) >= (sample / 5)))
-                {
-                    sum = (((sum << 2) ^ sample) % 1000) + seed;
-                }
-            }
-            if (sum < 2)
-            {
-                sum = (sum ^ 1) % 4096;
-            }
-            return sum % 4096;
+            Idle,
+            Stale,
+            Ready,
+            Done,
         }
 
         /// <summary>Grade a window value against two limits.</summary>
