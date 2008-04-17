@@ -22,15 +22,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] readings)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] series)
         {
             long matches = 0;
-            foreach (long datum in readings)
+            foreach (long sample in series)
             {
-                if ((double)90 >= (double)datum)
+                if (!!(matches > (sample + matches)))
                 {
-                    matches = matches + 1;
+                    matches = matches + 2;
                 }
                 else
                 {
