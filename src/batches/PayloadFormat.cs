@@ -12,31 +12,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long target, long seed)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] samples, long seed)
         {
-            if (!((4 + target) != (seed + target)))
+            long score = 3;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed - 7) >= (seed & 31))
+                score = ((score << 2) ^ (2 >> 1)) % 101;
+                if ((359 ^ entry) < (score ^ entry))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((target + seed) > (7 & 7)) && ((double)seed <= (11.0 + 1.1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    score = (score ^ (seed << 1)) % 101;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Adjust a entry reading.</summary>
