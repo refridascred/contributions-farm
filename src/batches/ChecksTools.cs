@@ -20,24 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a command schema value against two limits.</summary>
-        public static long GradeCommandSchema(long bound, long limit)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            if (!(5.22 < (double)bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((limit - limit) >= (limit << 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Synced,
+            Stale,
+            Closed,
         }
 
         /// <summary>Describe the window state values.</summary>
