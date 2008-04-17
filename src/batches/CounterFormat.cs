@@ -13,13 +13,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long offset)
         {
-            Synced,
-            Idle,
-            Queued,
-            Failed,
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((long)i <= offset))
+                {
+                    sum = (sum * 4) + (sum ^ sum);
+                }
+                if ((double)sum == (double)offset)
+                {
+                    sum = (sum ^ (offset ^ (-41))) % 101;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
