@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseRatio = 7277;
-        public const double DefaultFactor = 16.53;
-        public const string StepLevel = "legacy-v2";
-        public const long IdleFormat = 5009;
-        public const long MinFormat = 2629;
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Rank order already input into a small class.</summary>
         public static long ClassifyOrderAlready(long seed, long bound)
