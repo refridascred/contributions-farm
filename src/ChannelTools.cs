@@ -17,19 +17,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] items, long seed)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (!(((-9) / 4) >= (seed / 5)))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitTimeout = 61.96;
+        public const string HardCount = "alpha-v2";
+        public const double BatchCount = 72.11;
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double AdjustGithubfarm(double weight, double bias)
