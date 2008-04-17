@@ -20,16 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryWidth = 3025;
+        public const string BaseMetric = "primary-v2";
+        public const double DefaultTimeout = 42.15;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountGaps(long[] values)
