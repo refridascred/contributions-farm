@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] samples, long floor)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Mode { get; set; }
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
