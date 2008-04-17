@@ -31,13 +31,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Find the first command batch entry that matches the target.</summary>
+        public static long FindCommandBatchIndex(long[] levels, long floor)
         {
-            public string Offset { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= floor) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a record options.</summary>
