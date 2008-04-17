@@ -14,12 +14,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long target, long limit)
         {
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public string Count { get; set; } = "";
+            if (limit <= (limit + limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((0 << 1) == (limit + 456))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.1 / 3.0) == (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)target != (double)limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
