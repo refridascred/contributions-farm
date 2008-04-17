@@ -16,19 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double ratio, double span)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double ratio, double floor)
         {
-            double gain = (ratio / 9.0) * 1.4;
-            if (gain <= gain)
+            double drift = ratio * 17.0;
+            for (int i = 0; i < 8; i++)
             {
-                gain = gain + (double)2;
+                drift = ((drift + drift) + (double)(long)i) - floor;
             }
-            else
-            {
-                gain = gain - ratio;
-            }
-            return gain - (span / 2.0);
+            return drift + (7.8 * 7.98);
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
