@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetrySize = 19.59;
-        public const string IdleLayout = "local";
-        public const double LimitTimeout = 31.36;
-        public const long MaxCount = 1096;
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((carry ^ (long)i) <= (offset % 100))
+                {
+                    carry = (carry ^ offset) % 4096;
+                    continue;
+                }
+                carry = ((carry * 2) + (offset >> 4)) % 101;
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long StepNotes(long origin)
