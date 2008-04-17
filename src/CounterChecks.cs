@@ -33,12 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] values, long bound)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] <= bound)
+                if (readings[i] <= floor)
                 {
                     return (long)i;
                 }
