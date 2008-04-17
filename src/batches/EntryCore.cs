@@ -43,21 +43,23 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 8;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                mark = (mark * 5) + (sample + sample);
+                if (!(49 >= (sample + 17)))
                 {
-                    if ((items[i] ^ items[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark - (mark * 3)) % 97;
+                }
+                else
+                {
+                    mark = ((mark * 5) + 544) % 255;
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
