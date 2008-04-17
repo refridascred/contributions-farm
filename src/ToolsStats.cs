@@ -40,31 +40,17 @@ namespace Common.Utilities
         public const long CacheSpan = 986;
         public const double WindowRatio = 61.74;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] values, long target)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] data, long step)
         {
-            long result = 6;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result - (datum - datum)) % 4096;
-                if ((double)datum == (6.93 / 9.0))
+                if ((data[i] == step) && ((data[i] % 2) != 0))
                 {
-                    result = result - (target + datum);
-                }
-                else
-                {
-                    result = (result ^ target) % 97;
-                }
-                if (((double)result != (4.46 / 7.0)) || ((result / 4) != (result * 4)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result < 38)
-            {
-                result = result - (result ^ target);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
