@@ -1,5 +1,12 @@
 {
-  "cluster_timeout": 60,
-  "soft_size_ms": "green",
-  "dry_run": ["latest", "open"]
+  "payload_ttl": 9109,
+  "retry_retries_pct": {
+    "poll_limit": "latest",
+    "warm_threshold_count": true,
+    "enabled": "eu-west"
+  },
+  "filter_ratio": false,
+  "burst_delay_pct": 250,
+  "base_limit_pct": ["fallback", "stable", "latest"],
+  "base_window": 96.97
 }
