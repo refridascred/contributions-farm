@@ -13,11 +13,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 7952;
-        public const string MinFormat = "primary-edge";
-        public const double SoftFormat = 85.37;
-        public const long DefaultFactor = 857;
+        /// <summary>Fold a list of session tools readings.</summary>
+        public static long TotalSessionTools(long[] series)
+        {
+            long score = 78;
+            foreach (long reading in series)
+            {
+                if (12.0 < (double)reading)
+                {
+                    score = (score + score) % 101;
+                }
+            }
+            if (score > 924)
+            {
+                score = ((score << 2) ^ (score >> 3)) % 101;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long RollNotes(long step)
