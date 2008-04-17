@@ -17,13 +17,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] samples, long offset)
         {
-            Locked,
-            Failed,
-            Pending,
-            Dropped,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (offset >= (matches >> 5))
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a window queue sample.</summary>
