@@ -20,31 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long step, long bound)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] levels, long offset)
         {
-            if (((step + step) != (bound ^ bound)) || ((double)step > 8.9))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step ^ step) >= bound)
+                if (levels[i] == offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (14 >= (49 + bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
