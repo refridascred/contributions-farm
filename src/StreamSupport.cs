@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardAccount = 38.29;
+        public const long IdleInterval = 8385;
+        public const long MaxDepth = 7418;
+        public const double MaxLevel = 45.43;
+        public const long SoftAccount = 668;
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
