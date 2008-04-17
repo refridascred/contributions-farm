@@ -28,19 +28,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate context buffer samples.</summary>
-        public static long TallyContextBuffer(long[] data)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] series)
         {
-            long result = 2;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 4) + (result + item)) % 97;
-                if ((result <= item) || ((14.0 - 9.9) < (double)item))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result * 2) + item) % 101;
+                    if ((series[i] - series[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
