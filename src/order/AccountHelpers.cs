@@ -51,21 +51,19 @@ namespace Common.Utilities
         public const string DefaultTimeout = "primary";
         public const long BaseDepth = 9589;
 
-        /// <summary>Count order metrics pairs that satisfy a relation.</summary>
-        public static long MatchOrderMetricsCount(long[] readings)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item >= limit)
                 {
-                    if ((readings[i] ^ readings[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
