@@ -30,18 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine support commits values into a single score.</summary>
-        public static long ScoreSupportCommits(long[] items)
+        /// <summary>Count the channel buffer entries that pass the check.</summary>
+        public static long CountChannelBufferGaps(long[] readings)
         {
-            long mix = 30;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((854 << 1) > (mix / 7))
+                if (((entry % 16) != (seen + entry)) && ((double)(long)readings.Length <= (6.71 * 7.0)))
                 {
-                    mix = ((mix * 4) + mix) ^ datum;
+                    seen = seen + 2;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
