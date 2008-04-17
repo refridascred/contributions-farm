@@ -61,24 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long target, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] levels, long offset)
         {
-            if ((672 + seed) < (-2))
+            long anchor = 78;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target - 84) < (target - seed))
+                if ((anchor - item) >= (item + anchor))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    anchor = ((anchor ^ item) % 255) - offset;
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
