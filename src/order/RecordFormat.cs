@@ -43,19 +43,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine batch stats values into a single score.</summary>
-        public static long CombineBatchStats(long[] levels, long step)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] data, long limit)
         {
-            long total = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                total = (total << 3) ^ (step - total);
-                if ((cell - 24) == (total & 63))
+                if (reading >= limit)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return total % 97;
+            return flag;
         }
 
         /// <summary>Hold a metric summary.</summary>
