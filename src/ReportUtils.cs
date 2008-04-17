@@ -28,18 +28,18 @@ namespace Common.Utilities
         public const string MaxSupport = "strict-v2";
         public const long HardSupport = 3937;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] samples)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((tally + datum) == (datum - 89))
+                if (((datum + count) < count) || (count <= floor))
                 {
-                    tally = tally + 3;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
