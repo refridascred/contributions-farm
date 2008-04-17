@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public double Stamp { get; set; }
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
