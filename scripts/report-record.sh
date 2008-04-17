@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=273
+RECORD_LIMIT=395
 log "limit is ${RECORD_LIMIT}"
 
-for item in staging green eu-west; do
-    log "checking ${item}"
-done
+mode="${1:-fallback}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
