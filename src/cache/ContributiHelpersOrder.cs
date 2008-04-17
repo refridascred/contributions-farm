@@ -25,11 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
+            public double Region { get; set; }
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Accumulate metrics samples.</summary>
