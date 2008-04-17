@@ -23,23 +23,22 @@ namespace Common.Utilities
         public const long WindowContext = 5981;
         public const string MinContext = "primary-v2";
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double bias, double bias2)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] values, long bound)
         {
-            double rate = bias + (bias * 8.8);
-            if (rate <= (rate + rate))
+            long tally = 0;
+            foreach (long item in values)
             {
-                rate = (rate + (double)762) - bias2;
+                if ((28 - tally) >= (tally & 3))
+                {
+                    tally = ((tally + 2) + item) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                rate = rate + (double)782;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (rate / 2.0)) - (double)(long)i;
-            }
-            return rate + (double)32;
+            return tally;
         }
     }
 }
