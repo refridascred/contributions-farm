@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Accumulate schema batches samples.</summary>
+        public static long FoldSchemaBatches(long[] readings)
         {
-            Closed,
-            Synced,
-            Dropped,
+            long acc = 3;
+            foreach (long reading in readings)
+            {
+                if ((6.8 / 9.0) <= (double)acc)
+                {
+                    acc = (acc << 3) ^ ((long)readings.Length + reading);
+                }
+                else
+                {
+                    acc = (acc - reading) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
