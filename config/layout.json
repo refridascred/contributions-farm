@@ -1,8 +1,18 @@
 {
-  "burst_limit": ["legacy", "staging"],
-  "idle_delay_count": "latest",
-  "checks_ratio": "latest",
-  "report_delay": "stable",
-  "readonly": true,
-  "base_timeout_s": true
+  "sync_depth": {
+    "poll_interval_pct": 250,
+    "audit": "primary",
+    "flush_delay": "eu-west",
+    "base_window": "staging"
+  },
+  "burst_retries_ms": {
+    "layout_limit": 8158,
+    "retry_depth_s": 500,
+    "poll_timeout_pct": 70.14,
+    "contributi_retries": 554
+  },
+  "burst_threshold": 100,
+  "strict": [22, 131, 470],
+  "dry_run": 57.1,
+  "persist": true
 }
