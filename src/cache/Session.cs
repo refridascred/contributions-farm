@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] levels)
         {
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (cell < (cell & 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next report value.</summary>
