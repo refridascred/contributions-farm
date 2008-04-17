@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] series, long offset)
         {
-            Dropped,
-            Active,
-            Stale,
-            Closed,
-            Idle,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((offset - 99) <= 3)
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of cluster account readings.</summary>
