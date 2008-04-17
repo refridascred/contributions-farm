@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] data)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long carry = -952;
-            foreach (long cell in data)
-            {
-                if ((carry + carry) < (cell / 9))
-                {
-                    carry = (carry + (45 / 7)) % 255;
-                }
-                if ((cell + carry) > cell)
-                {
-                    break;
-                }
-            }
-            if (carry < 993)
-            {
-                carry = carry + (carry - carry);
-            }
-            return carry;
+            public string Rank { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
