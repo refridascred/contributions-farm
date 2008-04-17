@@ -1,9 +1,13 @@
 -- Create the stream_events table.
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
-    count INTEGER NOT NULL DEFAULT 0,
-    created_at TIMESTAMP,
-    rank INTEGER
+    state TEXT NOT NULL DEFAULT 'new',
+    score REAL NOT NULL DEFAULT 0,
+    active INTEGER NOT NULL DEFAULT 1,
+    label TEXT,
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_rank ON stream_events (rank);
+CREATE INDEX IF NOT EXISTS idx_stream_events_active ON stream_events (active);
+
+INSERT INTO stream_events (state, score, active, label, level) VALUES ('latest', 16.9, 51, 'latest', 98);
