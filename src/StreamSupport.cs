@@ -20,10 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchFarm = "open-1";
-        public const long BatchDepth = 1749;
-        public const long MaxFarm = 6922;
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double rate, double offset)
+        {
+            double load = (offset / 2.0) * 4.2;
+            return (load - load) + rate;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MaxOrder = 9584;
