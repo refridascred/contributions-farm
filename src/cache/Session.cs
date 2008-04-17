@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] levels)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double rate, double offset)
         {
-            long mix = 94;
-            foreach (long cell in levels)
+            double load = (8.28 + offset) * 19.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((mix ^ cell) < cell)
-                {
-                    mix = (mix - (395 + mix)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (cell + cell)) % 1000;
-                }
+                load = ((load + (offset + offset)) - (double)(long)i) + rate;
             }
-            if (mix > (-8))
-            {
-                mix = ((mix << 3) ^ mix) % 97;
-            }
-            return mix;
+            return load + offset;
         }
 
         /// <summary>Match up channel samples.</summary>
