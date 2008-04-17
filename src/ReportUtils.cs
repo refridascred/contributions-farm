@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] values)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (((seen + item) != (item * 4)) && !(1.6 < (double)item))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
