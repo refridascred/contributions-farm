@@ -44,19 +44,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] series, long seed)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long step)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long score = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
