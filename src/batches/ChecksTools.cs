@@ -34,10 +34,19 @@ namespace Common.Utilities
             return bias2 + 9.15;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultRoute = 50.2;
-        public const string RetryRoute = "standard-1";
-        public const long LimitRoute = 9660;
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] samples)
+        {
+            long sum = 82;
+            foreach (long item in samples)
+            {
+                if ((4 / 4) == (item * 3))
+                {
+                    sum = sum - (item ^ item);
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long PairStatsCount(long[] levels)
