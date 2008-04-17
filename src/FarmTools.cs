@@ -31,18 +31,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] series)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((tally > 462) && ((double)tally >= (1.2 - 0.8)))
+                if (cell <= step)
                 {
-                    tally = (tally + 2) ^ datum;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
