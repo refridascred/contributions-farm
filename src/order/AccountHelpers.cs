@@ -85,22 +85,31 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] readings)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            if ((16.0 / 6.0) > (double)offset)
             {
-                if ((3 ^ 13) <= hits)
+                return 4;
+            }
+            else
+            {
+                if ((origin / 4) < (origin ^ origin))
                 {
-                    hits = (hits + 2) - value;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!((offset + origin) != (origin << 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
