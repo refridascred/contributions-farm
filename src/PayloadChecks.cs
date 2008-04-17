@@ -29,13 +29,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Validate cache already readings against a bound.</summary>
+        public static bool GuardCacheAlreadyLimits(long[] items, long step)
         {
-            Done,
-            Active,
-            Synced,
-            Closed,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many farm channel samples are out of range.</summary>
