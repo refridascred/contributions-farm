@@ -65,21 +65,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of contributi githubfarm readings.</summary>
-        public static long PairContributiGithubfarmCount(long[] readings)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = 17.0;
+            if (mean < (floor / 8.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean + (scale - 2.1);
             }
-            return matches;
+            else
+            {
+                mean = mean - (8.96 * 1.0);
+            }
+            return mean - (scale + floor);
         }
     }
 }
