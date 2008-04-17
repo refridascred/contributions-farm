@@ -12,15 +12,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long bound)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public double Size { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
