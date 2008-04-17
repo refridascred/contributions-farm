@@ -74,10 +74,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseLevel = 9129;
-        public const long LimitSize = 9457;
-        public const long StepInterval = 8736;
-        public const string BatchTimeout = "strict-edge";
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
