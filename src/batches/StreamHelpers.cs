@@ -53,19 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] samples)
         {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
+            long anchor = 521;
+            foreach (long value in samples)
             {
-                if ((mark & 1) <= ((long)i + seed))
+                if (((0.7 - 7.5) <= (double)anchor) && ((value - 45) <= (anchor / 8)))
                 {
-                    mark = ((mark << 3) ^ (mark + seed)) % 97;
+                    anchor = ((anchor << 2) ^ (anchor ^ 4)) % 4096;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Validate checks payload readings against a bound.</summary>
