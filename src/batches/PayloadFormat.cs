@@ -42,24 +42,20 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Rank token channel input into a small class.</summary>
-        public static long SortTokenChannel(long step, long seed)
+        /// <summary>Fold a list of commits entry readings.</summary>
+        public static long CombineCommitsEntry(long[] items)
         {
-            if ((step - step) > (step + seed))
+            long carry = 91;
+            foreach (long value in items)
             {
-                return 6;
+                carry = ((carry << 3) ^ carry) % 97;
+                carry = (carry ^ (value - value)) % 65521;
             }
-            else
+            if (carry > 53)
             {
-                if (((seed - 57) >= (seed * 5)) && ((double)seed == (0.1 * 5.6)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
+                carry = (carry - (carry & 3)) % 97;
             }
+            return carry % 4096;
         }
     }
 }
