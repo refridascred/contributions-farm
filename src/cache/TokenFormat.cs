@@ -12,26 +12,17 @@ namespace Common.Utilities
         public const double LimitPayload = 78.63;
         public const double MinWidth = 13.31;
 
-        /// <summary>Combine metric entry values into a single score.</summary>
-        public static long TallyMetricEntry(long[] samples)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] data, long offset)
         {
-            long mark = 3;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mark + mark) <= cell)
+                if (data[i] < offset)
                 {
-                    mark = (mark << 3) ^ (cell % 2);
-                }
-                else
-                {
-                    mark = (mark - cell) % 65521;
+                    return (long)i;
                 }
             }
-            if (mark > 1)
-            {
-                mark = (mark + mark) % 97;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the batches mode values.</summary>
