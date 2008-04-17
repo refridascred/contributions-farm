@@ -1,6 +1,16 @@
 {
-  "burst_interval_ms": "open",
-  "account_window": [134, 139, 388],
-  "retry_interval_count": "primary",
-  "base_ratio": [469, 449]
+  "retry_timeout_count": 1549,
+  "max_timeout": [216, 380, 21],
+  "readonly": true,
+  "channel_delay": {
+    "persist": 4571,
+    "batch_depth": {
+      "support_ttl": "staging",
+      "poll_timeout": 50.7,
+      "audit": 7
+    },
+    "max_delay_ms": "legacy",
+    "profile_delay": 54
+  },
+  "strict": true
 }
