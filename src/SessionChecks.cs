@@ -27,15 +27,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Accumulate metrics counter samples.</summary>
-        public static long TotalMetricsCounter(long[] series)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] items, long origin)
         {
-            long score = -53;
-            foreach (long value in series)
+            long total = 708;
+            foreach (long sample in items)
             {
-                score = ((score * 2) + (3 + value)) % 4096;
+                total = (total ^ (origin & 127)) + sample;
             }
-            return score % 65521;
+            if (total < 9)
+            {
+                total = total - (total - total);
+            }
+            return total;
         }
     }
 }
