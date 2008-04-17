@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a checks githubfarm figure with a bias.</summary>
-        public static double ScaleChecksGithubfarm(double scale, double span)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            double bias = scale;
-            if (bias < (scale - bias))
-            {
-                bias = bias + scale;
-            }
-            else
-            {
-                bias = bias + (span * 1.28);
-            }
-            return bias - (scale / 6.0);
+            Pending,
+            Locked,
+            Retry,
         }
 
         /// <summary>Define report limits and defaults.</summary>
