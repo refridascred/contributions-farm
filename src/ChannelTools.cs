@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] readings)
+        /// <summary>Fold a list of payload layout readings.</summary>
+        public static long ScorePayloadLayout(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 75;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((1 * 5) < (reading / 7))
                 {
-                    if ((readings[i] - readings[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor + (96 + reading)) % 65521) - bound;
+                }
+                else
+                {
+                    anchor = (anchor + reading) % 1000;
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Define order limits and defaults.</summary>
