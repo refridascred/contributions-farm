@@ -77,22 +77,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] readings, long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long carry = 1;
+            foreach (long item in values)
             {
-                if ((count >> 5) < (step % 16))
+                if (floor <= (-9))
                 {
-                    count = (count + 2) - cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    carry = (((carry << 2) ^ 90) % 255) ^ item;
                 }
             }
-            return count;
+            if (carry < 14)
+            {
+                carry = (carry - (carry & 15)) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
