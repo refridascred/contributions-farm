@@ -51,16 +51,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 1932;
+        public const string BatchNotes = "open-v2";
+        public const string DefaultSize = "fallback";
+        public const long WindowWidth = 513;
+        public const long LimitNotes = 5661;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
