@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long bound, long seed)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double gain, double bias)
         {
-            if ((seed - seed) <= (bound ^ bound))
+            double load = 5.0;
+            if (load >= (load * 7.49))
             {
-                return 7;
+                load = (load + load) - gain;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)seed > (11.0 * 6.6)) || ((bound >> 1) < (seed + 69)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed == (double)(-46))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                load = (load - bias) + (double)(long)i;
             }
+            return load + load;
         }
 
         /// <summary>Validate already schema readings against a bound.</summary>
