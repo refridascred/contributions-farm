@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double rate, double span)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double ratio = 9.56;
-            if (ratio > (5.3 + rate))
-            {
-                ratio = (ratio + rate) + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + ratio;
+            Dropped,
+            Active,
+            Locked,
         }
 
         /// <summary>Check that every metric report entry stays within the limit.</summary>
