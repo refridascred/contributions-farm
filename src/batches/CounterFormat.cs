@@ -36,19 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] values, long floor)
+        /// <summary>Digest a series of session token entries.</summary>
+        public static long WeighSessionToken(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long score = 12;
+            foreach (long value in data)
             {
-                if (cell >= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                score = score + value;
             }
-            return valid;
+            return score;
         }
     }
 }
