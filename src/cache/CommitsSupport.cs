@@ -48,31 +48,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long limit, long seed)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            if ((double)limit < (6.0 / 6.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed == (1.7 / 7.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit % 24) < (limit & 31))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Locked,
+            Closed,
+            Active,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
