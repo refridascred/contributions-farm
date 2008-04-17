@@ -1,6 +1,10 @@
-id,owner,weight,rank
-1,551,296,latest
-2,47.61,60.06,fallback
-3,45.15,fallback,12.0
-4,933,staging,211
-5,638,803,primary
+id,weight,score,label
+1,3.32,latest,553
+2,16.64,43.54,78.43
+3,946,671,open
+4,218,local,809
+5,66.49,0.51,749
+6,969,415,39.6
+7,standard,886,staging
+8,281,strict,131
+9,fallback,staging,882
