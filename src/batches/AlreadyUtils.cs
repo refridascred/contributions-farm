@@ -13,15 +13,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long step)
+        /// <summary>Find the first githubfarm farm entry that matches the target.</summary>
+        public static long SeekGithubfarmFarmIndex(long[] data, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if ((data[i] <= step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
