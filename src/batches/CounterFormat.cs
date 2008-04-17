@@ -20,23 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long offset)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((long)i <= offset))
-                {
-                    sum = (sum * 4) + (sum ^ sum);
-                }
-                if ((double)sum == (double)offset)
-                {
-                    sum = (sum ^ (offset ^ (-41))) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            Done,
+            Draft,
+            Failed,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
