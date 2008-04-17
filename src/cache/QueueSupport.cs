@@ -29,11 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            Paused,
+            Stale,
+            Queued,
+            Closed,
         }
     }
 }
