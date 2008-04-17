@@ -51,13 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] levels)
         {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading <= (2.97 - 12.0))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a farm header.</summary>
