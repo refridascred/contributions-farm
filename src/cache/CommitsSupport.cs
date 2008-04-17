@@ -94,24 +94,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] samples, long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (((long)i + 817) >= (long)i)
+                if (cell <= offset)
                 {
-                    mark = (mark * 4) + seed;
-                    mark = mark - seed;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    mark = (mark ^ seed) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return stale;
         }
     }
 }
