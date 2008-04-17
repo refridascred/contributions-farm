@@ -26,18 +26,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] items, long bound)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((7.0 * 2.0) != (double)cell)
-                {
-                    count = (count + 2) + bound;
-                }
-            }
-            return count;
+            Locked,
+            Synced,
+            Closed,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
