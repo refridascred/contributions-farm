@@ -34,21 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((4 >= matches) && ((item - item) >= (931 / 6)))
                 {
-                    if ((items[i] - items[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) + floor;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a checks summary.</summary>
