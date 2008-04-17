@@ -26,19 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] samples, long step)
+        /// <summary>Check that every session graph entry stays within the limit.</summary>
+        public static bool VerifySessionGraphBounds(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if (item > step)
+                if (datum > limit)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
