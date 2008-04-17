@@ -22,13 +22,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate support contributi readings against a bound.</summary>
-        public static bool CheckSupportContributiLimits(long[] data, long origin)
+        /// <summary>Validate checks queue readings against a bound.</summary>
+        public static bool VerifyChecksQueueLimits(long[] series, long offset)
         {
             bool ok = true;
-            foreach (long sample in data)
+            foreach (long reading in series)
             {
-                if (sample > origin)
+                if (reading >= offset)
                 {
                     ok = false;
                     break;
