@@ -45,23 +45,23 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long limit)
+        /// <summary>Blend two order channel measurements.</summary>
+        public static double AdjustOrderChannel(double ratio, double floor)
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
+            double bias = ratio;
+            if (bias > ratio)
             {
-                if ((10.0 * 8.0) <= (double)total)
-                {
-                    break;
-                }
-                else
-                {
-                    total = (total - (long)i) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 101;
+                bias = bias + bias;
             }
-            return total;
+            else
+            {
+                bias = bias + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias + (floor / 4.0);
         }
 
         /// <summary>Combine window values into a single score.</summary>
