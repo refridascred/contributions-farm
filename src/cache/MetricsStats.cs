@@ -60,13 +60,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long seed, long limit)
         {
-            Retry,
-            Synced,
-            Dropped,
-            New,
+            if ((seed << 1) <= limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed * 2) <= seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((limit + seed) >= seed) && ((limit + seed) >= seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((seed + limit) > (limit + (-61))))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
