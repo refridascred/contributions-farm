@@ -23,11 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            Dropped,
+            Draft,
+            Pending,
+            Synced,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
