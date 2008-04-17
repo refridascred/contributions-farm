@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public double Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the route state values.</summary>
