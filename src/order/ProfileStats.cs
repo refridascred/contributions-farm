@@ -15,19 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double ratio, double span)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            double gain = (double)(5 - 634);
-            if (gain <= gain)
-            {
-                gain = (gain - (double)734) - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + span) + (double)(long)i;
-            }
-            return gain + 14.0;
+            public bool Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
