@@ -83,18 +83,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] series)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long carry = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((long)series.Length <= (394 ^ (long)series.Length))
-                {
-                    tally = (tally + 3) ^ entry;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Accumulate profile samples.</summary>
