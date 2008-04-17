@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] items, long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (item <= limit)
+                if ((value > (value % 24)) || !((4.47 * 5.0) > (double)value))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a tools header.</summary>
