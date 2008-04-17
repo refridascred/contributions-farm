@@ -25,19 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] items, long target)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Label { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a notes entry.</summary>
