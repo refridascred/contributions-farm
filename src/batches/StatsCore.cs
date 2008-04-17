@@ -19,13 +19,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Draft,
-            Stale,
-            Pending,
-            Idle,
+            Dropped,
+            New,
             Failed,
         }
 
