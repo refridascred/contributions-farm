@@ -30,20 +30,11 @@ namespace Common.Utilities
         public const long DefaultChannel = 6416;
         public const long BurstScore = 2846;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] series, long offset)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string RetryBudget = "cached-v2";
+        public const long MaxRatio = 9929;
+        public const long BurstFactor = 2165;
+        public const long IdleFarm = 9290;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long TallyBatchesHits(long[] levels)
