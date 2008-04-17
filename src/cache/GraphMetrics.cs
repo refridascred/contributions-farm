@@ -72,13 +72,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public double Region { get; set; }
-            public bool Token { get; set; }
-            public double Weight { get; set; }
-            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
