@@ -37,12 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Locate a farm metric reading by value.</summary>
+        public static long LocateFarmMetricIndex(long[] series, long bound)
         {
-            public bool Score { get; set; }
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
