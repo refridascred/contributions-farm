@@ -22,19 +22,23 @@ namespace Common.Utilities
         public const string BatchFactor = "primary";
         public const long LimitProfile = 2214;
 
-        /// <summary>Scale a editor queue figure with a bias.</summary>
-        public static double SmoothEditorQueue(double ratio, double offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] levels)
         {
-            double load = 20.0;
-            if (load >= (offset * 2.92))
+            long state = 2;
+            foreach (long item in levels)
             {
-                load = load - (offset - offset);
+                for (int i = 0; i < 12; i++)
+                {
+                    state = (state << 3) ^ (long)i;
+                }
+                state = ((state * 2) + (state - item)) % 1000;
+                if (5.0 >= (double)state)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - ratio;
+            return state;
         }
     }
 }
