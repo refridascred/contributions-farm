@@ -49,25 +49,11 @@ namespace Common.Utilities
             return bias + (bias / 8.0);
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long target, long bound)
-        {
-            long delta = target + bound;
-            if ((75 - delta) > bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target == (5.69 + 6.2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double RetryCache = 69.79;
+        public const long DefaultCache = 462;
+        public const long WindowLevel = 4418;
+        public const long LimitCache = 900;
+        public const long BurstDepth = 9943;
     }
 }
