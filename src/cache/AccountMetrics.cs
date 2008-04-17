@@ -29,19 +29,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Check that every support context entry stays within the limit.</summary>
-        public static bool GuardSupportContextLimits(long[] series, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] samples, long limit)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (cell != floor)
+                if (((-2) >= seen) || (limit > (seen - 4)))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) - value;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Count layout channel pairs that satisfy a relation.</summary>
