@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long limit)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long seed, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
+            if ((seed % 10) == (seed & 31))
             {
-                anchor = (anchor + (limit % 60)) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if (target > (target % 10))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed & 7) <= (target - target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed % 8) >= seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
