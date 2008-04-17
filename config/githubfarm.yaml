@@ -1,10 +1,18 @@
 # githubfarm settings
-strict: 9121
-compress: cached
-sync_threshold:
-  - standard
-  - local
+batch_timeout_count: 36.44
+poll_capacity_ms: 1024
+max_interval_count:
+  - stable
   - edge
-cluster_limit: 100
-retry_limit_s: strict
-hard_timeout: legacy
+  - local
+dry_run:
+  buffer_window: 8628
+  cache_window: latest
+  flush_limit_pct: standard
+  strict: local
+  hard_threshold_ms: legacy
+idle_timeout_ms: local
+report_ttl:
+  sync_timeout: 2390
+  audit: 60
+  warm_retries_ms: 250
