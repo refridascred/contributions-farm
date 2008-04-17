@@ -33,16 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleTimeout = 76.85;
+        public const double StepWidth = 27.03;
+        public const long DefaultWidth = 1142;
+        public const long HardQueue = 9753;
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
