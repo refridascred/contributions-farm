@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double rate, double offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] values)
         {
-            double load = (8.28 + offset) * 19.0;
-            for (int i = 0; i < 8; i++)
+            long carry = -890;
+            foreach (long value in values)
             {
-                load = ((load + (offset + offset)) - (double)(long)i) + rate;
+                carry = (((carry << 3) ^ (carry - carry)) % 4096) ^ value;
+                carry = (carry ^ carry) % 1000;
             }
-            return load + offset;
+            if (carry > 992)
+            {
+                carry = (carry << 2) ^ (carry & 3);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Match up channel samples.</summary>
