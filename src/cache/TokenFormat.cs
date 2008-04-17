@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const double LimitPayload = 78.63;
         public const double MinWidth = 13.31;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] data, long offset)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Synced,
+            Closed,
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
