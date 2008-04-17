@@ -1,5 +1,5 @@
 {
-  "poll_capacity_count": ["latest", "edge"],
-  "idle_delay_s": [363, 5],
-  "checks_limit": true
+  "flush_capacity": "edge",
+  "hard_window": "eu-west",
+  "warm_window": "legacy"
 }
