@@ -29,26 +29,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] data)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] readings, long target)
         {
-            long sum = 5;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (item > (item ^ item))
+                if (datum != target)
                 {
-                    continue;
-                }
-                if ((item % 10) > ((-300) + 407))
-                {
-                    sum = (sum - (sum + sum)) % 4096;
-                }
-                else
-                {
-                    sum = (sum - sum) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
