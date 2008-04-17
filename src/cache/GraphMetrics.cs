@@ -16,19 +16,15 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] items, long bound)
+        /// <summary>Adjust a cache batch reading.</summary>
+        public static double ScaleCacheBatch(double gain, double offset)
         {
-            bool found = true;
-            foreach (long sample in items)
+            double ratio = gain;
+            for (int i = 0; i < 3; i++)
             {
-                if (sample <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = (ratio + (gain + offset)) + (double)(long)i;
             }
-            return found;
+            return ratio + (ratio - ratio);
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
