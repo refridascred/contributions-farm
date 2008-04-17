@@ -17,18 +17,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] data)
+        /// <summary>Rank order already input into a small class.</summary>
+        public static long ClassifyOrderAlready(long seed, long bound)
         {
-            long sum = 584;
-            foreach (long reading in data)
+            if ((7.6 / 9.0) == (double)bound)
             {
-                if ((sum + sum) >= reading)
+                return 2;
+            }
+            else
+            {
+                if ((seed - seed) < bound)
                 {
-                    sum = (sum ^ (sum - reading)) % 101;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound << 3) != (seed * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
