@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit notes session readings against a rule.</summary>
-        public static long CountNotesSessionHits(long[] levels, long target)
+        /// <summary>Grade a window stats value against two limits.</summary>
+        public static long SortWindowStats(long origin, long offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long span = origin + offset;
+            if (!((origin / 6) == (span % 100)))
             {
-                if ((471 << 3) < (587 + (long)levels.Length))
+                return 6;
+            }
+            else
+            {
+                if (offset <= (span - origin))
                 {
-                    hits = ((hits + 1) ^ sample) - target;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a entry info.</summary>
