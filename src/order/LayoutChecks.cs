@@ -31,12 +31,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultRatio = 4489;
-        public const long WindowToken = 59;
-        public const long MaxToken = 7276;
-        public const string IdleToken = "cached";
-        public const string WindowSpan = "staging";
+        /// <summary>Check that every already counter entry stays within the limit.</summary>
+        public static bool GuardAlreadyCounterLimits(long[] data, long bound)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the format batches entries that pass the check.</summary>
         public static long AuditFormatBatchesGaps(long[] items)
