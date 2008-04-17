@@ -23,20 +23,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] data)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] values, long bound)
         {
-            long total = 84;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total << 2) ^ (total % 64);
-                total = (total ^ (total - total)) % 97;
-                if (((datum / 9) >= datum) && ((total + datum) != (total >> 4)))
+                if (values[i] <= bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Combine support tools values into a single score.</summary>
