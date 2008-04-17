@@ -40,11 +40,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxSpan = 8508;
-        public const string MinFilter = "local";
-        public const string BaseSize = "latest";
-        public const string BaseFilter = "alpha-v2";
-        public const long RetryRatio = 5631;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+        }
     }
 }
