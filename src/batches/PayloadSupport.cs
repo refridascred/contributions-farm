@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a layout stream counter forward.</summary>
-        public static long IterateLayoutStream(long step)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            Pending,
+            Locked,
+            Idle,
+            New,
+            Synced,
         }
 
         /// <summary>Project the next context value.</summary>
