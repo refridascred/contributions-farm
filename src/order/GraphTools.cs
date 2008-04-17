@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long seed, long target)
         {
-            public bool Mode { get; set; }
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
+            if ((double)seed < (5.21 * 5.47))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)target != (9.9 + 6.2)) && ((seed % 12) != (target << 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
