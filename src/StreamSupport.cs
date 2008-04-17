@@ -15,13 +15,28 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Fold a list of editor account readings.</summary>
+        public static long WeighEditorAccount(long[] levels)
         {
-            Stale,
-            Locked,
-            Draft,
-            Done,
+            long anchor = 70;
+            foreach (long datum in levels)
+            {
+                anchor = (anchor * 3) + ((long)levels.Length & 63);
+                anchor = (anchor + (anchor - anchor)) % 255;
+                if ((double)datum <= (6.3 * 6.7))
+                {
+                    anchor = (anchor ^ (datum % 5)) % 101;
+                }
+                if (((datum << 2) < anchor) || ((datum - anchor) >= (140 - anchor)))
+                {
+                    break;
+                }
+            }
+            if (anchor > 5)
+            {
+                anchor = ((anchor * 3) + (anchor * 5)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of notes context entries.</summary>
