@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public double Token { get; set; }
-            public double Size { get; set; }
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
