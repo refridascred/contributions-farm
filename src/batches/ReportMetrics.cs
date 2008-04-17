@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultSupport = "open-edge";
-        public const string BurstSupport = "legacy";
-        public const string BurstRatio = "latest-v2";
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public long Total { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Combine record command values into a single score.</summary>
         public static long FoldRecordCommand(long[] data, long offset)
