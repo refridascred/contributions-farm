@@ -1,6 +1,6 @@
 {
-  "batches_ratio": "strict",
-  "enabled": "eu-west",
-  "min_ratio_count": "green",
-  "hard_delay_count": 93.63
+  "soft_size_ms": "local",
+  "schema_threshold": "strict",
+  "poll_ttl_count": 9191,
+  "poll_size": "blue"
 }
