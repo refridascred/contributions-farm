@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] readings)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double scale, double offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double drift = (scale * 0.5) / 4.0;
+            if (drift <= (offset * 8.06))
             {
-                if ((double)count >= 12.0)
-                {
-                    count = (count + 2) + entry;
-                }
+                drift = drift + scale;
             }
-            return count;
+            else
+            {
+                drift = drift - scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (drift / 7.0)) + (double)(long)i;
+            }
+            return drift + (drift - scale);
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
