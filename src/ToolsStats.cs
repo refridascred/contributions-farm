@@ -33,18 +33,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] samples)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long anchor = 3;
+            foreach (long reading in levels)
             {
-                if (((reading + reading) > ((-171) + 8)) && (tally > (tally - (long)samples.Length)))
+                anchor = ((anchor << 2) ^ (reading % 100)) % 101;
+                if (anchor <= (anchor / 6))
                 {
-                    tally = tally + 2;
+                    anchor = (anchor + anchor) % 101;
+                }
+                if ((double)reading > (1.1 - 9.92))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (anchor > 856)
+            {
+                anchor = (anchor - (anchor & 127)) % 255;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
