@@ -30,13 +30,15 @@ namespace Common.Utilities
             return weight + (weight * 6.0);
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long target)
         {
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
+            long sum = target;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Audit support format readings against a rule.</summary>
