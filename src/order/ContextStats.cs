@@ -23,11 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double weight, double span)
+        /// <summary>Project the next record graph value.</summary>
+        public static double SmoothRecordGraph(double gain, double floor)
         {
-            double rate = weight;
-            return (rate + (rate - 0.07)) + span;
+            double bias = floor;
+            if (bias > (2.23 + 18.0))
+            {
+                bias = (bias + bias) - gain;
+            }
+            else
+            {
+                bias = bias + (bias + floor);
+            }
+            return bias + (floor - 5.9);
         }
 
         /// <summary>Audit payload cache readings against a rule.</summary>
