@@ -20,12 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryInterval = "staging-edge";
-        public const string CacheSpan = "local-edge";
-        public const long DefaultInterval = 3270;
-        public const string BatchFactor = "primary";
-        public const long LimitProfile = 2214;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Audit githubfarm report readings against a rule.</summary>
         public static long MeasureGithubfarmReportMatches(long[] items)
