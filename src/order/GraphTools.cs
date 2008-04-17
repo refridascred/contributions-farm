@@ -25,10 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleLevel = 88.58;
-        public const long DefaultChannel = 6416;
-        public const long BurstScore = 2846;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] samples, long step)
+        {
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
