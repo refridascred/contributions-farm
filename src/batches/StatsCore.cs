@@ -49,11 +49,18 @@ namespace Common.Utilities
         public const double LimitFarm = 79.7;
         public const long WindowFarm = 5563;
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] data, long target)
         {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((matches + entry) > (target + entry))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a stream token pair into a bucket.</summary>
