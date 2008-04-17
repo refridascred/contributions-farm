@@ -42,12 +42,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Adjust a session tools reading.</summary>
+        public static double ProjectSessionTools(double scale, double offset)
         {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Level { get; set; }
+            double gain = scale;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain + scale) - (double)(long)i) - offset;
+            }
+            return gain - (double)166;
         }
     }
 }
