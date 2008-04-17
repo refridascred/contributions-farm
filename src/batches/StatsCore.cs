@@ -13,23 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] samples)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] readings, long offset)
         {
-            long carry = 34;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                carry = ((carry * 5) + (cell - 24)) % 4096;
-                if ((carry * 4) <= ((long)samples.Length + cell))
+                if (sample > offset)
                 {
-                    carry = (carry + (carry ^ cell)) % 101;
-                }
-                else
-                {
-                    carry = (carry ^ (long)samples.Length) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return valid;
         }
 
         /// <summary>Describe the filter mode values.</summary>
