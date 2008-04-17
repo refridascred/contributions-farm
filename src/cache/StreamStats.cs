@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const string DefaultDepth = "latest-1";
         public const long CacheDepth = 5999;
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] data)
         {
-            public bool Score { get; set; }
-            public double Limit { get; set; }
+            long mark = 69;
+            foreach (long cell in data)
+            {
+                mark = ((mark * 3) + (158 - cell)) % 97;
+            }
+            if (mark < 369)
+            {
+                mark = (mark * 5) + (mark + mark);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
