@@ -27,19 +27,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double rate, double span)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            double load = 4.0;
-            if (load <= (double)2)
-            {
-                load = load - (double)732;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (rate - load)) + (double)(long)i;
-            }
-            return load + (load + span);
+            Draft,
+            Idle,
+            Closed,
         }
     }
 }
