@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double ratio, double floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] levels, long bound)
         {
-            double scale = (double)((-993) * 4);
-            if (scale <= (floor - 20.0))
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                scale = scale + (ratio - scale);
+                if (reading <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return scale + (ratio * 5.6);
+            return flag;
         }
 
         /// <summary>Blend two command measurements.</summary>
