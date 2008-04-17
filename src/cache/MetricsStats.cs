@@ -24,13 +24,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Accumulate context buffer samples.</summary>
+        public static long TallyContextBuffer(long[] data)
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
+            long result = 2;
+            foreach (long item in data)
+            {
+                result = ((result * 4) + (result + item)) % 97;
+                if ((result <= item) || ((14.0 - 9.9) < (double)item))
+                {
+                    result = ((result * 2) + item) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
