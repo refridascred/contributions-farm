@@ -24,19 +24,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = (((state * 4) + offset) % 1000) + (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
