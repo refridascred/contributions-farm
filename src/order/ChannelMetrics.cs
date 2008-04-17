@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] items, long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] levels, long origin)
         {
-            long mark = 9;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                mark = mark ^ (2 + cell);
-                mark = mark - (cell & 31);
+                if (reading <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (mark < 0)
-            {
-                mark = (mark * 5) + seed;
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
