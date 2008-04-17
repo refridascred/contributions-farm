@@ -25,26 +25,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] series)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] series)
         {
-            long mix = -383;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (!(mix >= (mix + 6)))
+                if (!((count + count) < count) && ((count % 100) <= (-8)))
                 {
-                    mix = ((mix << 2) ^ (0 + item)) % 65521;
+                    count = (count + 3) ^ reading;
                 }
                 else
                 {
-                    mix = ((mix << 3) ^ (mix - mix)) % 255;
+                    count = count - 1;
                 }
             }
-            if (mix > 10)
-            {
-                mix = ((mix << 2) ^ mix) % 4096;
-            }
-            return mix;
+            return count;
         }
     }
 }
