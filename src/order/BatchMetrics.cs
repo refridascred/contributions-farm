@@ -31,14 +31,14 @@ namespace Common.Utilities
         public const double IdleChannel = 24.96;
         public const long StepChannel = 7650;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            Stale,
+            Locked,
             Paused,
-            Dropped,
-            New,
+            Draft,
             Queued,
+            Closed,
         }
 
         /// <summary>Digest a series of checks entries.</summary>
