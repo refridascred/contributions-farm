@@ -34,11 +34,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseRecord = 27.35;
-        public const string HardSize = "local";
-        public const double CacheRecord = 83.17;
-        public const double HardDepth = 14.27;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] series)
+        {
+            long score = -587;
+            foreach (long entry in series)
+            {
+                if (entry >= 96)
+                {
+                    score = (score + (score / 9)) % 1000;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
