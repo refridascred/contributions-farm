@@ -36,15 +36,23 @@ namespace Common.Utilities
             return (mean + weight) + floor;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long target)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double weight, double offset)
         {
-            long mark = target;
-            for (int i = 0; i < 17; i++)
+            double rate = (double)(93 % 5);
+            if (rate < rate)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                rate = rate - weight;
             }
-            return mark;
+            else
+            {
+                rate = rate - (double)6;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (3.1 - offset)) + (double)(long)i;
+            }
+            return rate + offset;
         }
     }
 }
