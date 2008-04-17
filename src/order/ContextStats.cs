@@ -30,18 +30,11 @@ namespace Common.Utilities
         public const long LimitProfile = 294;
         public const long BatchScore = 6126;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] levels)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum & 15) != (91 * 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double scale2 = (double)(24 - 8);
+            return (scale2 + (offset / 9.0)) + scale;
         }
 
         /// <summary>Describe the channel kind values.</summary>
