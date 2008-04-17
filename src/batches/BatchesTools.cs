@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowBudget = 5966;
-        public const string WindowSize = "stable-1";
-        public const double DefaultCount = 0.55;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long IdleSize = 2386;
