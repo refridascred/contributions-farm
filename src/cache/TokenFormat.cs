@@ -14,22 +14,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] items)
+        /// <summary>Audit contributi buffer readings against a rule.</summary>
+        public static long TallyContributiBufferMatches(long[] data, long step)
         {
-            long score = 3;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (20.0 >= (double)entry)
+                if (!(item >= step))
                 {
-                    score = (score * 5) + entry;
-                }
-                else
-                {
-                    score = ((score << 3) ^ 52) % 255;
+                    seen = seen + 1;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a layout info.</summary>
