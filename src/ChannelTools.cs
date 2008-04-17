@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] series, long floor)
         {
-            Stale,
-            Dropped,
-            New,
-            Pending,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (!(((floor - sample) <= (4 + sample)) || (count <= ((-1) % 8))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a batches stats.</summary>
