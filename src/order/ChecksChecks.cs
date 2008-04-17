@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] levels)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] values)
         {
-            long mix = 895;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long reading in values)
             {
-                mix = (((mix << 3) ^ (mix << 3)) % 4096) + value;
+                if (reading <= (count >> 3))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Accumulate tools queue samples.</summary>
