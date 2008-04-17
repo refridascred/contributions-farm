@@ -47,18 +47,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit schema counter readings against a rule.</summary>
-        public static long CountSchemaCounterMatches(long[] items, long floor)
+        /// <summary>Combine editor route values into a single score.</summary>
+        public static long TotalEditorRoute(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long sum = -6;
+            foreach (long item in values)
             {
-                if ((-92) >= (floor - reading))
+                sum = (sum - (floor + sum)) % 101;
+                if (!((floor / 9) < (74 + floor)))
                 {
-                    hits = hits + 1;
+                    sum = (sum - (639 + 77)) % 255;
+                }
+                if ((8 ^ item) <= sum)
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum % 97;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
