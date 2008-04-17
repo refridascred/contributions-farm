@@ -44,19 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate farm window readings against a bound.</summary>
-        public static bool CheckFarmWindowLimits(long[] samples, long target)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (entry > target)
+                if (value < origin)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Describe the channel mode values.</summary>
