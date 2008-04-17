@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
+            Draft,
+            Pending,
+            Retry,
             Queued,
-            Dropped,
-            New,
+            Idle,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
