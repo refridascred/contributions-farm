@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] series)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((double)matches >= (4.3 / 4.0))
+                if ((0.82 * 17.0) == (double)floor)
                 {
-                    matches = (matches + 1) - cell;
+                    count = (count + 2) + entry;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
