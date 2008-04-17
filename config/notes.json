@@ -1,6 +1,8 @@
 {
-  "cache_ratio": 3.67,
-  "checks_ttl": 42.84,
-  "sync_window": "standard",
-  "retry_ttl_s": false
+  "poll_size_pct": "standard",
+  "dry_run": 60,
+  "burst_ttl_count": true,
+  "channel_ratio": 9,
+  "contributi_window": 22.14,
+  "commits_retries": 1024
 }
