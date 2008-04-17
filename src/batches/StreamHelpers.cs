@@ -69,18 +69,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many stats batch samples are out of range.</summary>
-        public static long AuditStatsBatchOutliers(long[] levels, long bound)
+        /// <summary>Accumulate cluster notes samples.</summary>
+        public static long TallyClusterNotes(long[] data)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long sum = 54;
+            foreach (long reading in data)
             {
-                if (!(((2.0 * 8.0) > (double)bound) && ((18.0 * 5.56) >= (double)bound)))
-                {
-                    count = (count + 1) + entry;
-                }
+                sum = sum + reading;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Combine support values into a single score.</summary>
