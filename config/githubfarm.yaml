@@ -1,13 +1,6 @@
 # githubfarm settings
-strict: 100
-burst_ttl_ms: primary
-metrics_capacity: stable
-sync_timeout_pct:
-  base_limit_count: 78.46
-  profile_ttl: 15.37
-  batches_ttl:
-    - stable
-    - eu-west
-    - staging
-    - green
-flush_ratio_count: 21.38
+verbose: 58
+readonly:
+  - standard
+  - edge
+format_interval: stable
