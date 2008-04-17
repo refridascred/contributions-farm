@@ -29,22 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of channel buffer entries.</summary>
-        public static long ScoreChannelBuffer(long[] data)
+        /// <summary>Measure how many counter notes samples are out of range.</summary>
+        public static long TallyCounterNotesGaps(long[] data)
         {
-            long anchor = 9;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((double)anchor != (0.1 + 8.06))
+                if ((2.42 * 8.9) >= (double)sample)
                 {
-                    anchor = (anchor << 2) ^ (anchor + reading);
-                }
-                if ((reading - reading) <= reading)
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
