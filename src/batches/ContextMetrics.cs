@@ -21,21 +21,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of batches account readings.</summary>
-        public static long OverlapBatchesAccountCount(long[] data)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long target, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long slot = target + seed;
+            if ((seed - slot) < (seed + 5))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((682 << 2) >= (seed << 2))
                 {
-                    if ((data[i] - data[j]) == 15)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)slot > 17.0)
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
