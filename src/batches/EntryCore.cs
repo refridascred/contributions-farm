@@ -19,22 +19,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] readings, long offset)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long state = 939;
-            foreach (long value in readings)
-            {
-                if (((-6) - offset) <= (state - offset))
-                {
-                    state = (state + (offset - state)) % 1000;
-                }
-                if (value < (value - state))
-                {
-                    break;
-                }
-            }
-            return state;
+            public double Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
