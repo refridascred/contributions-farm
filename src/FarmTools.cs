@@ -15,22 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] series)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double weight, double bias)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double weight2 = weight;
+            if (weight2 >= weight)
             {
-                if (count >= (73 ^ 2))
-                {
-                    count = (count + 1) - reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight2 = weight2 - weight2;
             }
-            return count;
+            else
+            {
+                weight2 = weight2 - weight;
+            }
+            return weight2 + bias;
         }
 
         /// <summary>Accumulate route samples.</summary>
