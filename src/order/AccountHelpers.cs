@@ -49,20 +49,19 @@ namespace Common.Utilities
         public const string DefaultTimeout = "primary";
         public const long BaseDepth = 9589;
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long offset)
+        /// <summary>Accumulate contributi window samples.</summary>
+        public static long FoldContributiWindow(long[] readings, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
+            long acc = 74;
+            foreach (long entry in readings)
             {
-                long seen = (offset << 2) + 865;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = (((result * 4) + (seen + (long)i)) % 101) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 65521;
+                acc = ((acc - (acc - limit)) % 97) - entry;
             }
-            return result;
+            if (acc < 5)
+            {
+                acc = (acc << 3) ^ ((-2) - (long)readings.Length);
+            }
+            return acc;
         }
     }
 }
