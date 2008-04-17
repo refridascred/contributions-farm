@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
+            Paused,
+            Closed,
+            Done,
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
