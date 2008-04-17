@@ -1,7 +1,7 @@
 {
-  "profile_capacity": 41,
-  "stream_size": "primary",
-  "flush_size_pct": true,
-  "batch_depth": 64.5,
-  "stream_timeout": 30
+  "schema_window": ["legacy", "green"],
+  "base_window": false,
+  "editor_ttl": 1291,
+  "default_ttl_count": 60,
+  "default_ratio_count": "green"
 }
