@@ -35,11 +35,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public double Count { get; set; }
-            public double Limit { get; set; }
+            Done,
+            Ready,
+            Paused,
+            Pending,
+            Failed,
         }
 
         /// <summary>Combine record notes values into a single score.</summary>
