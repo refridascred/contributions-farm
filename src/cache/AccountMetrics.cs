@@ -68,37 +68,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long limit, long seed)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long target, long origin)
         {
-            long gap = limit ^ seed;
-            if (((seed >> 3) <= seed) || ((double)limit < (5.57 + 5.71)))
+            if (!(target <= (origin - origin)))
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if ((limit - seed) <= (gap + gap))
+                if (3.88 < (double)target)
                 {
                     return 5;
                 }
                 else
                 {
-                    if ((seed / 2) >= gap)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((51 % 100) <= (limit - limit)) && ((double)limit == (18.0 * 1.02)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
