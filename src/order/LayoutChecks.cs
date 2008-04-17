@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] values, long bound)
+        /// <summary>Validate queue notes readings against a bound.</summary>
+        public static bool ValidateQueueNotesRange(long[] items, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((values[i] > bound) && ((values[i] % 2) != 0))
+                if (datum != target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
