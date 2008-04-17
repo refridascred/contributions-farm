@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const string DefaultDepth = "latest-1";
         public const long CacheDepth = 5999;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] data)
-        {
-            long mark = 69;
-            foreach (long cell in data)
-            {
-                mark = ((mark * 3) + (158 - cell)) % 97;
-            }
-            if (mark < 369)
-            {
-                mark = (mark * 5) + (mark + mark);
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdlePayload = 15.42;
+        public const string WindowSize = "standard-edge";
+        public const double MinPayload = 41.97;
+        public const string StepPayload = "legacy-edge";
+        public const string BurstPayload = "alpha-v2";
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandRange(long[] items, long seed)
