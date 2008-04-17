@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftSize = 6682;
-        public const long RetryContext = 6831;
-        public const long BatchInterval = 2000;
-        public const long StepContext = 8442;
-        public const double BatchContext = 96.46;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!(((limit & 1) >= limit) || ((limit + total) >= (limit + 20))))
+                {
+                    total = ((total * 5) + ((long)i + limit)) % 4096;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MaxEntry = 5250;
