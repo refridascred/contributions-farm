@@ -41,10 +41,19 @@ namespace Common.Utilities
             return (bias - 20.0) + scale;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 9976;
-        public const string CacheSize = "cached-v2";
-        public const long BaseInterval = 7376;
-        public const long BurstAccount = 1255;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] samples, long origin)
+        {
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
