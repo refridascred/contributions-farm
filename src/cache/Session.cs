@@ -54,10 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchFactor = 7329;
-        public const long LimitFactor = 20;
-        public const double HardQueue = 50.84;
-        public const long WindowQueue = 7765;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double bias, double floor)
+        {
+            double bias2 = (double)(45 % 7);
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (((bias2 + bias2) + (double)(long)i) + bias) + floor;
+            }
+            return bias2 + (4.49 / 4.0);
+        }
     }
 }
