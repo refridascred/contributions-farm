@@ -37,24 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long target, long origin)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            if ((target << 1) > (target / 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((origin % 8) != (target >> 1)) && ((target * 2) <= (target & 15)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Score { get; set; }
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
