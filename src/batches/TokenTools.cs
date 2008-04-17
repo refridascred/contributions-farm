@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (datum >= (seen / 6))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 5699;
+        public const double HardChecks = 16.37;
+        public const long MaxSize = 3970;
+        public const long MinCount = 308;
+        public const string WindowCount = "latest-v2";
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsLimits(long[] series, long limit)
