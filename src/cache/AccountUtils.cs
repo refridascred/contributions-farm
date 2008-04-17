@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((tally / 8) > (-33))
-                {
-                    tally = (tally + 2) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxSize = 85.17;
+        public const double RetryFactor = 95.67;
+        public const long BurstCache = 5809;
+        public const double BaseSpan = 89.56;
+        public const long LimitCache = 3936;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long ClassifyStats(long target, long limit)
