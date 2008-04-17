@@ -5,34 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] data)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] samples)
         {
-            long mix = 49;
-            foreach (long item in data)
+            long carry = 78;
+            foreach (long value in samples)
             {
-                for (int i = 0; i < 10; i++)
+                if ((double)carry < (double)5)
                 {
-                    mix = (((mix * 2) + (18 & 7)) % 255) + (long)i;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mix = ((mix * 3) + (item - 8)) - (long)i2;
-                }
-                if ((item + item) >= (mix - 34))
-                {
-                    mix = (mix - (mix << 1)) % 1000;
+                    carry = carry ^ (value + value);
                 }
                 else
                 {
-                    mix = (mix << 2) ^ (item + item);
+                    carry = ((carry * 3) + (value + value)) % 97;
                 }
             }
-            if (mix < 9)
-            {
-                mix = ((mix * 4) + mix) % 101;
-            }
-            return mix;
+            return carry;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
