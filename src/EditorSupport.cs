@@ -28,26 +28,17 @@ namespace Common.Utilities
         public const double LimitBudget = 8.32;
         public const long IdleCommits = 4603;
 
-        /// <summary>Digest a series of filter token entries.</summary>
-        public static long CombineFilterToken(long[] series, long origin)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] values, long step)
         {
-            long result = 9;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3.34 * 3.3) < (double)sample)
+                if (values[i] == step)
                 {
-                    result = (result << 3) ^ (long)series.Length;
-                }
-                if (((8 << 2) < sample) && ((sample ^ 4) != (origin - sample)))
-                {
-                    result = result ^ (result * 3);
+                    return (long)i;
                 }
             }
-            if (result < 410)
-            {
-                result = ((result << 2) ^ result) % 97;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
