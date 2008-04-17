@@ -51,17 +51,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a farm metric reading by value.</summary>
-        public static long LocateFarmMetricIndex(long[] series, long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long bound, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (bound < 756)
             {
-                if ((series[i] >= bound) && ((series[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((double)(-64) <= (double)bound)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((bound ^ step) < (step + step)) || (43 <= (step + 36)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
