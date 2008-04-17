@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] items)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if ((value + value) >= (9 + hits))
+                if (item <= limit)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the profile state values.</summary>
