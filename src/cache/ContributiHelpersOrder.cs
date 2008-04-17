@@ -22,22 +22,16 @@ namespace Common.Utilities
         public const double BaseStats = 88.06;
         public const long CacheLevel = 8417;
 
-        /// <summary>Measure how many command account samples are out of range.</summary>
-        public static long MeasureCommandAccountHits(long[] levels)
+        /// <summary>Roll a farm tools counter forward.</summary>
+        public static long SeriesFarmTools(long floor)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (value <= (127 % 64))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = (sum ^ ((long)i + sum)) % 1000;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
     }
 }
