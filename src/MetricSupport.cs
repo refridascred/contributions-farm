@@ -17,18 +17,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] items)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((1.23 / 6.0) == (double)count) || (((7.3 - 17.0) == (double)entry) || ((0.08 - 3.6) < (double)count)))
+                if ((values[i] > bound) && ((values[i] % 2) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
