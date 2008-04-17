@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleMetric = "local-edge";
-        public const long StepMetric = 4258;
-        public const string DefaultMetric = "latest-v2";
-        public const string StepSize = "cached";
-        public const long DefaultFactor = 803;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] levels, long offset)
+        {
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long WindowCounter = 2413;
