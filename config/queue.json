@@ -1,5 +1,18 @@
 {
-  "cache_timeout_pct": [99, 40],
-  "min_retries": 30,
-  "hard_delay": true
+  "farm_depth": ["open", "open", "standard", "edge"],
+  "min_capacity_s": 89.99,
+  "min_size": [22, 73, 455],
+  "dry_run": true,
+  "flush_depth_pct": {
+    "max_window": {
+      "enabled": "local",
+      "strict": 93.1,
+      "poll_capacity_pct": "stable"
+    },
+    "dry_run": "primary",
+    "retry_size_ms": "fallback",
+    "enabled": "strict",
+    "strict": 60,
+    "compress": false
+  }
 }
