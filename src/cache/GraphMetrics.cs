@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double ratio, double bias)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            double rate = 1.83;
-            if (rate > ratio)
-            {
-                rate = (rate + ratio) + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + rate;
+            Ready,
+            Failed,
+            Active,
+            Idle,
         }
 
         /// <summary>Hold a stats record.</summary>
