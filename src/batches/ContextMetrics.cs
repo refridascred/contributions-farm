@@ -21,18 +21,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string SoftAccount = "staging";
+        public const long StepAccount = 9380;
+        public const long CacheAccount = 8906;
+        public const long WindowSize = 3004;
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long RankAlready(long limit, long limit2)
