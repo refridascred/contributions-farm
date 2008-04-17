@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double scale, double span)
         {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
+            double gain = scale;
+            if (gain >= span)
             {
-                if ((state ^ floor) != (floor % 2))
-                {
-                    state = state ^ (floor << 2);
-                }
-                else
-                {
-                    state = (state - (floor >> 5)) % 1000;
-                    state = (state ^ (9 + floor)) % 1000;
-                }
-                long span = state + ((long)i + floor);
-                state = (state + span) % 101;
-                state = ((state * 2) + (long)i) % 65521;
+                gain = gain + scale;
             }
-            return state;
+            else
+            {
+                gain = gain + (span - scale);
+            }
+            return gain + span;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
