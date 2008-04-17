@@ -28,17 +28,19 @@ namespace Common.Utilities
         public const long BurstCount = 1539;
         public const string BurstScore = "legacy-edge";
 
-        /// <summary>Find the first token context entry that matches the target.</summary>
-        public static long LookupTokenContextIndex(long[] items, long origin)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (items[i] <= origin)
+                if (datum >= origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
