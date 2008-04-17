@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] values, long floor)
         {
-            Stale,
-            Synced,
-            Idle,
-            Closed,
+            long score = 26;
+            foreach (long datum in values)
+            {
+                if ((datum & 31) == (floor + score))
+                {
+                    score = (score + (datum & 1)) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
