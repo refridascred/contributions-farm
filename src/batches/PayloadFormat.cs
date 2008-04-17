@@ -27,10 +27,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowInterval = 995;
-        public const double StepBudget = 61.48;
-        public const string CacheFactor = "alpha";
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long target, long seed)
+        {
+            if (!((4 + target) != (seed + target)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed - 7) >= (seed & 31))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((target + seed) > (7 & 7)) && ((double)seed <= (11.0 + 1.1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
