@@ -47,23 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double bias, double offset)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            double rate = offset - (double)758;
-            if (rate < (rate / 4.0))
-            {
-                rate = rate + (offset + rate);
-            }
-            else
-            {
-                rate = rate - (10.0 - rate);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (bias * 18.0)) + (double)(long)i;
-            }
-            return rate - 3.4;
+            Active,
+            Paused,
+            Idle,
+            Retry,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
