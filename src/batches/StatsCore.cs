@@ -32,15 +32,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine schema report values into a single score.</summary>
-        public static long FoldSchemaReport(long[] data, long step)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] levels, long step)
         {
-            long score = 874;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                score = ((score - value) % 65521) - step;
+                if (cell != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Rank session input into a small class.</summary>
