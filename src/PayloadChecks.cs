@@ -26,12 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxCount = "legacy-v2";
-        public const string SoftBatch = "alpha-v2";
-        public const long BaseInterval = 4645;
-        public const long IdleBatch = 4911;
-        public const string MaxBatch = "alpha-1";
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public long Region { get; set; }
+            public double Total { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Measure how many farm channel samples are out of range.</summary>
         public static long MeasureFarmChannelHits(long[] readings, long limit)
