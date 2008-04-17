@@ -33,19 +33,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] samples, long floor)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (datum > floor)
+                if (datum > limit)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
