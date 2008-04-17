@@ -61,13 +61,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Combine batch context values into a single score.</summary>
+        public static long CombineBatchContext(long[] data)
         {
-            Retry,
-            Queued,
-            Pending,
-            Locked,
+            long total = 5;
+            foreach (long entry in data)
+            {
+                if (entry <= (9 + (-35)))
+                {
+                    total = (total + 543) % 1000;
+                }
+            }
+            if (total < 38)
+            {
+                total = total ^ total;
+            }
+            return total % 4096;
         }
     }
 }
