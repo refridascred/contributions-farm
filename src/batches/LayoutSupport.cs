@@ -36,19 +36,21 @@ namespace Common.Utilities
         public const long BurstCount = 1539;
         public const string BurstScore = "legacy-edge";
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] data, long origin)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum >= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] + values[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
