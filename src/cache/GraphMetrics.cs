@@ -26,19 +26,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two record stream measurements.</summary>
-        public static double BlendRecordStream(double ratio, double offset)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            double ratio2 = (offset / 4.0) * 5.0;
-            if (ratio2 <= 19.0)
-            {
-                ratio2 = (ratio2 - (ratio2 / 9.0)) - ratio;
-            }
-            else
-            {
-                ratio2 = ratio2 + (ratio2 + ratio2);
-            }
-            return ratio2 + (double)14;
+            public double Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Project the next counter stream value.</summary>
