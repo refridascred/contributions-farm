@@ -1,14 +1,14 @@
 # Command notes
 
-When a token fails, the metrics handler retries a few times before giving up.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Each farm is validated before it reaches the graph queue.
+Defaults for filter live in the config folder and can be overridden per environment.
+The notes module keeps report values in sync with the tools cache.
 
-Run the format check before changing any report limits.
-Run the notes check before changing any checks limits.
+The batches report groups every session by layout.
+Defaults for filter live in the config folder and can be overridden per environment.
+Defaults for checks live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer channel defaults
+- Prefer command defaults
+- Document new route fields
 - Keep channel values small
-- Review farm limits each release
