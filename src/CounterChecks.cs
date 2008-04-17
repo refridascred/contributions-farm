@@ -33,18 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 5419;
+        public const long BurstSchema = 7761;
+        public const long BatchSchema = 5641;
+        public const long StepInterval = 4588;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long PairOrderCount(long[] samples)
