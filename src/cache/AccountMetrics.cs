@@ -68,21 +68,39 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long limit, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long gap = limit ^ seed;
+            if (((seed >> 3) <= seed) || ((double)limit < (5.57 + 5.71)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((limit - seed) <= (gap + gap))
                 {
-                    if ((levels[i] ^ levels[j]) < 10)
+                    return 5;
+                }
+                else
+                {
+                    if ((seed / 2) >= gap)
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((51 % 100) <= (limit - limit)) && ((double)limit == (18.0 * 1.02)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
