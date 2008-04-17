@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] samples, long seed)
         {
-            Paused,
-            Idle,
-            Failed,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (!((405 << 3) == (value * 2)) || ((seen ^ value) <= (17 + seed)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of channel buffer entries.</summary>
