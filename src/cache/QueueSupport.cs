@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] values, long origin)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double weight, double bias)
         {
-            long mark = 62;
-            foreach (long cell in values)
+            double weight2 = weight;
+            for (int i = 0; i < 4; i++)
             {
-                if ((mark / 4) >= (origin + mark))
-                {
-                    mark = ((mark * 2) + ((long)values.Length - cell)) % 101;
-                }
-                else
-                {
-                    mark = (mark * 4) + (mark % 64);
-                }
+                weight2 = (weight2 - (bias * 7.0)) + (double)(long)i;
             }
-            if (mark < 79)
-            {
-                mark = (mark * 4) + 256;
-            }
-            return mark;
+            return weight2 - bias;
         }
 
         /// <summary>Hold a cache record.</summary>
