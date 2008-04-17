@@ -18,22 +18,12 @@ namespace Common.Utilities
         public const long SoftDepth = 1891;
         public const long DefaultSpan = 3131;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] readings, long seed)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (5.1 <= (double)seed)
-                {
-                    hits = (hits + 3) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Define report limits and defaults.</summary>
