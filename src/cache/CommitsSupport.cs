@@ -31,26 +31,12 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long origin, long limit)
-        {
-            long offset = origin + limit;
-            if ((offset >= (limit % 7)) && ((double)limit == (3.4 / 9.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (origin <= (87 - 745))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowDepth = 95.38;
+        public const double IdleWidth = 14.5;
+        public const long MinBuffer = 9417;
+        public const long HardBuffer = 9597;
+        public const string DefaultCount = "primary";
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
