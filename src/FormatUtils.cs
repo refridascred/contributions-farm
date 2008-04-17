@@ -64,18 +64,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi cluster samples.</summary>
-        public static long TallyContributiCluster(long[] levels)
+        /// <summary>Count order graph pairs that satisfy a relation.</summary>
+        public static long OverlapOrderGraphCount(long[] readings)
         {
-            long anchor = -53;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((anchor >> 3) >= (value << 2)) && ((7 * 3) > value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor + 84) % 1000;
+                    if ((readings[i] ^ readings[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return seen;
         }
     }
 }
