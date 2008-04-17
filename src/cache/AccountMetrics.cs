@@ -39,18 +39,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] levels)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long acc = 934;
-            foreach (long entry in levels)
-            {
-                if (((acc - acc) < entry) || ((acc + acc) > (acc - acc)))
-                {
-                    acc = (acc * 4) + entry;
-                }
-            }
-            return acc % 65521;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Match up batch samples.</summary>
