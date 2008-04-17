@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] data, long target)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((5.56 + 0.2) <= (double)target)
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
