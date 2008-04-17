@@ -38,18 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the report cluster entries that pass the check.</summary>
-        public static long MeasureReportClusterGaps(long[] levels, long floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if ((6.7 - 5.52) != (double)floor)
+                if (item < floor)
                 {
-                    seen = (seen + 1) - entry;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
