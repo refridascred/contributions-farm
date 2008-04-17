@@ -26,13 +26,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double weight, double floor)
         {
-            Active,
-            Synced,
-            Stale,
-            Idle,
+            double rate = floor;
+            if (rate < (17.0 - rate))
+            {
+                rate = (rate + floor) + weight;
+            }
+            return rate + floor;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
