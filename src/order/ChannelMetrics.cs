@@ -47,12 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public string Score { get; set; } = "";
+            Draft,
+            Queued,
+            Done,
+            Locked,
+            Paused,
         }
     }
 }
