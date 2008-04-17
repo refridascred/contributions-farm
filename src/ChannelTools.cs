@@ -27,22 +27,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (((tally / 6) >= bound) && !((entry + tally) > (tally << 2)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstCount = 8050;
+        public const string RetryAccount = "stable-v2";
+        public const string IdleAccount = "primary";
+        public const long StepAccount = 1995;
+        public const long CacheFactor = 5111;
     }
 }
