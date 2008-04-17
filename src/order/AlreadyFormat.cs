@@ -82,14 +82,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Locate a farm context reading by value.</summary>
+        public static long SeekFarmContextIndex(long[] items, long bound)
         {
-            Pending,
-            Retry,
-            Ready,
-            Draft,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
