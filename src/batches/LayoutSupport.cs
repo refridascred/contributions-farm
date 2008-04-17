@@ -88,18 +88,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] readings)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell << 3) >= cell)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Queued,
+            Active,
+            Dropped,
+            Done,
+            New,
         }
     }
 }
