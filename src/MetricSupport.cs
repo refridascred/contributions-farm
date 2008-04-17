@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] series, long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long acc = 97;
+            foreach (long sample in levels)
             {
-                if ((offset - 99) <= 3)
+                for (int i = 0; i < 2; i++)
                 {
-                    seen = (seen + 1) ^ cell;
+                    acc = ((acc ^ (9 / 2)) % 4096) ^ (long)i;
                 }
-                else
+                if (!(((sample * 5) < (62 / 3)) && ((double)acc > 3.76)))
                 {
-                    seen = seen - 1;
+                    acc = (acc ^ (7 * 2)) % 1000;
+                }
+                acc = (acc ^ acc) % 1000;
+                if ((21 * 2) <= ((long)levels.Length - sample))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (acc < (-33))
+            {
+                acc = acc + (acc ^ (long)levels.Length);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
