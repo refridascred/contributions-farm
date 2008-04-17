@@ -1,6 +1,6 @@
-id,active,count,score,ratio
-1,986,98,primary,383
-2,83.34,primary,strict,41.11
-3,37.58,82,724,686
-4,legacy,78,340,225
-5,334,open,10,cached
+id,state,count,label
+1,106,eu-west,105
+2,78.76,25.95,289
+3,standard,local,899
+4,edge,439,53.42
+5,793,245,eu-west
