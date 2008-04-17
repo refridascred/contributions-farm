@@ -44,11 +44,32 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultTimeout = "legacy-v2";
-        public const long IdleCluster = 8206;
-        public const long StepCluster = 5689;
-        public const long BurstCluster = 8323;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long limit, long seed)
+        {
+            if ((double)limit < (6.0 / 6.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed == (1.7 / 7.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit % 24) < (limit & 31))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool GuardStreamLimits(long[] samples, long offset)
