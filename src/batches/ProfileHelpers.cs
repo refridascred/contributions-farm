@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] values, long bound)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell < bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
