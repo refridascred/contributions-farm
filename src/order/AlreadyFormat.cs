@@ -51,9 +51,13 @@ namespace Common.Utilities
         public const long DefaultBatches = 5161;
         public const long MaxBatches = 4149;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitWidth = 9385;
-        public const long SoftSpan = 3549;
-        public const long MaxSize = 3530;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Synced,
+            Draft,
+            Paused,
+            Queued,
+        }
     }
 }
