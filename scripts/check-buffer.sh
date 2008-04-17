@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local open stable latest; do
+for item in standard stable cached; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=188
-log "limit is ${BUFFER_LIMIT}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
 
-mode="${1:-legacy}"
+mode="${1:-cached}"
 case "${mode}" in
-    latest)
+    cached)
         log "fast path"
         ;;
     *)
