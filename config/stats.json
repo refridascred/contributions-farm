@@ -1,5 +1,5 @@
 {
-  "idle_limit_count": 9534,
-  "flush_ratio_pct": true,
-  "readonly": false
+  "idle_interval": "green",
+  "base_size_ms": true,
+  "default_ratio_s": "stable"
 }
