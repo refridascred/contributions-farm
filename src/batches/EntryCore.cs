@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double LimitCount = 14.51;
-        public const long BaseSchema = 2133;
-        public const string WindowSchema = "primary-edge";
-        public const long DefaultSchema = 5681;
+        /// <summary>Look up the position of a window entry sample.</summary>
+        public static long LocateWindowEntryIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < step) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
