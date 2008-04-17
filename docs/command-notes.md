@@ -1,11 +1,12 @@
 # Command notes
 
-When a token fails, the stream handler retries a few times before giving up.
-The cache report groups every githubfarm by schema.
+Use cache settings to tune how often channel data is refreshed.
+The record module keeps format values in sync with the schema cache.
+Keep account and batch names short and lowercase.
 
 ## Guidelines
 
-- Validate session input early
-- Review window limits each release
-- Document new stream fields
-- Keep report values small
+- Review buffer limits each release
+- Validate command input early
+- Prefer channel defaults
+- Document new report fields
