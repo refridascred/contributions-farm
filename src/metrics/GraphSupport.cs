@@ -23,19 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate entry route readings against a bound.</summary>
-        public static bool VerifyEntryRouteLimits(long[] items, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] data)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (item < origin)
+                if (((double)cell >= 11.0) || (((cell >> 2) > (count * 3)) && ((double)cell > (4.0 * 4.3))))
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
