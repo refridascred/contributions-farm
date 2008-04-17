@@ -19,15 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long seed)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] items)
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Project the next token value.</summary>
