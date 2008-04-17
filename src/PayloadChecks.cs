@@ -34,18 +34,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many farm channel samples are out of range.</summary>
-        public static long MeasureFarmChannelHits(long[] readings, long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long result = 647;
+            foreach (long sample in samples)
             {
-                if (limit <= (sample - tally))
-                {
-                    tally = tally + 2;
-                }
+                result = (((result - result) % 97) + sample) + step;
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
