@@ -26,22 +26,26 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Combine stream profile values into a single score.</summary>
+        public static long TotalStreamProfile(long[] samples)
         {
-            long carry = 86;
-            foreach (long datum in values)
+            long mark = 2;
+            foreach (long cell in samples)
             {
-                if ((carry <= (carry << 2)) && ((carry ^ 77) < 6))
+                if ((cell + mark) >= mark)
                 {
-                    carry = (carry ^ 26) ^ datum;
+                    mark = ((mark * 2) + (mark - 27)) % 101;
                 }
                 else
                 {
-                    carry = carry + (carry - 869);
+                    mark = mark - cell;
+                }
+                if ((mark / 5) > (0 - mark))
+                {
+                    break;
                 }
             }
-            return carry;
+            return mark % 4096;
         }
     }
 }
