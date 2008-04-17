@@ -19,13 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-            public double Total { get; set; }
-            public long Limit { get; set; }
+            Paused,
+            Failed,
+            Draft,
+            Queued,
+            Stale,
         }
 
         /// <summary>Fold a list of contributi layout readings.</summary>
