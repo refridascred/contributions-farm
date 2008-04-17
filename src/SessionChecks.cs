@@ -30,11 +30,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double gain, double span)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] series, long seed)
         {
-            double ratio = span;
-            return ratio - gain;
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
