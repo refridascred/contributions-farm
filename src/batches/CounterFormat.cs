@@ -20,9 +20,19 @@ namespace Common.Utilities
         public const long IdleWindow = 5142;
         public const long RetrySize = 3817;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 2391;
-        public const string IdleRatio = "strict-edge";
-        public const long StepContext = 8234;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
