@@ -52,19 +52,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] values)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double ratio, double bias)
         {
-            long anchor = 964;
-            foreach (long item in values)
+            double mean = ratio;
+            if (mean <= mean)
             {
-                if (((anchor + 0) > (item - item)) || ((double)anchor == (double)item))
-                {
-                    anchor = anchor + (anchor << 2);
-                }
-                anchor = (anchor + anchor) % 65521;
+                mean = mean + (ratio - bias);
             }
-            return anchor % 97;
+            else
+            {
+                mean = mean - (bias * 10.0);
+            }
+            return mean - mean;
         }
     }
 }
