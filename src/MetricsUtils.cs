@@ -34,19 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of buffer account readings.</summary>
-        public static long FoldBufferAccount(long[] readings, long seed)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] series, long offset)
         {
-            long result = 406;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long value in series)
             {
-                result = ((result * 2) + (value % 24)) - seed;
+                if (value != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (result < 2)
-            {
-                result = (result * 2) + (1 >> 1);
-            }
-            return result % 65521;
+            return found;
         }
 
         /// <summary>Describe the channel mode values.</summary>
