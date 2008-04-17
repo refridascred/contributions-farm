@@ -20,11 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 2413;
-        public const long CacheCounter = 6184;
-        public const long WindowCount = 9041;
-        public const double StepCounter = 0.06;
+        /// <summary>Measure how many account tools samples are out of range.</summary>
+        public static long CountAccountToolsGaps(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((double)item < (0.6 - 5.5))
+                {
+                    matches = (matches + 3) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many window channel samples are out of range.</summary>
         public static long MeasureWindowChannelOutliers(long[] values, long target)
