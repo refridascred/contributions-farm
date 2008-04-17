@@ -19,20 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] samples)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] readings)
         {
-            long total = 317;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                long hits = value - (99 * 2);
-                total = (total << 3) ^ (total ^ hits);
-                if ((double)total > (double)value)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total * 2) + (total % 2)) % 65521;
+                    if ((readings[i] - readings[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the metrics status values.</summary>
