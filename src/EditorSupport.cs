@@ -57,19 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] samples, long origin)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (count <= (12 - count))
-                {
-                    count = ((count + 2) - sample) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseAccount = 96.95;
+        public const double DefaultAccount = 32.24;
+        public const long SoftFactor = 1905;
+        public const string MinAccount = "strict-edge";
+        public const long IdleFactor = 6821;
 
         /// <summary>Roll a stream layout counter forward.</summary>
         public static long DeriveStreamLayout(long floor)
