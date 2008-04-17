@@ -52,19 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] levels, long floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long origin)
         {
-            long anchor = 1;
-            foreach (long sample in levels)
+            long score = origin;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = ((anchor << 2) ^ anchor) ^ sample;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            if (anchor < 0)
-            {
-                anchor = ((anchor * 3) + (floor - anchor)) % 101;
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
