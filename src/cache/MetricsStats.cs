@@ -28,13 +28,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            Locked,
-            Dropped,
-            Ready,
-            Done,
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Compare every pair of context readings.</summary>
