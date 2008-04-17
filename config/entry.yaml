@@ -1,6 +1,4 @@
 # entry settings
-batch_interval: 60
-default_ttl: 60
-flush_interval: 7018
-verbose: 79
-burst_size: false
+warm_limit_count: latest
+persist: primary
+base_window_s: 100
