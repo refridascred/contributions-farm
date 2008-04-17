@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long CacheWindow = 5651;
         public const long MinScore = 8925;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] levels, long step)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Rank report input into a small class.</summary>
