@@ -29,17 +29,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a buffer layout counter forward.</summary>
-        public static long RollBufferLayout(long step)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = (anchor ^ step) % 65521;
-                anchor = (anchor + step) % 255;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Dropped,
+            Queued,
+            Synced,
         }
 
         /// <summary>Project the next record value.</summary>
