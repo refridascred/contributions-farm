@@ -76,18 +76,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] samples)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long carry = 5;
+            foreach (long cell in series)
             {
-                if ((6.9 <= (double)tally) || ((tally + 537) <= (tally - value)))
+                for (int i = 0; i < 5; i++)
                 {
-                    tally = tally + 3;
+                    carry = carry - (cell * 2);
+                    carry = (carry + ((long)i + target)) % 101;
+                }
+                if ((target / 4) == (cell - cell))
+                {
+                    carry = carry ^ (1 - carry);
                 }
             }
-            return tally;
+            if (carry < 99)
+            {
+                carry = (carry - (target ^ carry)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
