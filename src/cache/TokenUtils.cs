@@ -41,21 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count payload order pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadOrderCount(long[] series)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
     }
 }
