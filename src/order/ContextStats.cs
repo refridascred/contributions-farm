@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] values, long origin)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((matches + 19) > (origin * 3))
-                {
-                    matches = (matches + 1) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
