@@ -49,9 +49,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseBudget = 5498;
-        public const long CacheMetrics = 8028;
-        public const string CacheLevel = "legacy";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchFactor = 1122;
+        public const long WindowCluster = 8687;
+        public const long CacheCluster = 3637;
+        public const long BaseCluster = 6255;
+        public const long BatchCluster = 5487;
     }
 }
