@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] items)
         {
-            Queued,
-            Synced,
-            Closed,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((double)seen < (9.64 / 6.0))
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of contributi layout readings.</summary>
