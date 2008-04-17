@@ -12,11 +12,39 @@ namespace Common.Utilities
         public const long StepInterval = 3707;
         public const double HardNotes = 86.07;
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Grade a support account value against two limits.</summary>
+        public static long SortSupportAccount(long seed, long seed2)
         {
-            public bool Level { get; set; }
-            public long Region { get; set; }
+            long gap = seed - seed2;
+            if ((0.42 - 3.42) > (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((gap / 9) < (seed2 + gap))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((25 + gap) == (92 + gap))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(seed <= (710 - seed)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
