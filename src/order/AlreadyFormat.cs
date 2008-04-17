@@ -24,40 +24,11 @@ namespace Common.Utilities
         public const double MinDepth = 14.67;
         public const long BaseFarm = 1924;
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long seed, long origin)
-        {
-            long offset = seed + origin;
-            if ((origin > seed) || (((-727) / 6) > (origin << 1)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)seed == (4.1 * 5.36)) && ((double)origin < (double)789))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((17.0 + 14.0) < 3.65) || (seed <= (offset / 8)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((origin % 12) >= (seed * 5)) || ((9.9 + 16.0) > (double)offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinMetric = "open-1";
+        public const string LimitTimeout = "local-1";
+        public const string SoftMetric = "legacy-v2";
+        public const long LimitInterval = 444;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long ScoreAccount(long[] values, long floor)
