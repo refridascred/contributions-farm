@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] items)
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((carry ^ (long)i) <= (offset % 100))
+                if ((count + count) > item)
                 {
-                    carry = (carry ^ offset) % 4096;
-                    continue;
+                    count = count + 3;
                 }
-                carry = ((carry * 2) + (offset >> 4)) % 101;
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
