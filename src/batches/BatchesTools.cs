@@ -25,12 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 4456;
-        public const string SoftCluster = "fallback-edge";
-        public const long StepWidth = 426;
-        public const long CacheSize = 5719;
-        public const double MaxCluster = 38.9;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] series)
+        {
+            long mark = 37;
+            foreach (long item in series)
+            {
+                if ((4.36 * 4.0) != (double)item)
+                {
+                    mark = ((mark << 3) ^ item) % 1000;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ mark) % 101;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double ProjectCommand(double bias, double bias2)
