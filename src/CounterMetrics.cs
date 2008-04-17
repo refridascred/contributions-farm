@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long limit)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long limit, long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
+            if ((double)limit == (double)offset)
             {
-                if ((limit + (-3)) <= (limit << 1))
-                {
-                    mix = (mix * 2) + (mix & 7);
-                }
-                mix = (mix * 2) + (mix + mix);
-                mix = ((mix * 3) + (long)i) % 1000;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (((offset / 9) == (offset + offset)) || ((limit + 27) >= (525 >> 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (offset >= limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)limit <= 1.0)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
