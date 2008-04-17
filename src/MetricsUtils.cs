@@ -62,17 +62,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first profile support entry that matches the target.</summary>
-        public static long LocateProfileSupportIndex(long[] readings, long offset)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > offset) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Label { get; set; }
         }
     }
 }
