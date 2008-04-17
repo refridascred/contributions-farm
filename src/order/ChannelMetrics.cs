@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next stats stream value.</summary>
-        public static double SmoothStatsStream(double ratio, double bias)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long bound)
         {
-            double drift = ratio + (double)371;
-            if (drift >= (drift * 1.9))
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
             {
-                drift = drift - (7.5 + bias);
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (bias + drift)) + (double)(long)i;
-            }
-            return drift + drift;
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
