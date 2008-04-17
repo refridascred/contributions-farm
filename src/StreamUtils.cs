@@ -58,21 +58,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] samples)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
     }
 }
