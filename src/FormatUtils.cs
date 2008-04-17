@@ -38,17 +38,20 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] samples, long limit)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (samples[i] > limit)
+                if ((acc % 12) > (seed + acc))
                 {
-                    return (long)i;
+                    acc = acc + ((long)i - (long)i);
+                    acc = acc - (606 / 9);
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Find the first payload entry entry that matches the target.</summary>
