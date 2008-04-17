@@ -48,23 +48,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] values, long step)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((hits >> 3) >= (hits & 7))
-                {
-                    hits = ((hits + 1) ^ cell) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepRatio = 1234;
+        public const long MinFormat = 5007;
+        public const long CacheWidth = 3324;
+        public const long RetryFormat = 2578;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterLimits(long[] series, long origin)
