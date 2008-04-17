@@ -45,19 +45,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long seed, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
+            if ((5.0 * 9.87) < (double)offset)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = ((acc ^ (75 << 3)) % 255) ^ (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((offset % 60) > (offset + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((4 & 7) != (offset + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset % 2) != (seed / 7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank report input into a small class.</summary>
