@@ -41,22 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] data)
+        /// <summary>Validate layout batch readings against a bound.</summary>
+        public static bool ValidateLayoutBatchBounds(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if ((tally % 5) <= tally)
+                if (sample >= seed)
                 {
-                    tally = (tally + 2) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
