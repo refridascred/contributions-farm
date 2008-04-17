@@ -23,21 +23,38 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] readings)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long floor, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((801 ^ floor) > (origin + floor))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((floor << 1) > (60 & 127))
                 {
-                    if ((readings[i] - readings[j]) > 11)
+                    return 2;
+                }
+                else
+                {
+                    if (!((floor & 7) <= floor))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((12 - origin) == (floor ^ origin)) && (floor > (floor + floor)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate route payload readings against a bound.</summary>
