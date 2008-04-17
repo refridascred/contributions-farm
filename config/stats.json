@@ -1,11 +1,8 @@
 {
-  "sync_ttl_count": {
-    "retry_size_s": "latest",
-    "cache_ttl": 46.01,
-    "burst_ratio_count": "open",
-    "persist": [176, 124],
-    "cache_retries_s": ["primary", "blue", "latest", "legacy"]
-  },
-  "retry_window_ms": "standard",
-  "verbose": true
+  "min_threshold_count": true,
+  "warm_timeout_count": false,
+  "strict": 500,
+  "flush_depth": false,
+  "burst_limit": "standard",
+  "batch_window": 16.03
 }
