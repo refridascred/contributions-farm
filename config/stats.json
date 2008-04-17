@@ -1,21 +1,5 @@
 {
-  "warm_threshold": false,
-  "max_capacity": 95,
-  "verbose": {
-    "burst_window": ["local", "edge"],
-    "persist": 100,
-    "cache_interval_pct": {
-      "enabled": 4.21,
-      "soft_size_ms": false,
-      "verbose": 53.18,
-      "soft_interval_pct": false,
-      "sync_limit_ms": 92
-    },
-    "compress": ["staging", "cached", "legacy", "fallback"],
-    "sync_ttl": "green",
-    "token_window": "latest"
-  },
-  "min_window": "staging",
-  "strict": ["blue", "strict", "latest", "strict"],
-  "token_ttl": ["cached", "standard", "local", "local"]
+  "idle_limit_count": 9534,
+  "flush_ratio_pct": true,
+  "readonly": false
 }
