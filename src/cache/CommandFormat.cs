@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultScore = 8466;
-        public const long CacheTimeout = 8899;
-        public const long MinAlready = 6320;
-        public const long WindowAlready = 6150;
-        public const long BatchAlready = 2503;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public bool Total { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long FoldEntry(long[] items, long origin)
