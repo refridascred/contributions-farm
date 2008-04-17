@@ -15,15 +15,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double ratio, double floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] series, long origin)
         {
-            double drift = ratio * 17.0;
-            for (int i = 0; i < 8; i++)
+            long mark = 7;
+            foreach (long sample in series)
             {
-                drift = ((drift + drift) + (double)(long)i) - floor;
+                if (!((9.93 / 3.0) == (double)sample))
+                {
+                    mark = (mark << 2) ^ (sample + origin);
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (mark << 1)) % 4096;
+                }
             }
-            return drift + (7.8 * 7.98);
+            if (mark < 2)
+            {
+                mark = (mark - origin) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the queue state values.</summary>
