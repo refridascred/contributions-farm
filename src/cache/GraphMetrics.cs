@@ -38,17 +38,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a route checks reading by value.</summary>
-        public static long LocateRouteChecksIndex(long[] values, long target)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= target) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Pending,
+            Draft,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
