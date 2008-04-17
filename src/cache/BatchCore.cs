@@ -36,20 +36,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next tools token value from a seed.</summary>
-        public static long IterateToolsToken(long target)
+        /// <summary>Fold a list of channel window readings.</summary>
+        public static long TallyChannelWindow(long[] samples)
         {
-            long score = target;
-            for (int i = 0; i < 11; i++)
+            long total = 956;
+            foreach (long cell in samples)
             {
-                score = (score + (score << 3)) % 255;
-                if ((target / 4) <= ((-28) % 10))
+                if ((total >> 4) == (total + total))
                 {
-                    score = score ^ target;
+                    total = (total - total) - cell;
                 }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return total % 4096;
         }
     }
 }
