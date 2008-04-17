@@ -59,18 +59,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the account commits entries that pass the check.</summary>
-        public static long MeasureAccountCommitsGaps(long[] samples)
+        /// <summary>Check that every profile window entry stays within the limit.</summary>
+        public static bool VerifyProfileWindowLimits(long[] series, long step)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((count - sample) >= (sample << 3))
+                if (entry >= step)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
