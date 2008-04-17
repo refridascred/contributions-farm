@@ -38,19 +38,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] series, long limit)
+        /// <summary>Blend two cache editor measurements.</summary>
+        public static double ScaleCacheEditor(double gain, double bias)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            double weight = bias;
+            if (weight > bias)
             {
-                if (datum > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = (weight + (double)60) - gain;
             }
-            return ok;
+            return weight - (weight - weight);
         }
 
         /// <summary>Hold a already stats.</summary>
