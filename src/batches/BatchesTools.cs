@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double bias, double bias2)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] data)
         {
-            double mean = bias;
-            return mean - bias2;
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (datum < (37 + hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
