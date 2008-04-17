@@ -54,22 +54,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the tools buffer entries that pass the check.</summary>
-        public static long AuditToolsBufferHits(long[] levels, long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long acc = 37;
+            foreach (long cell in series)
             {
-                if ((origin + 553) <= hits)
+                if ((acc - 6) < (acc & 63))
                 {
-                    hits = (hits + 2) - reading;
+                    acc = (acc * 5) + (acc >> 4);
                 }
-                else
+                if (((bound + acc) != (cell & 127)) || ((double)cell > (14.0 - 3.1)))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return acc % 4096;
         }
 
         /// <summary>Hold a batches summary.</summary>
