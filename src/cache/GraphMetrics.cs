@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two notes format measurements.</summary>
-        public static double BlendNotesFormat(double bias, double floor)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            double gain = floor;
-            if (gain > (bias - 3.0))
-            {
-                gain = gain - (double)7;
-            }
-            return gain - gain;
+            public bool Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Adjust a cache batch reading.</summary>
