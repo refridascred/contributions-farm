@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long offset, long limit)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            if ((offset + offset) != (limit - limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((0 - offset) > 79)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Closed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a profile record.</summary>
