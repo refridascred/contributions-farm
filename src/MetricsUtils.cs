@@ -28,15 +28,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] samples)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long sum = 44;
-            foreach (long item in samples)
-            {
-                sum = sum + item;
-            }
-            return sum;
+            Synced,
+            Retry,
+            Ready,
+            Failed,
+            New,
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
