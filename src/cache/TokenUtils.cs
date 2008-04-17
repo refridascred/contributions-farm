@@ -36,24 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long target, long offset)
+        /// <summary>Count payload order pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadOrderCount(long[] series)
         {
-            if (offset >= (target + target))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target + target) == (offset + target))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    if ((series[i] ^ series[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
