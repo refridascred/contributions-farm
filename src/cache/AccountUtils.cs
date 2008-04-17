@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Dropped,
-            New,
-            Draft,
-            Active,
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
