@@ -40,22 +40,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] values)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] samples)
         {
-            long carry = 9;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (((long)values.Length - carry) >= item)
+                if ((entry >> 2) == (entry + matches))
                 {
-                    carry = (carry ^ (carry / 3)) % 1000;
+                    matches = matches + 3;
                 }
             }
-            if (carry > (-8))
-            {
-                carry = (carry ^ (carry << 3)) % 4096;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a already stats.</summary>
