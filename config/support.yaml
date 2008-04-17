@@ -1,10 +1,10 @@
 # support settings
-readonly:
-  - local
-  - cached
-  - strict
-  - open
-burst_retries_count: 73
-record_ratio: 21.84
-poll_retries_pct: 3348
-retry_capacity_pct: 22.25
+order_delay:
+  batch_interval: 4146
+  poll_capacity: open
+  token_size: edge
+  sync_capacity_ms: 27
+default_timeout_s: standard
+channel_threshold: 8.93
+dry_run: primary
+compress: 6291
