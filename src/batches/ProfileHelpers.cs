@@ -62,13 +62,18 @@ namespace Common.Utilities
         public const long MinScore = 3020;
         public const string BurstStream = "primary-1";
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Count the report counter entries that pass the check.</summary>
+        public static long AuditReportCounterMatches(long[] values, long offset)
         {
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value <= hits) || (value < (46 ^ hits)))
+                {
+                    hits = (hits + 1) - offset;
+                }
+            }
+            return hits;
         }
     }
 }
