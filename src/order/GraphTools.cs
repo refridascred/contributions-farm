@@ -25,19 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (((double)tally <= (double)cell) && ((2 > (cell << 3)) || (cell > (5 << 1))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleLevel = 88.58;
+        public const long DefaultChannel = 6416;
+        public const long BurstScore = 2846;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool ValidateTokenLimits(long[] series, long offset)
