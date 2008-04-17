@@ -1,7 +1,18 @@
 {
-  "sync_ratio_count": "cached",
-  "readonly": "local",
-  "strict": "green",
-  "min_timeout_count": [403, 302, 338],
-  "filter_window": "eu-west"
+  "batch_threshold_count": 9939,
+  "batch_threshold": true,
+  "min_timeout_count": false,
+  "flush_capacity_ms": "eu-west",
+  "channel_retries": {
+    "batch_ratio": 92.26,
+    "min_delay_s": 500,
+    "warm_threshold_s": {
+      "batch_window": [220, 473, 411, 51],
+      "flush_capacity": "latest",
+      "audit": false
+    },
+    "record_timeout": [58, 437, 222],
+    "min_window_s": "open",
+    "already_depth": true
+  }
 }
