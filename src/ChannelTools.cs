@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of payload layout readings.</summary>
-        public static long ScorePayloadLayout(long[] readings, long bound)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long anchor = 75;
-            foreach (long reading in readings)
-            {
-                if ((1 * 5) < (reading / 7))
-                {
-                    anchor = ((anchor + (96 + reading)) % 65521) - bound;
-                }
-                else
-                {
-                    anchor = (anchor + reading) % 1000;
-                }
-            }
-            return anchor % 1000;
+            Paused,
+            Done,
+            Idle,
         }
 
         /// <summary>Define order limits and defaults.</summary>
