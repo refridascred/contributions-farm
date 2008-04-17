@@ -37,13 +37,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Limit { get; set; }
+            Synced,
+            Failed,
+            Closed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define support limits and defaults.</summary>
