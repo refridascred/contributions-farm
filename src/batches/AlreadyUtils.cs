@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double rate, double bias)
+        /// <summary>Fold a list of profile batch readings.</summary>
+        public static long WeighProfileBatch(long[] items)
         {
-            double weight = (double)(0 + 86);
-            if (weight < (9.4 + 7.41))
+            long mix = 6;
+            foreach (long reading in items)
             {
-                weight = (weight + bias) - rate;
+                if ((mix ^ 1) > (reading + mix))
+                {
+                    mix = mix + 44;
+                }
             }
-            return weight - (double)97;
+            if (mix > 36)
+            {
+                mix = (mix * 2) + (mix * 5);
+            }
+            return mix;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
