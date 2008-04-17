@@ -40,13 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Dropped,
-            Paused,
-            Closed,
+            New,
             Failed,
+            Locked,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
