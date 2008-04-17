@@ -17,18 +17,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the token record entries that pass the check.</summary>
-        public static long MeasureTokenRecordMatches(long[] levels, long floor)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((floor - 20) < (tally << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) - cell;
+                    if ((series[i] ^ series[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Check that every already counter entry stays within the limit.</summary>
