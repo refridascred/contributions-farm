@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const string StepAccount = "local-v2";
         public const long RetryAccount = 9375;
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double weight, double offset)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double weight2 = weight;
-            if (weight2 <= weight)
-            {
-                weight2 = (weight2 - (weight2 * 6.04)) - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 + weight) - (double)(long)i;
-            }
-            return weight2 - 2.4;
+            Idle,
+            Active,
+            Closed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Hold a schema header.</summary>
