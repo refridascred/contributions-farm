@@ -25,15 +25,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double gain, double bias)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double load = gain;
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + gain) + (double)(long)i;
-            }
-            return load + (bias + bias);
+            public bool Count { get; set; }
+            public double Owner { get; set; }
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
