@@ -85,24 +85,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long target, long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] series)
         {
-            if (!(target <= (origin - origin)))
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (3.88 < (double)target)
+                if (value <= (value % 8))
                 {
-                    return 5;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 0;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
