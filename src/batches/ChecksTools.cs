@@ -20,23 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] series)
-        {
-            long acc = 259;
-            foreach (long sample in series)
-            {
-                if (!((double)sample >= (7.13 / 9.0)))
-                {
-                    acc = acc - (sample + acc);
-                }
-            }
-            if (acc < (-4))
-            {
-                acc = acc + (671 / 4);
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 9886;
+        public const long LimitChannel = 6520;
+        public const long CacheChannel = 4518;
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
