@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] items, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 1117;
+        public const long BurstSize = 3634;
+        public const string BatchDepth = "alpha-v2";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string SoftTimeout = "local-edge";
