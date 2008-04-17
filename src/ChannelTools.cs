@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] series, long floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long origin)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(((floor - sample) <= (4 + sample)) || (count <= ((-1) % 8))))
-                {
-                    count = count + 1;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a batches stats.</summary>
