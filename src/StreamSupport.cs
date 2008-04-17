@@ -15,18 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] samples, long target)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((((cell - hits) == (target - 33)) && ((target / 5) <= cell)) || ((hits % 64) <= target))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
