@@ -78,22 +78,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up layout cache samples.</summary>
-        public static long OverlapLayoutCacheCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseBudget = 9911;
+        public const long WindowScore = 6315;
+        public const long SoftRatio = 9643;
+        public const long SoftScore = 140;
+        public const long WindowSize = 1734;
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
