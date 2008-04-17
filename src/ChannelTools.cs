@@ -17,10 +17,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitTimeout = 61.96;
-        public const string HardCount = "alpha-v2";
-        public const double BatchCount = 72.11;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmGaps(long[] readings, long bound)
