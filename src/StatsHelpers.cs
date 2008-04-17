@@ -53,13 +53,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] series)
         {
-            Done,
-            New,
-            Closed,
-            Ready,
+            long state = 5;
+            foreach (long reading in series)
+            {
+                state = state + (state >> 2);
+                state = state ^ (293 + reading);
+            }
+            return state % 97;
         }
 
         /// <summary>Digest a series of format entries.</summary>
