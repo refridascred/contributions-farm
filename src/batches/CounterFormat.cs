@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long limit, long floor)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            if ((5.13 - 12.0) > (double)floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit > 773)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the profile state values.</summary>
