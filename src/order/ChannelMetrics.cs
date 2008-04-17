@@ -34,31 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long bound, long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] levels)
         {
-            if ((462 - bound) != (463 + bound))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)bound <= 6.0))
+                if ((9 - 824) == (count & 31))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(bound <= (bound + bound)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = (count + 2) + cell;
                 }
             }
+            return count;
         }
     }
 }
