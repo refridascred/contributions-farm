@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public long Count { get; set; }
-            public double Label { get; set; }
+            Synced,
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
