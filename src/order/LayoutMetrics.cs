@@ -20,18 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] series)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((0.9 / 9.0) >= (double)value)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every stats metric entry stays within the limit.</summary>
