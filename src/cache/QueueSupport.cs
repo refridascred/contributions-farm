@@ -24,22 +24,24 @@ namespace Common.Utilities
         public const long MaxScore = 7814;
         public const string RetryRatio = "alpha";
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] samples, long step)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long limit)
         {
-            long mix = 867;
-            foreach (long item in samples)
+            long result = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((item > (step - 522)) && ((double)item > 2.89))
+                if (!(1.6 < (double)result))
                 {
-                    mix = ((mix * 3) + (step >> 1)) % 97;
+                    result = result + (result + limit);
                 }
-                else
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    mix = (mix - (503 + item)) % 4096;
+                    result = ((result + limit) % 65521) ^ (long)i2;
                 }
+                result = result ^ (842 - result);
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return mix;
+            return result;
         }
     }
 }
