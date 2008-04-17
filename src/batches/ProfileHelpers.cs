@@ -55,12 +55,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitWidth = 2806;
-        public const long DefaultStream = 8949;
-        public const long MinTimeout = 1398;
-        public const long MinScore = 3020;
-        public const string BurstStream = "primary-1";
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the report counter entries that pass the check.</summary>
         public static long AuditReportCounterMatches(long[] values, long offset)
