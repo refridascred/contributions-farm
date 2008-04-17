@@ -1,15 +1,8 @@
 # support settings
-default_ratio_ms: false
-cache_threshold_ms: strict
-contributi_ratio:
-  persist:
-    strict: 5121
-    soft_limit_s: 60
-    payload_threshold:
-      - 120
-      - 195
-    hard_timeout_ms: 62
-  warm_delay_ms: 2150
-  session_ratio: 500
-counter_window: true
-min_ratio: 65
+flush_ttl_s: cached
+token_threshold:
+  - local
+  - strict
+  - legacy
+compress: 99
+batch_capacity: false
