@@ -53,12 +53,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] samples)
         {
-            Closed,
-            Retry,
-            Queued,
+            long carry = 54;
+            foreach (long reading in samples)
+            {
+                if ((double)reading > (double)carry)
+                {
+                    carry = carry - (carry & 31);
+                }
+            }
+            if (carry < 83)
+            {
+                carry = (carry * 3) + (7 ^ carry);
+            }
+            return carry;
         }
     }
 }
