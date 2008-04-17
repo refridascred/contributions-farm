@@ -47,18 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stream editor readings.</summary>
-        public static long CompareStreamEditorCount(long[] levels)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] values, long bound)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((long)values.Length == (sample / 2)) || ((count ^ 9) <= (count >> 1)))
                 {
-                    if ((levels[i] + levels[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) + bound;
                 }
             }
             return count;
