@@ -21,15 +21,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 63.64;
+        public const string MinFilter = "local-v2";
+        public const long StepFilter = 4361;
+        public const long BaseSize = 3592;
     }
 }
