@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
+            Retry,
+            Locked,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a notes stats.</summary>
