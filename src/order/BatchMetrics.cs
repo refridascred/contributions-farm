@@ -20,18 +20,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] samples, long limit)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double scale, double span)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double scale2 = span - (scale * 12.0);
+            if (scale2 >= (double)(-37))
             {
-                if (matches <= 31)
-                {
-                    matches = ((matches + 1) + value) - limit;
-                }
+                scale2 = scale2 + (span / 9.0);
             }
-            return matches;
+            return scale2 + (4.3 - span);
         }
 
         /// <summary>Hold a support snapshot.</summary>
