@@ -45,15 +45,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] readings)
+        /// <summary>Audit schema counter readings against a rule.</summary>
+        public static long CountSchemaCounterMatches(long[] items, long floor)
         {
-            long mark = 332;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                mark = mark - (mark + entry);
+                if ((-92) >= (floor - reading))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
