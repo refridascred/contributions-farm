@@ -67,27 +67,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] samples)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long mix = 1;
-            foreach (long cell in samples)
-            {
-                if (8.4 > (double)mix)
-                {
-                    mix = ((mix * 5) + (mix + mix)) % 4096;
-                    mix = (mix << 3) ^ (154 % 12);
-                }
-                if (((-1) * 2) >= (cell << 3))
-                {
-                    mix = mix - (mix << 1);
-                }
-                else
-                {
-                    mix = (mix - (cell % 16)) % 65521;
-                }
-            }
-            return mix;
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
