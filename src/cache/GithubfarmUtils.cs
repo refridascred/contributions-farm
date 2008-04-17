@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] samples, long bound)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!((reading >> 4) == (78 & 7)))
-                {
-                    hits = (hits + 1) - bound;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public double Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
