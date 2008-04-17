@@ -1,11 +1,18 @@
 # support settings
-compress: primary
-burst_ttl_s: 100
-readonly:
-  poll_interval: 1162
-  batch_depth: false
-  graph_depth: legacy
-  sync_depth_count: local
-  report_timeout: stable
-base_threshold: false
-route_delay: 2427
+audit:
+  window_capacity: 1024
+  channel_window: 7643
+  checks_interval:
+    - cached
+    - legacy
+    - fallback
+    - green
+  cache_window_ms: cached
+enabled:
+  audit: 1.78
+  soft_limit_ms: staging
+  dry_run: 4278
+  flush_capacity_ms: staging
+  enabled: 57
+burst_interval_ms: 60
+support_limit: 73
