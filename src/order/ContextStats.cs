@@ -20,21 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of queue farm readings.</summary>
-        public static long PairQueueFarmCount(long[] values)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double rate = weight;
+            return (rate + (rate - 0.07)) + span;
         }
 
         /// <summary>Describe the checks class values.</summary>
