@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const double SoftBuffer = 39.48;
         public const long RetryBuffer = 9799;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] data, long seed)
+        /// <summary>Match up support queue samples.</summary>
+        public static long CompareSupportQueueCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(value < (seed + value)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((series[i] + series[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a report info.</summary>
