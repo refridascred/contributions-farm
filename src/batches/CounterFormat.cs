@@ -38,18 +38,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] readings, long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] values, long floor)
         {
-            long mix = 378;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if ((double)origin > (double)mix)
+                if (cell >= floor)
                 {
-                    mix = (mix ^ ((long)readings.Length - mix)) ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            return mix % 4096;
+            return valid;
         }
     }
 }
