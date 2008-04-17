@@ -41,16 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] items, long target)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long offset)
         {
-            long result = -6;
-            foreach (long value in items)
+            long total = offset;
+            for (int i = 0; i < 15; i++)
             {
-                result = ((result + value) % 65521) - target;
-                result = result + 8;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
