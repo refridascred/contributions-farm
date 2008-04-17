@@ -19,11 +19,14 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 242;
-        public const long BurstDepth = 3719;
-        public const string BurstWidth = "fallback-v2";
-        public const double SoftBuffer = 10.05;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Ready,
+            Active,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
