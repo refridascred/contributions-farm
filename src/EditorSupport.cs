@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] items)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] series, long step)
         {
-            long anchor = 5;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (reading < (anchor >> 1))
+                if (reading >= step)
                 {
-                    anchor = (anchor << 3) ^ (4 % 97);
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
