@@ -62,12 +62,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Match up schema editor samples.</summary>
+        public static long MatchSchemaEditorCount(long[] items)
         {
-            Dropped,
-            Draft,
-            Ready,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
