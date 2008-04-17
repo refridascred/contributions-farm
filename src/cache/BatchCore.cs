@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] items, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] readings, long limit)
         {
-            long score = 1;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                score = (score + (limit / 6)) % 4096;
-                score = (score + (score + item)) % 4096;
+                if ((long)readings.Length > (count << 1))
+                {
+                    count = ((count + 1) ^ entry) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
