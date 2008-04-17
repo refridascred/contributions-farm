@@ -33,26 +33,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] series)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] values)
         {
-            long anchor = 4;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (anchor > (anchor << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor - (reading >> 2);
-                }
-                else
-                {
-                    anchor = (anchor - (reading << 3)) % 4096;
+                    if ((values[i] ^ values[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor < 91)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return count;
         }
     }
 }
