@@ -23,19 +23,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] items, long bound)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Mode { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
