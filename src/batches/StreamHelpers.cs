@@ -38,11 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitSpan = "staging";
-        public const long StepAccount = 9957;
-        public const double RetryRatio = 79.63;
-        public const long MinAccount = 7969;
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
+        {
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long AuditCounterHits(long[] levels, long origin)
