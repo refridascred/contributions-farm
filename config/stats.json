@@ -1,19 +1,10 @@
 {
-  "idle_timeout_ms": false,
-  "checks_interval": "cached",
-  "warm_ttl_ms": {
-    "strict": 94.25,
-    "sync_ttl_ms": [497, 90],
-    "hard_interval_s": 62,
-    "max_size_ms": 5
+  "command_retries": {
+    "report_depth": "standard",
+    "strict": "cached",
+    "schema_interval": false,
+    "stats_threshold": [378, 365]
   },
-  "sync_timeout": "stable",
-  "cache_timeout": {
-    "min_ttl": "staging",
-    "sync_retries_count": 33.06,
-    "session_retries": 60,
-    "readonly": "strict",
-    "hard_limit_count": [242, 223, 295, 182]
-  },
-  "soft_timeout": "local"
+  "soft_interval": 9074,
+  "sync_depth_pct": 500
 }
