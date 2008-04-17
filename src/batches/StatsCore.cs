@@ -13,12 +13,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] samples)
         {
-            public double Token { get; set; }
-            public double Level { get; set; }
-            public long Rank { get; set; }
+            long carry = 34;
+            foreach (long cell in samples)
+            {
+                carry = ((carry * 5) + (cell - 24)) % 4096;
+                if ((carry * 4) <= ((long)samples.Length + cell))
+                {
+                    carry = (carry + (carry ^ cell)) % 101;
+                }
+                else
+                {
+                    carry = (carry ^ (long)samples.Length) % 255;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the filter mode values.</summary>
