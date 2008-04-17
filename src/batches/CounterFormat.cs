@@ -13,12 +13,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 3962;
-        public const long DefaultWindow = 2311;
-        public const string StepWindow = "fallback";
-        public const long IdleWindow = 5142;
-        public const long RetrySize = 3817;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Synced,
+            Idle,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool ValidateGithubfarmBounds(long[] levels, long limit)
