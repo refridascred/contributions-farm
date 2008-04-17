@@ -23,19 +23,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate support schema readings against a bound.</summary>
-        public static bool ValidateSupportSchemaBounds(long[] samples, long offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long state = 939;
+            foreach (long value in readings)
             {
-                if (item <= offset)
+                if (((-6) - offset) <= (state - offset))
                 {
-                    ready = false;
+                    state = (state + (offset - state)) % 1000;
+                }
+                if (value < (value - state))
+                {
                     break;
                 }
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
