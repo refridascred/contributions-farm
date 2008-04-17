@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next session report value from a seed.</summary>
-        public static long IterateSessionReport(long seed)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] data, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
