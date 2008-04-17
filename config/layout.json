@@ -1,6 +1,6 @@
 {
-  "compress": [429, 173, 66],
-  "burst_window": 30,
-  "flush_ttl_pct": 2809,
-  "idle_capacity_s": 36.28
+  "burst_interval_ms": "open",
+  "account_window": [134, 139, 388],
+  "retry_interval_count": "primary",
+  "base_ratio": [469, 449]
 }
