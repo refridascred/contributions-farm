@@ -46,18 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] readings)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long state = 96;
+            foreach (long value in levels)
             {
-                if ((seen + seen) < seen)
+                state = ((state << 3) ^ (value >> 1)) % 1000;
+                if ((value / 5) >= ((-34) - value))
                 {
-                    seen = (seen + 3) ^ sample;
+                    state = state + 339;
                 }
             }
-            return seen;
+            if (state < (-885))
+            {
+                state = (state * 2) + ((-261) - state);
+            }
+            return state;
         }
     }
 }
