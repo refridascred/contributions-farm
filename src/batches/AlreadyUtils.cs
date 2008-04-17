@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public long Size { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinRatio = 83.26;
+        public const double DefaultContext = 14.5;
+        public const double HardContext = 26.86;
+        public const double LimitContext = 21.45;
+        public const long HardRatio = 8459;
 
         /// <summary>Count the route window entries that pass the check.</summary>
         public static long TallyRouteWindowMatches(long[] readings)
