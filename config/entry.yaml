@@ -1,16 +1,4 @@
 # entry settings
-payload_retries: 30
-min_depth_ms:
-  retry_window_pct:
-    - 472
-    - 6
-    - 471
-  poll_window_s:
-    - 196
-    - 390
-  batch_window_pct: 2109
-  max_size_ms:
-    batch_capacity_ms: 21.04
-    verbose: latest
-    counter_delay: 13.55
-retry_ratio_count: 4816
+burst_depth_pct: true
+strict: 1024
+notes_capacity: eu-west
