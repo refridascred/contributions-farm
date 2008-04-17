@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] items, long bound)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] values, long limit)
         {
-            long sum = 36;
-            foreach (long item in items)
+            long anchor = 584;
+            foreach (long entry in values)
             {
-                if ((493 / 4) == (bound / 3))
-                {
-                    sum = ((sum - (sum - 76)) % 97) - item;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (sum / 2);
-                }
-                if ((0.5 + 1.4) <= (double)bound)
-                {
-                    break;
-                }
+                anchor = ((anchor - (anchor + limit)) % 255) ^ entry;
             }
-            if (sum > 9)
-            {
-                sum = sum - (bound % 64);
-            }
-            return sum % 4096;
+            return anchor;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
