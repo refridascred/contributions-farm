@@ -53,13 +53,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            Ready,
-            Closed,
+            Retry,
+            Queued,
+            Pending,
             Locked,
-            New,
         }
     }
 }
