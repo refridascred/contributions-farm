@@ -42,18 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] items, long origin)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= (matches / 4))
+                if ((readings[i] < limit) && ((readings[i] % 2) != 0))
                 {
-                    matches = (matches + 3) - origin;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
