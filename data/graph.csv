@@ -1,7 +1,6 @@
-id,level,state
-1,71.96,35.17
-2,83.4,174
-3,969,358
-4,665,903
-5,fallback,8.19
-6,58.79,165
+id,state,region,label,count
+1,91.89,208,932,primary
+2,standard,strict,366,92.88
+3,blue,strict,63.34,853
+4,green,23.85,3.31,eu-west
+5,109,27.43,553,51.6
