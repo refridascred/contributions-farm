@@ -10,31 +10,17 @@ namespace Common.Utilities
         public const long MaxBudget = 3550;
         public const long BatchPayload = 7338;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long target, long target2)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] samples, long origin)
         {
-            if ((target ^ (-9)) >= (target2 % 64))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target2 - target2) <= target)
+                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (70 >= (target2 & 127))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a tools summary.</summary>
