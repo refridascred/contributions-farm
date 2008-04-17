@@ -41,38 +41,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long limit, long floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] items, long target)
         {
-            if (((limit - 29) != (limit * 5)) && ((double)limit >= 2.8))
+            long result = -6;
+            foreach (long value in items)
             {
-                return 1;
+                result = ((result + value) % 65521) - target;
+                result = result + 8;
             }
-            else
-            {
-                if (!((floor >> 4) != (floor & 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (limit < (floor >> 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor > (8.0 * 4.64))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
