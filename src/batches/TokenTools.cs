@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardTimeout = "alpha-1";
-        public const long BurstGithubfarm = 1856;
-        public const long CacheBudget = 1298;
-        public const long BurstCount = 7101;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double weight, double span)
+        {
+            double bias = (double)(96 / 6);
+            for (int i = 0; i < 4; i++)
+            {
+                bias = ((bias + (weight * 18.0)) + (double)(long)i) + span;
+            }
+            return bias - (double)230;
+        }
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
