@@ -1,18 +1,5 @@
 {
-  "idle_ratio": 212,
-  "strict": 49,
-  "dry_run": "primary",
-  "burst_depth_count": "primary",
-  "min_retries_s": 4.0,
-  "soft_capacity_ms": {
-    "persist": 20,
-    "verbose": true,
-    "base_retries": {
-      "min_threshold_pct": [129, 311, 2],
-      "batch_window": "staging",
-      "compress": 68.46,
-      "record_size": 89.33
-    },
-    "sync_limit_count": 37.8
-  }
+  "compress": [115, 247, 45],
+  "min_interval_pct": 57,
+  "idle_ratio_s": ["standard", "edge", "stable", "latest"]
 }
