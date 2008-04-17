@@ -33,21 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] samples)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 4;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (12.0 > (double)cell)
                 {
-                    if ((samples[i] - samples[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = mark + (cell >> 4);
                 }
             }
-            return tally;
+            if (mark > (-12))
+            {
+                mark = ((mark << 2) ^ ((-411) + target)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
