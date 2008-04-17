@@ -1,4 +1,10 @@
 # support settings
-persist: 30
-default_capacity_ms: 1557
-compress: 92.73
+cache_capacity_pct: local
+min_retries_s: blue
+default_delay: 833
+min_interval_count: 31
+burst_interval_pct:
+  cache_threshold: 16.48
+  command_size: 4861
+  burst_retries: 3502
+filter_window: eu-west
