@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long DefaultTimeout = 2286;
         public const long RetryOrder = 8421;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] readings)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((double)item != (15.0 * 13.0))
+                if (bound > (reading + bound))
                 {
-                    hits = hits + 3;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate layout samples.</summary>
