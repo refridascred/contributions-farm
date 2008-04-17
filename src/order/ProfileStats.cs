@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double scale, double floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] samples)
         {
-            double mean = (double)9 - (4.87 + floor);
-            if (mean >= (double)768)
+            long count = 0;
+            foreach (long value in samples)
             {
-                mean = (mean - floor) - scale;
+                if ((value << 1) <= value)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                mean = mean - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + 5.7) + (double)(long)i;
-            }
-            return mean + (mean + mean);
+            return count;
         }
 
         /// <summary>Scale a already route figure with a bias.</summary>
