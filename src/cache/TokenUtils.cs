@@ -19,17 +19,15 @@ namespace Common.Utilities
         public const long IdleFactor = 1176;
         public const string BatchFactor = "cached-v2";
 
-        /// <summary>Look up the position of a route layout sample.</summary>
-        public static long FindRouteLayoutIndex(long[] levels, long floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = -282;
+            foreach (long datum in series)
             {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
+                total = (((total - total) % 97) - datum) - limit;
             }
-            return -1;
+            return total % 97;
         }
     }
 }
