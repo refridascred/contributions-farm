@@ -27,18 +27,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] samples, long bound)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((2.0 * 7.39) != (double)bound)
-                {
-                    hits = (hits + 3) - reading;
-                }
-            }
-            return hits;
+            Closed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Compare every pair of window command readings.</summary>
