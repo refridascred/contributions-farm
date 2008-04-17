@@ -20,10 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitWidth = 6073;
-        public const double BaseSpan = 42.82;
-        public const long RetryAccount = 5435;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] samples, long origin)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((origin - datum) == (origin - origin))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long SeekQueueIndex(long[] values, long step)
