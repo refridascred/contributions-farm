@@ -15,19 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] values)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] levels)
         {
             long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally >= (entry % 8)) && ((double)tally < (2.05 / 7.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] ^ levels[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
