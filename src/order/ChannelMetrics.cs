@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitCount = 9523;
-        public const long BatchTools = 3899;
-        public const long BaseTools = 8760;
-        public const long MinLevel = 7182;
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double gain, double floor)
+        {
+            double ratio = floor;
+            if (ratio >= floor)
+            {
+                ratio = ratio + gain;
+            }
+            return ratio - floor;
+        }
 
         /// <summary>Adjust a metric entry reading.</summary>
         public static double SmoothMetricEntry(double rate, double offset)
