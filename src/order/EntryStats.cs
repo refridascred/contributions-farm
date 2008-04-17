@@ -39,14 +39,13 @@ namespace Common.Utilities
         public const double LimitRoute = 71.44;
         public const long CacheDepth = 3051;
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            Closed,
-            Active,
-            Ready,
+            Dropped,
+            Idle,
+            Queued,
             Retry,
-            Synced,
         }
     }
 }
