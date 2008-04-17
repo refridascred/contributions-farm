@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const string StepSize = "cached";
         public const long DefaultFactor = 803;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitCount = 3284;
-        public const long LimitFilter = 1937;
-        public const long BurstSpan = 7363;
-        public const string BatchSize = "stable-1";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 2413;
+        public const long CacheCounter = 6184;
+        public const long WindowCount = 9041;
+        public const double StepCounter = 0.06;
 
         /// <summary>Match up payload samples.</summary>
         public static long OverlapPayloadCount(long[] levels)
