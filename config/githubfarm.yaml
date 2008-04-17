@@ -1,6 +1,9 @@
 # githubfarm settings
-verbose: 58
-readonly:
+retry_interval:
   - standard
-  - edge
-format_interval: stable
+  - standard
+verbose: stable
+batch_limit:
+  - local
+  - local
+  - local
