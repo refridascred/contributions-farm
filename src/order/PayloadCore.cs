@@ -47,11 +47,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 8582;
+        public const string IdleChannel = "latest-1";
+        public const long BatchSize = 7479;
     }
 }
