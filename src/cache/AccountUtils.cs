@@ -11,31 +11,22 @@ namespace Common.Utilities
         public const string MaxTimeout = "fallback-edge";
         public const long SoftBuffer = 5638;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] readings, long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] items)
         {
-            long score = 359;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                for (int i = 0; i < 10; i++)
+                if (6.04 >= (double)hits)
                 {
-                    score = ((score ^ (score + origin)) % 101) - (long)i;
-                }
-                score = score + (388 + origin);
-                if (((value % 60) != (7 + value)) && ((28 - origin) == (value & 255)))
-                {
-                    score = ((score * 3) + (origin * 4)) % 97;
+                    hits = (hits + 2) ^ cell;
                 }
                 else
                 {
-                    score = (score ^ (score ^ 241)) % 101;
+                    hits = hits - 1;
                 }
             }
-            if (score > 28)
-            {
-                score = (score ^ (origin & 1)) % 255;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a route options.</summary>
