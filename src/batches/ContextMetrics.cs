@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] data)
+        /// <summary>Look up the position of a window notes sample.</summary>
+        public static long LocateWindowNotesIndex(long[] values, long step)
         {
-            long mix = 747;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix << 3) ^ (mix + value)) % 97;
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 229)
-            {
-                mix = ((mix * 5) + mix) % 1000;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a counter record.</summary>
