@@ -1,15 +1,14 @@
 # githubfarm settings
-compress:
-  batch_interval_pct: fallback
-  warm_depth_pct: 6.3
-  batch_ratio_s: blue
-  metrics_threshold: 100
-  base_delay_s: 66
-flush_size: strict
-persist:
-  - 244
-  - 168
-  - 407
-format_capacity: 14.76
-poll_ratio_count: 66
-command_timeout: open
+layout_timeout: 30.41
+warm_limit_pct:
+  cache_ratio_pct: 92.28
+  record_window:
+    - local
+    - eu-west
+  report_interval: edge
+  flush_interval: primary
+  sync_ttl_s: true
+  format_limit: standard
+hard_retries_s: 77
+checks_window: strict
+compress: eu-west
