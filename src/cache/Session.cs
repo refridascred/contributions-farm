@@ -37,39 +37,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long floor, long step)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long bound = floor - step;
-            if (((double)floor <= 4.0) && ((939 * 5) < step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((floor & 255) < (floor & 127)) && ((floor + bound) >= bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step > (floor + floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((10.0 - 6.6) >= (double)bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
     }
 }
