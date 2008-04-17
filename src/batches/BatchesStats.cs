@@ -29,11 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double weight, double floor)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double mean = (weight + weight) * 1.5;
-            return (mean + weight) + floor;
+            Stale,
+            Failed,
+            Pending,
+            Active,
+            Closed,
         }
 
         /// <summary>Adjust a record reading.</summary>
