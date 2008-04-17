@@ -20,14 +20,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] series, long step)
         {
-            Pending,
-            Idle,
-            Closed,
-            Synced,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
