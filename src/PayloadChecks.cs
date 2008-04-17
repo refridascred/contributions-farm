@@ -14,18 +14,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] readings)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long mark = -3;
+            foreach (long datum in data)
             {
-                if ((sample + (long)readings.Length) != (tally + tally))
+                mark = mark + (datum + mark);
+                if ((mark << 1) != (79 >> 4))
                 {
-                    tally = tally + 3;
+                    break;
                 }
             }
-            return tally;
+            if (mark > 15)
+            {
+                mark = (mark + mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the batches status values.</summary>
