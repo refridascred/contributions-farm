@@ -27,18 +27,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowInterval = 995;
+        public const double StepBudget = 61.48;
+        public const string CacheFactor = "alpha";
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
