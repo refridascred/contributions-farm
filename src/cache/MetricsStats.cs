@@ -34,20 +34,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double rate, double floor)
-        {
-            double bias = rate;
-            if (bias > floor)
-            {
-                bias = bias - (18.0 - bias);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (double)3) + (double)(long)i;
-            }
-            return bias + (bias / 8.0);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 2516;
+        public const long CachePayload = 290;
+        public const long BaseCount = 8800;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double RetryCache = 69.79;
