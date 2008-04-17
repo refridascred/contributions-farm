@@ -24,26 +24,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] series, long bound)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] values)
         {
-            long acc = 842;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((11.0 * 7.12) <= (double)acc) || ((acc - acc) == (bound + 43)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc * 5) + (903 + sample);
-                }
-                else
-                {
-                    acc = (acc ^ (bound & 255)) % 4096;
+                    if ((values[i] + values[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc > 46)
-            {
-                acc = ((acc * 5) + (acc * 5)) % 255;
-            }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Adjust a record reading.</summary>
