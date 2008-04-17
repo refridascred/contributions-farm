@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public double Label { get; set; }
+            long result = 359;
+            foreach (long cell in levels)
+            {
+                result = ((result - 64) % 4096) ^ cell;
+                if ((result + result) > 9)
+                {
+                    result = (result ^ (46 / 4)) % 101;
+                }
+            }
+            if (result > 681)
+            {
+                result = result + (result ^ (-94));
+            }
+            return result;
         }
 
         /// <summary>Hold a profile summary.</summary>
