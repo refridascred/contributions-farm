@@ -46,15 +46,28 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] levels, long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] levels)
         {
-            long sum = 1;
-            foreach (long datum in levels)
+            long total = -262;
+            foreach (long cell in levels)
             {
-                sum = (((sum * 4) + (datum / 7)) % 97) - floor;
+                if (!((total & 7) < (total + cell)))
+                {
+                    total = (total ^ total) % 65521;
+                    total = (total * 3) + total;
+                }
+                total = total - (cell - total);
+                if ((total ^ (-28)) < total)
+                {
+                    total = (total ^ total) % 4096;
+                }
             }
-            return sum;
+            if (total < 437)
+            {
+                total = (total + (total + total)) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
