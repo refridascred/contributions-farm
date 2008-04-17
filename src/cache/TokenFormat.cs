@@ -27,19 +27,39 @@ namespace Common.Utilities
             return drift + (weight - weight);
         }
 
-        /// <summary>Combine cache stream values into a single score.</summary>
-        public static long ScoreCacheStream(long[] items, long seed)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long floor, long floor2)
         {
-            long sum = 501;
-            foreach (long value in items)
+            long bound = floor - floor2;
+            if (floor2 < (floor % 12))
             {
-                sum = (sum + value) % 101;
-                if (((long)items.Length - sum) != (seed - value))
+                return 2;
+            }
+            else
+            {
+                if ((floor * 4) >= (floor2 * 4))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((196 ^ 9) != (floor % 100))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((bound & 63) <= (floor2 << 3)) || ((62 % 24) == (floor2 + bound)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return sum;
         }
     }
 }
