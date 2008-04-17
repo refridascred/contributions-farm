@@ -34,21 +34,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((5 ^ count) < (sample / 8))
                 {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) + target;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the token state values.</summary>
