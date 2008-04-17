@@ -72,19 +72,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] readings, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (entry < seed)
+                if (seen <= (value ^ 281))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a stats stats.</summary>
