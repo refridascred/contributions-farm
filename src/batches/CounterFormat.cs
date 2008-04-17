@@ -39,19 +39,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] levels, long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (value <= step)
+                if ((double)6 <= (double)cell)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
