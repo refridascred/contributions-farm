@@ -13,11 +13,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Adjust a metric layout reading.</summary>
-        public static double SmoothMetricLayout(double rate, double offset)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            double bias = (rate - 5.6) * 16.0;
-            return (bias + (rate + bias)) + offset;
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
