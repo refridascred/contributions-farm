@@ -31,14 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Active,
-            New,
-            Locked,
-            Synced,
-            Draft,
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a tools entry.</summary>
