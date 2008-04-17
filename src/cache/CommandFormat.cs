@@ -27,12 +27,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long offset)
         {
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = acc ^ (offset ^ acc);
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
