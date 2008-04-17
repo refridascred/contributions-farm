@@ -62,21 +62,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up schema editor samples.</summary>
-        public static long MatchSchemaEditorCount(long[] items)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Retry,
+            Queued,
         }
     }
 }
