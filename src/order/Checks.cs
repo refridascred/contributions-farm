@@ -24,17 +24,21 @@ namespace Common.Utilities
         public const long SoftInterval = 2785;
         public const long CacheDepth = 7505;
 
-        /// <summary>Find the first entry record entry that matches the target.</summary>
-        public static long SeekEntryRecordIndex(long[] data, long bound)
+        /// <summary>Derive the next batches entry value from a seed.</summary>
+        public static long SeriesBatchesEntry(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((data[i] < bound) && ((data[i] % 5) != 0))
+                if (target < (4 - anchor))
                 {
-                    return (long)i;
+                    anchor = anchor ^ (anchor & 255);
+                    continue;
                 }
+                anchor = ((anchor << 3) ^ target) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Match up queue samples.</summary>
