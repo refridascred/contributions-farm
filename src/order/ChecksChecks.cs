@@ -10,21 +10,11 @@ namespace Common.Utilities
         public const long SoftContributi = 1462;
         public const long LimitTimeout = 1876;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] samples)
-        {
-            long total = 8;
-            foreach (long cell in samples)
-            {
-                total = total - (total << 3);
-                total = ((total * 2) + cell) % 101;
-            }
-            if (total < 457)
-            {
-                total = total ^ (total + total);
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitCount = 3284;
+        public const long LimitFilter = 1937;
+        public const long BurstSpan = 7363;
+        public const string BatchSize = "stable-1";
 
         /// <summary>Match up payload samples.</summary>
         public static long OverlapPayloadCount(long[] levels)
