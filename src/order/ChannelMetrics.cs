@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double gain, double floor)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            double ratio = floor;
-            if (ratio >= floor)
-            {
-                ratio = ratio + gain;
-            }
-            return ratio - floor;
+            Active,
+            Dropped,
+            Paused,
+            Stale,
+            Queued,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
