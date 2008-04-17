@@ -1,6 +1,12 @@
 {
-  "batch_timeout": "standard",
-  "flush_capacity": true,
-  "warm_delay_pct": "latest",
-  "min_interval": 32.96
+  "support_window": 24.42,
+  "compress": 11.89,
+  "base_interval_ms": "local",
+  "profile_retries": {
+    "contributi_ratio": false,
+    "idle_depth_pct": [290, 347, 473, 225],
+    "flush_ttl_ms": 5260,
+    "stats_capacity": true
+  },
+  "strict": true
 }
