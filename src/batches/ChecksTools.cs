@@ -20,29 +20,29 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank filter record input into a small class.</summary>
-        public static long ClassifyFilterRecord(long offset, long bound)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long bound, long limit)
         {
-            long bound2 = offset - bound;
-            if ((0.5 - 1.0) == (double)bound)
+            long cur = bound - limit;
+            if (!((5.0 / 8.0) != (double)bound))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((bound2 % 64) < (offset - offset))
+                if ((cur + 0) > limit)
                 {
                     return 0;
                 }
                 else
                 {
-                    if ((offset & 15) != (bound - bound))
+                    if ((6 ^ bound) >= (limit - cur))
                     {
-                        return 3;
+                        return 7;
                     }
                     else
                     {
-                        return 5;
+                        return 2;
                     }
                 }
             }
