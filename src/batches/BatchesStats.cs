@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public string Score { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            Queued,
+            Synced,
+            Closed,
         }
 
         /// <summary>Fold a list of contributi layout readings.</summary>
