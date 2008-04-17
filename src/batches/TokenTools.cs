@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitLevel = 7067;
-        public const long IdleSession = 8193;
-        public const string StepWidth = "primary-v2";
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((double)976 <= (double)(long)series.Length)
+                {
+                    hits = (hits + 2) - datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long DigestSchema(long[] readings, long target)
