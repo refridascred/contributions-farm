@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double gain, double bias)
-        {
-            double ratio = gain * 2.0;
-            if (ratio <= (double)274)
-            {
-                ratio = (ratio + (double)493) + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (gain * 6.71)) + (double)(long)i;
-            }
-            return ratio - (gain * 2.2);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 1584;
+        public const long WindowGithubfarm = 6017;
+        public const long BaseGithubfarm = 2442;
+        public const string StepLevel = "stable-edge";
+        public const string MaxDepth = "local-v2";
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
