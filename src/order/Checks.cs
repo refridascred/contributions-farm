@@ -19,32 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long target, long step)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long diff = target + step;
-            if (!(step <= diff))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((9.58 * 2.7) <= (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target << 3) >= step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
