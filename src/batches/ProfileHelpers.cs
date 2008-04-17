@@ -15,25 +15,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long floor, long seed)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] levels)
         {
-            long bound = floor + seed;
-            if (((seed * 2) > floor) && ((4.73 + 2.2) >= (2.0 * 6.0)))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed + seed) != (bound - seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
