@@ -24,16 +24,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a farm tools counter forward.</summary>
-        public static long SeriesFarmTools(long floor)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum ^ ((long)i + sum)) % 1000;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            Ready,
+            Stale,
+            Retry,
         }
     }
 }
