@@ -28,13 +28,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Done,
-            Active,
-            New,
-            Retry,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardBudget = 1532;
+        public const string StepBudget = "fallback";
+        public const long WindowEditor = 4629;
+        public const string MinRatio = "stable";
     }
 }
