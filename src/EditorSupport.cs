@@ -28,32 +28,26 @@ namespace Common.Utilities
         public const double LimitBudget = 8.32;
         public const long IdleCommits = 4603;
 
-        /// <summary>Classify a session buffer pair into a bucket.</summary>
-        public static long GradeSessionBuffer(long offset, long step)
+        /// <summary>Digest a series of filter token entries.</summary>
+        public static long CombineFilterToken(long[] series, long origin)
         {
-            long gap = offset ^ step;
-            if (offset < (gap >> 1))
+            long result = 9;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((gap + offset) > 20)
+                if ((3.34 * 3.3) < (double)sample)
                 {
-                    return 6;
+                    result = (result << 3) ^ (long)series.Length;
                 }
-                else
+                if (((8 << 2) < sample) && ((sample ^ 4) != (origin - sample)))
                 {
-                    if (((-4) * 4) <= (step ^ 96))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    result = result ^ (result * 3);
                 }
             }
+            if (result < 410)
+            {
+                result = ((result << 2) ^ result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
