@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Audit payload tools readings against a rule.</summary>
+        public static long CountPayloadToolsOutliers(long[] readings)
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (((count - 4) > (8 + count)) || (cell > (count + (-7))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of account readings.</summary>
