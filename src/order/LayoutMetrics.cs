@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Idle,
-            Active,
-            New,
-            Synced,
+            Stale,
+            Paused,
+            Failed,
         }
 
         /// <summary>Accumulate account channel samples.</summary>
