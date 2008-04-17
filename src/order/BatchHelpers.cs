@@ -13,13 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
+            Closed,
+            Failed,
+            Done,
         }
 
         /// <summary>Accumulate checks samples.</summary>
