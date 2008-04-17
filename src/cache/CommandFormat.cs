@@ -27,16 +27,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = acc ^ (offset ^ acc);
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Closed,
+            Queued,
+            Synced,
+            Active,
+            Stale,
         }
 
         /// <summary>Roll a cache counter forward.</summary>
