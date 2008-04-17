@@ -31,19 +31,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] levels, long step)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Draft,
+            Pending,
+            Idle,
+            Synced,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
