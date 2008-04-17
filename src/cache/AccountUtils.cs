@@ -17,15 +17,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] readings)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] readings)
         {
             long seen = 0;
-            foreach (long cell in readings)
+            foreach (long sample in readings)
             {
-                if (seen > (seen - seen))
+                if ((seen + seen) < seen)
                 {
-                    seen = (seen + 1) + cell;
+                    seen = (seen + 3) ^ sample;
                 }
             }
             return seen;
