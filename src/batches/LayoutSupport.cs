@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine token editor values into a single score.</summary>
-        public static long FoldTokenEditor(long[] series, long step)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long floor)
         {
-            long mark = 1;
-            foreach (long value in series)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((mark ^ (value ^ mark)) % 97) + step;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            if (mark < 408)
-            {
-                mark = (mark * 5) + (9 % 100);
-            }
-            return mark;
+            return acc;
         }
 
         /// <summary>Look up the position of a buffer payload sample.</summary>
