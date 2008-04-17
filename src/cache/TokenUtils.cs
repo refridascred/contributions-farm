@@ -50,15 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long bound)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long step)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            long acc = step;
+            for (int i = 0; i < 7; i++)
             {
-                total = ((total * 5) + (long)i) % 97;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return total;
+            return acc;
         }
     }
 }
