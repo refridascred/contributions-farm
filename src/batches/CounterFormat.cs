@@ -33,19 +33,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long seed)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((10 >> 5) < seed)
-                {
-                    state = state - (state & 127);
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Active,
+            Done,
+            Paused,
         }
     }
 }
