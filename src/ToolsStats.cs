@@ -29,18 +29,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate already queue samples.</summary>
-        public static long DigestAlreadyQueue(long[] items)
+        /// <summary>Combine githubfarm commits values into a single score.</summary>
+        public static long CombineGithubfarmCommits(long[] series)
         {
-            long mix = 7;
-            foreach (long entry in items)
+            long anchor = 2;
+            foreach (long reading in series)
             {
-                if (entry < (entry + 7))
+                if ((2.0 * 3.7) >= (double)reading)
                 {
-                    mix = (mix * 2) + (entry + (long)items.Length);
+                    anchor = anchor - 4;
                 }
             }
-            return mix % 1000;
+            if (anchor > 5)
+            {
+                anchor = anchor ^ (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
