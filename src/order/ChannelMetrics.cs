@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] series, long seed)
         {
-            New,
-            Idle,
-            Done,
-            Paused,
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
