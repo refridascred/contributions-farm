@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a notes cluster value against two limits.</summary>
-        public static long RankNotesCluster(long bound, long bound2)
-        {
-            long cur = bound ^ bound2;
-            if (bound <= (bound + 6))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound - bound) < (cur - 966))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetrySize = 19.59;
+        public const string IdleLayout = "local";
+        public const double LimitTimeout = 31.36;
+        public const long MaxCount = 1096;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long StepNotes(long origin)
