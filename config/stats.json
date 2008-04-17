@@ -1,5 +1,11 @@
 {
-  "flush_capacity": "edge",
-  "hard_window": "eu-west",
-  "warm_window": "legacy"
+  "sync_ttl_count": {
+    "retry_size_s": "latest",
+    "cache_ttl": 46.01,
+    "burst_ratio_count": "open",
+    "persist": [176, 124],
+    "cache_retries_s": ["primary", "blue", "latest", "legacy"]
+  },
+  "retry_window_ms": "standard",
+  "verbose": true
 }
