@@ -46,19 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support tools values into a single score.</summary>
-        public static long FoldSupportTools(long[] readings)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long state = 8;
-            foreach (long entry in readings)
-            {
-                state = ((state << 2) ^ (1 + 9)) ^ entry;
-                if ((double)state > (8.43 + 5.0))
-                {
-                    state = ((state * 2) + state) % 101;
-                }
-            }
-            return state;
+            Failed,
+            Retry,
+            Stale,
+            Locked,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
