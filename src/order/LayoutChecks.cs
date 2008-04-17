@@ -50,19 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] values)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long anchor = 4;
-            foreach (long value in values)
-            {
-                anchor = (anchor << 2) ^ (value + anchor);
-            }
-            if (anchor > 2)
-            {
-                anchor = (anchor - anchor) % 255;
-            }
-            return anchor % 97;
+            Paused,
+            Ready,
+            Queued,
+            Active,
         }
 
         /// <summary>Roll a stats counter forward.</summary>
