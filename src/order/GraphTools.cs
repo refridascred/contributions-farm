@@ -55,19 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] samples, long origin)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Offset { get; set; }
+            public double Token { get; set; }
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
