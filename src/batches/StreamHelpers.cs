@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Paused,
-            Dropped,
-            Synced,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleTimeout = 3158;
+        public const string RetryEditor = "alpha-v2";
+        public const long StepCount = 1171;
+        public const double LimitDepth = 2.32;
+        public const long DefaultEditor = 207;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterGaps(long[] readings)
