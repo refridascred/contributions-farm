@@ -23,23 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a already route figure with a bias.</summary>
-        public static double SmoothAlreadyRoute(double gain, double span)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] data, long seed)
         {
-            double mean = (double)59 / 3.0;
-            if (mean < 9.03)
+            long count = 0;
+            foreach (long cell in data)
             {
-                mean = (mean - mean) - gain;
+                if ((seed * 2) > (cell / 4))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                mean = mean + (span / 7.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - 0.6) - (double)(long)i;
-            }
-            return mean - mean;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
