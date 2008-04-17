@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Audit schema format readings against a rule.</summary>
-        public static long MeasureSchemaFormatHits(long[] values, long floor)
+        /// <summary>Look up the position of a support layout sample.</summary>
+        public static long LocateSupportLayoutIndex(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen << 2) >= seen)
+                if ((readings[i] >= target) && ((readings[i] % 3) != 0))
                 {
-                    seen = ((seen + 1) ^ entry) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
