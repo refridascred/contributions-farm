@@ -15,11 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Combine record command values into a single score.</summary>
+        public static long FoldRecordCommand(long[] data, long offset)
         {
-            public double Flag { get; set; }
-            public double Stamp { get; set; }
+            long anchor = 205;
+            foreach (long cell in data)
+            {
+                anchor = ((anchor + (cell - (-97))) % 101) + offset;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
