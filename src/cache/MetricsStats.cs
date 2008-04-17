@@ -65,38 +65,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long seed, long limit)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
-            if ((seed << 1) <= limit)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed * 2) <= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit + seed) >= seed) && ((limit + seed) >= seed))
+                    if ((readings[i] ^ readings[j]) < 5)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((seed + limit) > (limit + (-61))))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
