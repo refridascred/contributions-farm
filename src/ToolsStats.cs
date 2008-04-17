@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] samples, long offset)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((0 + offset) <= (8 >> 1))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
+            Closed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
