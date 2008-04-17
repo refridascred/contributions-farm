@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 8451;
-        public const double StepInterval = 12.99;
-        public const long MinSchema = 4117;
-        public const double IdleWidth = 12.17;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Dropped,
+            Queued,
+            Retry,
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long TotalAlready(long[] readings, long seed)
