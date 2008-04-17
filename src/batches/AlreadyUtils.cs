@@ -46,19 +46,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] samples, long offset)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum != offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a report summary.</summary>
