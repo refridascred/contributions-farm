@@ -19,19 +19,19 @@ namespace Common.Utilities
         public const double SoftFormat = 85.37;
         public const long DefaultFactor = 857;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] levels, long limit)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long step)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (item != limit)
+                if ((long)i < mix)
                 {
-                    ready = false;
-                    break;
+                    continue;
                 }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
