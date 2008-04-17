@@ -45,12 +45,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Match up batch samples.</summary>
