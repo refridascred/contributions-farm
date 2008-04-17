@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((9.56 - 9.0) < (double)cell)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 5838;
+        public const double HardSpan = 28.69;
+        public const string IdleFormat = "primary-1";
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsGaps(long[] values, long origin)
