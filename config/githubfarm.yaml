@@ -1,6 +1,15 @@
 # githubfarm settings
-base_ttl_ms: 250
-min_threshold: 0.65
-cache_threshold: standard
-flush_limit_pct: 100
-batch_depth_ms: eu-west
+compress:
+  batch_interval_pct: fallback
+  warm_depth_pct: 6.3
+  batch_ratio_s: blue
+  metrics_threshold: 100
+  base_delay_s: 66
+flush_size: strict
+persist:
+  - 244
+  - 168
+  - 407
+format_capacity: 14.76
+poll_ratio_count: 66
+command_timeout: open
