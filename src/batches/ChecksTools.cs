@@ -11,12 +11,32 @@ namespace Common.Utilities
         public const double LimitWidth = 66.65;
         public const long BurstTools = 808;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Rank filter record input into a small class.</summary>
+        public static long ClassifyFilterRecord(long offset, long bound)
         {
-            Draft,
-            Queued,
-            Paused,
+            long bound2 = offset - bound;
+            if ((0.5 - 1.0) == (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound2 % 64) < (offset - offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset & 15) != (bound - bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a contributi order figure with a bias.</summary>
