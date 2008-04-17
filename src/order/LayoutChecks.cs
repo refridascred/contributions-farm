@@ -56,17 +56,31 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Find the first contributi metric entry that matches the target.</summary>
-        public static long SeekContributiMetricIndex(long[] readings, long limit)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long target, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((target << 3) >= (6 & 31)) && ((step << 3) > target))
             {
-                if ((readings[i] > limit) && ((readings[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((target & 63) > (step - step))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((20.0 + 2.07) >= (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many graph githubfarm samples are out of range.</summary>
