@@ -33,12 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseWindow = 93.36;
-        public const long LimitRatio = 9694;
-        public const double BatchWindow = 92.2;
-        public const long HardWindow = 7479;
-        public const double RetryWindow = 57.36;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Locked,
+            Ready,
+            Failed,
+            Active,
+            Idle,
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long WeighWindow(long[] readings, long bound)
