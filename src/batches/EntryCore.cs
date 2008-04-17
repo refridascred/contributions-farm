@@ -47,22 +47,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] series, long target)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long total = 79;
-            foreach (long sample in series)
-            {
-                if (((-406) % 3) > target)
-                {
-                    total = (total - target) + sample;
-                }
-            }
-            if (total > 57)
-            {
-                total = (total * 2) + ((long)series.Length + total);
-            }
-            return total % 97;
+            public bool Rank { get; set; }
+            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
