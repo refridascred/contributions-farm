@@ -61,24 +61,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long bound, long bound2)
+        /// <summary>Roll a counter order counter forward.</summary>
+        public static long SeriesCounterOrder(long limit)
         {
-            if ((2 * 5) > bound2)
+            long result = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
+                result = (result + (limit + limit)) % 101;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((bound2 + bound) == (bound2 >> 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return result;
         }
     }
 }
