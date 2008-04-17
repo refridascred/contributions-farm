@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open latest strict primary; do
+RECORD_LIMIT=295
+log "limit is ${RECORD_LIMIT}"
+
+for item in strict legacy open; do
     log "checking ${item}"
 done
 
-mode="${1:-legacy}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
