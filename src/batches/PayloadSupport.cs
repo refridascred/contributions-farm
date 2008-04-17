@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseCount = 4336;
-        public const string SoftStream = "strict-1";
-        public const string MaxInterval = "cached";
-        public const string WindowStream = "fallback";
-        public const long BaseStream = 1490;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long bound, long step)
+        {
+            long gap = bound + step;
+            if ((double)bound <= 9.8)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((4 < (gap - step)) || ((gap << 2) != (gap * 4)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (gap > (bound % 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double BaseWindow = 93.36;
