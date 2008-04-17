@@ -54,19 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double weight, double offset)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double bias = weight;
-            if (bias <= (double)389)
-            {
-                bias = bias + (weight * 5.66);
-            }
-            else
-            {
-                bias = bias + (double)907;
-            }
-            return bias + offset;
+            Dropped,
+            Retry,
+            New,
+            Ready,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
