@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double rate, double bias)
+        /// <summary>Audit notes farm readings against a rule.</summary>
+        public static long AuditNotesFarmGaps(long[] levels, long target)
         {
-            double weight = (double)(46 - 150);
-            if (weight < (weight * 2.5))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                weight = weight - (weight - bias);
+                if (!((sample + tally) != (target + (-4))))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                weight = weight - (double)0;
-            }
-            return weight - (rate / 9.0);
+            return tally;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
