@@ -101,12 +101,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] values, long origin)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] == origin)
+                if (data[i] >= step)
                 {
                     return (long)i;
                 }
