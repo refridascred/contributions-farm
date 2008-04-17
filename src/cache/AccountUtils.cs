@@ -11,15 +11,31 @@ namespace Common.Utilities
         public const string MaxTimeout = "fallback-edge";
         public const long SoftBuffer = 5638;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] readings, long origin)
         {
-            long mark = 93;
-            foreach (long reading in levels)
+            long score = 359;
+            foreach (long value in readings)
             {
-                mark = ((mark ^ (93 & 3)) % 97) + reading;
+                for (int i = 0; i < 10; i++)
+                {
+                    score = ((score ^ (score + origin)) % 101) - (long)i;
+                }
+                score = score + (388 + origin);
+                if (((value % 60) != (7 + value)) && ((28 - origin) == (value & 255)))
+                {
+                    score = ((score * 3) + (origin * 4)) % 97;
+                }
+                else
+                {
+                    score = (score ^ (score ^ 241)) % 101;
+                }
             }
-            return mark % 65521;
+            if (score > 28)
+            {
+                score = (score ^ (origin & 1)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Hold a route options.</summary>
