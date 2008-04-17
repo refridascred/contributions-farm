@@ -1,10 +1,7 @@
 {
-  "command_retries": {
-    "report_depth": "standard",
-    "strict": "cached",
-    "schema_interval": false,
-    "stats_threshold": [378, 365]
-  },
-  "soft_interval": 9074,
-  "sync_depth_pct": 500
+  "hard_limit_s": [14, 438, 451, 310],
+  "idle_delay_s": false,
+  "batch_delay_ms": 37,
+  "max_threshold": false,
+  "context_ttl": 12
 }
