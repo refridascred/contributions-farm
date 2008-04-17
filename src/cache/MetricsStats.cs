@@ -45,36 +45,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long seed, long offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long step, long seed)
         {
-            if ((5.0 * 9.87) < (double)offset)
+            if ((double)step > (9.51 - 7.66))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if ((offset % 60) > (offset + offset))
+                if (((seed % 8) > step) || ((seed - step) >= (-3)))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if ((4 & 7) != (offset + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset % 2) != (seed / 7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
