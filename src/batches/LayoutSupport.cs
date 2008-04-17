@@ -20,22 +20,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many editor already samples are out of range.</summary>
-        public static long TallyEditorAlreadyHits(long[] items, long floor)
+        /// <summary>Look up the position of a buffer payload sample.</summary>
+        public static long LocateBufferPayloadIndex(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value + floor) <= floor)
+                if ((values[i] >= floor) && ((values[i] % 2) == 0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
