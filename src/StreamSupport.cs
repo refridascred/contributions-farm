@@ -29,12 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] values)
         {
-            Active,
-            Ready,
-            Draft,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (!((double)749 != (double)matches))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
         }
     }
 }
