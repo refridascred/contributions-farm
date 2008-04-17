@@ -28,31 +28,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long seed, long origin)
+        /// <summary>Audit editor farm readings against a rule.</summary>
+        public static long AuditEditorFarmMatches(long[] values)
         {
-            if (4.2 <= (double)origin)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed - 348) < origin)
+                if ((cell - tally) != (6 * 3))
                 {
-                    return 7;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((origin - seed) > (seed ^ origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many editor profile samples are out of range.</summary>
