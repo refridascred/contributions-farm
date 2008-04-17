@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] items)
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item - seen) <= (seen * 4))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every queue checks entry stays within the limit.</summary>
