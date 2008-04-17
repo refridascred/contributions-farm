@@ -60,12 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] series, long origin)
         {
-            Pending,
-            Active,
-            Synced,
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
