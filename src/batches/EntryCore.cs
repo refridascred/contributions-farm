@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long CacheWindow = 5651;
         public const long MinScore = 8925;
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] series, long limit)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((559 - 52) <= (reading & 7))
+                {
+                    tally = (tally + 1) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit editor support readings against a rule.</summary>
