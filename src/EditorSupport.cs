@@ -56,12 +56,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Validate channel session readings against a bound.</summary>
+        public static bool VerifyChannelSessionLimits(long[] levels, long offset)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
