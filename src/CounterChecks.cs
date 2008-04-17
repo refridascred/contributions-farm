@@ -57,11 +57,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            Closed,
+            Idle,
+            Paused,
+            Dropped,
+            Done,
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
