@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const string BatchFactor = "primary";
         public const long LimitProfile = 2214;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] items)
+        /// <summary>Scale a editor queue figure with a bias.</summary>
+        public static double SmoothEditorQueue(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long value in items)
+            double load = 20.0;
+            if (load >= (offset * 2.92))
             {
-                if (15 > (matches + matches))
-                {
-                    matches = (matches + 1) ^ value;
-                }
+                load = load - (offset - offset);
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - ratio;
         }
     }
 }
