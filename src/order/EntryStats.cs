@@ -28,17 +28,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first notes route entry that matches the target.</summary>
-        public static long LookupNotesRouteIndex(long[] values, long floor)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
+            long tally = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] == floor) && ((values[i] % 2) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
