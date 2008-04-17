@@ -19,17 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long bound)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Draft,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a profile entry.</summary>
