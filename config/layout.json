@@ -1,7 +1,7 @@
 {
-  "format_retries": "eu-west",
-  "default_capacity_ms": 8908,
-  "queue_ratio": true,
-  "strict": "latest",
-  "idle_depth": ["standard", "green", "staging"]
+  "sync_interval": 1467,
+  "channel_retries": "fallback",
+  "route_interval": "staging",
+  "batch_timeout_s": true,
+  "cache_depth": ["strict", "cached"]
 }
