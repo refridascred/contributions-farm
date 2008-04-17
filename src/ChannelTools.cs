@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] levels, long step)
         {
-            Paused,
-            Done,
-            Idle,
+            long acc = -1;
+            foreach (long item in levels)
+            {
+                acc = (acc ^ (8 % 97)) + item;
+                acc = ((acc << 2) ^ (step >> 5)) % 101;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
