@@ -27,38 +27,18 @@ namespace Common.Utilities
             return gain2 + (double)555;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long offset, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] items)
         {
-            if ((double)offset > (9.01 + 0.1))
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin <= (offset & 3))
+                if ((datum / 4) > count)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((offset - origin) != (9 + offset)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset < (1 >> 3)) || ((origin >> 5) < 79))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
