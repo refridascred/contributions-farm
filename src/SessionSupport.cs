@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of profile schema entries.</summary>
-        public static long TallyProfileSchema(long[] readings, long seed)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long carry = 54;
-            foreach (long item in readings)
-            {
-                if ((carry * 2) >= (item + carry))
-                {
-                    carry = (carry << 2) ^ (seed ^ carry);
-                }
-                else
-                {
-                    carry = (carry ^ (carry % 97)) % 4096;
-                }
-                if ((carry - carry) <= (item & 3))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Paused,
+            Queued,
+            Done,
+            Idle,
+            Stale,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
