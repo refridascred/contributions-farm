@@ -51,15 +51,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] levels)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] series, long bound)
         {
-            long mark = -7;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                mark = ((mark * 2) + (sample / 2)) % 97;
+                if (sample != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark % 97;
+            return ready;
         }
 
         /// <summary>Hold a counter entry.</summary>
