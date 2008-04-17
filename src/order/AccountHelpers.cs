@@ -16,12 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] readings)
         {
-            Idle,
-            Paused,
-            Retry,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((matches - reading) >= matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
