@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((double)976 <= (double)(long)series.Length)
-                {
-                    hits = (hits + 2) - datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 5645;
+        public const double BaseCluster = 6.26;
+        public const double RetryCluster = 22.89;
+        public const long StepCluster = 4824;
+        public const string BatchCluster = "latest-v2";
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long DigestSchema(long[] readings, long target)
