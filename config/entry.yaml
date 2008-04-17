@@ -1,25 +1,10 @@
 # entry settings
-base_limit_ms: staging
-min_window_count:
-  - standard
-  - staging
-  - latest
-window_timeout:
-  flush_retries_s:
-    verbose: edge
-    flush_window: eu-west
-    flush_size_s: 73.83
-    schema_size: standard
-  idle_threshold: 8243
-  cache_size:
-    channel_capacity: 43
-    already_window: true
-    sync_delay_ms: 8911
-    dry_run: 50
-    stats_ttl: 23.25
-    retry_capacity_s: primary
-  max_depth_s:
-    default_retries_pct: false
-    retry_interval_pct: 250
-    hard_ttl: 100
-poll_depth_pct: staging
+burst_limit_count: 73.4
+strict: 20.19
+warm_limit_ms:
+  - 88
+  - 415
+  - 127
+  - 431
+entry_threshold: false
+poll_interval: 8064
