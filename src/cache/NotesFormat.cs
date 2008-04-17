@@ -25,19 +25,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] series)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long total = -64;
-            foreach (long datum in series)
-            {
-                total = (total * 3) + datum;
-                if ((datum & 63) >= (10 * 2))
-                {
-                    break;
-                }
-            }
-            return total;
+            Queued,
+            Ready,
+            New,
+            Locked,
         }
     }
 }
