@@ -22,18 +22,16 @@ namespace Common.Utilities
         public const string CacheLevel = "stable-v2";
         public const string IdleRatio = "open-1";
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] values)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long mark = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((829 << 3) >= (seen + 56))
-                {
-                    seen = (seen + 2) ^ entry;
-                }
+                mark = (mark + ((long)i % 10)) % 65521;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
     }
 }
