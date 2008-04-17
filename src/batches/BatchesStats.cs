@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long StepLevel = 3577;
         public const string BatchSize = "alpha-1";
 
-        /// <summary>Audit cluster session readings against a rule.</summary>
-        public static long AuditClusterSessionMatches(long[] levels, long bound)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if ((4.27 * 20.0) != (double)reading)
+                if (value >= offset)
                 {
-                    hits = (hits + 2) - bound;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
