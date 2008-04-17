@@ -1,10 +1,19 @@
 {
-  "strict": 8620,
-  "soft_depth_count": 35,
-  "persist": 250,
-  "buffer_ratio": {
-    "default_size": 3.83,
-    "enabled": [77, 13, 280],
-    "dry_run": [445, 430, 391, 122]
-  }
+  "poll_size_s": {
+    "strict": 15.47,
+    "warm_window_pct": 57.46,
+    "session_size": {
+      "buffer_capacity": false,
+      "enabled": 500,
+      "retry_capacity_ms": "legacy",
+      "default_limit_count": 250,
+      "flush_capacity_count": "standard",
+      "batch_retries_ms": [33, 2, 272]
+    },
+    "checks_timeout": 29.19,
+    "dry_run": false
+  },
+  "support_limit": ["stable", "edge"],
+  "strict": "staging",
+  "dry_run": 3662
 }
