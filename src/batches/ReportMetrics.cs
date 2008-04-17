@@ -27,12 +27,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Derive the next session queue value from a seed.</summary>
+        public static long DeriveSessionQueue(long seed)
         {
-            New,
-            Dropped,
-            Pending,
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
