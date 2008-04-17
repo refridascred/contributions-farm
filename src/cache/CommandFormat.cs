@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultScore = 8466;
+        public const long CacheTimeout = 8899;
+        public const long MinAlready = 6320;
+        public const long WindowAlready = 6150;
+        public const long BatchAlready = 2503;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double LimitWindow = 62.23;
