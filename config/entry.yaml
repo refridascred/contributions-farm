@@ -1,18 +1,18 @@
 # entry settings
-max_depth_s: latest
-base_ratio_s: false
-channel_capacity: 9198
-verbose: 500
-batch_window_ms: 250
-burst_interval_s:
-  cache_retries:
-    - 128
-    - 484
-  metric_window: legacy
-  cache_interval_ms: cached
-  default_interval_s: 90
-  min_timeout_count: 66.75
-  batches_limit:
-    - primary
-    - latest
-    - open
+warm_window: stable
+compress:
+  route_size:
+    retry_limit:
+      - 393
+      - 333
+      - 192
+    warm_depth_count: false
+    persist: green
+  sync_retries: open
+  entry_retries: false
+hard_threshold_ms:
+  - 348
+  - 338
+default_interval_count: 72.1
+hard_threshold_pct: 38.4
+max_timeout_s: 31
