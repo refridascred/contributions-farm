@@ -16,13 +16,12 @@ namespace Common.Utilities
             return bias - (double)230;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string HardBuffer = "staging-edge";
+        public const long MinBudget = 5297;
+        public const string IdleBuffer = "stable-edge";
+        public const long HardSize = 2355;
+        public const long BatchBudget = 3863;
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long LookupSchemaIndex(long[] samples, long origin)
