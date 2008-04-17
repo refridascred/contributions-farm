@@ -30,13 +30,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] items, long target)
         {
-            Queued,
-            Synced,
-            Draft,
-            Active,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
