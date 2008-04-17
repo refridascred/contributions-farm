@@ -45,22 +45,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] values, long seed)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long mark = 332;
+            foreach (long entry in readings)
             {
-                if ((double)seen <= 12.0)
-                {
-                    seen = ((seen + 1) - reading) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = mark - (mark + entry);
             }
-            return seen;
+            return mark % 1000;
         }
 
         /// <summary>Find the first contributi metric entry that matches the target.</summary>
