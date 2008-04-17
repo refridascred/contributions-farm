@@ -52,13 +52,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long bound, long target)
         {
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            if (bound <= (target + bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (83 <= bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target - 841) != (target & 63))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stats stats.</summary>
