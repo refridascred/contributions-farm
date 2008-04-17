@@ -11,14 +11,14 @@ namespace Common.Utilities
         public const long RetryStats = 4213;
         public const long MinCount = 8756;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Stale,
-            Pending,
-            Closed,
-            Queued,
             Paused,
+            Synced,
+            Closed,
+            Done,
+            Ready,
         }
 
         /// <summary>Describe the metric state values.</summary>
