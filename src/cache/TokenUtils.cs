@@ -47,15 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long step)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
