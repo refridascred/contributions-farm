@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (values[i] == seed)
                 {
-                    if ((readings[i] - readings[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
