@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] data, long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (data[i] < bound)
+                if ((target + 7) < ((long)values.Length * 2))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
