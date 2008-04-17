@@ -27,9 +27,9 @@ namespace Common.Utilities
         public const long IdleWindow = 5142;
         public const long RetrySize = 3817;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftBudget = 2781;
-        public const long RetryCluster = 632;
-        public const long BurstCluster = 1294;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 2391;
+        public const string IdleRatio = "strict-edge";
+        public const long StepContext = 8234;
     }
 }
