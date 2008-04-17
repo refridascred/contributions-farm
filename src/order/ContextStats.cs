@@ -37,12 +37,22 @@ namespace Common.Utilities
             return (scale2 + (offset / 9.0)) + scale;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] series, long seed)
         {
-            Draft,
-            Dropped,
-            Closed,
+            long carry = 893;
+            foreach (long sample in series)
+            {
+                if (1.3 < (double)carry)
+                {
+                    carry = (carry - (sample + seed)) % 101;
+                }
+                else
+                {
+                    carry = carry + 69;
+                }
+            }
+            return carry;
         }
     }
 }
