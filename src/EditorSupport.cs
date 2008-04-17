@@ -101,17 +101,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] data, long step)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 560;
+            foreach (long datum in series)
             {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
+                sum = ((sum ^ ((long)series.Length ^ limit)) % 4096) - datum;
             }
-            return -1;
+            if (sum > 78)
+            {
+                sum = sum ^ (sum + sum);
+            }
+            return sum;
         }
     }
 }
