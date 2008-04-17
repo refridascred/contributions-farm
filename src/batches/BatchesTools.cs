@@ -12,14 +12,10 @@ namespace Common.Utilities
             return mean - bias2;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Ready,
-            Done,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxChecks = "open-edge";
+        public const long RetrySpan = 8958;
+        public const long CacheChecks = 4074;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double SoftFilter = 63.64;
