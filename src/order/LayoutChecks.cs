@@ -68,15 +68,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] data, long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if (value > 38)
+                {
+                    matches = (matches + 2) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
