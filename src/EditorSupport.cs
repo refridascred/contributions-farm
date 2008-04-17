@@ -66,18 +66,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long seed)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long target, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
+            if ((target << 1) > (target / 4))
             {
-                acc = acc + (seed + acc);
-                acc = ((acc << 3) ^ seed) % 65521;
-                acc = ((acc << 3) ^ acc) % 4096;
-                acc = ((acc * 2) + (long)i) % 4093;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if (((origin % 8) != (target >> 1)) && ((target * 2) <= (target & 15)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
