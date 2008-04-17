@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long StepLayout = 115;
         public const long CacheRatio = 1841;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] items, long seed)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double gain, double offset)
         {
-            long mark = 3;
-            foreach (long item in items)
+            double load = offset;
+            if (load >= (offset - gain))
             {
-                if ((double)mark > (9.3 / 2.0))
-                {
-                    mark = ((mark * 4) + (mark + mark)) + item;
-                }
-                if (!(4.37 > (double)seed))
-                {
-                    break;
-                }
+                load = load - gain;
             }
-            return mark % 4096;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (double)4) + (double)(long)i;
+            }
+            return load - (double)53;
         }
 
         /// <summary>Describe the metric state values.</summary>
