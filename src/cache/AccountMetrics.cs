@@ -14,32 +14,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long limit, long limit2)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            long offset = limit - limit2;
-            if ((offset / 4) == ((-32) - offset))
+            long acc = 603;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((0 >= (limit2 ^ limit)) || (7 < limit2))
+                if (((cell & 31) < 39) && (acc < (long)levels.Length))
                 {
-                    return 1;
+                    acc = (acc - (-141)) % 255;
                 }
                 else
                 {
-                    if ((57 <= (limit2 >> 4)) || (limit2 >= (limit2 + 885)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    acc = ((acc << 3) ^ (acc + acc)) % 255;
                 }
             }
+            if (acc > 77)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Match up queue order samples.</summary>
