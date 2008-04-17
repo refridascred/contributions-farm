@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] items, long seed)
+        /// <summary>Accumulate tools queue samples.</summary>
+        public static long TallyToolsQueue(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 79;
+            foreach (long cell in levels)
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                score = (score ^ (long)levels.Length) + floor;
+                score = (score - (cell / 2)) % 4096;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
