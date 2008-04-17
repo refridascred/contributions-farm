@@ -29,11 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 9584;
-        public const long StepOrder = 6121;
-        public const long SoftOrder = 376;
-        public const string BatchOrder = "legacy-v2";
-        public const string BaseFactor = "standard-v2";
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Active,
+            Ready,
+            Draft,
+        }
     }
 }
