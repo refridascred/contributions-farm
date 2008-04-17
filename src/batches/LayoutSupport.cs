@@ -76,19 +76,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double bias, double offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] readings)
         {
-            double mean = offset;
-            if (mean > (double)8)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                mean = mean - bias;
+                if ((cell << 3) >= cell)
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                mean = mean + 4.0;
-            }
-            return mean - (offset / 9.0);
+            return count;
         }
     }
 }
