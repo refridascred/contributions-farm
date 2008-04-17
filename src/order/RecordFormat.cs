@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Locked,
-            New,
-            Dropped,
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Scale a farm schema figure with a bias.</summary>
