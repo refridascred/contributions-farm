@@ -38,31 +38,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long offset, long target)
+        /// <summary>Count channel session pairs that satisfy a relation.</summary>
+        public static long MatchChannelSessionCount(long[] series)
         {
-            if ((915 - offset) <= (target % 12))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((-73) & 1) == (target + offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (target <= (offset - offset))
+                    if ((series[i] - series[j]) != 17)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
