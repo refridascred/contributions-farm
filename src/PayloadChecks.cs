@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit cluster buffer readings against a rule.</summary>
-        public static long CountClusterBufferHits(long[] items)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((seen / 8) == (seen + reading))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Stale,
+            Pending,
+            Closed,
         }
 
         /// <summary>Accumulate schema samples.</summary>
