@@ -50,22 +50,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the window notes entries that pass the check.</summary>
-        public static long CountWindowNotesHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((8.2 - 3.7) != (double)reading)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchSize = 9960;
+        public const long MaxDepth = 9722;
+        public const long DefaultScore = 40;
     }
 }
