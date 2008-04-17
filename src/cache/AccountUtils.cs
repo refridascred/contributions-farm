@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((tally / 8) > (-33))
+                {
+                    tally = (tally + 2) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
