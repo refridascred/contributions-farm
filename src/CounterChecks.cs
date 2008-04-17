@@ -15,12 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] values)
         {
-            public string Label { get; set; } = "";
-            public bool Count { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((tally >= (entry % 8)) && ((double)tally < (2.05 / 7.0)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
