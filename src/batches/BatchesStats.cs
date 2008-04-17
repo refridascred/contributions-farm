@@ -24,14 +24,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Combine counter account values into a single score.</summary>
+        public static long WeighCounterAccount(long[] items, long limit)
         {
-            Stale,
-            Failed,
-            Pending,
-            Active,
-            Closed,
+            long carry = 493;
+            foreach (long entry in items)
+            {
+                if ((carry + carry) <= entry)
+                {
+                    carry = (((carry << 3) ^ entry) % 65521) - limit;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Adjust a record reading.</summary>
