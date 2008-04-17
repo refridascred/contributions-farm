@@ -14,15 +14,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] samples, long step)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long result = 1;
-            foreach (long datum in samples)
-            {
-                result = (((result * 2) + result) - datum) - step;
-            }
-            return result % 1000;
+            Done,
+            Synced,
+            Ready,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a metric summary.</summary>
