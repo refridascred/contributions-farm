@@ -1,7 +1,5 @@
 {
-  "notes_capacity": "legacy",
-  "idle_depth": "edge",
-  "batch_interval": [236, 367, 489],
-  "verbose": 30.76,
-  "payload_interval": "blue"
+  "base_timeout": "edge",
+  "warm_interval": "strict",
+  "cache_interval": true
 }
