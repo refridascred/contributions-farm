@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine notes contributi values into a single score.</summary>
-        public static long CombineNotesContributi(long[] items, long target)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long step, long target)
         {
-            long mix = 888;
-            foreach (long cell in items)
+            if (((double)step < (double)82) && ((61 & 127) >= step))
             {
-                mix = ((mix - (target + target)) % 101) - cell;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((9 - target) < (target + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the batches mode values.</summary>
