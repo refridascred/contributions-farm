@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] readings, long origin)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a schema entry.</summary>
