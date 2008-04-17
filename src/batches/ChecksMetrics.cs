@@ -85,12 +85,11 @@ namespace Common.Utilities
         public const long SoftScore = 140;
         public const long WindowSize = 1734;
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
         }
     }
 }
