@@ -23,39 +23,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long target, long floor)
-        {
-            if ((target << 2) > 158)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((floor ^ floor) > floor) && (7.0 >= (double)floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target > 3.18)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor + (-63)) < floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultDepth = 7998;
+        public const double LimitBudget = 8.32;
+        public const long IdleCommits = 4603;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double BaseAccount = 96.95;
