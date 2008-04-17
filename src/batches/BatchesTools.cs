@@ -12,11 +12,20 @@ namespace Common.Utilities
             return mean - bias2;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitInterval = 31.23;
-        public const string BatchInterval = "fallback";
-        public const double DefaultInterval = 35.65;
-        public const double DefaultNotes = 24.02;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] values, long origin)
+        {
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double SoftFilter = 63.64;
