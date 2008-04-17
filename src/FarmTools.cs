@@ -31,13 +31,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Ready,
-            Draft,
-            Pending,
-            Idle,
+            Active,
+            Dropped,
             Synced,
         }
 
