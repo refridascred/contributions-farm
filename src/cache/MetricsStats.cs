@@ -14,17 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first filter schema entry that matches the target.</summary>
-        public static long SeekFilterSchemaIndex(long[] items, long offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 56;
+            foreach (long sample in levels)
             {
-                if (items[i] < offset)
+                if (((long)levels.Length / 5) >= (limit + limit))
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ sample) % 255;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Accumulate context buffer samples.</summary>
