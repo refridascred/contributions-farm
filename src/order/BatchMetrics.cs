@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] readings, long floor)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double weight, double bias)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            double ratio = (double)(560 + 763);
+            for (int i = 0; i < 7; i++)
             {
-                if (sample < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = (((ratio - (double)171) + (double)(long)i) + weight) - bias;
             }
-            return ok;
+            return ratio + ratio;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
