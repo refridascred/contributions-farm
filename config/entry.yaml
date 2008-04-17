@@ -1,4 +1,5 @@
 # entry settings
-max_threshold: 68
-persist: 8286
-sync_window_ms: stable
+default_interval: true
+layout_interval: 34
+dry_run: true
+flush_capacity: standard
