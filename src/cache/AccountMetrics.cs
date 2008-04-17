@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            Failed,
-            Draft,
-            Queued,
-            Ready,
+            long total = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                total = total + ((long)i ^ total);
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
