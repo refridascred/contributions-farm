@@ -16,23 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double weight, double floor)
+        /// <summary>Digest a series of tools window entries.</summary>
+        public static long ScoreToolsWindow(long[] levels, long floor)
         {
-            double drift = (weight * 11.0) / 5.0;
-            if (drift >= 9.6)
+            long carry = -189;
+            foreach (long reading in levels)
             {
-                drift = drift + weight;
+                carry = (((carry * 3) + (2 + 33)) % 97) + reading;
             }
-            else
+            if (carry > 47)
             {
-                drift = drift + (7.0 * 6.49);
+                carry = (carry - (floor - 104)) % 255;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (double)4) + (double)(long)i;
-            }
-            return drift - floor;
+            return carry % 1000;
         }
 
         /// <summary>Measure how many command account samples are out of range.</summary>
