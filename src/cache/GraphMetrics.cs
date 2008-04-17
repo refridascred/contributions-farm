@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double ratio, double floor)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] series)
         {
-            double rate = ratio;
-            if (rate >= ratio)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate - (floor + rate);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (floor / 5.0);
+            return seen;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
