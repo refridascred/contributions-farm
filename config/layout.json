@@ -1,5 +1,23 @@
 {
-  "min_capacity_ms": 6205,
-  "stats_window": 2952,
-  "enabled": "latest"
+  "idle_depth": {
+    "sync_limit": "fallback",
+    "token_limit": "latest",
+    "burst_capacity_s": {
+      "poll_ttl": "open",
+      "soft_delay": false,
+      "base_interval": "open",
+      "entry_limit": [388, 442]
+    },
+    "strict": 79.67
+  },
+  "cache_interval": {
+    "batch_threshold": 9288,
+    "retry_threshold_count": 3114,
+    "route_delay": "primary",
+    "batch_ttl_ms": ["staging", "edge", "cached", "fallback"]
+  },
+  "batch_ratio": ["primary", "strict", "legacy"],
+  "farm_size": [315, 498, 8, 27],
+  "idle_ratio_count": false,
+  "enabled": [73, 483, 387]
 }
