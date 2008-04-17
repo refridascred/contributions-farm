@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] samples, long step)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double gain, double span)
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double drift = (2.09 - span) + (double)15;
+            return (drift - (span * 6.7)) + gain;
         }
 
         /// <summary>Describe the stream status values.</summary>
