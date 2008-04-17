@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public double Count { get; set; }
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheScore = "primary";
+        public const double CacheBudget = 59.16;
+        public const long MaxCluster = 7163;
+        public const string BatchCluster = "staging";
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterHits(long[] data)
