@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 1117;
-        public const long BurstSize = 3634;
-        public const string BatchDepth = "alpha-v2";
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Retry,
+            Pending,
+            Active,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string SoftTimeout = "local-edge";
