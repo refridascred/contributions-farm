@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Active,
-            Failed,
-            Retry,
-            Closed,
+            public double Count { get; set; }
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Accumulate schema samples.</summary>
