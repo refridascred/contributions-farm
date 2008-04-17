@@ -83,22 +83,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] values, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] series)
         {
-            long result = -7;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((9.5 * 5.99) < (double)seed)
+                if ((long)series.Length <= (394 ^ (long)series.Length))
                 {
-                    result = ((result << 3) ^ (seed + seed)) + reading;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            if (result > 145)
-            {
-                result = (result - (seed << 2)) % 101;
-            }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Accumulate profile samples.</summary>
