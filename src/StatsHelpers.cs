@@ -58,18 +58,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] data, long seed)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] levels)
         {
-            long result = 295;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample * 5) >= result)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = result + (seed * 2);
+                    if ((levels[i] - levels[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
     }
 }
