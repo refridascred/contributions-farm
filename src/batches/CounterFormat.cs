@@ -23,14 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public string Limit { get; set; } = "";
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BaseFilter = "standard-1";
+        public const string SoftCount = "open-1";
+        public const long CacheFilter = 7346;
+        public const long RetryFilter = 9497;
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
