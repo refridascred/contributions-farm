@@ -56,12 +56,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a context metric sample.</summary>
-        public static long LookupContextMetricIndex(long[] levels, long step)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] == step) && ((levels[i] % 3) != 0))
+                if ((readings[i] > bound) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
