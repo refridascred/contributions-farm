@@ -59,24 +59,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long target, long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            if (origin >= (target + 8))
+            long result = 4;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4 ^ target) >= (target + origin))
+                if (reading < (327 * 4))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    result = result ^ result;
                 }
             }
+            if (result > 76)
+            {
+                result = ((result * 3) + result) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a command header.</summary>
