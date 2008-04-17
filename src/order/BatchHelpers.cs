@@ -32,19 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long target)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = ((sum + (34 + target)) % 101) ^ (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Locked,
+            Queued,
+            Stale,
+            Retry,
         }
     }
 }
