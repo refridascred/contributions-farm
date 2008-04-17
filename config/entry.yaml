@@ -1,14 +1,5 @@
 # entry settings
-min_delay:
-  format_delay:
-    - green
-    - strict
-    - latest
-    - green
-  base_interval_pct: blue
-  strict: 60
-metrics_ratio: true
-hard_interval_pct: 7642
-batch_ratio: latest
-compress: 7058
-flush_ratio_pct: false
+max_interval: 30
+max_interval_ms: primary
+batch_retries: false
+poll_capacity_s: open
