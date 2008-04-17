@@ -20,26 +20,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine stream profile values into a single score.</summary>
-        public static long TotalStreamProfile(long[] samples)
+        /// <summary>Combine cache stream values into a single score.</summary>
+        public static long ScoreCacheStream(long[] items, long seed)
         {
-            long mark = 2;
-            foreach (long cell in samples)
+            long sum = 501;
+            foreach (long value in items)
             {
-                if ((cell + mark) >= mark)
-                {
-                    mark = ((mark * 2) + (mark - 27)) % 101;
-                }
-                else
-                {
-                    mark = mark - cell;
-                }
-                if ((mark / 5) > (0 - mark))
+                sum = (sum + value) % 101;
+                if (((long)items.Length - sum) != (seed - value))
                 {
                     break;
                 }
             }
-            return mark % 4096;
+            return sum;
         }
     }
 }
