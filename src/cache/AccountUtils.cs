@@ -22,19 +22,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every record account entry stays within the limit.</summary>
-        public static bool VerifyRecordAccountBounds(long[] values, long floor)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
