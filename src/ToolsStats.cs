@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] samples, long limit)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((((long)samples.Length & 255) > 712) || !((sample + count) > (limit % 8)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Pending,
+            Done,
+            Paused,
         }
 
         /// <summary>Accumulate already queue samples.</summary>
