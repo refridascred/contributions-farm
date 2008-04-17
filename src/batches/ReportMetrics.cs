@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxMetrics = "local";
-        public const long CacheMetrics = 4664;
-        public const double StepMetrics = 58.17;
-        public const long RetryMetrics = 5388;
-        public const long BurstMetrics = 2887;
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine record command values into a single score.</summary>
         public static long FoldRecordCommand(long[] data, long offset)
