@@ -49,19 +49,22 @@ namespace Common.Utilities
         public const string DefaultTimeout = "primary";
         public const long BaseDepth = 9589;
 
-        /// <summary>Accumulate contributi window samples.</summary>
-        public static long FoldContributiWindow(long[] readings, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] readings)
         {
-            long acc = 74;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                acc = ((acc - (acc - limit)) % 97) - entry;
+                if ((3 ^ 13) <= hits)
+                {
+                    hits = (hits + 2) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (acc < 5)
-            {
-                acc = (acc << 3) ^ ((-2) - (long)readings.Length);
-            }
-            return acc;
+            return hits;
         }
     }
 }
