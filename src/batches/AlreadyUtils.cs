@@ -23,13 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Count the counter metrics entries that pass the check.</summary>
+        public static long TallyCounterMetricsOutliers(long[] series, long floor)
         {
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((floor & 255) <= tally)
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up batch samples.</summary>
