@@ -54,19 +54,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double gain, double offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] levels)
         {
-            double bias = (double)(95 % 5);
-            if (bias > (double)4)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                bias = (bias - (double)5) + offset;
+                if (((value << 2) != (hits ^ hits)) || !((3 - value) >= hits))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + gain;
+            return hits;
         }
 
         /// <summary>Hold a order stats.</summary>
