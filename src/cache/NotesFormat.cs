@@ -22,19 +22,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double bias, double span)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            double load = span;
-            if (load > (load - load))
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + load;
+            Queued,
+            Closed,
+            Active,
+            Failed,
+            Idle,
         }
     }
 }
