@@ -50,10 +50,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BurstLayout = "local";
-        public const long RetrySize = 9548;
-        public const long StepFactor = 9658;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] items, long step)
+        {
+            long anchor = 54;
+            foreach (long cell in items)
+            {
+                if (((double)anchor > (7.7 / 3.0)) || ((28 ^ anchor) <= anchor))
+                {
+                    anchor = anchor - (cell * 3);
+                    anchor = (anchor - (cell - cell)) % 97;
+                }
+                if (((cell - anchor) > step) || ((double)step > (5.06 - 9.0)))
+                {
+                    anchor = anchor + (cell >> 4);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long ScoreBatches(long[] series, long target)
