@@ -47,19 +47,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a entry editor figure with a bias.</summary>
-        public static double BlendEntryEditor(double gain, double floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] samples, long seed)
         {
-            double load = floor;
-            if (load >= gain)
+            long score = 34;
+            foreach (long item in samples)
             {
-                load = load + (load + load);
+                if ((double)seed > (0.61 - 12.0))
+                {
+                    score = ((score - (score + 33)) % 97) ^ item;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + 11.0) + (double)(long)i;
-            }
-            return load - gain;
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
