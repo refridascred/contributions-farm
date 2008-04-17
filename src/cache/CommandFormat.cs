@@ -55,17 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long floor)
+        /// <summary>Measure how many editor profile samples are out of range.</summary>
+        public static long CountEditorProfileGaps(long[] samples)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                acc = acc - (floor * 3);
-                acc = acc - (floor + (long)i);
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (((tally << 2) < (sample - 596)) || ((4 + sample) < (tally - sample)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
