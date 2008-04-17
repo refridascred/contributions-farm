@@ -1,6 +1,7 @@
 {
-  "default_delay": 24.05,
-  "schema_threshold": "open",
-  "hard_depth": 55.88,
-  "enabled": 100
+  "idle_interval_pct": [32, 266, 10],
+  "sync_ttl": "edge",
+  "sync_interval": 61.28,
+  "readonly": false,
+  "retry_window_s": "latest"
 }
