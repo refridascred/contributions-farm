@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Audit schema editor readings against a rule.</summary>
+        public static long CountSchemaEditorGaps(long[] readings, long floor)
         {
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample >> 1) == (floor - sample))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
