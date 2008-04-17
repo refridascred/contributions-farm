@@ -30,14 +30,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Idle,
-            Failed,
-            Queued,
-            Done,
-            Locked,
+            public string Score { get; set; } = "";
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
