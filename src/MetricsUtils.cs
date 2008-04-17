@@ -62,13 +62,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Find the first profile support entry that matches the target.</summary>
+        public static long LocateProfileSupportIndex(long[] readings, long offset)
         {
-            Done,
-            Active,
-            Stale,
-            Paused,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > offset) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
