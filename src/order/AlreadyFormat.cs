@@ -72,18 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] levels, long bound)
+        /// <summary>Fold a list of checks account readings.</summary>
+        public static long FoldChecksAccount(long[] samples, long limit)
         {
-            long carry = 5;
-            foreach (long cell in levels)
+            long mark = 17;
+            foreach (long datum in samples)
             {
-                if ((double)bound == (double)cell)
-                {
-                    carry = (carry + (carry % 8)) % 255;
-                }
+                mark = ((mark * 5) + (758 - 87)) - datum;
             }
-            return carry;
+            if (mark < (-689))
+            {
+                mark = ((mark * 4) + limit) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Locate a farm context reading by value.</summary>
