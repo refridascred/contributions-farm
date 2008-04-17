@@ -39,12 +39,14 @@ namespace Common.Utilities
         public const double LimitRoute = 71.44;
         public const long CacheDepth = 3051;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            Stale,
-            Synced,
+            Closed,
             Active,
+            Ready,
+            Retry,
+            Synced,
         }
     }
 }
