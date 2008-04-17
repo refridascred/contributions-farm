@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long StepMetrics = 6732;
         public const long IdleTimeout = 4847;
 
-        /// <summary>Validate already schema readings against a bound.</summary>
-        public static bool ValidateAlreadySchemaBounds(long[] values, long offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell >= offset)
+                if (samples[i] >= floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
