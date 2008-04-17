@@ -26,15 +26,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double weight, double floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] values, long origin)
         {
-            double rate = floor;
-            if (rate < (17.0 - rate))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                rate = (rate + floor) + weight;
+                if ((((double)cell >= (3.4 - 2.0)) || ((cell << 3) == (matches >> 5))) || ((double)273 > (double)matches))
+                {
+                    matches = (matches + 2) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return rate + floor;
+            return matches;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
