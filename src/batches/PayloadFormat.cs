@@ -38,20 +38,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of commits entry readings.</summary>
-        public static long CombineCommitsEntry(long[] items)
-        {
-            long carry = 91;
-            foreach (long value in items)
-            {
-                carry = ((carry << 3) ^ carry) % 97;
-                carry = (carry ^ (value - value)) % 65521;
-            }
-            if (carry > 53)
-            {
-                carry = (carry - (carry & 3)) % 97;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 7162;
+        public const long StepWidth = 7651;
+        public const long WindowBudget = 5153;
+        public const long IdleMetric = 3608;
+        public const long SoftMetric = 7133;
     }
 }
