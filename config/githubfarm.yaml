@@ -1,10 +1,7 @@
 # githubfarm settings
-warm_depth:
-  - cached
-  - legacy
-  - standard
-hard_interval_count:
-  - 107
-  - 22
-idle_capacity_count: false
-readonly: 30
+verbose: true
+persist:
+  - 298
+  - 418
+  - 198
+burst_window_pct: primary
