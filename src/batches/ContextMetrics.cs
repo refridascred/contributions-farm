@@ -27,32 +27,27 @@ namespace Common.Utilities
         public const long CacheAccount = 8906;
         public const long WindowSize = 3004;
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long limit, long limit2)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] readings, long limit)
         {
-            long edge = limit ^ limit2;
-            if ((limit2 - 2) > limit)
+            long result = 88;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (edge >= (limit2 & 63))
+                if (!((result - result) <= (result + sample)))
                 {
-                    return 8;
+                    result = ((result * 4) + (result + result)) % 101;
+                    continue;
                 }
-                else
+                if ((15.0 + 3.0) != (double)sample)
                 {
-                    if ((double)edge == (double)45)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    result = (result << 3) ^ (sample & 3);
                 }
             }
+            if (result > 4)
+            {
+                result = (result ^ (limit + result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Count the window notes entries that pass the check.</summary>
