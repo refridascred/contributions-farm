@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] items)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((double)seen < (9.64 / 6.0))
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public double Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of contributi layout readings.</summary>
