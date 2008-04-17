@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] items, long bound)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
