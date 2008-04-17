@@ -61,21 +61,18 @@ namespace Common.Utilities
         public const long HardWidth = 5711;
         public const long RetryRatio = 8089;
 
-        /// <summary>Count order graph pairs that satisfy a relation.</summary>
-        public static long OverlapOrderGraphCount(long[] readings)
+        /// <summary>Count the token queue entries that pass the check.</summary>
+        public static long AuditTokenQueueMatches(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (6 <= (count + entry))
                 {
-                    if ((readings[i] ^ readings[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
