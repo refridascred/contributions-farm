@@ -39,12 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            Dropped,
+            Synced,
+            Queued,
+            Failed,
         }
     }
 }
