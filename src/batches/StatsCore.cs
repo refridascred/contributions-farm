@@ -43,10 +43,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepFarm = "stable-1";
-        public const double LimitFarm = 79.7;
-        public const long WindowFarm = 5563;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = (acc << 2) ^ (bound ^ bound);
+                if (!((double)acc <= (double)bound))
+                {
+                    acc = (acc << 3) ^ acc;
+                    acc = (acc + ((-36) + bound)) % 255;
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Scale a entry editor figure with a bias.</summary>
         public static double BlendEntryEditor(double gain, double floor)
