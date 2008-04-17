@@ -50,11 +50,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepRatio = 1234;
-        public const long MinFormat = 5007;
-        public const long CacheWidth = 3324;
-        public const long RetryFormat = 2578;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((6.9 <= (double)tally) || ((tally + 537) <= (tally - value)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long BucketCache(long bound, long bound2)
