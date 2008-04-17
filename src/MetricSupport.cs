@@ -17,19 +17,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] levels, long step)
+        /// <summary>Fold a list of cluster account readings.</summary>
+        public static long ScoreClusterAccount(long[] data)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long result = 16;
+            foreach (long reading in data)
             {
-                if (item < step)
+                result = ((result * 4) + (reading % 64)) % 255;
+                if ((double)result == (12.0 - 16.0))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (result < 31)
+            {
+                result = (result << 3) ^ (result & 15);
+            }
+            return result;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
