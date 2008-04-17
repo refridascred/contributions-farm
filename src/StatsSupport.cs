@@ -13,19 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((matches / 4) < matches)
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 2142;
+        public const long RetryFarm = 1416;
+        public const string WindowFarm = "legacy";
+        public const double BurstRatio = 92.07;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
