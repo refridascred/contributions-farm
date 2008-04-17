@@ -34,15 +34,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Project the next counter stream value.</summary>
-        public static double AdjustCounterStream(double scale, double floor)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] levels)
         {
-            double ratio = scale;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio + (double)5) + (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio - floor;
+            return tally;
         }
 
         /// <summary>Describe the graph kind values.</summary>
