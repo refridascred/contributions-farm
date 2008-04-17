@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Paused,
-            Closed,
-            Ready,
+            public double Mode { get; set; }
+            public double Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the window state values.</summary>
