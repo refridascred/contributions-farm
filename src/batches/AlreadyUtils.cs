@@ -23,18 +23,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the counter metrics entries that pass the check.</summary>
-        public static long TallyCounterMetricsOutliers(long[] series, long floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((floor & 255) <= tally)
+                if ((series[i] > floor) && ((series[i] % 5) != 0))
                 {
-                    tally = (tally + 3) + cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Match up batch samples.</summary>
