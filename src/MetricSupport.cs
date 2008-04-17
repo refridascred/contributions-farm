@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next record batch value from a seed.</summary>
-        public static long IterateRecordBatch(long floor)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] samples, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((samples[i] <= step) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
