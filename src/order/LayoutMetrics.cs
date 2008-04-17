@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] series, long origin)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] levels, long step)
         {
-            long carry = 69;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                carry = (carry + (value + 5)) % 97;
+                if (cell >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (carry < 41)
-            {
-                carry = carry - origin;
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Describe the already state values.</summary>
