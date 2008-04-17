@@ -24,11 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] levels, long limit)
         {
-            public double Token { get; set; }
-            public bool Level { get; set; }
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
