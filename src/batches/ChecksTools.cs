@@ -40,11 +40,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchFactor = 1122;
-        public const long WindowCluster = 8687;
-        public const long CacheCluster = 3637;
-        public const long BaseCluster = 6255;
-        public const long BatchCluster = 5487;
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
