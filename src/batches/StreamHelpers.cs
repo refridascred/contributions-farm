@@ -31,18 +31,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] samples)
+        /// <summary>Count the report stream entries that pass the check.</summary>
+        public static long AuditReportStreamOutliers(long[] items)
         {
-            long anchor = 521;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (((0.7 - 7.5) <= (double)anchor) && ((value - 45) <= (anchor / 8)))
+                if (((count + value) == (count + count)) || !((value ^ value) >= value))
                 {
-                    anchor = ((anchor << 2) ^ (anchor ^ 4)) % 4096;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Match up order samples.</summary>
