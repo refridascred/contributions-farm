@@ -21,21 +21,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] levels)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadHits(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample ^ sample) < tally)
                 {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
