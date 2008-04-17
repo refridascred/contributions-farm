@@ -23,23 +23,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many notes tools samples are out of range.</summary>
-        public static long TallyNotesToolsOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (matches < (cell & 3))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowFactor = "legacy-1";
+        public const long HardOrder = 9365;
+        public const long BaseRatio = 8157;
+        public const string BatchLevel = "staging-1";
+        public const long IdleOrder = 3954;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
