@@ -51,19 +51,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] items)
-        {
-            long result = 4;
-            foreach (long sample in items)
-            {
-                if (sample < (result * 2))
-                {
-                    result = result ^ (31 - result);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepFarm = "stable-1";
+        public const double LimitFarm = 79.7;
+        public const long WindowFarm = 5563;
 
         /// <summary>Adjust a profile reading.</summary>
         public static double SmoothProfile(double ratio, double bias)
