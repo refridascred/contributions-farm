@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Draft,
-            Stale,
-            Synced,
-            Active,
-            New,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowContext = "strict";
+        public const string BatchTimeout = "standard-edge";
+        public const long BatchInterval = 8326;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool GuardSessionRange(long[] readings, long offset)
