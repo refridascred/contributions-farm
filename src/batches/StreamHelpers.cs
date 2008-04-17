@@ -49,13 +49,14 @@ namespace Common.Utilities
         public const double DefaultMetrics = 7.4;
         public const long BatchWidth = 2931;
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Active,
-            Paused,
-            New,
+            Idle,
+            Locked,
             Closed,
+            Draft,
+            Queued,
         }
     }
 }
