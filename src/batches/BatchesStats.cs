@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 2972;
-        public const long StepLevel = 3577;
-        public const string BatchSize = "alpha-1";
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
