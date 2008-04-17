@@ -27,13 +27,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public double Owner { get; set; }
             public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
