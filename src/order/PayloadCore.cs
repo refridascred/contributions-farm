@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long floor, long step)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long target)
         {
-            long offset = floor ^ step;
-            if ((double)offset < (8.77 - 3.0))
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 3;
+                anchor = (anchor - (anchor + target)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((step / 8) >= (step - floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor == (5.1 / 2.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
