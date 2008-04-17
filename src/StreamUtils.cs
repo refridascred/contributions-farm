@@ -69,18 +69,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (((797 / 5) != (limit + 7)) || ((limit < (limit + 397)) && ((value + tally) > limit)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseLevel = 9129;
+        public const long LimitSize = 9457;
+        public const long StepInterval = 8736;
+        public const string BatchTimeout = "strict-edge";
     }
 }
