@@ -13,12 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowFactor = "legacy-1";
-        public const long HardOrder = 9365;
-        public const long BaseRatio = 8157;
-        public const string BatchLevel = "staging-1";
-        public const long IdleOrder = 3954;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] items, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (!(((-9) / 4) >= (seed / 5)))
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TotalBatch(long[] readings, long origin)
