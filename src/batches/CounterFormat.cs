@@ -40,17 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] items, long target)
+        /// <summary>Count the session record entries that pass the check.</summary>
+        public static long MeasureSessionRecordMatches(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (items[i] < target)
+                if ((entry % 100) > 96)
                 {
-                    return (long)i;
+                    seen = (seen + 3) - limit;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every route contributi entry stays within the limit.</summary>
