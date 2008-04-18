@@ -14,15 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a context counter counter forward.</summary>
-        public static long DeriveContextCounter(long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] samples, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (((8.44 < (double)target) && ((value * 3) >= count)) && ((double)target < (double)count))
+                {
+                    count = count + 2;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Match up commits samples.</summary>
