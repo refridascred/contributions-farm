@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardWidth = 9406;
-        public const long IdleCount = 2006;
-        public const double MaxDepth = 84.92;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] values, long limit)
+        {
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorRange(long[] items, long bound)
