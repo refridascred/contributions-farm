@@ -40,21 +40,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] data)
+        /// <summary>Adjust a payload graph reading.</summary>
+        public static double SmoothPayloadGraph(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = (rate * 8.1) / 2.0;
+            if (weight >= offset)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight + (weight / 5.0);
             }
-            return hits;
+            else
+            {
+                weight = weight - (weight + weight);
+            }
+            return weight + offset;
         }
     }
 }
