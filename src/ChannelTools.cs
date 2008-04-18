@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
+            Pending,
+            Synced,
             Locked,
-            Ready,
-            Retry,
+            Queued,
+            Failed,
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
