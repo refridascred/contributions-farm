@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate account token readings against a bound.</summary>
-        public static bool ValidateAccountTokenLimits(long[] samples, long target)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Paused,
+            Stale,
         }
 
         /// <summary>Derive the next filter commits value from a seed.</summary>
