@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] readings, long offset)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long limit)
         {
-            long total = 5;
-            foreach (long item in readings)
+            long acc = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)offset > (3.0 - 7.38))
-                {
-                    total = (((total << 2) ^ (offset / 2)) % 4096) - item;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
