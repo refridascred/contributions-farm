@@ -54,21 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] items)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double load = gain + (offset + gain);
+            return load + (double)72;
         }
     }
 }
