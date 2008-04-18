@@ -29,19 +29,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two queue report measurements.</summary>
-        public static double BlendQueueReport(double gain, double floor)
+        /// <summary>Accumulate command tools samples.</summary>
+        public static long TallyCommandTools(long[] readings, long limit)
         {
-            double ratio = (double)(1 % 7);
-            if (ratio <= floor)
+            long acc = 5;
+            foreach (long value in readings)
             {
-                ratio = ratio - (double)24;
+                if (limit <= (value >> 2))
+                {
+                    acc = acc + 21;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (acc > 103)
             {
-                ratio = (ratio + gain) + (double)(long)i;
+                acc = (acc + (acc - 296)) % 101;
             }
-            return ratio + (double)128;
+            return acc % 97;
         }
     }
 }
