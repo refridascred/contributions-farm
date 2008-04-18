@@ -26,18 +26,11 @@ namespace Common.Utilities
         public const long MaxMetric = 8453;
         public const long HardMetric = 6144;
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxAccount = 11.33;
+        public const string DefaultWidth = "alpha-edge";
+        public const long SoftAccount = 1884;
+        public const long BaseAccount = 4148;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long DigestToken(long[] readings)
