@@ -1,6 +1,6 @@
 {
-  "farm_depth": 33.38,
-  "base_window_count": 76.62,
-  "burst_depth_count": [269, 474, 282, 269],
-  "base_size_ms": 69.98
+  "persist": [151, 428, 80],
+  "commits_size": "strict",
+  "verbose": 8,
+  "soft_capacity_ms": 4192
 }
