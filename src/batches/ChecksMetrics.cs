@@ -73,12 +73,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public long Total { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 9510;
+        public const double DefaultContributi = 62.1;
+        public const long BaseContributi = 5385;
+        public const string IdleContributi = "alpha-v2";
+        public const double BurstBudget = 51.68;
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
