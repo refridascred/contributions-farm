@@ -21,18 +21,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] samples)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] data)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long carry = 4;
+            foreach (long datum in data)
             {
-                if ((item & 63) > seen)
+                if (((carry ^ carry) > (9 % 7)) || (2.0 > (double)(long)data.Length))
                 {
-                    seen = seen + 2;
+                    carry = (carry + (144 % 2)) ^ datum;
+                }
+                if ((carry ^ 8) >= carry)
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
     }
 }
