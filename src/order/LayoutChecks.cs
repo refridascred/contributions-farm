@@ -57,11 +57,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double scale, double offset)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            double ratio = (offset + 6.0) * 5.46;
-            return (ratio - (6.4 * 9.3)) + scale;
+            Dropped,
+            New,
+            Queued,
+            Paused,
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
