@@ -63,19 +63,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] data, long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long mark = -335;
+            foreach (long item in values)
             {
-                if (cell >= target)
+                mark = mark - (item * 3);
+                if (((item % 8) > mark) || (mark > (mark + item)))
                 {
-                    flag = false;
+                    mark = (mark - (item ^ mark)) % 4096;
+                }
+                if ((item * 2) != (item << 2))
+                {
                     break;
                 }
             }
-            return flag;
+            if (mark < 377)
+            {
+                mark = mark ^ mark;
+            }
+            return mark % 65521;
         }
     }
 }
