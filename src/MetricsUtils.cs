@@ -37,18 +37,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit schema route readings against a rule.</summary>
-        public static long AuditSchemaRouteMatches(long[] data)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((359 + 425) == (count * 5))
-                {
-                    count = (count + 2) + cell;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
     }
 }
