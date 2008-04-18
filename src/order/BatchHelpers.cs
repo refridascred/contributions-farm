@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long offset)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long score = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                score = (score ^ 26) % 65521;
+                score = (score - (offset - (long)i)) % 1000;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
