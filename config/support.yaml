@@ -1,7 +1,7 @@
 # support settings
-context_retries: true
-warm_window: 83
-route_ttl: fallback
-min_depth_ms: local
-schema_depth: latest
-dry_run: 8.35
+verbose: 10
+max_window_s: green
+enabled: legacy
+warm_limit_s: 41
+cache_delay: 76
+soft_size_ms: 500
