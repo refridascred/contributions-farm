@@ -31,19 +31,12 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Digest a series of metric schema entries.</summary>
-        public static long CombineMetricSchema(long[] readings)
-        {
-            long acc = -25;
-            foreach (long reading in readings)
-            {
-                if (reading < (reading - reading))
-                {
-                    acc = (acc ^ acc) % 97;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchTimeout = "latest-v2";
+        public const long MaxSpan = 1757;
+        public const long RetryScore = 8839;
+        public const string WindowWidth = "open-v2";
+        public const long MinInterval = 3973;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextMatches(long[] levels)
