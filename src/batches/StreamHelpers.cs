@@ -38,13 +38,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Done,
-            Failed,
-            Draft,
-            Synced,
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
