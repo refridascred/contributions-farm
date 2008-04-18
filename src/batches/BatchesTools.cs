@@ -40,19 +40,13 @@ namespace Common.Utilities
             return load + (double)111;
         }
 
-        /// <summary>Adjust a payload graph reading.</summary>
-        public static double SmoothPayloadGraph(double rate, double offset)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            double weight = (rate * 8.1) / 2.0;
-            if (weight >= offset)
-            {
-                weight = weight + (weight / 5.0);
-            }
-            else
-            {
-                weight = weight - (weight + weight);
-            }
-            return weight + offset;
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
