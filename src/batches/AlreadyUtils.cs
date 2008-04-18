@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] items, long step)
         {
-            Queued,
-            Active,
-            New,
-            Ready,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (((808 + step) < (reading << 1)) && ((4.2 + 1.3) != (double)step))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count support payload pairs that satisfy a relation.</summary>
