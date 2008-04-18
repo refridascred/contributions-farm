@@ -42,17 +42,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Find the first layout profile entry that matches the target.</summary>
-        public static long FindLayoutProfileIndex(long[] samples, long floor)
+        /// <summary>Validate layout contributi readings against a bound.</summary>
+        public static bool ValidateLayoutContributiLimits(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (samples[i] < floor)
+                if (value >= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
