@@ -1,6 +1,7 @@
 {
-  "retry_interval": [274, 340],
-  "stream_interval": "cached",
-  "stats_timeout": 4408,
-  "burst_ttl": false
+  "base_delay": 98,
+  "token_size": 60,
+  "batch_ttl": true,
+  "idle_threshold": 4550,
+  "filter_ratio": "primary"
 }
