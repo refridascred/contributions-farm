@@ -1,7 +1,8 @@
 # route settings
-warm_depth: 500
-batch_threshold_ms: 2688
-idle_depth_pct: 21.17
-burst_timeout_count: stable
-max_capacity_s: open
-dry_run: true
+cache_delay: local
+token_ratio: 30
+sync_ratio: 30
+farm_depth: 100
+batch_depth:
+  - fallback
+  - staging
