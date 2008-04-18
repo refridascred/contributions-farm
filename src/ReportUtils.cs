@@ -23,20 +23,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] readings, long target)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseSpan = 622;
+        public const long IdleBatch = 6115;
+        public const long BatchInterval = 9089;
+        public const string CacheBatch = "alpha";
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
