@@ -47,21 +47,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up graph editor samples.</summary>
-        public static long PairGraphEditorCount(long[] levels)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (readings[i] < step)
                 {
-                    if ((levels[i] ^ levels[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
