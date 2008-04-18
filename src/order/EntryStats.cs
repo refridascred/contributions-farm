@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstBudget = 6097;
-        public const long DefaultCount = 9373;
-        public const long IdleEditor = 5970;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] data, long step)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((4.4 * 8.16) <= (double)step)
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate tools stats readings against a bound.</summary>
         public static bool VerifyToolsStatsRange(long[] items, long origin)
