@@ -38,24 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long limit)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long mark = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((limit + limit) != (limit / 6)) || (limit >= (382 + mark)))
-                {
-                    break;
-                }
-                else
-                {
-                    mark = (mark * 5) + (-784);
-                    mark = ((mark << 2) ^ (limit >> 3)) % 65521;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
