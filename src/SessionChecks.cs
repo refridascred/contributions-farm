@@ -26,11 +26,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 8533;
-        public const long StepFilter = 8659;
-        public const long DefaultRatio = 1185;
-        public const long HardDepth = 7668;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first stream route entry that matches the target.</summary>
         public static long SeekStreamRouteIndex(long[] levels, long floor)
