@@ -30,19 +30,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] data, long target)
+        /// <summary>Compare every pair of counter report readings.</summary>
+        public static long PairCounterReportCount(long[] levels)
         {
-            bool found = true;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Rank already input into a small class.</summary>
