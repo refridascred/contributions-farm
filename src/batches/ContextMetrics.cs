@@ -65,18 +65,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] data)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((67 >> 1) != (value / 5))
                 {
-                    if ((data[i] - data[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
                 }
             }
             return count;
