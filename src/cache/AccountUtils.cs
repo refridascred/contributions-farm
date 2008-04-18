@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] data)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (tally < 2)
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
+            Stale,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the channel class values.</summary>
