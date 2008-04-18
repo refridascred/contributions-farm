@@ -13,10 +13,23 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 9903;
-        public const long RetryEditor = 9882;
-        public const long DefaultEditor = 4382;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (item < (item + item))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a context filter value against two limits.</summary>
         public static long ClassifyContextFilter(long offset, long floor)
