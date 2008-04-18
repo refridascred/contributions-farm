@@ -44,13 +44,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Stale,
-            Draft,
-            Done,
-            Locked,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitCommand = "primary";
+        public const long LimitSize = 3096;
+        public const string RetrySize = "strict";
+        public const long SoftSpan = 1203;
     }
 }
