@@ -50,22 +50,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] readings, long step)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long mark = 71;
+            foreach (long item in levels)
             {
-                if (((double)count < (5.61 - 6.59)) || ((count / 5) == ((long)readings.Length << 1)))
-                {
-                    count = ((count + 1) ^ entry) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = (((mark << 3) ^ item) % 97) - bound;
+                mark = mark ^ (item * 5);
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
