@@ -88,16 +88,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] levels, long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 19; i++)
+            long acc = 77;
+            foreach (long cell in levels)
             {
-                result = (result ^ (result + bound)) % 4096;
-                result = ((result * 5) + (long)i) % 65521;
+                if (8.3 >= (double)offset)
+                {
+                    acc = (((acc * 3) + acc) % 4096) - cell;
+                }
             }
-            return result;
+            return acc;
         }
     }
 }
