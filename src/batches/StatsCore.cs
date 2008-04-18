@@ -56,15 +56,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] samples, long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] series, long step)
         {
             long tally = 0;
-            foreach (long reading in samples)
+            foreach (long entry in series)
             {
-                if (1 <= (tally + 725))
+                if ((double)entry != (5.6 / 2.0))
                 {
-                    tally = ((tally + 1) ^ reading) + floor;
+                    tally = (tally + 1) - step;
                 }
             }
             return tally;
