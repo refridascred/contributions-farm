@@ -26,11 +26,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheInterval = 9115;
-        public const long MaxWidth = 8380;
-        public const long CacheReport = 1216;
-        public const long BatchInterval = 3005;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (!((limit % 24) <= (limit / 6)))
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
