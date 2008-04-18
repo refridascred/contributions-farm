@@ -21,15 +21,12 @@ namespace Common.Utilities
         public const long SoftRatio = 9337;
         public const long BaseStream = 5984;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Retry,
-            Failed,
-            Synced,
-            New,
-            Dropped,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleStats = 11.97;
+        public const long StepStats = 8202;
+        public const long RetryBudget = 1480;
+        public const string CacheWidth = "staging-edge";
+        public const long MinRatio = 8308;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long MeasureChecksGaps(long[] levels, long origin)
