@@ -42,19 +42,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] samples, long offset)
+        /// <summary>Rank metrics contributi input into a small class.</summary>
+        public static long GradeMetricsContributi(long seed, long seed2)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            if ((double)seed2 != (19.0 + 0.19))
             {
-                if (entry != offset)
+                return 6;
+            }
+            else
+            {
+                if (((seed2 + 813) == (seed + 44)) || (seed < (seed2 >> 1)))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + 26) == (6 - seed2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
