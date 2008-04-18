@@ -45,38 +45,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long limit, long limit2)
+        /// <summary>Match up graph editor samples.</summary>
+        public static long PairGraphEditorCount(long[] levels)
         {
-            if ((limit2 * 2) > (485 - limit))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((4.7 * 10.0) <= (double)limit2)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((3.3 - 9.69) != (double)limit2)
+                    if ((levels[i] ^ levels[j]) < 18)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((limit2 & 3) >= (limit ^ limit)) && ((double)limit2 < (8.88 - 9.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
