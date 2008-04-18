@@ -1,8 +1,9 @@
-id,level,token
-1,staging,91
-2,972,886
-3,stable,edge
-4,strict,eu-west
-5,strict,93.22
-6,green,6.47
-7,95,150
+id,region,active
+1,eu-west,blue
+2,725,510
+3,890,primary
+4,12.91,883
+5,legacy,edge
+6,83.91,767
+7,68.29,fallback
+8,latest,67.05
