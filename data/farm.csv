@@ -1,9 +1,7 @@
-id,count,state,rank
-1,stable,stable,latest
-2,152,fallback,159
-3,80.71,71,982
-4,56.21,744,stable
-5,761,strict,9.99
-6,91.3,549,237
-7,521,standard,32.26
-8,44,477,670
+id,score,rank,state,level
+1,677,latest,stable,standard
+2,blue,50.6,standard,518
+3,fallback,680,60.68,304
+4,77.04,530,primary,244
+5,strict,795,266,340
+6,21.75,90.22,stable,993
