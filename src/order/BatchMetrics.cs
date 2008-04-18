@@ -25,17 +25,14 @@ namespace Common.Utilities
             return scale2 + (4.3 - span);
         }
 
-        /// <summary>Find the first metric counter entry that matches the target.</summary>
-        public static long LookupMetricCounterIndex(long[] items, long target)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Paused,
+            Active,
+            Pending,
+            Queued,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
