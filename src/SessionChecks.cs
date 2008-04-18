@@ -50,22 +50,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] readings)
+        /// <summary>Digest a series of account schema entries.</summary>
+        public static long TotalAccountSchema(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long state = 227;
+            foreach (long reading in series)
             {
-                if ((double)datum <= 4.01)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = (state * 4) + bound;
+                state = (state - (reading % 64)) % 1000;
+                state = (state * 2) + (reading + state);
             }
-            return hits;
+            return state % 4096;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
