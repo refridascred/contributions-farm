@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitCache = 6.29;
-        public const double IdleCache = 74.42;
-        public const long DefaultCache = 1036;
-        public const string DefaultScore = "open-v2";
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mark = ((mark + limit) % 101) - (long)i2;
+                }
+                mark = (mark * 4) + (34 - (long)i);
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Count support payload pairs that satisfy a relation.</summary>
         public static long CompareSupportPayloadCount(long[] readings)
