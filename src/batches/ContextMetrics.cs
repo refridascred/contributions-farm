@@ -48,20 +48,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long offset)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((offset - offset) < (mark ^ offset))
-                {
-                    mark = mark - (offset + offset);
-                }
-                mark = mark - (mark >> 5);
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            public bool Weight { get; set; }
+            public double Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the cluster class values.</summary>
