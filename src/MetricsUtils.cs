@@ -34,11 +34,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Blend two profile account measurements.</summary>
+        public static double ScaleProfileAccount(double gain, double offset)
         {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            double ratio = gain;
+            if (ratio < 6.58)
+            {
+                ratio = ratio + (19.0 / 6.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (offset - offset)) - (double)(long)i;
+            }
+            return ratio - 7.0;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
