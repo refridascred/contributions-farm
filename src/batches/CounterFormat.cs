@@ -26,19 +26,16 @@ namespace Common.Utilities
             return mean - 11.0;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] samples, long limit)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long limit)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long score = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (score - (limit ^ score)) % 65521;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return ready;
+            return score;
         }
     }
 }
