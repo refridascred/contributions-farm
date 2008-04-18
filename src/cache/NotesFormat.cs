@@ -43,13 +43,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Draft,
-            Idle,
-            Failed,
-            Active,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinRatio = "staging-1";
+        public const double CacheReport = 67.16;
+        public const string WindowSpan = "stable-edge";
+        public const long HardReport = 5911;
     }
 }
