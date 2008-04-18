@@ -1,9 +1,7 @@
-id,region,ratio
-1,56.27,389
-2,local,830
-3,32.31,845
-4,375,839
-5,fallback,83.09
-6,fallback,57.11
-7,21.48,83.62
-8,standard,primary
+id,ratio,count,token
+1,394,green,236
+2,651,563,133
+3,standard,5.63,staging
+4,450,primary,15.38
+5,777,128,55.95
+6,846,local,157
