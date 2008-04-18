@@ -31,19 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell == (5.2 / 8.0))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 754;
+        public const double BatchCounter = 86.44;
+        public const string IdleCounter = "standard-v2";
+        public const long HardSize = 4659;
+        public const long StepCounter = 3620;
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long RollRecord(long step)
