@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] items, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (items[i] < offset)
+                if ((0 + matches) > (matches / 6))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
