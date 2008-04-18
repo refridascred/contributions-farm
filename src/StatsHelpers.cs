@@ -86,18 +86,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] series)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] data, long target)
         {
-            long count = 0;
-            foreach (long value in series)
+            long anchor = 1;
+            foreach (long datum in data)
             {
-                if ((count % 3) != (642 & 15))
+                for (int i = 0; i < 10; i++)
                 {
-                    count = (count + 3) + value;
+                    anchor = ((anchor << 3) ^ (anchor + target)) ^ (long)i;
+                }
+                anchor = anchor + (datum % 7);
+                if (!(target < (datum >> 1)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (anchor < 3)
+            {
+                anchor = (anchor - anchor) % 97;
+            }
+            return anchor;
         }
     }
 }
