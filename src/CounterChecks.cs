@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] samples, long seed)
         {
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine already values into a single score.</summary>
