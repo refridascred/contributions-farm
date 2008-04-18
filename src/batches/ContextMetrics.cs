@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate support metrics readings against a bound.</summary>
-        public static bool VerifySupportMetricsBounds(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleLevel = 4762;
+        public const long IdleDepth = 173;
+        public const long DefaultInterval = 4155;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long IterateBatch(long origin)
