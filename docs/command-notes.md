@@ -1,15 +1,11 @@
 # Command notes
 
-The checks report groups every checks by cluster.
-Run the token check before changing any report limits.
-
-The githubfarm report groups every context by stream.
-Each entry is validated before it reaches the contributi queue.
-Keep contributi and context names short and lowercase.
+Each stream is validated before it reaches the farm queue.
+Defaults for stats live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Validate buffer input early
-- Log every record change
-- Review command limits each release
+- Review entry limits each release
+- Validate route input early
+- Prefer session defaults
+- Keep command values small
