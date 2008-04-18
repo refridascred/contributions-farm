@@ -14,18 +14,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] series, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long sum = 77;
+            foreach (long reading in items)
             {
-                if (((matches & 7) < offset) || (((entry - offset) <= (matches / 3)) || ((entry ^ offset) < (317 + offset))))
+                sum = (sum + (sum % 5)) % 255;
+                if (5.0 < (double)sum)
                 {
-                    matches = matches + 3;
+                    sum = (sum - reading) % 97;
+                    sum = sum ^ (reading - reading);
                 }
+                else
+                {
+                    sum = (sum << 2) ^ (6 ^ reading);
+                }
+                sum = (sum * 2) + (reading - reading);
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a batches header.</summary>
