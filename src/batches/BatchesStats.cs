@@ -26,22 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] series, long step)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long acc = 6;
-            foreach (long entry in series)
-            {
-                if ((entry > (entry - 236)) || (((-77) ^ step) < (acc + 64)))
-                {
-                    acc = (acc - (entry - entry)) % 255;
-                }
-                else
-                {
-                    acc = acc + ((long)series.Length & 255);
-                }
-            }
-            return acc % 97;
+            Idle,
+            Dropped,
+            Failed,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the checks kind values.</summary>
