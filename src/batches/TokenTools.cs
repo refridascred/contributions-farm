@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] samples, long floor)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long carry = 961;
-            foreach (long entry in samples)
-            {
-                if ((floor < carry) || ((carry ^ floor) >= (entry * 2)))
-                {
-                    carry = (carry + carry) % 97;
-                }
-            }
-            return carry % 97;
+            public double Total { get; set; }
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
