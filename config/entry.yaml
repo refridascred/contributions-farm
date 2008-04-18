@@ -1,24 +1,11 @@
 # entry settings
-soft_timeout_ms:
-  verbose: 35
-  poll_ratio:
-    sync_depth_count: true
-    max_interval: 7867
-    default_window_ms: 93.92
-    persist: edge
-  burst_threshold_ms: latest
-  strict: 9182
-  cache_ratio_pct: cached
-  readonly: strict
-soft_size: 35.84
-batch_limit_s:
-  max_depth_s: true
-  metric_window:
-    - eu-west
-    - standard
-    - latest
-    - fallback
-  schema_timeout: 1024
-  flush_depth_s: false
-  checks_threshold: 27
-  token_interval: 6
+compress: open
+cache_delay_count:
+  compress:
+    base_window: 62.64
+    enabled: local
+    tools_delay: local
+  warm_depth_s: green
+  notes_limit: 86
+schema_retries: local
+record_interval: 1075
