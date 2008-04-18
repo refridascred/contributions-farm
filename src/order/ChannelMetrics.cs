@@ -12,15 +12,38 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] samples)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long step, long floor)
         {
-            long state = 5;
-            foreach (long sample in samples)
+            if (step >= (step >> 2))
             {
-                state = (state - (-977)) - sample;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((step - floor) > (floor - step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step & 1) >= (step & 255))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((5.74 - 8.0) == (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the entry status values.</summary>
