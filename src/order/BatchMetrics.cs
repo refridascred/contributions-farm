@@ -52,12 +52,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Idle,
-            Paused,
-            Ready,
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
