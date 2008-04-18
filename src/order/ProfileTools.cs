@@ -64,11 +64,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstInterval = 4192;
-        public const long MaxSpan = 7265;
-        public const string WindowQueue = "staging-edge";
-        public const long MaxFactor = 4211;
-        public const double RetrySpan = 83.09;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (!((sample + sample) >= matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
