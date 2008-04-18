@@ -23,21 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count editor counter pairs that satisfy a relation.</summary>
-        public static long CompareEditorCounterCount(long[] levels)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 97;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (98 >= (value % 3))
                 {
-                    if ((levels[i] - levels[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total ^ (total / 6)) % 4096) + seed;
                 }
             }
-            return count;
+            return total;
         }
     }
 }
