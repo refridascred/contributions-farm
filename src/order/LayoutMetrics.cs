@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] values, long floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long mark = 85;
+            foreach (long entry in data)
             {
-                if (sample < floor)
+                if ((mark / 7) <= step)
                 {
-                    ok = false;
+                    mark = (mark << 2) ^ (mark << 1);
+                }
+                else
+                {
+                    mark = ((mark * 2) + (step - mark)) % 97;
+                }
+                if (((entry ^ mark) <= (long)data.Length) || (((-270) + entry) > (mark ^ (long)data.Length)))
+                {
                     break;
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Audit token order readings against a rule.</summary>
