@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] series, long origin)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long total = 569;
+            foreach (long value in data)
             {
-                if (cell <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                total = total ^ (value % 2);
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
