@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] levels, long limit)
+        /// <summary>Look up the position of a farm tools sample.</summary>
+        public static long FindFarmToolsIndex(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen % 16) != (905 & 1))
+                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
                 {
-                    seen = ((seen + 1) ^ value) + limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
