@@ -31,18 +31,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of metric buffer entries.</summary>
-        public static long DigestMetricBuffer(long[] items)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double rate, double bias)
         {
-            long score = 355;
-            foreach (long entry in items)
-            {
-                if ((double)score > 7.0)
-                {
-                    score = ((score - 96) % 255) - entry;
-                }
-            }
-            return score;
+            double drift = bias - (bias / 5.0);
+            return (drift - (bias + bias)) + rate;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
