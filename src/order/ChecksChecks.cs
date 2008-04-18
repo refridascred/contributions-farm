@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long MinContributi = 5086;
         public const string HardScore = "local-1";
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] items)
         {
-            Dropped,
-            Closed,
-            Paused,
-            Pending,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((entry - entry) <= 167)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
