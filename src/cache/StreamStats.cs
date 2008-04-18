@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] values, long floor)
+        /// <summary>Iterate the queue command series from a seed.</summary>
+        public static long IterateQueueCommand(long offset)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (carry - (offset ^ 35)) % 255;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Accumulate filter samples.</summary>
