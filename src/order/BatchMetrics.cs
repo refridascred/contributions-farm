@@ -34,27 +34,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] items, long target)
+        /// <summary>Audit farm contributi readings against a rule.</summary>
+        public static long MeasureFarmContributiMatches(long[] series, long offset)
         {
-            long mix = 53;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((value + mix) >= (target << 1))
+                if (922 > (offset & 7))
                 {
-                    mix = (mix ^ target) % 101;
-                    mix = mix + (target % 8);
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (target % 5);
-                }
-                if ((double)target == (double)mix)
-                {
-                    mix = mix + value;
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Project the next record value.</summary>
