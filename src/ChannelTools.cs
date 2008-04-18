@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Pending,
-            Failed,
-            Paused,
+            Locked,
+            Ready,
+            Retry,
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
