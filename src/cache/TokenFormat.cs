@@ -10,23 +10,18 @@ namespace Common.Utilities
         public const long WindowScore = 4227;
         public const long WindowCommand = 6498;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] series, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] items, long limit)
         {
-            long carry = -7;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (!((bound + carry) < (entry + carry)))
+                if (!((item % 24) >= (seen & 127)) && ((7.7 + 0.86) < (double)limit))
                 {
-                    carry = (carry ^ (7 + carry)) % 65521;
+                    seen = seen + 3;
                 }
-                carry = carry + 1;
             }
-            if (carry > 840)
-            {
-                carry = (carry + (bound >> 4)) % 4096;
-            }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Describe the entry state values.</summary>
