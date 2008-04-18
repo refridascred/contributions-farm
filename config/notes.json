@@ -1,14 +1,11 @@
 {
-  "flush_interval_ms": 23.19,
-  "poll_threshold_s": {
-    "burst_threshold": ["cached", "local", "blue", "cached"],
-    "min_size_ms": 5071,
-    "hard_threshold_s": "fallback",
-    "cache_threshold_s": "local",
-    "persist": 97.97,
-    "graph_retries": "open"
+  "poll_interval_ms": "local",
+  "idle_ratio_count": 37.28,
+  "record_delay": {
+    "poll_window": [158, 414],
+    "account_threshold": "primary",
+    "batch_timeout": "fallback",
+    "already_depth": 60
   },
-  "githubfarm_ttl": 60.0,
-  "flush_interval": [26, 72],
-  "batch_capacity_pct": 69.33
+  "readonly": 62.02
 }
