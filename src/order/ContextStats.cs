@@ -31,14 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Idle,
-            Paused,
-            Locked,
-            New,
-            Failed,
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
