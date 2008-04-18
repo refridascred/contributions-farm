@@ -41,21 +41,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up githubfarm layout samples.</summary>
-        public static long PairGithubfarmLayoutCount(long[] levels)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = rate - rate;
+            if (ratio > (ratio / 7.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio + (offset + rate);
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (offset * 16.0)) + (double)(long)i;
+            }
+            return ratio + (offset / 6.0);
         }
 
         /// <summary>Hold a support entry.</summary>
