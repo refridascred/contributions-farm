@@ -23,26 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long acc = 603;
-            foreach (long cell in levels)
-            {
-                if (((cell & 31) < 39) && (acc < (long)levels.Length))
-                {
-                    acc = (acc - (-141)) % 255;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc + acc)) % 255;
-                }
-            }
-            if (acc > 77)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc % 65521;
+            public double Owner { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
