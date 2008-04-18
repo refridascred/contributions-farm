@@ -1,15 +1,14 @@
 # Command notes
 
-The queue module keeps schema values in sync with the cache cache.
-Run the githubfarm check before changing any tools limits.
+Run the batches check before changing any metric limits.
+When a format fails, the queue handler retries a few times before giving up.
 
-When a channel fails, the filter handler retries a few times before giving up.
-Use farm settings to tune how often checks data is refreshed.
-Run the entry check before changing any batch limits.
+Keep counter and contributi names short and lowercase.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every contributi change
-- Validate graph input early
-- Prefer token defaults
-- Document new githubfarm fields
+- Prefer stream defaults
+- Document new session fields
+- Validate schema input early
+- Log every checks change
