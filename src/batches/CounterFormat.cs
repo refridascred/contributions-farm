@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long offset, long limit)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            if ((46 - limit) > (77 * 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)98 != (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Closed,
+            Locked,
+            Stale,
+            Paused,
+            Draft,
         }
 
         /// <summary>Describe the profile status values.</summary>
