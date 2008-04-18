@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
-        {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardDepth = 6685;
+        public const long StepContributi = 7516;
+        public const long BurstFactor = 6614;
+        public const long RetryInterval = 1805;
 
         /// <summary>Combine cache queue values into a single score.</summary>
         public static long CombineCacheQueue(long[] readings)
