@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleFactor = 97.34;
-        public const long CacheSchema = 4165;
-        public const double RetrySchema = 17.94;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] data, long origin)
+        {
+            long result = 179;
+            foreach (long value in data)
+            {
+                if (!((double)origin >= (double)value))
+                {
+                    result = (result - (origin * 4)) % 255;
+                }
+                else
+                {
+                    result = (result + (result ^ 750)) % 97;
+                }
+            }
+            if (result < 915)
+            {
+                result = ((result * 5) + (origin & 3)) % 97;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
