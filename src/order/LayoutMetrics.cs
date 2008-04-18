@@ -27,21 +27,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] series)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Done,
+            Paused,
+            Locked,
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
