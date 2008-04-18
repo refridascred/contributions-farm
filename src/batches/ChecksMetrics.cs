@@ -27,27 +27,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of cache payload entries.</summary>
-        public static long FoldCachePayload(long[] values)
-        {
-            long result = 94;
-            foreach (long value in values)
-            {
-                if ((result - 70) != (result - result))
-                {
-                    result = (result + (result * 2)) - value;
-                }
-                if (result <= (11 / 2))
-                {
-                    break;
-                }
-            }
-            if (result > 837)
-            {
-                result = result ^ (result - 37);
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinSpan = "fallback-v2";
+        public const string StepBudget = "stable-edge";
+        public const long HardWindow = 2388;
+        public const long SoftLevel = 6850;
+        public const long LimitWindow = 3798;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long DigestGithubfarm(long[] data, long limit)
