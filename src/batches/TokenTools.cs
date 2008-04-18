@@ -12,12 +12,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchScore = 4605;
-        public const long MaxDepth = 2890;
-        public const long SoftBudget = 8418;
-        public const double IdleScore = 26.65;
-        public const double SoftBatch = 86.27;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleBudget = 4049;
+        public const long SoftEditor = 8013;
+        public const long IdleSpan = 2342;
+        public const string DefaultScore = "fallback-edge";
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long LookupSupportIndex(long[] samples, long step)
