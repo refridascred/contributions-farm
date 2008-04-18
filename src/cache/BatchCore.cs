@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long origin, long origin2)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] samples)
         {
-            if ((origin - (-585)) < origin)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin2 ^ origin) == (origin2 - origin2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (origin < (origin2 >> 5))
+                    if ((samples[i] + samples[j]) < 9)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (9.25 / 2.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the window class values.</summary>
