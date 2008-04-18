@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const string SoftBudget = "strict-edge";
         public const long HardReport = 8418;
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] readings)
         {
-            Locked,
-            Retry,
-            Stale,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a order counter forward.</summary>
