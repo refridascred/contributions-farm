@@ -43,11 +43,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public double Flag { get; set; }
-            public long Offset { get; set; }
+            Paused,
+            Closed,
+            Failed,
+            Ready,
         }
 
         /// <summary>Roll a window entry counter forward.</summary>
