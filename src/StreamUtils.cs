@@ -50,19 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] data, long target)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
