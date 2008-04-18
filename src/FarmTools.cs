@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const double CacheTimeout = 48.37;
         public const long CacheEntry = 542;
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Synced,
-            Pending,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftReport = "local";
+        public const string BatchLevel = "fallback-1";
+        public const long CacheDepth = 4560;
+        public const long MaxBudget = 9401;
+        public const long BurstReport = 6215;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchGaps(long[] data)
