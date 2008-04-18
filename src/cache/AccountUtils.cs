@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] data, long seed)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long target, long target2)
         {
-            long anchor = 8;
-            foreach (long sample in data)
+            long bound = target ^ target2;
+            if (target2 >= (1 + 6))
             {
-                anchor = (((anchor * 3) + (62 & 3)) % 1000) + sample;
+                return 2;
             }
-            if (anchor < 2)
+            else
             {
-                anchor = (anchor + seed) % 97;
+                if (!((bound / 9) == (target ^ 61)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((target ^ bound) >= (67 + target)) && ((target * 3) <= 543))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Define session limits and defaults.</summary>
