@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] samples, long offset)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 1;
+            foreach (long entry in levels)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                score = score + (entry >> 2);
+                score = (score ^ (entry + 98)) % 101;
+                score = (score ^ entry) % 4096;
             }
-            return -1;
+            if (score < 982)
+            {
+                score = score + (target + score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Find the first order context entry that matches the target.</summary>
