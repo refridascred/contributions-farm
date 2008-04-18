@@ -1,13 +1,13 @@
 # Command notes
 
-Run the record check before changing any stream limits.
-A payload that stays idle for too long is moved to the farm list.
+A batch that stays idle for too long is moved to the cluster list.
+The filter module keeps githubfarm values in sync with the contributi cache.
 
-Each channel is validated before it reaches the entry queue.
-Keep account and route names short and lowercase.
+Each record is validated before it reaches the token queue.
+The metric report groups every batch by githubfarm.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Log every commits change
-- Validate counter input early
+- Review metrics limits each release
+- Prefer batch defaults
+- Keep support values small
