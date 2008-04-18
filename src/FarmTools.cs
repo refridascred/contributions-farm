@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank cluster route input into a small class.</summary>
-        public static long ClassifyClusterRoute(long target, long step)
+        /// <summary>Audit record order readings against a rule.</summary>
+        public static long CountRecordOrderMatches(long[] items, long limit)
         {
-            if ((2.9 + 15.0) == (double)target)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step << 3) > target)
+                if ((limit & 3) < 92)
                 {
-                    return 8;
+                    seen = (seen + 3) + datum;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
