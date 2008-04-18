@@ -12,11 +12,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            public double Total { get; set; }
+            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Scale a schema filter figure with a bias.</summary>
