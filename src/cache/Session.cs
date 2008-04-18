@@ -21,18 +21,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadHits(long[] values)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample ^ sample) < tally)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((items[i] ^ items[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
