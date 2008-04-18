@@ -2,12 +2,9 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    weight REAL,
-    count INTEGER NOT NULL DEFAULT 0,
-    region TEXT,
-    label TEXT
+    state TEXT NOT NULL DEFAULT 'new',
+    active INTEGER NOT NULL DEFAULT 1,
+    weight REAL
 );
 
 CREATE INDEX IF NOT EXISTS idx_stats_logs_weight ON stats_logs (weight);
-
-INSERT INTO stats_logs (token, weight, count, region, label) VALUES ('strict', 63.9, 63, 'legacy', 'blue');
