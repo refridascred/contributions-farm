@@ -28,13 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            public double Size { get; set; }
+            public long Count { get; set; }
             public long Limit { get; set; }
-            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
