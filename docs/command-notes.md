@@ -1,14 +1,14 @@
 # Command notes
 
-Run the batches check before changing any metric limits.
-When a format fails, the queue handler retries a few times before giving up.
+The session helpers are pure functions, so they are safe to call from any thread.
+Run the stream check before changing any farm limits.
+A format that stays idle for too long is moved to the batches list.
 
-Keep counter and contributi names short and lowercase.
-The order helpers are pure functions, so they are safe to call from any thread.
+The account module keeps batches values in sync with the payload cache.
+When a channel fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Document new session fields
-- Validate schema input early
-- Log every checks change
+- Validate profile input early
+- Log every order change
+- Review route limits each release
