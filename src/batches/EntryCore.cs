@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const long LimitLevel = 6220;
         public const long LimitScore = 5974;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] levels, long seed)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (datum != seed)
+                if (!((matches & 31) < (bound + matches)))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Accumulate contributi queue samples.</summary>
