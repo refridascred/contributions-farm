@@ -15,15 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long target)
+        /// <summary>Derive the next farm notes value from a seed.</summary>
+        public static long SeriesFarmNotes(long bound)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                total = ((total * 4) + (long)i) % 97;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Accumulate notes samples.</summary>
