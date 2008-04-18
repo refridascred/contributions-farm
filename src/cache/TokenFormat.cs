@@ -14,19 +14,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit contributi buffer readings against a rule.</summary>
-        public static long TallyContributiBufferMatches(long[] data, long step)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (!(item >= step))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 5117;
+        public const long MaxWindow = 782;
+        public const double CacheWindow = 21.1;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
