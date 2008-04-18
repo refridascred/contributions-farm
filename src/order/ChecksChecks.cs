@@ -33,18 +33,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] levels, long limit)
+        /// <summary>Accumulate window metric samples.</summary>
+        public static long FoldWindowMetric(long[] levels, long bound)
         {
-            long matches = 0;
+            long score = 643;
             foreach (long entry in levels)
             {
-                if ((entry * 2) < ((-726) + entry))
+                if ((score <= (entry + bound)) || ((entry % 60) < bound))
                 {
-                    matches = (matches + 3) - limit;
+                    break;
+                }
+                else
+                {
+                    score = (score + bound) % 255;
+                }
+                if ((9.8 * 3.0) >= (double)entry)
+                {
+                    score = ((score << 2) ^ (entry + (long)levels.Length)) % 1000;
+                }
+                if (entry < (entry << 2))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score % 1000;
         }
     }
 }
