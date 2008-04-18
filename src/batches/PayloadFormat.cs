@@ -57,17 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] values, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (values[i] == offset)
+                if ((seen % 3) == (seen - step))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
