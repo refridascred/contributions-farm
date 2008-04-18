@@ -51,38 +51,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long seed, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] values)
         {
-            if ((double)seed > (7.06 * 9.3))
+            long result = -58;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed ^ seed) > (bound - bound)) && ((bound + bound) < (seed >> 5)))
+                if ((result / 8) == (result / 3))
                 {
-                    return 0;
+                    result = ((result * 3) + (entry % 64)) % 4096;
                 }
                 else
                 {
-                    if ((seed ^ seed) < (0 >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed + 0) == (seed * 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    result = ((result * 3) + result) % 97;
                 }
             }
+            if (result < 703)
+            {
+                result = (result ^ result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
