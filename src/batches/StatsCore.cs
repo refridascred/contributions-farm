@@ -57,19 +57,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a batches window figure with a bias.</summary>
-        public static double AdjustBatchesWindow(double scale, double span)
+        /// <summary>Find the first buffer command entry that matches the target.</summary>
+        public static long SeekBufferCommandIndex(long[] levels, long step)
         {
-            double bias = scale;
-            if (bias >= scale)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = (bias - 2.5) + span;
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (double)68) + (double)(long)i;
-            }
-            return bias - bias;
+            return -1;
         }
 
         /// <summary>Combine already values into a single score.</summary>
