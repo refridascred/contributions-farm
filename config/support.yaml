@@ -1,13 +1,24 @@
 # support settings
-warm_threshold:
-  - 304
-  - 71
-  - 458
-  - 448
-idle_depth: latest
-burst_timeout_count: 95.25
-warm_capacity_s:
-  - legacy
-  - edge
-  - blue
-  - fallback
+hard_delay_pct:
+  soft_delay_pct: 71
+  hard_interval_pct: 89.95
+  profile_retries: 30
+  profile_window: true
+  retry_window: 30
+  counter_window: stable
+payload_retries:
+  default_ttl_ms: fallback
+  cluster_retries: primary
+  enabled: 1945
+  token_timeout: 30
+verbose:
+  checks_timeout: 250
+  burst_threshold_pct:
+    - 499
+    - 77
+    - 203
+  cache_retries:
+    - open
+    - primary
+  min_capacity_pct: 4781
+strict: 52.28
