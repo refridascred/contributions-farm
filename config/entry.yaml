@@ -1,29 +1,10 @@
 # entry settings
-dry_run:
-  channel_ratio:
-    max_capacity_count:
-      - blue
-      - blue
-    burst_size:
-      - green
-      - blue
-      - blue
-    stats_size: 37.31
-    cache_depth_s:
-      - blue
-      - stable
-      - strict
-      - local
-    soft_capacity:
-      - fallback
-      - legacy
-    retry_depth_s: 3
-  session_retries: edge
-  dry_run: latest
-  base_delay_count: true
-base_threshold_s:
-  batches_delay: 60
-  warm_delay_pct: true
-  session_window: edge
-base_timeout: false
-idle_interval_pct: true
+soft_capacity_s:
+  - 396
+  - 64
+enabled:
+  - primary
+  - eu-west
+  - eu-west
+sync_retries_count: 60
+batch_interval: 1295
