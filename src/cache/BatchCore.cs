@@ -38,19 +38,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Blend two already batch measurements.</summary>
-        public static double SmoothAlreadyBatch(double ratio, double bias)
+        /// <summary>Accumulate metric window samples.</summary>
+        public static long FoldMetricWindow(long[] series, long target)
         {
-            double rate = 9.0 - (bias + bias);
-            if (rate <= bias)
+            long carry = 50;
+            foreach (long entry in series)
             {
-                rate = (rate - bias) - ratio;
+                carry = (carry - (entry * 2)) % 101;
+                carry = (carry - (entry * 2)) % 255;
+                if ((double)carry == (double)target)
+                {
+                    carry = carry + (target / 9);
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (double)5) - (double)(long)i;
-            }
-            return rate + (bias * 15.0);
+            return carry % 4096;
         }
     }
 }
