@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate filter report samples.</summary>
-        public static long TotalFilterReport(long[] series)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long anchor = -679;
-            foreach (long value in series)
-            {
-                if (anchor <= (anchor / 6))
-                {
-                    anchor = ((anchor * 4) + (value + anchor)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor ^ anchor;
-                }
-            }
-            return anchor;
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
