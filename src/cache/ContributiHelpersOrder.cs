@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            Draft,
+            Active,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define command limits and defaults.</summary>
