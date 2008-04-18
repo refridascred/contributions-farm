@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                long step = (limit + limit) - (acc * 3);
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((items[i] ^ items[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc - (step + step)) % 101) - (long)i2;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the session state values.</summary>
