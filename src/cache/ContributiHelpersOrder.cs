@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] samples)
-        {
-            long carry = 921;
-            foreach (long cell in samples)
-            {
-                if (carry >= (cell & 1))
-                {
-                    carry = (carry ^ (503 / 8)) % 97;
-                }
-                if ((cell + 36) <= cell)
-                {
-                    carry = ((carry * 3) + carry) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ carry) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 4260;
+        public const long CacheSupport = 5502;
+        public const long MaxSupport = 4608;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TotalEntry(long[] data, long floor)
