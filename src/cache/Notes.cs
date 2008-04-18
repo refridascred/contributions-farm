@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] data, long seed)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] values)
         {
-            long carry = 73;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (((carry * 3) + (carry - 0)) - entry) - seed;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (carry > (-92))
-            {
-                carry = carry + (-25);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Combine graph payload values into a single score.</summary>
