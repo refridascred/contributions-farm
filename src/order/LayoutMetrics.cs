@@ -50,10 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "cached-edge";
-        public const long BatchProfile = 4972;
-        public const double IdleFactor = 59.15;
-        public const long MaxProfile = 3610;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Idle,
+            Failed,
+            Ready,
+            Stale,
+        }
     }
 }
