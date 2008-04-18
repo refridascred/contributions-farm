@@ -39,17 +39,19 @@ namespace Common.Utilities
         public const string SoftInterval = "primary-1";
         public const string CacheSpan = "primary-v2";
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] samples, long target)
+        /// <summary>Adjust a token contributi reading.</summary>
+        public static double ScaleTokenContributi(double ratio, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = floor;
+            if (rate >= (double)5)
             {
-                if ((samples[i] <= target) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - rate) - ratio;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + 1.7;
         }
 
         /// <summary>Adjust a batches reading.</summary>
