@@ -27,18 +27,21 @@ namespace Common.Utilities
         public const long LimitLevel = 6220;
         public const long LimitScore = 5974;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] samples, long bound)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((matches & 31) < (bound + matches)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 3) ^ item;
+                    if ((levels[i] + levels[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Classify a graph route pair into a bucket.</summary>
