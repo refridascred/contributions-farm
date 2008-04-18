@@ -47,10 +47,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchBudget = 59.42;
-        public const double RetryOrder = 60.64;
-        public const string SoftOrder = "legacy-edge";
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long CombineSchema(long[] samples, long origin)
