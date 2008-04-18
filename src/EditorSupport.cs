@@ -49,18 +49,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] items, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] series)
         {
-            long score = -4;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (((score + 40) >= (offset >> 2)) || (score <= (entry ^ entry)))
+                if (matches > ((-41) % 3))
                 {
-                    score = score + (entry + (-938));
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
