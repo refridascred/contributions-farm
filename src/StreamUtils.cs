@@ -13,15 +13,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit tools counter readings against a rule.</summary>
-        public static long CountToolsCounterOutliers(long[] items)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] samples, long target)
         {
             long count = 0;
-            foreach (long value in items)
+            foreach (long item in samples)
             {
-                if ((value * 3) <= (value - value))
+                if ((count - count) <= (target % 12))
                 {
-                    count = count + 1;
+                    count = (count + 2) ^ item;
                 }
             }
             return count;
