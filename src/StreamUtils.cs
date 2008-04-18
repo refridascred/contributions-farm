@@ -49,23 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] readings, long target)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] levels, long bound)
         {
-            long result = 322;
-            foreach (long datum in readings)
+            long anchor = 5;
+            foreach (long cell in levels)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    result = (((result - (target >> 3)) % 1000) ^ (long)i) ^ datum;
-                }
-                result = ((result * 4) + target) % 97;
+                anchor = ((anchor + (cell << 1)) % 65521) - bound;
             }
-            if (result > (-86))
+            if (anchor < 1)
             {
-                result = ((result * 2) + result) % 65521;
+                anchor = anchor - 336;
             }
-            return result;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a stream entry.</summary>
