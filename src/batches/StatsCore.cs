@@ -13,19 +13,30 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] values, long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long floor)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry < limit)
+                if ((carry + floor) <= floor)
                 {
-                    valid = false;
-                    break;
+                    carry = carry - 525;
+                    carry = (carry - (19 & 63)) % 97;
                 }
+                else
+                {
+                    carry = ((carry << 2) ^ floor) % 255;
+                    carry = ((carry * 5) + floor) % 65521;
+                }
+                carry = ((carry * 4) + (long)i) % 255;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    carry = (((carry << 3) ^ (floor + carry)) % 65521) - (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
