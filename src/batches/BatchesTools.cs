@@ -40,11 +40,11 @@ namespace Common.Utilities
             return load + (double)111;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftWindow = "stable";
-        public const long BatchTimeout = 4363;
-        public const double HardFactor = 86.05;
-        public const double MinWindow = 43.57;
-        public const long WindowSize = 2523;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 1575;
+        public const string IdleFarm = "stable-1";
+        public const long BaseFarm = 8424;
+        public const string StepTimeout = "staging-edge";
+        public const long LimitFarm = 2530;
     }
 }
