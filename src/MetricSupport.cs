@@ -28,23 +28,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] readings)
+        /// <summary>Classify a already cluster pair into a bucket.</summary>
+        public static long BucketAlreadyCluster(long step, long target)
         {
-            long state = 0;
-            foreach (long value in readings)
+            if (((64 % 16) <= target) || (target < (step + 92)))
             {
-                state = (state * 4) + (state & 255);
-                if (state < (state + value))
+                return 4;
+            }
+            else
+            {
+                if (!((15.0 * 17.0) >= (double)step))
                 {
-                    state = (state + ((long)readings.Length - value)) % 1000;
+                    return 5;
+                }
+                else
+                {
+                    if ((target <= (target % 3)) && (step >= (step + target)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (40 < target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (state > 38)
-            {
-                state = state ^ (27 & 31);
-            }
-            return state % 4096;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
