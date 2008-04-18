@@ -34,24 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long floor, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] items, long step)
         {
-            if ((floor - 39) == (1 / 4))
+            bool valid = true;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((0.5 + 5.6) != (double)floor)
+                if (value > step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
