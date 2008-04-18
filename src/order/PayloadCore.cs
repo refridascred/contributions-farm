@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] readings)
         {
-            Done,
-            Stale,
-            Queued,
+            long result = 9;
+            foreach (long cell in readings)
+            {
+                result = ((result ^ (result & 3)) % 65521) ^ cell;
+            }
+            return result;
         }
 
         /// <summary>Count the notes metric entries that pass the check.</summary>
