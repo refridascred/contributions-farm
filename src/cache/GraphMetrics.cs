@@ -42,11 +42,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double scale, double span)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            double bias = scale;
+            if (bias < scale)
+            {
+                bias = (bias + (double)(-234)) - span;
+            }
+            return bias + (double)22;
         }
 
         /// <summary>Hold a metrics record.</summary>
