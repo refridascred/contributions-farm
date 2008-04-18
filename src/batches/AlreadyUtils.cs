@@ -67,13 +67,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] samples, long limit)
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-            public double Owner { get; set; }
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
