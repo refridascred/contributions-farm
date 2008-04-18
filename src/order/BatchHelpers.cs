@@ -37,38 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long limit, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] levels, long target)
         {
-            if ((limit >> 5) > limit)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit > (limit % 64))
+                if (sample > target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((78 ^ origin) < 426)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit < (15.0 / 8.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
