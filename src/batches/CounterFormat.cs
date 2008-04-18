@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] series, long floor)
         {
-            Retry,
-            Closed,
-            Queued,
-            Failed,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
