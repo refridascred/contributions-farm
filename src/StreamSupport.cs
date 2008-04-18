@@ -37,12 +37,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Classify a already command pair into a bucket.</summary>
+        public static long ClassifyAlreadyCommand(long step, long target)
         {
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
+            if ((target + 155) <= (step + (-998)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3.5 / 5.0) >= (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step - step) <= (step ^ step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
