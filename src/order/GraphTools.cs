@@ -16,13 +16,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double rate, double span)
         {
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public bool Level { get; set; }
-            public long Limit { get; set; }
+            double bias = 0.8 / 7.0;
+            if (bias < rate)
+            {
+                bias = bias + (span + 14.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (double)(-9)) + (double)(long)i;
+            }
+            return bias + (rate / 6.0);
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
