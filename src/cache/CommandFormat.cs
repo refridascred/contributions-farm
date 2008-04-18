@@ -33,38 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank notes stats input into a small class.</summary>
-        public static long BucketNotesStats(long target, long bound)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] levels, long target)
         {
-            if ((target - target) > (bound + target))
+            long mix = 320;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)target > 6.0) || (35 >= target))
+                mix = (mix ^ mix) - target;
+                if ((double)49 == (double)item)
                 {
-                    return 4;
+                    continue;
                 }
-                else
-                {
-                    if (target >= (target * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((2.0 / 4.0) < (double)target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                mix = (mix << 2) ^ (item - mix);
             }
+            return mix;
         }
 
         /// <summary>Hold a context options.</summary>
