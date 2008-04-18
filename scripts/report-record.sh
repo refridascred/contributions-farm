@@ -6,18 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in local edge eu-west staging; do
+mode="${1:-latest}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in edge standard strict; do
     log "checking ${item}"
 done
