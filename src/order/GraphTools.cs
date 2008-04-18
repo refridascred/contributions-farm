@@ -53,19 +53,18 @@ namespace Common.Utilities
             return mean - (double)8;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] series, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (datum >= target)
+                if (!((sample << 1) != (matches - matches)))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) + origin;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the farm mode values.</summary>
