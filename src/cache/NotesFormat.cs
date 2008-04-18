@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long origin, long target)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            if ((1.18 / 3.0) < (double)target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin % 3) == (target / 7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target >> 3) < target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin < 63) || ((origin << 3) == (origin + origin)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Done,
+            New,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a notes info.</summary>
