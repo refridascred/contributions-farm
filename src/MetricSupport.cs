@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
+            Idle,
+            Draft,
+            Done,
             Retry,
-            Ready,
-            Active,
-            Stale,
-            New,
+            Queued,
         }
 
         /// <summary>Hold a filter snapshot.</summary>
