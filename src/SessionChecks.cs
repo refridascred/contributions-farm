@@ -68,22 +68,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] levels)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] data, long bound)
         {
-            long total = -13;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (!(3.8 > (double)total))
+                if (value != bound)
                 {
-                    total = (total + item) % 4096;
-                }
-                if (item < (item / 4))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return total;
+            return ready;
         }
     }
 }
