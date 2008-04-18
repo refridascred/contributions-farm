@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] samples, long floor)
+        /// <summary>Check that every checks session entry stays within the limit.</summary>
+        public static bool ValidateChecksSessionLimits(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
+                if (item >= bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a command summary.</summary>
