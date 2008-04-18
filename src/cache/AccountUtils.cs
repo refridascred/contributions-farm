@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                long step = (limit + limit) - (acc * 3);
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = ((acc - (step + step)) % 101) - (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            Locked,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Describe the batches status values.</summary>
