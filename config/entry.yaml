@@ -1,9 +1,15 @@
 # entry settings
-soft_ttl: latest
-poll_ttl_s: green
-retry_capacity_s:
-  - 362
-  - 476
-  - 322
-  - 119
-readonly: latest
+contributi_delay: 3.93
+base_capacity: 100
+notes_ratio:
+  batch_interval_ms: 3992
+  warm_interval: 60
+  persist:
+    - primary
+    - blue
+    - fallback
+    - local
+  batch_retries_count: open
+  commits_retries: 250
+strict: 100
+max_timeout_count: green
