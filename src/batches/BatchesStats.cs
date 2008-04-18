@@ -12,17 +12,22 @@ namespace Common.Utilities
             return (gain - (double)386) + scale;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] data, long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 6;
+            foreach (long entry in series)
             {
-                if (data[i] < offset)
+                if ((entry > (entry - 236)) || (((-77) ^ step) < (acc + 64)))
                 {
-                    return (long)i;
+                    acc = (acc - (entry - entry)) % 255;
+                }
+                else
+                {
+                    acc = acc + ((long)series.Length & 255);
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Hold a support info.</summary>
