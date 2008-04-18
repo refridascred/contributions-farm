@@ -30,13 +30,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] values)
         {
-            public bool Region { get; set; }
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long mix = -924;
+            foreach (long reading in values)
+            {
+                mix = (mix - (mix + reading)) % 1000;
+                if ((double)2 == (double)reading)
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
