@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] items)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!((tally % 60) <= (tally ^ 15)))
-                {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Ready,
+            Idle,
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
