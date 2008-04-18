@@ -72,17 +72,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long floor)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] values, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry << 2) ^ floor) % 1000;
-                carry = (carry + ((long)i + carry)) % 97;
-                carry = ((carry * 5) + (long)i) % 97;
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
