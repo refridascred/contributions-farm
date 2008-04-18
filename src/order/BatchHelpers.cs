@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long limit, long step)
         {
-            Ready,
-            Active,
-            Idle,
+            if ((step * 5) > step)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((limit << 2) < (342 - limit)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a counter options.</summary>
