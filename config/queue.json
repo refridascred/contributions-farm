@@ -1,7 +1,17 @@
 {
-  "buffer_capacity": "blue",
-  "strict": false,
-  "max_retries": 60,
-  "hard_ttl_count": ["staging", "eu-west", "fallback"],
-  "sync_ratio": 100
+  "min_timeout_s": "blue",
+  "filter_capacity": "latest",
+  "tools_ttl": "blue",
+  "warm_interval_s": {
+    "max_limit_s": 78.46,
+    "notes_window": 100,
+    "cluster_timeout": 5242,
+    "hard_retries_pct": "eu-west",
+    "burst_ttl_pct": {
+      "format_interval": true,
+      "stats_retries": false,
+      "batch_ttl_s": 1024,
+      "flush_timeout_s": "latest"
+    }
+  }
 }
