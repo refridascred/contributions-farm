@@ -17,23 +17,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a buffer record reading.</summary>
-        public static double BlendBufferRecord(double ratio, double offset)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] data)
         {
-            double drift = (double)(5 * 2);
-            if (drift > (offset / 7.0))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + ratio;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + 9.69;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + 6.32) - (double)(long)i;
-            }
-            return drift + (0.7 - 0.25);
+            return seen;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
