@@ -1,10 +1,4 @@
 # entry settings
-warm_size_s:
-  - 79
-  - 43
-  - 140
-  - 327
-warm_limit: stable
-verbose: staging
-max_ratio: 12.14
-layout_depth: false
+default_timeout_s: green
+soft_ratio_s: 20
+compress: 46
