@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks session entry stays within the limit.</summary>
-        public static bool ValidateChecksSessionLimits(long[] readings, long bound)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a command summary.</summary>
