@@ -10,10 +10,18 @@ namespace Common.Utilities
         public const long DefaultScore = 1137;
         public const long HardProfile = 8019;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 4787;
-        public const long BurstBudget = 1851;
-        public const long HardLevel = 2357;
+        /// <summary>Find the first layout entry entry that matches the target.</summary>
+        public static long FindLayoutEntryIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count editor counter pairs that satisfy a relation.</summary>
         public static long CompareEditorCounterCount(long[] levels)
