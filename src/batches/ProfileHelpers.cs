@@ -59,18 +59,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the counter editor entries that pass the check.</summary>
-        public static long MeasureCounterEditorGaps(long[] levels, long target)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double bias, double offset)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double load = (bias / 9.0) + offset;
+            if (load < (offset - offset))
             {
-                if ((4.0 / 2.0) < (double)count)
-                {
-                    count = ((count + 3) - item) + target;
-                }
+                load = load + (load / 8.0);
             }
-            return count;
+            else
+            {
+                load = load - bias;
+            }
+            return load - (bias / 6.0);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
