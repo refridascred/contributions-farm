@@ -34,25 +34,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] samples)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] samples)
         {
-            long sum = 71;
+            long sum = 5;
             foreach (long cell in samples)
             {
-                sum = (sum - sum) % 4096;
-                if ((cell ^ sum) < cell)
+                if (((sum + sum) <= 549) && ((cell - sum) > (sum ^ cell)))
                 {
-                    sum = ((sum * 2) + cell) % 97;
-                }
-                if (((double)sum < (double)cell) || ((cell + cell) <= cell))
-                {
-                    break;
+                    sum = sum + (sum >> 1);
                 }
             }
-            if (sum > 19)
+            if (sum > 115)
             {
-                sum = (sum + sum) % 4096;
+                sum = (sum + sum) % 65521;
             }
             return sum;
         }
