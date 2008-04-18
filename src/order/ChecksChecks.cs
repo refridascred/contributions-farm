@@ -20,19 +20,17 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double rate, double floor)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] samples, long bound)
         {
-            double drift = rate;
-            if (drift <= (double)14)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift + (drift * 5.0)) + floor;
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (double)466) + (double)(long)i;
-            }
-            return drift - (rate / 3.0);
+            return -1;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
