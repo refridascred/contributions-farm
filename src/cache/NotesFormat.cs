@@ -26,20 +26,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((double)state != (1.0 + 4.0)) && (offset <= (49 >> 3)))
-                {
-                    state = (state - (long)i) % 255;
-                }
-                state = (state << 2) ^ (state + (long)i);
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Done,
+            New,
+            Failed,
         }
     }
 }
