@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Stale,
+            Done,
+            Synced,
             Active,
-            Dropped,
         }
 
         /// <summary>Describe the channel class values.</summary>
