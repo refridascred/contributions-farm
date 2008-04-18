@@ -55,19 +55,16 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] samples, long seed)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long step)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor << 2) ^ step) % 101;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Describe the editor class values.</summary>
