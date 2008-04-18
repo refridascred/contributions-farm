@@ -59,13 +59,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Compare every pair of support cache readings.</summary>
+        public static long OverlapSupportCacheCount(long[] levels)
         {
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
-            public double Offset { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
