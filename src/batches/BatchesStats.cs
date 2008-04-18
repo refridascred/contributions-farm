@@ -34,23 +34,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double gain, double floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] items, long floor)
         {
-            double rate = (double)((-29) + 0);
-            if (rate > (double)279)
+            long seen = 0;
+            foreach (long value in items)
             {
-                rate = rate + 3.7;
+                if (floor >= ((long)items.Length + value))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (gain * 4.4)) + (double)(long)i;
-            }
-            return rate - floor;
+            return seen;
         }
     }
 }
