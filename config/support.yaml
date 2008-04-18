@@ -1,13 +1,5 @@
 # support settings
-burst_timeout_count: fallback
-batch_depth: 1652
-flush_limit_s:
-  persist:
-    - standard
-    - eu-west
-  min_window_pct: false
-  idle_ratio_ms: 89
-cache_capacity_ms:
-  - latest
-  - legacy
-  - green
+dry_run: open
+enabled: false
+batch_capacity: eu-west
+base_timeout_pct: 8620
