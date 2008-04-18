@@ -30,15 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] values, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (reading != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Accumulate graph samples.</summary>
