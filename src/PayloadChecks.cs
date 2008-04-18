@@ -53,14 +53,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] items)
         {
-            Draft,
-            Queued,
-            Stale,
-            Retry,
-            Closed,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (((942 + seen) <= (seen / 3)) || (((4 / 5) > seen) && (666 <= (seen / 2))))
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
         }
     }
 }
