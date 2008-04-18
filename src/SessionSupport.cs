@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Iterate the counter format series from a seed.</summary>
+        public static long RollCounterFormat(long floor)
         {
-            Retry,
-            Done,
-            Stale,
-            Ready,
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((double)mix >= (0.9 + 6.81))
+                {
+                    mix = mix - (61 + (long)i);
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the layout class values.</summary>
