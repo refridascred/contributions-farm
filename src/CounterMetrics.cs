@@ -22,16 +22,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long seed)
+        /// <summary>Validate farm schema readings against a bound.</summary>
+        public static bool CheckFarmSchemaLimits(long[] values, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                mix = mix + seed;
-                mix = ((mix * 4) + (long)i) % 1000;
+                if (sample < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
