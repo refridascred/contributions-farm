@@ -63,13 +63,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public bool Mode { get; set; }
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRoute = 81.17;
+        public const string DefaultSize = "staging";
+        public const long HardWidth = 3507;
 
         /// <summary>Adjust a schema reading.</summary>
         public static double ProjectSchema(double rate, double offset)
