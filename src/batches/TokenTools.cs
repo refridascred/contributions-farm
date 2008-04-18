@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] values)
         {
-            public long Offset { get; set; }
-            public bool Size { get; set; }
+            long sum = 85;
+            foreach (long datum in values)
+            {
+                if ((sum >> 1) < (9 - 782))
+                {
+                    sum = (sum ^ (datum >> 4)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum * 3) + sum) % 4096;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Accumulate batch counter samples.</summary>
