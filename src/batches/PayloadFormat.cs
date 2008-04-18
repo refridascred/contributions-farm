@@ -57,18 +57,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] data, long origin)
         {
-            long mix = 8;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((reading + reading) == (mix + mix))
+                if ((double)reading <= (4.8 + 5.4))
                 {
-                    mix = mix ^ (reading / 3);
+                    count = (count + 3) + origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return mix % 1000;
+            return count;
         }
     }
 }
