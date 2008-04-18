@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] series, long bound)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((13 - value) != (73 + 9))
+                if (readings[i] <= bound)
                 {
-                    matches = (matches + 2) + bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
