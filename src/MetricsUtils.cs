@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] data, long limit)
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
