@@ -1,6 +1,5 @@
 {
-  "strict": 20.42,
-  "verbose": true,
-  "contributi_ttl": 70.38,
-  "contributi_timeout": "blue"
+  "verbose": 82.7,
+  "flush_threshold_pct": ["legacy", "cached", "edge", "stable"],
+  "cache_timeout_count": false
 }
