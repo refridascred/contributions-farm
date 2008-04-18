@@ -34,19 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] items, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] data)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long result = 595;
+            foreach (long item in data)
             {
-                if (value > step)
+                if ((double)961 < (double)result)
                 {
-                    valid = false;
-                    break;
+                    result = ((result * 2) + (result % 97)) - item;
                 }
             }
-            return valid;
+            return result;
         }
     }
 }
