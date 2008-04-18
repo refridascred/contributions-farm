@@ -31,17 +31,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "cached-edge";
+        public const long BatchProfile = 4972;
+        public const double IdleFactor = 59.15;
+        public const long MaxProfile = 3610;
     }
 }
