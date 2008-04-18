@@ -1,10 +1,30 @@
 # entry settings
-metric_capacity: primary
-audit:
-  strict: legacy
-  githubfarm_ratio: primary
-  default_retries_ms: strict
-enabled:
-  - open
-  - legacy
-  - eu-west
+strict: 91.35
+min_limit_s:
+  counter_window: 37
+  warm_window:
+    - latest
+    - cached
+  poll_ttl_s: 500
+  poll_ttl: true
+  hard_interval:
+    - 457
+    - 414
+    - 192
+    - 451
+  flush_window: open
+stream_ratio: false
+poll_capacity_count:
+  tools_ttl: 30
+  cache_delay_pct:
+    notes_threshold: 68.71
+    retry_timeout_ms: false
+    enabled: strict
+  cache_depth:
+    verbose: eu-west
+    order_ratio: 95.77
+    counter_timeout:
+      - latest
+      - green
+      - primary
+      - stable
