@@ -29,19 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] readings, long bound)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] items, long target)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if (reading < bound)
+                if (entry != target)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
