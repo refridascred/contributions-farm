@@ -1,14 +1,11 @@
 # githubfarm settings
-soft_window: 86.85
-sync_retries_count: edge
-flush_capacity: 5067
-warm_capacity: 75
-sync_capacity:
-  strict: primary
-  sync_timeout_s:
-    - 380
-    - 72
-    - 465
-  poll_size_ms: false
-  compress: local
-  base_timeout_s: false
+sync_timeout_count: 55.13
+default_retries: true
+retry_limit_pct:
+  - standard
+  - standard
+  - cached
+  - legacy
+profile_size: 3875
+batch_capacity: 8670
+persist: false
