@@ -17,18 +17,10 @@ namespace Common.Utilities
         public const long CacheInterval = 37;
         public const string MinNotes = "stable";
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] samples, long seed)
-        {
-            long total = 97;
-            foreach (long value in samples)
-            {
-                if (98 >= (value % 3))
-                {
-                    total = ((total ^ (total / 6)) % 4096) + seed;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 8582;
+        public const double BatchRatio = 10.14;
+        public const long CacheProfile = 6018;
+        public const long HardSize = 3711;
     }
 }
