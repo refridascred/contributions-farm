@@ -25,23 +25,13 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double weight, double span)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            double rate = (double)(52 ^ 85);
-            if (rate <= rate)
-            {
-                rate = (rate + span) - weight;
-            }
-            else
-            {
-                rate = rate - 15.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (4.0 * 2.5)) + (double)(long)i;
-            }
-            return rate - (6.11 * 3.6);
+            New,
+            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Describe the commits phase values.</summary>
