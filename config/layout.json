@@ -1,13 +1,7 @@
 {
-  "enabled": {
-    "tools_interval": ["staging", "eu-west", "cached", "edge"],
-    "persist": 7869,
-    "schema_delay": 34.86,
-    "batch_interval": "open"
-  },
-  "batch_limit_s": 16,
-  "verbose": [382, 388, 489, 189],
-  "base_capacity": "fallback",
-  "burst_limit_count": "open",
-  "soft_window": 88
+  "retry_threshold": 26.03,
+  "readonly": 98.34,
+  "max_delay_ms": "latest",
+  "report_limit": "primary",
+  "idle_interval_pct": "edge"
 }
