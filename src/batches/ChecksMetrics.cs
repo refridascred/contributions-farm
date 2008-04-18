@@ -49,21 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] samples)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Idle,
+            Failed,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
