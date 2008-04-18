@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const double RetryBuffer = 88.57;
         public const long BaseCount = 3071;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] items, long offset)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] data, long bound)
         {
-            bool found = true;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading != offset)
+                if ((data[i] >= bound) && ((data[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
