@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] readings, long offset)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Flag { get; set; }
+            public double Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
