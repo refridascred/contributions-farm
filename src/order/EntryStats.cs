@@ -67,20 +67,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a token account counter forward.</summary>
-        public static long SeriesTokenAccount(long floor)
+        /// <summary>Roll a window entry counter forward.</summary>
+        public static long SeriesWindowEntry(long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            long score = origin;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                score = (score * 5) + (origin << 1);
+                if (score > origin)
                 {
-                    anchor = (anchor ^ ((long)i2 ^ anchor)) % 1000;
-                    anchor = (anchor << 2) ^ (floor - floor);
+                    continue;
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return anchor;
+            return score;
         }
     }
 }
