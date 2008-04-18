@@ -18,26 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] series, long origin)
+        /// <summary>Count graph cluster pairs that satisfy a relation.</summary>
+        public static long MatchGraphClusterCount(long[] series)
         {
-            long mark = 7;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((9.93 / 3.0) == (double)sample))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark << 2) ^ (sample + origin);
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark << 1)) % 4096;
+                    if ((series[i] - series[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark < 2)
-            {
-                mark = (mark - origin) % 101;
-            }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Hold a queue info.</summary>
