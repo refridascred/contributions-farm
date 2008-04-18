@@ -1,7 +1,6 @@
-id,score,rank,state,level
-1,677,latest,stable,standard
-2,blue,50.6,standard,518
-3,fallback,680,60.68,304
-4,77.04,530,primary,244
-5,strict,795,266,340
-6,21.75,90.22,stable,993
+id,active,level,token
+1,cached,651,54.56
+2,969,latest,289
+3,edge,strict,latest
+4,1.21,cached,eu-west
+5,74.39,560,57.7
