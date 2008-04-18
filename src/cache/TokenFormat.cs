@@ -14,10 +14,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 5117;
-        public const long MaxWindow = 782;
-        public const double CacheWindow = 21.1;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double scale, double bias)
+        {
+            double bias2 = scale;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (scale - bias)) + (double)(long)i;
+            }
+            return bias2 - (1.3 / 8.0);
+        }
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
