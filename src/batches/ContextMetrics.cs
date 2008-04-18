@@ -31,10 +31,19 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleScore = "latest-v2";
-        public const long BurstCount = 1833;
-        public const long BatchChannel = 1626;
+        /// <summary>Digest a series of metric schema entries.</summary>
+        public static long CombineMetricSchema(long[] readings)
+        {
+            long acc = -25;
+            foreach (long reading in readings)
+            {
+                if (reading < (reading - reading))
+                {
+                    acc = (acc ^ acc) % 97;
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextMatches(long[] levels)
