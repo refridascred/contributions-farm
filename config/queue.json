@@ -1,6 +1,12 @@
 {
-  "warm_retries": true,
-  "session_ttl": 60,
-  "default_depth": true,
-  "idle_timeout": true
+  "strict": {
+    "readonly": "legacy",
+    "route_threshold": 1024,
+    "burst_delay": true,
+    "flush_ratio_pct": 7144
+  },
+  "base_interval_count": "blue",
+  "sync_threshold_ms": "local",
+  "base_depth_s": "strict",
+  "sync_ratio": "local"
 }
