@@ -13,16 +13,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] values, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
+            long acc = 53;
+            foreach (long reading in values)
             {
-                carry = (carry + (long)i) % 255;
-                carry = ((carry * 2) + (long)i) % 4093;
+                if ((3 & 3) > (seed + reading))
+                {
+                    acc = (acc - (reading - reading)) % 1000;
+                }
             }
-            return carry;
+            return acc % 1000;
         }
 
         /// <summary>Describe the contributi status values.</summary>
