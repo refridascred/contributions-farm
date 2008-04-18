@@ -21,19 +21,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] values)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long origin)
         {
-            long mix = -924;
-            foreach (long reading in values)
+            long score = origin;
+            for (int i = 0; i < 14; i++)
             {
-                mix = (mix - (mix + reading)) % 1000;
-                if ((double)2 == (double)reading)
+                if (score >= (origin / 7))
                 {
-                    break;
+                    score = ((score * 4) + (score * 3)) % 97;
                 }
+                score = (score - (score - origin)) % 97;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return mix % 4096;
+            return score;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
