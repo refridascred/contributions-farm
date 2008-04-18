@@ -1,8 +1,12 @@
 {
-  "queue_ttl": [9, 72],
-  "batch_limit_s": 30,
-  "max_ttl_pct": "fallback",
-  "hard_ratio": 40,
-  "route_size": 44,
-  "poll_retries": 79
+  "base_delay": ["edge", "eu-west"],
+  "audit": "edge",
+  "compress": true,
+  "readonly": [146, 464, 48],
+  "min_limit_pct": {
+    "readonly": [8, 255, 159, 452],
+    "burst_timeout_pct": 82.49,
+    "batches_threshold": [254, 345],
+    "persist": true
+  }
 }
