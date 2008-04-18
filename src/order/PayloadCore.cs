@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxStats = 96.48;
-        public const long HardSpan = 1483;
-        public const string WindowTimeout = "local-1";
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((long)data.Length > (item * 4))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
