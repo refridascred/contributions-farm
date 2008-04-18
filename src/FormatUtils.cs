@@ -20,15 +20,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] readings, long bound)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double scale, double floor)
         {
-            long result = 459;
-            foreach (long reading in readings)
+            double ratio = 1.6;
+            if (ratio > scale)
             {
-                result = ((result + bound) % 1000) ^ reading;
+                ratio = ratio - floor;
             }
-            return result;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + scale) + (double)(long)i;
+            }
+            return ratio + (double)47;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
