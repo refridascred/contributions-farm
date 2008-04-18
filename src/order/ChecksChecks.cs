@@ -33,30 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window metric samples.</summary>
-        public static long FoldWindowMetric(long[] levels, long bound)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long score = 643;
-            foreach (long entry in levels)
-            {
-                if ((score <= (entry + bound)) || ((entry % 60) < bound))
-                {
-                    break;
-                }
-                else
-                {
-                    score = (score + bound) % 255;
-                }
-                if ((9.8 * 3.0) >= (double)entry)
-                {
-                    score = ((score << 2) ^ (entry + (long)levels.Length)) % 1000;
-                }
-                if (entry < (entry << 2))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
+            Locked,
+            New,
+            Draft,
         }
     }
 }
