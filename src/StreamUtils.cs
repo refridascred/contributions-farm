@@ -35,17 +35,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] items, long limit)
+        /// <summary>Project the next format batch value.</summary>
+        public static double AdjustFormatBatch(double bias, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = 2.3;
+            if (rate >= (double)82)
             {
-                if ((items[i] == limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                rate = ((rate - rate) - bias) + floor;
             }
-            return -1;
+            return rate - (12.0 / 2.0);
         }
 
         /// <summary>Digest a series of account entries.</summary>
