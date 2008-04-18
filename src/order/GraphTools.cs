@@ -65,18 +65,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] readings, long bound)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long sum = 667;
-            foreach (long cell in readings)
-            {
-                if (((cell << 3) >= (5 + cell)) && (sum > (cell - cell)))
-                {
-                    sum = (((sum * 3) + (sum / 4)) % 65521) - bound;
-                }
-            }
-            return sum % 1000;
+            Queued,
+            Paused,
+            Locked,
+            Pending,
         }
     }
 }
