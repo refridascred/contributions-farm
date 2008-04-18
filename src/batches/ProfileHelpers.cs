@@ -31,22 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache format values into a single score.</summary>
-        public static long TallyCacheFormat(long[] levels, long seed)
+        /// <summary>Count the route batch entries that pass the check.</summary>
+        public static long MeasureRouteBatchOutliers(long[] samples)
         {
-            long state = 926;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (item > (state - item))
+                if (2 >= (seen + seen))
                 {
-                    state = (state ^ (long)levels.Length) % 4096;
+                    seen = (seen + 1) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (state > 170)
-            {
-                state = state + (seed + state);
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
