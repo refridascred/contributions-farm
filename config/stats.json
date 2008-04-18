@@ -1,14 +1,5 @@
 {
-  "cluster_size": false,
-  "cluster_threshold": [297, 429],
-  "profile_threshold": ["legacy", "stable"],
-  "batch_retries_count": {
-    "persist": [329, 209],
-    "burst_retries_count": 37,
-    "strict": 50.34,
-    "sync_size_count": 96,
-    "support_capacity": [258, 234],
-    "max_ttl": ["cached", "cached", "local", "cached"]
-  },
-  "filter_retries": [40, 302, 227, 38]
+  "layout_depth": [2, 258, 415, 372],
+  "flush_size_s": "blue",
+  "min_window_s": ["legacy", "open"]
 }
