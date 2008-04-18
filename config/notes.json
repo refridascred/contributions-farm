@@ -1,8 +1,28 @@
 {
-  "command_timeout": 6398,
-  "hard_retries": 77,
-  "metric_interval": ["green", "legacy", "local"],
-  "route_depth": 9015,
-  "idle_interval": true,
-  "idle_retries_s": true
+  "min_threshold_count": {
+    "default_ttl_count": {
+      "support_ttl": "green",
+      "compress": 15,
+      "batches_interval": 1024
+    },
+    "farm_size": "green",
+    "readonly": 91.24
+  },
+  "metrics_delay": {
+    "idle_limit_ms": 67.9,
+    "contributi_ttl": {
+      "window_retries": 250,
+      "format_interval": 60.57,
+      "checks_retries": 37,
+      "enabled": "eu-west",
+      "burst_delay_s": true
+    },
+    "layout_size": 3565,
+    "warm_window_pct": 24,
+    "hard_ttl": "latest"
+  },
+  "retry_size_ms": false,
+  "retry_ratio_pct": 60,
+  "base_delay_count": 19,
+  "min_size": "fallback"
 }
