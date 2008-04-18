@@ -6,8 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=260
+log "limit is ${BUFFER_LIMIT}"
+
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 3); do
     total=$((total + i * 2))
 done
 log "total ${total}"
@@ -17,13 +20,3 @@ while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-mode="${1:-latest}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
