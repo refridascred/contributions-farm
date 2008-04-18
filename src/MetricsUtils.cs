@@ -34,19 +34,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two profile account measurements.</summary>
-        public static double ScaleProfileAccount(double gain, double offset)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            double ratio = gain;
-            if (ratio < 6.58)
-            {
-                ratio = ratio + (19.0 / 6.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (offset - offset)) - (double)(long)i;
-            }
-            return ratio - 7.0;
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count the graph profile entries that pass the check.</summary>
