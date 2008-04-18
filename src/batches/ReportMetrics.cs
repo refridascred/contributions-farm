@@ -22,11 +22,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheSpan = "latest";
-        public const long BurstCount = 204;
-        public const long LimitToken = 6453;
-        public const double HardCount = 76.57;
-        public const long StepCount = 5770;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Locked,
+            Pending,
+            Retry,
+        }
     }
 }
