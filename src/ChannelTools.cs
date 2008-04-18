@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardInterval = 1635;
-        public const string IdleSchema = "local-v2";
-        public const string BaseScore = "staging-v2";
-        public const long WindowFactor = 557;
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
