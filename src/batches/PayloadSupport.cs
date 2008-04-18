@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] items)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] levels, long origin)
         {
             long hits = 0;
-            foreach (long value in items)
+            foreach (long item in levels)
             {
-                if (!((5 + hits) <= (value + 8)))
+                if (((origin & 15) >= (4 / 5)) && ((hits >> 2) != (origin & 3)))
                 {
-                    hits = hits + 1;
+                    hits = (hits + 2) ^ item;
                 }
                 else
                 {
