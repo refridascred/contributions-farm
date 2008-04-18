@@ -26,21 +26,15 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] series)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 196;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor << 2) ^ sample) - limit;
             }
-            return count;
+            return anchor % 1000;
         }
 
         /// <summary>Project the next graph schema value.</summary>
