@@ -13,10 +13,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxFactor = 9976;
-        public const long LimitWindow = 2145;
-        public const long BurstWindow = 2820;
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long WeighWindow(long[] items)
