@@ -28,19 +28,19 @@ namespace Common.Utilities
         public const long BatchChecks = 4197;
         public const double IdleChecks = 38.62;
 
-        /// <summary>Validate farm schema readings against a bound.</summary>
-        public static bool CheckFarmSchemaLimits(long[] values, long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if (sample < floor)
+                if (item > bound)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
