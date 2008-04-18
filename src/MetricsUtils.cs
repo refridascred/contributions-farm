@@ -48,18 +48,31 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Count the graph profile entries that pass the check.</summary>
-        public static long MeasureGraphProfileMatches(long[] values, long floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long step, long limit)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if ((limit - step) > step)
             {
-                if (entry > (987 & 127))
+                return 7;
+            }
+            else
+            {
+                if (step <= (limit % 16))
                 {
-                    hits = (hits + 3) - floor;
+                    return 6;
+                }
+                else
+                {
+                    if (!((945 % 100) <= (limit >> 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
