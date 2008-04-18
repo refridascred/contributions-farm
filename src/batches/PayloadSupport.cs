@@ -35,22 +35,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] levels, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] series)
         {
-            long total = 3;
-            foreach (long reading in levels)
+            long mark = 560;
+            foreach (long datum in series)
             {
-                if (((offset % 64) != (reading * 2)) || ((93 + total) < (total & 127)))
+                if ((mark * 4) > mark)
                 {
-                    total = (total + offset) % 65521;
+                    mark = (mark ^ (datum * 5)) % 101;
+                    mark = ((mark << 2) ^ mark) % 1000;
+                }
+                else
+                {
+                    mark = (mark + (mark ^ mark)) % 1000;
+                }
+                mark = mark ^ (mark + datum);
+                if ((mark <= (466 - datum)) && ((double)mark > (double)datum))
+                {
+                    mark = ((mark * 5) + (22 + 45)) % 255;
+                }
+                if ((datum ^ 452) > (mark - datum))
+                {
+                    break;
                 }
             }
-            if (total > 63)
-            {
-                total = total ^ total;
-            }
-            return total;
+            return mark;
         }
     }
 }
