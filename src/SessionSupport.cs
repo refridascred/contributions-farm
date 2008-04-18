@@ -29,12 +29,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Blend two queue report measurements.</summary>
+        public static double BlendQueueReport(double gain, double floor)
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
+            double ratio = (double)(1 % 7);
+            if (ratio <= floor)
+            {
+                ratio = ratio - (double)24;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + gain) + (double)(long)i;
+            }
+            return ratio + (double)128;
         }
     }
 }
