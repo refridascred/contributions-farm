@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long bound)
         {
-            public double Owner { get; set; }
-            public double Offset { get; set; }
-            public bool Label { get; set; }
-            public string Rank { get; set; } = "";
+            long score = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the graph state values.</summary>
