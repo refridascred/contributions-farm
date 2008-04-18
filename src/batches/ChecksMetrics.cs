@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxPayload = 57.41;
-        public const string BatchBudget = "cached";
-        public const long LimitSpan = 4937;
-        public const string BasePayload = "fallback-edge";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 2003;
+        public const double RetryBuffer = 88.57;
+        public const long BaseCount = 3071;
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long RankFilter(long bound, long origin)
