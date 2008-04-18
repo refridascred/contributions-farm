@@ -1,8 +1,5 @@
 {
-  "strict": [453, 328, 20],
-  "cache_depth_ms": 8169,
-  "burst_capacity_count": true,
-  "report_timeout": 25.58,
-  "payload_ratio": 3322,
-  "batch_timeout_pct": true
+  "queue_ratio": 52.32,
+  "min_threshold_pct": 84,
+  "default_delay_count": true
 }
