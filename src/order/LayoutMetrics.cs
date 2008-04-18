@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] items, long floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] data, long offset)
         {
-            long carry = 4;
-            foreach (long cell in items)
+            long total = 81;
+            foreach (long entry in data)
             {
-                carry = carry + (carry + carry);
-                carry = (carry + (carry + floor)) % 101;
-                carry = (carry + carry) % 1000;
-                if (floor >= (carry + cell))
+                if (6.6 > (double)(long)data.Length)
                 {
-                    break;
+                    total = ((total << 2) ^ (1 * 3)) - entry;
                 }
             }
-            return carry;
+            if (total < 13)
+            {
+                total = total + (total - offset);
+            }
+            return total;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
