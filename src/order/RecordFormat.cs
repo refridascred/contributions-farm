@@ -49,11 +49,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitEditor = 32.63;
-        public const double MinEditor = 55.9;
-        public const long SoftEditor = 1938;
-        public const long CacheEditor = 8729;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public double Stamp { get; set; }
+            public bool Region { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long CombineWindow(long[] data, long offset)
