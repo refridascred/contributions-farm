@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((0 + matches) > (matches / 6))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 2747;
+        public const double RetryChecks = 58.19;
+        public const long HardChecks = 1436;
+        public const string BatchRatio = "open";
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool GuardStatsBounds(long[] values, long offset)
