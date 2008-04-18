@@ -28,17 +28,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultBudget = "local-v2";
+        public const long DefaultCount = 7445;
+        public const double CacheFormat = 39.55;
+        public const long BurstWidth = 8942;
     }
 }
