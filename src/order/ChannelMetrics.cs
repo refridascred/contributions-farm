@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a metrics batch counter forward.</summary>
-        public static long DeriveMetricsBatch(long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] items)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((hits <= (5 + (-5))) && (cell < 25))
+                {
+                    hits = hits + 3;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
