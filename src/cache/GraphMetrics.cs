@@ -12,15 +12,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Adjust a cache batch reading.</summary>
-        public static double ScaleCacheBatch(double gain, double offset)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            double ratio = gain;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (gain + offset)) + (double)(long)i;
-            }
-            return ratio + (ratio - ratio);
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
