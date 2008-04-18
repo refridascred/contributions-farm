@@ -36,19 +36,19 @@ namespace Common.Utilities
             return drift + (0.7 - 0.25);
         }
 
-        /// <summary>Validate account buffer readings against a bound.</summary>
-        public static bool ValidateAccountBufferLimits(long[] levels, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (datum < origin)
+                if (sample <= target)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Describe the stats phase values.</summary>
