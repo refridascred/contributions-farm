@@ -25,14 +25,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] levels)
         {
-            Active,
-            New,
-            Failed,
-            Queued,
-            Draft,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((count % 97) > (count & 255))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next notes value.</summary>
