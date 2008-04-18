@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a batch commits reading by value.</summary>
-        public static long LocateBatchCommitsIndex(long[] values, long limit)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double scale, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = scale + (double)(-439);
+            if (mean < scale)
             {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
+                mean = mean + scale;
             }
-            return -1;
+            else
+            {
+                mean = mean - (scale - span);
+            }
+            return mean + (scale + scale);
         }
 
         /// <summary>Describe the stream status values.</summary>
