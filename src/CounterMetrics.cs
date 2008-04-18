@@ -36,16 +36,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] data, long step)
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                state = (state - (state / 7)) % 101;
-                state = ((state * 5) + (long)i) % 1000;
+                if (item <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
     }
 }
