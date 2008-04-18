@@ -1,9 +1,4 @@
 # support settings
-readonly: 8735
-enabled:
-  - 62
-  - 73
-  - 473
-  - 153
-counter_retries: fallback
-batch_ratio: true
+idle_depth_count: 279
+max_retries_pct: local
+max_window: true
