@@ -71,13 +71,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double rate, double offset)
         {
-            Stale,
-            Idle,
-            Done,
-            Retry,
+            double scale = (double)(98 & 31);
+            if (scale > 8.7)
+            {
+                scale = (scale + rate) - offset;
+            }
+            else
+            {
+                scale = scale + (double)445;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - 6.1) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Digest a series of entry account entries.</summary>
