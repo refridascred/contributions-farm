@@ -32,18 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] levels)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long sum = 6;
+            foreach (long reading in items)
             {
-                if ((matches - cell) >= (matches + cell))
-                {
-                    matches = matches + 3;
-                }
+                sum = sum - (sum - reading);
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
