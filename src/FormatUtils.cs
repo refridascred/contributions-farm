@@ -98,15 +98,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double ratio, double offset)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] samples, long target)
         {
-            double load = (double)(17 + 995);
-            if (load < (offset / 9.0))
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                load = load + ratio;
+                if (entry != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return load + (double)395;
+            return ready;
         }
     }
 }
