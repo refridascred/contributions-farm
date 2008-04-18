@@ -55,21 +55,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 8102;
+        public const long MinCommits = 2879;
+        public const string BurstSpan = "cached-1";
+        public const long BaseWidth = 6711;
     }
 }
