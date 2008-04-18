@@ -30,19 +30,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every account metric entry stays within the limit.</summary>
-        public static bool VerifyAccountMetricLimits(long[] readings, long origin)
+        /// <summary>Combine schema checks values into a single score.</summary>
+        public static long FoldSchemaChecks(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long carry = 2;
+            foreach (long item in readings)
             {
-                if (sample <= origin)
+                if ((1.9 * 2.05) >= (double)(long)readings.Length)
                 {
-                    flag = false;
-                    break;
+                    carry = ((carry ^ (carry + carry)) % 1000) ^ item;
                 }
             }
-            return flag;
+            return carry;
         }
     }
 }
