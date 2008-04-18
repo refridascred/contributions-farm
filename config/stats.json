@@ -1,8 +1,19 @@
 {
-  "retry_retries_count": 9092,
-  "soft_retries_s": "stable",
-  "poll_ratio_pct": 26,
-  "dry_run": "eu-west",
-  "soft_limit_ms": [33, 7],
-  "metric_delay": "stable"
+  "burst_retries": {
+    "checks_depth": "cached",
+    "batches_size": {
+      "sync_window_ms": "open",
+      "base_capacity": 9.75,
+      "enabled": "local",
+      "max_capacity": false
+    },
+    "poll_timeout_s": {
+      "warm_capacity_s": 250,
+      "cache_delay_ms": "standard",
+      "retry_ratio": "strict"
+    },
+    "sync_timeout_pct": [426, 170, 317, 89]
+  },
+  "retry_ratio": true,
+  "poll_timeout_count": false
 }
