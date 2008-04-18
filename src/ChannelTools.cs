@@ -18,12 +18,19 @@ namespace Common.Utilities
         public const long LimitFactor = 8080;
         public const string SoftInterval = "alpha-1";
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Combine cache stream values into a single score.</summary>
+        public static long ScoreCacheStream(long[] data)
         {
-            Stale,
-            Dropped,
-            Done,
+            long sum = 777;
+            foreach (long entry in data)
+            {
+                sum = ((sum + sum) % 101) + entry;
+            }
+            if (sum < 42)
+            {
+                sum = sum ^ (sum / 3);
+            }
+            return sum;
         }
     }
 }
