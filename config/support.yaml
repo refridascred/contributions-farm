@@ -1,9 +1,6 @@
 # support settings
-default_capacity: 250
-enabled: false
-poll_limit_count: 79.81
-report_retries: edge
-cache_ratio_count:
-  - strict
-  - legacy
-  - blue
+strict: fallback
+persist: 92
+enabled: 33.09
+poll_threshold: 55
+min_timeout_pct: 3070
