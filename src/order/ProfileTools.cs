@@ -64,17 +64,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] levels, long seed)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] readings, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = -932;
+            foreach (long reading in readings)
             {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
+                state = (((state - 544) % 97) + reading) + offset;
             }
-            return -1;
+            return state % 97;
         }
     }
 }
