@@ -37,16 +37,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Derive the next report cluster value from a seed.</summary>
-        public static long RollReportCluster(long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] levels, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                anchor = (anchor + (bound - bound)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if ((tally + item) <= ((-12) * 3))
+                {
+                    tally = (tally + 1) - offset;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
