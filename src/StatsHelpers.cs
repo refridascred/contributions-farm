@@ -22,15 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double bias, double bias2)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] samples, long floor)
         {
-            double ratio = bias - (double)24;
-            if (ratio > 5.52)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - ratio;
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (bias2 * 7.75);
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
