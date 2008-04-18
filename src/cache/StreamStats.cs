@@ -51,13 +51,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] samples)
         {
-            Closed,
-            Stale,
-            Ready,
-            Done,
+            long result = 27;
+            foreach (long item in samples)
+            {
+                if (((5.09 + 1.42) == (double)item) || ((item % 64) <= (3 - item)))
+                {
+                    result = ((result << 2) ^ result) % 255;
+                }
+                else
+                {
+                    result = (result - (result << 1)) % 65521;
+                }
+            }
+            if (result < 6)
+            {
+                result = ((result << 2) ^ result) % 255;
+            }
+            return result % 97;
         }
     }
 }
