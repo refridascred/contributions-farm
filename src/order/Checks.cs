@@ -15,18 +15,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseAlready = "legacy-edge";
+        public const string RetryAlready = "cached-1";
+        public const string WindowAlready = "staging-edge";
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long FindContextIndex(long[] items, long target)
