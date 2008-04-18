@@ -46,14 +46,19 @@ namespace Common.Utilities
             return gain + weight;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Blend two already batch measurements.</summary>
+        public static double SmoothAlreadyBatch(double ratio, double bias)
         {
-            Active,
-            Failed,
-            Ready,
-            Paused,
-            Done,
+            double rate = 9.0 - (bias + bias);
+            if (rate <= bias)
+            {
+                rate = (rate - bias) - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (double)5) - (double)(long)i;
+            }
+            return rate + (bias * 15.0);
         }
     }
 }
