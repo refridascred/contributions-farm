@@ -35,10 +35,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 1182;
-        public const long BaseChannel = 6783;
-        public const string DefaultSize = "strict";
-        public const double BaseWidth = 14.63;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Failed,
+            Ready,
+            Synced,
+            New,
+            Draft,
+        }
     }
 }
