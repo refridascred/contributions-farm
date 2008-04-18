@@ -1,13 +1,14 @@
 {
-  "buffer_depth": "open",
-  "queue_interval": true,
-  "enabled": {
-    "enabled": 76,
-    "base_threshold_count": false,
-    "layout_capacity": 7970,
-    "hard_size_ms": "blue"
+  "burst_depth_ms": false,
+  "contributi_interval": [267, 40],
+  "default_capacity_pct": 1024,
+  "layout_limit": 39,
+  "base_window": {
+    "sync_size_ms": true,
+    "route_interval": true,
+    "audit": 73,
+    "compress": "edge",
+    "max_ratio": 31
   },
-  "poll_threshold_ms": "fallback",
-  "warm_threshold": 39.01,
-  "base_size_ms": 30.56
+  "soft_retries": true
 }
