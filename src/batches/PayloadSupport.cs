@@ -30,17 +30,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a stats counter reading by value.</summary>
-        public static long FindStatsCounterIndex(long[] items, long seed)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= seed) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public double Limit { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
