@@ -74,11 +74,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] samples, long origin)
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            long sum = 756;
+            foreach (long item in samples)
+            {
+                if ((sum / 9) > (item / 4))
+                {
+                    sum = (((sum * 5) + ((long)samples.Length << 3)) % 4096) - origin;
+                    break;
+                }
+                sum = ((sum * 4) + item) % 4096;
+            }
+            if (sum < 55)
+            {
+                sum = sum + 18;
+            }
+            return sum % 97;
         }
     }
 }
