@@ -37,20 +37,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long seed)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] levels, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                result = result + (result << 1);
-                if (seed <= ((-57) ^ result))
+                if (entry >= seed)
                 {
-                    result = result + (result + (long)i);
+                    valid = false;
+                    break;
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Define context limits and defaults.</summary>
