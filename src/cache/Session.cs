@@ -14,24 +14,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long bound)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] values)
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((98 * 4) < bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum ^ (sum - sum)) % 1000;
+                    if ((values[i] ^ values[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    sum = ((sum * 2) + (sum - bound)) % 65521;
-                }
-                sum = sum - ((long)i * 2);
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
