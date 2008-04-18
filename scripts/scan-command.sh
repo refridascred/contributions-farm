@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+for item in legacy strict; do
+    log "checking ${item}"
+done
+
+mode="${1:-primary}"
 case "${mode}" in
-    staging)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,6 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in legacy edge; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=450
+log "limit is ${COMMAND_LIMIT}"
