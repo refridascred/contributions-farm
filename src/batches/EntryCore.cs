@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] items, long origin)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (origin >= (origin + origin))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
