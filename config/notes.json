@@ -1,5 +1,6 @@
 {
-  "strict": "legacy",
-  "dry_run": true,
-  "already_limit": 10
+  "poll_ttl_s": 11,
+  "retry_ratio_s": 35,
+  "verbose": "edge",
+  "record_timeout": 48
 }
