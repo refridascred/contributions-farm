@@ -56,14 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] values, long limit)
         {
-            Closed,
-            Synced,
-            Retry,
-            Pending,
-            Stale,
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
