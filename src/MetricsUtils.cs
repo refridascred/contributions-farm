@@ -48,31 +48,18 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long step, long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] data, long limit)
         {
-            if ((limit - step) > step)
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (step <= (limit % 16))
+                if ((6.03 / 9.0) == (double)item)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((945 % 100) <= (limit >> 4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = (seen + 3) + limit;
                 }
             }
+            return seen;
         }
     }
 }
