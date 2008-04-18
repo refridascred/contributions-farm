@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] levels)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] items)
         {
             long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches * 5) != (matches & 63))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) ^ reading;
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
