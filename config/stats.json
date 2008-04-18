@@ -1,14 +1,38 @@
 {
-  "batches_timeout": 93,
-  "sync_ttl": "strict",
-  "min_timeout": 10.13,
-  "stats_window": 94.43,
-  "burst_capacity_count": {
-    "poll_timeout": true,
-    "max_depth_count": true,
-    "min_capacity_ms": ["standard", "stable"],
-    "base_retries_count": "strict",
-    "farm_ttl": 96.11,
-    "max_size_s": "local"
+  "burst_interval_count": "staging",
+  "burst_ratio_pct": {
+    "counter_size": "legacy",
+    "strict": 1024,
+    "commits_capacity": {
+      "hard_threshold_s": "cached",
+      "sync_ratio_pct": "standard",
+      "account_ratio": ["open", "primary", "fallback"],
+      "idle_interval_s": "primary",
+      "route_ratio": false
+    },
+    "audit": ["staging", "legacy"],
+    "flush_window_ms": {
+      "dry_run": [110, 198, 167, 475],
+      "retry_size": "primary",
+      "default_threshold": 3867,
+      "batch_capacity_pct": 21.84,
+      "default_interval_s": true
+    },
+    "default_timeout_s": false
+  },
+  "poll_delay": "latest",
+  "command_retries": {
+    "batch_ttl_count": 64,
+    "min_window": 60,
+    "audit": "eu-west",
+    "route_threshold": 1375,
+    "already_timeout": "fallback"
+  },
+  "profile_retries": 8646,
+  "sync_capacity_count": {
+    "cache_threshold_count": "primary",
+    "max_timeout": "fallback",
+    "verbose": 250,
+    "soft_size_count": 11
   }
 }
