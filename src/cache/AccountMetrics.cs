@@ -52,21 +52,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] readings)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Queued,
+            Synced,
+            Locked,
+            Closed,
+            Active,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
