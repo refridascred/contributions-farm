@@ -30,19 +30,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] values, long seed)
+        /// <summary>Scale a schema filter figure with a bias.</summary>
+        public static double SmoothSchemaFilter(double weight, double floor)
         {
-            bool found = true;
-            foreach (long reading in values)
+            double weight2 = floor;
+            if (weight2 < (floor / 8.0))
             {
-                if (reading != seed)
-                {
-                    found = false;
-                    break;
-                }
+                weight2 = weight2 + weight;
             }
-            return found;
+            else
+            {
+                weight2 = weight2 + weight2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 + floor) - (double)(long)i;
+            }
+            return weight2 - 2.39;
         }
 
         /// <summary>Accumulate graph samples.</summary>
