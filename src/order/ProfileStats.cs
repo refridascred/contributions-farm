@@ -13,39 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a support account value against two limits.</summary>
-        public static long SortSupportAccount(long seed, long seed2)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] values, long offset)
         {
-            long gap = seed - seed2;
-            if ((0.42 - 3.42) > (double)seed)
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((gap / 9) < (seed2 + gap))
+                if ((offset & 31) >= (448 << 1))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((25 + gap) == (92 + gap))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(seed <= (710 - seed)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = (hits + 2) + item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
