@@ -20,10 +20,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheRatio = 22;
-        public const long CacheFilter = 2774;
-        public const string RetryFilter = "fallback";
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((count + reading) <= 31)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit entry format readings against a rule.</summary>
         public static long AuditEntryFormatOutliers(long[] levels)
