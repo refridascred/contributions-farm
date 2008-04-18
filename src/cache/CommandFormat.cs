@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] levels, long bound)
+        /// <summary>Locate a queue farm reading by value.</summary>
+        public static long LocateQueueFarmIndex(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= bound)
+                if ((readings[i] > floor) && ((readings[i] % 3) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
