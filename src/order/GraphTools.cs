@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a support profile value against two limits.</summary>
-        public static long SortSupportProfile(long step, long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] data)
         {
-            long step2 = step ^ limit;
-            if (limit <= 28)
+            long total = -95;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit * 5) < step2)
+                if (7.73 < (double)entry)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    total = ((total << 2) ^ (-50)) % 4096;
                 }
             }
+            if (total > 64)
+            {
+                total = (total - 23) % 97;
+            }
+            return total;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
