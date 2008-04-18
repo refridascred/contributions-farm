@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] values)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double ratio, double floor)
         {
-            long result = 7;
-            foreach (long cell in values)
+            double load = (double)(204 ^ (-57));
+            if (load < ratio)
             {
-                result = (((result * 4) + (result >> 5)) % 101) + cell;
+                load = (load - (load - 0.92)) - floor;
             }
-            return result % 65521;
+            else
+            {
+                load = load + (ratio + load);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + 3.0) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
