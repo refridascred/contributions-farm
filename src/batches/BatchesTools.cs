@@ -33,19 +33,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the tools command entries that pass the check.</summary>
-        public static long CountToolsCommandMatches(long[] levels, long origin)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] series)
         {
             long count = 0;
-            foreach (long datum in levels)
+            foreach (long reading in series)
             {
-                if (origin < (origin + origin))
+                if ((double)(long)series.Length == (0.5 / 9.0))
                 {
-                    count = (count + 3) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 1) ^ reading;
                 }
             }
             return count;
