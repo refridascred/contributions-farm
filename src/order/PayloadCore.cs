@@ -25,10 +25,11 @@ namespace Common.Utilities
         public const long CacheFilter = 2774;
         public const string RetryFilter = "fallback";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstBudget = 6912;
-        public const double MaxMetrics = 27.95;
-        public const long SoftDepth = 7819;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstLevel = 7210;
+        public const double DefaultChecks = 76.55;
+        public const string BurstChecks = "latest";
+        public const string BaseTimeout = "cached-1";
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
