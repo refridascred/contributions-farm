@@ -13,28 +13,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of editor account readings.</summary>
-        public static long WeighEditorAccount(long[] levels)
+        /// <summary>Count commits counter pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCounterCount(long[] items)
         {
-            long anchor = 70;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor * 3) + ((long)levels.Length & 63);
-                anchor = (anchor + (anchor - anchor)) % 255;
-                if ((double)datum <= (6.3 * 6.7))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor ^ (datum % 5)) % 101;
-                }
-                if (((datum << 2) < anchor) || ((datum - anchor) >= (140 - anchor)))
-                {
-                    break;
+                    if ((items[i] ^ items[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor > 5)
-            {
-                anchor = ((anchor * 3) + (anchor * 5)) % 65521;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Classify a already command pair into a bucket.</summary>
