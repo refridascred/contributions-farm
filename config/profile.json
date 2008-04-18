@@ -1,5 +1,21 @@
 {
-  "already_capacity": "legacy",
-  "poll_limit_s": "fallback",
-  "default_ttl_count": "blue"
+  "metric_window": {
+    "format_limit": 28.37,
+    "enabled": [120, 202, 349],
+    "dry_run": 79
+  },
+  "audit": "open",
+  "token_limit": 60,
+  "window_capacity": 57.76,
+  "queue_window": {
+    "dry_run": "cached",
+    "schema_interval": 31.24,
+    "audit": ["staging", "staging"],
+    "batch_size_pct": {
+      "window_timeout": true,
+      "profile_ratio": 1929,
+      "payload_retries": [210, 200, 19, 411]
+    }
+  },
+  "soft_window": "primary"
 }
