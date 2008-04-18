@@ -22,12 +22,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public bool Flag { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 305;
+        public const double MaxInterval = 62.85;
+        public const long SoftDepth = 9683;
+        public const double SoftFarm = 38.51;
+        public const long RetryDepth = 9163;
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LocateGithubfarmIndex(long[] items, long origin)
