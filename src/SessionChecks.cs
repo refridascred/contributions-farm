@@ -36,15 +36,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Stale,
-            Idle,
-            Paused,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 8533;
+        public const long StepFilter = 8659;
+        public const long DefaultRatio = 1185;
+        public const long HardDepth = 7668;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryCluster = 7129;
