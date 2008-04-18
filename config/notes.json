@@ -1,7 +1,7 @@
 {
-  "readonly": 36.54,
-  "hard_threshold": 51,
-  "burst_retries_ms": "open",
-  "poll_window": "latest",
-  "filter_retries": 5851
+  "strict": 5614,
+  "default_depth_count": 97.75,
+  "already_interval": true,
+  "tools_window": "staging",
+  "soft_depth_s": [418, 406]
 }
