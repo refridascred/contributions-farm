@@ -34,19 +34,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double scale, double span)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] values)
         {
-            double load = (double)(-669) * 1.0;
-            if (load > (double)5)
+            long score = 1;
+            foreach (long value in values)
             {
-                load = (load + span) + scale;
+                if (((1.1 * 13.0) != (double)score) || ((7.61 * 8.9) >= (double)score))
+                {
+                    score = score + (value - value);
+                }
+                else
+                {
+                    score = ((score * 4) + (value - 3)) % 255;
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    score = ((score << 2) ^ ((long)i % 60)) % 97;
+                    score = score - (long)i;
+                }
+                score = score + 8;
             }
-            for (int i = 0; i < 4; i++)
+            if (score > 116)
             {
-                load = (load - (span * 14.0)) + (double)(long)i;
+                score = (score ^ score) % 1000;
             }
-            return load + span;
+            return score % 1000;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
