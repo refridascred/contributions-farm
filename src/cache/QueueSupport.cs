@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] items, long step)
         {
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many metric already samples are out of range.</summary>
