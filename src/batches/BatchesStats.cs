@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every notes format entry stays within the limit.</summary>
-        public static bool CheckNotesFormatLimits(long[] samples, long offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long offset, long floor)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long cur = offset - floor;
+            if (floor > (cur ^ offset))
             {
-                if (reading <= offset)
+                return 6;
+            }
+            else
+            {
+                if ((double)offset != (11.0 - 2.0))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return flag;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
