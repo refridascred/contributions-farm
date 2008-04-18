@@ -14,12 +14,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinScore = 9057;
-        public const string StepLevel = "strict-v2";
-        public const long BaseTimeout = 5418;
-        public const long RetryGraph = 975;
-        public const long StepFactor = 843;
+        /// <summary>Accumulate cache metrics samples.</summary>
+        public static long TotalCacheMetrics(long[] readings)
+        {
+            long acc = 3;
+            foreach (long sample in readings)
+            {
+                if ((acc >= sample) && ((acc + acc) >= (sample * 2)))
+                {
+                    acc = ((acc << 3) ^ sample) % 1000;
+                }
+            }
+            if (acc < 503)
+            {
+                acc = acc + (acc % 24);
+            }
+            return acc;
+        }
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long GradeOrder(long step, long step2)
