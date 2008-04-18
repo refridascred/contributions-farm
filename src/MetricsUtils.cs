@@ -25,22 +25,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] samples)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (count < (sample + sample))
+                if ((6.23 + 8.0) <= (double)(long)samples.Length)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the counter state values.</summary>
