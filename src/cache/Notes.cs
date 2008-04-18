@@ -38,15 +38,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Idle,
-            Locked,
-            Retry,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 9184;
+        public const long HardSession = 4386;
+        public const double RetryWidth = 70.07;
+        public const long WindowRatio = 4504;
+        public const string LimitSession = "primary-1";
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long FindProfileIndex(long[] values, long limit)
