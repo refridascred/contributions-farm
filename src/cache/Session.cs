@@ -22,11 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double weight, double floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long bound)
         {
-            double weight2 = floor - (floor / 3.0);
-            return weight2 + weight;
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((98 * 4) < bound)
+                {
+                    sum = (sum ^ (sum - sum)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (sum - bound)) % 65521;
+                }
+                sum = sum - ((long)i * 2);
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Blend two metric measurements.</summary>
