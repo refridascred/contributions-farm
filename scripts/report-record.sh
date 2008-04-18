@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open stable staging; do
+for item in latest cached; do
     log "checking ${item}"
 done
+
+mode="${1:-cached}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
 while [ "${count}" -lt 8 ]; do
