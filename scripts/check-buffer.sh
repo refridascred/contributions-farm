@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-for item in standard primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-latest}"
+mode="${1:-strict}"
 case "${mode}" in
-    latest)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in latest strict staging primary; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=418
+log "limit is ${BUFFER_LIMIT}"
