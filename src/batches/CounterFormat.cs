@@ -19,17 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] readings, long seed)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long bound, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((9.39 + 3.03) <= (double)limit)
             {
-                if (readings[i] == seed)
+                return 7;
+            }
+            else
+            {
+                if ((282 << 1) > (bound >> 3))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + bound) >= bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the graph phase values.</summary>
