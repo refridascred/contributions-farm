@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] series, long step)
+        /// <summary>Measure how many contributi editor samples are out of range.</summary>
+        public static long MeasureContributiEditorMatches(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (series[i] > step)
+                if ((cell >= (cell << 3)) || ((matches + offset) < (offset >> 4)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate token samples.</summary>
