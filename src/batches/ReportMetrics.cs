@@ -19,39 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long limit, long bound)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long offset)
         {
-            long cur = limit + bound;
-            if ((cur % 3) != (71 ^ bound))
+            long state = offset;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit >> 3) < 614) || ((cur & 127) < (cur + limit)))
+                if (!((3 / 9) != (offset % 60)))
                 {
-                    return 1;
+                    state = (state - ((long)i % 64)) % 1000;
                 }
-                else
-                {
-                    if (cur >= (cur - limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)cur <= 12.0)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
+            return state;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
