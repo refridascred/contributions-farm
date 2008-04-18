@@ -39,15 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report graph samples.</summary>
-        public static long FoldReportGraph(long[] samples, long origin)
+        /// <summary>Accumulate commits report samples.</summary>
+        public static long TallyCommitsReport(long[] levels)
         {
-            long mark = 5;
-            foreach (long value in samples)
+            long total = -2;
+            foreach (long value in levels)
             {
-                mark = ((mark - (mark - value)) % 97) - origin;
+                total = ((total + total) % 4096) ^ value;
+                total = (total + 5) % 65521;
             }
-            return mark % 4096;
+            if (total > (-4))
+            {
+                total = total ^ (total << 1);
+            }
+            return total;
         }
 
         /// <summary>Project the next layout payload value.</summary>
