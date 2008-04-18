@@ -40,11 +40,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
             Stale,
-            Synced,
+            Dropped,
+            Failed,
+            Draft,
             Done,
         }
 
