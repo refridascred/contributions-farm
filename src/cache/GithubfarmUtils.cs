@@ -40,18 +40,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many batches cache samples are out of range.</summary>
-        public static long MeasureBatchesCacheMatches(long[] samples)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double weight, double span)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            double bias = span;
+            if (bias < (5.24 - 3.0))
             {
-                if ((double)seen >= (5.1 - 6.5))
-                {
-                    seen = (seen + 1) + datum;
-                }
+                bias = (bias - span) + weight;
             }
-            return seen;
+            else
+            {
+                bias = bias - (double)63;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + 4.0) + (double)(long)i;
+            }
+            return bias + (18.0 - span);
         }
     }
 }
