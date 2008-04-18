@@ -67,14 +67,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Check that every metric queue entry stays within the limit.</summary>
+        public static bool ValidateMetricQueueLimits(long[] readings, long bound)
         {
-            Done,
-            Pending,
-            Failed,
-            Closed,
-            Queued,
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
