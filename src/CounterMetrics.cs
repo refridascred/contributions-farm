@@ -14,21 +14,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] readings)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Closed,
+            Done,
         }
 
         /// <summary>Roll a order counter forward.</summary>
