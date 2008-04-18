@@ -39,21 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                result = result - (long)i;
-                if ((origin << 2) != (origin / 3))
-                {
-                    result = (result + result) % 255;
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
