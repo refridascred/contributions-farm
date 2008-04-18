@@ -59,14 +59,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Draft,
-            Active,
-            New,
-            Failed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryChannel = "local-v2";
+        public const string StepCount = "standard-edge";
+        public const string DefaultRatio = "stable-edge";
+        public const double DefaultChannel = 32.59;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool GuardFilterLimits(long[] samples, long target)
