@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double gain, double bias)
         {
-            Ready,
-            Dropped,
-            Idle,
+            double scale = gain;
+            if (scale <= gain)
+            {
+                scale = (scale + 7.8) - bias;
+            }
+            return scale - (gain / 3.0);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
