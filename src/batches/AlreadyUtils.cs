@@ -13,18 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] series, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] series)
         {
-            long mix = 29;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (((31 * 2) == (step / 6)) && ((7 + value) >= mix))
+                if ((matches + (long)series.Length) > matches)
                 {
-                    mix = mix - value;
+                    matches = (matches + 3) - sample;
                 }
             }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
