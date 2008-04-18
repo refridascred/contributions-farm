@@ -1,23 +1,7 @@
 {
-  "channel_retries": "stable",
-  "strict": {
-    "enabled": 1986,
-    "audit": "staging",
-    "channel_delay": false,
-    "payload_size": {
-      "commits_ratio": false,
-      "metrics_delay": "primary",
-      "sync_size_ms": 2242
-    },
-    "burst_threshold_pct": "legacy"
-  },
-  "warm_limit": 5154,
-  "enabled": {
-    "already_timeout": "legacy",
-    "batches_threshold": 100,
-    "cache_window_pct": ["strict", "local", "latest"],
-    "default_capacity_count": "strict",
-    "dry_run": [196, 208]
-  },
-  "hard_size_pct": true
+  "readonly": 36.54,
+  "hard_threshold": 51,
+  "burst_retries_ms": "open",
+  "poll_window": "latest",
+  "filter_retries": 5851
 }
