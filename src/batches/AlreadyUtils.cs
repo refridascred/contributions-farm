@@ -13,22 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of session tools readings.</summary>
-        public static long TotalSessionTools(long[] series)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] series, long step)
         {
-            long score = 78;
-            foreach (long reading in series)
+            long mix = 29;
+            foreach (long value in series)
             {
-                if (12.0 < (double)reading)
+                if (((31 * 2) == (step / 6)) && ((7 + value) >= mix))
                 {
-                    score = (score + score) % 101;
+                    mix = mix - value;
                 }
             }
-            if (score > 924)
-            {
-                score = ((score << 2) ^ (score >> 3)) % 101;
-            }
-            return score % 1000;
+            return mix % 4096;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
