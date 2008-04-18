@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] samples, long floor)
         {
-            Paused,
-            Active,
-            Draft,
-            Retry,
-            Ready,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((((count << 1) <= (count << 3)) && (reading > count)) || (reading <= (floor & 63)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
