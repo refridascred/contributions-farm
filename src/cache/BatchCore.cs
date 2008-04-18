@@ -38,20 +38,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate metric window samples.</summary>
-        public static long FoldMetricWindow(long[] series, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiRange(long[] levels, long origin)
         {
-            long carry = 50;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                carry = (carry - (entry * 2)) % 101;
-                carry = (carry - (entry * 2)) % 255;
-                if ((double)carry == (double)target)
+                if (datum <= origin)
                 {
-                    carry = carry + (target / 9);
+                    stale = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return stale;
         }
     }
 }
