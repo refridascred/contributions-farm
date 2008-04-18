@@ -30,10 +30,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 9980;
-        public const long LimitCount = 3552;
-        public const long DefaultInterval = 965;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (cell <= (hits - cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit context route readings against a rule.</summary>
         public static long AuditContextRouteHits(long[] levels)
