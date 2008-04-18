@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Pending,
-            New,
-            Retry,
-            Idle,
-            Queued,
+            public double Weight { get; set; }
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
