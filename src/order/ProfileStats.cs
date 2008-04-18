@@ -49,15 +49,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next graph schema value.</summary>
-        public static double SmoothGraphSchema(double rate, double floor)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] samples)
         {
-            double rate2 = 11.0;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate2 = ((rate2 + floor) + (double)(long)i) + rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate2 + (floor / 3.0);
+            return tally;
         }
     }
 }
