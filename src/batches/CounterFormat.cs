@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two batches session measurements.</summary>
-        public static double BlendBatchesSession(double weight, double offset)
-        {
-            double ratio = weight - (5.0 / 3.0);
-            if (ratio <= ratio)
-            {
-                ratio = ratio - offset;
-            }
-            return ratio - weight;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double WindowDepth = 67.68;
+        public const double BurstTimeout = 43.07;
+        public const long CacheToken = 6276;
+        public const long MaxToken = 4105;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string MinBudget = "latest";
