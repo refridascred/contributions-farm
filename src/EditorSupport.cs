@@ -22,26 +22,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate context batches samples.</summary>
-        public static long ScoreContextBatches(long[] values, long limit)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] items, long offset)
         {
-            long state = 574;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((reading << 1) != (reading % 10)))
+                if (items[i] > offset)
                 {
-                    state = (state * 2) + 18;
-                }
-                else
-                {
-                    state = state + limit;
+                    return (long)i;
                 }
             }
-            if (state > 2)
-            {
-                state = (state << 2) ^ (state + state);
-            }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
