@@ -38,23 +38,39 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double weight, double span)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long bound, long floor)
         {
-            double bias = span;
-            if (bias < (5.24 - 3.0))
+            long span = bound + floor;
+            if ((69 + bound) > (span / 3))
             {
-                bias = (bias - span) + weight;
+                return 3;
             }
             else
             {
-                bias = bias - (double)63;
+                if ((span > bound) && ((span / 3) > (bound - bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((floor & 3) != (1 + (-39))) || ((span - bound) <= floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor & 63) > (bound >> 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + 4.0) + (double)(long)i;
-            }
-            return bias + (18.0 - span);
         }
     }
 }
