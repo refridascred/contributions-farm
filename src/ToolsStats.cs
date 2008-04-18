@@ -35,22 +35,22 @@ namespace Common.Utilities
         public const long LimitCount = 3552;
         public const long DefaultInterval = 965;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] readings, long offset)
+        /// <summary>Audit context route readings against a rule.</summary>
+        public static long AuditContextRouteHits(long[] levels)
         {
-            long mix = 2;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((mix - offset) < (entry + entry))
+                if ((double)hits >= (12.0 / 3.0))
                 {
-                    mix = mix + (3 << 2);
+                    hits = (hits + 3) ^ cell;
                 }
-                if ((entry * 4) == (355 - entry))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
