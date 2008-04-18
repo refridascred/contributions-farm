@@ -58,17 +58,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] series, long target)
-        {
-            long state = 4;
-            foreach (long reading in series)
-            {
-                state = ((state << 3) ^ state) - target;
-                state = state + (reading + reading);
-            }
-            return state % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepSize = 4678;
+        public const long DefaultSpan = 2909;
+        public const long LimitNotes = 5672;
+        public const long CacheNotes = 5092;
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
