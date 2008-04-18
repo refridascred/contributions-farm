@@ -39,18 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] levels, long limit)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long anchor = 39;
-            foreach (long reading in levels)
-            {
-                if (!(anchor > (164 >> 1)))
-                {
-                    anchor = ((((anchor << 2) ^ (anchor & 15)) % 101) - reading) - limit;
-                }
-            }
-            return anchor;
+            Active,
+            Retry,
+            Draft,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the session phase values.</summary>
