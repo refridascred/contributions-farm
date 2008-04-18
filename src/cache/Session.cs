@@ -34,15 +34,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double weight, double floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] readings, long offset)
         {
-            double bias = (double)78;
-            if (bias >= bias)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                bias = (bias + floor) - weight;
+                if (sample != offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias - floor;
+            return flag;
         }
     }
 }
