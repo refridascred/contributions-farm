@@ -33,25 +33,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long limit, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            long prev = limit - seed;
-            if ((double)limit != (double)94)
+            long anchor = 0;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit % 16) <= (prev << 3))
+                if (((reading << 2) <= (90 * 2)) || (reading < (anchor ^ anchor)))
                 {
-                    return 2;
+                    anchor = ((anchor << 3) ^ (622 - anchor)) % 4096;
                 }
                 else
                 {
-                    return 4;
+                    anchor = (anchor << 2) ^ (anchor - reading);
                 }
             }
+            return anchor;
         }
     }
 }
