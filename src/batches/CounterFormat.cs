@@ -25,11 +25,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 3550;
-        public const double SoftCount = 37.76;
-        public const long BaseDepth = 1950;
-        public const long StepFactor = 4639;
-        public const double StepWidth = 5.43;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] samples, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
