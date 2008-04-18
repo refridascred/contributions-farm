@@ -20,17 +20,20 @@ namespace Common.Utilities
         public const string BurstContext = "staging";
         public const long WindowContext = 5254;
 
-        /// <summary>Derive the next editor layout value from a seed.</summary>
-        public static long RollEditorLayout(long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] values, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
+            long state = 0;
+            foreach (long cell in values)
             {
-                if ((state <= seed) || ((state + (long)i) == ((long)i >> 4)))
+                if ((double)cell == (7.29 + 6.2))
                 {
-                    state = state ^ seed;
+                    state = state + (limit + cell);
                 }
-                state = ((state * 2) + (long)i) % 101;
+                if ((double)limit > (3.65 / 4.0))
+                {
+                    break;
+                }
             }
             return state;
         }
