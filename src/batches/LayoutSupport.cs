@@ -57,14 +57,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Draft,
-            Dropped,
-            Stale,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxCluster = 1.32;
+        public const long MaxScore = 3750;
+        public const string HardScore = "stable";
+        public const string SoftFactor = "stable-edge";
+        public const long DefaultDepth = 9961;
     }
 }
