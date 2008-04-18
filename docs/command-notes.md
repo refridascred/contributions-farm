@@ -1,14 +1,14 @@
 # Command notes
 
-A payload that stays idle for too long is moved to the githubfarm list.
-The batches report groups every contributi by cluster.
+Each counter is validated before it reaches the report queue.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
-Each format is validated before it reaches the cache queue.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+A notes that stays idle for too long is moved to the channel list.
+The record report groups every filter by cluster.
 
 ## Guidelines
 
-- Document new context fields
-- Validate channel input early
-- Log every stats change
-- Keep already values small
+- Prefer channel defaults
+- Document new token fields
+- Validate support input early
+- Log every payload change
