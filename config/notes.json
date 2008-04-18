@@ -1,12 +1,8 @@
 {
-  "enabled": "fallback",
-  "min_ttl_ms": 8296,
-  "report_retries": "staging",
-  "default_delay_ms": {
-    "default_capacity": false,
-    "min_size_pct": true,
-    "default_timeout_ms": 1024
-  },
-  "format_threshold": "edge",
-  "max_timeout_s": false
+  "warm_threshold_count": "staging",
+  "cache_window_ms": [100, 281],
+  "hard_delay": "cached",
+  "enabled": false,
+  "strict": "stable",
+  "dry_run": [157, 273, 470, 50]
 }
