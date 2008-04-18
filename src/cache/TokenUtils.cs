@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate metrics cluster samples.</summary>
-        public static long DigestMetricsCluster(long[] data, long offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] samples, long limit)
         {
-            long state = -7;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((double)cell != (19.0 * 1.28))
+                if (10.0 >= (double)hits)
                 {
-                    state = state ^ (offset << 3);
+                    hits = ((hits + 1) ^ sample) + limit;
                 }
             }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
