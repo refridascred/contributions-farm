@@ -39,20 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits report samples.</summary>
-        public static long TallyCommitsReport(long[] levels)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long total = -2;
-            foreach (long value in levels)
-            {
-                total = ((total + total) % 4096) ^ value;
-                total = (total + 5) % 65521;
-            }
-            if (total > (-4))
-            {
-                total = total ^ (total << 1);
-            }
-            return total;
+            Synced,
+            Paused,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Project the next layout payload value.</summary>
