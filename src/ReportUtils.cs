@@ -15,22 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] values, long target)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((count >> 1) >= (cell / 9))
-                {
-                    count = (count + 1) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Look up the position of a filter metrics sample.</summary>
