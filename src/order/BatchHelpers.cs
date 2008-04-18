@@ -27,19 +27,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] levels, long target)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample > target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] + values[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
