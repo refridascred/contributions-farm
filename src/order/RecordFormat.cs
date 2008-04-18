@@ -49,26 +49,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] samples, long target)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long anchor = 6;
-            foreach (long reading in samples)
-            {
-                if ((0 ^ reading) < 94)
-                {
-                    anchor = ((anchor + 221) % 65521) - target;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ reading) % 65521;
-                }
-                if ((double)reading > (2.3 + 1.0))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Stale,
+            Idle,
+            Done,
+            Retry,
         }
 
         /// <summary>Combine window values into a single score.</summary>
