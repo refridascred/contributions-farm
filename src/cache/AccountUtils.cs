@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long target, long target2)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] items)
         {
-            long bound = target ^ target2;
-            if (target2 >= (1 + 6))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((bound / 9) == (target ^ 61)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((target ^ bound) >= (67 + target)) && ((target * 3) <= 543))
+                    if ((items[i] ^ items[j]) != 5)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a record header.</summary>
