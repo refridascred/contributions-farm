@@ -30,13 +30,24 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Fold a list of schema graph readings.</summary>
+        public static long ScoreSchemaGraph(long[] data, long step)
         {
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
+            long sum = -369;
+            foreach (long cell in data)
+            {
+                if (!((0.09 / 5.0) > (double)step))
+                {
+                    sum = (((sum << 3) ^ (sum + step)) % 4096) - cell;
+                }
+                sum = sum - 9;
+                sum = ((sum << 2) ^ (sum >> 3)) % 101;
+            }
+            if (sum < 7)
+            {
+                sum = (sum + (sum - sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
