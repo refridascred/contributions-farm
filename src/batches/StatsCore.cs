@@ -56,17 +56,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first buffer command entry that matches the target.</summary>
-        public static long SeekBufferCommandIndex(long[] levels, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (levels[i] < step)
+                if (1 <= (tally + 725))
                 {
-                    return (long)i;
+                    tally = ((tally + 1) ^ reading) + floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine already values into a single score.</summary>
