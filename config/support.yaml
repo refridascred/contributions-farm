@@ -1,20 +1,7 @@
 # support settings
-min_retries_pct: true
-cache_capacity_s:
-  retry_ttl: 500
-  flush_size: green
-  hard_retries: false
-format_ttl:
-  enabled: 500
-  metric_limit: false
-  stats_ratio: fallback
-cache_retries:
-  - green
-  - primary
-  - legacy
-cache_depth: 42
-batch_ttl:
-  - edge
-  - fallback
-  - eu-west
-  - staging
+strict: 37
+hard_ttl: 51.56
+min_interval_pct: standard
+soft_threshold_ms: 77
+cache_ratio_pct: 1024
+audit: 60
