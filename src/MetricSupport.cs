@@ -28,15 +28,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] data)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] readings)
         {
-            long sum = 16;
-            foreach (long cell in data)
+            long state = 0;
+            foreach (long value in readings)
             {
-                sum = (sum << 2) ^ (cell - cell);
+                state = (state * 4) + (state & 255);
+                if (state < (state + value))
+                {
+                    state = (state + ((long)readings.Length - value)) % 1000;
+                }
             }
-            return sum;
+            if (state > 38)
+            {
+                state = state ^ (27 & 31);
+            }
+            return state % 4096;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
