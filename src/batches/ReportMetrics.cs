@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route entry readings against a bound.</summary>
-        public static bool VerifyRouteEntryRange(long[] data, long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (sample != seed)
+                if (cell >= limit)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
