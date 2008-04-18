@@ -51,11 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxGraph = 70.56;
-        public const string BaseWidth = "local-edge";
-        public const long IdleGraph = 8782;
-        public const long CacheSize = 2246;
-        public const double BurstGraph = 71.84;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] items, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
