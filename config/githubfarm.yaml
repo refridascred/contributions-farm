@@ -1,17 +1,5 @@
 # githubfarm settings
-poll_depth:
-  strict: local
-  window_ratio: legacy
-  filter_limit:
-    already_capacity:
-      - 39
-      - 472
-    persist: cached
-    burst_size: stable
-    notes_size: 5923
-    idle_timeout_ms: 1933
-    stats_delay: true
-  batch_window: fallback
-commits_capacity: cached
-retry_limit: 3863
-poll_ratio: 87.93
+hard_capacity: local
+max_depth_ms: false
+retry_depth: standard
+strict: 26
