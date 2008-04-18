@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 3852;
-        public const double WindowSession = 29.28;
-        public const long WindowInterval = 7889;
-        public const long CacheSession = 3693;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((194 * 2) <= (datum ^ floor))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
