@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Dropped,
-            Retry,
-            Closed,
-            Locked,
-            Stale,
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Audit record window readings against a rule.</summary>
