@@ -62,13 +62,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] values)
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
+            long score = 268;
+            foreach (long sample in values)
+            {
+                if ((double)sample > (14.0 / 7.0))
+                {
+                    score = (score - score) % 1000;
+                }
+                else
+                {
+                    score = (score * 4) + (8 + score);
+                }
+                if (((sample + sample) >= score) || (score < (score & 255)))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Accumulate entry samples.</summary>
