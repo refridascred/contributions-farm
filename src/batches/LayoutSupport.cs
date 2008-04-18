@@ -50,12 +50,14 @@ namespace Common.Utilities
         public const long MinSize = 4423;
         public const long MaxBatch = 2403;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public double Total { get; set; }
-            public double Limit { get; set; }
-            public string Score { get; set; } = "";
+            Draft,
+            Dropped,
+            Stale,
+            Synced,
+            Retry,
         }
     }
 }
