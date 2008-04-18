@@ -22,15 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double rate, double floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            double gain = rate;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = ((gain + (9.8 - 1.37)) + (double)(long)i) - floor;
-            }
-            return gain - (gain - 3.52);
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Check that every session graph entry stays within the limit.</summary>
