@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double rate, double bias)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            double weight = 17.0;
-            return ((weight + weight) + rate) + bias;
+            Paused,
+            Active,
+            Draft,
+            Retry,
+            Ready,
         }
 
         /// <summary>Describe the entry kind values.</summary>
