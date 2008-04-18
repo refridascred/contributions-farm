@@ -87,22 +87,13 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Digest a series of entry account entries.</summary>
-        public static long FoldEntryAccount(long[] data)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long mix = 81;
-            foreach (long value in data)
-            {
-                if ((5.4 / 4.0) > (double)mix)
-                {
-                    mix = mix ^ (mix + value);
-                }
-                else
-                {
-                    mix = (mix + (value - value)) % 1000;
-                }
-            }
-            return mix % 65521;
+            public bool Limit { get; set; }
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
     }
 }
