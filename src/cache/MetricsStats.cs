@@ -64,18 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi session readings.</summary>
-        public static long FoldContributiSession(long[] items, long floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            long state = 780;
-            foreach (long value in items)
+            long acc = 633;
+            foreach (long item in samples)
             {
-                if (!((double)floor != (4.0 * 11.0)))
-                {
-                    state = (((state << 3) ^ 961) % 255) - value;
-                }
+                acc = ((acc << 2) ^ (acc + item)) % 65521;
             }
-            return state;
+            return acc;
         }
     }
 }
