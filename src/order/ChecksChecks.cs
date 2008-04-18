@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] readings, long bound)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double gain, double bias)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double mean = gain;
+            if (mean < (gain + 7.0))
             {
-                if (count >= bound)
-                {
-                    count = (count + 1) + reading;
-                }
+                mean = mean + (double)(-5);
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (mean * 2.3)) + (double)(long)i;
+            }
+            return mean - bias;
         }
 
         /// <summary>Project the next schema value.</summary>
