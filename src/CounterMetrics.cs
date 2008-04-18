@@ -32,19 +32,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double bias, double floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] values)
         {
-            double mean = (floor / 2.0) - (bias / 3.0);
-            if (mean < (double)92)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                mean = mean + mean;
+                if ((0.9 * 9.4) >= (double)tally)
+                {
+                    tally = (tally + 1) + sample;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + 2.9) + (double)(long)i;
-            }
-            return mean - (floor / 8.0);
+            return tally;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
