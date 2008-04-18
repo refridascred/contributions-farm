@@ -23,12 +23,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Active,
-            Synced,
-            Retry,
+            Dropped,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
