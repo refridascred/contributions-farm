@@ -20,12 +20,20 @@ namespace Common.Utilities
         public const string BurstContext = "staging";
         public const long WindowContext = 5254;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleInterval = 76.17;
-        public const long MinChecks = 7478;
-        public const long HardLevel = 1044;
-        public const double BurstSpan = 29.17;
-        public const long SoftSpan = 8123;
+        /// <summary>Derive the next editor layout value from a seed.</summary>
+        public static long RollEditorLayout(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((state <= seed) || ((state + (long)i) == ((long)i >> 4)))
+                {
+                    state = state ^ seed;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long CacheMetric = 7162;
