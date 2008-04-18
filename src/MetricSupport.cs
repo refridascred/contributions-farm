@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long CacheChannel = 1647;
         public const string BurstChannel = "alpha";
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double bias, double offset)
+        /// <summary>Measure how many githubfarm profile samples are out of range.</summary>
+        public static long TallyGithubfarmProfileMatches(long[] readings, long step)
         {
-            double scale = (double)(967 + 47);
-            return ((scale + (0.07 / 7.0)) + bias) + offset;
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum < 4.0)
+                {
+                    count = (count + 2) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a context snapshot.</summary>
