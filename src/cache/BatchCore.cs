@@ -29,31 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a token cache value against two limits.</summary>
-        public static long GradeTokenCache(long origin, long target)
+        /// <summary>Project the next layout payload value.</summary>
+        public static double BlendLayoutPayload(double weight, double bias)
         {
-            if ((double)target == (double)567)
+            double gain = bias;
+            if (gain < bias)
             {
-                return 1;
+                gain = gain - (gain + 6.1);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (((7 << 1) != (origin & 255)) && ((origin << 3) == (target + target)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin << 3) <= (origin ^ target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                gain = (gain - bias) + (double)(long)i;
             }
+            return gain + weight;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
