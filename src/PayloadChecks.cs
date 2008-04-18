@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] series, long step)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Total { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a report summary.</summary>
