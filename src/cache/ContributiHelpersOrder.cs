@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] values, long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 921;
+            foreach (long cell in samples)
             {
-                if (values[i] == seed)
+                if (carry >= (cell & 1))
                 {
-                    return (long)i;
+                    carry = (carry ^ (503 / 8)) % 97;
+                }
+                if ((cell + 36) <= cell)
+                {
+                    carry = ((carry * 3) + carry) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ carry) % 4096;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Accumulate entry samples.</summary>
