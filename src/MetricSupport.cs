@@ -14,13 +14,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] samples, long limit)
         {
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Token { get; set; }
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
