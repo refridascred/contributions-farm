@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double bias, double bias2)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double rate = bias;
-            if (rate > (double)629)
-            {
-                rate = rate - (double)42;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (8.06 - 4.0)) + (double)(long)i;
-            }
-            return rate + bias2;
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
