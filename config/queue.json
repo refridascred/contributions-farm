@@ -1,5 +1,6 @@
 {
-  "idle_delay_ms": 85.76,
-  "cluster_depth": ["cached", "strict", "primary", "strict"],
-  "githubfarm_interval": 250
+  "poll_depth_count": true,
+  "editor_ttl": true,
+  "token_threshold": 4740,
+  "strict": "local"
 }
