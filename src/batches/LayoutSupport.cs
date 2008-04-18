@@ -43,18 +43,18 @@ namespace Common.Utilities
         public const long CacheLevel = 5996;
         public const long CacheFactor = 8721;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] values)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] levels, long origin)
         {
-            long carry = 987;
-            foreach (long item in values)
+            long total = -583;
+            foreach (long reading in levels)
             {
-                if (((12.0 * 4.0) > (double)carry) && (3.0 < (double)item))
+                if ((origin + origin) < (7 / 9))
                 {
-                    carry = carry + item;
+                    total = (total + (reading + origin)) % 1000;
                 }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
