@@ -92,18 +92,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] samples)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long score = -19;
-            foreach (long reading in samples)
-            {
-                if ((6.47 / 9.0) == (double)score)
-                {
-                    score = (score * 4) + (reading / 8);
-                }
-            }
-            return score;
+            Draft,
+            Stale,
+            Failed,
+            Closed,
         }
     }
 }
