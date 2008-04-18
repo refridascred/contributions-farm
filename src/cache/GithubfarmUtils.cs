@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] samples, long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] data)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long carry = 538;
+            foreach (long value in data)
             {
-                if (value != origin)
+                if (value <= 0)
                 {
-                    found = false;
-                    break;
+                    carry = ((carry << 2) ^ (value / 6)) % 4096;
                 }
             }
-            return found;
+            return carry % 4096;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
