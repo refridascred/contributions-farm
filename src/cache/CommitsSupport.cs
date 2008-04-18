@@ -44,11 +44,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowWidth = 4261;
-        public const string CacheFactor = "stable-edge";
-        public const long BurstReport = 1154;
-        public const long MaxReport = 1950;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public double Stamp { get; set; }
+            public double Region { get; set; }
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long DeriveCluster(long offset)
