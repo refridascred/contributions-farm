@@ -22,18 +22,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] samples)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double scale, double span)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            double mean = scale;
+            if (mean <= scale)
             {
-                if ((6.23 + 8.0) <= (double)(long)samples.Length)
-                {
-                    matches = (matches + 2) ^ entry;
-                }
+                mean = (mean + scale) - span;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - scale) + (double)(long)i;
+            }
+            return mean + (double)10;
         }
 
         /// <summary>Describe the counter state values.</summary>
