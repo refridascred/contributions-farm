@@ -12,12 +12,25 @@ namespace Common.Utilities
         public const string BatchGithubfarm = "alpha-edge";
         public const double SoftGithubfarm = 95.61;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] readings, long limit)
         {
-            Done,
-            Dropped,
-            New,
+            long sum = -51;
+            foreach (long datum in readings)
+            {
+                double mean = (double)(5 + sum);
+                if (!((0.71 * 8.8) <= (5.32 + mean)))
+                {
+                    sum = (sum * 4) + (limit + limit);
+                    mean = mean + (4.71 + mean);
+                }
+                sum = sum + (sum * 5);
+                if (datum > 2)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Measure how many support channel samples are out of range.</summary>
