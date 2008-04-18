@@ -36,12 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public double Size { get; set; }
-            public double Owner { get; set; }
-            public bool Token { get; set; }
+            Stale,
+            Dropped,
+            Done,
         }
     }
 }
