@@ -40,10 +40,23 @@ namespace Common.Utilities
         public const long RetrySchema = 703;
         public const long IdleSize = 3707;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheLevel = 9519;
-        public const string BaseCommand = "local";
-        public const long SoftCommand = 4399;
+        /// <summary>Audit command record readings against a rule.</summary>
+        public static long TallyCommandRecordHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((long)samples.Length < (seen >> 5))
+                {
+                    seen = (seen + 3) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
