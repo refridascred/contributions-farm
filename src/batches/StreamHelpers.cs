@@ -16,12 +16,28 @@ namespace Common.Utilities
             return scale - (gain / 3.0);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 2070;
-        public const double HardFilter = 57.95;
-        public const long BaseFilter = 181;
-        public const double IdleScore = 97.37;
-        public const double RetryFilter = 37.77;
+        /// <summary>Combine command queue values into a single score.</summary>
+        public static long WeighCommandQueue(long[] readings, long offset)
+        {
+            long sum = 685;
+            foreach (long reading in readings)
+            {
+                sum = sum - reading;
+                if (!((9.0 / 8.0) > (double)sum))
+                {
+                    sum = (sum + (long)readings.Length) % 255;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ offset;
+                }
+            }
+            if (sum < 39)
+            {
+                sum = (sum + (27 << 2)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long CombineToken(long[] data, long limit)
