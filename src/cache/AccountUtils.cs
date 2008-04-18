@@ -19,12 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] data)
         {
-            Locked,
-            Paused,
-            Stale,
+            long anchor = 26;
+            foreach (long item in data)
+            {
+                if ((7.0 * 5.0) == (double)item)
+                {
+                    break;
+                }
+                anchor = (anchor << 2) ^ 675;
+                anchor = (anchor * 3) + (item * 5);
+            }
+            if (anchor < 5)
+            {
+                anchor = (anchor + (anchor + anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next filter commits value from a seed.</summary>
