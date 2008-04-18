@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double ratio, double floor)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            double drift = (double)(54 % 16);
-            if (drift >= (floor / 9.0))
-            {
-                drift = (drift - (drift / 3.0)) - ratio;
-            }
-            return drift - (double)59;
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Combine cache queue values into a single score.</summary>
