@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] data)
         {
-            public string Limit { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            long score = -333;
+            foreach (long datum in data)
+            {
+                score = (score + (score << 1)) % 1000;
+                if ((3 - score) <= (datum / 4))
+                {
+                    score = (score + (2 * 3)) % 65521;
+                }
+                if ((78 / 8) > (datum & 15))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
