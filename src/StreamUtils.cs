@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public double Score { get; set; }
-            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Accumulate filter samples.</summary>
