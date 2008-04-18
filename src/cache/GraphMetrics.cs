@@ -40,19 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every record stream entry stays within the limit.</summary>
-        public static bool VerifyRecordStreamBounds(long[] items, long seed)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
