@@ -68,12 +68,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] series)
         {
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((1.4 / 3.0) >= (17.0 + 7.99))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
         }
     }
 }
