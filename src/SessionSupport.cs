@@ -29,21 +29,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] levels)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
     }
 }
