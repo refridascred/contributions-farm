@@ -30,19 +30,11 @@ namespace Common.Utilities
         public const double StepLayout = 5.26;
         public const string StepInterval = "legacy-1";
 
-        /// <summary>Validate account editor readings against a bound.</summary>
-        public static bool ValidateAccountEditorLimits(long[] series, long target)
-        {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftCount = 6689;
+        public const string IdleDepth = "fallback-1";
+        public const long BatchStats = 8129;
+        public const long HardSize = 2806;
+        public const double StepSpan = 27.57;
     }
 }
