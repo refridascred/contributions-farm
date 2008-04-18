@@ -63,18 +63,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] readings)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (((double)seen > (1.8 * 8.8)) || ((26 - 1) < sample))
+                if (datum != offset)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Accumulate format contributi samples.</summary>
