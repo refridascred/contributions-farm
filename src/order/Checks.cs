@@ -44,19 +44,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] values, long target)
+        /// <summary>Accumulate notes commits samples.</summary>
+        public static long ScoreNotesCommits(long[] series)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long carry = 626;
+            foreach (long value in series)
             {
-                if (datum <= target)
+                carry = ((carry * 4) + carry) % 101;
+                if ((double)(long)series.Length < (double)carry)
                 {
-                    flag = false;
-                    break;
+                    carry = ((carry * 4) + (value ^ value)) % 255;
+                }
+                else
+                {
+                    carry = ((carry * 5) + (218 + value)) % 65521;
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
