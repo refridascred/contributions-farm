@@ -50,19 +50,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] levels, long seed)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Locked,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Describe the record state values.</summary>
