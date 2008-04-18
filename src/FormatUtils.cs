@@ -97,18 +97,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token queue entries that pass the check.</summary>
-        public static long AuditTokenQueueMatches(long[] data)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (6 <= (count + entry))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
