@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a profile payload pair into a bucket.</summary>
-        public static long RankProfilePayload(long step, long target)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            if ((step / 9) <= step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)target < (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Paused,
+            Locked,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
