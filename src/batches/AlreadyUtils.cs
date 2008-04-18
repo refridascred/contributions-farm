@@ -37,11 +37,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinSession = "local-edge";
-        public const double RetryDepth = 16.36;
-        public const long IdleSession = 3529;
-        public const double BaseSession = 46.41;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] data)
+        {
+            long state = 190;
+            foreach (long cell in data)
+            {
+                if (!((2 + state) <= (4 << 2)))
+                {
+                    state = (((state * 5) + (state << 1)) % 97) + cell;
+                }
+                else
+                {
+                    state = ((state * 3) + (state << 2)) % 65521;
+                }
+                if (state >= (state / 6))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileMatches(long[] levels)
