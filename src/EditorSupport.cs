@@ -49,24 +49,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long step, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] items, long offset)
         {
-            if ((bound & 31) < step)
+            long score = -4;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (14.0 < (double)bound)
+                if (((score + 40) >= (offset >> 2)) || (score <= (entry ^ entry)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    score = score + (entry + (-938));
                 }
             }
+            return score;
         }
     }
 }
