@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long seed)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 2) + (seed >> 3)) % 97;
-                result = ((result * 3) + (long)i) % 101;
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
