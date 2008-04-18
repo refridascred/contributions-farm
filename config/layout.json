@@ -1,13 +1,14 @@
 {
-  "cache_size_count": "green",
-  "retry_size": true,
-  "profile_window": 8604,
-  "warm_limit_count": "staging",
-  "layout_retries": true,
-  "max_threshold_s": {
-    "soft_delay": 52,
-    "sync_retries_s": [36, 23],
-    "token_threshold": "legacy",
-    "persist": 7707
-  }
+  "default_delay": {
+    "burst_ratio_ms": 74.88,
+    "sync_depth_ms": 66,
+    "sync_size_s": ["blue", "legacy", "fallback"],
+    "cache_delay_ms": 83,
+    "hard_threshold": ["eu-west", "primary", "cached", "primary"],
+    "flush_ttl_s": [330, 169]
+  },
+  "persist": "local",
+  "sync_size_s": 4233,
+  "poll_ttl_count": true,
+  "burst_timeout_ms": ["strict", "stable"]
 }
