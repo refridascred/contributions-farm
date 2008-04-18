@@ -36,13 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Closed,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstSpan = 9597;
+        public const long LimitSpan = 2998;
+        public const double BaseScore = 61.99;
+        public const long DefaultDepth = 2967;
 
         /// <summary>Project the next format batch value.</summary>
         public static double AdjustFormatBatch(double bias, double floor)
