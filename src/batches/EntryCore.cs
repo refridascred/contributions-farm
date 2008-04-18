@@ -22,10 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseSize = "latest-1";
-        public const long LimitLevel = 6220;
-        public const long LimitScore = 5974;
+        /// <summary>Accumulate payload schema samples.</summary>
+        public static long FoldPayloadSchema(long[] items, long seed)
+        {
+            long total = 72;
+            foreach (long entry in items)
+            {
+                total = ((total + seed) % 255) ^ entry;
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long PairClusterCount(long[] levels)
