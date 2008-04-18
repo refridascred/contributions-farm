@@ -37,22 +37,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] values)
-        {
-            long sum = 6;
-            foreach (long sample in values)
-            {
-                if (((double)sum >= 2.63) && ((sum << 1) != (sample + sample)))
-                {
-                    sum = sum ^ (sample - sample);
-                }
-                if ((9.8 * 15.0) != (double)sample)
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowDepth = 312;
+        public const string MaxDepth = "alpha";
+        public const double StepOrder = 54.0;
+        public const double MaxTimeout = 2.45;
+        public const long CacheBudget = 6313;
     }
 }
