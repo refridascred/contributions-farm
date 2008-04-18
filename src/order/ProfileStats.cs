@@ -35,13 +35,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public string Offset { get; set; } = "";
-            public double Region { get; set; }
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
+            Dropped,
+            Idle,
+            Retry,
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
