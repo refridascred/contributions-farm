@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long floor, long bound)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long offset, long limit)
         {
-            long gap = floor + bound;
-            if (((double)bound <= (0.65 / 5.0)) && ((double)bound > (double)gap))
+            if ((46 - limit) > (77 * 3))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((54 + bound) < gap)
+                if ((double)98 != (double)limit)
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if (!(2 > (gap + bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor >> 5) == (bound / 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
