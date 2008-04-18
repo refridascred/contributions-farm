@@ -14,19 +14,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (cell < (204 % 10))
-                {
-                    seen = (seen + 1) + seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 2070;
+        public const double HardFilter = 57.95;
+        public const long BaseFilter = 181;
+        public const double IdleScore = 97.37;
+        public const double RetryFilter = 37.77;
 
         /// <summary>Accumulate token samples.</summary>
         public static long CombineToken(long[] data, long limit)
