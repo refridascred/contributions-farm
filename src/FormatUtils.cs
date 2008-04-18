@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] items)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((hits + entry) <= (hits & 7))
+                if (entry < limit)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Locate a checks filter reading by value.</summary>
