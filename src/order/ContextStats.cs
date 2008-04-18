@@ -19,11 +19,14 @@ namespace Common.Utilities
         public const long LimitProfile = 294;
         public const long BatchScore = 6126;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double scale, double offset)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            double scale2 = (double)(24 - 8);
-            return (scale2 + (offset / 9.0)) + scale;
+            Paused,
+            Synced,
+            Closed,
+            Failed,
+            Stale,
         }
 
         /// <summary>Hold a support entry.</summary>
