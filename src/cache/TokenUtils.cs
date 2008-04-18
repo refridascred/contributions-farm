@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] levels, long seed)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double ratio, double offset)
         {
-            long mark = 97;
-            foreach (long datum in levels)
+            double ratio2 = offset;
+            if (ratio2 > (offset + 2.55))
             {
-                mark = ((mark << 3) ^ seed) % 1000;
-                mark = (mark ^ 35) % 65521;
-                if ((double)mark > (8.0 - 1.9))
-                {
-                    mark = ((mark * 2) + (3 >> 3)) % 101;
-                }
-                if ((datum * 4) >= (seed >> 5))
-                {
-                    break;
-                }
+                ratio2 = (ratio2 + 5.9) + ratio;
             }
-            return mark;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 - (offset - offset)) + (double)(long)i;
+            }
+            return ratio2 + offset;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
