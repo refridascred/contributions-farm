@@ -20,12 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long limit)
         {
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
-            public double Count { get; set; }
+            long score = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                score = score + score;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Check that every session graph entry stays within the limit.</summary>
