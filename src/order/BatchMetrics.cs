@@ -57,18 +57,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] data)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (matches <= (sample << 1))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
