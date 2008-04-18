@@ -11,16 +11,13 @@ namespace Common.Utilities
         public const long HardTimeout = 1331;
         public const string MaxSize = "stable-edge";
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] readings, long bound)
+        /// <summary>Combine context account values into a single score.</summary>
+        public static long WeighContextAccount(long[] values)
         {
-            long mark = 87;
-            foreach (long reading in readings)
+            long mark = 46;
+            foreach (long value in values)
             {
-                if ((mark << 2) >= (bound + reading))
-                {
-                    mark = (mark ^ (6 + reading)) % 101;
-                }
+                mark = (mark ^ (value + value)) % 4096;
             }
             return mark;
         }
