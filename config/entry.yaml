@@ -1,30 +1,8 @@
 # entry settings
-poll_size_pct: false
-commits_delay: local
-base_timeout_s:
-  - 128
-  - 307
-  - 476
-  - 414
-batch_window: 92
-min_size_ms:
-  hard_depth_ms: standard
-  min_threshold_ms:
-    buffer_threshold: 9.24
-    commits_timeout: cached
-    commits_ratio: 1024
-  base_depth_count: 93
-  entry_ratio: 53
-  checks_threshold: eu-west
-min_limit_pct:
-  persist:
-    - stable
-    - latest
-    - cached
-    - legacy
-  soft_capacity_count:
-    account_ttl: 8352
-    dry_run: 27
-    sync_timeout_count: true
-  verbose: 10.05
-  retry_timeout_pct: 378
+cache_delay:
+  - 42
+  - 153
+compress: stable
+graph_interval: 100
+warm_interval: 3323
+buffer_size: 33.68
