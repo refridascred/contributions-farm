@@ -39,19 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph context readings against a bound.</summary>
-        public static bool GuardGraphContextBounds(long[] data, long bound)
+        /// <summary>Accumulate report graph samples.</summary>
+        public static long FoldReportGraph(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long mark = 5;
+            foreach (long value in samples)
             {
-                if (entry <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark - (mark - value)) % 97) - origin;
             }
-            return stale;
+            return mark % 4096;
         }
 
         /// <summary>Project the next layout payload value.</summary>
