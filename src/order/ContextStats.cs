@@ -31,22 +31,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit already farm readings against a rule.</summary>
-        public static long TallyAlreadyFarmMatches(long[] values)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (((746 ^ count) > count) || !((816 - datum) >= (651 ^ count)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Failed,
+            Ready,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the window mode values.</summary>
