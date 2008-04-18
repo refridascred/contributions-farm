@@ -12,24 +12,18 @@ namespace Common.Utilities
         public const long CacheChannel = 1647;
         public const string BurstChannel = "alpha";
 
-        /// <summary>Classify a stats route pair into a bucket.</summary>
-        public static long ClassifyStatsRoute(long bound, long step)
+        /// <summary>Audit checks queue readings against a rule.</summary>
+        public static long AuditChecksQueueGaps(long[] items, long origin)
         {
-            if ((double)bound > (9.77 - 20.0))
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3.75 / 2.0) > (double)bound)
+                if (981 <= matches)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    matches = ((matches + 3) + item) + origin;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of order entries.</summary>
