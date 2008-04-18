@@ -34,11 +34,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double weight, double span)
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
+            double bias = weight;
+            if (bias < (bias / 8.0))
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - span) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Count the graph profile entries that pass the check.</summary>
