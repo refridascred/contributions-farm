@@ -14,22 +14,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] samples, long floor)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long offset)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long score = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((61 + entry) > (entry >> 1))
-                {
-                    tally = (tally + 1) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a context stats.</summary>
