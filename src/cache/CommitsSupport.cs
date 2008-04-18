@@ -62,16 +62,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long origin)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double weight, double bias)
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
+            double bias2 = (double)83 * 5.84;
+            if (bias2 < 10.0)
             {
-                score = ((score * 4) + (origin ^ origin)) % 101;
-                score = ((score * 5) + (long)i) % 1000;
+                bias2 = ((bias2 + (double)753) - weight) - bias;
             }
-            return score;
+            return bias2 + bias2;
         }
     }
 }
