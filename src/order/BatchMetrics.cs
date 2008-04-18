@@ -79,13 +79,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Pending,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheFactor = 1641;
+        public const long SoftCache = 777;
+        public const string BatchRatio = "open-v2";
 
         /// <summary>Define account limits and defaults.</summary>
         public const long CacheBudget = 9818;
