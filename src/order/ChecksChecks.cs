@@ -11,22 +11,20 @@ namespace Common.Utilities
         public const double RetryScore = 63.37;
         public const string BatchToken = "latest";
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] items, long step)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long bound)
         {
-            long sum = 2;
-            foreach (long reading in items)
+            long state = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((sum & 255) != (reading * 5))
+                if (!((3 - bound) >= (98 - bound)))
                 {
-                    sum = (sum - (869 + step)) % 65521;
+                    state = state - (bound & 1);
                 }
+                state = (state << 3) ^ 94;
+                state = ((state * 2) + (long)i) % 101;
             }
-            if (sum > 8)
-            {
-                sum = sum ^ (sum - sum);
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
