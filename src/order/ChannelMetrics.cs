@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] series)
+        /// <summary>Roll a metrics batch counter forward.</summary>
+        public static long DeriveMetricsBatch(long limit)
         {
-            long anchor = -64;
-            foreach (long sample in series)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (((0.3 * 15.0) <= (double)sample) && ((sample + sample) == (anchor ^ sample)))
-                {
-                    anchor = (anchor ^ anchor) % 4096;
-                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            if (anchor > 57)
-            {
-                anchor = (anchor + (anchor - anchor)) % 255;
-            }
-            return anchor % 65521;
+            return carry;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
