@@ -39,11 +39,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftWidth = "staging-1";
-        public const long StepSpan = 1665;
-        public const long MaxRatio = 9768;
-        public const long IdleWidth = 8216;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstTimeout = 8064;
+        public const string WindowCommits = "standard-1";
+        public const long IdleCommits = 7429;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long CombineLayout(long[] readings, long target)
