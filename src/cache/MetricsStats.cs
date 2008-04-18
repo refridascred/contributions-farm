@@ -54,15 +54,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] items, long target)
-        {
-            long acc = 455;
-            foreach (long sample in items)
-            {
-                acc = ((acc - (sample + 80)) % 65521) + target;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 5355;
+        public const long LimitPayload = 5586;
+        public const long WindowSpan = 8107;
+        public const long MaxScore = 7049;
     }
 }
