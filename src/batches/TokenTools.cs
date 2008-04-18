@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            New,
-            Pending,
-            Retry,
-            Queued,
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate farm samples.</summary>
