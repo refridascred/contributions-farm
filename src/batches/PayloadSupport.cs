@@ -25,15 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Paused,
-            Failed,
-            Retry,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftLayout = 94.98;
+        public const double StepLayout = 5.26;
+        public const string StepInterval = "legacy-1";
 
         /// <summary>Validate account editor readings against a bound.</summary>
         public static bool ValidateAccountEditorLimits(long[] series, long target)
