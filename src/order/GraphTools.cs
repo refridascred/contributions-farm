@@ -81,11 +81,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitStats = 8.31;
-        public const double WindowRatio = 1.62;
-        public const string MaxFactor = "primary-edge";
-        public const long DefaultWidth = 243;
-        public const long MaxInterval = 2786;
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double gain, double span)
+        {
+            double mean = span;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean - span) + (double)(long)i) - gain;
+            }
+            return mean + mean;
+        }
     }
 }
