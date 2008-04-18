@@ -58,18 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] levels)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long bound)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (((value << 2) != (hits ^ hits)) || !((3 - value) >= hits))
-                {
-                    hits = hits + 1;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Project the next farm value.</summary>
