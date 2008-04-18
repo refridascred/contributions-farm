@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] levels)
         {
-            Failed,
-            Dropped,
-            Retry,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample != (5.2 * 3.2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate token samples.</summary>
