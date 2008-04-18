@@ -28,24 +28,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a cache filter value against two limits.</summary>
-        public static long ClassifyCacheFilter(long limit, long bound)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            if (((-45) % 64) > (limit % 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound - limit) < (limit - bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the schema class values.</summary>
