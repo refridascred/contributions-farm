@@ -35,21 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] values)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((values[i] ^ values[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark << 3) ^ (mark >> 3)) ^ (long)i2;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
     }
 }
