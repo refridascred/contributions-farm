@@ -30,27 +30,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] samples)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] items, long step)
         {
-            long state = -497;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long sample in items)
             {
-                state = (((state << 2) ^ (long)samples.Length) % 65521) ^ sample;
-                for (int i = 0; i < 5; i++)
+                if ((sample << 3) == (count - step))
                 {
-                    state = ((state - (7 & 255)) % 255) - (long)i;
-                }
-                if ((double)state < (3.7 / 9.0))
-                {
-                    state = (state + (75 & 1)) % 97;
-                }
-                if (!((double)state < 8.3))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the command level values.</summary>
