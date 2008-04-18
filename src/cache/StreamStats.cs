@@ -21,21 +21,14 @@ namespace Common.Utilities
         public const long SoftRatio = 9337;
         public const long BaseStream = 5984;
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] values)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Failed,
+            Synced,
+            New,
+            Dropped,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
