@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] levels, long floor)
+        /// <summary>Accumulate metrics cluster samples.</summary>
+        public static long DigestMetricsCluster(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long state = -7;
+            foreach (long cell in data)
             {
-                if (cell < floor)
+                if ((double)cell != (19.0 * 1.28))
                 {
-                    flag = false;
-                    break;
+                    state = state ^ (offset << 3);
                 }
             }
-            return flag;
+            return state % 97;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
