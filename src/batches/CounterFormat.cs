@@ -20,19 +20,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long step)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = ((carry + 729) % 255) ^ (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the tools mode values.</summary>
