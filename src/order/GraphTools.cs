@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] data)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] data, long limit)
         {
-            long total = 569;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                total = total ^ (value % 2);
+                if (((8.67 + 2.33) == (double)reading) || ((double)reading <= (3.0 - 3.51)))
+                {
+                    seen = (seen + 3) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
