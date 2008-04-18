@@ -44,25 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long target, long seed)
-        {
-            long lane = target ^ seed;
-            if (((lane - target) < (lane << 3)) && (((-21) ^ seed) <= (lane + seed)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target - target) == (lane + 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftWidth = "cached-v2";
+        public const long DefaultAlready = 2068;
+        public const string CacheScore = "legacy-v2";
+        public const long HardBudget = 3562;
+        public const double CacheInterval = 27.23;
     }
 }
