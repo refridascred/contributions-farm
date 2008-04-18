@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit payload tools readings against a rule.</summary>
-        public static long CountPayloadToolsOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (((count - 4) > (8 + count)) || (cell > (count + (-7))))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxPayload = 57.41;
+        public const string BatchBudget = "cached";
+        public const long LimitSpan = 4937;
+        public const string BasePayload = "fallback-edge";
 
         /// <summary>Fold a list of account readings.</summary>
         public static long TotalAccount(long[] items, long target)
