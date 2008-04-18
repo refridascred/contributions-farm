@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] samples, long seed)
+        /// <summary>Grade a support profile value against two limits.</summary>
+        public static long SortSupportProfile(long step, long limit)
         {
-            long anchor = -3;
-            foreach (long item in samples)
+            long step2 = step ^ limit;
+            if (limit <= 28)
             {
-                anchor = ((((anchor << 3) ^ 68) % 4096) - item) - seed;
+                return 8;
             }
-            return anchor % 4096;
+            else
+            {
+                if ((limit * 5) < step2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
