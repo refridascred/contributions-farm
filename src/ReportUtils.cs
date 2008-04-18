@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long target, long limit)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] items)
         {
-            long slot = target + limit;
-            if ((slot < 191) && ((slot + 2) <= limit))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4.63 / 6.0) < (double)target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit + 8) <= target)
+                    if ((items[i] ^ items[j]) == 11)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((14.0 / 4.0) < (double)limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a checks info.</summary>
