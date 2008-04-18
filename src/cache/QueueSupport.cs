@@ -13,22 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the tools already entries that pass the check.</summary>
-        public static long AuditToolsAlreadyGaps(long[] values)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if ((cell + cell) <= (7 - matches))
+                if (entry >= seed)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Check that every command counter entry stays within the limit.</summary>
