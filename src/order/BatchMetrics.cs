@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a batches account reading.</summary>
-        public static double AdjustBatchesAccount(double weight, double floor)
+        /// <summary>Match up cluster notes samples.</summary>
+        public static long MatchClusterNotesCount(long[] series)
         {
-            double load = (double)(430 * 2);
-            if (load <= weight)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load - 8.9;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (double)0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (weight * 8.9)) - (double)(long)i;
-            }
-            return load + floor;
+            return tally;
         }
 
         /// <summary>Count the tools metric entries that pass the check.</summary>
