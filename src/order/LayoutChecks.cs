@@ -23,22 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] samples, long floor)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double rate, double offset)
         {
-            long result = 981;
-            foreach (long entry in samples)
-            {
-                if (!((4.46 - 9.1) < (double)entry))
-                {
-                    result = ((result + (result % 60)) % 255) - floor;
-                }
-            }
-            if (result < 52)
-            {
-                result = ((result << 2) ^ (result >> 5)) % 97;
-            }
-            return result % 97;
+            double rate2 = 8.8;
+            return ((rate2 + 0.08) + rate) + offset;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
