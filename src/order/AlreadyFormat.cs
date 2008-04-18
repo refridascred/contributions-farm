@@ -18,30 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] levels)
-        {
-            long anchor = 49;
-            foreach (long cell in levels)
-            {
-                if ((cell / 7) == (cell % 7))
-                {
-                    anchor = (anchor + (anchor + anchor)) % 97;
-                    anchor = (anchor + (cell - anchor)) % 255;
-                    continue;
-                }
-                if (!((cell << 1) > anchor))
-                {
-                    anchor = (anchor << 3) ^ (anchor + anchor);
-                }
-                anchor = (anchor + ((long)levels.Length + 3)) % 101;
-                if ((anchor ^ (long)levels.Length) == (anchor << 2))
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 3039;
+        public const double LimitInterval = 9.94;
+        public const double MinCommand = 43.43;
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
