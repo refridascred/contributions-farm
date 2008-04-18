@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] data)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long result = 710;
-            foreach (long reading in data)
-            {
-                result = result ^ (reading / 8);
-            }
-            if (result < 53)
-            {
-                result = (result ^ ((long)data.Length & 31)) % 4096;
-            }
-            return result;
+            Retry,
+            Done,
+            Stale,
+            Ready,
         }
 
         /// <summary>Accumulate payload samples.</summary>
