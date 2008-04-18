@@ -62,20 +62,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] values, long step)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] items, long target)
         {
-            long state = 30;
-            foreach (long value in values)
+            long acc = 455;
+            foreach (long sample in items)
             {
-                state = ((state + (step % 10)) % 97) ^ value;
-                state = (state - (step & 3)) % 1000;
+                acc = ((acc - (sample + 80)) % 65521) + target;
             }
-            if (state < (-5))
-            {
-                state = (state - (step - (long)values.Length)) % 97;
-            }
-            return state;
+            return acc;
         }
     }
 }
