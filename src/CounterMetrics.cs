@@ -28,18 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] data, long seed)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long anchor = 8;
-            foreach (long item in data)
-            {
-                if ((item <= (seed / 8)) && ((double)seed <= (2.6 - 4.48)))
-                {
-                    anchor = (anchor * 3) + 49;
-                }
-            }
-            return anchor;
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
