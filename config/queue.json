@@ -1,6 +1,12 @@
 {
-  "cache_limit": 64,
-  "batch_capacity_pct": 1030,
-  "soft_depth": "strict",
-  "min_delay_s": "green"
+  "idle_timeout_count": [407, 470, 158, 397],
+  "idle_interval": [140, 60],
+  "flush_depth_ms": "stable",
+  "retry_capacity_s": "cached",
+  "warm_window_ms": {
+    "audit": [308, 305, 73, 249],
+    "verbose": "staging",
+    "persist": "cached",
+    "strict": 5454
+  }
 }
