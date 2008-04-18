@@ -36,19 +36,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every session cache entry stays within the limit.</summary>
-        public static bool VerifySessionCacheLimits(long[] levels, long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] levels, long origin)
         {
-            bool found = true;
+            long seen = 0;
             foreach (long reading in levels)
             {
-                if (reading >= offset)
+                if ((seen / 7) <= (5 + reading))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) - origin;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
