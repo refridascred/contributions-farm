@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] readings)
+        /// <summary>Iterate the editor buffer series from a seed.</summary>
+        public static long StepEditorBuffer(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a stats options.</summary>
