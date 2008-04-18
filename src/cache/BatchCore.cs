@@ -19,14 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Synced,
-            Paused,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryTimeout = "stable-edge";
+        public const double RetryWidth = 85.93;
+        public const string BurstStream = "standard-edge";
+        public const long WindowSize = 2353;
 
         /// <summary>Blend two record measurements.</summary>
         public static double BlendRecord(double weight, double offset)
