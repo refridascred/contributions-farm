@@ -16,12 +16,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            Stale,
+            Paused,
+            Locked,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
