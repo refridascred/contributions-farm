@@ -74,27 +74,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] values)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] series, long target)
         {
-            long mark = -335;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = mark - (item * 3);
-                if (((item % 8) > mark) || (mark > (mark + item)))
+                if (series[i] == target)
                 {
-                    mark = (mark - (item ^ mark)) % 4096;
-                }
-                if ((item * 2) != (item << 2))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark < 377)
-            {
-                mark = mark ^ mark;
-            }
-            return mark % 65521;
+            return -1;
         }
     }
 }
