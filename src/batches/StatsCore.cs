@@ -13,30 +13,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] samples, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((carry + floor) <= floor)
+                if ((61 + entry) > (entry >> 1))
                 {
-                    carry = carry - 525;
-                    carry = (carry - (19 & 63)) % 97;
+                    tally = (tally + 1) + floor;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ floor) % 255;
-                    carry = ((carry * 5) + floor) % 65521;
+                    tally = tally - 1;
                 }
-                carry = ((carry * 4) + (long)i) % 255;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = (((carry << 3) ^ (floor + carry)) % 65521) - (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
