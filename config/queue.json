@@ -1,17 +1,14 @@
 {
-  "max_ratio": ["stable", "fallback"],
-  "persist": {
-    "base_capacity": 6305,
-    "verbose": "cached",
-    "soft_size_s": 100,
-    "burst_limit_count": 95.75
+  "dry_run": "staging",
+  "compress": [178, 111],
+  "base_size_s": "local",
+  "flush_ttl_ms": {
+    "burst_ttl_ms": 8050,
+    "warm_threshold": "eu-west",
+    "base_size_ms": "latest",
+    "support_retries": 46,
+    "record_timeout": "staging"
   },
-  "record_capacity": "green",
-  "layout_retries": 49.82,
-  "cluster_retries": "legacy",
-  "max_limit": {
-    "compress": "staging",
-    "idle_depth": "local",
-    "context_retries": "stable"
-  }
+  "soft_capacity_count": 1024,
+  "hard_capacity_s": 25.22
 }
