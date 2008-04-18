@@ -29,19 +29,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stats stream readings against a bound.</summary>
-        public static bool GuardStatsStreamBounds(long[] data, long offset)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Synced,
+            Paused,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a token options.</summary>
