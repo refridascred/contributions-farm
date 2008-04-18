@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] samples, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (!((405 << 3) == (value * 2)) || ((seen ^ value) <= (17 + seed)))
+                if ((tally <= 7) && ((1.14 - 8.36) < (double)tally))
                 {
-                    seen = seen + 2;
+                    tally = ((tally + 3) + item) - limit;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the batch state values.</summary>
