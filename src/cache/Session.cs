@@ -39,14 +39,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public double Owner { get; set; }
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleInterval = 92.57;
+        public const double MinContext = 50.86;
+        public const string SoftDepth = "local-1";
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool GuardChecksBounds(long[] readings, long offset)
