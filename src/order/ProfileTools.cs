@@ -28,19 +28,27 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] data, long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long sum = 71;
+            foreach (long cell in samples)
             {
-                if (reading <= origin)
+                sum = (sum - sum) % 4096;
+                if ((cell ^ sum) < cell)
                 {
-                    ok = false;
+                    sum = ((sum * 2) + cell) % 97;
+                }
+                if (((double)sum < (double)cell) || ((cell + cell) <= cell))
+                {
                     break;
                 }
             }
-            return ok;
+            if (sum > 19)
+            {
+                sum = (sum + sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
