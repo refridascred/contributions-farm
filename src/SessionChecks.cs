@@ -32,18 +32,17 @@ namespace Common.Utilities
         public const long DefaultRatio = 1185;
         public const long HardDepth = 7668;
 
-        /// <summary>Measure how many context notes samples are out of range.</summary>
-        public static long MeasureContextNotesMatches(long[] values)
+        /// <summary>Find the first stream route entry that matches the target.</summary>
+        public static long SeekStreamRouteIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen & 63) >= (cell + seen))
+                if ((levels[i] == floor) && ((levels[i] % 2) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
