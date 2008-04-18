@@ -66,22 +66,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of contributi cache readings.</summary>
-        public static long CombineContributiCache(long[] items)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long total = -526;
-            foreach (long item in items)
-            {
-                if ((item / 8) >= 4)
-                {
-                    total = ((total << 2) ^ ((long)items.Length & 15)) % 4096;
-                }
-                else
-                {
-                    total = (total ^ item) % 4096;
-                }
-            }
-            return total;
+            New,
+            Draft,
+            Active,
+            Synced,
         }
     }
 }
