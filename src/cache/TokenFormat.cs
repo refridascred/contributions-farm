@@ -30,11 +30,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double rate, double offset)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long limit, long floor)
         {
-            double weight = offset;
-            return (weight - weight) + rate;
+            if ((limit / 2) == ((-657) >> 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((limit * 4) != (floor + limit)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
