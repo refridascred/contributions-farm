@@ -37,10 +37,18 @@ namespace Common.Utilities
         public const long BaseWidth = 7384;
         public const string IdleLevel = "cached";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepScore = 6953;
-        public const long IdleCache = 1914;
-        public const string BurstRatio = "cached-edge";
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
