@@ -48,12 +48,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
+            Pending,
             Idle,
-            Retry,
-            Closed,
+            Synced,
+            Paused,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
