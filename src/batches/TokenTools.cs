@@ -23,27 +23,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Accumulate batch counter samples.</summary>
-        public static long WeighBatchCounter(long[] series)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] samples, long floor)
         {
-            long result = 68;
-            foreach (long cell in series)
+            long carry = 961;
+            foreach (long entry in samples)
             {
-                result = ((result << 2) ^ 180) % 97;
-                if ((576 + result) == (long)series.Length)
+                if ((floor < carry) || ((carry ^ floor) >= (entry * 2)))
                 {
-                    result = (result ^ (cell + result)) % 65521;
-                }
-                if ((result + result) <= (48 * 2))
-                {
-                    result = (result ^ (4 >> 4)) % 1000;
+                    carry = (carry + carry) % 97;
                 }
             }
-            if (result > 836)
-            {
-                result = (result * 3) + result;
-            }
-            return result % 4096;
+            return carry % 97;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
