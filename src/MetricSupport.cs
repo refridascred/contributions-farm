@@ -39,12 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 4265;
-        public const long DefaultSchema = 3778;
-        public const double SoftBudget = 5.99;
-        public const double IdleFactor = 24.3;
-        public const double RetrySchema = 58.2;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] levels, long target)
+        {
+            long result = 325;
+            foreach (long datum in levels)
+            {
+                result = (((result + 51) % 65521) - datum) - target;
+            }
+            if (result > 3)
+            {
+                result = (result ^ (348 << 2)) % 1000;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
