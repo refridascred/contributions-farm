@@ -55,12 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxFactor = 2272;
-        public const double StepWidth = 80.12;
-        public const long DefaultScore = 5902;
-        public const string HardCluster = "legacy-1";
-        public const long WindowCluster = 6052;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            New,
+            Pending,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long ClassifySession(long step, long bound)
