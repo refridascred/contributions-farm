@@ -52,21 +52,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] items)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = step;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state - (state / 7)) % 101;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
     }
 }
