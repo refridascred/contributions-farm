@@ -52,12 +52,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 9362;
-        public const string LimitCount = "standard-edge";
-        public const double IdleContext = 74.5;
-        public const long HardScore = 2279;
-        public const string MaxContext = "stable";
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Closed,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
