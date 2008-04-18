@@ -40,12 +40,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double bias, double span)
         {
-            Retry,
-            Active,
-            Done,
+            double rate = (double)(477 + 89);
+            if (rate <= (rate - rate))
+            {
+                rate = (rate + rate) - bias;
+            }
+            return rate + (span * 3.7);
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
