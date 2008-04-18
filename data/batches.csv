@@ -1,7 +1,8 @@
-id,region,state
-1,81.92,10.44
-2,833,129
-3,513,blue
-4,233,primary
-5,latest,424
-6,39.71,staging
+id,ratio,active
+1,50.72,open
+2,20.23,504
+3,stable,1
+4,green,open
+5,417,730
+6,98.67,stable
+7,390,721
