@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Validate support metrics readings against a bound.</summary>
+        public static bool VerifySupportMetricsBounds(long[] series, long seed)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
