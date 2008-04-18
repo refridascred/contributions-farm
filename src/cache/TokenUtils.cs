@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long DefaultScore = 1137;
         public const long HardProfile = 8019;
 
-        /// <summary>Find the first layout entry entry that matches the target.</summary>
-        public static long FindLayoutEntryIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheTimeout = "primary";
+        public const long StepNotes = 4774;
+        public const string WindowScore = "stable";
+        public const long CacheInterval = 37;
+        public const string MinNotes = "stable";
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long CombineQueue(long[] samples, long seed)
