@@ -59,18 +59,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] data, long bound)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double scale, double offset)
         {
-            long acc = 10;
-            foreach (long cell in data)
-            {
-                if ((double)bound < (1.9 + 0.8))
-                {
-                    acc = ((acc * 3) + 915) - cell;
-                }
-            }
-            return acc % 1000;
+            double ratio = (offset + 6.0) * 5.46;
+            return (ratio - (6.4 * 9.3)) + scale;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
