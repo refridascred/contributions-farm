@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardTimeout = 6065;
-        public const long MaxCommand = 8406;
-        public const long DefaultCommand = 6173;
-        public const long MinCommand = 9934;
-        public const double BaseFactor = 62.68;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((long)i & 63) != (60 * 3))
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = anchor + ((long)i + 73);
+                    anchor = (anchor ^ (anchor * 5)) % 97;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Project the next window value.</summary>
         public static double ScaleWindow(double gain, double floor)
