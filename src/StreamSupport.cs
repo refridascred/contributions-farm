@@ -13,39 +13,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Classify a notes order pair into a bucket.</summary>
-        public static long SortNotesOrder(long target, long floor)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] items)
         {
-            long diff = target ^ floor;
-            if (((0.05 * 9.1) != (double)target) && ((target / 7) > (target + diff)))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((diff * 4) < (floor * 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((2 / 3) <= diff)
+                    if ((items[i] ^ items[j]) != 6)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target % 2) <= target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine window values into a single score.</summary>
