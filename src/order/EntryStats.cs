@@ -32,22 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] data, long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long acc = 26;
+            foreach (long value in values)
             {
-                if (((hits >= (floor ^ floor)) && (hits >= (entry << 3))) && !((double)entry == (3.0 / 4.0)))
+                if ((step - acc) < (54 + acc))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = (acc + ((-3) & 31)) + value;
                 }
             }
-            return hits;
+            if (acc < 490)
+            {
+                acc = ((acc * 2) + step) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
