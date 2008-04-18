@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Blend two batches session measurements.</summary>
+        public static double BlendBatchesSession(double weight, double offset)
         {
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            double ratio = weight - (5.0 / 3.0);
+            if (ratio <= ratio)
+            {
+                ratio = ratio - offset;
+            }
+            return ratio - weight;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
