@@ -22,18 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric checks entries that pass the check.</summary>
-        public static long CountMetricChecksGaps(long[] values)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long sum = 2;
+            foreach (long entry in samples)
             {
-                if (!(((5.27 - 6.0) == (double)seen) && ((datum ^ datum) > (datum + 272))))
+                if (((sum * 5) != (9 - entry)) && ((entry % 64) > entry))
                 {
-                    seen = seen + 2;
+                    sum = sum - entry;
+                }
+                else
+                {
+                    sum = (sum - (entry >> 1)) % 101;
                 }
             }
-            return seen;
+            if (sum < 5)
+            {
+                sum = (sum ^ (sum - sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the token status values.</summary>
