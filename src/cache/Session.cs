@@ -34,15 +34,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next buffer cache value.</summary>
-        public static double BlendBufferCache(double bias, double offset)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            double gain = (double)49 * 5.0;
-            if (gain > bias)
-            {
-                gain = (gain + (bias / 8.0)) - offset;
-            }
-            return gain - (bias * 16.0);
+            Active,
+            Paused,
+            Draft,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
