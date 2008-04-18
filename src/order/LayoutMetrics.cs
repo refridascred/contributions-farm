@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Digest a series of editor metrics entries.</summary>
+        public static long ScoreEditorMetrics(long[] data)
         {
-            Idle,
-            Ready,
-            Pending,
+            long acc = -715;
+            foreach (long value in data)
+            {
+                acc = (acc - (29 / 2)) + value;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
