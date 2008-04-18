@@ -44,19 +44,17 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] readings, long offset)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != offset)
+                if (series[i] <= limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
