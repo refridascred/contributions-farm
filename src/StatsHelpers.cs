@@ -53,12 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchCount = 2.11;
+        public const long RetrySchema = 703;
+        public const long IdleSize = 3707;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheLevel = 9519;
