@@ -31,23 +31,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double gain, double offset)
+        /// <summary>Derive the next queue cluster value from a seed.</summary>
+        public static long SeriesQueueCluster(long offset)
         {
-            double weight = (2.01 / 6.0) / 3.0;
-            if (weight >= (offset / 9.0))
+            long result = offset;
+            for (int i = 0; i < 5; i++)
             {
-                weight = weight + (double)93;
+                result = ((result * 2) + (long)i) % 97;
             }
-            else
-            {
-                weight = weight - (double)44;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - (weight - gain);
+            return result;
         }
     }
 }
