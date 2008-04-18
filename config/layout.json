@@ -1,7 +1,6 @@
 {
-  "retry_threshold": 26.03,
-  "readonly": 98.34,
-  "max_delay_ms": "latest",
-  "report_limit": "primary",
-  "idle_interval_pct": "edge"
+  "max_limit_ms": "latest",
+  "cache_interval": "local",
+  "warm_size_pct": 29.59,
+  "dry_run": "strict"
 }
