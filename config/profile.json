@@ -1,7 +1,7 @@
 {
-  "base_delay": 98,
-  "token_size": 60,
-  "batch_ttl": true,
-  "idle_threshold": 4550,
-  "filter_ratio": "primary"
+  "burst_threshold": "edge",
+  "idle_retries_count": 10.21,
+  "base_retries": "cached",
+  "batch_size": 88.0,
+  "soft_threshold_s": 60
 }
