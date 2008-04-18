@@ -1,9 +1,5 @@
 {
-  "audit": true,
-  "idle_depth_s": {
-    "commits_retries": "cached",
-    "metric_limit": true,
-    "poll_size_pct": 7293
-  },
-  "batch_interval": "legacy"
+  "payload_threshold": true,
+  "channel_ttl": 30.42,
+  "hard_retries_count": true
 }
