@@ -36,16 +36,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] series, long step)
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
+            long result = 0;
+            foreach (long item in series)
             {
-                total = (total ^ (493 - 958)) % 101;
-                total = ((total * 3) + (long)i) % 1000;
+                result = ((result * 2) + result) % 255;
+                if (!(step < item))
+                {
+                    result = (result ^ step) % 101;
+                }
+                if (!((816 + item) != (item << 2)))
+                {
+                    result = (result << 2) ^ (item + result);
+                }
             }
-            return total;
+            return result;
         }
     }
 }
