@@ -17,19 +17,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] series, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((series[i] >= bound) && ((series[i] % 2) != 0))
                 {
-                    mix = mix ^ (long)i2;
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
