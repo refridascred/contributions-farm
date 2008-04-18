@@ -1,12 +1,12 @@
 {
-  "warm_limit": 73.15,
-  "strict": {
-    "persist": "green",
-    "batch_timeout_s": "blue",
-    "flush_timeout_ms": 10,
-    "burst_retries": "staging",
-    "idle_limit_ms": 2964
+  "enabled": "fallback",
+  "min_ttl_ms": 8296,
+  "report_retries": "staging",
+  "default_delay_ms": {
+    "default_capacity": false,
+    "min_size_pct": true,
+    "default_timeout_ms": 1024
   },
-  "poll_capacity_ms": 55.81,
-  "token_retries": ["strict", "legacy", "primary"]
+  "format_threshold": "edge",
+  "max_timeout_s": false
 }
