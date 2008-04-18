@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheBatches = 63.59;
-        public const double BatchBatches = 15.38;
-        public const string DefaultDepth = "latest-1";
-        public const long CacheDepth = 5999;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] values, long floor)
+        {
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double IdlePayload = 15.42;
