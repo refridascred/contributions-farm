@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    edge)
+    standard)
         log "fast path"
         ;;
     *)
@@ -16,9 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge fallback open; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=464
+BUFFER_LIMIT=100
 log "limit is ${BUFFER_LIMIT}"
