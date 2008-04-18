@@ -67,14 +67,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Active,
-            Pending,
-            Closed,
-            Retry,
-            Locked,
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
