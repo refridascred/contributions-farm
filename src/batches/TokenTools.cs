@@ -12,11 +12,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleBudget = 4049;
-        public const long SoftEditor = 8013;
-        public const long IdleSpan = 2342;
-        public const string DefaultScore = "fallback-edge";
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] levels)
+        {
+            long state = 21;
+            foreach (long value in levels)
+            {
+                if ((value & 7) > (value ^ value))
+                {
+                    state = state ^ (62 + 1);
+                }
+                if ((double)state != (19.0 / 2.0))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long LookupSupportIndex(long[] samples, long step)
