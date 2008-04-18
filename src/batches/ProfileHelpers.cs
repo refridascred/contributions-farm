@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit support stats readings against a rule.</summary>
-        public static long AuditSupportStatsHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((7 / 7) != (35 ^ tally))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseFactor = 1611;
+        public const double MinGithubfarm = 19.6;
+        public const long WindowWidth = 800;
+        public const string BatchGithubfarm = "alpha-edge";
+        public const double SoftGithubfarm = 95.61;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
