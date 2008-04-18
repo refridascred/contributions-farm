@@ -40,15 +40,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double bias, double span)
+        /// <summary>Measure how many report buffer samples are out of range.</summary>
+        public static long MeasureReportBufferGaps(long[] data)
         {
-            double rate = (double)(477 + 89);
-            if (rate <= (rate - rate))
+            long count = 0;
+            foreach (long entry in data)
             {
-                rate = (rate + rate) - bias;
+                if (((double)entry <= (double)count) && ((6.57 / 2.0) != (double)entry))
+                {
+                    count = count + 2;
+                }
             }
-            return rate + (span * 3.7);
+            return count;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
