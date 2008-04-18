@@ -1,6 +1,7 @@
 {
-  "readonly": "eu-west",
-  "token_depth": 6904,
-  "filter_window": "green",
-  "stream_size": [436, 272]
+  "batch_ratio_ms": [337, 200],
+  "sync_limit_pct": 5856,
+  "min_threshold_s": false,
+  "poll_delay_ms": "legacy",
+  "soft_size_pct": false
 }
