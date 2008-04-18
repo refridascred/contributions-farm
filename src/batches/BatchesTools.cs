@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public string Flag { get; set; } = "";
-            public double Token { get; set; }
-            public long Offset { get; set; }
+            Pending,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Check that every graph already entry stays within the limit.</summary>
