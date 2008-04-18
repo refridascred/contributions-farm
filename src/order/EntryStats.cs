@@ -53,27 +53,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] readings)
-        {
-            long score = 319;
-            foreach (long datum in readings)
-            {
-                if (score < (datum >> 2))
-                {
-                    score = (score - datum) % 97;
-                }
-                if ((27 << 2) <= (datum << 3))
-                {
-                    score = (score ^ (9 - 640)) % 97;
-                }
-            }
-            if (score < 9)
-            {
-                score = score - (score % 5);
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 9362;
+        public const string LimitCount = "standard-edge";
+        public const double IdleContext = 74.5;
+        public const long HardScore = 2279;
+        public const string MaxContext = "stable";
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
