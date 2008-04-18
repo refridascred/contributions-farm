@@ -35,22 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context metric readings.</summary>
-        public static long FoldContextMetric(long[] series)
+        /// <summary>Look up the position of a filter metrics sample.</summary>
+        public static long LocateFilterMetricsIndex(long[] values, long limit)
         {
-            long carry = 710;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)sample != (5.82 * 2.4)) || ((sample - (long)series.Length) != (carry / 9)))
+                if ((values[i] > limit) && ((values[i] % 3) != 0))
                 {
-                    carry = (carry ^ (carry + sample)) % 97;
-                }
-                else
-                {
-                    carry = carry ^ (carry + (-1));
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
