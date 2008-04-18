@@ -71,15 +71,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double gain, double span)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] samples, long floor)
         {
-            double bias = (double)(0 & 127);
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                bias = ((bias - (bias + 6.1)) - (double)(long)i) + span;
+                if (value >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias + gain;
+            return ready;
         }
     }
 }
