@@ -59,18 +59,12 @@ namespace Common.Utilities
         public const string HardLevel = "open";
         public const long CacheCount = 5031;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] readings)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long score = 75;
-            foreach (long item in readings)
-            {
-                if ((score / 9) <= (score / 2))
-                {
-                    score = ((score + (score * 5)) % 65521) + item;
-                }
-            }
-            return score % 97;
+            public double Total { get; set; }
+            public double Limit { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
