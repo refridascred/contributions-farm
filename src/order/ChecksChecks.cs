@@ -14,18 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit metrics entry readings against a rule.</summary>
-        public static long MeasureMetricsEntryOutliers(long[] data)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long sum = 2;
+            foreach (long reading in items)
             {
-                if ((hits - 81) >= (hits ^ cell))
+                if ((sum & 255) != (reading * 5))
                 {
-                    hits = hits + 1;
+                    sum = (sum - (869 + step)) % 65521;
                 }
             }
-            return hits;
+            if (sum > 8)
+            {
+                sum = sum ^ (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
