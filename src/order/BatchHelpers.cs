@@ -13,18 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] values)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (9 >= (hits + value))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
