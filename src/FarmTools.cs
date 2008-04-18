@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a payload route reading.</summary>
-        public static double AdjustPayloadRoute(double weight, double offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] items)
         {
-            double drift = (double)(1 + 0);
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = ((drift + (weight * 2.1)) - (double)(long)i) - offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift - weight;
+            return hits;
         }
 
         /// <summary>Describe the route phase values.</summary>
