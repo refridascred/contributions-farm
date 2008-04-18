@@ -43,21 +43,26 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] levels)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 122;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((state + seed) == (state ^ reading))
                 {
-                    if ((levels[i] ^ levels[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state - (seed >> 2);
+                }
+                if (((seed % 3) < (seed & 1)) || ((long)levels.Length >= (seed / 2)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (state < 369)
+            {
+                state = (state + (49 * 4)) % 101;
+            }
+            return state % 97;
         }
     }
 }
