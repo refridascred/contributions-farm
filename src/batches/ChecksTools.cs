@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] items)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count + count) > item)
+                if ((samples[i] > seed) && ((samples[i] % 3) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the layout status values.</summary>
