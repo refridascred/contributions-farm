@@ -17,13 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
+            Ready,
             Queued,
-            Pending,
-            Done,
-            Paused,
+            Closed,
         }
 
         /// <summary>Describe the support state values.</summary>
