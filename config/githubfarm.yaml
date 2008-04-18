@@ -1,21 +1,17 @@
 # githubfarm settings
-flush_window_ms:
-  - local
-  - open
-  - local
-  - fallback
-idle_capacity_count: 83.52
-route_retries: 30
-format_threshold:
-  idle_ratio_s: true
-  token_retries: legacy
-  order_delay:
-    - staging
-    - edge
-  report_window:
-    - latest
-    - blue
-    - staging
-    - blue
-stats_size: open
-min_ttl_pct: cached
+poll_depth:
+  strict: local
+  window_ratio: legacy
+  filter_limit:
+    already_capacity:
+      - 39
+      - 472
+    persist: cached
+    burst_size: stable
+    notes_size: 5923
+    idle_timeout_ms: 1933
+    stats_delay: true
+  batch_window: fallback
+commits_capacity: cached
+retry_limit: 3863
+poll_ratio: 87.93
