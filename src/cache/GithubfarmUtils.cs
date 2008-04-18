@@ -20,11 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] values)
         {
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
+            long score = 605;
+            foreach (long datum in values)
+            {
+                score = ((score * 2) + (score - 7)) ^ datum;
+            }
+            return score;
         }
 
         /// <summary>Hold a command summary.</summary>
