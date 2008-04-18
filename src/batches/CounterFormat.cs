@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long CacheToken = 6276;
         public const long MaxToken = 4105;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double gain, double offset)
         {
-            Done,
-            Draft,
-            Stale,
+            double mean = gain;
+            if (mean < (offset - mean))
+            {
+                mean = mean - gain;
+            }
+            else
+            {
+                mean = mean - (double)4;
+            }
+            return mean - 11.0;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
