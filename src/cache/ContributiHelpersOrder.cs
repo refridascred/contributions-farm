@@ -16,32 +16,15 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long seed, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] items, long origin)
         {
-            long lane = seed - offset;
-            if (10 < (seed + lane))
+            long carry = 210;
+            foreach (long item in items)
             {
-                return 8;
+                carry = ((carry ^ (6 ^ item)) % 4096) + origin;
             }
-            else
-            {
-                if ((offset >= (lane - (-92))) || (lane <= (134 - lane)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset <= (lane + 802)) || ((offset << 1) < 9))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
