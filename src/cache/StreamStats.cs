@@ -51,12 +51,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Queued,
-            Locked,
-            Retry,
+            Closed,
+            Stale,
+            Ready,
             Done,
         }
     }
