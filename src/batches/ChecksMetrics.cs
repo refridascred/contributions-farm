@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the order channel entries that pass the check.</summary>
-        public static long TallyOrderChannelOutliers(long[] data)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((entry >> 1) != (hits % 16))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Retry,
+            Active,
+            Idle,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Digest a series of cache payload entries.</summary>
