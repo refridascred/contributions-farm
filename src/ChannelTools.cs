@@ -24,17 +24,14 @@ namespace Common.Utilities
         public const string BaseScore = "staging-v2";
         public const long WindowFactor = 557;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] readings, long floor)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Failed,
+            Retry,
+            Queued,
+            Ready,
         }
     }
 }
