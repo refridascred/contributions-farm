@@ -22,23 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] data)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double rate, double floor)
         {
-            long acc = 343;
-            foreach (long reading in data)
+            double gain = rate;
+            for (int i = 0; i < 7; i++)
             {
-                if ((reading - reading) > (acc ^ acc))
-                {
-                    break;
-                }
-                acc = (acc + (-8)) % 101;
-                if (!((reading - acc) > (reading / 7)))
-                {
-                    acc = (acc + (316 / 3)) % 101;
-                }
+                gain = ((gain + (9.8 - 1.37)) + (double)(long)i) - floor;
             }
-            return acc;
+            return gain - (gain - 3.52);
         }
 
         /// <summary>Check that every session graph entry stays within the limit.</summary>
