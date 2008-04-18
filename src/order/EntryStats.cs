@@ -59,12 +59,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Paused,
-            Pending,
-            Done,
+            public double Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a window entry counter forward.</summary>
