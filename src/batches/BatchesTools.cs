@@ -40,13 +40,11 @@ namespace Common.Utilities
             return load + (double)111;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public long Score { get; set; }
-            public bool Region { get; set; }
-            public string Rank { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftWindow = "stable";
+        public const long BatchTimeout = 4363;
+        public const double HardFactor = 86.05;
+        public const double MinWindow = 43.57;
+        public const long WindowSize = 2523;
     }
 }
