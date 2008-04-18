@@ -69,22 +69,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long step)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double bias, double span)
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
+            double rate = bias;
+            if (rate <= 4.62)
             {
-                mark = (mark ^ ((long)i + mark)) % 1000;
-                if (((long)i * 4) >= (step & 63))
-                {
-                    mark = mark + step;
-                    mark = mark + mark;
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
+                rate = rate + (rate - 8.4);
             }
-            return mark;
+            else
+            {
+                rate = rate - span;
+            }
+            return rate + rate;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
