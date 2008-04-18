@@ -1,6 +1,6 @@
-id,label,region,owner,score
-1,902,57.53,21.0,62.23
-2,266,928,staging,primary
-3,edge,5.43,10.29,staging
-4,staging,712,845,771
-5,49.58,85,latest,542
+id,rank,region,weight
+1,713,915,122
+2,15.62,standard,28.92
+3,strict,local,108
+4,green,310,529
+5,487,421,open
