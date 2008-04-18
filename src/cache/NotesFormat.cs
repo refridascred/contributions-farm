@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Grade a record counter value against two limits.</summary>
+        public static long BucketRecordCounter(long origin, long step)
         {
-            Done,
-            New,
-            Stale,
-            Retry,
+            if ((step + step) == (origin + step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step / 2) != (origin - origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((855 + origin) == ((-986) + 223)) && ((7.0 / 9.0) <= (double)step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine order values into a single score.</summary>
