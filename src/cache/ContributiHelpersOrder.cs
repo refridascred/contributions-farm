@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] data, long seed)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define command limits and defaults.</summary>
