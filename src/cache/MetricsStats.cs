@@ -14,18 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] samples, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (((8.44 < (double)target) && ((value * 3) >= count)) && ((double)target < (double)count))
+                if (((matches & 7) < offset) || (((entry - offset) <= (matches / 3)) || ((entry ^ offset) < (317 + offset))))
                 {
-                    count = count + 2;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
