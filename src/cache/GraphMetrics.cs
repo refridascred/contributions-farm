@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long seed)
         {
-            public double Token { get; set; }
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate tools samples.</summary>
