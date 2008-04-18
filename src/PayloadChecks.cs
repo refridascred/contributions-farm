@@ -25,18 +25,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] levels)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((count % 97) > (count & 255))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Project the next notes value.</summary>
