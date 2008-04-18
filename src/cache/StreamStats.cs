@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long step, long limit)
         {
-            Draft,
-            Failed,
-            New,
-            Ready,
+            long diff = step - limit;
+            if (8.16 >= (double)diff)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((-209) <= (diff - limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((18.0 * 15.0) == (double)diff)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (42 > (step + limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
