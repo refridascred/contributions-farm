@@ -57,18 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] items, long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long mix = 8;
+            foreach (long reading in series)
             {
-                if ((seen % 3) == (seen - step))
+                if ((reading + reading) == (mix + mix))
                 {
-                    seen = (seen + 3) + reading;
+                    mix = mix ^ (reading / 3);
                 }
             }
-            return seen;
+            return mix % 1000;
         }
     }
 }
