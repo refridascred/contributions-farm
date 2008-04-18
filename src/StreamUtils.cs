@@ -60,9 +60,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardLevel = "standard";
-        public const double BatchRatio = 83.32;
-        public const long CacheMetrics = 9286;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Ready,
+            Stale,
+            Closed,
+            Pending,
+        }
     }
 }
