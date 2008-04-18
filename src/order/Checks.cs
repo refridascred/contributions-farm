@@ -61,13 +61,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public double Token { get; set; }
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
+            Active,
+            Pending,
+            Dropped,
         }
     }
 }
