@@ -67,15 +67,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate profile cluster samples.</summary>
-        public static long TallyProfileCluster(long[] items)
-        {
-            long total = 223;
-            foreach (long sample in items)
-            {
-                total = (total + (total & 3)) - sample;
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchSize = 9436;
+        public const double BurstInterval = 22.91;
+        public const long DefaultStats = 8369;
     }
 }
