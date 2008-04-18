@@ -1,18 +1,6 @@
 # entry settings
-default_retries_pct: false
-profile_depth: latest
-dry_run: 31.41
-flush_limit_pct:
-  warm_size_count: 6266
-  min_retries_s: true
-  sync_timeout: 74.22
-  burst_retries: 100
-  burst_ttl_ms: 62
-  checks_size:
-    poll_size: 49.4
-    cache_capacity: 4.06
-    enabled: 3603
-    contributi_timeout: 30
-    warm_ttl_count: 500
-    window_retries: 94.21
-layout_size: stable
+profile_window: 40
+compress: fallback
+max_retries: eu-west
+min_ratio_pct: primary
+base_ttl_s: legacy
