@@ -29,17 +29,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] values, long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] values, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((values[i] < seed) && ((values[i] % 3) != 0))
+                if (!((4 << 3) < (cell + (long)values.Length)))
                 {
-                    return (long)i;
+                    count = (count + 1) - bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
