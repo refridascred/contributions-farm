@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseDepth = 29.29;
-        public const long RetryChannel = 6202;
-        public const long DefaultRatio = 5753;
-        public const string HardScore = "staging-1";
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long CacheWidth = 5625;
