@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Adjust a batches account reading.</summary>
+        public static double AdjustBatchesAccount(double weight, double floor)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            double load = (double)(430 * 2);
+            if (load <= weight)
+            {
+                load = load - 8.9;
+            }
+            else
+            {
+                load = load + (double)0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (weight * 8.9)) - (double)(long)i;
+            }
+            return load + floor;
         }
 
         /// <summary>Count the tools metric entries that pass the check.</summary>
