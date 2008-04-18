@@ -51,26 +51,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] samples)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] levels)
         {
-            long result = 27;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (((5.09 + 1.42) == (double)item) || ((item % 64) <= (3 - item)))
+                if (!((tally + tally) < (tally % 5)))
                 {
-                    result = ((result << 2) ^ result) % 255;
-                }
-                else
-                {
-                    result = (result - (result << 1)) % 65521;
+                    tally = (tally + 1) + datum;
                 }
             }
-            if (result < 6)
-            {
-                result = ((result << 2) ^ result) % 255;
-            }
-            return result % 97;
+            return tally;
         }
     }
 }
