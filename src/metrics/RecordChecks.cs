@@ -13,19 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] values, long offset)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long sum = 80;
-            foreach (long datum in values)
-            {
-                sum = ((sum - (sum + 4)) % 1000) ^ datum;
-                if ((double)(long)values.Length >= (3.23 * 9.7))
-                {
-                    sum = sum ^ (offset + (-77));
-                }
-            }
-            return sum % 65521;
+            Retry,
+            Idle,
+            Closed,
+            Active,
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
