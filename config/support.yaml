@@ -1,7 +1,9 @@
 # support settings
-base_retries: open
-soft_ratio_pct: green
-report_ratio: 2.12
-strict: 60
-burst_capacity_ms: true
-dry_run: 82.42
+idle_interval_count: false
+flush_capacity_pct:
+  - eu-west
+  - strict
+audit: 100
+dry_run: 500
+session_delay: true
+verbose: true
