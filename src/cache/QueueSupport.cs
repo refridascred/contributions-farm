@@ -23,9 +23,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinTimeout = 63;
-        public const double SoftSize = 14.65;
-        public const long BatchEntry = 7283;
+        /// <summary>Check that every command counter entry stays within the limit.</summary>
+        public static bool VerifyCommandCounterBounds(long[] readings, long floor)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
