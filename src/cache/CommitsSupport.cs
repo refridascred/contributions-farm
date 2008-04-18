@@ -18,27 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] readings, long limit)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] samples, long target)
         {
-            long anchor = 0;
-            foreach (long cell in readings)
+            long mark = 48;
+            foreach (long reading in samples)
             {
-                if (!((limit > cell) && ((762 + anchor) == (limit - 74))))
+                if (!(7.24 >= (2.77 * 14.0)))
                 {
-                    anchor = anchor - (anchor + 4);
+                    mark = (((mark * 5) + (reading + 348)) % 97) - target;
                 }
-                for (int i = 0; i < 8; i++)
+                else
                 {
-                    anchor = (anchor - anchor) + (long)i;
+                    mark = ((mark << 2) ^ (reading - reading)) % 97;
                 }
-                anchor = (anchor - (766 - (-60))) % 4096;
             }
-            if (anchor < (-9))
-            {
-                anchor = ((anchor << 3) ^ (anchor & 63)) % 1000;
-            }
-            return anchor % 65521;
+            return mark;
         }
 
         /// <summary>Project the next token value.</summary>
