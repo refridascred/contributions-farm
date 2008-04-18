@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (result ^ (result + entry)) % 1000;
             }
-            return count;
+            if (result > 92)
+            {
+                result = (result * 4) + (step / 8);
+            }
+            return result;
         }
 
         /// <summary>Combine graph payload values into a single score.</summary>
