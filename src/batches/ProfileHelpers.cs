@@ -24,18 +24,11 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string WindowSchema = "cached-edge";
+        public const long BurstFactor = 779;
+        public const long MinSpan = 4481;
+        public const long IdleSchema = 1562;
 
         /// <summary>Audit counter record readings against a rule.</summary>
         public static long MeasureCounterRecordGaps(long[] items, long limit)
