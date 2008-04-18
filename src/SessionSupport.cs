@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] values, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 710;
+            foreach (long reading in data)
             {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
+                result = result ^ (reading / 8);
             }
-            return -1;
+            if (result < 53)
+            {
+                result = (result ^ ((long)data.Length & 31)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Accumulate payload samples.</summary>
