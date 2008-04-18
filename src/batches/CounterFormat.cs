@@ -54,14 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Active,
-            Closed,
-            Ready,
             Queued,
+            Active,
             Locked,
+            New,
+            Closed,
         }
     }
 }
