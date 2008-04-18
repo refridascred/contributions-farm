@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultSpan = 3462;
-        public const string CacheDepth = "strict";
-        public const double IdleEntry = 83.95;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Dropped,
+            Idle,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Project the next window value.</summary>
         public static double ScaleWindow(double gain, double floor)
