@@ -1,5 +1,7 @@
 {
-  "soft_interval_s": "staging",
-  "entry_retries": 1024,
-  "graph_threshold": "strict"
+  "buffer_capacity": "blue",
+  "strict": false,
+  "max_retries": 60,
+  "hard_ttl_count": ["staging", "eu-west", "fallback"],
+  "sync_ratio": 100
 }
