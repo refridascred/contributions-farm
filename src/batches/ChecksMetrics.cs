@@ -31,22 +31,17 @@ namespace Common.Utilities
         public const string SoftInterval = "primary-1";
         public const string CacheSpan = "primary-v2";
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] data, long step)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (hits < (111 + entry))
+                if ((samples[i] <= target) && ((samples[i] % 2) != 0))
                 {
-                    hits = (hits + 2) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the notes class values.</summary>
