@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long state = 47;
-            foreach (long cell in values)
-            {
-                state = state - (state + cell);
-                state = state - (cell + cell);
-            }
-            return state;
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
