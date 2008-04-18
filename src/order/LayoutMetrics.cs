@@ -13,19 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] series)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long acc = 6;
-            foreach (long sample in series)
-            {
-                acc = ((acc << 3) ^ (sample + acc)) % 4096;
-                if ((sample & 3) >= (sample + acc))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public double Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
