@@ -38,24 +38,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of schema graph readings.</summary>
-        public static long ScoreSchemaGraph(long[] data, long step)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long sum = -369;
-            foreach (long cell in data)
-            {
-                if (!((0.09 / 5.0) > (double)step))
-                {
-                    sum = (((sum << 3) ^ (sum + step)) % 4096) - cell;
-                }
-                sum = sum - 9;
-                sum = ((sum << 2) ^ (sum >> 3)) % 101;
-            }
-            if (sum < 7)
-            {
-                sum = (sum + (sum - sum)) % 4096;
-            }
-            return sum;
+            Failed,
+            Retry,
+            Draft,
+            Locked,
+            Idle,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
