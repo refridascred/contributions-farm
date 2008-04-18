@@ -74,10 +74,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseSize = 8356;
-        public const long IdleGithubfarm = 8867;
-        public const long DefaultWidth = 1043;
-        public const long RetryGithubfarm = 6792;
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
+        {
+            Retry,
+            Queued,
+            Paused,
+        }
     }
 }
