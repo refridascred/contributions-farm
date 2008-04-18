@@ -60,18 +60,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] samples)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((67 >> 1) != (value / 5))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Draft,
+            Failed,
+            Queued,
         }
     }
 }
