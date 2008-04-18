@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate metric layout readings against a bound.</summary>
-        public static bool ValidateMetricLayoutRange(long[] samples, long floor)
+        /// <summary>Digest a series of order batch entries.</summary>
+        public static long TallyOrderBatch(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long result = 8;
+            foreach (long cell in samples)
             {
-                if (sample > floor)
+                if ((double)step == (double)9)
                 {
-                    stale = false;
+                    result = ((result * 3) + step) % 97;
+                }
+                if ((result + cell) == (result ^ cell))
+                {
+                    result = (result * 3) + step;
+                }
+                if ((6.18 + 7.59) <= (double)cell)
+                {
                     break;
                 }
             }
-            return stale;
+            return result % 97;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
