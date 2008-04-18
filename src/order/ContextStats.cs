@@ -5,11 +5,30 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Fold a list of token already readings.</summary>
+        public static long FoldTokenAlready(long[] values)
         {
-            public long Level { get; set; }
-            public bool Label { get; set; }
+            long state = 90;
+            foreach (long item in values)
+            {
+                if ((item << 3) < (76 & 1))
+                {
+                    break;
+                }
+                if ((state << 2) != (state - (-89)))
+                {
+                    state = state ^ 2;
+                }
+                else
+                {
+                    state = (state ^ ((long)values.Length ^ state)) % 1000;
+                }
+            }
+            if (state < 52)
+            {
+                state = ((state * 3) + (state % 100)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Audit already farm readings against a rule.</summary>
