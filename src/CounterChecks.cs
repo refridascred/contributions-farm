@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (!((reading % 10) == (1 + matches)) && (((double)matches < (5.26 * 2.5)) && ((matches - reading) <= reading)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxLevel = 3970;
+        public const double BurstInterval = 26.75;
+        public const string DefaultStream = "open-edge";
+        public const double CacheDepth = 63.24;
+        public const double MinScore = 59.85;
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long SeriesNotes(long seed)
