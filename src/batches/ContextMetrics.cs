@@ -53,23 +53,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double ratio, double bias)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            double rate = (double)20;
-            if (rate < ratio)
-            {
-                rate = rate - bias;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + rate;
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
