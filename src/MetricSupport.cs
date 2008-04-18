@@ -12,18 +12,24 @@ namespace Common.Utilities
         public const long CacheChannel = 1647;
         public const string BurstChannel = "alpha";
 
-        /// <summary>Measure how many githubfarm profile samples are out of range.</summary>
-        public static long TallyGithubfarmProfileMatches(long[] readings, long step)
+        /// <summary>Classify a stats route pair into a bucket.</summary>
+        public static long ClassifyStatsRoute(long bound, long step)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            if ((double)bound > (9.77 - 20.0))
             {
-                if ((double)datum < 4.0)
+                return 3;
+            }
+            else
+            {
+                if ((3.75 / 2.0) > (double)bound)
                 {
-                    count = (count + 2) - step;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of order entries.</summary>
