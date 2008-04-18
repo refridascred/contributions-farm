@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] levels)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long acc = 650;
-            foreach (long cell in levels)
-            {
-                acc = ((acc * 3) + (acc >> 2)) - cell;
-            }
-            if (acc > 87)
-            {
-                acc = (acc ^ (long)levels.Length) % 97;
-            }
-            return acc;
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
