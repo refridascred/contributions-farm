@@ -1,9 +1,7 @@
 {
-  "flush_timeout_s": "local",
-  "session_limit": "local",
-  "profile_ratio": {
-    "audit": 3387,
-    "poll_depth_s": "standard",
-    "retry_window_ms": 92
-  }
+  "githubfarm_window": false,
+  "base_capacity": "fallback",
+  "retry_capacity": "legacy",
+  "context_ttl": "fallback",
+  "cache_threshold_s": "local"
 }
