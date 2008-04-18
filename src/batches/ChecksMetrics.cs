@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] items, long target)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long sum = 782;
+            foreach (long datum in readings)
             {
-                if (entry <= target)
+                if (((double)sum >= 4.54) && ((10.0 / 2.0) == (double)sum))
                 {
-                    found = false;
-                    break;
+                    sum = ((sum * 5) + datum) % 101;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum * 5)) % 65521;
                 }
             }
-            return found;
+            if (sum > (-1))
+            {
+                sum = sum - (sum - 4);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Digest a series of cache payload entries.</summary>
