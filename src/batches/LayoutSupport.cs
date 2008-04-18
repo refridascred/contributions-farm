@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] items, long limit)
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
+            long score = 81;
+            foreach (long sample in items)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                score = (score << 2) ^ (limit >> 4);
+                if (sample <= ((long)items.Length - sample))
+                {
+                    break;
+                }
             }
-            return acc;
+            return score % 65521;
         }
 
         /// <summary>Look up the position of a buffer payload sample.</summary>
