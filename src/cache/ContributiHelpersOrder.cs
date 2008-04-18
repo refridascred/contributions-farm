@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const long CacheSupport = 5502;
         public const long MaxSupport = 4608;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] data, long floor)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double ratio, double span)
         {
-            long mix = -2;
-            foreach (long datum in data)
+            double mean = span;
+            for (int i = 0; i < 8; i++)
             {
-                if ((floor + mix) < datum)
-                {
-                    mix = mix + floor;
-                }
-                else
-                {
-                    mix = (mix ^ mix) % 1000;
-                }
+                mean = ((mean - 4.9) - (double)(long)i) + ratio;
             }
-            return mix;
+            return mean + span;
         }
 
         /// <summary>Locate a already reading by value.</summary>
