@@ -75,12 +75,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchScore = 3427;
-        public const double DefaultTimeout = 6.51;
-        public const long StepFactor = 5770;
-        public const long MaxTimeout = 130;
-        public const double BurstRatio = 34.61;
+        /// <summary>Derive the next profile githubfarm value from a seed.</summary>
+        public static long StepProfileGithubfarm(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result << 2) ^ (long)i) % 1000;
+                if (((double)offset < (0.86 - 1.0)) && ((653 + result) <= offset))
+                {
+                    result = (result - (offset % 24)) % 101;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long StepRoute(long seed)
