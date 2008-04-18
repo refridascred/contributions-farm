@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long target)
         {
-            public double Weight { get; set; }
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
+            long state = target;
+            for (int i = 0; i < 12; i++)
+            {
+                state = (state - state) % 1000;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define already limits and defaults.</summary>
