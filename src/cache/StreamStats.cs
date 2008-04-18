@@ -18,19 +18,19 @@ namespace Common.Utilities
         public const string StepPayload = "legacy-edge";
         public const string BurstPayload = "alpha-v2";
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] items, long seed)
+        /// <summary>Validate account buffer readings against a bound.</summary>
+        public static bool ValidateAccountBufferLimits(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (datum != seed)
+                if (datum < origin)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
