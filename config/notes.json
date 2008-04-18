@@ -1,6 +1,8 @@
 {
-  "window_ratio": "primary",
-  "strict": "standard",
-  "format_limit": "eu-west",
-  "max_interval_count": ["cached", "cached", "open"]
+  "strict": 15.79,
+  "idle_window_count": 7175,
+  "metric_ratio": "green",
+  "warm_retries_ms": false,
+  "hard_capacity_ms": "stable",
+  "retry_interval": true
 }
