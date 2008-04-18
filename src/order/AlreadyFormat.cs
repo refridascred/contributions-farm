@@ -20,12 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long floor, long floor2)
         {
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
+            if ((floor2 * 2) > floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)floor > (6.92 / 9.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
