@@ -66,15 +66,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double ratio, double bias)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double bias2 = (double)(949 % 2);
-            if (bias2 > bias)
-            {
-                bias2 = (bias2 + 1.67) - ratio;
-            }
-            return bias2 - (bias + 5.0);
+            Dropped,
+            Draft,
+            Ready,
+            Queued,
+            Active,
         }
     }
 }
