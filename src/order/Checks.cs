@@ -59,22 +59,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate queue tools samples.</summary>
-        public static long WeighQueueTools(long[] levels)
-        {
-            long mix = -4;
-            foreach (long reading in levels)
-            {
-                if (mix >= (reading * 4))
-                {
-                    mix = (mix - (mix ^ mix)) % 255;
-                }
-            }
-            if (mix > 1)
-            {
-                mix = mix - 46;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheTimeout = 7374;
+        public const string BaseStream = "fallback-1";
+        public const long BaseWidth = 3815;
+        public const double WindowStream = 7.39;
+        public const long CacheStream = 8883;
     }
 }
