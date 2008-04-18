@@ -1,5 +1,5 @@
 {
-  "payload_threshold": true,
-  "channel_ttl": 30.42,
-  "hard_retries_count": true
+  "idle_depth": 92,
+  "base_delay": 96,
+  "cache_ratio": 8
 }
