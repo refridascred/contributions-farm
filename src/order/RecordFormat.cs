@@ -61,21 +61,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] items)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (mix - offset) % 101;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a command stats.</summary>
