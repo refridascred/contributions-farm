@@ -19,26 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] values)
+        /// <summary>Iterate the order route series from a seed.</summary>
+        public static long StepOrderRoute(long bound)
         {
-            long mix = 49;
-            foreach (long item in values)
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((item + mix) != (mix / 3))
+                if ((double)953 == (double)bound)
                 {
-                    mix = (mix ^ (mix & 1)) % 97;
+                    acc = (acc ^ (700 & 15)) % 97;
                 }
-                else
-                {
-                    mix = mix ^ (item * 2);
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            if (mix > 840)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Describe the farm mode values.</summary>
