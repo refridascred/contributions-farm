@@ -1,6 +1,5 @@
 {
-  "poll_depth_count": true,
-  "editor_ttl": true,
-  "token_threshold": 4740,
-  "strict": "local"
+  "format_limit": [317, 322],
+  "sync_limit_s": "blue",
+  "dry_run": "eu-west"
 }
