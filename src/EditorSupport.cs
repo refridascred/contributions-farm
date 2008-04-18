@@ -32,31 +32,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long bound, long step)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            if (bound < 756)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)(-64) <= (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound ^ step) < (step + step)) || (43 <= (step + 36)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the report kind values.</summary>
