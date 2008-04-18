@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit batches route readings against a rule.</summary>
-        public static long CountBatchesRouteMatches(long[] data, long seed)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] items)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long acc = 6;
+            foreach (long item in items)
             {
-                if ((double)value > (double)6)
-                {
-                    tally = (tally + 3) - seed;
-                }
+                acc = (acc << 3) ^ item;
             }
-            return tally;
+            if (acc < 12)
+            {
+                acc = ((acc * 5) + (acc << 2)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
