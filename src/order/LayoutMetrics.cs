@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] levels, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long carry = 4;
+            foreach (long cell in items)
             {
-                if (cell >= step)
+                carry = carry + (carry + carry);
+                carry = (carry + (carry + floor)) % 101;
+                carry = (carry + carry) % 1000;
+                if (floor >= (carry + cell))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
