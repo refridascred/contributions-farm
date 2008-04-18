@@ -22,11 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 2191;
-        public const long MaxChecks = 3414;
-        public const long BatchChecks = 4197;
-        public const double IdleChecks = 38.62;
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool CheckFarmBounds(long[] readings, long bound)
