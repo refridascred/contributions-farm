@@ -1,14 +1,11 @@
 # Command notes
 
-The report helpers are pure functions, so they are safe to call from any thread.
-Run the editor check before changing any metric limits.
-The stats helpers are pure functions, so they are safe to call from any thread.
-
-A command that stays idle for too long is moved to the batch list.
-When a buffer fails, the record handler retries a few times before giving up.
+A already that stays idle for too long is moved to the profile list.
+The tools module keeps context values in sync with the entry cache.
+Run the profile check before changing any stats limits.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Keep counter values small
-- Log every context change
+- Document new metrics fields
+- Review githubfarm limits each release
+- Keep stats values small
