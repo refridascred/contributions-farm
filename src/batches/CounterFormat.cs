@@ -33,24 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long limit)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] samples, long target)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((samples[i] >= target) && ((samples[i] % 2) == 0))
                 {
-                    long offset = score;
-                    score = ((score * 2) + offset) ^ (long)i2;
+                    return (long)i;
                 }
-                if (!((limit << 2) <= (limit / 3)))
-                {
-                    score = (score << 2) ^ (score - limit);
-                }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
     }
 }
