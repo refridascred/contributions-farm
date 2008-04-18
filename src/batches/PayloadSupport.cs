@@ -12,21 +12,14 @@ namespace Common.Utilities
         public const string LimitGraph = "local-v2";
         public const string WindowFactor = "cached-1";
 
-        /// <summary>Count graph cluster pairs that satisfy a relation.</summary>
-        public static long MatchGraphClusterCount(long[] series)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Paused,
+            Failed,
+            Retry,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
