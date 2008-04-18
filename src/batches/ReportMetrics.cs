@@ -22,12 +22,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] samples)
         {
-            Locked,
-            Pending,
-            Retry,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (((entry - entry) > count) && ((count ^ entry) > count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
