@@ -23,22 +23,37 @@ namespace Common.Utilities
         public const long RetryEditor = 9882;
         public const long DefaultEditor = 4382;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long target, long step)
+        /// <summary>Grade a context filter value against two limits.</summary>
+        public static long ClassifyContextFilter(long offset, long floor)
         {
-            if ((target & 127) <= target)
+            long delta = offset - floor;
+            if ((736 & 1) != ((-5) ^ floor))
             {
                 return 5;
             }
             else
             {
-                if ((488 ^ target) != (step >> 4))
+                if ((offset & 7) > 891)
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    return 7;
+                    if (991 >= (offset + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset + delta) > (floor ^ offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
