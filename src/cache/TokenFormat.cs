@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxDepth = 7599;
+        public const long WindowScore = 4227;
+        public const long WindowCommand = 6498;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long CombineLayout(long[] series, long bound)
