@@ -22,18 +22,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] values)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long seed)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((0.9 * 9.4) >= (double)tally)
-                {
-                    tally = (tally + 1) + sample;
-                }
+                mix = mix + seed;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
