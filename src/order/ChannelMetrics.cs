@@ -67,24 +67,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] data, long floor)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] levels)
         {
-            long mix = 88;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = mix ^ (6 - value);
-                mix = ((mix * 4) + floor) % 1000;
-                if (value >= (floor & 255))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] - levels[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix < 842)
-            {
-                mix = ((mix * 3) + 117) % 101;
-            }
-            return mix % 65521;
+            return count;
         }
     }
 }
