@@ -32,15 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] items)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long sum = 6;
-            foreach (long reading in items)
-            {
-                sum = sum - (sum - reading);
-            }
-            return sum;
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
