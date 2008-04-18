@@ -33,10 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardLevel = 3048;
-        public const string WindowSpan = "legacy";
-        public const long BaseFilter = 8425;
-        public const long IdleFilter = 1930;
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
