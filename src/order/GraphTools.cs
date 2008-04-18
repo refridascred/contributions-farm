@@ -53,14 +53,19 @@ namespace Common.Utilities
             return mean - (double)8;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] series, long target)
         {
-            Done,
-            Paused,
-            Pending,
-            Draft,
-            Synced,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the farm mode values.</summary>
