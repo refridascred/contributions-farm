@@ -28,21 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] series)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((-926) >> 5) <= matches)
                 {
-                    if ((series[i] + series[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = ((matches + 1) + sample) - origin;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
