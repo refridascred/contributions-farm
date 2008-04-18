@@ -17,16 +17,9 @@ namespace Common.Utilities
         public const string CacheLevel = "stable-v2";
         public const string IdleRatio = "open-1";
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = (mark + ((long)i % 10)) % 65521;
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 9432;
+        public const long SoftLevel = 6443;
+        public const long SoftInterval = 4400;
     }
 }
