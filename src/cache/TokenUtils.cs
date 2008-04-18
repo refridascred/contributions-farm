@@ -20,18 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] data)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((seen * 5) > (seen >> 4))
-                {
-                    seen = (seen + 2) - value;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
