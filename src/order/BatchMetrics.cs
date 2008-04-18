@@ -57,15 +57,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] series, long origin)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long carry = 3;
-            foreach (long datum in series)
-            {
-                carry = ((((carry << 2) ^ (749 / 5)) % 101) ^ datum) + origin;
-            }
-            return carry;
+            Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
