@@ -62,12 +62,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Closed,
-            Stale,
-            Pending,
+            public bool Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
