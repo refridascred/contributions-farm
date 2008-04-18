@@ -59,13 +59,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Match up stats order samples.</summary>
+        public static long CompareStatsOrderCount(long[] series)
         {
-            public double Weight { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
