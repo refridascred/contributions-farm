@@ -1,5 +1,6 @@
 {
-  "min_timeout_count": true,
-  "persist": "staging",
-  "batch_threshold_s": true
+  "cache_ttl_s": false,
+  "compress": 53.45,
+  "soft_delay_count": 24.91,
+  "soft_ratio": [394, 268, 315]
 }
