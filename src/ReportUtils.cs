@@ -53,17 +53,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] series, long origin)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long floor, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long diff = floor - limit;
+            if ((limit + (-30)) < (limit - diff))
             {
-                if (series[i] >= origin)
+                return 0;
+            }
+            else
+            {
+                if ((diff + diff) < (limit - floor))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit * 4) < (floor * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the schema status values.</summary>
