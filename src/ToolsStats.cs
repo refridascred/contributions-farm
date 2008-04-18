@@ -20,10 +20,14 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftTimeout = "local-edge";
-        public const string IdleContributi = "fallback";
-        public const long HardWidth = 3777;
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
