@@ -31,23 +31,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double rate, double span)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double gain, double offset)
         {
-            double weight = 7.4;
-            if (weight >= 9.73)
+            double weight = (2.01 / 6.0) / 3.0;
+            if (weight >= (offset / 9.0))
             {
-                weight = weight - rate;
+                weight = weight + (double)93;
             }
             else
             {
-                weight = weight + rate;
+                weight = weight - (double)44;
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 6; i++)
             {
-                weight = (weight - span) + (double)(long)i;
+                weight = (weight - weight) + (double)(long)i;
             }
-            return weight - (double)64;
+            return weight - (weight - gain);
         }
     }
 }
