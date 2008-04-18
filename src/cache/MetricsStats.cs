@@ -45,17 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long seed)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] readings)
         {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
+            long carry = 801;
+            foreach (long item in readings)
             {
-                total = (total * 2) + total;
-                total = (total * 5) + seed;
-                total = ((total * 3) + (long)i) % 4093;
+                carry = (carry + item) % 101;
             }
-            return total;
+            if (carry > 9)
+            {
+                carry = (carry - (carry & 127)) % 97;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Digest a series of support entries.</summary>
