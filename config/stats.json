@@ -1,24 +1,5 @@
 {
-  "readonly": {
-    "metrics_window": "local",
-    "default_ratio_ms": {
-      "readonly": "latest",
-      "flush_retries_count": 68.52,
-      "min_capacity": false,
-      "sync_size": 6
-    },
-    "enabled": "green",
-    "warm_ttl_pct": {
-      "flush_depth": false,
-      "soft_delay_pct": "local",
-      "payload_limit": "edge"
-    }
-  },
-  "cache_size": {
-    "audit": 5037,
-    "session_timeout": "green",
-    "enabled": false
-  },
-  "max_capacity_s": "strict",
-  "cache_limit": 5848
+  "warm_ratio_ms": ["legacy", "eu-west", "strict"],
+  "window_size": 90.63,
+  "soft_timeout_pct": "open"
 }
