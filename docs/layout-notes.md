@@ -1,11 +1,12 @@
 # Layout notes
 
-A command that stays idle for too long is moved to the commits list.
-When a booking fails, the cache handler retries a few times before giving up.
-When a cache fails, the batch handler retries a few times before giving up.
+Use githubfarm settings to tune how often entry data is refreshed.
+The channel report groups every format by batches.
+When a checks fails, the graph handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review support limits each release
-- Document new booking fields
-- Log every checks change
+- Log every batches change
+- Review buffer limits each release
+- Prefer metric defaults
+- Document new channel fields
