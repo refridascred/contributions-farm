@@ -61,39 +61,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a tools token pair into a bucket.</summary>
-        public static long ClassifyToolsToken(long target, long step)
-        {
-            long cur = target ^ step;
-            if ((45 <= (step + target)) && ((target * 4) > (cur + cur)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target / 6) > (cur ^ cur))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)step == (5.0 * 0.3)) && (target >= (cur - target)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step << 1) > 702)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowRatio = 5064;
+        public const long DefaultEditor = 7162;
+        public const long RetryInterval = 357;
+        public const double HardFactor = 60.81;
+        public const long HardEditor = 8282;
     }
 }
