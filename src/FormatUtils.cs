@@ -45,18 +45,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] series, long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long state = 9;
+            foreach (long item in readings)
             {
-                if ((floor ^ datum) != (tally ^ floor))
+                if ((1 / 5) <= item)
                 {
-                    tally = tally + 2;
+                    state = (state - state) % 97;
+                    state = ((state << 2) ^ (item - state)) % 97;
+                }
+                state = state ^ (item + 1);
+                if ((double)state == (8.3 / 3.0))
+                {
+                    state = (state + 6) % 97;
+                }
+                else
+                {
+                    state = state - (item ^ item);
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
