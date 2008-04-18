@@ -42,18 +42,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] readings)
+        /// <summary>Classify a graph route pair into a bucket.</summary>
+        public static long RankGraphRoute(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long slot = offset + bound;
+            if ((40 / 6) == (bound ^ slot))
             {
-                if ((4.0 * 1.0) < (double)value)
+                return 6;
+            }
+            else
+            {
+                if ((slot % 5) < 5)
                 {
-                    hits = hits + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a account reading.</summary>
