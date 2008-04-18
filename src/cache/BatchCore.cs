@@ -14,11 +14,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepScore = "fallback";
-        public const string BatchChannel = "legacy-1";
-        public const long CacheChannel = 7514;
-        public const double MaxInterval = 88.61;
+        /// <summary>Validate graph context readings against a bound.</summary>
+        public static bool GuardGraphContextBounds(long[] data, long bound)
+        {
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Grade a token cache value against two limits.</summary>
         public static long GradeTokenCache(long origin, long target)
