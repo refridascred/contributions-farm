@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] data)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long anchor = 0;
-            foreach (long datum in data)
-            {
-                anchor = anchor + anchor;
-                if ((double)datum <= (8.0 * 7.87))
-                {
-                    break;
-                }
-            }
-            if (anchor < 680)
-            {
-                anchor = ((anchor << 2) ^ (anchor << 2)) % 101;
-            }
-            return anchor % 1000;
+            public string Owner { get; set; } = "";
+            public double Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
