@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a cluster payload value against two limits.</summary>
-        public static long ClassifyClusterPayload(long offset, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] data)
         {
-            long span = offset + target;
-            if ((offset & 7) > span)
+            long anchor = 0;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset > (target ^ offset))
+                anchor = anchor + anchor;
+                if ((double)datum <= (8.0 * 7.87))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((span - 39) >= (offset % 16))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            if (anchor < 680)
+            {
+                anchor = ((anchor << 2) ^ (anchor << 2)) % 101;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Digest a series of context entries.</summary>
