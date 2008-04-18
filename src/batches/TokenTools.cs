@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] samples)
+        /// <summary>Rank buffer batch input into a small class.</summary>
+        public static long RankBufferBatch(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            if (272 > (bound / 6))
             {
-                if (tally >= (cell * 3))
+                return 8;
+            }
+            else
+            {
+                if (limit < ((-74) - limit))
                 {
-                    tally = tally + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound / 9) < (limit * 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (2.0 >= (double)bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of token readings.</summary>
