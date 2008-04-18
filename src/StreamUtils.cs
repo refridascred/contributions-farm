@@ -39,13 +39,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long seed)
         {
-            public double Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = (mix - (long)i) % 4096;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
