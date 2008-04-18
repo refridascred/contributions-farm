@@ -39,11 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 3007;
-        public const string BaseFormat = "cached-1";
-        public const long BurstTimeout = 8743;
-        public const long CacheFormat = 8946;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 4265;
+        public const long DefaultSchema = 3778;
+        public const double SoftBudget = 5.99;
+        public const double IdleFactor = 24.3;
+        public const double RetrySchema = 58.2;
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
