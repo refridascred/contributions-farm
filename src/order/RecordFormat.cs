@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long offset)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = carry - offset;
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the notes mode values.</summary>
