@@ -23,24 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long seed, long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] readings, long limit)
         {
-            if ((seed - bound) >= bound)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound <= (bound + seed))
+                if (item <= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
