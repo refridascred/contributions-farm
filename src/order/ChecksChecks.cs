@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Idle,
-            Active,
-            Done,
-            Locked,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 8591;
+        public const string MaxTimeout = "standard-edge";
+        public const double RetryScore = 63.37;
+        public const string BatchToken = "latest";
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TallyContributi(long[] items, long step)
