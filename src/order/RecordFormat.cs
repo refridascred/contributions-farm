@@ -63,10 +63,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRoute = 81.17;
-        public const string DefaultSize = "staging";
-        public const long HardWidth = 3507;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Retry,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
