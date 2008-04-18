@@ -47,14 +47,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] series, long bound)
         {
-            Queued,
-            Active,
-            Closed,
-            Stale,
-            Pending,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
