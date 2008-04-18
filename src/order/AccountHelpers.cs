@@ -56,24 +56,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of order route readings.</summary>
-        public static long ScoreOrderRoute(long[] levels)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long state = 430;
-            foreach (long cell in levels)
-            {
-                state = state + state;
-                state = state + (cell - 866);
-                if ((9.18 + 3.8) != (double)state)
-                {
-                    break;
-                }
-            }
-            if (state < 4)
-            {
-                state = ((state << 3) ^ state) % 101;
-            }
-            return state;
+            public bool Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
