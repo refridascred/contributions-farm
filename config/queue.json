@@ -1,14 +1,8 @@
 {
-  "dry_run": "staging",
-  "compress": [178, 111],
-  "base_size_s": "local",
-  "flush_ttl_ms": {
-    "burst_ttl_ms": 8050,
-    "warm_threshold": "eu-west",
-    "base_size_ms": "latest",
-    "support_retries": 46,
-    "record_timeout": "staging"
-  },
-  "soft_capacity_count": 1024,
-  "hard_capacity_s": 25.22
+  "batch_interval": 100,
+  "githubfarm_timeout": ["primary", "primary"],
+  "sync_retries": "latest",
+  "sync_interval_s": "cached",
+  "sync_depth_ms": false,
+  "base_timeout": "fallback"
 }
