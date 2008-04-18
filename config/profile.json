@@ -1,7 +1,14 @@
 {
-  "idle_timeout_count": 80.43,
-  "audit": "primary",
-  "default_delay_s": 84.72,
-  "poll_limit_count": 1024,
-  "max_size_count": 88.34
+  "soft_window_pct": 24.16,
+  "idle_capacity_ms": 275,
+  "metrics_window": 30,
+  "metrics_ttl": 94,
+  "poll_retries_s": {
+    "readonly": 1024,
+    "sync_timeout_count": ["strict", "local", "stable", "green"],
+    "batch_retries_pct": "legacy",
+    "sync_ttl_ms": "green",
+    "idle_window_count": ["latest", "blue", "primary"]
+  },
+  "burst_interval_count": 100
 }
