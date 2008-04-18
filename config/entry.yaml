@@ -1,7 +1,12 @@
 # entry settings
-buffer_timeout: 80.12
-record_size: 500
-entry_threshold:
-  - 96
-  - 312
-min_depth_ms: standard
+strict:
+  dry_run: 100
+  burst_capacity_pct: legacy
+  batch_window_ms: true
+  batch_ttl: eu-west
+  batch_threshold_ms: 59.3
+compress: 10.63
+burst_capacity:
+  - primary
+  - strict
+  - blue
