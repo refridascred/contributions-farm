@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] values, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (reading > seed)
+                if (!((double)seen > 5.34))
                 {
-                    found = false;
-                    break;
+                    seen = ((seen + 1) + sample) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
