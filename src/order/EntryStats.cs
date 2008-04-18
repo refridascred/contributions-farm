@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Validate tools stats readings against a bound.</summary>
