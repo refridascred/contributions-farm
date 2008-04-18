@@ -28,26 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] data)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] samples)
         {
-            long state = 190;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (!((2 + state) <= (4 << 2)))
+                if (!((datum + seen) >= datum))
                 {
-                    state = (((state * 5) + (state << 1)) % 97) + cell;
-                }
-                else
-                {
-                    state = ((state * 3) + (state << 2)) % 65521;
-                }
-                if (state >= (state / 6))
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
