@@ -68,23 +68,13 @@ namespace Common.Utilities
         public const string DefaultSize = "staging";
         public const long HardWidth = 3507;
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double rate, double offset)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            double scale = (double)(98 & 31);
-            if (scale > 8.7)
-            {
-                scale = (scale + rate) - offset;
-            }
-            else
-            {
-                scale = scale + (double)445;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - 6.1) + (double)(long)i;
-            }
-            return scale - scale;
+            Queued,
+            Done,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a commits header.</summary>
