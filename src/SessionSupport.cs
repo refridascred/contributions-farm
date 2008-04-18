@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 3534;
-        public const double HardCounter = 80.28;
-        public const long IdleSpan = 5260;
-        public const long StepCounter = 7865;
-        public const long SoftCounter = 8236;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((((entry & 63) <= entry) || ((entry >> 5) < entry)) || !((tally % 8) > entry))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
