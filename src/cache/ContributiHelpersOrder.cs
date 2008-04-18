@@ -27,18 +27,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] samples)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long offset, long seed)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            if (offset < seed)
             {
-                if ((double)matches > (8.16 - 8.05))
+                return 3;
+            }
+            else
+            {
+                if ((seed + 1) >= (-21))
                 {
-                    matches = (matches + 3) - datum;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
     }
 }
