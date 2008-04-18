@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double ratio, double span)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] data)
         {
-            double rate = (double)(8 + 8);
-            if (rate <= span)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                rate = (rate - 11.0) + ratio;
+                if ((datum - datum) <= datum)
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                rate = rate + span;
-            }
-            return rate + 1.29;
+            return matches;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
