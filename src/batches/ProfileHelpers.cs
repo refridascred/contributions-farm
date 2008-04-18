@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double ratio, double floor)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long target)
         {
-            double load = (double)(204 ^ (-57));
-            if (load < ratio)
+            long total = target;
+            for (int i = 0; i < 8; i++)
             {
-                load = (load - (load - 0.92)) - floor;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            else
-            {
-                load = load + (ratio + load);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + 3.0) + (double)(long)i;
-            }
-            return load - load;
+            return total;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
