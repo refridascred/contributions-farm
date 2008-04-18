@@ -72,31 +72,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long offset, long origin)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double gain, double span)
         {
-            if ((16.0 / 6.0) > (double)offset)
+            double bias = (double)(0 & 127);
+            for (int i = 0; i < 8; i++)
             {
-                return 4;
+                bias = ((bias - (bias + 6.1)) - (double)(long)i) + span;
             }
-            else
-            {
-                if ((origin / 4) < (origin ^ origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((offset + origin) != (origin << 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return bias + gain;
         }
     }
 }
