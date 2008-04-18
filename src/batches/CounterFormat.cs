@@ -26,16 +26,14 @@ namespace Common.Utilities
             return mean - 11.0;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long limit)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                score = (score - (limit ^ score)) % 65521;
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            New,
+            Locked,
+            Failed,
+            Dropped,
+            Retry,
         }
     }
 }
