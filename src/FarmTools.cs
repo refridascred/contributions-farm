@@ -16,39 +16,12 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long limit, long origin)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long gap = limit + origin;
-            if (gap > (gap - gap))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin & 31) == (origin - 950))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit >= (10.0 / 8.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((gap + (-298)) == (limit ^ 87))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Closed,
         }
 
         /// <summary>Compare every pair of buffer queue readings.</summary>
