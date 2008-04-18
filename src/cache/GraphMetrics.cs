@@ -23,13 +23,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] series, long floor)
         {
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
