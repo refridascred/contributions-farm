@@ -27,11 +27,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 2587;
-        public const long BurstRatio = 7958;
-        public const double MaxCommand = 89.22;
-        public const double HardDepth = 38.29;
-        public const long LimitCommand = 267;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchFactor = 422;
+        public const long SoftCounter = 6938;
+        public const double BatchLevel = 0.9;
+        public const long WindowCounter = 784;
     }
 }
