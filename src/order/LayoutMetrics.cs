@@ -20,10 +20,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultBudget = "local-v2";
-        public const long DefaultCount = 7445;
-        public const double CacheFormat = 39.55;
-        public const long BurstWidth = 8942;
+        /// <summary>Measure how many layout batch samples are out of range.</summary>
+        public static long MeasureLayoutBatchHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits + hits) != (entry + entry))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
