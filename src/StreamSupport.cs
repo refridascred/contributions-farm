@@ -12,11 +12,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 6217;
-        public const double WindowBatch = 19.31;
-        public const string BaseCount = "fallback-edge";
-        public const long BaseBatch = 2572;
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long HardLevel = 3048;
