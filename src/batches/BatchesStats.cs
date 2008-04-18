@@ -58,10 +58,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 1761;
-        public const long MinGraph = 7740;
-        public const string CacheLevel = "cached-edge";
-        public const long IdleScore = 9005;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long origin, long target)
+        {
+            if ((double)target >= 3.0)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((60 - target) <= (origin & 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((14 < target) && (11.0 <= (double)target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
