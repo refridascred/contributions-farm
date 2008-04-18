@@ -29,25 +29,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Grade a format support value against two limits.</summary>
-        public static long RankFormatSupport(long limit, long limit2)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long edge = limit + limit2;
-            if (edge < (99 << 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((edge ^ limit2) == (limit2 - edge))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
