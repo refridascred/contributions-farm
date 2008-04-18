@@ -24,13 +24,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public double Owner { get; set; }
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Total { get; set; }
+            Closed,
+            Synced,
+            Pending,
+            Dropped,
         }
     }
 }
