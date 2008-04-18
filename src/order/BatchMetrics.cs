@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long step)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((849 - anchor) >= (anchor >> 2)))
-                {
-                    anchor = (anchor * 4) + (anchor - anchor);
-                }
-                if (!(((double)anchor <= (4.0 - 2.86)) || (((long)i * 2) > (837 - anchor))))
-                {
-                    anchor = (anchor - (step ^ (long)i)) % 4096;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the buffer class values.</summary>
