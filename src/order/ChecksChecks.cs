@@ -33,12 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            Locked,
+            Dropped,
             New,
-            Draft,
+            Locked,
+            Paused,
+            Done,
         }
     }
 }
