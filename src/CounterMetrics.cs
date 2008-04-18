@@ -37,23 +37,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] data)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] items)
         {
-            long result = 192;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result ^ 2) % 65521) + cell;
-                if ((double)result > 7.8)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result - (result & 127)) % 1000;
+                    if ((items[i] - items[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result > 5)
-            {
-                result = result + (result - result);
-            }
-            return result;
+            return matches;
         }
     }
 }
