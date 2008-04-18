@@ -33,11 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstReport = 27.16;
-        public const string StepReport = "open";
-        public const long RetryDepth = 833;
-        public const double BatchReport = 58.85;
-        public const string IdleSize = "cached-edge";
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Failed,
+            Idle,
+            Ready,
+            Queued,
+        }
     }
 }
