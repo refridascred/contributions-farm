@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchScore = 939;
-        public const long MaxTimeout = 3144;
-        public const long LimitBudget = 5170;
-        public const string SoftBudget = "strict-edge";
-        public const long HardReport = 8418;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public double Owner { get; set; }
+            public double Offset { get; set; }
+            public bool Label { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long PairRouteCount(long[] readings)
