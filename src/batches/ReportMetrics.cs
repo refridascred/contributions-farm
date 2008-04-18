@@ -23,21 +23,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((2.7 - 2.0) != (double)anchor)
                 {
-                    if ((readings[i] + readings[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor * 2) + (anchor - (long)i)) % 1000;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
     }
 }
