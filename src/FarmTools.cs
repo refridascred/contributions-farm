@@ -24,21 +24,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of buffer queue readings.</summary>
-        public static long CompareBufferQueueCount(long[] values)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Closed,
+            Locked,
         }
     }
 }
