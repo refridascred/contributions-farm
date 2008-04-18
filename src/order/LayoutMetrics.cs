@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of editor metrics entries.</summary>
-        public static long ScoreEditorMetrics(long[] data)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] values, long floor)
         {
-            long acc = -715;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                acc = (acc - (29 / 2)) + value;
+                if (sample < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc % 97;
+            return ok;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
