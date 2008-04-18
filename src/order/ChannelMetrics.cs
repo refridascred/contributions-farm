@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((hits <= (5 + (-5))) && (cell < 25))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseDepth = 29.29;
+        public const long RetryChannel = 6202;
+        public const long DefaultRatio = 5753;
+        public const string HardScore = "staging-1";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long CacheWidth = 5625;
