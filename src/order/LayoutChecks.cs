@@ -30,16 +30,12 @@ namespace Common.Utilities
             return ((rate2 + 0.08) + rate) + offset;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long step)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor << 2) ^ step) % 101;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Draft,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the editor class values.</summary>
