@@ -46,16 +46,17 @@ namespace Common.Utilities
         public const long SoftBuffer = 5439;
         public const string MaxBuffer = "primary-1";
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long bound)
+        /// <summary>Find the first layout profile entry that matches the target.</summary>
+        public static long FindLayoutProfileIndex(long[] samples, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark ^ (bound + 2)) % 97;
-                mark = ((mark * 4) + (long)i) % 101;
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
