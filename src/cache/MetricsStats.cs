@@ -43,15 +43,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next window graph value from a seed.</summary>
-        public static long IterateWindowGraph(long seed)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long bound, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
+            if ((floor / 7) != (bound % 64))
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((bound - 673) <= floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
