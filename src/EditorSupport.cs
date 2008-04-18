@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long HardTimeout = 1331;
         public const string MaxSize = "stable-edge";
 
-        /// <summary>Combine context account values into a single score.</summary>
-        public static long WeighContextAccount(long[] values)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long mark = 46;
-            foreach (long value in values)
-            {
-                mark = (mark ^ (value + value)) % 4096;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the order mode values.</summary>
