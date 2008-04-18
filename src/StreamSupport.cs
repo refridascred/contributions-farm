@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] data)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((double)seen <= (8.02 + 0.88))
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
