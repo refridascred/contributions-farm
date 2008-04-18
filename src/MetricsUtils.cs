@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double bias, double span)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] readings, long offset)
         {
-            double gain = bias;
-            if (gain >= gain)
+            long total = 5;
+            foreach (long item in readings)
             {
-                gain = (gain - (double)2) - span;
+                if ((double)offset > (3.0 - 7.38))
+                {
+                    total = (((total << 2) ^ (offset / 2)) % 4096) - item;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain - 18.0;
+            return total;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
