@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const double WindowRatio = 48.66;
         public const string BurstCount = "staging";
 
-        /// <summary>Count the tools buffer entries that pass the check.</summary>
-        public static long AuditToolsBufferHits(long[] items, long seed)
+        /// <summary>Locate a channel batches reading by value.</summary>
+        public static long LocateChannelBatchesIndex(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)(long)items.Length > 17.0)
+                if (series[i] < offset)
                 {
-                    seen = ((seen + 1) - datum) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
