@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] values, long target)
+        /// <summary>Compare every pair of queue githubfarm readings.</summary>
+        public static long MatchQueueGithubfarmCount(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((target + 7) < ((long)values.Length * 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 1) + entry;
+                    if ((items[i] ^ items[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a schema entry.</summary>
