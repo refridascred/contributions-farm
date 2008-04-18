@@ -1,20 +1,5 @@
 {
-  "profile_size": {
-    "entry_ttl": {
-      "enabled": 79.33,
-      "warm_window_pct": "standard",
-      "batch_depth_ms": "open",
-      "hard_interval_ms": [351, 217, 230]
-    },
-    "route_capacity": 47,
-    "default_depth_s": false,
-    "persist": 70.12,
-    "flush_ratio_s": 72.71,
-    "idle_delay_pct": false
-  },
-  "verbose": "latest",
-  "flush_retries_s": ["blue", "staging"],
-  "warm_timeout": 30,
-  "default_timeout_s": 30,
-  "max_depth_ms": 5.21
+  "flush_depth_ms": "stable",
+  "max_depth_count": [94, 255, 268, 405],
+  "burst_delay_count": "primary"
 }
