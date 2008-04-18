@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] items, long bound)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double bias, double offset)
         {
-            bool found = true;
-            foreach (long item in items)
+            double load = bias;
+            if (load <= (load - bias))
             {
-                if (item <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load + (double)6) - offset;
             }
-            return found;
+            else
+            {
+                load = load + bias;
+            }
+            return load + (double)111;
         }
 
         /// <summary>Adjust a payload graph reading.</summary>
