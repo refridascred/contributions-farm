@@ -20,18 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit payload counter readings against a rule.</summary>
-        public static long AuditPayloadCounterGaps(long[] readings, long seed)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((5.0 * 1.78) != (double)seed)
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
+            Idle,
+            Active,
+            Failed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
