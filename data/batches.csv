@@ -1,8 +1,6 @@
-id,ratio,active
-1,50.72,open
-2,20.23,504
-3,stable,1
-4,green,open
-5,417,730
-6,98.67,stable
-7,390,721
+id,rank,count,active
+1,cached,59.86,22.96
+2,61.35,125,98.65
+3,49.64,eu-west,latest
+4,91,379,standard
+5,541,498,89.63
