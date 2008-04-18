@@ -13,23 +13,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((seen >> 3) >= (seen - 1))
-                {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftCount = 8319;
+        public const long IdleEntry = 8203;
+        public const string RetrySpan = "cached";
+        public const long BaseDepth = 3125;
+        public const long MaxBudget = 8325;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long HardFilter = 8533;
