@@ -28,27 +28,11 @@ namespace Common.Utilities
             return rate + (rate / 6.0);
         }
 
-        /// <summary>Accumulate contributi window samples.</summary>
-        public static long ScoreContributiWindow(long[] values)
-        {
-            long total = 586;
-            foreach (long entry in values)
-            {
-                if (total >= entry)
-                {
-                    total = (total + (total - entry)) % 4096;
-                }
-                if (total >= (229 & 3))
-                {
-                    break;
-                }
-            }
-            if (total < 4)
-            {
-                total = total - (total >> 3);
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 8957;
+        public const string CacheRoute = "fallback-v2";
+        public const string BurstRoute = "standard-v2";
+        public const double LimitTimeout = 73.32;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double MaxGraph = 70.56;
