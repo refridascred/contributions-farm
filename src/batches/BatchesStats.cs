@@ -19,11 +19,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleDepth = "strict";
-        public const string BatchEntry = "open";
-        public const long StepFactor = 982;
-        public const long WindowSpan = 3831;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long step, long step2)
+        {
+            long lane = step - step2;
+            if (((step / 8) <= (lane + lane)) && ((lane ^ step2) <= (lane + 501)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)step2 == (8.0 - 1.76)) && ((double)step2 >= (double)step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step2 & 1) < (lane % 60))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of contributi layout readings.</summary>
         public static long TallyContributiLayout(long[] data, long floor)
