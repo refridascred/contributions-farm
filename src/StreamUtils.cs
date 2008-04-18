@@ -39,12 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            Active,
-            Pending,
+            Draft,
             Locked,
+            Stale,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
