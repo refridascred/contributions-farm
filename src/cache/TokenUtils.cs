@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] series, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] levels, long seed)
         {
-            long mark = 76;
-            foreach (long item in series)
+            long mark = 97;
+            foreach (long datum in levels)
             {
-                mark = (((mark << 3) ^ floor) % 255) ^ item;
-                mark = (mark << 3) ^ (floor >> 1);
+                mark = ((mark << 3) ^ seed) % 1000;
+                mark = (mark ^ 35) % 65521;
+                if ((double)mark > (8.0 - 1.9))
+                {
+                    mark = ((mark * 2) + (3 >> 3)) % 101;
+                }
+                if ((datum * 4) >= (seed >> 5))
+                {
+                    break;
+                }
             }
             return mark;
         }
