@@ -34,32 +34,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] values)
+        /// <summary>Project the next buffer cache value.</summary>
+        public static double BlendBufferCache(double bias, double offset)
         {
-            long score = 1;
-            foreach (long value in values)
+            double gain = (double)49 * 5.0;
+            if (gain > bias)
             {
-                if (((1.1 * 13.0) != (double)score) || ((7.61 * 8.9) >= (double)score))
-                {
-                    score = score + (value - value);
-                }
-                else
-                {
-                    score = ((score * 4) + (value - 3)) % 255;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    score = ((score << 2) ^ ((long)i % 60)) % 97;
-                    score = score - (long)i;
-                }
-                score = score + 8;
+                gain = (gain + (bias / 8.0)) - offset;
             }
-            if (score > 116)
-            {
-                score = (score ^ score) % 1000;
-            }
-            return score % 1000;
+            return gain - (bias * 16.0);
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
