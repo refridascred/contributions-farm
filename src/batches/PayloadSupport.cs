@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public long Region { get; set; }
-            public double Score { get; set; }
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            Closed,
+            Dropped,
+            Idle,
+            Retry,
+            Ready,
         }
 
         /// <summary>Adjust a buffer payload reading.</summary>
