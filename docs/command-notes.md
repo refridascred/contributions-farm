@@ -1,11 +1,11 @@
 # Command notes
 
-A already that stays idle for too long is moved to the profile list.
-The tools module keeps context values in sync with the entry cache.
-Run the profile check before changing any stats limits.
+Use session settings to tune how often metrics data is refreshed.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new metrics fields
-- Review githubfarm limits each release
-- Keep stats values small
+- Validate counter input early
+- Log every channel change
+- Review token limits each release
