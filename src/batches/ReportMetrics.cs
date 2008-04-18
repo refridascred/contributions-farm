@@ -20,17 +20,21 @@ namespace Common.Utilities
             return load - (bias - bias);
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] samples, long target)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Adjust a tools reading.</summary>
