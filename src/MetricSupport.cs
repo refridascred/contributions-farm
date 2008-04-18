@@ -14,19 +14,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] items, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (item < limit)
+                if ((floor << 1) >= (hits * 5))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) + datum;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
