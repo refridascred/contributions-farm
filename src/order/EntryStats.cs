@@ -73,12 +73,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Roll a token account counter forward.</summary>
+        public static long SeriesTokenAccount(long floor)
         {
-            public bool Size { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    anchor = (anchor ^ ((long)i2 ^ anchor)) % 1000;
+                    anchor = (anchor << 2) ^ (floor - floor);
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
