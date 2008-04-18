@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Idle,
-            Closed,
-            Draft,
-            Failed,
-            Done,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxStats = 96.48;
+        public const long HardSpan = 1483;
+        public const string WindowTimeout = "local-1";
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
