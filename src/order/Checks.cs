@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheRatio = 68.1;
-        public const long StepMetrics = 6732;
-        public const long IdleTimeout = 4847;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Pending,
+            New,
+            Retry,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LookupTokenIndex(long[] samples, long floor)
