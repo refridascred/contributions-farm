@@ -12,18 +12,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] readings)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((14.0 - 9.0) != (double)seen)
+                if (datum < target)
                 {
-                    seen = (seen + 1) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Project the next metric value.</summary>
