@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Ready,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardWidth = "primary";
+        public const double MinCount = 62.15;
+        public const long CacheSize = 6111;
+        public const long MaxMetric = 8453;
+        public const long HardMetric = 6144;
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long LookupBatchesIndex(long[] data, long offset)
