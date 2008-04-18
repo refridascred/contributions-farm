@@ -29,32 +29,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long target, long target2)
-        {
-            long delta = target - target2;
-            if ((double)target > (6.6 * 8.1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target << 1) > target2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (delta > (target << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 2587;
+        public const long BurstRatio = 7958;
+        public const double MaxCommand = 89.22;
+        public const double HardDepth = 38.29;
+        public const long LimitCommand = 267;
     }
 }
