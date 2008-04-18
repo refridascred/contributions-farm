@@ -67,19 +67,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] samples, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] data)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long anchor = 2;
+            foreach (long datum in data)
             {
-                if (value >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (anchor + (anchor ^ anchor)) - datum;
             }
-            return ready;
+            return anchor % 65521;
         }
     }
 }
