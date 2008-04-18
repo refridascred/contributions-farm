@@ -37,39 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long floor, long bound)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long slot = floor - bound;
-            if (bound >= (bound % 12))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor - 6) != (floor & 15))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (886 <= (floor + bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)slot < (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Pending,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Hold a support entry.</summary>
