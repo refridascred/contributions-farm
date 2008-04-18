@@ -1,14 +1,8 @@
 # githubfarm settings
-batch_retries: true
-verbose: fallback
-min_ratio: 91.83
-cache_ttl_ms:
-  poll_depth_count: true
-  compress:
-    - eu-west
-    - primary
-  batch_ratio_count:
-    cache_depth_count: green
-    flush_size_ms: 2783
-    base_retries_ms: open
-  sync_depth: false
+cache_delay_pct: local
+queue_size: 78
+burst_window_pct: 3394
+dry_run:
+  - 210
+  - 235
+max_depth_ms: stable
