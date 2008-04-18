@@ -23,11 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] values)
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (9 >= (hits + value))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
