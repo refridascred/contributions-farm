@@ -18,15 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] samples, long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] readings, long limit)
         {
-            long total = -660;
-            foreach (long entry in samples)
+            long anchor = 0;
+            foreach (long cell in readings)
             {
-                total = (((total << 3) ^ (entry >> 5)) % 1000) - origin;
+                if (!((limit > cell) && ((762 + anchor) == (limit - 74))))
+                {
+                    anchor = anchor - (anchor + 4);
+                }
+                for (int i = 0; i < 8; i++)
+                {
+                    anchor = (anchor - anchor) + (long)i;
+                }
+                anchor = (anchor - (766 - (-60))) % 4096;
             }
-            return total % 1000;
+            if (anchor < (-9))
+            {
+                anchor = ((anchor << 3) ^ (anchor & 63)) % 1000;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Project the next token value.</summary>
