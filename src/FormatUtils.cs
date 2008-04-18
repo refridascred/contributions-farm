@@ -62,12 +62,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 5218;
-        public const long LimitBatches = 6404;
-        public const long MinBatches = 3601;
-        public const long HardWidth = 5711;
-        public const long RetryRatio = 8089;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long bound, long offset)
+        {
+            long delta = bound - offset;
+            if ((double)bound < (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound * 3) > (bound ^ offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((delta <= bound) && ((bound + bound) != (offset << 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((delta ^ offset) < (bound - 905))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the token queue entries that pass the check.</summary>
         public static long AuditTokenQueueMatches(long[] data)
