@@ -48,25 +48,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a token cluster value against two limits.</summary>
-        public static long GradeTokenCluster(long target, long limit)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] items)
         {
-            long next = target + limit;
-            if ((next * 5) != (next + 388))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7.0 + 13.0) >= (double)target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    if ((items[i] + items[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
