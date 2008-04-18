@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long seed, long target)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] samples, long seed)
         {
-            if ((double)seed < (5.21 * 5.47))
+            long anchor = -3;
+            foreach (long item in samples)
             {
-                return 2;
+                anchor = ((((anchor << 3) ^ 68) % 4096) - item) - seed;
             }
-            else
-            {
-                if (((double)target != (9.9 + 6.2)) && ((seed % 12) != (target << 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return anchor % 4096;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
