@@ -42,12 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((4.0 * 1.0) < (double)value)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a account reading.</summary>
