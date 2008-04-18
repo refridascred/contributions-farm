@@ -52,18 +52,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] series)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((datum ^ 3) <= (4 / 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Queued,
+            Active,
+            Closed,
+            Stale,
+            Pending,
         }
     }
 }
