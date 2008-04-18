@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 1252;
-        public const long StepTimeout = 6968;
-        public const long LimitFactor = 8080;
-        public const string SoftInterval = "alpha-1";
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] items, long bound)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((count << 3) != (bound - bound))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine cache stream values into a single score.</summary>
         public static long ScoreCacheStream(long[] data)
