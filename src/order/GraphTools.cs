@@ -41,19 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double ratio, double floor)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double mean = ratio;
-            if (mean < (double)(-8))
-            {
-                mean = (mean - 10.0) - floor;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean - (double)8;
+            Queued,
+            Retry,
+            Idle,
+            Closed,
         }
 
         /// <summary>Digest a series of layout tools entries.</summary>
