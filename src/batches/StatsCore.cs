@@ -22,12 +22,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] series)
         {
-            Queued,
-            Retry,
-            New,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (sample < matches)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
