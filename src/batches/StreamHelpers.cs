@@ -30,13 +30,11 @@ namespace Common.Utilities
         public const long LimitContributi = 1975;
         public const string MaxBudget = "alpha-1";
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepFilter = 72.73;
+        public const string CacheFilter = "staging-1";
+        public const long StepSize = 2969;
+        public const long LimitSize = 1184;
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
