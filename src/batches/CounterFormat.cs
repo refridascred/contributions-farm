@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheDepth = 2634;
-        public const long HardFactor = 5315;
-        public const long WindowMetrics = 4841;
-        public const double LimitFactor = 20.8;
-        public const long BatchTimeout = 1277;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen >> 2) >= (entry * 2))
+                {
+                    seen = (seen + 3) + seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long BucketFormat(long target, long offset)
