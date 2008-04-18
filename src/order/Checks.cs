@@ -50,23 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes commits samples.</summary>
-        public static long ScoreNotesCommits(long[] series)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long carry = 626;
-            foreach (long value in series)
-            {
-                carry = ((carry * 4) + carry) % 101;
-                if ((double)(long)series.Length < (double)carry)
-                {
-                    carry = ((carry * 4) + (value ^ value)) % 255;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (218 + value)) % 65521;
-                }
-            }
-            return carry;
+            Paused,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a editor header.</summary>
