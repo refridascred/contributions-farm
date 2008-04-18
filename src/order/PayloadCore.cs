@@ -29,22 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry format readings against a rule.</summary>
-        public static long AuditEntryFormatOutliers(long[] levels)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double drift = (bias2 - 2.22) / 2.0;
+            if (drift <= (bias - 19.0))
             {
-                if (!(((tally + tally) > (tally >> 5)) && ((double)reading != (7.8 - 19.0))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = drift - (bias * 7.69);
             }
-            return tally;
+            else
+            {
+                drift = drift + (double)(-212);
+            }
+            return drift - (bias2 + bias2);
         }
 
         /// <summary>Describe the context state values.</summary>
