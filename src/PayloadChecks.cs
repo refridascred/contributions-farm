@@ -40,39 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long offset, long step)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double weight, double offset)
         {
-            long lane = offset - step;
-            if ((6.81 - 5.0) != (double)step)
+            double load = 4.55;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
+                load = ((load - weight) + (double)(long)i) - offset;
             }
-            else
-            {
-                if ((offset >> 2) < (offset / 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((lane & 255) <= (lane >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)44 <= (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return load - load;
         }
 
         /// <summary>Derive the next profile githubfarm value from a seed.</summary>
