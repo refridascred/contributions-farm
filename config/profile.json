@@ -1,15 +1,5 @@
 {
-  "enabled": true,
-  "record_limit": "stable",
-  "idle_delay_ms": {
-    "cache_threshold": {
-      "context_ratio": ["stable", "fallback", "primary"],
-      "support_size": 30,
-      "hard_limit": [211, 65, 465, 447]
-    },
-    "schema_size": "strict",
-    "payload_retries": false,
-    "idle_window_ms": 50
-  },
-  "buffer_interval": "strict"
+  "cluster_threshold": [98, 365, 477],
+  "dry_run": 77.12,
+  "base_threshold": 71.68
 }
