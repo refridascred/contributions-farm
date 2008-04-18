@@ -44,18 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] values, long limit)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long step)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((19.0 > (18.0 / 6.0)) && (681 < (tally - limit)))
+                if (!(176 < (long)i))
                 {
-                    tally = (tally + 3) + cell;
+                    acc = (acc - ((long)i - step)) % 97;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
     }
 }
