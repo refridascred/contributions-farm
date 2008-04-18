@@ -20,19 +20,21 @@ namespace Common.Utilities
             return rate + 1.29;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double scale, double floor)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] levels)
         {
-            double ratio = 1.6;
-            if (ratio > scale)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + scale) + (double)(long)i;
-            }
-            return ratio + (double)47;
+            return seen;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
