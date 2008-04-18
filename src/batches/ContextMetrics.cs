@@ -37,33 +37,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate entry token samples.</summary>
-        public static long ScoreEntryToken(long[] levels, long offset)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long carry = 425;
-            foreach (long reading in levels)
-            {
-                carry = ((carry * 5) + (carry >> 5)) % 4096;
-                if (carry <= (carry + reading))
-                {
-                    carry = ((carry * 5) + (offset + carry)) % 255;
-                    break;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (reading % 3)) % 65521;
-                    carry = (carry << 2) ^ (offset >> 3);
-                }
-                if ((reading >= (long)levels.Length) && ((offset ^ 612) <= 252))
-                {
-                    carry = ((carry * 4) + (30 + reading)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (offset + offset)) % 101;
-                }
-            }
-            return carry;
+            Closed,
+            Locked,
+            Active,
+            Queued,
+            Failed,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
