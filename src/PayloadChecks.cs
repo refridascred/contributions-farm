@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] readings, long offset)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((0 % 8) != (offset << 3))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public double Region { get; set; }
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the metric kind values.</summary>
