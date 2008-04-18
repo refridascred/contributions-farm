@@ -16,15 +16,14 @@ namespace Common.Utilities
             return ratio2 - span;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double scale, double offset)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double gain = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (9.8 / 3.0)) + (double)(long)i;
-            }
-            return gain + scale;
+            Closed,
+            Idle,
+            Failed,
+            Dropped,
+            New,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
