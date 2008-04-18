@@ -15,22 +15,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count queue checks pairs that satisfy a relation.</summary>
-        public static long CompareQueueChecksCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 4570;
+        public const long BatchAlready = 2756;
+        public const string SoftRatio = "standard-v2";
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long IterateLayout(long target)
