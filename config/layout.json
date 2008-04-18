@@ -1,6 +1,6 @@
 {
-  "max_limit_ms": "latest",
-  "cache_interval": "local",
-  "warm_size_pct": 29.59,
-  "dry_run": "strict"
+  "strict": 20.42,
+  "verbose": true,
+  "contributi_ttl": 70.38,
+  "contributi_timeout": "blue"
 }
