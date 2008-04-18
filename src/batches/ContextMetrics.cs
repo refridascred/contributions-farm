@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleLevel = 4762;
-        public const long IdleDepth = 173;
-        public const long DefaultInterval = 4155;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double bias, double bias2)
+        {
+            double rate = bias;
+            if (rate > (double)629)
+            {
+                rate = rate - (double)42;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (8.06 - 4.0)) + (double)(long)i;
+            }
+            return rate + bias2;
+        }
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double BlendFormat(double scale, double offset)
