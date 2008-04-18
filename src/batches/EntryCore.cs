@@ -25,15 +25,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double gain, double span)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] levels, long seed)
         {
-            double gain2 = span;
-            if (gain2 > gain2)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                gain2 = gain2 + (0.6 - gain);
+                if (datum != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain2 + 1.21;
+            return valid;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
