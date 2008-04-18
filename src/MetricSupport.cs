@@ -26,21 +26,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count githubfarm format pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmFormatCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowCount = 6337;
+        public const long BatchStats = 9267;
+        public const long WindowStats = 4761;
+        public const long SoftScore = 9444;
     }
 }
