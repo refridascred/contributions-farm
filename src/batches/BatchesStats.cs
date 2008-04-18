@@ -40,22 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] readings)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (!((matches <= (cell + cell)) && ((9.3 * 3.4) != (double)cell)))
+                if (seen <= (sample * 2))
                 {
-                    matches = matches + 2;
+                    seen = (seen + 2) + origin;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
