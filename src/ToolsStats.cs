@@ -15,19 +15,14 @@ namespace Common.Utilities
         public const string IdleContributi = "fallback";
         public const long HardWidth = 3777;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] series, long bound)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Idle,
+            Stale,
+            Ready,
+            Done,
         }
 
         /// <summary>Accumulate report stats samples.</summary>
