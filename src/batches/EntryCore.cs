@@ -23,12 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseSize = "latest-1";
+        public const long LimitLevel = 6220;
+        public const long LimitScore = 5974;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool ValidateChecksBounds(long[] levels, long seed)
