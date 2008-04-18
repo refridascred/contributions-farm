@@ -66,13 +66,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Digest a series of buffer notes entries.</summary>
+        public static long WeighBufferNotes(long[] values, long limit)
         {
-            Queued,
-            Done,
-            Draft,
-            Locked,
+            long state = 15;
+            foreach (long entry in values)
+            {
+                state = ((state ^ 5) % 255) + entry;
+                state = state + limit;
+                if ((limit * 3) <= (state - 37))
+                {
+                    state = (state + (limit + (long)values.Length)) % 65521;
+                }
+            }
+            if (state > 6)
+            {
+                state = state - (state & 255);
+            }
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
