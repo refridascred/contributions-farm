@@ -31,19 +31,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long step)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] values)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((long)i < mix)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    continue;
+                    if ((values[i] + values[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Match up route samples.</summary>
