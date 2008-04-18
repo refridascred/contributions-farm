@@ -35,13 +35,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            Pending,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
