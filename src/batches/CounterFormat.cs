@@ -15,31 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long bound, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] readings)
         {
-            if ((9.39 + 3.03) <= (double)limit)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((282 << 1) > (bound >> 3))
+                if ((datum - matches) < 0)
                 {
-                    return 0;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((limit + bound) >= bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
