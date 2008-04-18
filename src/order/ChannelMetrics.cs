@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowInterval = 3549;
-        public const string SoftAccount = "cached";
-        public const string MinBudget = "staging-1";
-        public const long MaxWidth = 4717;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long floor, long origin)
+        {
+            long bound = floor - origin;
+            if (((41 & 1) < (origin ^ (-608))) || (floor < (bound / 8)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((629 / 3) < floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor - origin) < 486)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long BucketCluster(long step, long floor)
