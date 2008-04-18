@@ -47,13 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] readings)
         {
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (!((matches <= (cell + cell)) && ((9.3 * 3.4) != (double)cell)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
