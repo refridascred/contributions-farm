@@ -20,12 +20,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-            public long Region { get; set; }
+            long acc = 81;
+            foreach (long sample in samples)
+            {
+                if ((double)acc >= (3.49 * 1.0))
+                {
+                    acc = ((acc + (acc % 5)) % 4096) ^ sample;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ acc) % 101;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
