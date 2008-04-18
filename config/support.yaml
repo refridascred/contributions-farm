@@ -1,32 +1,20 @@
 # support settings
-base_window:
-  - 102
-  - 186
-  - 61
-  - 266
-compress:
-  sync_ttl:
-    retry_ttl:
-      - legacy
-      - open
-      - blue
-    poll_capacity_pct: 92.7
-    strict: true
-    batch_threshold_s: 500
-    contributi_capacity: legacy
-    enabled: 2881
-  sync_depth_ms: 60
-  warm_ratio:
-    cache_threshold: true
-    enabled: standard
-    hard_limit_pct: 8
-  cluster_window: open
-min_threshold: staging
-cache_retries_s:
-  strict: latest
-  min_delay: 78.33
-  flush_ratio: 92
-  cluster_timeout: latest
-  order_depth: 43.6
-sync_threshold_count: stable
-record_window: false
+min_retries_pct: true
+cache_capacity_s:
+  retry_ttl: 500
+  flush_size: green
+  hard_retries: false
+format_ttl:
+  enabled: 500
+  metric_limit: false
+  stats_ratio: fallback
+cache_retries:
+  - green
+  - primary
+  - legacy
+cache_depth: 42
+batch_ttl:
+  - edge
+  - fallback
+  - eu-west
+  - staging
