@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 1031;
-        public const long StepDepth = 5774;
-        public const double DefaultCommand = 8.7;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long step, long origin)
+        {
+            if ((origin >= (origin * 5)) || ((step * 3) > (55 * 5)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step / 6) <= (step + origin)) || ((double)step < 12.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (4.2 < (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelMatches(long[] items)
