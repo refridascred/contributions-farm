@@ -1,11 +1,11 @@
 # Command notes
 
-Each stream is validated before it reaches the farm queue.
-Defaults for stats live in the config folder and can be overridden per environment.
+Run the format check before changing any command limits.
+Each notes is validated before it reaches the commits queue.
 
 ## Guidelines
 
-- Review entry limits each release
-- Validate route input early
-- Prefer session defaults
-- Keep command values small
+- Validate metric input early
+- Prefer batches defaults
+- Review buffer limits each release
+- Log every route change
