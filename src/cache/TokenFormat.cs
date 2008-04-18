@@ -20,17 +20,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] series, long bound)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= bound) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
