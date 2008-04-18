@@ -14,10 +14,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 94.98;
-        public const double StepLayout = 5.26;
-        public const string StepInterval = "legacy-1";
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long target, long floor)
+        {
+            if ((target % 3) != (floor + floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor - target) != (floor + target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftCount = 6689;
