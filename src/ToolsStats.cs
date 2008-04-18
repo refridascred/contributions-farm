@@ -25,19 +25,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate report stats samples.</summary>
-        public static long CombineReportStats(long[] levels)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] series, long seed)
         {
-            long score = 28;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                score = (((score << 3) ^ (score * 2)) % 101) ^ item;
-                if ((double)score <= (5.0 * 5.18))
+                if ((cell + cell) == (seed + tally))
                 {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
