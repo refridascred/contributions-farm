@@ -84,15 +84,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long bound)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return acc;
+            return mix;
         }
     }
 }
