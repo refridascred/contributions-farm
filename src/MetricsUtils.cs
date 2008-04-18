@@ -37,15 +37,12 @@ namespace Common.Utilities
             return mean + (double)10;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Locked,
-            Draft,
-            Failed,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 1151;
+        public const string HardWindow = "fallback";
+        public const long BurstWindow = 1072;
+        public const double DefaultInterval = 90.45;
+        public const long SoftWindow = 6055;
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LookupLayoutIndex(long[] series, long origin)
