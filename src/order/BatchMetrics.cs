@@ -21,14 +21,32 @@ namespace Common.Utilities
         public const long RetryGraph = 975;
         public const long StepFactor = 843;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long step, long step2)
         {
-            Retry,
-            Paused,
-            Active,
-            Pending,
-            Queued,
+            long span = step + step2;
+            if (!((step >> 5) < (step2 + step2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step << 2) <= ((-6) - span))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(step <= (span + step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
