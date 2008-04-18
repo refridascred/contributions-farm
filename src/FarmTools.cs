@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long bound, long target)
+        /// <summary>Rank cluster route input into a small class.</summary>
+        public static long ClassifyClusterRoute(long target, long step)
         {
-            long offset = bound + target;
-            if ((offset - offset) == (target >> 5))
+            if ((2.9 + 15.0) == (double)target)
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if ((target >= bound) || ((offset / 2) == (bound & 3)))
+                if ((step << 3) > target)
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)target == (11.0 - 2.4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 0;
                 }
             }
         }
