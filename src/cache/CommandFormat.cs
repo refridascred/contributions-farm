@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the editor buffer series from a seed.</summary>
-        public static long StepEditorBuffer(long step)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Rank notes stats input into a small class.</summary>
