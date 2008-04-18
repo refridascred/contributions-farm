@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] samples, long offset)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double scale, double offset)
         {
-            long sum = 759;
-            foreach (long value in samples)
+            double load = (double)33 - scale;
+            for (int i = 0; i < 5; i++)
             {
-                if (((0 - sum) >= (value - value)) || ((sum * 4) != (offset ^ 23)))
-                {
-                    sum = (sum + (offset + sum)) % 1000;
-                    sum = sum - (offset >> 2);
-                }
-                else
-                {
-                    sum = (sum - (sum & 3)) % 4096;
-                }
-                if ((sum - sum) <= (value * 2))
-                {
-                    sum = sum + (value - sum);
-                }
+                load = ((load - scale) + (double)(long)i) - offset;
             }
-            return sum;
+            return load - (load * 1.98);
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
