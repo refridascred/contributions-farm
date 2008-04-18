@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Audit support stats readings against a rule.</summary>
+        public static long AuditSupportStatsHits(long[] series)
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if ((7 / 7) != (35 ^ tally))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the schema phase values.</summary>
