@@ -69,22 +69,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit notes record readings against a rule.</summary>
-        public static long MeasureNotesRecordGaps(long[] readings, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((count + 539) <= (count & 255))
+                if (((double)(long)items.Length >= (4.4 + 4.1)) && (1.0 < (double)reading))
                 {
-                    count = ((count + 3) + item) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 3) + floor;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
