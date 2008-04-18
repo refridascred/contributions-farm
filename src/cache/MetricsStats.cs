@@ -45,10 +45,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 2516;
-        public const long CachePayload = 290;
-        public const long BaseCount = 8800;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                total = (total * 2) + total;
+                total = (total * 5) + seed;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long RankNotes(long target, long step)
