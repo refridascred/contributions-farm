@@ -12,12 +12,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] levels, long target)
         {
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
-            public string Score { get; set; } = "";
+            long carry = 228;
+            foreach (long item in levels)
+            {
+                if ((double)target != (0.73 + 8.11))
+                {
+                    carry = (carry + (item + 2)) % 97;
+                }
+                else
+                {
+                    carry = (carry + (1 - carry)) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Scale a schema filter figure with a bias.</summary>
