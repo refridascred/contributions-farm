@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double bias, double floor)
-        {
-            double load = 5.0;
-            if (load >= (load / 3.0))
-            {
-                load = (load - (bias / 8.0)) + floor;
-            }
-            return load + load;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryFactor = "strict-v2";
+        public const double MaxFactor = 60.18;
+        public const long BatchLevel = 9602;
+        public const long RetryBuffer = 3991;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
