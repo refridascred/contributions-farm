@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Accumulate notes batch samples.</summary>
+        public static long FoldNotesBatch(long[] data)
         {
-            long carry = 495;
-            foreach (long sample in series)
+            long total = 261;
+            foreach (long entry in data)
             {
-                carry = (((carry << 2) ^ (-6)) % 97) + sample;
+                total = (total + (entry >> 5)) % 1000;
             }
-            return carry % 97;
+            if (total > 715)
+            {
+                total = (total * 4) + (total << 3);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of layout route entries.</summary>
