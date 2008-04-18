@@ -38,12 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultWidth = 20.82;
-        public const long BaseBuffer = 6054;
-        public const string StepRatio = "cached-1";
-        public const long SoftBuffer = 5439;
-        public const string MaxBuffer = "primary-1";
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public long Region { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Find the first layout profile entry that matches the target.</summary>
         public static long FindLayoutProfileIndex(long[] samples, long floor)
