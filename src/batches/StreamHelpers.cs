@@ -14,12 +14,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Idle,
-            Locked,
-            Failed,
+            public bool Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
