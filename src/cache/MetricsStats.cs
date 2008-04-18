@@ -43,21 +43,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count order token pairs that satisfy a relation.</summary>
-        public static long CompareOrderTokenCount(long[] samples)
+        /// <summary>Derive the next window graph value from a seed.</summary>
+        public static long IterateWindowGraph(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
