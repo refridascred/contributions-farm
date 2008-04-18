@@ -14,24 +14,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long mark = 4;
-            foreach (long entry in series)
-            {
-                mark = mark - (6 << 3);
-                mark = ((mark * 3) + (entry * 3)) % 65521;
-                if (mark <= (entry + entry))
-                {
-                    break;
-                }
-            }
-            if (mark < 595)
-            {
-                mark = ((mark << 2) ^ ((-28) + mark)) % 255;
-            }
-            return mark % 97;
+            Ready,
+            Locked,
+            Queued,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
