@@ -1,7 +1,6 @@
 {
-  "soft_size": 66,
-  "min_ttl_ms": "legacy",
-  "strict": 38.86,
-  "batch_timeout_pct": "strict",
-  "filter_timeout": 4387
+  "command_size": 5295,
+  "burst_delay_pct": 39.24,
+  "format_retries": 23.62,
+  "record_ttl": 87
 }
