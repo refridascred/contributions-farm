@@ -30,15 +30,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double rate, double floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] samples)
         {
-            double weight = 19.0;
-            if (weight >= 1.79)
+            long acc = 7;
+            foreach (long reading in samples)
             {
-                weight = (weight + weight) + rate;
+                if ((8 + reading) < acc)
+                {
+                    acc = (acc * 5) + acc;
+                }
             }
-            return weight + floor;
+            if (acc < (-41))
+            {
+                acc = ((acc * 2) + acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
