@@ -68,15 +68,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] readings, long offset)
+        /// <summary>Accumulate commits farm samples.</summary>
+        public static long CombineCommitsFarm(long[] values, long seed)
         {
-            long state = -932;
-            foreach (long reading in readings)
+            long carry = -792;
+            foreach (long sample in values)
             {
-                state = (((state - 544) % 97) + reading) + offset;
+                if (seed > sample)
+                {
+                    carry = ((carry << 2) ^ seed) % 4096;
+                }
             }
-            return state % 97;
+            if (carry < 76)
+            {
+                carry = (carry + 2) % 255;
+            }
+            return carry;
         }
     }
 }
