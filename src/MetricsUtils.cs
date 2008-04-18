@@ -20,14 +20,11 @@ namespace Common.Utilities
             return gain - 18.0;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Draft,
-            New,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 9203;
+        public const double LimitContributi = 33.03;
+        public const double BatchContributi = 71.41;
+        public const long WindowContributi = 242;
 
         /// <summary>Locate a metrics tools reading by value.</summary>
         public static long LocateMetricsToolsIndex(long[] levels, long step)
