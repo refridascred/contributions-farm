@@ -1,11 +1,8 @@
 {
-  "compress": "standard",
-  "idle_ttl": 100,
-  "payload_limit": {
-    "batch_depth": 91.26,
-    "burst_limit_s": "blue",
-    "max_timeout": 38.98
-  },
-  "batch_retries_s": "green",
-  "base_timeout": ["local", "green", "edge"]
+  "report_retries": 30,
+  "max_capacity": [385, 124],
+  "base_size_count": "cached",
+  "default_depth_count": true,
+  "metric_depth": 87.48,
+  "checks_retries": 49
 }
