@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryCount = 1089;
-        public const long DefaultChannel = 4283;
-        public const long LimitChannel = 3593;
-        public const long CacheChannel = 1647;
-        public const string BurstChannel = "alpha";
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
+        {
+            public double Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadRange(long[] data, long limit)
