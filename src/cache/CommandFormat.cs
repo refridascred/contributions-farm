@@ -50,14 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Queued,
-            Dropped,
-            Ready,
-            Draft,
-            Synced,
+            public long Total { get; set; }
+            public double Mode { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
