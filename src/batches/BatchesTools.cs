@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
+            Queued,
             Failed,
-            Ready,
-            Closed,
-            Retry,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
