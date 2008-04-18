@@ -1,6 +1,7 @@
 {
-  "filter_timeout": "cached",
-  "checks_depth": "edge",
-  "soft_depth": 9746,
-  "sync_ratio_s": false
+  "compress": 56,
+  "warm_size": 316,
+  "poll_retries": 3734,
+  "retry_ratio_s": 55,
+  "already_window": 42.06
 }
