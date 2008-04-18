@@ -44,17 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= offset) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 883;
+        public const double HardWidth = 38.37;
+        public const double RetryLevel = 29.25;
+        public const double DefaultGraph = 8.62;
+        public const string BurstScore = "open-edge";
     }
 }
