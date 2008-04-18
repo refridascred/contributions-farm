@@ -19,20 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double bias, double offset)
-        {
-            double scale = (double)(-975) + offset;
-            if (scale < bias)
-            {
-                scale = scale + (scale - scale);
-            }
-            else
-            {
-                scale = scale + (double)926;
-            }
-            return scale + (offset * 9.44);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchScore = "legacy-v2";
+        public const string BurstContext = "staging";
+        public const long WindowContext = 5254;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double IdleInterval = 76.17;
