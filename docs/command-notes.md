@@ -1,11 +1,13 @@
 # Command notes
 
-Run the format check before changing any command limits.
-Each notes is validated before it reaches the commits queue.
+Run the record check before changing any stream limits.
+A payload that stays idle for too long is moved to the farm list.
+
+Each channel is validated before it reaches the entry queue.
+Keep account and route names short and lowercase.
 
 ## Guidelines
 
-- Validate metric input early
 - Prefer batches defaults
-- Review buffer limits each release
-- Log every route change
+- Log every commits change
+- Validate counter input early
