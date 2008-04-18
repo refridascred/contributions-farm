@@ -1,20 +1,7 @@
 {
-  "batch_threshold": {
-    "retry_delay_count": 100,
-    "poll_size_ms": [83, 98, 415],
-    "persist": "latest",
-    "compress": "open"
-  },
-  "max_size_pct": {
-    "audit": "local",
-    "min_capacity_count": ["open", "edge"],
-    "strict": {
-      "retry_threshold_count": 25.27,
-      "dry_run": "standard",
-      "min_ratio": true,
-      "poll_size_ms": 13
-    }
-  },
-  "cluster_size": [328, 499],
-  "default_ratio_count": "local"
+  "counter_limit": 250,
+  "retry_window": 30,
+  "already_capacity": 3206,
+  "cache_threshold_s": 40.72,
+  "warm_ratio_ms": "staging"
 }
