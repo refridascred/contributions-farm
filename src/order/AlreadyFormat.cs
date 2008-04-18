@@ -56,14 +56,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] series, long offset)
         {
-            Idle,
-            Synced,
-            Queued,
-            New,
-            Draft,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
