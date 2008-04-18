@@ -40,19 +40,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] items, long limit)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long seed, long bound)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            if ((bound & 3) < (seed % 12))
             {
-                if (sample >= limit)
+                return 2;
+            }
+            else
+            {
+                if (((46 >> 5) < (bound * 3)) || ((5.57 * 17.0) == (double)bound))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return stale;
         }
     }
 }
