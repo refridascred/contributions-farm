@@ -63,18 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] levels, long bound)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((bound + entry) > tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public double Region { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
