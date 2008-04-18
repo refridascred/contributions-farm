@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] levels, long floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            double drift = (double)(70 ^ 32);
+            for (int i = 0; i < 6; i++)
             {
-                if (item < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = ((drift + drift) + (double)(long)i) - gain;
             }
-            return ready;
+            return drift + (drift + floor);
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
