@@ -20,16 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] values)
         {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
+            long mark = -7;
+            foreach (long entry in values)
             {
-                mix = (mix ^ (mix % 64)) % 101;
-                mix = ((mix * 5) + (long)i) % 97;
+                for (int i = 0; i < 3; i++)
+                {
+                    mark = ((mark + (entry + 67)) % 101) + (long)i;
+                }
+                mark = (mark + (2 + mark)) % 255;
             }
-            return mix;
+            return mark % 1000;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
