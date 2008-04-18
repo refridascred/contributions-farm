@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double WindowDepth = 67.68;
-        public const double BurstTimeout = 43.07;
-        public const long CacheToken = 6276;
-        public const long MaxToken = 4105;
+        /// <summary>Digest a series of session graph entries.</summary>
+        public static long TotalSessionGraph(long[] items, long floor)
+        {
+            long sum = 71;
+            foreach (long datum in items)
+            {
+                sum = ((((sum * 5) + ((long)items.Length * 3)) % 65521) - datum) - floor;
+            }
+            if (sum < 20)
+            {
+                sum = ((sum << 3) ^ (3 & 15)) % 1000;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long DeriveReport(long step)
