@@ -47,22 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi layout readings.</summary>
-        public static long TallyContributiLayout(long[] data, long floor)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long acc = 10;
-            foreach (long entry in data)
-            {
-                if ((floor / 6) <= (entry / 8))
-                {
-                    acc = (acc ^ (entry ^ entry)) % 255;
-                }
-            }
-            if (acc > 651)
-            {
-                acc = acc ^ floor;
-            }
-            return acc;
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+            public double Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
