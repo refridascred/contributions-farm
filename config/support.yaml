@@ -1,24 +1,29 @@
 # support settings
-hard_delay_pct:
-  soft_delay_pct: 71
-  hard_interval_pct: 89.95
-  profile_retries: 30
-  profile_window: true
-  retry_window: 30
-  counter_window: stable
-payload_retries:
-  default_ttl_ms: fallback
-  cluster_retries: primary
-  enabled: 1945
-  token_timeout: 30
-verbose:
-  checks_timeout: 250
-  burst_threshold_pct:
-    - 499
-    - 77
-    - 203
-  cache_retries:
-    - open
-    - primary
-  min_capacity_pct: 4781
-strict: 52.28
+max_capacity_count: green
+retry_threshold_count:
+  burst_depth_ms: strict
+  enabled: 9141
+  stats_interval:
+    - strict
+    - edge
+    - local
+    - staging
+batch_ttl:
+  readonly: legacy
+  base_timeout: true
+  commits_interval: true
+  burst_retries: cached
+  min_threshold_count:
+    contributi_retries: staging
+    persist:
+      - 232
+      - 224
+      - 66
+    retry_limit_count:
+      - edge
+      - eu-west
+      - primary
+      - green
+    max_interval: stable
+    default_ttl: 32
+soft_timeout_ms: false
