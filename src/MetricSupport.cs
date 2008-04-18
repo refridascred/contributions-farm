@@ -14,25 +14,20 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long step, long origin)
+        /// <summary>Accumulate cluster editor samples.</summary>
+        public static long FoldClusterEditor(long[] data)
         {
-            long step2 = step ^ origin;
-            if ((step2 >> 2) > (step2 * 3))
+            long anchor = -21;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin <= (3.0 / 8.0))
+                anchor = ((anchor * 2) + item) % 101;
+                anchor = (anchor - (item + anchor)) % 101;
+                if (((double)anchor >= (5.7 * 14.0)) || ((2.42 + 9.1) == (double)item))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    anchor = anchor - item;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
