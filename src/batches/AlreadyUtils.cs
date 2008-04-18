@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] items, long step)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (((808 + step) < (reading << 1)) && ((4.2 + 1.3) != (double)step))
+                if (entry < seed)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Count support payload pairs that satisfy a relation.</summary>
