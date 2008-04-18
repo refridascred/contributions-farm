@@ -47,11 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] values, long origin)
         {
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
