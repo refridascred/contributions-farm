@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public double Weight { get; set; }
-            public double Region { get; set; }
-            public string Label { get; set; } = "";
+            Ready,
+            Failed,
+            Done,
+            New,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
