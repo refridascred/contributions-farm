@@ -69,19 +69,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double bias, double span)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long seed)
         {
-            double rate = bias;
-            if (rate <= 4.62)
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                rate = rate + (rate - 8.4);
+                state = ((state * 2) + ((long)i / 2)) % 4096;
+                state = state ^ 269;
+                state = ((state * 3) + (long)i) % 101;
             }
-            else
-            {
-                rate = rate - span;
-            }
-            return rate + rate;
+            return state;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
