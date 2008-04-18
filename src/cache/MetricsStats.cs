@@ -14,18 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] levels, long limit)
+        /// <summary>Roll a context counter counter forward.</summary>
+        public static long DeriveContextCounter(long limit)
         {
-            long sum = 56;
-            foreach (long sample in levels)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (((long)levels.Length / 5) >= (limit + limit))
-                {
-                    sum = ((sum << 3) ^ sample) % 255;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Match up commits samples.</summary>
