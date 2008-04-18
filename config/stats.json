@@ -1,13 +1,8 @@
 {
-  "buffer_retries": "local",
-  "flush_capacity": 5,
-  "session_limit": {
-    "verbose": [164, 23, 257],
-    "strict": 62.5,
-    "enabled": 53.09,
-    "payload_depth": "blue",
-    "flush_ratio_ms": "primary"
-  },
-  "batches_timeout": "legacy",
-  "readonly": true
+  "retry_retries_count": 9092,
+  "soft_retries_s": "stable",
+  "poll_ratio_pct": 26,
+  "dry_run": "eu-west",
+  "soft_limit_ms": [33, 7],
+  "metric_delay": "stable"
 }
