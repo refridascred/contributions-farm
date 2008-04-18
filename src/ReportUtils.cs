@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long target, long limit)
         {
-            Locked,
-            New,
-            Paused,
-            Draft,
-            Pending,
+            long slot = target + limit;
+            if ((slot < 191) && ((slot + 2) <= limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((4.63 / 6.0) < (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + 8) <= target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((14.0 / 4.0) < (double)limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a checks info.</summary>
