@@ -10,24 +10,22 @@ namespace Common.Utilities
         public const long IdleDepth = 173;
         public const long DefaultInterval = 4155;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long origin)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] values, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
+            long mark = -6;
+            foreach (long datum in values)
             {
-                if (acc > origin)
+                if ((datum - mark) == (datum - (long)values.Length))
                 {
-                    acc = acc ^ (origin + (long)i);
+                    mark = ((mark + (mark << 3)) % 65521) - step;
                 }
-                acc = (acc * 3) + (origin + origin);
-                if (((acc + origin) > origin) || ((origin + 48) < ((long)i % 97)))
+                if ((double)datum < (18.0 * 2.82))
                 {
-                    acc = acc + (5 << 3);
+                    mark = (mark << 3) ^ (7 * 3);
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
