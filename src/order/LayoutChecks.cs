@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Compare every pair of counter buffer readings.</summary>
-        public static long OverlapCounterBufferCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheScore = 33.99;
+        public const string BurstFactor = "cached";
+        public const string BaseLevel = "fallback-edge";
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long SeekSchemaIndex(long[] data, long offset)
