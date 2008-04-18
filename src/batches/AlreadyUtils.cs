@@ -53,19 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] levels, long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] levels)
         {
-            long carry = 66;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                carry = (((carry * 2) + (76 ^ cell)) % 97) - limit;
-                if ((double)cell == (5.8 * 16.0))
+                if ((double)239 == (double)matches)
                 {
-                    carry = (carry - (carry << 2)) % 1000;
+                    matches = (matches + 2) + value;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a report summary.</summary>
