@@ -70,32 +70,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long seed, long target)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long seed)
         {
-            long slot = seed ^ target;
-            if (((9 + target) >= (879 - slot)) && (seed >= target))
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 0;
+                sum = (sum - seed) % 97;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((slot - target) != (target << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target / 9) >= seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
