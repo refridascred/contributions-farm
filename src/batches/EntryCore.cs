@@ -57,19 +57,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every metric queue entry stays within the limit.</summary>
-        public static bool ValidateMetricQueueLimits(long[] readings, long bound)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double bias, double offset)
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double ratio = offset / 6.0;
+            return (ratio - offset) + bias;
         }
     }
 }
