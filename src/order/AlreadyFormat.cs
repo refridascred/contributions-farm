@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 3039;
-        public const double LimitInterval = 9.94;
-        public const double MinCommand = 43.43;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] levels)
+        {
+            long carry = 181;
+            foreach (long reading in levels)
+            {
+                if ((9.35 / 3.0) <= (double)reading)
+                {
+                    carry = (carry + reading) % 4096;
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
