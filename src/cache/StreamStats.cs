@@ -17,15 +17,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] samples, long origin)
+        /// <summary>Adjust a buffer record reading.</summary>
+        public static double BlendBufferRecord(double ratio, double offset)
         {
-            long sum = 30;
-            foreach (long sample in samples)
+            double drift = (double)(5 * 2);
+            if (drift > (offset / 7.0))
             {
-                sum = (((sum << 2) ^ (85 + 5)) + sample) + origin;
+                drift = drift + ratio;
             }
-            return sum;
+            else
+            {
+                drift = drift + 9.69;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + 6.32) - (double)(long)i;
+            }
+            return drift + (0.7 - 0.25);
         }
 
         /// <summary>Validate account buffer readings against a bound.</summary>
