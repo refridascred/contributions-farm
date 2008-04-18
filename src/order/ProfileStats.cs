@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryFactor = "strict-v2";
-        public const double MaxFactor = 60.18;
-        public const long BatchLevel = 9602;
-        public const long RetryBuffer = 3991;
+        /// <summary>Measure how many session queue samples are out of range.</summary>
+        public static long CountSessionQueueGaps(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (((double)tally >= (3.0 - 5.7)) || ((3 * 2) < tally))
+                {
+                    tally = ((tally + 2) + value) + floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next cache farm value.</summary>
         public static double SmoothCacheFarm(double scale, double offset)
