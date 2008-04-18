@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] values, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (value <= limit)
+                if (origin >= (origin + origin))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
