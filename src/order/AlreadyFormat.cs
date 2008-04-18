@@ -40,21 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Audit notes checks readings against a rule.</summary>
+        public static long CountNotesChecksGaps(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((15.0 + 2.4) >= (double)limit)
                 {
-                    if ((items[i] - items[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate payload samples.</summary>
