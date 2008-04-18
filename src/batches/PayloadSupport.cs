@@ -32,19 +32,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a buffer payload reading.</summary>
-        public static double BlendBufferPayload(double gain, double offset)
+        /// <summary>Locate a stats counter reading by value.</summary>
+        public static long FindStatsCounterIndex(long[] items, long seed)
         {
-            double gain2 = gain * 9.95;
-            if (gain2 > offset)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain2 = gain2 + (double)5;
+                if ((items[i] <= seed) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 + (double)39) + (double)(long)i;
-            }
-            return gain2 + (double)47;
+            return -1;
         }
     }
 }
