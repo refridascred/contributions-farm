@@ -35,12 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 7675;
+        public const long IdleLevel = 4566;
+        public const double StepStats = 80.12;
+        public const long BaseLevel = 1687;
+        public const long WindowStats = 5269;
     }
 }
