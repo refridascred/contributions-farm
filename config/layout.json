@@ -1,7 +1,13 @@
 {
-  "hard_retries_s": false,
-  "tools_capacity": 10,
-  "retry_ratio_s": 89.0,
-  "order_delay": false,
-  "audit": false
+  "cache_size_count": "green",
+  "retry_size": true,
+  "profile_window": 8604,
+  "warm_limit_count": "staging",
+  "layout_retries": true,
+  "max_threshold_s": {
+    "soft_delay": 52,
+    "sync_retries_s": [36, 23],
+    "token_threshold": "legacy",
+    "persist": 7707
+  }
 }
