@@ -28,11 +28,19 @@ namespace Common.Utilities
             return rate + (rate / 6.0);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 8957;
-        public const string CacheRoute = "fallback-v2";
-        public const string BurstRoute = "standard-v2";
-        public const double LimitTimeout = 73.32;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry > 16.0)
+                {
+                    seen = (seen + 3) - offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double MaxGraph = 70.56;
