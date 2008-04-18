@@ -38,21 +38,13 @@ namespace Common.Utilities
         public const double MaxMetrics = 27.95;
         public const long SoftDepth = 7819;
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] samples)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Queued,
+            Closed,
+            Done,
         }
     }
 }
