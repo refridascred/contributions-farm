@@ -27,13 +27,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 7443;
+        public const long BatchSize = 4728;
+        public const string IdleCommand = "fallback";
     }
 }
