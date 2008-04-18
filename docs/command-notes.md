@@ -1,15 +1,13 @@
 # Command notes
 
-Run the githubfarm check before changing any entry limits.
-Defaults for report live in the config folder and can be overridden per environment.
+A command that stays idle for too long is moved to the filter list.
+A order that stays idle for too long is moved to the commits list.
 
-Run the editor check before changing any record limits.
-The layout report groups every queue by tools.
-A stats that stays idle for too long is moved to the editor list.
+Use batches settings to tune how often support data is refreshed.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate report input early
-- Prefer stream defaults
-- Log every profile change
-- Keep token values small
+- Validate metrics input early
+- Document new cluster fields
+- Review report limits each release
