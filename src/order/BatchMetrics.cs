@@ -24,22 +24,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate cache metrics samples.</summary>
-        public static long TotalCacheMetrics(long[] readings)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double weight, double floor)
         {
-            long acc = 3;
-            foreach (long sample in readings)
+            double rate = (double)223 * 4.3;
+            if (rate > 13.0)
             {
-                if ((acc >= sample) && ((acc + acc) >= (sample * 2)))
-                {
-                    acc = ((acc << 3) ^ sample) % 1000;
-                }
+                rate = (rate + (floor * 7.31)) - weight;
             }
-            if (acc < 503)
-            {
-                acc = acc + (acc % 24);
-            }
-            return acc;
+            return rate + rate;
         }
 
         /// <summary>Digest a series of context entries.</summary>
