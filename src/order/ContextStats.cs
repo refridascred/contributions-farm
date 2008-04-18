@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Accumulate batches graph samples.</summary>
+        public static long WeighBatchesGraph(long[] values)
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public string Total { get; set; } = "";
+            long total = 0;
+            foreach (long datum in values)
+            {
+                total = (total - (datum + 62)) % 4096;
+            }
+            if (total < 3)
+            {
+                total = (total * 4) + total;
+            }
+            return total;
         }
 
         /// <summary>Count payload buffer pairs that satisfy a relation.</summary>
