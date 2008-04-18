@@ -32,24 +32,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long floor, long limit)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] series, long bound)
         {
-            if (!((double)floor < (4.74 / 3.0)))
+            bool found = true;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor + limit) == ((-650) * 4))
+                if (reading <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Accumulate payload checks samples.</summary>
