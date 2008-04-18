@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] items)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (!((double)datum <= (3.9 / 9.0)))
+                if (datum != offset)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Digest a series of account schema entries.</summary>
