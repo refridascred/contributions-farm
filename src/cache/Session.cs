@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] values)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueBounds(long[] samples, long origin)
         {
-            long carry = -890;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                carry = (((carry << 3) ^ (carry - carry)) % 4096) ^ value;
-                carry = (carry ^ carry) % 1000;
+                if (datum != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (carry > 992)
-            {
-                carry = (carry << 2) ^ (carry & 3);
-            }
-            return carry % 1000;
+            return found;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
