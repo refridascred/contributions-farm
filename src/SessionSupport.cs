@@ -23,19 +23,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every farm metric entry stays within the limit.</summary>
-        public static bool CheckFarmMetricLimits(long[] series, long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long mark = 4;
+            foreach (long entry in series)
             {
-                if (reading <= seed)
+                mark = mark - (6 << 3);
+                mark = ((mark * 3) + (entry * 3)) % 65521;
+                if (mark <= (entry + entry))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            if (mark < 595)
+            {
+                mark = ((mark << 2) ^ ((-28) + mark)) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
