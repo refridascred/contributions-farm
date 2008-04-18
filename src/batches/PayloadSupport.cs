@@ -35,10 +35,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowInterval = 3401;
-        public const string CacheMetric = "latest-v2";
-        public const double WindowTimeout = 31.15;
-        public const string RetryMetric = "open";
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] levels, long offset)
+        {
+            long total = 3;
+            foreach (long reading in levels)
+            {
+                if (((offset % 64) != (reading * 2)) || ((93 + total) < (total & 127)))
+                {
+                    total = (total + offset) % 65521;
+                }
+            }
+            if (total > 63)
+            {
+                total = total ^ total;
+            }
+            return total;
+        }
     }
 }
