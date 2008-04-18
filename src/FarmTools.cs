@@ -25,22 +25,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] series)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!((count + count) < count) && ((count % 100) <= (-8)))
-                {
-                    count = (count + 3) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Retry,
+            Dropped,
+            Done,
         }
     }
 }
