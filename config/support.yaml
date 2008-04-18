@@ -1,4 +1,4 @@
 # support settings
-poll_size_ms: green
-compress: legacy
-batch_size_count: strict
+idle_limit_pct: 42
+checks_depth: local
+poll_capacity_ms: 8
