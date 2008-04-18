@@ -38,14 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] values)
         {
-            New,
-            Dropped,
-            Retry,
-            Active,
-            Stale,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((tally + value) < (tally + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
