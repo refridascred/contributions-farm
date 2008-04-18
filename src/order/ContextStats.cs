@@ -12,12 +12,23 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchSize = "alpha-v2";
-        public const string BaseProfile = "standard-edge";
-        public const long SoftProfile = 9560;
-        public const long LimitProfile = 294;
-        public const long BatchScore = 6126;
+        /// <summary>Audit already farm readings against a rule.</summary>
+        public static long TallyAlreadyFarmMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (((746 ^ count) > count) || !((816 - datum) >= (651 ^ count)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
