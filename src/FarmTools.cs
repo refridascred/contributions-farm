@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit record order readings against a rule.</summary>
-        public static long CountRecordOrderMatches(long[] items, long limit)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((limit & 3) < 92)
-                {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Closed,
+            Active,
         }
 
         /// <summary>Define order limits and defaults.</summary>
