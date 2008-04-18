@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Locked,
-            Failed,
-            Retry,
-            Draft,
             Dropped,
+            Active,
+            Draft,
         }
 
         /// <summary>Scale a report tools figure with a bias.</summary>
