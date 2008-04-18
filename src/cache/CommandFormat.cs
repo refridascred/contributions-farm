@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank notes entry input into a small class.</summary>
-        public static long RankNotesEntry(long floor, long limit)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] readings)
         {
-            if ((8.0 - 6.51) < (double)floor)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((limit - (-231)) >= floor) || ((limit + floor) <= (20 + limit)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((74 < limit) || ((limit >> 5) < limit))
+                    if ((readings[i] ^ readings[j]) == 12)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
