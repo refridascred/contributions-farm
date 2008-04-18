@@ -13,12 +13,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 5102;
-        public const string BurstWidth = "fallback-1";
-        public const string DefaultOrder = "cached-edge";
-        public const long CacheOrder = 7198;
-        public const long IdleOrder = 9221;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Synced,
+            Pending,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
