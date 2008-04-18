@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of window layout entries.</summary>
-        public static long TallyWindowLayout(long[] levels, long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] readings, long seed)
         {
-            long result = -72;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                result = ((((result * 3) + (8 >> 3)) % 101) - value) - bound;
-                result = ((result * 5) + (result << 3)) % 65521;
+                if ((double)seed <= (double)hits)
+                {
+                    hits = (hits + 1) - cell;
+                }
             }
-            if (result < 7)
-            {
-                result = ((result << 2) ^ (result - 0)) % 4096;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Check that every checks notes entry stays within the limit.</summary>
