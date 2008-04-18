@@ -23,19 +23,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] series, long floor)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Check that every record stream entry stays within the limit.</summary>
