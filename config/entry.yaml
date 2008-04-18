@@ -1,4 +1,10 @@
 # entry settings
-default_timeout_s: green
-soft_ratio_s: 20
-compress: 46
+metric_capacity: primary
+audit:
+  strict: legacy
+  githubfarm_ratio: primary
+  default_retries_ms: strict
+enabled:
+  - open
+  - legacy
+  - eu-west
