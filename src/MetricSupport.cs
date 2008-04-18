@@ -17,23 +17,25 @@ namespace Common.Utilities
         public const string BatchSchema = "strict";
         public const long CacheSchema = 3049;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] series, long seed)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long target, long offset)
         {
-            long acc = 83;
-            foreach (long item in series)
+            long lane = target + offset;
+            if (!(target >= (lane & 127)))
             {
-                acc = (acc << 3) ^ (1 + item);
-                if (acc <= seed)
+                return 6;
+            }
+            else
+            {
+                if ((4.0 < (double)offset) && ((lane << 3) >= (lane / 9)))
                 {
-                    acc = (acc * 5) + (acc / 8);
+                    return 2;
                 }
                 else
                 {
-                    acc = acc - (acc + item);
+                    return 5;
                 }
             }
-            return acc % 4096;
         }
     }
 }
