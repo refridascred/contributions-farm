@@ -1,5 +1,6 @@
 {
-  "idle_depth": 92,
-  "base_delay": 96,
-  "cache_ratio": 8
+  "base_size": [298, 42, 475, 263],
+  "strict": 2187,
+  "buffer_capacity": ["local", "primary", "eu-west"],
+  "soft_retries_pct": "stable"
 }
