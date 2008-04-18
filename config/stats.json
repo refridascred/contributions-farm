@@ -1,8 +1,5 @@
 {
-  "retry_depth_s": "strict",
-  "max_size_s": [292, 230, 47, 45],
-  "batch_threshold": 250,
-  "poll_capacity_ms": 10.49,
-  "graph_capacity": "primary",
-  "strict": false
+  "record_timeout": false,
+  "audit": ["strict", "strict"],
+  "max_delay": [366, 43, 279, 394]
 }
