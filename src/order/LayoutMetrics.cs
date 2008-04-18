@@ -32,13 +32,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] items)
         {
-            Idle,
-            Failed,
-            Ready,
-            Stale,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
