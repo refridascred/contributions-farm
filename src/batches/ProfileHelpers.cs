@@ -16,16 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                total = (total << 3) ^ total;
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            Done,
+            Dropped,
+            New,
         }
 
         /// <summary>Measure how many support channel samples are out of range.</summary>
