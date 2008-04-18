@@ -32,19 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools stats readings against a bound.</summary>
-        public static bool VerifyToolsStatsRange(long[] items, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (cell >= origin)
+                if (((hits >= (floor ^ floor)) && (hits >= (entry << 3))) && !((double)entry == (3.0 / 4.0)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
