@@ -1,7 +1,6 @@
 {
-  "burst_threshold": "edge",
-  "idle_retries_count": 10.21,
-  "base_retries": "cached",
-  "batch_size": 88.0,
-  "soft_threshold_s": 60
+  "min_interval_pct": 58.78,
+  "stats_threshold": 89.3,
+  "cache_threshold": "edge",
+  "hard_timeout": 500
 }
