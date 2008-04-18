@@ -43,17 +43,19 @@ namespace Common.Utilities
         public const long RetryBudget = 9477;
         public const string BaseSize = "open-edge";
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] series, long target)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((series[i] > target) && ((series[i] % 2) == 0))
+                if (datum >= offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Match up account samples.</summary>
