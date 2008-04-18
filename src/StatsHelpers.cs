@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const double WindowRatio = 48.66;
         public const string BurstCount = "staging";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double HardCount = 4.37;
-        public const long IdleCount = 8291;
-        public const long RetrySpan = 3546;
-        public const double BaseCount = 36.1;
-        public const string MinRoute = "primary-edge";
+        /// <summary>Count the tools buffer entries that pass the check.</summary>
+        public static long AuditToolsBufferHits(long[] items, long seed)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((double)(long)items.Length > 17.0)
+                {
+                    seen = ((seen + 1) - datum) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double BatchCount = 2.11;
