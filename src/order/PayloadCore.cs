@@ -44,9 +44,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 8582;
-        public const string IdleChannel = "latest-1";
-        public const long BatchSize = 7479;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Dropped,
+            Locked,
+            Stale,
+            Queued,
+            Failed,
+        }
     }
 }
