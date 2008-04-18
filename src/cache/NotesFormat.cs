@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long origin, long target)
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            if ((1.18 / 3.0) < (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin % 3) == (target / 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target >> 3) < target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin < 63) || ((origin << 3) == (origin + origin)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
