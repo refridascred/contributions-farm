@@ -34,19 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] series, long bound)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long seed)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading <= bound)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    found = false;
-                    break;
+                    sum = (((sum << 3) ^ (sum + sum)) % 4096) + (long)i2;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Accumulate payload checks samples.</summary>
