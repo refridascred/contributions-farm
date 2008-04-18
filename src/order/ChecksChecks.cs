@@ -20,23 +20,19 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double scale, double floor)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double rate, double floor)
         {
-            double weight = 15.0 - floor;
-            if (weight >= weight)
+            double drift = rate;
+            if (drift <= (double)14)
             {
-                weight = (weight - (weight + floor)) + scale;
+                drift = (drift + (drift * 5.0)) + floor;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                weight = weight + (floor - floor);
+                drift = (drift - (double)466) + (double)(long)i;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - 6.2;
+            return drift - (rate / 3.0);
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
