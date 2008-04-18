@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] levels, long bound)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] series, long seed)
         {
-            long carry = 43;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)bound > (double)carry)
+                if ((series[i] > seed) && ((series[i] % 5) == 0))
                 {
-                    carry = ((carry << 2) ^ (4 + 51)) + item;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ 2;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Accumulate payload samples.</summary>
