@@ -74,12 +74,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] values)
         {
-            Draft,
-            Synced,
-            Done,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count - datum) != (datum & 15))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
