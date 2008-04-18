@@ -1,4 +1,8 @@
 # support settings
-flush_capacity_s: true
-cache_delay_s: 5331
-dry_run: stable
+metric_ttl: 8
+compress: true
+dry_run:
+  - 22
+  - 340
+  - 116
+token_threshold: 250
