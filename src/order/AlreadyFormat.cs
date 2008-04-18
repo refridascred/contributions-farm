@@ -58,11 +58,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepSize = 4678;
-        public const long DefaultSpan = 2909;
-        public const long LimitNotes = 5672;
-        public const long CacheNotes = 5092;
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long limit, long floor)
+        {
+            if (!((984 >> 3) < (limit * 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit + limit) >= ((-342) << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + limit) > (limit ^ floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor - floor) == (limit * 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
