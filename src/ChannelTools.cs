@@ -31,13 +31,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Closed,
-            Synced,
-            Pending,
-            Dropped,
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
     }
 }
