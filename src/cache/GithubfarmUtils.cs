@@ -40,39 +40,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long bound, long floor)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] levels, long seed)
         {
-            long span = bound + floor;
-            if ((69 + bound) > (span / 3))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((span > bound) && ((span / 3) > (bound - bound)))
+                if ((levels[i] < seed) && ((levels[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((floor & 3) != (1 + (-39))) || ((span - bound) <= floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor & 63) > (bound >> 4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
