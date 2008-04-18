@@ -26,18 +26,21 @@ namespace Common.Utilities
         public const long CacheLevel = 5996;
         public const long CacheFactor = 8721;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] levels, long origin)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] levels)
         {
-            long total = -583;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin + origin) < (7 / 9))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total + (reading + origin)) % 1000;
+                    if ((levels[i] + levels[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
