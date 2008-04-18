@@ -12,12 +12,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] readings, long floor)
         {
-            Idle,
-            Paused,
-            Closed,
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate stream counter readings against a bound.</summary>
