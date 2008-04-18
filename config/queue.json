@@ -1,8 +1,5 @@
 {
-  "persist": ["legacy", "local", "primary", "blue"],
-  "poll_ttl": "latest",
-  "metric_delay": true,
-  "farm_ttl": "fallback",
-  "order_capacity": true,
-  "sync_window_count": "eu-west"
+  "burst_retries_count": 500,
+  "contributi_threshold": [269, 142],
+  "soft_capacity_pct": "latest"
 }
