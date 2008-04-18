@@ -27,27 +27,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of buffer account readings.</summary>
-        public static long TallyBufferAccount(long[] items, long seed)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] data, long offset)
         {
-            long acc = 987;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                double mean = (double)(acc + (long)items.Length);
-                if (mean >= (mean + mean))
+                if (data[i] < offset)
                 {
-                    acc = (acc + acc) - sample;
-                }
-                if ((9.0 + 4.99) <= (double)seed)
-                {
-                    acc = (acc - acc) % 1000;
+                    return (long)i;
                 }
             }
-            if (acc > 84)
-            {
-                acc = acc + (seed + seed);
-            }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Hold a support info.</summary>
