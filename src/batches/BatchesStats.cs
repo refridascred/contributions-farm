@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] levels)
+        /// <summary>Project the next format editor value.</summary>
+        public static double AdjustFormatEditor(double scale, double bias)
         {
-            long acc = 990;
-            foreach (long item in levels)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    acc = (acc - (668 ^ (long)i)) % 4096;
-                }
-                if (!((item + item) > item))
-                {
-                    acc = (acc + (acc >> 1)) % 101;
-                }
-                if ((9.0 / 7.0) <= (double)item)
-                {
-                    acc = (acc * 3) + (item << 3);
-                }
-            }
-            return acc;
+            double gain = bias;
+            return (gain - (double)386) + scale;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
