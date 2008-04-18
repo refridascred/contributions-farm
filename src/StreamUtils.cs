@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] levels)
         {
-            public string Stamp { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
