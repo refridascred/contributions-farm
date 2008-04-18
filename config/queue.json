@@ -1,8 +1,8 @@
 {
-  "max_limit": 90,
-  "default_capacity_s": [288, 276, 34, 348],
-  "order_size": 18.83,
-  "batch_ratio_ms": "green",
-  "idle_ttl": 3267,
-  "batch_window": 45.49
+  "min_size": [25, 185],
+  "min_delay_pct": ["strict", "eu-west", "green"],
+  "flush_ttl_ms": 5917,
+  "cache_delay_count": "blue",
+  "filter_ttl": "open",
+  "soft_timeout_pct": 9184
 }
