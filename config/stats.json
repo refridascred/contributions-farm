@@ -1,5 +1,6 @@
 {
-  "retry_ttl": ["edge", "local"],
-  "sync_limit": 5547,
-  "flush_retries": [236, 302, 124]
+  "filter_timeout": "cached",
+  "checks_depth": "edge",
+  "soft_depth": 9746,
+  "sync_ratio_s": false
 }
