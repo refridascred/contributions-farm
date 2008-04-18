@@ -22,15 +22,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a buffer context counter forward.</summary>
-        public static long StepBufferContext(long offset)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            Idle,
+            Ready,
+            Retry,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
