@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] values, long bound)
-        {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowInterval = 3549;
+        public const string SoftAccount = "cached";
+        public const string MinBudget = "staging-1";
+        public const long MaxWidth = 4717;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long BucketCluster(long step, long floor)
