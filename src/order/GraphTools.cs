@@ -79,10 +79,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheFactor = 23.99;
-        public const string LimitScore = "alpha-edge";
-        public const long BatchInterval = 8832;
-        public const string StepDepth = "standard-1";
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] data, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (entry <= 4)
+                {
+                    matches = (matches + 2) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
