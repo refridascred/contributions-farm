@@ -48,15 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] items)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] series, long floor)
         {
-            long carry = 682;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                carry = (carry - sample) % 101;
+                if ((floor ^ datum) != (tally ^ floor))
+                {
+                    tally = tally + 2;
+                }
             }
-            return carry % 65521;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
