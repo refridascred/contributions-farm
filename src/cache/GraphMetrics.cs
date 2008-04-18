@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] data, long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] values, long limit)
         {
-            long state = 36;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if ((limit + value) >= (limit ^ limit))
+                if (sample > limit)
                 {
-                    state = (state + value) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (state < 8)
-            {
-                state = state + (limit << 2);
-            }
-            return state % 1000;
+            return flag;
         }
 
         /// <summary>Match up contributi samples.</summary>
