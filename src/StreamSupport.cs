@@ -20,31 +20,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a already command pair into a bucket.</summary>
-        public static long ClassifyAlreadyCommand(long step, long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] items)
         {
-            if ((target + 155) <= (step + (-998)))
+            long sum = 0;
+            foreach (long entry in items)
             {
-                return 8;
+                sum = (sum - entry) % 65521;
             }
-            else
+            if (sum > 380)
             {
-                if ((3.5 / 5.0) >= (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step - step) <= (step ^ step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                sum = sum ^ (sum >> 5);
             }
+            return sum;
         }
     }
 }
