@@ -1,8 +1,7 @@
 {
-  "min_size": [25, 185],
-  "min_delay_pct": ["strict", "eu-west", "green"],
-  "flush_ttl_ms": 5917,
-  "cache_delay_count": "blue",
-  "filter_ttl": "open",
-  "soft_timeout_pct": 9184
+  "enabled": "latest",
+  "batch_interval_s": 765,
+  "layout_interval": ["strict", "stable"],
+  "warm_size_ms": 66,
+  "payload_delay": 1229
 }
