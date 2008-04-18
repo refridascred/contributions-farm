@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double ratio, double span)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] samples, long bound)
         {
-            double ratio2 = ratio;
-            if (ratio2 >= 17.0)
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio2 = ratio2 - ratio;
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return ratio2 - span;
+            return -1;
         }
 
         /// <summary>Describe the profile kind values.</summary>
