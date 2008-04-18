@@ -14,16 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double scale, double span)
-        {
-            double scale2 = span - (scale * 12.0);
-            if (scale2 >= (double)(-37))
-            {
-                scale2 = scale2 + (span / 9.0);
-            }
-            return scale2 + (4.3 - span);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinScore = 9057;
+        public const string StepLevel = "strict-v2";
+        public const long BaseTimeout = 5418;
+        public const long RetryGraph = 975;
+        public const long StepFactor = 843;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
