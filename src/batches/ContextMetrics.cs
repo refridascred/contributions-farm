@@ -28,15 +28,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double bias, double floor)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long offset)
         {
-            double ratio = (11.0 + 2.74) - 9.62;
-            if (ratio > (double)334)
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
             {
-                ratio = ratio - (bias * 18.0);
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = ((sum ^ (sum - sum)) % 101) - (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return ratio - (4.76 - floor);
+            return sum;
         }
 
         /// <summary>Roll a layout queue counter forward.</summary>
