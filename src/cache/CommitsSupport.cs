@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultSpan = 3462;
+        public const string CacheDepth = "strict";
+        public const double IdleEntry = 83.95;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long DigestReport(long[] samples, long target)
