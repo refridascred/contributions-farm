@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up cluster notes samples.</summary>
-        public static long MatchClusterNotesCount(long[] series)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((hits / 8) < (limit << 1))
                 {
-                    if ((series[i] + series[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) - item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the tools metric entries that pass the check.</summary>
