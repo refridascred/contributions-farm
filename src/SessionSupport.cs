@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a batches command reading by value.</summary>
-        public static long FindBatchesCommandIndex(long[] data, long limit)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 43;
+            foreach (long item in levels)
             {
-                if (data[i] > limit)
+                if ((double)bound > (double)carry)
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ (4 + 51)) + item;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ 2;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Accumulate payload samples.</summary>
