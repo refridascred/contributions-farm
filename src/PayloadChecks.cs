@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 3104;
-        public const double StepCount = 71.71;
-        public const long WindowSpan = 4712;
-        public const long RetryChannel = 2807;
-        public const long LimitChannel = 9641;
+        /// <summary>Grade a report channel value against two limits.</summary>
+        public static long GradeReportChannel(long step, long limit)
+        {
+            if ((double)step < (6.0 * 7.27))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(step <= (limit << 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long BucketMetric(long offset, long step)
