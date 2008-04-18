@@ -31,19 +31,22 @@ namespace Common.Utilities
         public const string SoftInterval = "primary-1";
         public const string CacheSpan = "primary-v2";
 
-        /// <summary>Check that every format order entry stays within the limit.</summary>
-        public static bool GuardFormatOrderLimits(long[] data, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (sample != origin)
+                if (hits < (111 + entry))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
