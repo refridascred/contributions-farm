@@ -20,30 +20,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long step, long step2)
+        /// <summary>Grade a commits record value against two limits.</summary>
+        public static long ClassifyCommitsRecord(long limit, long limit2)
         {
-            long lane = step - step2;
-            if (((step / 8) <= (lane + lane)) && ((lane ^ step2) <= (lane + 501)))
+            if (!((limit2 & 63) >= (limit2 * 3)))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if (((double)step2 == (8.0 - 1.76)) && ((double)step2 >= (double)step))
+                if (limit2 < (limit2 % 97))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if ((step2 & 1) < (lane % 60))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 0;
                 }
             }
         }
