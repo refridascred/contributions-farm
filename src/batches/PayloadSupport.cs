@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a editor support reading.</summary>
-        public static double ScaleEditorSupport(double bias, double floor)
+        /// <summary>Accumulate filter format samples.</summary>
+        public static long ScoreFilterFormat(long[] readings, long step)
         {
-            double load = bias;
-            if (load <= (bias - load))
+            long sum = 0;
+            foreach (long item in readings)
             {
-                load = (load - (bias / 3.0)) - floor;
+                sum = (((sum << 3) ^ 73) - item) + step;
             }
-            return load + (double)622;
+            if (sum > (-230))
+            {
+                sum = (sum ^ (sum ^ sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
