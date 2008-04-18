@@ -1,7 +1,12 @@
 {
-  "sync_delay_s": 30,
-  "base_window": "stable",
-  "stream_ratio": [452, 234, 190, 487],
-  "persist": 60,
-  "token_window": ["stable", "fallback", "blue", "staging"]
+  "enabled": {
+    "retry_limit_pct": 6732,
+    "poll_depth_count": 69,
+    "poll_delay_s": 62,
+    "warm_interval_ms": "standard"
+  },
+  "cluster_ttl": "latest",
+  "burst_window_s": 94.34,
+  "default_interval": false,
+  "metrics_delay": 500
 }
