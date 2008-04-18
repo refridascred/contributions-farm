@@ -1,14 +1,8 @@
 {
-  "hard_window_pct": 73.64,
-  "verbose": true,
-  "sync_window_pct": {
-    "record_interval": 60,
-    "poll_limit": "standard",
-    "max_window": 7823,
-    "strict": false,
-    "soft_ratio": true,
-    "batch_capacity": false
-  },
-  "default_window_count": "fallback",
-  "dry_run": "strict"
+  "sync_ratio_s": "standard",
+  "contributi_ratio": [401, 31, 484],
+  "default_threshold": "legacy",
+  "soft_threshold_ms": 100,
+  "audit": 12.7,
+  "idle_capacity_ms": [301, 457, 380, 64]
 }
