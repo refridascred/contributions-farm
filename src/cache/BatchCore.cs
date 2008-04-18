@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the stream support entries that pass the check.</summary>
-        public static long MeasureStreamSupportGaps(long[] values)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (((104 + seen) < reading) || (((seen % 8) > (reading >> 2)) || ((seen + reading) <= (917 >> 2))))
+                if (((double)item >= (1.87 / 2.0)) && ((matches & 127) >= matches))
                 {
-                    seen = seen + 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the window class values.</summary>
