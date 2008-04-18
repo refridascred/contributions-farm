@@ -13,15 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a report tools figure with a bias.</summary>
-        public static double AdjustReportTools(double scale, double span)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            double scale2 = scale;
-            if (scale2 > (7.47 * 4.0))
-            {
-                scale2 = scale2 - scale2;
-            }
-            return scale2 + span;
+            public bool Score { get; set; }
+            public double Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
