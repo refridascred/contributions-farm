@@ -88,27 +88,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] data, long target)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long bound)
         {
-            long anchor = 1;
-            foreach (long datum in data)
+            long result = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = ((anchor << 3) ^ (anchor + target)) ^ (long)i;
-                }
-                anchor = anchor + (datum % 7);
-                if (!(target < (datum >> 1)))
-                {
-                    break;
-                }
+                result = (result ^ (result + bound)) % 4096;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            if (anchor < 3)
-            {
-                anchor = (anchor - anchor) % 97;
-            }
-            return anchor;
+            return result;
         }
     }
 }
