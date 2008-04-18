@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Check that every notes format entry stays within the limit.</summary>
+        public static bool CheckNotesFormatLimits(long[] samples, long offset)
         {
-            public bool Limit { get; set; }
-            public bool Ratio { get; set; }
-            public bool Stamp { get; set; }
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
