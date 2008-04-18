@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long DefaultScore = 1137;
         public const long HardProfile = 8019;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheTimeout = "primary";
-        public const long StepNotes = 4774;
-        public const string WindowScore = "stable";
-        public const long CacheInterval = 37;
-        public const string MinNotes = "stable";
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((seen * 5) > (seen >> 4))
+                {
+                    seen = (seen + 2) - value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every cache filter entry stays within the limit.</summary>
         public static bool CheckCacheFilterRange(long[] data, long offset)
