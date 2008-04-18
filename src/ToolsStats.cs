@@ -37,22 +37,22 @@ namespace Common.Utilities
         public const string HardCommand = "local-edge";
         public const long BurstRatio = 407;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] data, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] readings, long offset)
         {
-            long state = -143;
-            foreach (long item in data)
+            long mix = 2;
+            foreach (long entry in readings)
             {
-                if (((item * 5) >= (state << 2)) && ((long)data.Length > (state - seed)))
+                if ((mix - offset) < (entry + entry))
                 {
-                    state = (state - (seed & 15)) % 255;
+                    mix = mix + (3 << 2);
                 }
-                else
+                if ((entry * 4) == (355 - entry))
                 {
-                    state = (state - (seed << 2)) % 101;
+                    break;
                 }
             }
-            return state % 97;
+            return mix % 4096;
         }
 
         /// <summary>Match up support tools samples.</summary>
