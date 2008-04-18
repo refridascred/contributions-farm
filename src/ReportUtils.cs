@@ -19,15 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] items, long bound)
+        /// <summary>Compare every pair of format cache readings.</summary>
+        public static long PairFormatCacheCount(long[] values)
         {
-            long mark = 6;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark - (bound + sample)) % 4096;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
