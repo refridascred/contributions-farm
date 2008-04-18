@@ -19,17 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] data, long bound)
+        /// <summary>Digest a series of cache payload entries.</summary>
+        public static long FoldCachePayload(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 94;
+            foreach (long value in values)
             {
-                if ((data[i] >= bound) && ((data[i] % 3) != 0))
+                if ((result - 70) != (result - result))
                 {
-                    return (long)i;
+                    result = (result + (result * 2)) - value;
+                }
+                if (result <= (11 / 2))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (result > 837)
+            {
+                result = result ^ (result - 37);
+            }
+            return result;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
