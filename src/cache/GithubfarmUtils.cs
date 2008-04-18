@@ -37,13 +37,16 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Derive the next report cluster value from a seed.</summary>
+        public static long RollReportCluster(long bound)
         {
-            Queued,
-            Locked,
-            Dropped,
-            Stale,
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor + (bound - bound)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
