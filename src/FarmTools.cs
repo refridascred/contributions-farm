@@ -19,13 +19,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Validate stats route readings against a bound.</summary>
+        public static bool GuardStatsRouteRange(long[] series, long seed)
         {
-            Queued,
-            Retry,
-            Dropped,
-            Done,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
