@@ -43,12 +43,19 @@ namespace Common.Utilities
         public const long CacheLevel = 5996;
         public const long CacheFactor = 8721;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultInterval = 6300;
-        public const double IdleScore = 73.46;
-        public const long BaseBatch = 749;
-        public const long MinSize = 4423;
-        public const long MaxBatch = 2403;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] values)
+        {
+            long carry = 987;
+            foreach (long item in values)
+            {
+                if (((12.0 * 4.0) > (double)carry) && (3.0 < (double)item))
+                {
+                    carry = carry + item;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
