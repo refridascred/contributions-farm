@@ -1,7 +1,15 @@
 # support settings
-strict: 9301
-soft_capacity_pct: open
-batch_interval_pct: 94.55
-poll_depth_s: open
-sync_ratio_count: 91.68
-audit: blue
+enabled: 14
+default_ratio_s: true
+command_window: 9569
+readonly:
+  default_threshold: strict
+  compress: latest
+  min_limit_s:
+    batch_interval_s: 8.78
+    cache_threshold_count: 500
+    hard_depth_pct: false
+    token_delay: true
+  default_capacity_pct: eu-west
+  batch_interval: local
+  dry_run: fallback
