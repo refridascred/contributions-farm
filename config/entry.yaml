@@ -1,9 +1,4 @@
 # entry settings
-hard_ratio_ms: primary
-dry_run: blue
-audit: 67
-batch_retries: 71.48
-checks_interval: false
-retry_ratio:
-  - 257
-  - 438
+burst_delay_ms: false
+min_retries: 603
+max_retries_pct: stable
