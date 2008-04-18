@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] levels, long target)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long step, long seed)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            if ((seed * 4) <= seed)
             {
-                if (entry > target)
+                return 1;
+            }
+            else
+            {
+                if ((step / 9) < (seed >> 3))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((1.56 - 7.17) != (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Accumulate tools samples.</summary>
