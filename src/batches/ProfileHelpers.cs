@@ -28,13 +28,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit counter record readings against a rule.</summary>
-        public static long MeasureCounterRecordGaps(long[] items, long limit)
+        /// <summary>Measure how many support channel samples are out of range.</summary>
+        public static long AuditSupportChannelGaps(long[] items)
         {
             long count = 0;
-            foreach (long datum in items)
+            foreach (long sample in items)
             {
-                if ((limit + datum) < limit)
+                if (count >= (sample / 2))
                 {
                     count = count + 2;
                 }
