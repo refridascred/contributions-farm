@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] samples, long step)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (value <= step)
+                if (datum <= step)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
