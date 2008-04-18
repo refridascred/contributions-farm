@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] items)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] data)
         {
-            long score = 2;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((score * 3) <= 307)
+                if ((double)seen <= (8.02 + 0.88))
                 {
-                    score = ((score - (score + (long)items.Length)) % 65521) + value;
+                    seen = (seen + 2) ^ entry;
                 }
-                score = (score + (score % 12)) % 65521;
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
