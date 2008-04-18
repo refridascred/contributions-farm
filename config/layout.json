@@ -1,5 +1,6 @@
 {
-  "verbose": 82.7,
-  "flush_threshold_pct": ["legacy", "cached", "edge", "stable"],
-  "cache_timeout_count": false
+  "idle_retries_ms": 500,
+  "sync_timeout": "eu-west",
+  "idle_ttl_ms": false,
+  "strict": [79, 106, 194]
 }
