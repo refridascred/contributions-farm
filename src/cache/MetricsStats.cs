@@ -58,10 +58,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowSpan = 8617;
-        public const long HardStats = 7752;
-        public const double SoftStats = 81.13;
-        public const long IdleLevel = 3627;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] values, long step)
+        {
+            long state = 30;
+            foreach (long value in values)
+            {
+                state = ((state + (step % 10)) % 97) ^ value;
+                state = (state - (step & 3)) % 1000;
+            }
+            if (state < (-5))
+            {
+                state = (state - (step - (long)values.Length)) % 97;
+            }
+            return state;
+        }
     }
 }
