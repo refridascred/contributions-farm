@@ -41,13 +41,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Project the next graph schema value.</summary>
+        public static double SmoothGraphSchema(double rate, double floor)
         {
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            double rate2 = 11.0;
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = ((rate2 + floor) + (double)(long)i) + rate;
+            }
+            return rate2 + (floor / 3.0);
         }
     }
 }
