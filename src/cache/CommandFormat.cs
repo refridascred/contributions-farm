@@ -40,13 +40,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long seed, long bound)
         {
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
-            public double Offset { get; set; }
+            long offset = seed ^ bound;
+            if ((double)bound >= (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound % 2) == (seed + bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((35 - offset) <= (offset * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of support cache readings.</summary>
