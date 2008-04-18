@@ -39,11 +39,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstFactor = 5569;
-        public const double MaxLevel = 25.74;
-        public const long DefaultBatches = 5161;
-        public const long MaxBatches = 4149;
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double ratio, double bias)
+        {
+            double mean = 3.1 + (bias * 4.0);
+            if (mean < 5.7)
+            {
+                mean = (mean - bias) + ratio;
+            }
+            return mean - bias;
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
