@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the queue command series from a seed.</summary>
-        public static long IterateQueueCommand(long offset)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = (carry - (offset ^ 35)) % 255;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            New,
+            Draft,
+            Active,
+            Paused,
+            Pending,
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
