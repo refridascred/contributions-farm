@@ -52,18 +52,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] levels)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)239 == (double)matches)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 2) + value;
+                    if ((levels[i] - levels[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit notes record readings against a rule.</summary>
