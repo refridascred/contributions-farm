@@ -35,17 +35,19 @@ namespace Common.Utilities
             return bias + (rate / 6.0);
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] data, long origin)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double ratio, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = ratio;
+            if (mean < (double)(-8))
             {
-                if ((data[i] < origin) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean - 10.0) - floor;
             }
-            return -1;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean - (double)8;
         }
 
         /// <summary>Accumulate order samples.</summary>
