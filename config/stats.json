@@ -1,7 +1,7 @@
 {
-  "burst_threshold": [162, 432, 41],
-  "compress": [329, 282, 107],
-  "retry_retries_s": 89,
-  "retry_window_ms": ["staging", "primary"],
-  "layout_capacity": true
+  "stats_retries": ["strict", "stable", "open"],
+  "cache_retries": "open",
+  "retry_depth": 60,
+  "idle_depth_count": 7800,
+  "profile_size": "stable"
 }
