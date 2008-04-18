@@ -69,21 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading < bound)
                 {
-                    if ((levels[i] ^ levels[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
