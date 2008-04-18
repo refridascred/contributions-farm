@@ -1,18 +1,7 @@
 {
-  "hard_window_ms": "open",
-  "cache_limit": 45.19,
-  "profile_delay": {
-    "flush_size_pct": {
-      "verbose": true,
-      "idle_window_ms": 55,
-      "batch_size_s": ["cached", "standard", "edge"]
-    },
-    "burst_threshold_s": "standard",
-    "flush_size_count": ["standard", "stable"],
-    "profile_retries": true,
-    "buffer_limit": true,
-    "poll_size": 67.82
-  },
-  "flush_size": "green",
-  "poll_limit_count": "primary"
+  "compress": false,
+  "command_timeout": 88.25,
+  "dry_run": ["strict", "latest"],
+  "poll_threshold_count": 9334,
+  "persist": [483, 89]
 }
