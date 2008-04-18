@@ -37,21 +37,24 @@ namespace Common.Utilities
         public const string IdleLevel = "latest";
         public const string SoftCommand = "cached-1";
 
-        /// <summary>Match up editor support samples.</summary>
-        public static long CompareEditorSupportCount(long[] data)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long target, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (seed > target)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (seed <= target)
                 {
-                    if ((data[i] ^ data[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
     }
 }
