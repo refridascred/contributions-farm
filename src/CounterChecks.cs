@@ -57,11 +57,13 @@ namespace Common.Utilities
             return bias + (weight / 2.0);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryChannel = "local-v2";
-        public const string StepCount = "standard-edge";
-        public const string DefaultRatio = "stable-edge";
-        public const double DefaultChannel = 32.59;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Fold a list of contributi cache readings.</summary>
         public static long CombineContributiCache(long[] items)
