@@ -30,11 +30,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a channel counter forward.</summary>
