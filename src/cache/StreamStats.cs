@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            New,
-            Draft,
-            Active,
-            Paused,
-            Pending,
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
