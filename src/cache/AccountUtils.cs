@@ -30,23 +30,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] levels)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] samples)
         {
-            long state = 96;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                state = ((state << 3) ^ (value >> 1)) % 1000;
-                if ((value / 5) >= ((-34) - value))
+                if ((item & 63) > seen)
                 {
-                    state = state + 339;
+                    seen = seen + 2;
                 }
             }
-            if (state < (-885))
-            {
-                state = (state * 2) + ((-261) - state);
-            }
-            return state;
+            return seen;
         }
     }
 }
