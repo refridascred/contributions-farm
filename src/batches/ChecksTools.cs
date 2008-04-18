@@ -13,22 +13,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] series)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (item < (item + item))
+                if (0 <= (hits % 3))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 3) + datum;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Grade a context filter value against two limits.</summary>
