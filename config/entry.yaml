@@ -1,8 +1,17 @@
 # entry settings
-cache_delay:
-  - 42
-  - 153
-compress: stable
-graph_interval: 100
-warm_interval: 3323
-buffer_size: 33.68
+default_window_s: legacy
+persist:
+  - standard
+  - fallback
+  - standard
+  - standard
+sync_capacity: false
+poll_depth:
+  max_timeout_count: false
+  base_window_pct: latest
+  readonly: true
+  idle_interval_ms: staging
+  route_ratio: latest
+compress:
+  - 327
+  - 172
