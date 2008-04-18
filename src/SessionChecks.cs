@@ -12,12 +12,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] items, long offset)
         {
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
