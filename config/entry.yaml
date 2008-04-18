@@ -1,9 +1,9 @@
 # entry settings
-readonly:
-  - eu-west
-  - strict
-  - standard
-  - legacy
-max_delay_pct: 30
-token_delay: blue
-cache_delay_ms: 1024
+soft_ttl: latest
+poll_ttl_s: green
+retry_capacity_s:
+  - 362
+  - 476
+  - 322
+  - 119
+readonly: latest
