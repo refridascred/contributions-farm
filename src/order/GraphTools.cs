@@ -56,22 +56,19 @@ namespace Common.Utilities
             return mean - (double)8;
         }
 
-        /// <summary>Measure how many stream route samples are out of range.</summary>
-        public static long AuditStreamRouteGaps(long[] data, long bound)
+        /// <summary>Digest a series of layout tools entries.</summary>
+        public static long ScoreLayoutTools(long[] series)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long anchor = -3;
+            foreach (long reading in series)
             {
-                if (!((matches % 7) < matches))
+                if ((480 - anchor) > reading)
                 {
-                    matches = ((matches + 1) - value) - bound;
+                    break;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = anchor - reading;
             }
-            return matches;
+            return anchor % 97;
         }
 
         /// <summary>Audit entry commits readings against a rule.</summary>
