@@ -16,38 +16,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long target, long target2)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long seed)
         {
-            if (((double)target2 != (4.7 * 1.14)) || ((0.1 + 6.86) > (double)target))
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
             {
-                return 4;
+                mix = (mix ^ (mix % 64)) % 101;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (((target2 >> 3) >= target2) || ((target2 - target) >= (56 % 7)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target * 5) > (target + target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target + target) >= (target2 + target)) && ((target - target2) >= 506))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Describe the farm phase values.</summary>
