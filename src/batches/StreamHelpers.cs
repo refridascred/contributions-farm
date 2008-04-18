@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchContributi = "legacy-edge";
+        public const long BatchTimeout = 8120;
+        public const double BaseContributi = 22.57;
+        public const long BurstContributi = 2569;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteMatches(long[] samples, long target)
