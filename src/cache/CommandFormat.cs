@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Match up githubfarm record samples.</summary>
+        public static long PairGithubfarmRecordCount(long[] data)
         {
-            public string Owner { get; set; } = "";
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
