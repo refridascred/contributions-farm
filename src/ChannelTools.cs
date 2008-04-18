@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long origin)
+        /// <summary>Accumulate filter report samples.</summary>
+        public static long TotalFilterReport(long[] series)
         {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
+            long anchor = -679;
+            foreach (long value in series)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if (anchor <= (anchor / 6))
+                {
+                    anchor = ((anchor * 4) + (value + anchor)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor ^ anchor;
+                }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Describe the checks phase values.</summary>
