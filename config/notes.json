@@ -1,5 +1,7 @@
 {
-  "flush_depth_ms": "stable",
-  "max_depth_count": [94, 255, 268, 405],
-  "burst_delay_count": "primary"
+  "base_retries_pct": 60,
+  "hard_delay_pct": false,
+  "context_threshold": 92.05,
+  "format_threshold": true,
+  "min_depth_count": 20.21
 }
