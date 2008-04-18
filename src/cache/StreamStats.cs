@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Count buffer githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareBufferGithubfarmCount(long[] series)
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
