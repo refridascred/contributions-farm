@@ -28,19 +28,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] data, long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] data)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long sum = 16;
+            foreach (long cell in data)
             {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = (sum << 2) ^ (cell - cell);
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
