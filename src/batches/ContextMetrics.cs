@@ -60,18 +60,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] samples)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            double rate = (double)20;
+            if (rate < ratio)
             {
-                if (5.0 >= (double)count)
-                {
-                    count = (count + 2) + datum;
-                }
+                rate = rate - bias;
             }
-            return count;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + rate;
         }
     }
 }
