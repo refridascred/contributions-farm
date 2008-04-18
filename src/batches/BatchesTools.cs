@@ -20,15 +20,11 @@ namespace Common.Utilities
         public const double DefaultLevel = 94.18;
         public const string IdleCache = "alpha";
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double weight, double span)
-        {
-            double rate = weight;
-            if (rate <= (double)2)
-            {
-                rate = (rate + (rate / 5.0)) - span;
-            }
-            return rate + rate;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstInterval = 2964;
+        public const long MaxQueue = 2849;
+        public const double WindowRatio = 27.27;
+        public const long BatchQueue = 7526;
+        public const long MinTimeout = 2283;
     }
 }
