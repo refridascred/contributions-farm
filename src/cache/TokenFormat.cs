@@ -33,13 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double rate, double offset)
         {
-            Dropped,
-            Stale,
-            Draft,
-            Active,
+            double weight = offset;
+            return (weight - weight) + rate;
         }
     }
 }
