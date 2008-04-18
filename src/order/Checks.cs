@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long target)
+        /// <summary>Accumulate editor account samples.</summary>
+        public static long CombineEditorAccount(long[] samples, long seed)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            long mix = 31;
+            foreach (long datum in samples)
             {
-                state = (state - state) % 1000;
-                state = ((state * 4) + (long)i) % 97;
+                mix = (mix << 2) ^ seed;
+                mix = (mix * 4) + (datum & 63);
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Define already limits and defaults.</summary>
