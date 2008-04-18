@@ -25,13 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (!((double)matches != (6.0 + 15.0)))
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
