@@ -38,12 +38,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Idle,
-            Closed,
-            Done,
+            Queued,
+            Dropped,
+            Ready,
+            Draft,
+            Synced,
         }
 
         /// <summary>Measure how many editor profile samples are out of range.</summary>
