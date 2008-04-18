@@ -34,12 +34,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] samples)
         {
-            Draft,
-            Locked,
-            Stale,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + cell) < count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
