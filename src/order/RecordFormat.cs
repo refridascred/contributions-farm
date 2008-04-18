@@ -77,13 +77,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public bool Limit { get; set; }
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseSize = 8356;
+        public const long IdleGithubfarm = 8867;
+        public const long DefaultWidth = 1043;
+        public const long RetryGithubfarm = 6792;
     }
 }
