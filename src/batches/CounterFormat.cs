@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxTimeout = 78.56;
-        public const string HardCount = "cached-1";
-        public const long CacheScore = 9989;
-        public const long WindowAccount = 1419;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long floor, long bound)
+        {
+            long gap = floor + bound;
+            if (((double)bound <= (0.65 / 5.0)) && ((double)bound > (double)gap))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((54 + bound) < gap)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(2 > (gap + bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor >> 5) == (bound / 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LookupRecordIndex(long[] items, long target)
