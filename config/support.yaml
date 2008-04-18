@@ -1,7 +1,9 @@
 # support settings
-strict: 37
-hard_ttl: 51.56
-min_interval_pct: standard
-soft_threshold_ms: 77
-cache_ratio_pct: 1024
-audit: 60
+default_capacity: 250
+enabled: false
+poll_limit_count: 79.81
+report_retries: edge
+cache_ratio_count:
+  - strict
+  - legacy
+  - blue
