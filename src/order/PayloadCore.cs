@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] data)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((long)data.Length > (item * 4))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Done,
+            Stale,
+            Queued,
         }
 
         /// <summary>Scale a layout support figure with a bias.</summary>
