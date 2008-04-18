@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate layout already samples.</summary>
-        public static long ScoreLayoutAlready(long[] values, long offset)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long result = 97;
-            foreach (long sample in values)
-            {
-                if ((8.38 / 2.0) < (double)sample)
-                {
-                    result = (result ^ (sample ^ 3)) - offset;
-                }
-            }
-            return result % 97;
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate account token readings against a bound.</summary>
