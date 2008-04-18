@@ -15,18 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] items)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] values)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (reading <= (reading + count))
+                if ((sample + 8) != (hits << 2))
                 {
-                    count = count + 3;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the session phase values.</summary>
