@@ -1,8 +1,5 @@
 {
-  "batch_threshold_ms": 5042,
-  "base_ttl_s": "latest",
-  "audit": true,
-  "batch_ratio_ms": ["latest", "strict", "eu-west"],
-  "strict": 906,
-  "dry_run": 95.33
+  "retry_ttl": ["edge", "local"],
+  "sync_limit": 5547,
+  "flush_retries": [236, 302, 124]
 }
