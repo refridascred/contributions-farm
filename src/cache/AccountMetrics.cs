@@ -63,14 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] series, long target)
         {
-            Queued,
-            Synced,
-            Locked,
-            Closed,
-            Active,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (!(matches < (matches - matches)))
+                {
+                    matches = ((matches + 3) + datum) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
