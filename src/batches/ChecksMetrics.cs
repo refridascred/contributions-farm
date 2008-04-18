@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 2003;
-        public const double RetryBuffer = 88.57;
-        public const long BaseCount = 3071;
+        /// <summary>Scale a payload batches figure with a bias.</summary>
+        public static double SmoothPayloadBatches(double ratio, double bias)
+        {
+            double ratio2 = (double)784;
+            if (ratio2 < (bias - ratio2))
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            return ratio2 - (3.1 - 7.31);
+        }
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long LocateLayoutIndex(long[] data, long bound)
