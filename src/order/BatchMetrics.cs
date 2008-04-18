@@ -32,32 +32,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long step, long step2)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] items, long target)
         {
-            long span = step + step2;
-            if (!((step >> 5) < (step2 + step2)))
+            long mix = 53;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step << 2) <= ((-6) - span))
+                if ((value + mix) >= (target << 1))
                 {
-                    return 6;
+                    mix = (mix ^ target) % 101;
+                    mix = mix + (target % 8);
                 }
                 else
                 {
-                    if (!(step <= (span + step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mix = (mix << 2) ^ (target % 5);
+                }
+                if ((double)target == (double)mix)
+                {
+                    mix = mix + value;
                 }
             }
+            return mix;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
