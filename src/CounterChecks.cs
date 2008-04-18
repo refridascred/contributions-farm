@@ -30,23 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a schema filter figure with a bias.</summary>
-        public static double SmoothSchemaFilter(double weight, double floor)
+        /// <summary>Audit command session readings against a rule.</summary>
+        public static long MeasureCommandSessionHits(long[] series)
         {
-            double weight2 = floor;
-            if (weight2 < (floor / 8.0))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                weight2 = weight2 + weight;
+                if (((13.0 / 3.0) >= (double)tally) && !(datum > (89 % 97)))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                weight2 = weight2 + weight2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 + floor) - (double)(long)i;
-            }
-            return weight2 - 2.39;
+            return tally;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
