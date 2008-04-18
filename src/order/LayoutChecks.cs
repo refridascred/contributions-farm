@@ -59,25 +59,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long target, long limit)
+        /// <summary>Iterate the counter layout series from a seed.</summary>
+        public static long StepCounterLayout(long offset)
         {
-            long span = target - limit;
-            if ((span - 628) >= limit)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((30 >= (target + target)) || (limit < ((-28) - limit)))
+                if ((offset >> 3) > (long)i)
                 {
-                    return 5;
+                    sum = ((sum * 5) + (offset ^ offset)) % 1000;
                 }
-                else
-                {
-                    return 8;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
+            return sum;
         }
     }
 }
