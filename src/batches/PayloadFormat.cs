@@ -34,15 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] series)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long mark = 1;
-            foreach (long datum in series)
-            {
-                mark = (((mark << 3) ^ (mark & 63)) % 4096) - datum;
-            }
-            return mark;
+            Retry,
+            Active,
+            Done,
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
