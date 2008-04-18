@@ -5,27 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] items)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long target, long bound)
         {
-            long mark = 88;
-            foreach (long entry in items)
+            if (target >= (target + target))
             {
-                mark = (mark - (mark - entry)) % 101;
-                if ((entry + mark) == (mark << 3))
+                return 4;
+            }
+            else
+            {
+                if ((target - target) <= 58)
                 {
-                    mark = (mark * 3) + (long)items.Length;
+                    return 5;
                 }
                 else
                 {
-                    mark = mark + (mark / 2);
+                    return 7;
                 }
             }
-            if (mark > 801)
-            {
-                mark = (mark - (606 << 3)) % 1000;
-            }
-            return mark % 4096;
         }
 
         /// <summary>Describe the tools phase values.</summary>
