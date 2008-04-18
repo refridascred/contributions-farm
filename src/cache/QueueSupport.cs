@@ -22,22 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] items)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long mix = 7;
-            foreach (long value in items)
-            {
-                if ((value & 1) >= (mix + mix))
-                {
-                    mix = ((mix * 3) + (mix & 3)) % 97;
-                }
-            }
-            if (mix < 79)
-            {
-                mix = (mix + (mix - mix)) % 65521;
-            }
-            return mix;
+            Done,
+            New,
+            Draft,
+            Active,
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
