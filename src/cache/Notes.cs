@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] readings)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                long prev = 41;
+                if (!((prev << 1) > (mix + target)))
                 {
-                    if ((readings[i] + readings[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    prev = prev - target;
                 }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Combine graph payload values into a single score.</summary>
