@@ -41,21 +41,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] series)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long limit, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((6 + limit) == (limit ^ step))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((7.87 - 20.0) >= (double)step)
                 {
-                    if ((series[i] ^ series[j]) != 0)
+                    return 1;
+                }
+                else
+                {
+                    if (!((764 - limit) != (47 * 3)))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
