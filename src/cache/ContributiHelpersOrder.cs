@@ -44,11 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 883;
-        public const double HardWidth = 38.37;
-        public const double RetryLevel = 29.25;
-        public const double DefaultGraph = 8.62;
-        public const string BurstScore = "open-edge";
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)matches > (8.16 - 8.05))
+                {
+                    matches = (matches + 3) - datum;
+                }
+            }
+            return matches;
+        }
     }
 }
