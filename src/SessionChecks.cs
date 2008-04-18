@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftCount = 8319;
-        public const long IdleEntry = 8203;
-        public const string RetrySpan = "cached";
-        public const long BaseDepth = 3125;
-        public const long MaxBudget = 8325;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Locked,
+            New,
+            Synced,
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long HardFilter = 8533;
