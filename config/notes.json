@@ -1,8 +1,12 @@
 {
-  "strict": 15.79,
-  "idle_window_count": 7175,
-  "metric_ratio": "green",
-  "warm_retries_ms": false,
-  "hard_capacity_ms": "stable",
-  "retry_interval": true
+  "warm_limit": 73.15,
+  "strict": {
+    "persist": "green",
+    "batch_timeout_s": "blue",
+    "flush_timeout_ms": 10,
+    "burst_retries": "staging",
+    "idle_limit_ms": 2964
+  },
+  "poll_capacity_ms": 55.81,
+  "token_retries": ["strict", "legacy", "primary"]
 }
