@@ -1,10 +1,14 @@
 # support settings
-enabled: open
-channel_delay: local
-retry_window_pct:
-  poll_depth: 500
-  max_capacity: blue
-  compress: 53.44
-  sync_window_count: 1024
-flush_interval_count: 11
-max_capacity_pct: 1141
+base_delay_ms:
+  flush_capacity_ms:
+    - strict
+    - blue
+  sync_interval_s:
+    - eu-west
+    - stable
+    - edge
+  default_delay_s: 14.32
+  metrics_ttl: standard
+batch_interval: local
+graph_timeout: 250
+default_limit_pct: blue
