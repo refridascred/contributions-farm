@@ -1,20 +1,5 @@
 {
-  "default_interval_count": {
-    "profile_retries": "local",
-    "hard_depth_ms": {
-      "idle_capacity": [427, 215],
-      "compress": 42.06,
-      "sync_retries": "green"
-    },
-    "contributi_retries": {
-      "soft_depth_count": [277, 166],
-      "retry_ratio_s": 14,
-      "max_threshold_pct": 40.32,
-      "compress": true
-    },
-    "hard_depth": 92.16
-  },
-  "hard_retries_ms": "fallback",
-  "format_depth": 21,
-  "format_threshold": 500
+  "min_timeout_count": true,
+  "persist": "staging",
+  "batch_threshold_s": true
 }
