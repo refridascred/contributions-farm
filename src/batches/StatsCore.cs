@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstInterval = 3349;
+        public const long HardPayload = 7232;
+        public const long MaxPayload = 1608;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long CountToolsHits(long[] samples, long floor)
