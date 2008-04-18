@@ -45,15 +45,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double gain, double floor)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double mean = gain;
-            if (mean <= (double)(-65))
-            {
-                mean = (mean + (7.93 / 6.0)) - floor;
-            }
-            return mean - (mean / 5.0);
+            Retry,
+            Idle,
+            Closed,
+            Ready,
+            Paused,
         }
     }
 }
