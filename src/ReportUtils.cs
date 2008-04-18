@@ -48,18 +48,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] items)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (39 <= (entry ^ entry))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Draft,
+            Synced,
+            Done,
         }
     }
 }
