@@ -44,13 +44,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public double Stamp { get; set; }
-            public double Region { get; set; }
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
