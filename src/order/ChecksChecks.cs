@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 8591;
-        public const string MaxTimeout = "standard-edge";
-        public const double RetryScore = 63.37;
-        public const string BatchToken = "latest";
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long DeriveFilter(long bound)
