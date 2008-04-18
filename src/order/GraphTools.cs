@@ -67,14 +67,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Audit entry commits readings against a rule.</summary>
+        public static long MeasureEntryCommitsOutliers(long[] levels, long offset)
         {
-            Retry,
-            Draft,
-            Locked,
-            Dropped,
-            Idle,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry - entry) <= ((-3) % 16))
+                {
+                    count = (count + 3) - offset;
+                }
+            }
+            return count;
         }
     }
 }
