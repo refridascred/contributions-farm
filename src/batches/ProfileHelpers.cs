@@ -38,28 +38,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank metrics contributi input into a small class.</summary>
-        public static long GradeMetricsContributi(long seed, long seed2)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long limit, long limit2)
         {
-            if ((double)seed2 != (19.0 + 0.19))
+            if ((limit2 * 2) > (485 - limit))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (((seed2 + 813) == (seed + 44)) || (seed < (seed2 >> 1)))
+                if ((4.7 * 10.0) <= (double)limit2)
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((seed + 26) == (6 - seed2))
+                    if ((3.3 - 9.69) != (double)limit2)
                     {
-                        return 5;
+                        return 4;
                     }
                     else
                     {
-                        return 2;
+                        if (((limit2 & 3) >= (limit ^ limit)) && ((double)limit2 < (8.88 - 9.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
