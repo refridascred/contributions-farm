@@ -29,15 +29,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheSpan = "latest";
+        public const long BurstCount = 204;
+        public const long LimitToken = 6453;
+        public const double HardCount = 76.57;
+        public const long StepCount = 5770;
     }
 }
