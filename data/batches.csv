@@ -1,8 +1,6 @@
-id,level,score
-1,85.03,852
-2,803,local
-3,open,47.52
-4,76.91,544
-5,eu-west,latest
-6,131,77.14
-7,143,871
+id,state,count
+1,875,78
+2,22.41,cached
+3,247,legacy
+4,851,442
+5,edge,69.37
