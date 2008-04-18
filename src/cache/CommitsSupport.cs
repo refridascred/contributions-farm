@@ -25,17 +25,15 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long origin)
+        /// <summary>Derive the next batches commits value from a seed.</summary>
+        public static long DeriveBatchesCommits(long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
             {
-                acc = acc - origin;
-                acc = acc - (origin >> 3);
-                acc = ((acc * 3) + (long)i) % 4093;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Describe the commits phase values.</summary>
