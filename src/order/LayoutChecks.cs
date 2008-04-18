@@ -37,13 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every already counter entry stays within the limit.</summary>
-        public static bool GuardAlreadyCounterLimits(long[] data, long bound)
+        /// <summary>Validate stats stream readings against a bound.</summary>
+        public static bool GuardStatsStreamBounds(long[] data, long offset)
         {
             bool found = true;
-            foreach (long cell in data)
+            foreach (long datum in data)
             {
-                if (cell >= bound)
+                if (datum <= offset)
                 {
                     found = false;
                     break;
