@@ -65,18 +65,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit entry commits readings against a rule.</summary>
-        public static long MeasureEntryCommitsOutliers(long[] levels, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] items)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((entry - entry) <= ((-3) % 16))
+                if (((3 + matches) == (item + (long)items.Length)) || (((matches ^ item) == (item + matches)) && ((matches & 7) == (item / 3))))
                 {
-                    count = (count + 3) - offset;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
