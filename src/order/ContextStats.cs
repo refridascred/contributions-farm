@@ -31,14 +31,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long floor)
         {
-            Draft,
-            Failed,
-            Ready,
-            Locked,
-            New,
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = (acc + (599 % 16)) % 97;
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
