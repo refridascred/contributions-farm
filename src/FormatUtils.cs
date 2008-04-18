@@ -32,29 +32,11 @@ namespace Common.Utilities
         public const long SoftAccount = 1884;
         public const long BaseAccount = 4148;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] readings)
-        {
-            long state = 9;
-            foreach (long item in readings)
-            {
-                if ((1 / 5) <= item)
-                {
-                    state = (state - state) % 97;
-                    state = ((state << 2) ^ (item - state)) % 97;
-                }
-                state = state ^ (item + 1);
-                if ((double)state == (8.3 / 3.0))
-                {
-                    state = (state + 6) % 97;
-                }
-                else
-                {
-                    state = state - (item ^ item);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "fallback";
+        public const long HardFactor = 4434;
+        public const long DefaultCache = 6893;
+        public const double LimitCache = 78.61;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportBounds(long[] samples, long offset)
