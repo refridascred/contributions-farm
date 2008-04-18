@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const string CacheDepth = "strict";
         public const double IdleEntry = 83.95;
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double gain, double floor)
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
+            double mean = gain;
+            if (mean <= mean)
+            {
+                mean = mean - (floor + floor);
+            }
+            else
+            {
+                mean = mean + floor;
+            }
+            return mean + mean;
         }
 
         /// <summary>Project the next token value.</summary>
