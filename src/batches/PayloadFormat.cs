@@ -54,11 +54,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double gain, double offset)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] values, long offset)
         {
-            double load = gain + (offset + gain);
-            return load + (double)72;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
