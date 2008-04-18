@@ -30,14 +30,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double bias, double floor)
         {
-            Synced,
-            Failed,
-            Closed,
-            Locked,
-            Paused,
+            double ratio = (11.0 + 2.74) - 9.62;
+            if (ratio > (double)334)
+            {
+                ratio = ratio - (bias * 18.0);
+            }
+            return ratio - (4.76 - floor);
         }
 
         /// <summary>Accumulate contributi context samples.</summary>
