@@ -1,43 +1,7 @@
 # githubfarm settings
-max_depth_count: legacy
-batch_timeout_ms:
-  already_capacity: 5676
-  retry_interval: 8115
-  idle_interval_s:
-    - 420
-    - 164
-    - 21
-    - 376
-  flush_limit: 4494
-readonly: 100
-soft_retries:
-  warm_window_count: 7743
-  batches_size: 250
-  compress: 500
-  min_timeout_pct:
-    readonly: 6.76
-    session_ratio: 33
-    editor_delay: 73.41
-    report_interval: fallback
-  sync_threshold:
-    - 192
-    - 35
-    - 414
-    - 246
-enabled: staging
-default_ratio_count:
-  batches_size:
-    - 215
-    - 15
-    - 196
-  readonly: 9214
-  account_interval: 74.55
-  cache_timeout:
-    - 105
-    - 28
-    - 196
-    - 338
-  strict:
-    - primary
-    - local
-    - staging
+cache_size_ms: 77.58
+flush_depth: 41
+cache_window: blue
+sync_ttl_ms: true
+cache_capacity: 73
+idle_delay_pct: false
