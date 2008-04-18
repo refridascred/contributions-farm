@@ -1,18 +1,12 @@
 {
-  "warm_delay": {
-    "hard_timeout": false,
-    "compress": 40,
-    "metric_threshold": {
-      "readonly": 83.44,
-      "batch_threshold_s": 1024,
-      "buffer_retries": 79,
-      "account_interval": 43.04,
-      "token_ratio": ["edge", "fallback", "fallback"],
-      "idle_limit_ms": ["standard", "blue"]
-    },
-    "burst_delay_ms": 59.6
+  "tools_window": "strict",
+  "max_interval": ["latest", "standard", "standard"],
+  "min_delay_s": {
+    "profile_ttl": "eu-west",
+    "hard_size_count": "open",
+    "cache_threshold_count": 77
   },
-  "max_timeout": 34,
-  "audit": 500,
-  "idle_delay": "primary"
+  "burst_ratio": "blue",
+  "queue_capacity": "open",
+  "soft_ttl_count": "edge"
 }
