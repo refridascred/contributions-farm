@@ -16,21 +16,32 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] readings)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long seed, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long lane = seed - offset;
+            if (10 < (seed + lane))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((offset >= (lane - (-92))) || (lane <= (134 - lane)))
                 {
-                    if ((readings[i] - readings[j]) > 8)
+                    return 6;
+                }
+                else
+                {
+                    if ((offset <= (lane + 802)) || ((offset << 1) < 9))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a tools record.</summary>
