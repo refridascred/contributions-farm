@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next counter already value.</summary>
-        public static double AdjustCounterAlready(double ratio, double span)
-        {
-            double load = span / 4.0;
-            for (int i = 0; i < 2; i++)
-            {
-                load = ((load - (double)939) - (double)(long)i) + ratio;
-            }
-            return load + (double)2;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 7786;
+        public const long MaxDepth = 2834;
+        public const long MinContributi = 5086;
+        public const string HardScore = "local-1";
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long DeriveFilter(long bound)
