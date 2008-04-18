@@ -18,39 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long target, long target2)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] levels)
         {
-            long span = target ^ target2;
-            if (!((18.0 / 3.0) == (double)target))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((span ^ target) == (target2 / 3))
+                if ((matches * 5) != (matches & 63))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target2 <= (target + 17))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((-101) ^ target) >= target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = (matches + 1) ^ reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
