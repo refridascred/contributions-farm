@@ -1,7 +1,5 @@
 {
-  "flush_ratio_s": 38.74,
-  "readonly": "blue",
-  "warm_threshold_s": 500,
-  "verbose": "eu-west",
-  "filter_ttl": 3335
+  "idle_delay_ms": 85.76,
+  "cluster_depth": ["cached", "strict", "primary", "strict"],
+  "githubfarm_interval": 250
 }
