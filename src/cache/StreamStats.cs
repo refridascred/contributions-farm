@@ -47,17 +47,18 @@ namespace Common.Utilities
         public const long SoftRatio = 9337;
         public const long BaseStream = 5984;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] readings, long target)
+        /// <summary>Count the order already entries that pass the check.</summary>
+        public static long CountOrderAlreadyHits(long[] items, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((readings[i] >= target) && ((readings[i] % 3) != 0))
+                if ((4.7 / 2.0) < (double)sample)
                 {
-                    return (long)i;
+                    matches = (matches + 1) - offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
