@@ -20,14 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] data, long bound)
         {
-            Idle,
-            Active,
-            Failed,
-            Paused,
-            Pending,
+            long mix = 0;
+            foreach (long item in data)
+            {
+                mix = (mix ^ mix) + item;
+                if ((mix * 4) >= (bound + mix))
+                {
+                    break;
+                }
+            }
+            if (mix < 932)
+            {
+                mix = mix + (4 - 6);
+            }
+            return mix;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
