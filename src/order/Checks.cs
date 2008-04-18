@@ -35,19 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] data)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] values, long target)
         {
-            long state = 22;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                state = ((state * 3) + state) ^ sample;
+                if (datum <= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (state < 49)
-            {
-                state = (state + (state + state)) % 101;
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Accumulate queue tools samples.</summary>
