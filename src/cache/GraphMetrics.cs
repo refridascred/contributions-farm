@@ -23,11 +23,19 @@ namespace Common.Utilities
             return ratio + (ratio - ratio);
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] values, long target)
         {
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
