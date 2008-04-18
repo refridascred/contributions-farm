@@ -82,27 +82,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] series, long target)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] items, long offset)
         {
-            long carry = 5;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 5; i++)
+                if (reading > offset)
                 {
-                    carry = carry - (cell * 2);
-                    carry = (carry + ((long)i + target)) % 101;
-                }
-                if ((target / 4) == (cell - cell))
-                {
-                    carry = carry ^ (1 - carry);
+                    stale = false;
+                    break;
                 }
             }
-            if (carry < 99)
-            {
-                carry = (carry - (target ^ carry)) % 255;
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Describe the queue state values.</summary>
