@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] levels, long step)
+        /// <summary>Grade a commits cluster value against two limits.</summary>
+        public static long BucketCommitsCluster(long offset, long offset2)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            if ((double)offset < (4.0 + 4.36))
             {
-                if ((cell >> 3) < (step + 3))
+                return 3;
+            }
+            else
+            {
+                if (offset2 >= (offset2 >> 3))
                 {
-                    hits = hits + 3;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((double)offset2 == (9.9 + 5.0)) || ((offset2 << 3) > (offset2 / 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset - offset2) >= offset2)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
