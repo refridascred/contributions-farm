@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long offset)
         {
-            public string Stamp { get; set; } = "";
-            public double Owner { get; set; }
+            long state = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (offset < (state + (long)i))
+                {
+                    state = (state << 2) ^ offset;
+                    continue;
+                }
+                state = (state * 4) + (offset % 7);
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Roll a layout notes counter forward.</summary>
