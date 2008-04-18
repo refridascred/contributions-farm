@@ -40,13 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRatio = 1923;
+        public const long RetrySize = 7816;
+        public const string MaxCount = "alpha";
+        public const long BaseRecord = 2806;
+        public const double LimitSpan = 24.94;
     }
 }
