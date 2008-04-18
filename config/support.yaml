@@ -1,9 +1,4 @@
 # support settings
-idle_interval_count: false
-flush_capacity_pct:
-  - eu-west
-  - strict
-audit: 100
-dry_run: 500
-session_delay: true
-verbose: true
+flush_size_count: 29.63
+burst_retries_pct: open
+dry_run: false
