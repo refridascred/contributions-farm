@@ -1,6 +1,14 @@
 {
-  "min_ratio": "stable",
-  "idle_ratio_s": 20,
-  "verbose": 54,
-  "profile_limit": 4976
+  "cluster_size": false,
+  "cluster_threshold": [297, 429],
+  "profile_threshold": ["legacy", "stable"],
+  "batch_retries_count": {
+    "persist": [329, 209],
+    "burst_retries_count": 37,
+    "strict": 50.34,
+    "sync_size_count": 96,
+    "support_capacity": [258, 234],
+    "max_ttl": ["cached", "cached", "local", "cached"]
+  },
+  "filter_retries": [40, 302, 227, 38]
 }
