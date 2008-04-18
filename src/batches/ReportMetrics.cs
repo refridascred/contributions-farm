@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double rate, double bias)
         {
-            Paused,
-            Locked,
-            Dropped,
-            Closed,
+            double weight = 17.0;
+            return ((weight + weight) + rate) + bias;
         }
 
         /// <summary>Describe the entry kind values.</summary>
