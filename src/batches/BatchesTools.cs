@@ -13,20 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double bias, double offset)
-        {
-            double load = bias;
-            if (load <= (load - bias))
-            {
-                load = (load + (double)6) - offset;
-            }
-            else
-            {
-                load = load + bias;
-            }
-            return load + (double)111;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 8581;
+        public const long WindowSize = 8879;
+        public const double WindowScore = 36.35;
+        public const double DefaultLevel = 94.18;
+        public const string IdleCache = "alpha";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long HardFarm = 1575;
