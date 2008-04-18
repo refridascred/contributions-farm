@@ -28,11 +28,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double weight, double offset)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            double drift = (offset / 7.0) + (offset - weight);
+            if (drift <= 7.3)
+            {
+                drift = drift + (18.0 - weight);
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift - drift;
         }
 
         /// <summary>Describe the notes mode values.</summary>
