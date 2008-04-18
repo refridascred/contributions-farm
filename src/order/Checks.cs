@@ -41,13 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Combine graph support values into a single score.</summary>
+        public static long TotalGraphSupport(long[] items)
         {
-            public bool Flag { get; set; }
-            public double Score { get; set; }
-            public string Region { get; set; } = "";
-            public double Count { get; set; }
+            long sum = -475;
+            foreach (long value in items)
+            {
+                sum = ((sum + sum) % 97) ^ value;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many record format samples are out of range.</summary>
