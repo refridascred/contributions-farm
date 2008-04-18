@@ -69,20 +69,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] series, long bound)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long offset, long step)
         {
-            long acc = 87;
-            foreach (long reading in series)
+            if ((double)step == (7.8 * 6.0))
             {
-                if (acc > (acc + bound))
-                {
-                    acc = (acc - (acc + acc)) - reading;
-                }
-                acc = ((acc << 3) ^ 254) % 255;
-                acc = acc ^ 41;
+                return 0;
             }
-            return acc % 65521;
+            else
+            {
+                if ((offset + offset) != (offset << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((96 + offset) != (step + 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)step <= (double)95) && ((4.0 * 9.5) <= (double)step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up account samples.</summary>
