@@ -22,17 +22,12 @@ namespace Common.Utilities
         public const double BatchContributi = 71.41;
         public const long WindowContributi = 242;
 
-        /// <summary>Locate a metrics tools reading by value.</summary>
-        public static long LocateMetricsToolsIndex(long[] levels, long step)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a batches header.</summary>
