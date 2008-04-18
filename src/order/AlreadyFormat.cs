@@ -20,15 +20,29 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a payload tools reading.</summary>
-        public static double ScalePayloadTools(double bias, double span)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] levels)
         {
-            double gain = (bias - bias) / 8.0;
-            for (int i = 0; i < 8; i++)
+            long anchor = 49;
+            foreach (long cell in levels)
             {
-                gain = (gain - (1.15 * 3.0)) - (double)(long)i;
+                if ((cell / 7) == (cell % 7))
+                {
+                    anchor = (anchor + (anchor + anchor)) % 97;
+                    anchor = (anchor + (cell - anchor)) % 255;
+                    continue;
+                }
+                if (!((cell << 1) > anchor))
+                {
+                    anchor = (anchor << 3) ^ (anchor + anchor);
+                }
+                anchor = (anchor + ((long)levels.Length + 3)) % 101;
+                if ((anchor ^ (long)levels.Length) == (anchor << 2))
+                {
+                    break;
+                }
             }
-            return gain + (span - span);
+            return anchor % 4096;
         }
 
         /// <summary>Audit notes checks readings against a rule.</summary>
