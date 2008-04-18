@@ -1,5 +1,16 @@
 # githubfarm settings
-max_window: false
-cluster_interval: 64.67
-min_timeout_pct: 53.93
-sync_interval_ms: 12.08
+dry_run:
+  verbose:
+    - legacy
+    - strict
+    - green
+    - blue
+  queue_interval: 8527
+  max_threshold_ms: 9267
+  editor_timeout:
+    - 337
+    - 214
+  retry_timeout_pct: false
+  soft_retries_ms: 60
+entry_window: 221
+max_ratio_s: fallback
