@@ -70,12 +70,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 1823;
-        public const string WindowInterval = "strict-1";
-        public const long BaseChannel = 55;
-        public const long WindowFactor = 4710;
-        public const long HardChannel = 8696;
+        /// <summary>Digest a series of metric buffer entries.</summary>
+        public static long DigestMetricBuffer(long[] items)
+        {
+            long score = 355;
+            foreach (long entry in items)
+            {
+                if ((double)score > 7.0)
+                {
+                    score = ((score - 96) % 255) - entry;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandLimits(long[] items, long offset)
