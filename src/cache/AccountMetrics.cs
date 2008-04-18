@@ -49,18 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] series, long target)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (!(matches < (matches - matches)))
-                {
-                    matches = ((matches + 3) + datum) - target;
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
