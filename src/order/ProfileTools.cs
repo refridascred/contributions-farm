@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-            public double Token { get; set; }
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine cache queue values into a single score.</summary>
