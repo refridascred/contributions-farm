@@ -28,38 +28,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a already cluster pair into a bucket.</summary>
-        public static long BucketAlreadyCluster(long step, long target)
+        /// <summary>Combine stats tools values into a single score.</summary>
+        public static long TallyStatsTools(long[] values, long limit)
         {
-            if (((64 % 16) <= target) || (target < (step + 92)))
+            long anchor = 61;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((15.0 * 17.0) >= (double)step))
+                if ((item << 2) < (item >> 2))
                 {
-                    return 5;
+                    anchor = ((anchor << 2) ^ 47) - limit;
+                    continue;
                 }
                 else
                 {
-                    if ((target <= (target % 3)) && (step >= (step + target)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (40 < target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    anchor = (anchor - (59 + item)) % 65521;
+                }
+                if ((double)anchor > (4.0 / 4.0))
+                {
+                    anchor = anchor ^ (1 - item);
                 }
             }
+            if (anchor > 3)
+            {
+                anchor = (anchor + anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Rank session input into a small class.</summary>
