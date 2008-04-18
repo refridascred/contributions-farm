@@ -1,4 +1,4 @@
 # support settings
-idle_limit_pct: 42
-checks_depth: local
-poll_capacity_ms: 8
+min_retries_s: strict
+dry_run: 500
+compress: true
