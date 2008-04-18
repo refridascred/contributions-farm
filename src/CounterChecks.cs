@@ -44,38 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long limit, long origin)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double weight, double offset)
         {
-            if ((origin + limit) > 4)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((0.7 - 8.49) >= (double)limit) && ((31 << 2) <= limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin < 66)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit * 3) == (origin + limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double bias = offset / 9.0;
+            return (bias - (double)38) + weight;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
