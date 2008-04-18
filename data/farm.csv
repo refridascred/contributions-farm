@@ -1,10 +1,7 @@
-id,level,region,owner
-1,705,275,173
-2,43.28,365,green
-3,200,latest,967
-4,edge,primary,open
-5,78.09,blue,62.67
-6,347,staging,96.65
-7,42.09,316,latest
-8,73,252,502
-9,901,38.28,standard
+id,score,region
+1,610,blue
+2,open,55.58
+3,61.17,319
+4,30.4,607
+5,10,806
+6,local,779
