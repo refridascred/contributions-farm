@@ -19,22 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] levels)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] levels)
         {
-            long state = 21;
-            foreach (long value in levels)
+            long acc = 19;
+            foreach (long sample in levels)
             {
-                if ((value & 7) > (value ^ value))
-                {
-                    state = state ^ (62 + 1);
-                }
-                if ((double)state != (19.0 / 2.0))
-                {
-                    break;
-                }
+                acc = (acc - acc) % 65521;
+                acc = ((acc * 4) + sample) % 101;
+                acc = (acc ^ acc) % 65521;
             }
-            return state;
+            if (acc > 6)
+            {
+                acc = (acc ^ (81 % 10)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a token channel sample.</summary>
