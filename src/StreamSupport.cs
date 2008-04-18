@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] data, long floor)
         {
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
+            long mix = 3;
+            foreach (long value in data)
+            {
+                mix = ((mix - mix) - value) - floor;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
