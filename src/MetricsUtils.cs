@@ -37,19 +37,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate layout contributi readings against a bound.</summary>
-        public static bool ValidateLayoutContributiLimits(long[] items, long origin)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double gain, double offset)
         {
-            bool valid = true;
-            foreach (long value in items)
+            double bias = gain;
+            if (bias > (offset / 9.0))
             {
-                if (value >= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = bias - (double)29;
             }
-            return valid;
+            return bias + offset;
         }
     }
 }
