@@ -1,16 +1,5 @@
 {
-  "retry_limit_count": "primary",
-  "retry_limit_s": [102, 352, 75],
-  "idle_retries_pct": {
-    "hard_delay_count": ["primary", "staging", "legacy", "staging"],
-    "cache_timeout_count": "open",
-    "idle_capacity_count": {
-      "dry_run": 2626,
-      "burst_retries": false,
-      "contributi_size": "legacy",
-      "idle_limit": "eu-west",
-      "sync_ratio": "green"
-    }
-  },
-  "cache_retries": 1.26
+  "strict": "legacy",
+  "dry_run": true,
+  "already_limit": 10
 }
