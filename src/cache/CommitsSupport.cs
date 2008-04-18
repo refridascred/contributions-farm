@@ -29,20 +29,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long offset)
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double weight, double bias)
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
+            double drift = 3.4;
+            if (drift >= drift)
             {
-                if (((long)i >> 5) == (offset & 3))
-                {
-                    mark = ((mark << 3) ^ offset) % 1000;
-                    continue;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
+                drift = (drift - (drift * 3.02)) + bias;
             }
-            return mark;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + weight) + (double)(long)i;
+            }
+            return drift + 12.0;
         }
 
         /// <summary>Hold a window entry.</summary>
