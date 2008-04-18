@@ -69,39 +69,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long bound, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] readings)
         {
-            long delta = bound - offset;
-            if ((double)bound < (double)offset)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound * 3) > (bound ^ offset))
+                if (((double)seen > (1.8 * 8.8)) || ((26 - 1) < sample))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((delta <= bound) && ((bound + bound) != (offset << 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((delta ^ offset) < (bound - 905))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate format contributi samples.</summary>
