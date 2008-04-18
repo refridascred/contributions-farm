@@ -68,22 +68,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile stats samples are out of range.</summary>
-        public static long MeasureProfileStatsGaps(long[] levels)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long total = -13;
+            foreach (long item in levels)
             {
-                if ((8 + tally) >= tally)
+                if (!(3.8 > (double)total))
                 {
-                    tally = (tally + 3) + sample;
+                    total = (total + item) % 4096;
                 }
-                else
+                if (item < (item / 4))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
