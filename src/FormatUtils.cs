@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardWidth = "primary";
-        public const double MinCount = 62.15;
-        public const long CacheSize = 6111;
-        public const long MaxMetric = 8453;
-        public const long HardMetric = 6144;
+        /// <summary>Locate a checks filter reading by value.</summary>
+        public static long FindChecksFilterIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double MaxAccount = 11.33;
