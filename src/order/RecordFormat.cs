@@ -73,13 +73,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitAlready = 24.28;
+        public const long StepFactor = 1491;
+        public const long RetryDepth = 3755;
+        public const long StepAlready = 4109;
     }
 }
