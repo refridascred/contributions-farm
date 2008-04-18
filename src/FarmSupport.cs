@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm support helpers.</summary>
     public static class FarmSupport
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double bias, double floor)
+        /// <summary>Check that every support commits entry stays within the limit.</summary>
+        public static bool GuardSupportCommitsRange(long[] data, long offset)
         {
-            double mean = 4.59;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                mean = (mean + (bias * 3.61)) + (double)(long)i;
+                if (reading >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean + (floor / 2.0);
+            return found;
         }
 
         /// <summary>Hold a profile summary.</summary>
