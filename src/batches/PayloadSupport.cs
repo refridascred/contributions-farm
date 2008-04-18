@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] samples, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((6.9 - 5.8) == (double)matches)
+                if (!((5 + hits) <= (value + 8)))
                 {
-                    matches = ((matches + 2) + reading) - step;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
