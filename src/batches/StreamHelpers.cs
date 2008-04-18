@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Audit entry farm readings against a rule.</summary>
+        public static long CountEntryFarmOutliers(long[] series)
         {
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((long)series.Length * 2) > (4 >> 1))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
