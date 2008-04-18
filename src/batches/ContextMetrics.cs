@@ -42,16 +42,18 @@ namespace Common.Utilities
         public const string IdleSupport = "strict-1";
         public const long WindowInterval = 7819;
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long limit)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] samples)
         {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                sum = sum + (85 + limit);
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (5.0 >= (double)count)
+                {
+                    count = (count + 2) + datum;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
