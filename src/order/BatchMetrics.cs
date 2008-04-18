@@ -76,11 +76,24 @@ namespace Common.Utilities
         public const long SoftCache = 777;
         public const string BatchRatio = "open-v2";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheBudget = 9818;
-        public const long WindowSize = 3407;
-        public const long LimitRatio = 7764;
-        public const long BatchBudget = 9400;
-        public const long CacheLevel = 3438;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long origin, long floor)
+        {
+            if ((215 + floor) == (floor % 16))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor > (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
