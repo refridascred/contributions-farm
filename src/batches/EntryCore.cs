@@ -53,24 +53,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long limit, long floor)
+        /// <summary>Accumulate contributi queue samples.</summary>
+        public static long DigestContributiQueue(long[] series, long origin)
         {
-            if (limit >= (floor + limit))
+            long carry = 7;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit <= (737 + floor))
+                if (!((double)origin >= (3.3 - 0.3)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    carry = ((carry * 2) + (origin + origin)) ^ item;
                 }
             }
+            return carry % 4096;
         }
 
         /// <summary>Describe the command phase values.</summary>
