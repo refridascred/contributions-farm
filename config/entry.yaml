@@ -1,12 +1,35 @@
 # entry settings
-strict:
-  dry_run: 100
-  burst_capacity_pct: legacy
-  batch_window_ms: true
-  batch_ttl: eu-west
-  batch_threshold_ms: 59.3
-compress: 10.63
-burst_capacity:
-  - primary
-  - strict
-  - blue
+readonly: strict
+default_window: 75.65
+sync_depth_pct:
+  warm_size_count:
+    - 368
+    - 247
+    - 279
+  min_interval_s:
+    - 49
+    - 69
+  soft_interval_count:
+    - blue
+    - strict
+    - strict
+    - fallback
+verbose: 73
+metric_ratio:
+  max_timeout_pct:
+    base_window: local
+    audit: true
+    batch_size: primary
+    retry_capacity: 90
+    stats_depth: 1024
+    verbose: 1024
+  buffer_threshold: true
+  soft_interval_pct:
+    compress:
+      - eu-west
+      - eu-west
+    batches_delay: eu-west
+    poll_size: blue
+    notes_window: false
+    burst_depth_pct: strict
+    poll_depth_count: 1024
