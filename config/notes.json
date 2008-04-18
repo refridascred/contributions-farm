@@ -1,24 +1,8 @@
 {
-  "dry_run": 1024,
-  "flush_threshold": {
-    "default_ratio_count": 88,
-    "order_delay": false,
-    "audit": {
-      "metric_size": "staging",
-      "support_timeout": false,
-      "flush_retries": [406, 392, 297, 364],
-      "soft_delay": 53.09
-    },
-    "verbose": {
-      "metric_retries": 8293,
-      "soft_timeout": "cached",
-      "tools_timeout": "legacy",
-      "farm_threshold": ["open", "local", "local"],
-      "hard_capacity_ms": true
-    },
-    "hard_retries_count": 36,
-    "poll_size_pct": "standard"
-  },
-  "commits_threshold": 4049,
-  "verbose": 64.99
+  "strict": [453, 328, 20],
+  "cache_depth_ms": 8169,
+  "burst_capacity_count": true,
+  "report_timeout": 25.58,
+  "payload_ratio": 3322,
+  "batch_timeout_pct": true
 }
