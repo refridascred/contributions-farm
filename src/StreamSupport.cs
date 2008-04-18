@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public string Level { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Total { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
