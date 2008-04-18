@@ -33,28 +33,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] levels, long step)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long mark = -7;
-            foreach (long datum in levels)
-            {
-                long edge = mark;
-                if (mark >= step)
-                {
-                    mark = ((mark + (mark & 7)) % 65521) - datum;
-                }
-                else
-                {
-                    mark = (mark * 2) + (edge * 4);
-                }
-                mark = mark - (step / 5);
-            }
-            if (mark > 772)
-            {
-                mark = mark - mark;
-            }
-            return mark;
+            Active,
+            Synced,
+            Retry,
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
