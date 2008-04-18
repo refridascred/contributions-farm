@@ -69,15 +69,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double gain, double span)
-        {
-            double mean = span;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = ((mean - span) + (double)(long)i) - gain;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheFactor = 23.99;
+        public const string LimitScore = "alpha-edge";
+        public const long BatchInterval = 8832;
+        public const string StepDepth = "standard-1";
     }
 }
