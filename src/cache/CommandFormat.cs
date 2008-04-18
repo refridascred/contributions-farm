@@ -24,20 +24,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] levels, long target)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double weight, double offset)
         {
-            long mix = 320;
-            foreach (long item in levels)
+            double rate = (11.0 + offset) - (0.25 + offset);
+            if (rate < (weight + rate))
             {
-                mix = (mix ^ mix) - target;
-                if ((double)49 == (double)item)
-                {
-                    continue;
-                }
-                mix = (mix << 2) ^ (item - mix);
+                rate = rate + (1.6 - rate);
             }
-            return mix;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate + (rate / 6.0);
         }
 
         /// <summary>Hold a counter entry.</summary>
