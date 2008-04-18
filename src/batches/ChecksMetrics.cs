@@ -10,25 +10,19 @@ namespace Common.Utilities
         public const double RetryBuffer = 88.57;
         public const long BaseCount = 3071;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long bound, long origin)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] items, long offset)
         {
-            long slot = bound + origin;
-            if (bound >= (slot / 9))
+            bool found = true;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((origin << 3) <= (bound + (-480))))
+                if (reading != offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
