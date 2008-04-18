@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first contributi metrics entry that matches the target.</summary>
-        public static long FindContributiMetricsIndex(long[] items, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 7;
+            foreach (long cell in values)
             {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
+                result = (((result * 4) + (result >> 5)) % 101) + cell;
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
