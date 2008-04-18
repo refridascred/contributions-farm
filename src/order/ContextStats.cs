@@ -29,13 +29,25 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Grade a format support value against two limits.</summary>
+        public static long RankFormatSupport(long limit, long limit2)
         {
-            Failed,
-            Pending,
-            Dropped,
-            Queued,
+            long edge = limit + limit2;
+            if (edge < (99 << 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((edge ^ limit2) == (limit2 - edge))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
