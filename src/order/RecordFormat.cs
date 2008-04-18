@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] levels)
         {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                carry = carry - offset;
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (hits > (-2))
+                {
+                    hits = (hits + 2) + reading;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Combine window values into a single score.</summary>
