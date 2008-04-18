@@ -39,17 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = (mix - (long)i) % 4096;
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftWidth = "staging-1";
+        public const long StepSpan = 1665;
+        public const long MaxRatio = 9768;
+        public const long IdleWidth = 8216;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long CombineLayout(long[] readings, long target)
