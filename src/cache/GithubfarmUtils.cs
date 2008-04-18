@@ -33,19 +33,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Validate queue entry readings against a bound.</summary>
-        public static bool GuardQueueEntryLimits(long[] readings, long bound)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Adjust a report reading.</summary>
