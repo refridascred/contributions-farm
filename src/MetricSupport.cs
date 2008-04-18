@@ -28,31 +28,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine stats tools values into a single score.</summary>
-        public static long TallyStatsTools(long[] values, long limit)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long limit, long step)
         {
-            long anchor = 61;
-            foreach (long item in values)
+            if ((limit - limit) < step)
             {
-                if ((item << 2) < (item >> 2))
+                return 7;
+            }
+            else
+            {
+                if (!(step <= (step * 3)))
                 {
-                    anchor = ((anchor << 2) ^ 47) - limit;
-                    continue;
+                    return 3;
                 }
                 else
                 {
-                    anchor = (anchor - (59 + item)) % 65521;
-                }
-                if ((double)anchor > (4.0 / 4.0))
-                {
-                    anchor = anchor ^ (1 - item);
+                    if ((double)546 <= (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit & 15) <= 0)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (anchor > 3)
-            {
-                anchor = (anchor + anchor) % 4096;
-            }
-            return anchor;
         }
 
         /// <summary>Rank session input into a small class.</summary>
