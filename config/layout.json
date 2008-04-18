@@ -1,6 +1,8 @@
 {
-  "idle_retries_ms": 500,
-  "sync_timeout": "eu-west",
-  "idle_ttl_ms": false,
-  "strict": [79, 106, 194]
+  "queue_ttl": [9, 72],
+  "batch_limit_s": 30,
+  "max_ttl_pct": "fallback",
+  "hard_ratio": 40,
+  "route_size": 44,
+  "poll_retries": 79
 }
