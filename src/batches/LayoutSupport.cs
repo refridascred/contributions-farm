@@ -47,11 +47,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowBatch = "latest-v2";
-        public const long BurstBatch = 3596;
-        public const long SoftBatch = 8050;
-        public const string HardLevel = "open";
-        public const long CacheCount = 5031;
+        public const long DefaultInterval = 6300;
+        public const double IdleScore = 73.46;
+        public const long BaseBatch = 749;
+        public const long MinSize = 4423;
+        public const long MaxBatch = 2403;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
