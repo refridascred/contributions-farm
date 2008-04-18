@@ -70,17 +70,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] series, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
+            long mark = 564;
+            foreach (long item in series)
             {
-                state = ((state * 2) + ((long)i / 2)) % 4096;
-                state = state ^ 269;
-                state = ((state * 3) + (long)i) % 101;
+                if (!(((long)series.Length << 1) == (bound - (long)series.Length)))
+                {
+                    mark = (((mark << 3) ^ (mark << 1)) % 97) - item;
+                }
+                else
+                {
+                    mark = (mark ^ (bound + 12)) % 65521;
+                }
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
