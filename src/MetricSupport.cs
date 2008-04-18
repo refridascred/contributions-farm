@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Idle,
-            Draft,
-            Done,
-            Retry,
-            Queued,
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a filter snapshot.</summary>
