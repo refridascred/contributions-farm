@@ -97,13 +97,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double ratio, double offset)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
-            public string Count { get; set; } = "";
+            double load = (double)(17 + 995);
+            if (load < (offset / 9.0))
+            {
+                load = load + ratio;
+            }
+            return load + (double)395;
         }
     }
 }
