@@ -23,15 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next farm notes value from a seed.</summary>
-        public static long SeriesFarmNotes(long bound)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the account kind values.</summary>
