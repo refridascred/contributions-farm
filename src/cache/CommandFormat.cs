@@ -11,19 +11,31 @@ namespace Common.Utilities
         public const string BatchBatches = "cached";
         public const long DefaultScore = 2544;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double weight, double offset)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long origin, long target)
         {
-            double rate = (11.0 + offset) - (0.25 + offset);
-            if (rate < (weight + rate))
+            if ((origin & 15) >= target)
             {
-                rate = rate + (1.6 - rate);
+                return 8;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                rate = (rate - rate) + (double)(long)i;
+                if ((origin <= (target % 97)) && (89 <= (origin - origin)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin - origin) <= (origin % 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return rate + (rate / 6.0);
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
