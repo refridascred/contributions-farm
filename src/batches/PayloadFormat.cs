@@ -43,18 +43,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many report buffer samples are out of range.</summary>
-        public static long MeasureReportBufferGaps(long[] data)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long acc = 608;
+            foreach (long datum in levels)
             {
-                if (((double)entry <= (double)count) && ((6.57 / 2.0) != (double)entry))
+                if (8.1 > (double)datum)
                 {
-                    count = count + 2;
+                    acc = (acc + datum) % 255;
                 }
             }
-            return count;
+            if (acc > (-4))
+            {
+                acc = acc + (origin / 2);
+            }
+            return acc % 97;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
