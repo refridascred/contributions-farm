@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Done,
-            New,
-            Draft,
+            Idle,
+            Synced,
+            Failed,
             Active,
         }
 
