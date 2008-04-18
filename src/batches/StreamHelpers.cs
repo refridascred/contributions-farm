@@ -12,27 +12,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine command queue values into a single score.</summary>
-        public static long WeighCommandQueue(long[] readings, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] samples, long target)
         {
-            long sum = 685;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                sum = sum - reading;
-                if (!((9.0 / 8.0) > (double)sum))
+                if ((seen - seen) >= (item + seen))
                 {
-                    sum = (sum + (long)readings.Length) % 255;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ offset;
+                    seen = (seen + 2) + target;
                 }
             }
-            if (sum < 39)
-            {
-                sum = (sum + (27 << 2)) % 65521;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
