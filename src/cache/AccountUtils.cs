@@ -22,11 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public long Rank { get; set; }
-            public bool Token { get; set; }
+            public double Weight { get; set; }
+            public double Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Digest a series of stream entries.</summary>
