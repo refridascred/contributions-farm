@@ -59,19 +59,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double bias, double offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long seed, long bound)
         {
-            double load = (bias / 9.0) + offset;
-            if (load < (offset - offset))
+            if ((double)seed > (7.06 * 9.3))
             {
-                load = load + (load / 8.0);
+                return 3;
             }
             else
             {
-                load = load - bias;
+                if (((seed ^ seed) > (bound - bound)) && ((bound + bound) < (seed >> 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed ^ seed) < (0 >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed + 0) == (seed * 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return load - (bias / 6.0);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
