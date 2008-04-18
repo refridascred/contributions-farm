@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit farm batch readings against a rule.</summary>
-        public static long CountFarmBatchMatches(long[] series)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long sum = 759;
+            foreach (long value in samples)
             {
-                if (((sample + 17) > ((-7) ^ 841)) && (((1.6 + 2.76) >= (double)sample) || ((hits & 3) > sample)))
+                if (((0 - sum) >= (value - value)) || ((sum * 4) != (offset ^ 23)))
                 {
-                    hits = hits + 2;
+                    sum = (sum + (offset + sum)) % 1000;
+                    sum = sum - (offset >> 2);
+                }
+                else
+                {
+                    sum = (sum - (sum & 3)) % 4096;
+                }
+                if ((sum - sum) <= (value * 2))
+                {
+                    sum = sum + (value - sum);
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
