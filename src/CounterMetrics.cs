@@ -14,11 +14,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 1042;
-        public const long SoftWidth = 3284;
-        public const string MinRatio = "alpha";
-        public const long StepStats = 1426;
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool CheckFarmBounds(long[] readings, long bound)
