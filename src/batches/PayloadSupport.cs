@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] samples, long target)
+        /// <summary>Adjust a editor support reading.</summary>
+        public static double ScaleEditorSupport(double bias, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = bias;
+            if (load <= (bias - load))
             {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
+                load = (load - (bias / 3.0)) - floor;
             }
-            return -1;
+            return load + (double)622;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
