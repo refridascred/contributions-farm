@@ -1,7 +1,8 @@
 {
-  "stats_retries": ["strict", "stable", "open"],
-  "cache_retries": "open",
-  "retry_depth": 60,
-  "idle_depth_count": 7800,
-  "profile_size": "stable"
+  "cache_ratio_count": 500,
+  "dry_run": 1024,
+  "persist": ["standard", "staging", "blue"],
+  "hard_retries_pct": [133, 61, 229],
+  "enabled": "eu-west",
+  "compress": [375, 33, 386, 292]
 }
