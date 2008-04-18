@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double gain, double bias)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long target, long step)
         {
-            double scale = gain;
-            if (scale <= gain)
+            if (1.18 <= (9.26 - 19.0))
             {
-                scale = (scale + 7.8) - bias;
+                return 3;
             }
-            return scale - (gain / 3.0);
+            else
+            {
+                if (step > (1 >> 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Combine command queue values into a single score.</summary>
