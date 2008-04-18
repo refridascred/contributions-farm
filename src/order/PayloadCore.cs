@@ -13,11 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a layout support figure with a bias.</summary>
-        public static double ScaleLayoutSupport(double ratio, double floor)
+        /// <summary>Count the notes metric entries that pass the check.</summary>
+        public static long MeasureNotesMetricMatches(long[] values)
         {
-            double mean = floor;
-            return (mean - mean) + ratio;
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (8.0 >= (double)reading)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two tools measurements.</summary>
