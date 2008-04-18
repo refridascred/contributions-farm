@@ -32,13 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Count the counter stream entries that pass the check.</summary>
+        public static long TallyCounterStreamGaps(long[] items)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((((668 + tally) < (value * 5)) && ((71 + value) < value)) && ((tally % 12) == (value + tally)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the stats status values.</summary>
