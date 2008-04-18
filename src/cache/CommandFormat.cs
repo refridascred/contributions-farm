@@ -20,12 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long bound)
         {
-            Failed,
-            Done,
-            Retry,
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!(anchor < ((long)i + anchor)))
+                {
+                    anchor = (anchor + (bound - 3)) % 65521;
+                }
+                anchor = (anchor << 2) ^ 79;
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
