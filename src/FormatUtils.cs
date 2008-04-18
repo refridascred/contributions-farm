@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] samples)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 170;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = score ^ (sample & 255);
             }
-            return matches;
+            if (score < 29)
+            {
+                score = score ^ (score - score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Digest a series of account entries.</summary>
