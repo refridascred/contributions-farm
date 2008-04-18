@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue notes entry stays within the limit.</summary>
-        public static bool VerifyQueueNotesLimits(long[] items, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long anchor = 39;
+            foreach (long reading in levels)
             {
-                if (reading != floor)
+                if (!(anchor > (164 >> 1)))
                 {
-                    flag = false;
-                    break;
+                    anchor = ((((anchor << 2) ^ (anchor & 15)) % 101) - reading) - limit;
                 }
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Describe the session phase values.</summary>
