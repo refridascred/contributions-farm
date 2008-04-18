@@ -35,11 +35,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] items, long step)
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
