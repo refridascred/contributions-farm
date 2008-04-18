@@ -35,19 +35,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 1182;
+        public const long BaseChannel = 6783;
+        public const string DefaultSize = "strict";
+        public const double BaseWidth = 14.63;
     }
 }
