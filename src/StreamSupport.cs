@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Classify a notes order pair into a bucket.</summary>
