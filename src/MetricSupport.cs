@@ -15,18 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] values)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((sample + 8) != (hits << 2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the session phase values.</summary>
