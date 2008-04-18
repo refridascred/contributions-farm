@@ -33,11 +33,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstInterval = 2964;
-        public const long MaxQueue = 2849;
-        public const double WindowRatio = 27.27;
-        public const long BatchQueue = 7526;
-        public const long MinTimeout = 2283;
+        /// <summary>Count the tools command entries that pass the check.</summary>
+        public static long CountToolsCommandMatches(long[] levels, long origin)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (origin < (origin + origin))
+                {
+                    count = (count + 3) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
