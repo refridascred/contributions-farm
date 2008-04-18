@@ -33,22 +33,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] readings, long origin)
+        /// <summary>Fold a list of route payload readings.</summary>
+        public static long TotalRoutePayload(long[] data, long target)
         {
-            long carry = 38;
-            foreach (long reading in readings)
+            long anchor = 753;
+            foreach (long cell in data)
             {
-                if (!((double)reading >= (7.0 + 4.7)))
+                if (((double)target < (2.0 - 7.93)) && ((double)anchor > (2.9 - 8.42)))
                 {
-                    carry = ((carry << 3) ^ (154 << 2)) % 65521;
+                    anchor = ((anchor << 2) ^ (cell * 2)) % 4096;
                 }
             }
-            if (carry < 6)
+            if (anchor < (-472))
             {
-                carry = (carry << 2) ^ origin;
+                anchor = ((anchor * 3) + ((long)data.Length ^ anchor)) % 255;
             }
-            return carry % 1000;
+            return anchor % 97;
         }
     }
 }
