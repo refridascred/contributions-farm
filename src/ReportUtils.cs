@@ -62,16 +62,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] levels)
-        {
-            long sum = 9;
-            foreach (long value in levels)
-            {
-                sum = ((sum + sum) % 1000) + value;
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 2285;
+        public const long HardBudget = 7771;
+        public const long StepCluster = 4507;
+        public const long IdleCluster = 6065;
+        public const long BaseDepth = 2290;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaGaps(long[] values)
