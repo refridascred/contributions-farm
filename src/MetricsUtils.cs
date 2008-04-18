@@ -22,19 +22,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double scale, double span)
+        /// <summary>Locate a metrics tools reading by value.</summary>
+        public static long LocateMetricsToolsIndex(long[] levels, long step)
         {
-            double mean = scale;
-            if (mean <= scale)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean + scale) - span;
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - scale) + (double)(long)i;
-            }
-            return mean + (double)10;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
