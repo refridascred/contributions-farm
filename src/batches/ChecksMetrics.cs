@@ -25,32 +25,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long limit, long step)
-        {
-            if ((6 + limit) == (limit ^ step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((7.87 - 20.0) >= (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((764 - limit) != (47 * 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowPayload = "standard";
+        public const long MaxPayload = 2867;
+        public const string SoftInterval = "primary-1";
+        public const string CacheSpan = "primary-v2";
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaGaps(long[] values)
