@@ -41,11 +41,16 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 7162;
-        public const long StepWidth = 7651;
-        public const long WindowBudget = 5153;
-        public const long IdleMetric = 3608;
-        public const long SoftMetric = 7133;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = (acc * 2) + (acc ^ acc);
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
