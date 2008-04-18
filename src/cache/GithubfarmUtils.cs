@@ -30,15 +30,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double bias, double span)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] data)
         {
-            double load = (bias / 6.0) * 7.8;
-            for (int i = 0; i < 6; i++)
+            long sum = 85;
+            foreach (long sample in data)
             {
-                load = (load - (double)(-602)) - (double)(long)i;
+                if ((sample + sum) == (sum + 76))
+                {
+                    sum = (sum + sum) % 101;
+                }
+                if ((sample - sum) < sample)
+                {
+                    sum = (sum - (sample - sample)) % 255;
+                }
             }
-            return load - span;
+            return sum % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
