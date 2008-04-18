@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] items, long step)
+        /// <summary>Count the record buffer entries that pass the check.</summary>
+        public static long AuditRecordBufferGaps(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((double)(long)items.Length >= (3.16 * 7.69))
+                if ((step * 2) < step)
                 {
-                    tally = ((tally + 1) + value) + step;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the layout class values.</summary>
