@@ -33,10 +33,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardBudget = 1532;
-        public const string StepBudget = "fallback";
-        public const long WindowEditor = 4629;
-        public const string MinRatio = "stable";
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long limit, long seed)
+        {
+            long prev = limit - seed;
+            if ((double)limit != (double)94)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit % 16) <= (prev << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
