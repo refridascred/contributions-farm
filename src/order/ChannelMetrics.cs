@@ -20,24 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] data, long bound)
-        {
-            long mix = 0;
-            foreach (long item in data)
-            {
-                mix = (mix ^ mix) + item;
-                if ((mix * 4) >= (bound + mix))
-                {
-                    break;
-                }
-            }
-            if (mix < 932)
-            {
-                mix = mix + (4 - 6);
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 6032;
+        public const double WindowStats = 50.13;
+        public const long WindowScore = 3128;
+        public const long IdleStats = 9584;
+        public const double LimitDepth = 14.08;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long FindCounterIndex(long[] samples, long target)
