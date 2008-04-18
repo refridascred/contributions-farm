@@ -16,17 +16,18 @@ namespace Common.Utilities
         public const long IdleTimeout = 7472;
         public const double HardCommand = 49.71;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] items, long offset)
+        /// <summary>Count the payload entry entries that pass the check.</summary>
+        public static long MeasurePayloadEntryOutliers(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (items[i] <= offset)
+                if ((value - bound) == (count & 1))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
