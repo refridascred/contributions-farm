@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=122
-log "limit is ${COMMAND_LIMIT}"
+for item in cached strict blue green; do
+    log "checking ${item}"
+done
 
-mode="${1:-cached}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=205
+log "limit is ${COMMAND_LIMIT}"
