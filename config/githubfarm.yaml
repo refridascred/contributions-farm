@@ -1,16 +1,14 @@
 # githubfarm settings
-dry_run:
-  verbose:
-    - legacy
-    - strict
-    - green
-    - blue
-  queue_interval: 8527
-  max_threshold_ms: 9267
-  editor_timeout:
-    - 337
-    - 214
-  retry_timeout_pct: false
-  soft_retries_ms: 60
-entry_window: 221
-max_ratio_s: fallback
+batch_retries: true
+verbose: fallback
+min_ratio: 91.83
+cache_ttl_ms:
+  poll_depth_count: true
+  compress:
+    - eu-west
+    - primary
+  batch_ratio_count:
+    cache_depth_count: green
+    flush_size_ms: 2783
+    base_retries_ms: open
+  sync_depth: false
