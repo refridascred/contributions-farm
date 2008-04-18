@@ -67,10 +67,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowSize = 8512;
-        public const long StepReport = 9357;
-        public const double MaxReport = 83.77;
-        public const string MaxCount = "strict-edge";
+        /// <summary>Classify a entry channel pair into a bucket.</summary>
+        public static long GradeEntryChannel(long step, long limit)
+        {
+            if ((step / 3) < (limit + limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step ^ step) != (step / 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
