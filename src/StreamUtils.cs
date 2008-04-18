@@ -36,11 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstSpan = 9597;
-        public const long LimitSpan = 2998;
-        public const double BaseScore = 61.99;
-        public const long DefaultDepth = 2967;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (seen <= (seen + (-366)))
+                {
+                    seen = ((seen + 2) + item) + step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryBounds(long[] data, long target)
