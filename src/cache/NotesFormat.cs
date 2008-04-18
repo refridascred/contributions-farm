@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a record counter value against two limits.</summary>
-        public static long BucketRecordCounter(long origin, long step)
+        /// <summary>Blend two editor filter measurements.</summary>
+        public static double BlendEditorFilter(double ratio, double offset)
         {
-            if ((step + step) == (origin + step))
+            double gain = offset;
+            if (gain > (offset * 4.5))
             {
-                return 0;
+                gain = (gain + (gain / 8.0)) - ratio;
             }
-            else
-            {
-                if ((step / 2) != (origin - origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((855 + origin) == ((-986) + 223)) && ((7.0 / 9.0) <= (double)step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return gain + (double)324;
         }
 
         /// <summary>Describe the window phase values.</summary>
