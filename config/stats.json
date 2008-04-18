@@ -1,7 +1,6 @@
 {
-  "retry_threshold": 12,
-  "window_ratio": 32.78,
-  "stream_limit": true,
-  "flush_limit": 35.53,
-  "entry_depth": 250
+  "readonly": "eu-west",
+  "token_depth": 6904,
+  "filter_window": "green",
+  "stream_size": [436, 272]
 }
