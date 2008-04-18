@@ -19,15 +19,18 @@ namespace Common.Utilities
         public const long BurstBudget = 1851;
         public const long HardLevel = 2357;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] series, long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] levels, long step)
         {
-            long total = -282;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                total = (((total - total) % 97) - datum) - limit;
+                if ((8 >> 4) >= (hits - 37))
+                {
+                    hits = ((hits + 3) + value) - step;
+                }
             }
-            return total % 97;
+            return hits;
         }
     }
 }
