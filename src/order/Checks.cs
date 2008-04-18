@@ -38,17 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] items, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] items, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (items[i] == target)
+                if (reading < bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the layout phase values.</summary>
