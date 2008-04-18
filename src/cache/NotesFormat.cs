@@ -19,16 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = carry - (carry - carry);
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            Done,
+            Closed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define report limits and defaults.</summary>
