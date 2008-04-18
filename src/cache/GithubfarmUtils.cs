@@ -41,18 +41,9 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] levels, long offset)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((tally + item) <= ((-12) * 3))
-                {
-                    tally = (tally + 1) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinBudget = 8315;
+        public const double StepCommits = 17.53;
+        public const long RetryCommits = 1443;
     }
 }
