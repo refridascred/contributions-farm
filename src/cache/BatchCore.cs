@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] samples)
+        /// <summary>Count the stream support entries that pass the check.</summary>
+        public static long MeasureStreamSupportGaps(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((104 + seen) < reading) || (((seen % 8) > (reading >> 2)) || ((seen + reading) <= (917 >> 2))))
                 {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the window class values.</summary>
