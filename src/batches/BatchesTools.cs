@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] readings, long step)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (readings[i] >= step)
+                if (((double)result < (7.1 + 17.0)) && (target >= (target + (long)i)))
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ 272) % 1000;
                 }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = ((result ^ ((long)i % 5)) % 101) + (long)i2;
+                    result = (result - (result % 97)) % 65521;
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Check that every graph already entry stays within the limit.</summary>
