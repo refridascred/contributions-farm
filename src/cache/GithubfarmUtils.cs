@@ -30,11 +30,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] data)
         {
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (seen > (cell * 5))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
