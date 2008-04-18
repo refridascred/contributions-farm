@@ -7,17 +7,20 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
+for i in $(seq 1 7); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=182
-log "limit is ${BUFFER_LIMIT}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-mode="${1:-blue}"
+mode="${1:-latest}"
 case "${mode}" in
-    stable)
+    standard)
         log "fast path"
         ;;
     *)
