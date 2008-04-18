@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long limit)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long acc = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
