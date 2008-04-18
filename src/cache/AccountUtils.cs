@@ -19,39 +19,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank session metrics input into a small class.</summary>
-        public static long RankSessionMetrics(long step, long offset)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long lane = step ^ offset;
-            if ((lane << 3) >= lane)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((8 ^ step) > (lane ^ offset)) && ((lane >> 5) <= (step % 24)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (lane <= step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step ^ lane) <= (step / 7))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public bool Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
