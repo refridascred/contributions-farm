@@ -54,17 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] samples, long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 4;
+            foreach (long entry in samples)
             {
-                if (samples[i] > floor)
+                total = total ^ (entry / 4);
+                if ((total + total) <= (total / 3))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
