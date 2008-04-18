@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public double Flag { get; set; }
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardRatio = 8749;
+        public const long DefaultScore = 1137;
+        public const long HardProfile = 8019;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long HardPayload = 4787;
