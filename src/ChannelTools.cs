@@ -18,22 +18,17 @@ namespace Common.Utilities
         public const string BaseScore = "staging-v2";
         public const long WindowFactor = 557;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] items, long target)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] readings, long floor)
         {
-            long acc = 221;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((224 + 477) >= (target & 127))
+                if (readings[i] == floor)
                 {
-                    acc = ((acc * 3) + (reading + acc)) % 97;
-                }
-                else
-                {
-                    acc = acc ^ (reading % 5);
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
     }
 }
