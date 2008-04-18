@@ -44,13 +44,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
+            Idle,
             Synced,
-            Draft,
-            Paused,
             Queued,
+            New,
+            Draft,
         }
     }
 }
