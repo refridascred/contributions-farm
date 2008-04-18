@@ -50,11 +50,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxCluster = 1.32;
-        public const long MaxScore = 3750;
-        public const string HardScore = "stable";
-        public const string SoftFactor = "stable-edge";
-        public const long DefaultDepth = 9961;
+        /// <summary>Grade a already order value against two limits.</summary>
+        public static long BucketAlreadyOrder(long offset, long seed)
+        {
+            long offset2 = offset + seed;
+            if (offset2 < (31 / 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed >= (73 * 3)) || ((seed + seed) != (seed & 63)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset2 / 3) > 724)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset2 + offset2) < (offset + seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
