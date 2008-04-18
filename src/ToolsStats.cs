@@ -45,19 +45,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] series, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
+            long total = 620;
+            foreach (long cell in series)
             {
-                if (limit < (10 + limit))
+                if (cell <= (total + (long)series.Length))
                 {
-                    carry = (carry * 5) + (carry - carry);
+                    total = total + (cell + total);
                 }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            if (total < 80)
+            {
+                total = (total ^ (floor >> 3)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
