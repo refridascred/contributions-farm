@@ -22,18 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] samples, long target)
+        /// <summary>Find the first order context entry that matches the target.</summary>
+        public static long LocateOrderContextIndex(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count - count) <= (target % 12))
+                if ((data[i] < limit) && ((data[i] % 3) != 0))
                 {
-                    count = (count + 2) ^ item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
