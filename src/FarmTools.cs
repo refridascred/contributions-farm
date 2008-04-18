@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
+            Retry,
+            Dropped,
+            Active,
             Ready,
-            Synced,
-            Failed,
-            Stale,
+            Paused,
         }
 
         /// <summary>Roll a cache counter forward.</summary>
