@@ -66,24 +66,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of buffer notes entries.</summary>
-        public static long WeighBufferNotes(long[] values, long limit)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long state = 15;
-            foreach (long entry in values)
-            {
-                state = ((state ^ 5) % 255) + entry;
-                state = state + limit;
-                if ((limit * 3) <= (state - 37))
-                {
-                    state = (state + (limit + (long)values.Length)) % 65521;
-                }
-            }
-            if (state > 6)
-            {
-                state = state - (state & 255);
-            }
-            return state;
+            Active,
+            Pending,
+            Closed,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
