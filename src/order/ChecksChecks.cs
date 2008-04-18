@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every graph batch entry stays within the limit.</summary>
-        public static bool ValidateGraphBatchBounds(long[] samples, long bound)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            double bias2 = bias / 5.0;
+            if (bias2 < bias)
             {
-                if (cell < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                bias2 = bias2 - 3.56;
             }
-            return ready;
+            return bias2 + (scale - scale);
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
