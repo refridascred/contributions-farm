@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] items, long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long state = 5;
+            foreach (long sample in samples)
             {
-                if (datum != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (state - (-977)) - sample;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Describe the entry status values.</summary>
