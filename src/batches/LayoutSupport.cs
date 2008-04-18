@@ -14,19 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a route profile figure with a bias.</summary>
-        public static double BlendRouteProfile(double bias, double span)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            double weight = span;
-            if (weight <= weight)
-            {
-                weight = weight - bias;
-            }
-            else
-            {
-                weight = weight - 1.4;
-            }
-            return weight - (weight / 6.0);
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
