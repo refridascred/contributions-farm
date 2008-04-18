@@ -14,20 +14,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Measure how many metric already samples are out of range.</summary>
+        public static long MeasureMetricAlreadyMatches(long[] readings, long limit)
         {
-            long state = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                state = state + (state + value);
-                state = state + (30 - state);
-                if ((5.03 / 6.0) <= (double)value)
+                if ((5.0 + 18.0) == (double)count)
                 {
-                    break;
+                    count = ((count + 2) - datum) + limit;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Check that every command counter entry stays within the limit.</summary>
