@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const long IdleDepth = 173;
         public const long DefaultInterval = 4155;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] values, long step)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double scale, double offset)
         {
-            long mark = -6;
-            foreach (long datum in values)
+            double gain = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((datum - mark) == (datum - (long)values.Length))
-                {
-                    mark = ((mark + (mark << 3)) % 65521) - step;
-                }
-                if ((double)datum < (18.0 * 2.82))
-                {
-                    mark = (mark << 3) ^ (7 * 3);
-                }
+                gain = (gain + (9.8 / 3.0)) + (double)(long)i;
             }
-            return mark;
+            return gain + scale;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
