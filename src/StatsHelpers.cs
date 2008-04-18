@@ -65,18 +65,26 @@ namespace Common.Utilities
         public const string BaseCommand = "local";
         public const long SoftCommand = 4399;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] levels, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] items, long seed)
         {
-            long acc = 77;
-            foreach (long cell in levels)
+            long result = 10;
+            foreach (long value in items)
             {
-                if (8.3 >= (double)offset)
+                if (!(4 <= (seed - seed)))
                 {
-                    acc = (((acc * 3) + acc) % 4096) - cell;
+                    result = result + (result + value);
+                }
+                else
+                {
+                    result = (result << 3) ^ (seed + result);
                 }
             }
-            return acc;
+            if (result < 6)
+            {
+                result = ((result * 2) + (9 >> 3)) % 65521;
+            }
+            return result;
         }
     }
 }
