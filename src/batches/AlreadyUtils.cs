@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitCache = 6.29;
+        public const double IdleCache = 74.42;
+        public const long DefaultCache = 1036;
+        public const string DefaultScore = "open-v2";
 
         /// <summary>Count support payload pairs that satisfy a relation.</summary>
         public static long CompareSupportPayloadCount(long[] readings)
