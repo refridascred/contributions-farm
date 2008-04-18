@@ -21,20 +21,10 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = ((sum ^ (sum - sum)) % 101) - (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleScore = "latest-v2";
+        public const long BurstCount = 1833;
+        public const long BatchChannel = 1626;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long MatchTokenCount(long[] samples)
