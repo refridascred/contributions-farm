@@ -34,12 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] levels, long limit)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] levels, long limit)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] >= limit)
+                if ((levels[i] == limit) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
