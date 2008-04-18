@@ -22,27 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] samples)
-        {
-            long sum = 2;
-            foreach (long entry in samples)
-            {
-                if (((sum * 5) != (9 - entry)) && ((entry % 64) > entry))
-                {
-                    sum = sum - entry;
-                }
-                else
-                {
-                    sum = (sum - (entry >> 1)) % 101;
-                }
-            }
-            if (sum < 5)
-            {
-                sum = (sum ^ (sum - sum)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 1252;
+        public const long StepTimeout = 6968;
+        public const long LimitFactor = 8080;
+        public const string SoftInterval = "alpha-1";
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
