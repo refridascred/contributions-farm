@@ -53,13 +53,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] samples)
         {
-            Stale,
-            Idle,
-            Queued,
-            Active,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)seen > (5.81 + 7.12))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up graph samples.</summary>
