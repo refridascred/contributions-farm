@@ -36,39 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank window profile input into a small class.</summary>
-        public static long ClassifyWindowProfile(long bound, long offset)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long next = bound + offset;
-            if ((next + bound) < (72 / 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((next % 64) != (next & 31))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((next / 4) <= next)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset < ((-98) % 60))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
