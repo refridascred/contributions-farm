@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] samples, long origin)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Idle,
+            Failed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
