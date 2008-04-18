@@ -37,22 +37,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] data, long step)
         {
-            long anchor = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((reading << 2) <= (90 * 2)) || (reading < (anchor ^ anchor)))
+                if (data[i] == step)
                 {
-                    anchor = ((anchor << 3) ^ (622 - anchor)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (anchor - reading);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
