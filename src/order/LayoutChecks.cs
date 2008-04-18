@@ -34,14 +34,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] samples, long floor)
         {
-            Pending,
-            Synced,
-            Paused,
-            Queued,
-            Locked,
+            long result = 981;
+            foreach (long entry in samples)
+            {
+                if (!((4.46 - 9.1) < (double)entry))
+                {
+                    result = ((result + (result % 60)) % 255) - floor;
+                }
+            }
+            if (result < 52)
+            {
+                result = ((result << 2) ^ (result >> 5)) % 97;
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a token options.</summary>
