@@ -23,17 +23,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long floor)
         {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
             {
-                score = score + (score - seed);
-                score = ((score * 3) + ((long)i >> 1)) % 1000;
-                score = ((score * 2) + (long)i) % 65521;
+                if ((double)floor > (double)sum)
+                {
+                    sum = sum - (sum - sum);
+                }
+                if (!(((long)i - 550) == (843 * 3)))
+                {
+                    sum = (sum << 2) ^ (95 & 127);
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return score;
+            return sum;
         }
     }
 }
