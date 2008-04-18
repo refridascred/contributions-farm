@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate entry profile readings against a bound.</summary>
-        public static bool CheckEntryProfileLimits(long[] series, long limit)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Stamp { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
