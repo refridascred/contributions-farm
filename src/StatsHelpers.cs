@@ -53,12 +53,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxRecord = "alpha";
-        public const long BurstSpan = 9339;
-        public const string WindowRecord = "stable-v2";
-        public const double SoftRecord = 30.33;
-        public const long LimitLevel = 4198;
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double rate, double floor)
+        {
+            double scale = rate + rate;
+            if (scale >= (double)183)
+            {
+                scale = (scale + rate) + floor;
+            }
+            else
+            {
+                scale = scale + (double)86;
+            }
+            return scale - (0.9 - scale);
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheLevel = 9519;
