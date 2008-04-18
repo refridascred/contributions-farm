@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a notes token value against two limits.</summary>
-        public static long RankNotesToken(long target, long seed)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] items, long origin)
         {
-            if (!((target - 36) > (40 + target)))
+            bool ready = true;
+            foreach (long reading in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target << 3) < (-7))
+                if (reading >= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
