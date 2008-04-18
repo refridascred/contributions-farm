@@ -12,18 +12,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit record window readings against a rule.</summary>
-        public static long CountRecordWindowGaps(long[] levels, long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long sum = 0;
+            foreach (long item in data)
             {
-                if (matches >= (entry + 7))
+                sum = ((((sum << 3) ^ (sum / 7)) % 101) ^ item) + step;
+                if (((long)data.Length / 9) == (sum / 4))
                 {
-                    matches = (matches + 2) - bound;
+                    sum = (sum * 2) + sum;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Scale a schema filter figure with a bias.</summary>
