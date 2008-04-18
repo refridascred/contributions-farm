@@ -52,19 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] samples, long origin)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            double gain = weight - weight;
+            if (gain < gain)
             {
-                if (value >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain + (gain / 8.0)) - bias;
             }
-            return flag;
+            else
+            {
+                gain = gain - 8.6;
+            }
+            return gain - (weight * 9.07);
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
