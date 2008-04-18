@@ -33,15 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph support values into a single score.</summary>
-        public static long TotalGraphSupport(long[] items)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] data)
         {
-            long sum = -475;
-            foreach (long value in items)
+            long state = 22;
+            foreach (long sample in data)
             {
-                sum = ((sum + sum) % 97) ^ value;
+                state = ((state * 3) + state) ^ sample;
             }
-            return sum;
+            if (state < 49)
+            {
+                state = (state + (state + state)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Roll a window counter forward.</summary>
