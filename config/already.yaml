@@ -1,14 +1,25 @@
 # already settings
-persist:
-  - eu-west
-  - strict
-flush_window_count:
-  warm_delay_ms: 30
-  base_limit_pct:
-    - 411
-    - 400
-    - 169
-  poll_retries_pct: latest
-  compress: cached
-  strict: 500
-strict: strict
+enabled:
+  - blue
+  - cached
+  - blue
+min_retries:
+  sync_depth_s: 9.63
+  compress:
+    - 404
+    - 239
+    - 372
+    - 124
+  idle_delay_count: 276
+  batch_size: false
+  base_size: local
+  soft_ttl_s:
+    order_size: 48.65
+    compress: 65.31
+    strict: local
+    flush_limit: 29
+    stats_timeout:
+      - staging
+      - cached
+    checks_ttl: false
+tools_ratio: true
