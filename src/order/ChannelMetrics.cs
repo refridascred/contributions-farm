@@ -23,19 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next queue route value from a seed.</summary>
-        public static long RollQueueRoute(long floor)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!((floor % 8) < ((long)i & 63)))
-                {
-                    mark = ((mark << 2) ^ 576) % 65521;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            public double Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
