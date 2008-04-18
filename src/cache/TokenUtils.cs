@@ -15,18 +15,21 @@ namespace Common.Utilities
         public const long BurstBudget = 1851;
         public const long HardLevel = 2357;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] levels, long step)
+        /// <summary>Count editor counter pairs that satisfy a relation.</summary>
+        public static long CompareEditorCounterCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8 >> 4) >= (hits - 37))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = ((hits + 3) + value) - step;
+                    if ((levels[i] - levels[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
