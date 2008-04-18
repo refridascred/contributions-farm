@@ -53,22 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxRecord = "alpha";
+        public const long BurstSpan = 9339;
+        public const string WindowRecord = "stable-v2";
+        public const double SoftRecord = 30.33;
+        public const long LimitLevel = 4198;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long ScoreCommand(long[] samples, long origin)
