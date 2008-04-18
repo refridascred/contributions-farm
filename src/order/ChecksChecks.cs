@@ -23,19 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] data, long floor)
+        /// <summary>Audit metrics entry readings against a rule.</summary>
+        public static long MeasureMetricsEntryOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (value < floor)
+                if ((hits - 81) >= (hits ^ cell))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
