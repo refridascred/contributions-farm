@@ -49,18 +49,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] levels)
+        /// <summary>Check that every session cache entry stays within the limit.</summary>
+        public static bool VerifySessionCacheLimits(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (!((tally + tally) < (tally % 5)))
+                if (reading >= offset)
                 {
-                    tally = (tally + 1) + datum;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
