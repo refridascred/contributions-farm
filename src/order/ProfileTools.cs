@@ -20,19 +20,10 @@ namespace Common.Utilities
             return mean + (scale + scale);
         }
 
-        /// <summary>Count the route metrics entries that pass the check.</summary>
-        public static long TallyRouteMetricsGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((13.0 + 1.16) < (double)count)
-                {
-                    count = (count + 2) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchTimeout = "latest";
+        public const long BaseSupport = 6685;
+        public const double HardFactor = 80.72;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long TallyGithubfarm(long[] samples)
