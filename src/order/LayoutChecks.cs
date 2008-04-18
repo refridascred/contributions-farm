@@ -58,17 +58,10 @@ namespace Common.Utilities
             return (ratio - (6.4 * 9.3)) + scale;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstWidth = 46.31;
+        public const double BurstRatio = 80.34;
+        public const long BaseOrder = 9470;
+        public const long CacheOrder = 1608;
     }
 }
