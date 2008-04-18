@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long target, long step)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            if (1.18 <= (9.26 - 19.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (step > (1 >> 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Combine command queue values into a single score.</summary>
