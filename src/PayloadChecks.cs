@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long carry = 615;
-            foreach (long item in items)
-            {
-                carry = ((carry * 5) + (item ^ carry)) % 1000;
-            }
-            return carry;
+            public double Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
