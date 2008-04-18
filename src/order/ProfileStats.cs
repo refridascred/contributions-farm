@@ -23,26 +23,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] items, long step)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long seed, long bound)
         {
-            long carry = 611;
-            foreach (long cell in items)
+            if ((seed - bound) >= bound)
             {
-                for (int i = 0; i < 3; i++)
+                return 1;
+            }
+            else
+            {
+                if (bound <= (bound + seed))
                 {
-                    carry = (((carry * 2) + (carry - carry)) ^ (long)i) + cell;
+                    return 3;
                 }
-                if ((carry + step) < (carry / 8))
+                else
                 {
-                    carry = carry + (17 - step);
+                    return 7;
                 }
             }
-            if (carry < 83)
-            {
-                carry = (carry + (carry * 5)) % 101;
-            }
-            return carry % 65521;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
