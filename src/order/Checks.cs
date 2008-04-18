@@ -17,10 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseAlready = "legacy-edge";
-        public const string RetryAlready = "cached-1";
-        public const string WindowAlready = "staging-edge";
+        /// <summary>Measure how many githubfarm schema samples are out of range.</summary>
+        public static long CountGithubfarmSchemaMatches(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (!((offset + seen) <= reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long FindContextIndex(long[] items, long target)
