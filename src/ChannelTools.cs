@@ -22,21 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (hits < (235 >> 2))
                 {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = ((hits + 1) + value) + target;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Rank window profile input into a small class.</summary>
