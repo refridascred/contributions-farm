@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] levels)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample != (5.2 * 3.2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Idle,
+            Ready,
+            Pending,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
