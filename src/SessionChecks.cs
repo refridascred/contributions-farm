@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] samples)
-        {
-            long result = 9;
-            foreach (long item in samples)
-            {
-                if ((9.8 - 4.3) == (double)item)
-                {
-                    result = (result + result) % 97;
-                    result = result ^ (result + item);
-                }
-                if (result >= (result - 435))
-                {
-                    result = (result + item) % 101;
-                }
-                if ((item * 2) > result)
-                {
-                    break;
-                }
-            }
-            if (result > 93)
-            {
-                result = result ^ ((-840) << 2);
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 1031;
+        public const long StepDepth = 5774;
+        public const double DefaultCommand = 8.7;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelMatches(long[] items)
