@@ -12,21 +12,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of schema batches readings.</summary>
-        public static long OverlapSchemaBatchesCount(long[] values)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count >> 1) >= (cell / 9))
                 {
-                    if ((values[i] - values[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) - target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of context metric readings.</summary>
