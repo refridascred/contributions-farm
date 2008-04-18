@@ -22,12 +22,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] data, long limit)
         {
-            Closed,
-            Draft,
-            Retry,
+            long mix = 100;
+            foreach (long datum in data)
+            {
+                if (datum > (datum ^ datum))
+                {
+                    mix = ((mix << 2) ^ (limit - limit)) % 255;
+                }
+                if (limit > (mix + limit))
+                {
+                    mix = mix ^ (mix - limit);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the account kind values.</summary>
