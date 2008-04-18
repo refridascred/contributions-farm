@@ -28,17 +28,38 @@ namespace Common.Utilities
         public const string CacheWidth = "staging-edge";
         public const long MinRatio = 8308;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] values, long target)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long step, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((limit + limit) >= (step * 5))
             {
-                if (values[i] == target)
+                return 3;
+            }
+            else
+            {
+                if ((limit * 4) == (step + limit))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step != (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step ^ (-526)) < (limit << 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
