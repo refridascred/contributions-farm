@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] data)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long limit, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)limit != (2.8 + 5.53))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound >= 9.7)
                 {
-                    if ((data[i] ^ data[j]) < 1)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit == (5.5 / 9.0))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate tools stats readings against a bound.</summary>
