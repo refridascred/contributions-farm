@@ -49,15 +49,19 @@ namespace Common.Utilities
             return mean - (double)8;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] values, long origin)
+        /// <summary>Measure how many stream route samples are out of range.</summary>
+        public static long AuditStreamRouteGaps(long[] data, long bound)
         {
             long matches = 0;
-            foreach (long sample in values)
+            foreach (long value in data)
             {
-                if (!((sample << 1) != (matches - matches)))
+                if (!((matches % 7) < matches))
                 {
-                    matches = (matches + 2) + origin;
+                    matches = ((matches + 1) - value) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
