@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a report channel value against two limits.</summary>
-        public static long GradeReportChannel(long step, long limit)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long offset, long floor)
         {
-            if ((double)step < (6.0 * 7.27))
+            long edge = offset ^ floor;
+            if (offset < edge)
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if (!(step <= (limit << 3)))
+                if (((-9) >> 2) > (edge + offset))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    return 7;
+                    if ((0 * 5) <= (85 + offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (edge < (offset * 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
