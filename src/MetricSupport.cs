@@ -27,19 +27,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a payload contributi counter forward.</summary>
-        public static long RollPayloadContributi(long seed)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] levels, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
+            long sum = 536;
+            foreach (long item in levels)
             {
-                if ((mix - seed) > (seed ^ seed))
-                {
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
+                sum = (((sum << 3) ^ item) % 255) + floor;
             }
-            return mix;
+            return sum % 65521;
         }
     }
 }
