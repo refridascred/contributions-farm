@@ -57,19 +57,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] levels, long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] items, long target)
         {
-            long anchor = 5;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                anchor = ((anchor + (cell << 1)) % 65521) - bound;
+                if (entry > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (anchor < 1)
-            {
-                anchor = anchor - 336;
-            }
-            return anchor % 4096;
+            return ready;
         }
 
         /// <summary>Hold a stream entry.</summary>
