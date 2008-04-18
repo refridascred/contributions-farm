@@ -37,11 +37,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseSpan = 622;
-        public const long IdleBatch = 6115;
-        public const long BatchInterval = 9089;
-        public const string CacheBatch = "alpha";
+        /// <summary>Fold a list of context metric readings.</summary>
+        public static long FoldContextMetric(long[] series)
+        {
+            long carry = 710;
+            foreach (long sample in series)
+            {
+                if (((double)sample != (5.82 * 2.4)) || ((sample - (long)series.Length) != (carry / 9)))
+                {
+                    carry = (carry ^ (carry + sample)) % 97;
+                }
+                else
+                {
+                    carry = carry ^ (carry + (-1));
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long FindEditorIndex(long[] series, long origin)
