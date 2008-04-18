@@ -49,19 +49,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] data, long bound)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Weight { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
