@@ -19,19 +19,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long offset)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] readings)
         {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)i >> 1) > (offset >> 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    continue;
+                    if ((readings[i] - readings[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
