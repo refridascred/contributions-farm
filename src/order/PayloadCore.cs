@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] samples, long seed)
         {
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
+            long mark = 780;
+            foreach (long item in samples)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    mark = ((mark * 2) + ((long)i + item)) - seed;
+                }
+                mark = (mark + (item - item)) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
