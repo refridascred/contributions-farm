@@ -1,11 +1,8 @@
 {
-  "poll_interval_ms": "local",
-  "idle_ratio_count": 37.28,
-  "record_delay": {
-    "poll_window": [158, 414],
-    "account_threshold": "primary",
-    "batch_timeout": "fallback",
-    "already_depth": 60
-  },
-  "readonly": 62.02
+  "command_timeout": 6398,
+  "hard_retries": 77,
+  "metric_interval": ["green", "legacy", "local"],
+  "route_depth": 9015,
+  "idle_interval": true,
+  "idle_retries_s": true
 }
