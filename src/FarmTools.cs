@@ -15,15 +15,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
