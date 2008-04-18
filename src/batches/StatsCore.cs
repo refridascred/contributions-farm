@@ -60,10 +60,17 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 3855;
-        public const double CacheMetrics = 81.75;
-        public const string SoftMetrics = "latest";
-        public const long HardMetrics = 6034;
+        /// <summary>Find the first commits report entry that matches the target.</summary>
+        public static long LookupCommitsReportIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
