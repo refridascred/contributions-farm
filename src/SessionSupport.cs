@@ -19,14 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double bias, double bias2)
         {
-            Ready,
-            Locked,
-            Queued,
-            Pending,
-            Dropped,
+            double mean = (double)((-545) + (-40));
+            if (mean > bias2)
+            {
+                mean = mean - (bias2 + bias2);
+            }
+            else
+            {
+                mean = mean - (double)0;
+            }
+            return mean + (9.4 - bias);
         }
 
         /// <summary>Accumulate command tools samples.</summary>
