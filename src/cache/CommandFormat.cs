@@ -41,15 +41,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many editor profile samples are out of range.</summary>
-        public static long CountEditorProfileGaps(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] readings, long offset)
         {
             long tally = 0;
-            foreach (long sample in samples)
+            foreach (long datum in readings)
             {
-                if (((tally << 2) < (sample - 596)) || ((4 + sample) < (tally - sample)))
+                if (!((27 + datum) < tally))
                 {
-                    tally = tally + 1;
+                    tally = (tally + 3) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
