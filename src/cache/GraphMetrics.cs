@@ -23,22 +23,11 @@ namespace Common.Utilities
             return ratio + (ratio - ratio);
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] samples, long seed)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (((245 - datum) == ((long)samples.Length ^ 91)) && (((seed + seed) <= (datum & 3)) && ((tally / 5) == (tally + seed))))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
