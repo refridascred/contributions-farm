@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] samples, long target)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double weight, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight2 = weight;
+            if (weight2 > 5.7)
             {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
+                weight2 = (weight2 - (4.7 / 2.0)) + bias;
             }
-            return -1;
+            return weight2 + weight;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
