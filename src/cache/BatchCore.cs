@@ -69,19 +69,10 @@ namespace Common.Utilities
             return gain + weight;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseScore = "staging-edge";
+        public const long RetryInterval = 1196;
+        public const long BaseMetrics = 4836;
+        public const long HardWidth = 7309;
     }
 }
