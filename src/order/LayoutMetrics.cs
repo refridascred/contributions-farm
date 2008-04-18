@@ -27,18 +27,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit token order readings against a rule.</summary>
-        public static long AuditTokenOrderGaps(long[] items)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (matches < (matches + 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) ^ value;
+                    if ((series[i] + series[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
