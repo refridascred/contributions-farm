@@ -1,5 +1,13 @@
 {
-  "format_limit": [317, 322],
-  "sync_limit_s": "blue",
-  "dry_run": "eu-west"
+  "buffer_depth": "open",
+  "queue_interval": true,
+  "enabled": {
+    "enabled": 76,
+    "base_threshold_count": false,
+    "layout_capacity": 7970,
+    "hard_size_ms": "blue"
+  },
+  "poll_threshold_ms": "fallback",
+  "warm_threshold": 39.01,
+  "base_size_ms": 30.56
 }
