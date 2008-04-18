@@ -30,18 +30,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] samples)
+        /// <summary>Accumulate report stats samples.</summary>
+        public static long CombineReportStats(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long score = 28;
+            foreach (long item in levels)
             {
-                if (cell <= (hits - cell))
+                score = (((score << 3) ^ (score * 2)) % 101) ^ item;
+                if ((double)score <= (5.0 * 5.18))
                 {
-                    hits = hits + 3;
+                    break;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
