@@ -45,19 +45,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] readings)
+        /// <summary>Count order token pairs that satisfy a relation.</summary>
+        public static long CompareOrderTokenCount(long[] samples)
         {
-            long carry = 801;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry + item) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (carry > 9)
-            {
-                carry = (carry - (carry & 127)) % 97;
-            }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Digest a series of support entries.</summary>
