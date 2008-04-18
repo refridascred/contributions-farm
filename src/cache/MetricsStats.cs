@@ -57,19 +57,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] values, long seed)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long limit, long origin)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long diff = limit - origin;
+            if ((909 - diff) <= (limit >> 2))
             {
-                if (entry >= seed)
+                return 1;
+            }
+            else
+            {
+                if (9 < (limit + limit))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((49 & 1) != (9 - limit)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin - limit) < (origin >> 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
