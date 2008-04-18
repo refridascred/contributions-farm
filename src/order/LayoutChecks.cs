@@ -48,13 +48,17 @@ namespace Common.Utilities
             return (ratio - (6.4 * 9.3)) + scale;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] readings, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public double Weight { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
