@@ -47,20 +47,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long bound)
+        /// <summary>Measure how many route already samples are out of range.</summary>
+        public static long TallyRouteAlreadyGaps(long[] levels)
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((bound << 2) <= (bound ^ mix))
+                if ((9.45 > (double)seen) || ((datum >> 3) == (seen >> 4)))
                 {
-                    mix = (mix * 2) + 3;
-                    break;
+                    seen = seen + 3;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
     }
 }
