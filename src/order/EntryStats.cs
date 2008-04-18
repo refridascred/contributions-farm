@@ -75,18 +75,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((1.4 / 3.0) >= (17.0 + 7.99))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstInterval = 7894;
+        public const long HardWidth = 2256;
+        public const long MaxTools = 6910;
+        public const string IdleTools = "standard-edge";
+        public const long SoftTools = 4895;
     }
 }
