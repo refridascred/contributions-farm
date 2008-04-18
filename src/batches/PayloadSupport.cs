@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 2176;
-        public const string MaxWidth = "fallback-edge";
-        public const long CacheAccount = 1639;
-        public const long BurstInterval = 3350;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public long Region { get; set; }
+            public double Score { get; set; }
+            public double Level { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Adjust a buffer payload reading.</summary>
         public static double BlendBufferPayload(double gain, double offset)
