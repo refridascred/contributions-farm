@@ -13,17 +13,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] readings, long origin)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= origin) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Closed,
+            Active,
+            Locked,
+            Draft,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
