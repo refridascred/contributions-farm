@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxTimeout = 78.56;
+        public const string HardCount = "cached-1";
+        public const long CacheScore = 9989;
+        public const long WindowAccount = 1419;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LookupRecordIndex(long[] items, long target)
