@@ -47,19 +47,19 @@ namespace Common.Utilities
             return rate + 1.7;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double weight, double bias)
+        /// <summary>Check that every filter window entry stays within the limit.</summary>
+        public static bool CheckFilterWindowBounds(long[] items, long bound)
         {
-            double gain = weight - weight;
-            if (gain < gain)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                gain = (gain + (gain / 8.0)) - bias;
+                if (reading > bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - 8.6;
-            }
-            return gain - (weight * 9.07);
+            return ready;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
