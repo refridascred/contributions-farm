@@ -40,19 +40,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of payload metrics readings.</summary>
-        public static long DigestPayloadMetrics(long[] readings)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long carry = 47;
-            foreach (long datum in readings)
-            {
-                carry = (carry - datum) % 255;
-                if (!(carry >= (datum + datum)))
-                {
-                    carry = carry ^ datum;
-                }
-            }
-            return carry;
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
