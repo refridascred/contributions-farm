@@ -45,13 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] series)
         {
-            Done,
-            Queued,
-            Paused,
-            Failed,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((reading + reading) >= reading)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a batches window figure with a bias.</summary>
