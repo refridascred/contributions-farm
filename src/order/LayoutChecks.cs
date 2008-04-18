@@ -73,19 +73,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] levels, long seed)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
