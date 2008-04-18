@@ -49,12 +49,26 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] samples, long target)
         {
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            long anchor = 6;
+            foreach (long reading in samples)
+            {
+                if ((0 ^ reading) < 94)
+                {
+                    anchor = ((anchor + 221) % 65521) - target;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ reading) % 65521;
+                }
+                if ((double)reading > (2.3 + 1.0))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Combine window values into a single score.</summary>
