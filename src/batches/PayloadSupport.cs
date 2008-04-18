@@ -40,12 +40,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            New,
-            Retry,
-            Locked,
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
