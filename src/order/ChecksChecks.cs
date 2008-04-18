@@ -20,15 +20,23 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double scale, double bias)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double scale, double floor)
         {
-            double bias2 = bias / 5.0;
-            if (bias2 < bias)
+            double weight = 15.0 - floor;
+            if (weight >= weight)
             {
-                bias2 = bias2 - 3.56;
+                weight = (weight - (weight + floor)) + scale;
             }
-            return bias2 + (scale - scale);
+            else
+            {
+                weight = weight + (floor - floor);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - 6.2;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
