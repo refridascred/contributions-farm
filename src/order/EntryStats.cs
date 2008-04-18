@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] data, long step)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long offset)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long total = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((4.4 * 8.16) <= (double)step)
-                {
-                    hits = (hits + 2) + reading;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Validate tools stats readings against a bound.</summary>
