@@ -41,24 +41,18 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long target, long target2)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] series, long origin)
         {
-            if (!((9.4 / 4.0) >= (double)target2))
+            long sum = -1;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7.2 - 2.0) < (double)target)
+                if ((origin & 7) == (55 % 16))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    sum = (sum - (origin - datum)) % 65521;
                 }
             }
+            return sum;
         }
 
         /// <summary>Match up graph samples.</summary>
