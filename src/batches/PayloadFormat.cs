@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] series)
         {
-            Done,
-            Dropped,
-            Paused,
-            Pending,
-            Ready,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (3.19 >= (double)count)
+                {
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next farm notes value from a seed.</summary>
