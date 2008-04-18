@@ -20,15 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] values)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] items, long floor)
         {
-            long score = 605;
-            foreach (long datum in values)
+            long result = 2;
+            foreach (long item in items)
             {
-                score = ((score * 2) + (score - 7)) ^ datum;
+                result = ((result - (206 >> 2)) ^ item) + floor;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Hold a command summary.</summary>
