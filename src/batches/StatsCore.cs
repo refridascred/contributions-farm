@@ -43,18 +43,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] series)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading + reading) >= reading)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((samples[i] ^ samples[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Find the first buffer command entry that matches the target.</summary>
