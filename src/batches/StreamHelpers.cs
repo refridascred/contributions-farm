@@ -49,24 +49,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long bound, long seed)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            if ((bound >= ((-82) - 7)) && ((seed - 537) < (seed >> 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((seed + bound) > (0 / 5)) || ((70 + bound) < seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Idle,
+            Retry,
+            Closed,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
