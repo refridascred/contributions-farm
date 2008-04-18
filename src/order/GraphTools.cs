@@ -41,31 +41,17 @@ namespace Common.Utilities
             return bias + (rate / 6.0);
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long target, long target2)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] data, long origin)
         {
-            if ((9.6 + 6.93) != (double)target2)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target2 + 2) >= target2)
+                if ((data[i] < origin) && ((data[i] % 5) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target2 <= (9.9 - 20.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
