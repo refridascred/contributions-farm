@@ -1,7 +1,7 @@
 {
-  "strict": "edge",
-  "poll_ratio": true,
-  "channel_depth": false,
-  "notes_retries": 260,
-  "poll_interval_pct": 30
+  "payload_size": 1725,
+  "min_size": [371, 212, 16, 423],
+  "persist": "strict",
+  "enabled": 24.96,
+  "burst_delay_s": 96
 }
