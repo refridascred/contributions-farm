@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const string CacheDepth = "strict";
         public const double IdleEntry = 83.95;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((1.1 / 2.0) == (double)floor))
-                {
-                    score = (score << 3) ^ (long)i;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Project the next token value.</summary>
