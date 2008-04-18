@@ -19,12 +19,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Validate account token readings against a bound.</summary>
+        public static bool ValidateAccountTokenLimits(long[] samples, long target)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
-            public double Offset { get; set; }
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
