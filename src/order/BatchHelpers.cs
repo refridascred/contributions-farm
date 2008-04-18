@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the queue stream series from a seed.</summary>
-        public static long IterateQueueStream(long offset)
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double scale, double offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
+            double drift = offset;
+            if (drift > 2.42)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                drift = drift - offset;
             }
-            return sum;
+            else
+            {
+                drift = drift + 4.5;
+            }
+            return drift - (scale - scale);
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
