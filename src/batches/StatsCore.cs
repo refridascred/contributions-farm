@@ -70,26 +70,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] readings)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long seed, long target)
         {
-            long result = 3;
-            foreach (long entry in readings)
+            long slot = seed ^ target;
+            if (((9 + target) >= (879 - slot)) && (seed >= target))
             {
-                if ((double)entry >= (7.0 * 16.0))
+                return 0;
+            }
+            else
+            {
+                if ((slot - target) != (target << 2))
                 {
-                    result = (result - (7 + result)) % 65521;
+                    return 4;
                 }
                 else
                 {
-                    result = ((result * 5) + entry) % 4096;
+                    if ((target / 9) >= seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (result < 792)
-            {
-                result = (result << 2) ^ (result * 2);
-            }
-            return result;
         }
     }
 }
