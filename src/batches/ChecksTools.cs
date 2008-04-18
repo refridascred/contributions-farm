@@ -35,15 +35,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Closed,
-            Failed,
-            Draft,
-            Pending,
-            Done,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 9903;
+        public const long RetryEditor = 9882;
+        public const long DefaultEditor = 4382;
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long RankBuffer(long target, long step)
