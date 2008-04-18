@@ -18,9 +18,14 @@ namespace Common.Utilities
         public const string CacheLevel = "stable-v2";
         public const string IdleRatio = "open-1";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 9432;
-        public const long SoftLevel = 6443;
-        public const long SoftInterval = 4400;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Paused,
+            Draft,
+            Idle,
+            Queued,
+            Closed,
+        }
     }
 }
