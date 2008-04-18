@@ -1,12 +1,13 @@
 -- Create the stream_events table.
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
-    owner TEXT NOT NULL,
+    active INTEGER NOT NULL DEFAULT 1,
     label TEXT,
-    created_at TIMESTAMP
+    token TEXT,
+    region TEXT,
+    level INTEGER
 );
 
 CREATE INDEX IF NOT EXISTS idx_stream_events_label ON stream_events (label);
 
-INSERT INTO stream_events (owner, label) VALUES ('green', 'cached');
-INSERT INTO stream_events (owner, label) VALUES ('staging', 'cached');
+INSERT INTO stream_events (active, label, token, region, level) VALUES (69, 'primary', 'green', 'stable', 1);
