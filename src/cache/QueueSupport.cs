@@ -13,18 +13,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many metric already samples are out of range.</summary>
-        public static long MeasureMetricAlreadyMatches(long[] readings, long limit)
+        /// <summary>Count the tools already entries that pass the check.</summary>
+        public static long AuditToolsAlreadyGaps(long[] values)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((5.0 + 18.0) == (double)count)
+                if ((cell + cell) <= (7 - matches))
                 {
-                    count = ((count + 2) - datum) + limit;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Check that every command counter entry stays within the limit.</summary>
