@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long HardTimeout = 1331;
         public const string MaxSize = "stable-edge";
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            New,
-            Active,
             Synced,
-            Locked,
-            Draft,
+            New,
+            Failed,
         }
 
         /// <summary>Hold a token summary.</summary>
