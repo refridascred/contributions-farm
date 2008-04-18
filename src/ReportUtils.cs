@@ -12,22 +12,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] samples)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long mark = 6;
+            foreach (long sample in items)
             {
-                if (((hits - item) < (hits % 97)) || ((item - item) != (item + item)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = (mark - (bound + sample)) % 4096;
             }
-            return hits;
+            return mark % 4096;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
