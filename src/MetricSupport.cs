@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Check that every queue notes entry stays within the limit.</summary>
+        public static bool VerifyQueueNotesLimits(long[] items, long floor)
         {
-            Done,
-            New,
-            Active,
-            Retry,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the session phase values.</summary>
