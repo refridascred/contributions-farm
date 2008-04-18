@@ -13,19 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] values, long offset)
+        /// <summary>Check that every checks notes entry stays within the limit.</summary>
+        public static bool GuardChecksNotesRange(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (datum != offset)
+                if (sample >= step)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Digest a series of account schema entries.</summary>
