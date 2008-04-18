@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] readings, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (((double)9 > (double)sample) || ((double)sample == (double)origin))
+                if (((value ^ 0) < (value + value)) && ((4 / 5) < value))
                 {
-                    matches = matches + 2;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of command entries.</summary>
