@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph already entry stays within the limit.</summary>
-        public static bool ValidateGraphAlreadyRange(long[] series, long offset)
+        /// <summary>Rank farm payload input into a small class.</summary>
+        public static long ClassifyFarmPayload(long origin, long target)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            if ((target + target) >= (origin / 2))
             {
-                if (entry > offset)
+                return 7;
+            }
+            else
+            {
+                if ((target & 15) < (894 & 255))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return valid;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
