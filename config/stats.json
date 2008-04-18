@@ -1,8 +1,12 @@
 {
-  "order_ttl": false,
-  "command_interval": ["blue", "primary", "primary"],
-  "batch_timeout_s": [431, 453, 367, 382],
-  "persist": false,
-  "verbose": false,
-  "cluster_threshold": 18.72
+  "readonly": ["primary", "staging", "strict"],
+  "soft_ttl": false,
+  "metrics_limit": ["latest", "green", "blue"],
+  "session_ttl": 18,
+  "flush_threshold_pct": {
+    "command_size": [379, 433, 484, 112],
+    "compress": [467, 195, 490, 163],
+    "flush_retries_pct": 2837,
+    "token_retries": 54.86
+  }
 }
