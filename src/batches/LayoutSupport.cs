@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] items, long limit)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long score = 81;
-            foreach (long sample in items)
-            {
-                score = (score << 2) ^ (limit >> 4);
-                if (sample <= ((long)items.Length - sample))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            Locked,
+            Idle,
+            New,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
