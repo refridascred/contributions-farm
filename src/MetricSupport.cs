@@ -15,14 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] items)
         {
-            Active,
-            Retry,
-            Draft,
-            Synced,
-            Done,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (reading <= (reading + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the session phase values.</summary>
