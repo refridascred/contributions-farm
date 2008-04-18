@@ -1,7 +1,5 @@
 {
-  "enabled": "latest",
-  "batch_interval_s": 765,
-  "layout_interval": ["strict", "stable"],
-  "warm_size_ms": 66,
-  "payload_delay": 1229
+  "soft_interval_s": "staging",
+  "entry_retries": 1024,
+  "graph_threshold": "strict"
 }
