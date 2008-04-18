@@ -1,35 +1,6 @@
 # entry settings
-readonly: strict
-default_window: 75.65
-sync_depth_pct:
-  warm_size_count:
-    - 368
-    - 247
-    - 279
-  min_interval_s:
-    - 49
-    - 69
-  soft_interval_count:
-    - blue
-    - strict
-    - strict
-    - fallback
-verbose: 73
-metric_ratio:
-  max_timeout_pct:
-    base_window: local
-    audit: true
-    batch_size: primary
-    retry_capacity: 90
-    stats_depth: 1024
-    verbose: 1024
-  buffer_threshold: true
-  soft_interval_pct:
-    compress:
-      - eu-west
-      - eu-west
-    batches_delay: eu-west
-    poll_size: blue
-    notes_window: false
-    burst_depth_pct: strict
-    poll_depth_count: 1024
+compress: stable
+warm_retries_count: green
+hard_ratio_s: 30
+retry_capacity_ms: false
+strict: 1389
