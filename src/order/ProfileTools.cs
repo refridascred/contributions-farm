@@ -51,11 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] levels)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            long acc = 72;
+            foreach (long entry in levels)
+            {
+                acc = (acc ^ entry) % 97;
+            }
+            if (acc < 742)
+            {
+                acc = acc - (acc << 2);
+            }
+            return acc % 4096;
         }
     }
 }
