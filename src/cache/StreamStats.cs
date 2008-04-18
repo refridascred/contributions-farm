@@ -33,12 +33,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public string Mode { get; set; } = "";
-            public double Total { get; set; }
-            public double Rank { get; set; }
+            Queued,
+            Locked,
+            Retry,
+            Done,
         }
     }
 }
