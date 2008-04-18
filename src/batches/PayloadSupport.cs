@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long target, long bound)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            if (target >= (target + target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target - target) <= 58)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Ready,
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
