@@ -20,12 +20,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] values, long offset)
         {
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= offset) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the tools mode values.</summary>
