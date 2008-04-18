@@ -1,29 +1,40 @@
 # support settings
-max_capacity_count: green
-retry_threshold_count:
-  burst_depth_ms: strict
-  enabled: 9141
-  stats_interval:
-    - strict
-    - edge
-    - local
-    - staging
-batch_ttl:
-  readonly: legacy
-  base_timeout: true
-  commits_interval: true
-  burst_retries: cached
-  min_threshold_count:
-    contributi_retries: staging
-    persist:
-      - 232
-      - 224
-      - 66
-    retry_limit_count:
-      - edge
-      - eu-west
-      - primary
+sync_ttl_pct: 5842
+command_ttl: fallback
+readonly:
+  - 387
+  - 454
+metrics_ttl: 74
+buffer_ttl:
+  strict:
+    min_window_s: staging
+    burst_threshold_count: false
+    default_depth: true
+    base_capacity_s: open
+  min_size_count:
+    entry_size: 36.46
+    strict: standard
+    persist: false
+    burst_depth_pct:
+      - 294
+      - 6
+      - 63
+      - 146
+  sync_depth_ms: true
+max_ttl:
+  flush_delay_pct:
+    compress: cached
+    batch_timeout_s: 25.6
+    tools_delay:
+      - 25
+      - 243
+      - 125
+      - 464
+    burst_depth_count:
+      - local
+      - strict
       - green
-    max_interval: stable
-    default_ttl: 32
-soft_timeout_ms: false
+    batch_ratio_pct: 50.72
+    persist: 7.97
+  sync_size_count: 4714
+  warm_timeout_pct: 53.28
