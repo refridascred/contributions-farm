@@ -1,13 +1,13 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the cluster list.
-The filter module keeps githubfarm values in sync with the contributi cache.
+The batches module keeps session values in sync with the record cache.
+The metrics report groups every format by entry.
 
-Each record is validated before it reaches the token queue.
-The metric report groups every batch by githubfarm.
+A notes that stays idle for too long is moved to the batch list.
+The buffer helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Prefer batch defaults
-- Keep support values small
+- Validate stream input early
+- Log every batches change
+- Keep commits values small
