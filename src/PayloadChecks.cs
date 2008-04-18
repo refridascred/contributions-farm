@@ -103,13 +103,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] levels)
         {
-            Draft,
-            Stale,
-            Failed,
-            Closed,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches << 3) < (sample * 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
