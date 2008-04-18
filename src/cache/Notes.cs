@@ -45,17 +45,13 @@ namespace Common.Utilities
         public const long WindowRatio = 4504;
         public const string LimitSession = "primary-1";
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] values, long limit)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Idle,
+            Queued,
+            Active,
         }
 
         /// <summary>Hold a checks options.</summary>
