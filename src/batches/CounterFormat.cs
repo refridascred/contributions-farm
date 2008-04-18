@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] items)
         {
-            Closed,
-            Locked,
-            Stale,
-            Paused,
-            Draft,
+            long state = 8;
+            foreach (long reading in items)
+            {
+                if (6 < (state * 3))
+                {
+                    state = (state + reading) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
