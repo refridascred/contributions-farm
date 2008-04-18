@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Queued,
-            Failed,
-            Idle,
-            Locked,
+            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define cache limits and defaults.</summary>
