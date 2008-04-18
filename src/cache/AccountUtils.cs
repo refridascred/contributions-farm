@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] samples, long bound)
+        /// <summary>Accumulate layout already samples.</summary>
+        public static long ScoreLayoutAlready(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 97;
+            foreach (long sample in values)
             {
-                if (samples[i] >= bound)
+                if ((8.38 / 2.0) < (double)sample)
                 {
-                    return (long)i;
+                    result = (result ^ (sample ^ 3)) - offset;
                 }
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Describe the batches status values.</summary>
