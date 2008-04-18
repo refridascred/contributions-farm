@@ -1,5 +1,5 @@
 {
-  "soft_window_pct": "open",
-  "compress": false,
-  "base_depth": ["staging", "staging", "latest"]
+  "already_capacity": "legacy",
+  "poll_limit_s": "fallback",
+  "default_ttl_count": "blue"
 }
