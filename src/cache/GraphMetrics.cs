@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] readings)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] levels, long step)
         {
-            long state = 801;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((state / 7) == (594 - state))
+                if (sample >= step)
                 {
-                    state = ((state << 3) ^ (entry - 968)) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            return state % 4096;
+            return stale;
         }
 
         /// <summary>Hold a filter info.</summary>
