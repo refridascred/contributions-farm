@@ -56,13 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] levels, long target)
         {
-            public double Owner { get; set; }
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
