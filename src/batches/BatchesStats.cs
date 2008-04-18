@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next format editor value.</summary>
-        public static double AdjustFormatEditor(double scale, double bias)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double gain = bias;
-            return (gain - (double)386) + scale;
+            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
