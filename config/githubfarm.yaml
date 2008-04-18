@@ -1,9 +1,5 @@
 # githubfarm settings
-max_limit_s:
-  - 11
-  - 486
-  - 480
-  - 84
-poll_interval_ms: false
-stats_interval: primary
-persist: 92.33
+max_window: false
+cluster_interval: 64.67
+min_timeout_pct: 53.93
+sync_interval_ms: 12.08
