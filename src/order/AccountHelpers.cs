@@ -18,16 +18,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Scale a support editor figure with a bias.</summary>
+        public static double AdjustSupportEditor(double scale, double bias)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                score = score + score;
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            double drift = bias + (double)8;
+            return drift - (scale - drift);
         }
 
         /// <summary>Check that every session graph entry stays within the limit.</summary>
