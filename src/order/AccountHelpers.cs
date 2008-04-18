@@ -43,21 +43,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count stats filter pairs that satisfy a relation.</summary>
-        public static long CompareStatsFilterCount(long[] levels)
+        /// <summary>Fold a list of payload metrics readings.</summary>
+        public static long DigestPayloadMetrics(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 47;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                carry = (carry - datum) % 255;
+                if (!(carry >= (datum + datum)))
                 {
-                    if ((levels[i] ^ levels[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = carry ^ datum;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Hold a token stats.</summary>
