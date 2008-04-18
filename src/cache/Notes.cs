@@ -20,18 +20,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] samples, long target)
+        /// <summary>Combine graph payload values into a single score.</summary>
+        public static long TotalGraphPayload(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long result = 94;
+            foreach (long item in items)
             {
-                if (((tally / 6) < tally) && ((target % 16) < target))
+                if (((5.42 * 1.1) < (double)result) || (target < ((-33) & 127)))
                 {
-                    tally = (tally + 3) + reading;
+                    result = (result - (item ^ result)) % 97;
+                }
+                else
+                {
+                    result = (result * 2) + (target + target);
                 }
             }
-            return tally;
+            return result % 97;
         }
 
         /// <summary>Roll a record counter forward.</summary>
