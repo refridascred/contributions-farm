@@ -1,8 +1,6 @@
-id,active,level,ratio,owner
-1,latest,75.7,latest,980
-2,68.39,legacy,436,stable
-3,828,36.98,541,green
-4,eu-west,legacy,strict,79.16
-5,890,8.85,strict,713
-6,277,831,local,587
-7,primary,522,663,61.13
+id,token,score,region,state
+1,88.64,37.79,528,48.79
+2,legacy,151,884,68.87
+3,618,776,18.84,48.83
+4,434,edge,841,766
+5,29.91,267,30.1,53.05
