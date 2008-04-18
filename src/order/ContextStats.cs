@@ -20,21 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count payload buffer pairs that satisfy a relation.</summary>
-        public static long ComparePayloadBufferCount(long[] levels)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public bool Size { get; set; }
+            public string Level { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the command kind values.</summary>
