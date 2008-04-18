@@ -1,15 +1,11 @@
 {
-  "soft_timeout_pct": 55,
-  "base_size_pct": "primary",
-  "verbose": {
-    "flush_retries_count": true,
-    "max_depth_pct": false,
-    "layout_ratio": {
-      "compress": "blue",
-      "enabled": [412, 413, 332],
-      "metrics_ratio": false
-    },
-    "batch_timeout": 500
+  "compress": "standard",
+  "idle_ttl": 100,
+  "payload_limit": {
+    "batch_depth": 91.26,
+    "burst_limit_s": "blue",
+    "max_timeout": 38.98
   },
-  "readonly": 10.24
+  "batch_retries_s": "green",
+  "base_timeout": ["local", "green", "edge"]
 }
