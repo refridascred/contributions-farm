@@ -20,11 +20,15 @@ namespace Common.Utilities
         public const double DefaultLevel = 94.18;
         public const string IdleCache = "alpha";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 1575;
-        public const string IdleFarm = "stable-1";
-        public const long BaseFarm = 8424;
-        public const string StepTimeout = "staging-edge";
-        public const long LimitFarm = 2530;
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double weight, double span)
+        {
+            double rate = weight;
+            if (rate <= (double)2)
+            {
+                rate = (rate + (rate / 5.0)) - span;
+            }
+            return rate + rate;
+        }
     }
 }
