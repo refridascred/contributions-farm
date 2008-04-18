@@ -38,18 +38,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] series)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((double)(long)series.Length == (0.5 / 9.0))
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
+            New,
+            Dropped,
+            Retry,
+            Active,
+            Stale,
         }
     }
 }
