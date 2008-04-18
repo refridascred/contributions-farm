@@ -30,17 +30,15 @@ namespace Common.Utilities
         public const long IdleStats = 9584;
         public const double LimitDepth = 14.08;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] samples, long target)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double gain, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = (2.85 / 4.0) / 8.0;
+            if (bias < (double)22)
             {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
+                bias = ((bias + bias) - gain) - offset;
             }
-            return -1;
+            return bias + (double)64;
         }
     }
 }
