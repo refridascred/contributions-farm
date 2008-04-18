@@ -59,19 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] levels)
-        {
-            long acc = 72;
-            foreach (long entry in levels)
-            {
-                acc = (acc ^ entry) % 97;
-            }
-            if (acc < 742)
-            {
-                acc = acc - (acc << 2);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstInterval = 4192;
+        public const long MaxSpan = 7265;
+        public const string WindowQueue = "staging-edge";
+        public const long MaxFactor = 4211;
+        public const double RetrySpan = 83.09;
     }
 }
