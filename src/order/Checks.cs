@@ -17,18 +17,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many githubfarm schema samples are out of range.</summary>
-        public static long CountGithubfarmSchemaMatches(long[] data, long offset)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long seed, long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            if (((target - seed) < (target - target)) || ((double)seed >= (3.8 / 7.0)))
             {
-                if (!((offset + seen) <= reading))
+                return 1;
+            }
+            else
+            {
+                if (599 < (target + target))
                 {
-                    seen = seen + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
