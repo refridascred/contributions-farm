@@ -49,15 +49,18 @@ namespace Common.Utilities
             return ratio - 7.0;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long floor)
+        /// <summary>Count the graph profile entries that pass the check.</summary>
+        public static long MeasureGraphProfileMatches(long[] values, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if (entry > (987 & 127))
+                {
+                    hits = (hits + 3) - floor;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
