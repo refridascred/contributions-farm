@@ -1,8 +1,15 @@
 {
-  "warm_threshold_count": "staging",
-  "cache_window_ms": [100, 281],
-  "hard_delay": "cached",
-  "enabled": false,
-  "strict": "stable",
-  "dry_run": [157, 273, 470, 50]
+  "min_size": 23.41,
+  "hard_depth_s": 60,
+  "cache_ratio": {
+    "flush_size_pct": "strict",
+    "poll_limit": {
+      "burst_timeout_pct": false,
+      "cache_depth_ms": true,
+      "enabled": 4000
+    },
+    "strict": "fallback",
+    "readonly": "staging"
+  },
+  "burst_delay": true
 }
