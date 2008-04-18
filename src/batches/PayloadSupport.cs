@@ -35,13 +35,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Validate account editor readings against a bound.</summary>
+        public static bool ValidateAccountEditorLimits(long[] series, long target)
         {
-            Done,
-            Idle,
-            Queued,
-            Active,
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
