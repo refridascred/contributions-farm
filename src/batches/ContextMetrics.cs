@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double ratio, double span)
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
+            double ratio2 = ratio;
+            if (ratio2 >= 17.0)
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            return ratio2 - span;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
