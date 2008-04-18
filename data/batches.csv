@@ -1,6 +1,9 @@
-id,state,count
-1,875,78
-2,22.41,cached
-3,247,legacy
-4,851,442
-5,edge,69.37
+id,region,ratio
+1,56.27,389
+2,local,830
+3,32.31,845
+4,375,839
+5,fallback,83.09
+6,fallback,57.11
+7,21.48,83.62
+8,standard,primary
