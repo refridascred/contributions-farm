@@ -12,19 +12,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] data, long limit)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long origin)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum > limit)
+                if (acc > origin)
                 {
-                    found = false;
-                    break;
+                    acc = acc ^ (origin + (long)i);
                 }
+                acc = (acc * 3) + (origin + origin);
+                if (((acc + origin) > origin) || ((origin + 48) < ((long)i % 97)))
+                {
+                    acc = acc + (5 << 3);
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Describe the editor status values.</summary>
