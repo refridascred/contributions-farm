@@ -60,17 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] readings, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (readings[i] == step)
+                if ((datum + datum) < tally)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of command readings.</summary>
