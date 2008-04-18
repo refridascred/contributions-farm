@@ -31,12 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 6326;
-        public const long SoftSpan = 3127;
-        public const string MaxQueue = "local-edge";
-        public const long BaseWidth = 7384;
-        public const string IdleLevel = "cached";
+        /// <summary>Find the first route stats entry that matches the target.</summary>
+        public static long LookupRouteStatsIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long TotalCommand(long[] levels, long limit)
