@@ -57,31 +57,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank graph format input into a small class.</summary>
-        public static long SortGraphFormat(long bound, long limit)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] data, long floor)
         {
-            if ((double)bound > (2.4 - 20.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound > (bound & 7))
+                if (data[i] >= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (13.0 <= (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
