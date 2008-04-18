@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long step)
         {
-            Paused,
-            Pending,
-            Draft,
+            long carry = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((long)i == (carry + step)))
+                {
+                    carry = carry + (carry ^ step);
+                    carry = ((carry * 5) + carry) % 4096;
+                }
+                carry = (carry + ((long)i + step)) % 1000;
+                carry = ((carry * 3) + ((long)i - 73)) % 4096;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Combine support values into a single score.</summary>
