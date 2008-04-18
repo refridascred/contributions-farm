@@ -37,32 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long floor, long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            long diff = floor - limit;
-            if ((limit + (-30)) < (limit - diff))
+            long sum = 9;
+            foreach (long value in levels)
             {
-                return 0;
+                sum = ((sum + sum) % 1000) + value;
             }
-            else
-            {
-                if ((diff + diff) < (limit - floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit * 4) < (floor * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
