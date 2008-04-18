@@ -39,39 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric stats value against two limits.</summary>
-        public static long SortMetricStats(long step, long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] levels, long step)
         {
-            long cur = step ^ target;
-            if ((double)target >= (3.05 / 2.0))
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((32 - cur) >= (602 << 3)))
+                if (sample <= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target - cur) != (step / 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)64 == (double)step) && ((7.3 + 6.8) != (double)cur))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the tools phase values.</summary>
