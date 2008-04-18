@@ -36,31 +36,15 @@ namespace Common.Utilities
         public const long SoftEditor = 1938;
         public const long CacheEditor = 8729;
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long floor, long seed)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] data, long offset)
         {
-            if ((double)floor < (double)2)
+            long mix = 2;
+            foreach (long item in data)
             {
-                return 6;
+                mix = ((mix - (86 >> 5)) - item) - offset;
             }
-            else
-            {
-                if (floor < (seed + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor < (1.0 * 1.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mix % 1000;
         }
     }
 }
