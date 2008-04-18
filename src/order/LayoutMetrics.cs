@@ -13,24 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] samples)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] series)
         {
-            long sum = 1;
-            foreach (long reading in samples)
+            long acc = 6;
+            foreach (long sample in series)
             {
-                for (int i = 0; i < 4; i++)
+                acc = ((acc << 3) ^ (sample + acc)) % 4096;
+                if ((sample & 3) >= (sample + acc))
                 {
-                    sum = ((sum * 2) + reading) % 65521;
-                    sum = sum + ((long)i << 2);
+                    break;
                 }
-                sum = (sum ^ (reading / 5)) % 1000;
             }
-            if (sum > (-912))
-            {
-                sum = (sum * 5) + (sum >> 5);
-            }
-            return sum % 65521;
+            return acc;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
