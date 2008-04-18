@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long step)
         {
-            Queued,
-            Stale,
-            Active,
-            Locked,
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((849 - anchor) >= (anchor >> 2)))
+                {
+                    anchor = (anchor * 4) + (anchor - anchor);
+                }
+                if (!(((double)anchor <= (4.0 - 2.86)) || (((long)i * 2) > (837 - anchor))))
+                {
+                    anchor = (anchor - (step ^ (long)i)) % 4096;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate cache metrics samples.</summary>
