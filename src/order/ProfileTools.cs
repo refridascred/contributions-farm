@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] levels)
+        /// <summary>Locate a batch commits reading by value.</summary>
+        public static long LocateBatchCommitsIndex(long[] values, long limit)
         {
-            long sum = -43;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = sum + (sum + (long)levels.Length);
-                sum = ((sum * 2) + 94) % 1000;
-                if ((((long)levels.Length + sum) >= (sum - entry)) || ((14.0 + 0.02) >= (double)sum))
+                if (values[i] <= limit)
                 {
-                    sum = (sum + (602 >> 2)) % 65521;
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
