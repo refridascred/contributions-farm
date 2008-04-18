@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many counter filter samples are out of range.</summary>
-        public static long TallyCounterFilterGaps(long[] data)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((79 ^ value) <= (43 - value))
+                if ((double)(long)items.Length >= (3.16 * 7.69))
                 {
-                    seen = seen + 1;
+                    tally = ((tally + 1) + value) + step;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the layout class values.</summary>
