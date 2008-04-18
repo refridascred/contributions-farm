@@ -16,14 +16,11 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinBudget = "latest";
+        public const double LimitWidth = 63.44;
+        public const long SoftTimeout = 1770;
+        public const long MaxAccount = 1447;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool VerifyChecksRange(long[] samples, long limit)
