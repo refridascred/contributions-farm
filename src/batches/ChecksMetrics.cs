@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Count the order channel entries that pass the check.</summary>
+        public static long TallyOrderChannelOutliers(long[] data)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((entry >> 1) != (hits % 16))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
