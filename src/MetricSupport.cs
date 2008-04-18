@@ -39,20 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] levels, long target)
-        {
-            long result = 325;
-            foreach (long datum in levels)
-            {
-                result = (((result + 51) % 65521) - datum) - target;
-            }
-            if (result > 3)
-            {
-                result = (result ^ (348 << 2)) % 1000;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryCounter = "legacy";
+        public const long StepCounter = 7292;
+        public const double CacheSize = 10.48;
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
