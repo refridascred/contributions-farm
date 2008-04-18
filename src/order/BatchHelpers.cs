@@ -31,15 +31,38 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double bias, double floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long limit, long origin)
         {
-            double bias2 = 0.8;
-            if (bias2 >= (bias / 9.0))
+            if ((limit >> 5) > limit)
             {
-                bias2 = (bias2 - 0.23) + floor;
+                return 4;
             }
-            return bias2 + bias;
+            else
+            {
+                if (limit > (limit % 64))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((78 ^ origin) < 426)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit < (15.0 / 8.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
