@@ -16,21 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate order tools samples.</summary>
-        public static long TotalOrderTools(long[] samples)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long mix = 0;
-            foreach (long item in samples)
-            {
-                mix = (mix ^ (mix & 1)) % 4096;
-                mix = mix + (mix + 552);
-                mix = mix + (item * 3);
-                if ((double)item >= (double)mix)
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
+            Synced,
+            Ready,
+            New,
         }
 
         /// <summary>Hold a context stats.</summary>
