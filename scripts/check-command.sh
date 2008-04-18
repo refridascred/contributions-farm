@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge latest fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-blue}"
+mode="${1:-local}"
 case "${mode}" in
-    open)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in local primary latest blue; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
