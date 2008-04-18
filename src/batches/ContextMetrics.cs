@@ -48,18 +48,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] levels)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (count >= (datum % 97))
+                if ((offset - offset) < (mark ^ offset))
                 {
-                    count = count + 2;
+                    mark = mark - (offset + offset);
                 }
+                mark = mark - (mark >> 5);
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the cluster class values.</summary>
