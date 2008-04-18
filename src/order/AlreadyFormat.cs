@@ -20,24 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long floor, long floor2)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double gain, double bias)
         {
-            if ((floor2 * 2) > floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor > (6.92 / 9.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            double rate = (double)(88 + 1);
+            return rate + (gain - bias);
         }
 
         /// <summary>Audit notes checks readings against a rule.</summary>
