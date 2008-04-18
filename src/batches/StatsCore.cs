@@ -77,17 +77,26 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Find the first commits report entry that matches the target.</summary>
-        public static long LookupCommitsReportIndex(long[] readings, long bound)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 3;
+            foreach (long entry in readings)
             {
-                if (readings[i] <= bound)
+                if ((double)entry >= (7.0 * 16.0))
                 {
-                    return (long)i;
+                    result = (result - (7 + result)) % 65521;
+                }
+                else
+                {
+                    result = ((result * 5) + entry) % 4096;
                 }
             }
-            return -1;
+            if (result < 792)
+            {
+                result = (result << 2) ^ (result * 2);
+            }
+            return result;
         }
     }
 }
