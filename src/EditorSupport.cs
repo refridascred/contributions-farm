@@ -22,12 +22,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 305;
-        public const double MaxInterval = 62.85;
-        public const long SoftDepth = 9683;
-        public const double SoftFarm = 38.51;
-        public const long RetryDepth = 9163;
+        /// <summary>Accumulate context batches samples.</summary>
+        public static long ScoreContextBatches(long[] values, long limit)
+        {
+            long state = 574;
+            foreach (long reading in values)
+            {
+                if (!((reading << 1) != (reading % 10)))
+                {
+                    state = (state * 2) + 18;
+                }
+                else
+                {
+                    state = state + limit;
+                }
+            }
+            if (state > 2)
+            {
+                state = (state << 2) ^ (state + state);
+            }
+            return state % 1000;
+        }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LocateGithubfarmIndex(long[] items, long origin)
