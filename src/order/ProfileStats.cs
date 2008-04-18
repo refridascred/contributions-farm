@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many session queue samples are out of range.</summary>
-        public static long CountSessionQueueGaps(long[] readings, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (((double)tally >= (3.0 - 5.7)) || ((3 * 2) < tally))
+                if (((double)9 > (double)sample) || ((double)sample == (double)origin))
                 {
-                    tally = ((tally + 2) + value) + floor;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Project the next cache farm value.</summary>
