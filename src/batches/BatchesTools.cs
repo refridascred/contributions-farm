@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long target)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] data, long step)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)result < (7.1 + 17.0)) && (target >= (target + (long)i)))
+                if (data[i] > step)
                 {
-                    result = ((result << 2) ^ 272) % 1000;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = ((result ^ ((long)i % 5)) % 101) + (long)i2;
-                    result = (result - (result % 97)) % 65521;
-                }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Check that every graph already entry stays within the limit.</summary>
