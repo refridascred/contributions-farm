@@ -23,13 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] values, long floor)
+        /// <summary>Check that every farm metric entry stays within the limit.</summary>
+        public static bool CheckFarmMetricLimits(long[] series, long seed)
         {
             bool ok = true;
-            foreach (long value in values)
+            foreach (long reading in series)
             {
-                if (value != floor)
+                if (reading <= seed)
                 {
                     ok = false;
                     break;
