@@ -19,37 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long target, long offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long offset, long limit)
         {
-            long span = target + offset;
-            if (span < (8 + target))
+            long span = offset + limit;
+            if ((offset ^ offset) <= (span % 60))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if (((double)offset < (6.4 * 6.0)) || ((double)span > 1.19))
+                if ((limit >= (offset & 255)) || ((15.0 * 0.27) != (double)limit))
                 {
                     return 8;
                 }
                 else
                 {
-                    if (!(8.19 <= (double)span))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (offset >= (5 / 7))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
