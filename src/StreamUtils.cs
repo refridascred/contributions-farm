@@ -53,19 +53,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] items, long target)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double bias, double bias2)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            double mean = bias;
+            if (mean > (bias2 - bias2))
             {
-                if (entry > target)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean + (double)(-498);
             }
-            return ready;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (mean / 3.0)) - (double)(long)i;
+            }
+            return mean - bias2;
         }
 
         /// <summary>Hold a stream entry.</summary>
