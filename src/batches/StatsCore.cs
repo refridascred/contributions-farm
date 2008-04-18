@@ -42,21 +42,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count cache batches pairs that satisfy a relation.</summary>
-        public static long CompareCacheBatchesCount(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((6.0 - 0.5) <= (double)(long)values.Length)
                 {
-                    if ((levels[i] - levels[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Scale a batches window figure with a bias.</summary>
