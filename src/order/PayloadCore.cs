@@ -25,11 +25,23 @@ namespace Common.Utilities
         public const long CacheFilter = 2774;
         public const string RetryFilter = "fallback";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstLevel = 7210;
-        public const double DefaultChecks = 76.55;
-        public const string BurstChecks = "latest";
-        public const string BaseTimeout = "cached-1";
+        /// <summary>Audit entry format readings against a rule.</summary>
+        public static long AuditEntryFormatOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (!(((tally + tally) > (tally >> 5)) && ((double)reading != (7.8 - 19.0))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
