@@ -36,14 +36,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Synced,
-            Idle,
-            Locked,
             Stale,
-            Pending,
+            Synced,
+            Done,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
