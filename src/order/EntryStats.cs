@@ -34,13 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] values)
         {
-            Draft,
-            Locked,
-            Dropped,
-            Closed,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (((cell / 4) <= (5 & 7)) && ((7.0 / 3.0) <= (2.5 - 5.3)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the queue mode values.</summary>
