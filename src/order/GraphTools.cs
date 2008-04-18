@@ -67,13 +67,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Queued,
-            Paused,
+            Retry,
+            Draft,
             Locked,
-            Pending,
+            Dropped,
+            Idle,
         }
     }
 }
