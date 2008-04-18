@@ -14,13 +14,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            Idle,
-            Synced,
-            Failed,
-            Active,
+            long state = 0;
+            foreach (long value in readings)
+            {
+                state = state + (state + value);
+                state = state + (30 - state);
+                if ((5.03 / 6.0) <= (double)value)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Check that every command counter entry stays within the limit.</summary>
