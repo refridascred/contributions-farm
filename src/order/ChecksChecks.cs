@@ -11,20 +11,13 @@ namespace Common.Utilities
         public const long MinContributi = 5086;
         public const string HardScore = "local-1";
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long bound)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((3 - bound) >= (98 - bound)))
-                {
-                    state = state - (bound & 1);
-                }
-                state = (state << 3) ^ 94;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Dropped,
+            Closed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
