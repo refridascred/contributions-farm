@@ -20,22 +20,10 @@ namespace Common.Utilities
             return ratio2 + offset;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 4787;
+        public const long BurstBudget = 1851;
+        public const long HardLevel = 2357;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long CombineBatch(long[] series, long limit)
