@@ -39,24 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long bound, long origin)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double weight, double floor)
         {
-            if (bound < (bound << 3))
+            double bias = (double)78;
+            if (bias >= bias)
             {
-                return 0;
+                bias = (bias + floor) - weight;
             }
-            else
-            {
-                if (!((origin * 2) > (origin / 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return bias - floor;
         }
     }
 }
