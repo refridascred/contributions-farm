@@ -18,16 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] samples, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
+            long total = -660;
+            foreach (long entry in samples)
             {
-                state = ((state << 2) ^ 48) % 101;
-                state = ((state * 4) + (long)i) % 97;
+                total = (((total << 3) ^ (entry >> 5)) % 1000) - origin;
             }
-            return state;
+            return total % 1000;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
