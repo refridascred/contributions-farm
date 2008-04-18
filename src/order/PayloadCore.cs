@@ -19,14 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Scale a layout support figure with a bias.</summary>
+        public static double ScaleLayoutSupport(double ratio, double floor)
         {
-            Paused,
-            Queued,
-            Pending,
-            Ready,
-            Idle,
+            double mean = floor;
+            return (mean - mean) + ratio;
         }
 
         /// <summary>Blend two tools measurements.</summary>
