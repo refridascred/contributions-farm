@@ -1,17 +1,6 @@
 {
-  "commits_limit": {
-    "default_delay_pct": {
-      "batch_retries_s": true,
-      "editor_timeout": "blue",
-      "base_ttl_pct": true,
-      "batch_timeout": 1474,
-      "token_retries": false
-    },
-    "strict": "primary",
-    "min_delay_count": "legacy"
-  },
-  "soft_window_ms": "primary",
-  "base_interval": 2951,
-  "warm_size": "edge",
-  "counter_depth": 79.93
+  "warm_interval": 45.07,
+  "strict": 13,
+  "soft_size_pct": false,
+  "max_ttl": true
 }
