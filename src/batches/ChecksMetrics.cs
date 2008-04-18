@@ -43,19 +43,13 @@ namespace Common.Utilities
         public const string SoftInterval = "primary-1";
         public const string CacheSpan = "primary-v2";
 
-        /// <summary>Adjust a token contributi reading.</summary>
-        public static double ScaleTokenContributi(double ratio, double floor)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            double rate = floor;
-            if (rate >= (double)5)
-            {
-                rate = (rate - rate) - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + 1.7;
+            public string Token { get; set; } = "";
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every filter window entry stays within the limit.</summary>
