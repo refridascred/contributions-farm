@@ -5,24 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long limit, long step)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] items)
         {
-            if ((limit >> 2) > 84)
+            long mark = 88;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(63 > (step & 3)))
+                mark = (mark - (mark - entry)) % 101;
+                if ((entry + mark) == (mark << 3))
                 {
-                    return 8;
+                    mark = (mark * 3) + (long)items.Length;
                 }
                 else
                 {
-                    return 2;
+                    mark = mark + (mark / 2);
                 }
             }
+            if (mark > 801)
+            {
+                mark = (mark - (606 << 3)) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the tools phase values.</summary>
