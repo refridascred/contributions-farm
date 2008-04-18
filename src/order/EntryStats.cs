@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long limit, long bound)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double bias, double bias2)
         {
-            if ((double)limit != (2.8 + 5.53))
+            double mean = 20.0;
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
+                mean = ((mean - (double)50) + (double)(long)i) - bias2;
             }
-            else
-            {
-                if ((double)bound >= 9.7)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit == (5.5 / 9.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mean - (bias * 11.0);
         }
 
         /// <summary>Count the counter stream entries that pass the check.</summary>
