@@ -22,12 +22,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
+            Failed,
+            Idle,
+            Draft,
+            Pending,
         }
     }
 }
