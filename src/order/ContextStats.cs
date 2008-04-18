@@ -20,13 +20,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] items, long limit)
         {
-            public string Region { get; set; } = "";
-            public bool Size { get; set; }
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((6 <= (cell + 8)) && !((5.9 / 7.0) <= (double)cell))
+                {
+                    matches = (matches + 2) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a entry options.</summary>
