@@ -39,10 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryCounter = "legacy";
-        public const long StepCounter = 7292;
-        public const double CacheSize = 10.48;
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
+        {
+            Done,
+            New,
+            Active,
+            Retry,
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
