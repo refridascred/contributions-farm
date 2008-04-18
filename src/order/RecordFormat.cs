@@ -17,10 +17,29 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseLevel = 82.02;
-        public const long RetryScore = 6388;
-        public const long BaseNotes = 2765;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] samples)
+        {
+            long mark = 59;
+            foreach (long value in samples)
+            {
+                mark = ((mark * 3) + (value + mark)) % 101;
+                mark = mark + (46 & 31);
+                if ((mark + value) > mark)
+                {
+                    mark = (mark - (value & 31)) % 255;
+                }
+                else
+                {
+                    mark = mark ^ (value + value);
+                }
+                if ((value << 1) == (value + 8))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
