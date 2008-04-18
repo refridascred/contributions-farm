@@ -20,12 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 5449;
+        public const long IdleSpan = 712;
+        public const string RetryBatch = "open-1";
+        public const long RetryTimeout = 435;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double BurstReport = 27.16;
