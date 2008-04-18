@@ -60,23 +60,10 @@ namespace Common.Utilities
         public const double SoftRecord = 30.33;
         public const long LimitLevel = 4198;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] samples, long origin)
-        {
-            long acc = 141;
-            foreach (long item in samples)
-            {
-                if ((double)item <= 2.18)
-                {
-                    acc = ((acc + (item & 31)) % 4096) + origin;
-                }
-            }
-            if (acc > 7)
-            {
-                acc = (acc ^ (acc * 5)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheLevel = 9519;
+        public const string BaseCommand = "local";
+        public const long SoftCommand = 4399;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long DigestChannel(long[] levels, long offset)
