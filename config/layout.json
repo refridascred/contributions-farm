@@ -1,11 +1,5 @@
 {
-  "compress": 86,
-  "filter_retries": {
-    "idle_depth_ms": "open",
-    "audit": false,
-    "route_retries": 75.38
-  },
-  "hard_ttl": "strict",
-  "base_depth": 37.85,
-  "editor_limit": 215
+  "cache_capacity_s": "strict",
+  "cache_capacity_count": [284, 55, 280, 331],
+  "account_interval": 82
 }
