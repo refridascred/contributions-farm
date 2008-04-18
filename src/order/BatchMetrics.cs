@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the tools metric entries that pass the check.</summary>
-        public static long TallyToolsMetricHits(long[] values)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if ((double)sample < (8.5 - 5.72))
+                if (value <= bound)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Digest a series of context entries.</summary>
