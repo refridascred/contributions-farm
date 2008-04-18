@@ -40,22 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] levels)
+        /// <summary>Fold a list of farm route readings.</summary>
+        public static long TotalFarmRoute(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long state = 0;
+            foreach (long sample in items)
             {
-                if ((sample <= (long)levels.Length) || ((double)sample != (3.4 * 9.62)))
+                state = state - (sample - floor);
+                if ((long)items.Length == (sample - 804))
                 {
-                    count = count + 2;
+                    state = (state + (366 + sample)) % 65521;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state << 3) ^ (-528)) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the queue mode values.</summary>
