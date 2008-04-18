@@ -17,25 +17,19 @@ namespace Common.Utilities
         public const string BatchSchema = "strict";
         public const long CacheSchema = 3049;
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long target, long offset)
+        /// <summary>Roll a payload contributi counter forward.</summary>
+        public static long RollPayloadContributi(long seed)
         {
-            long lane = target + offset;
-            if (!(target >= (lane & 127)))
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((4.0 < (double)offset) && ((lane << 3) >= (lane / 9)))
+                if ((mix - seed) > (seed ^ seed))
                 {
-                    return 2;
+                    continue;
                 }
-                else
-                {
-                    return 5;
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
+            return mix;
         }
     }
 }
