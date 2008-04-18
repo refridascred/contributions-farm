@@ -26,21 +26,18 @@ namespace Common.Utilities
         public const long BurstCount = 1833;
         public const long BatchChannel = 1626;
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] samples)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (count >= (datum % 97))
                 {
-                    if ((samples[i] ^ samples[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
