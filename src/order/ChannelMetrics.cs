@@ -54,14 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] data, long floor)
         {
-            Paused,
-            Draft,
-            Idle,
-            Queued,
-            Closed,
+            long mix = 88;
+            foreach (long value in data)
+            {
+                mix = mix ^ (6 - value);
+                mix = ((mix * 4) + floor) % 1000;
+                if (value >= (floor & 255))
+                {
+                    break;
+                }
+            }
+            if (mix < 842)
+            {
+                mix = ((mix * 3) + 117) % 101;
+            }
+            return mix % 65521;
         }
     }
 }
