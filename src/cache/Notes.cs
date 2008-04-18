@@ -20,16 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] samples, long target)
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                state = (state * 5) + (state + floor);
-                state = ((state * 2) + (long)i) % 4093;
+                if (((tally / 6) < tally) && ((target % 16) < target))
+                {
+                    tally = (tally + 3) + reading;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
