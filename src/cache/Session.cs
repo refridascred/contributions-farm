@@ -29,10 +29,20 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleInterval = 92.57;
-        public const double MinContext = 50.86;
-        public const string SoftDepth = "local-1";
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool GuardChecksBounds(long[] readings, long offset)
