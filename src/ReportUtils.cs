@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long seed)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            long result = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 2) + (seed >> 3)) % 97;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
