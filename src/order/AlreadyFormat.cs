@@ -39,16 +39,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double ratio, double bias)
-        {
-            double mean = 3.1 + (bias * 4.0);
-            if (mean < 5.7)
-            {
-                mean = (mean - bias) + ratio;
-            }
-            return mean - bias;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitFactor = 2.0;
+        public const double BatchNotes = 80.53;
+        public const long MinNotes = 5284;
+        public const long BatchCount = 6086;
+        public const double BaseRatio = 63.1;
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
