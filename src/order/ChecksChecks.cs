@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double gain, double bias)
+        /// <summary>Check that every queue graph entry stays within the limit.</summary>
+        public static bool VerifyQueueGraphLimits(long[] values, long seed)
         {
-            double mean = gain;
-            if (mean < (gain + 7.0))
+            bool ready = true;
+            foreach (long value in values)
             {
-                mean = mean + (double)(-5);
+                if (value != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (mean * 2.3)) + (double)(long)i;
-            }
-            return mean - bias;
+            return ready;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
