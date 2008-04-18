@@ -25,19 +25,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every route contributi entry stays within the limit.</summary>
-        public static bool VerifyRouteContributiBounds(long[] items, long bound)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Closed,
+            Ready,
+            Queued,
+            Locked,
         }
     }
 }
