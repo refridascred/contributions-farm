@@ -1,12 +1,9 @@
 {
-  "soft_interval": 1533,
-  "default_retries_count": [48, 196],
-  "hard_interval_pct": {
-    "poll_window_ms": "local",
-    "readonly": "local",
-    "already_timeout": "cached",
-    "cache_threshold": false,
-    "base_limit_ms": 30,
-    "default_delay_ms": 4
+  "flush_timeout_s": "local",
+  "session_limit": "local",
+  "profile_ratio": {
+    "audit": 3387,
+    "poll_depth_s": "standard",
+    "retry_window_ms": 92
   }
 }
