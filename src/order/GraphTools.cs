@@ -50,19 +50,14 @@ namespace Common.Utilities
             return mean - (double)8;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] samples)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long total = 4;
-            foreach (long entry in samples)
-            {
-                total = total ^ (entry / 4);
-                if ((total + total) <= (total / 3))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            Done,
+            Paused,
+            Pending,
+            Draft,
+            Synced,
         }
 
         /// <summary>Describe the farm mode values.</summary>
