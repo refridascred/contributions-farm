@@ -33,10 +33,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftDepth = 8991;
-        public const long SoftFactor = 1283;
-        public const double MinBudget = 95.52;
+        /// <summary>Rank order contributi input into a small class.</summary>
+        public static long RankOrderContributi(long seed, long offset)
+        {
+            long slot = seed - offset;
+            if ((20.0 * 7.97) < (double)slot)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((2 + slot) > 777)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((slot & 7) <= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TotalStream(long[] levels)
