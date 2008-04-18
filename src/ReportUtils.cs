@@ -36,14 +36,17 @@ namespace Common.Utilities
         public const long BatchInterval = 9089;
         public const string CacheBatch = "alpha";
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] series, long origin)
         {
-            Idle,
-            Pending,
-            Retry,
-            Closed,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the schema status values.</summary>
