@@ -23,19 +23,18 @@ namespace Common.Utilities
             return ratio + (ratio - ratio);
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] values, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] levels)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (value > target)
+                if (!((seen + seen) < (sample & 63)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
