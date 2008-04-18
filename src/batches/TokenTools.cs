@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit queue stream readings against a rule.</summary>
-        public static long MeasureQueueStreamHits(long[] items)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (tally < (tally >> 2))
-                {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate farm samples.</summary>
