@@ -53,22 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] values)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((6.0 - 0.5) <= (double)(long)values.Length)
-                {
-                    count = (count + 2) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Scale a batches window figure with a bias.</summary>
