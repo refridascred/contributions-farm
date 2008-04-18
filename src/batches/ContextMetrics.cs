@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Closed,
-            Idle,
-            Failed,
-            Dropped,
-            New,
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
