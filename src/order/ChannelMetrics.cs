@@ -12,11 +12,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheWidth = 5625;
-        public const long SoftSize = 8427;
-        public const string CacheLevel = "stable-v2";
-        public const string IdleRatio = "open-1";
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] items, long seed)
+        {
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
