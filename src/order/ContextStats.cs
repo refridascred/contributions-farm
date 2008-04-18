@@ -36,22 +36,11 @@ namespace Common.Utilities
             return (scale2 + (offset / 9.0)) + scale;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] series, long seed)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long carry = 893;
-            foreach (long sample in series)
-            {
-                if (1.3 < (double)carry)
-                {
-                    carry = (carry - (sample + seed)) % 101;
-                }
-                else
-                {
-                    carry = carry + 69;
-                }
-            }
-            return carry;
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
