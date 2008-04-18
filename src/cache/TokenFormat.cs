@@ -17,18 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] items, long limit)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long limit)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((item % 24) >= (seen & 127)) && ((7.7 + 0.86) < (double)limit))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    seen = seen + 3;
+                    mix = mix ^ (long)i2;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
