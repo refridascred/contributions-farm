@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] values, long target)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long origin, long origin2)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((origin - (-585)) < origin)
             {
-                if ((values[i] <= target) && ((values[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((origin2 ^ origin) == (origin2 - origin2))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (origin < (origin2 >> 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (9.25 / 2.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate graph context readings against a bound.</summary>
