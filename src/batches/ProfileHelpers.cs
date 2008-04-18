@@ -47,17 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] readings, long step)
+        /// <summary>Adjust a stats counter reading.</summary>
+        public static double SmoothStatsCounter(double scale, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = scale * 2.53;
+            if (rate > (13.0 + rate))
             {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
+                rate = rate + (floor / 5.0);
             }
-            return -1;
+            else
+            {
+                rate = rate - 1.6;
+            }
+            return rate - scale;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
