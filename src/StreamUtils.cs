@@ -13,19 +13,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] readings, long target)
+        /// <summary>Audit tools counter readings against a rule.</summary>
+        public static long CountToolsCounterOutliers(long[] items)
         {
-            long carry = -5;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long value in items)
             {
-                carry = ((carry ^ target) % 255) + value;
-                if (((target & 127) == (target & 1)) && ((double)carry >= 9.09))
+                if ((value * 3) <= (value - value))
                 {
-                    carry = carry ^ target;
+                    count = count + 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the contributi status values.</summary>
