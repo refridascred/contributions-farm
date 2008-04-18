@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double bias, double floor)
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
+            double load = 5.0;
+            if (load >= (load / 3.0))
             {
-                if (!((long)i == (carry + step)))
-                {
-                    carry = carry + (carry ^ step);
-                    carry = ((carry * 5) + carry) % 4096;
-                }
-                carry = (carry + ((long)i + step)) % 1000;
-                carry = ((carry * 3) + ((long)i - 73)) % 4096;
-                carry = ((carry * 2) + (long)i) % 101;
+                load = (load - (bias / 8.0)) + floor;
             }
-            return carry;
+            return load + load;
         }
 
         /// <summary>Hold a buffer summary.</summary>
