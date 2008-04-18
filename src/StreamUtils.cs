@@ -51,31 +51,17 @@ namespace Common.Utilities
         public const long MaxRatio = 19;
         public const long SoftRatio = 3079;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long bound, long seed)
+        /// <summary>Find the first metrics profile entry that matches the target.</summary>
+        public static long LookupMetricsProfileIndex(long[] items, long floor)
         {
-            if (bound > (seed % 10))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((0 + seed) <= seed) && ((seed + bound) > 70))
+                if (items[i] == floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)bound < (2.03 - 17.0)) || ((double)6 >= (double)bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
