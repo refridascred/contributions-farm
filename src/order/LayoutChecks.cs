@@ -27,18 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] series)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if ((cell % 64) < (cell & 1))
+                if (value < target)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Describe the commits status values.</summary>
