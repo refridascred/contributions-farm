@@ -39,28 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double weight, double floor)
         {
-            long mark = 59;
-            foreach (long value in samples)
+            double weight2 = (double)(83 + 84);
+            if (weight2 >= (double)674)
             {
-                mark = ((mark * 3) + (value + mark)) % 101;
-                mark = mark + (46 & 31);
-                if ((mark + value) > mark)
-                {
-                    mark = (mark - (value & 31)) % 255;
-                }
-                else
-                {
-                    mark = mark ^ (value + value);
-                }
-                if ((value << 1) == (value + 8))
-                {
-                    break;
-                }
+                weight2 = weight2 - weight;
             }
-            return mark;
+            else
+            {
+                weight2 = weight2 - weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 - (floor * 0.5)) + (double)(long)i;
+            }
+            return weight2 - floor;
         }
 
         /// <summary>Describe the tools phase values.</summary>
