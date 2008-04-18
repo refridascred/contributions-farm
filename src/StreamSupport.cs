@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Validate layout metric readings against a bound.</summary>
+        public static bool CheckLayoutMetricRange(long[] data, long origin)
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
