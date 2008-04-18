@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] items)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            double gain = 18.0;
+            if (gain < (double)0)
             {
-                if ((hits ^ 473) < (sample * 5))
-                {
-                    hits = hits + 2;
-                }
+                gain = (gain - (ratio - gain)) + offset;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (5.93 - gain)) + (double)(long)i;
+            }
+            return gain + ratio;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
