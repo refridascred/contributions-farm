@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Audit queue stream readings against a rule.</summary>
+        public static long MeasureQueueStreamHits(long[] items)
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (tally < (tally >> 2))
+                {
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate farm samples.</summary>
