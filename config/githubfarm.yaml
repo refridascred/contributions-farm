@@ -1,5 +1,14 @@
 # githubfarm settings
-hard_capacity: local
-max_depth_ms: false
-retry_depth: standard
-strict: 26
+soft_window: 86.85
+sync_retries_count: edge
+flush_capacity: 5067
+warm_capacity: 75
+sync_capacity:
+  strict: primary
+  sync_timeout_s:
+    - 380
+    - 72
+    - 465
+  poll_size_ms: false
+  compress: local
+  base_timeout_s: false
