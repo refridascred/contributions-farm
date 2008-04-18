@@ -34,21 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstReport = 27.16;
+        public const string StepReport = "open";
+        public const long RetryDepth = 833;
+        public const double BatchReport = 58.85;
+        public const string IdleSize = "cached-edge";
     }
 }
