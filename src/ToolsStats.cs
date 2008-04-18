@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 6316;
-        public const double DefaultAlready = 23.8;
-        public const long HardBudget = 5286;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((hits ^ 473) < (sample * 5))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string SoftTimeout = "local-edge";
