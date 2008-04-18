@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] samples, long seed)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long mark = 780;
-            foreach (long item in samples)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    mark = ((mark * 2) + ((long)i + item)) - seed;
-                }
-                mark = (mark + (item - item)) % 101;
-            }
-            return mark % 1000;
+            Idle,
+            Closed,
+            Draft,
+            Failed,
+            Done,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
