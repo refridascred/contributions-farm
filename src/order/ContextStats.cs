@@ -46,11 +46,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double gain, double floor)
         {
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
+            double mean = gain;
+            if (mean <= (double)(-65))
+            {
+                mean = (mean + (7.93 / 6.0)) - floor;
+            }
+            return mean - (mean / 5.0);
         }
     }
 }
