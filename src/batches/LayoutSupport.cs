@@ -37,19 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] items, long target)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] levels)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long acc = 1;
+            foreach (long sample in levels)
             {
-                if (entry != target)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc - acc) + sample;
             }
-            return flag;
+            if (acc > (-23))
+            {
+                acc = acc ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
