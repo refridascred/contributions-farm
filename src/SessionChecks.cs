@@ -41,13 +41,9 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 7129;
+        public const long DefaultBudget = 5886;
+        public const double SoftCluster = 53.32;
     }
 }
