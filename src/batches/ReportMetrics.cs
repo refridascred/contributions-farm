@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] series, long target)
+        /// <summary>Classify a profile payload pair into a bucket.</summary>
+        public static long RankProfilePayload(long step, long target)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            if ((step / 9) <= step)
             {
-                if (cell > target)
+                return 8;
+            }
+            else
+            {
+                if ((double)target < (double)step)
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
 
         /// <summary>Validate route entry readings against a bound.</summary>
