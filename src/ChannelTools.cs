@@ -22,18 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] levels, long target)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (hits < (235 >> 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = ((hits + 1) + value) + target;
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a report options.</summary>
