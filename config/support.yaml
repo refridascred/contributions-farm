@@ -1,5 +1,4 @@
 # support settings
-dry_run: open
-enabled: false
-batch_capacity: eu-west
-base_timeout_pct: 8620
+already_ttl: false
+batch_window: 1509
+min_delay_s: false
