@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Dropped,
-            Idle,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardTimeout = 6065;
+        public const long MaxCommand = 8406;
+        public const long DefaultCommand = 6173;
+        public const long MinCommand = 9934;
+        public const double BaseFactor = 62.68;
 
         /// <summary>Project the next window value.</summary>
         public static double ScaleWindow(double gain, double floor)
