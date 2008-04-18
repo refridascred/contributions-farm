@@ -12,18 +12,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] samples, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((limit >> 2) != (entry + limit))
+                if (((hits - item) < (hits % 97)) || ((item - item) != (item + item)))
                 {
-                    matches = matches + 3;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
