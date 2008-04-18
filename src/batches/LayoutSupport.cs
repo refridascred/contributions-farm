@@ -20,17 +20,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Look up the position of a buffer payload sample.</summary>
-        public static long LocateBufferPayloadIndex(long[] values, long floor)
+        /// <summary>Match up token filter samples.</summary>
+        public static long OverlapTokenFilterCount(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] >= floor) && ((values[i] % 2) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
