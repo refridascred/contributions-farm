@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] data, long floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] levels)
         {
-            long mix = 3;
-            foreach (long value in data)
+            long acc = 650;
+            foreach (long cell in levels)
             {
-                mix = ((mix - mix) - value) - floor;
+                acc = ((acc * 3) + (acc >> 2)) - cell;
             }
-            return mix % 4096;
+            if (acc > 87)
+            {
+                acc = (acc ^ (long)levels.Length) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
