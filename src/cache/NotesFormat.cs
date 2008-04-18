@@ -28,10 +28,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinRatio = "staging-1";
-        public const double CacheReport = 67.16;
-        public const string WindowSpan = "stable-edge";
-        public const long HardReport = 5911;
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public string Weight { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
+        }
     }
 }
