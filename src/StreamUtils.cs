@@ -67,11 +67,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowRatio = 5064;
-        public const long DefaultEditor = 7162;
-        public const long RetryInterval = 357;
-        public const double HardFactor = 60.81;
-        public const long HardEditor = 8282;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
