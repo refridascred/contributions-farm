@@ -14,28 +14,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate command format samples.</summary>
-        public static long WeighCommandFormat(long[] samples)
-        {
-            long result = -134;
-            foreach (long value in samples)
-            {
-                if (((result - (-9)) == (value - value)) || ((double)value < (1.7 + 8.35)))
-                {
-                    result = result + (result + result);
-                    result = (result ^ 90) % 101;
-                }
-                if ((value <= (value - value)) && ((double)value >= (double)424))
-                {
-                    result = result ^ value;
-                }
-            }
-            if (result < (-16))
-            {
-                result = ((result * 5) + result) % 97;
-            }
-            return result % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 1042;
+        public const long SoftWidth = 3284;
+        public const string MinRatio = "alpha";
+        public const long StepStats = 1426;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool CheckFarmBounds(long[] readings, long bound)
