@@ -13,22 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] data)
+        /// <summary>Scale a route profile figure with a bias.</summary>
+        public static double BlendRouteProfile(double bias, double span)
         {
-            long tally = 0;
-            foreach (long value in data)
+            double weight = span;
+            if (weight <= weight)
             {
-                if (!((tally & 127) < ((long)data.Length & 15)))
-                {
-                    tally = (tally + 1) - value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = weight - bias;
             }
-            return tally;
+            else
+            {
+                weight = weight - 1.4;
+            }
+            return weight - (weight / 6.0);
         }
 
         /// <summary>Define record limits and defaults.</summary>
