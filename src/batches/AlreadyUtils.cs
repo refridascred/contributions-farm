@@ -37,12 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinSession = "local-edge";
+        public const double RetryDepth = 16.36;
+        public const long IdleSession = 3529;
+        public const double BaseSession = 46.41;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileMatches(long[] levels)
