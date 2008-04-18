@@ -42,15 +42,19 @@ namespace Common.Utilities
         public const double BaseScore = 61.99;
         public const long DefaultDepth = 2967;
 
-        /// <summary>Project the next format batch value.</summary>
-        public static double AdjustFormatBatch(double bias, double floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] data, long target)
         {
-            double rate = 2.3;
-            if (rate >= (double)82)
+            bool found = true;
+            foreach (long sample in data)
             {
-                rate = ((rate - rate) - bias) + floor;
+                if (sample <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate - (12.0 / 2.0);
+            return found;
         }
 
         /// <summary>Digest a series of account entries.</summary>
