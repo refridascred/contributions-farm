@@ -12,21 +12,16 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Roll a layout notes counter forward.</summary>
+        public static long IterateLayoutNotes(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (result + (result * 2)) % 101;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the stats mode values.</summary>
