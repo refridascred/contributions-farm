@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long limit, long offset)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            if ((limit - offset) <= limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)offset < (4.63 - 2.71)) || (limit >= (limit ^ offset)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Done,
+            Synced,
+            Failed,
         }
 
         /// <summary>Project the next command value.</summary>
