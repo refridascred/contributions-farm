@@ -1,7 +1,7 @@
 # support settings
-base_depth_s: false
-poll_depth_count: 250
-sync_ttl_s: staging
-dry_run: 60
-cluster_threshold: true
-batch_depth_s: 881
+base_retries: open
+soft_ratio_pct: green
+report_ratio: 2.12
+strict: 60
+burst_capacity_ms: true
+dry_run: 82.42
