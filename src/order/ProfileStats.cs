@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long BatchLevel = 9602;
         public const long RetryBuffer = 3991;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Project the next cache farm value.</summary>
+        public static double SmoothCacheFarm(double scale, double offset)
         {
-            Stale,
-            Paused,
-            Locked,
+            double mean = offset / 7.0;
+            if (mean < (offset * 6.9))
+            {
+                mean = mean + offset;
+            }
+            else
+            {
+                mean = mean + (offset - mean);
+            }
+            return mean - scale;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
