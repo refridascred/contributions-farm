@@ -40,14 +40,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            New,
-            Pending,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinBudget = 6503;
+        public const double WindowCluster = 7.88;
+        public const double LimitRatio = 81.14;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutMatches(long[] series)
