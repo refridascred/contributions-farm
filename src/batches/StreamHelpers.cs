@@ -39,23 +39,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] data, long limit)
-        {
-            long mix = 100;
-            foreach (long datum in data)
-            {
-                if (datum > (datum ^ datum))
-                {
-                    mix = ((mix << 2) ^ (limit - limit)) % 255;
-                }
-                if (limit > (mix + limit))
-                {
-                    mix = mix ^ (mix - limit);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchScore = 5.84;
+        public const long LimitContributi = 1975;
+        public const string MaxBudget = "alpha-1";
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
