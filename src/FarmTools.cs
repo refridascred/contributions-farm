@@ -12,20 +12,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] readings, long floor)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 5102;
+        public const string BurstWidth = "fallback-1";
+        public const string DefaultOrder = "cached-edge";
+        public const long CacheOrder = 7198;
+        public const long IdleOrder = 9221;
 
         /// <summary>Validate stream counter readings against a bound.</summary>
         public static bool VerifyStreamCounterLimits(long[] items, long step)
