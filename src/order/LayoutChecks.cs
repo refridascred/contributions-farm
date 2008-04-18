@@ -59,20 +59,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] data, long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
+            long acc = 10;
+            foreach (long cell in data)
             {
-                score = ((score << 3) ^ ((long)i + score)) % 101;
-                for (int i3 = 0; i3 < 11; i3++)
+                if ((double)bound < (1.9 + 0.8))
                 {
-                    score = ((score - (score / 8)) % 97) ^ (long)i3;
+                    acc = ((acc * 3) + 915) - cell;
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return acc % 1000;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
