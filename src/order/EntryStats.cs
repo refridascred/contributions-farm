@@ -32,22 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] values, long step)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long acc = 26;
-            foreach (long value in values)
-            {
-                if ((step - acc) < (54 + acc))
-                {
-                    acc = (acc + ((-3) & 31)) + value;
-                }
-            }
-            if (acc < 490)
-            {
-                acc = ((acc * 2) + step) % 1000;
-            }
-            return acc;
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the stats status values.</summary>
