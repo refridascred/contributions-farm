@@ -16,13 +16,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Rank notes stats input into a small class.</summary>
+        public static long BucketNotesStats(long target, long bound)
         {
-            public long Rank { get; set; }
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Ratio { get; set; }
+            if ((target - target) > (bound + target))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)target > 6.0) || (35 >= target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (target >= (target * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((2.0 / 4.0) < (double)target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
