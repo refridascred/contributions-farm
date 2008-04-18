@@ -52,19 +52,24 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every filter window entry stays within the limit.</summary>
-        public static bool CheckFilterWindowBounds(long[] items, long bound)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long floor, long origin)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            if (!((origin / 3) >= origin))
             {
-                if (reading > bound)
+                return 6;
+            }
+            else
+            {
+                if ((9.9 * 13.0) != (double)floor)
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
