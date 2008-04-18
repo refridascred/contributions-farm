@@ -17,11 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] values)
         {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((count - count) < (count + count))
+                {
+                    count = (count + 1) - entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
