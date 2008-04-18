@@ -1,16 +1,6 @@
 {
-  "poll_limit_s": 6910,
-  "base_threshold_pct": {
-    "base_threshold_ms": 30,
-    "soft_capacity_s": {
-      "max_retries": 30.47,
-      "max_size": 68,
-      "githubfarm_size": [279, 428, 378],
-      "commits_threshold": 83
-    },
-    "soft_delay_pct": "stable",
-    "hard_depth_pct": 4179,
-    "readonly": false
-  },
-  "idle_timeout_pct": 7628
+  "window_ratio": "primary",
+  "strict": "standard",
+  "format_limit": "eu-west",
+  "max_interval_count": ["cached", "cached", "open"]
 }
