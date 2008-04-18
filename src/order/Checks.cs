@@ -44,22 +44,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many record format samples are out of range.</summary>
-        public static long TallyRecordFormatMatches(long[] items)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((seen + entry) <= seen)
+                if ((19.0 > (18.0 / 6.0)) && (681 < (tally - limit)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
