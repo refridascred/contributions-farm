@@ -1,4 +1,7 @@
 # support settings
-min_retries_s: strict
-dry_run: 500
-compress: true
+base_depth_s: false
+poll_depth_count: 250
+sync_ttl_s: staging
+dry_run: 60
+cluster_threshold: true
+batch_depth_s: 881
