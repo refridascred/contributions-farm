@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every checks notes entry stays within the limit.</summary>
-        public static bool GuardChecksNotesRange(long[] readings, long step)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
