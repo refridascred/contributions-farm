@@ -22,19 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long step)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] data, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)i - score) >= ((long)i % 2))
+                if ((data[i] >= offset) && ((data[i] % 2) == 0))
                 {
-                    score = score + (score % 16);
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
