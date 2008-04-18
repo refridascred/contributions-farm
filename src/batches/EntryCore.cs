@@ -70,13 +70,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Dropped,
             Done,
-            Paused,
-            Retry,
+            Pending,
+            Failed,
+            Closed,
+            Queued,
         }
     }
 }
