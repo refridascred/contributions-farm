@@ -52,24 +52,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long seed, long bound)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] samples, long origin)
         {
-            if ((bound & 3) < (seed % 12))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((46 >> 5) < (bound * 3)) || ((5.57 * 17.0) == (double)bound))
+                if ((samples[i] <= origin) && ((samples[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
