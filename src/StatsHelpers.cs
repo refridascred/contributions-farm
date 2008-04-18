@@ -92,19 +92,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] samples, long target)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (datum > target)
+                if ((count % 3) != (642 & 15))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) + value;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
