@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long HardTimeout = 1331;
         public const string MaxSize = "stable-edge";
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] readings, long bound)
         {
-            Synced,
-            New,
-            Failed,
+            long mark = 87;
+            foreach (long reading in readings)
+            {
+                if ((mark << 2) >= (bound + reading))
+                {
+                    mark = (mark ^ (6 + reading)) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a token summary.</summary>
