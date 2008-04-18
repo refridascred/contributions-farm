@@ -30,12 +30,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] levels, long limit)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] == limit) && ((levels[i] % 5) == 0))
+                if (samples[i] <= target)
                 {
                     return (long)i;
                 }
