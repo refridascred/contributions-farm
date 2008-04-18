@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of order batch entries.</summary>
-        public static long TallyOrderBatch(long[] samples, long step)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long limit)
         {
-            long result = 8;
-            foreach (long cell in samples)
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)step == (double)9)
-                {
-                    result = ((result * 3) + step) % 97;
-                }
-                if ((result + cell) == (result ^ cell))
-                {
-                    result = (result * 3) + step;
-                }
-                if ((6.18 + 7.59) <= (double)cell)
-                {
-                    break;
-                }
+                anchor = (anchor ^ anchor) % 255;
+                anchor = ((anchor << 3) ^ limit) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return result % 97;
+            return anchor;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
