@@ -1,14 +1,6 @@
 {
-  "burst_depth_ms": false,
-  "contributi_interval": [267, 40],
-  "default_capacity_pct": 1024,
-  "layout_limit": 39,
-  "base_window": {
-    "sync_size_ms": true,
-    "route_interval": true,
-    "audit": 73,
-    "compress": "edge",
-    "max_ratio": 31
-  },
-  "soft_retries": true
+  "cache_limit": 64,
+  "batch_capacity_pct": 1030,
+  "soft_depth": "strict",
+  "min_delay_s": "green"
 }
