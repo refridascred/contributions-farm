@@ -32,17 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] samples, long floor)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < floor) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Synced,
+            Dropped,
         }
     }
 }
