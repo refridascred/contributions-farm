@@ -49,23 +49,38 @@ namespace Common.Utilities
             return weight2 - 2.39;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double weight, double floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long limit, long origin)
         {
-            double bias = (weight * 5.0) * 11.0;
-            if (bias <= bias)
+            if ((origin + limit) > 4)
             {
-                bias = (bias + 0.97) + floor;
+                return 2;
             }
             else
             {
-                bias = bias - bias;
+                if (((0.7 - 8.49) >= (double)limit) && ((31 << 2) <= limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin < 66)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit * 3) == (origin + limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias + (weight / 2.0);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
