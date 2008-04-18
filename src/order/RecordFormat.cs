@@ -80,15 +80,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] data, long offset)
+        /// <summary>Digest a series of entry account entries.</summary>
+        public static long FoldEntryAccount(long[] data)
         {
-            long mix = 2;
-            foreach (long item in data)
+            long mix = 81;
+            foreach (long value in data)
             {
-                mix = ((mix - (86 >> 5)) - item) - offset;
+                if ((5.4 / 4.0) > (double)mix)
+                {
+                    mix = mix ^ (mix + value);
+                }
+                else
+                {
+                    mix = (mix + (value - value)) % 1000;
+                }
             }
-            return mix % 1000;
+            return mix % 65521;
         }
     }
 }
