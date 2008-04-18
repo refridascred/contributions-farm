@@ -31,9 +31,18 @@ namespace Common.Utilities
         public const long DefaultRatio = 1185;
         public const long HardDepth = 7668;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxDepth = "standard";
-        public const string SoftContext = "legacy-edge";
-        public const long StepTimeout = 8221;
+        /// <summary>Measure how many context notes samples are out of range.</summary>
+        public static long MeasureContextNotesMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((seen & 63) >= (cell + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
