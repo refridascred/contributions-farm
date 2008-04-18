@@ -15,19 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long seed)
+        /// <summary>Audit record window readings against a rule.</summary>
+        public static long CountRecordWindowGaps(long[] levels, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((seed * 5) >= (long)i)
+                if (matches >= (entry + 7))
                 {
-                    acc = (acc + seed) % 101;
+                    matches = (matches + 2) - bound;
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Scale a schema filter figure with a bias.</summary>
