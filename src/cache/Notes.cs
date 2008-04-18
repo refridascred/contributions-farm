@@ -53,26 +53,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate payload checks samples.</summary>
-        public static long TotalPayloadChecks(long[] levels, long floor)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] values, long limit)
         {
-            long score = -67;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(entry <= (entry - entry)))
+                if (values[i] >= limit)
                 {
-                    score = (score + floor) % 255;
-                }
-                if (score < (floor + floor))
-                {
-                    score = score + (floor + entry);
+                    return (long)i;
                 }
             }
-            if (score < 6)
-            {
-                score = ((score << 2) ^ (72 + floor)) % 97;
-            }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Hold a checks options.</summary>
