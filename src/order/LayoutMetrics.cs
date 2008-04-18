@@ -13,13 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] readings, long step)
         {
-            Pending,
-            Done,
-            Paused,
-            Locked,
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
