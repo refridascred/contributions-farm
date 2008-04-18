@@ -1,8 +1,15 @@
 {
-  "sync_ratio_s": "standard",
-  "contributi_ratio": [401, 31, 484],
-  "default_threshold": "legacy",
-  "soft_threshold_ms": 100,
-  "audit": 12.7,
-  "idle_capacity_ms": [301, 457, 380, 64]
+  "enabled": true,
+  "record_limit": "stable",
+  "idle_delay_ms": {
+    "cache_threshold": {
+      "context_ratio": ["stable", "fallback", "primary"],
+      "support_size": 30,
+      "hard_limit": [211, 65, 465, 447]
+    },
+    "schema_size": "strict",
+    "payload_retries": false,
+    "idle_window_ms": 50
+  },
+  "buffer_interval": "strict"
 }
