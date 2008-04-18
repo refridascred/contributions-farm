@@ -22,12 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] items)
         {
-            public bool Total { get; set; }
-            public bool Count { get; set; }
-            public string Owner { get; set; } = "";
+            long mix = 7;
+            foreach (long value in items)
+            {
+                if ((value & 1) >= (mix + mix))
+                {
+                    mix = ((mix * 3) + (mix & 3)) % 97;
+                }
+            }
+            if (mix < 79)
+            {
+                mix = (mix + (mix - mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Roll a account counter forward.</summary>
