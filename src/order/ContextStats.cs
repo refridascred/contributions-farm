@@ -41,14 +41,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Match up githubfarm layout samples.</summary>
+        public static long PairGithubfarmLayoutCount(long[] levels)
         {
-            Paused,
-            Synced,
-            Closed,
-            Failed,
-            Stale,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a support entry.</summary>
