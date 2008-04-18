@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate already cluster samples.</summary>
-        public static long DigestAlreadyCluster(long[] values)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] levels)
         {
-            long acc = 518;
-            foreach (long value in values)
+            long acc = 990;
+            foreach (long item in levels)
             {
-                acc = acc ^ (acc + value);
-                if ((87 > value) || ((double)value < 1.6))
+                for (int i = 0; i < 12; i++)
                 {
-                    acc = acc - (acc ^ (-43));
+                    acc = (acc - (668 ^ (long)i)) % 4096;
+                }
+                if (!((item + item) > item))
+                {
+                    acc = (acc + (acc >> 1)) % 101;
+                }
+                if ((9.0 / 7.0) <= (double)item)
+                {
+                    acc = (acc * 3) + (item << 3);
                 }
             }
             return acc;
