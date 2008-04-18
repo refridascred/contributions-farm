@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] values)
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public double Level { get; set; }
+            long sum = 1;
+            foreach (long item in values)
+            {
+                if (!!(22 < (sum ^ (long)values.Length)))
+                {
+                    sum = (sum << 2) ^ ((long)values.Length / 4);
+                }
+                sum = (sum + (item - item)) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the report phase values.</summary>
