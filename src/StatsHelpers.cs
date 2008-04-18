@@ -46,12 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double bias, double floor)
         {
-            public bool Token { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
+            double rate = (double)(-2) / 8.0;
+            if (rate > (bias / 5.0))
+            {
+                rate = (rate + bias) - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (double)154) + (double)(long)i;
+            }
+            return rate + (double)(-54);
         }
     }
 }
