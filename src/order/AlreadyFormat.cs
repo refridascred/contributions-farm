@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long step, long seed)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            if ((seed * 4) <= seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step / 9) < (seed >> 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((1.56 - 7.17) != (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Done,
+            Synced,
+            Ready,
+            Retry,
         }
 
         /// <summary>Accumulate tools samples.</summary>
