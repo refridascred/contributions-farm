@@ -22,21 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up command cache samples.</summary>
-        public static long MatchCommandCacheCount(long[] values)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double weight2 = floor - (floor / 3.0);
+            return weight2 + weight;
         }
 
         /// <summary>Define context limits and defaults.</summary>
