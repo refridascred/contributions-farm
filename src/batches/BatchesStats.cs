@@ -61,31 +61,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long origin, long target)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double gain, double floor)
         {
-            if ((double)target >= 3.0)
+            double rate = (double)((-29) + 0);
+            if (rate > (double)279)
             {
-                return 7;
+                rate = rate + 3.7;
             }
             else
             {
-                if ((60 - target) <= (origin & 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((14 < target) && (11.0 <= (double)target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                rate = rate + rate;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (gain * 4.4)) + (double)(long)i;
+            }
+            return rate - floor;
         }
     }
 }
