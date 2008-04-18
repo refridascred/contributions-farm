@@ -40,18 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session record entries that pass the check.</summary>
-        public static long MeasureSessionRecordMatches(long[] series, long limit)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((entry % 100) > 96)
-                {
-                    seen = (seen + 3) - limit;
-                }
-            }
-            return seen;
+            Stale,
+            Active,
+            Synced,
+            Ready,
+            New,
         }
 
         /// <summary>Check that every route contributi entry stays within the limit.</summary>
