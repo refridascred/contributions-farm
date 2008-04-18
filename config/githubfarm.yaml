@@ -1,8 +1,14 @@
 # githubfarm settings
-cache_delay_pct: local
-queue_size: 78
-burst_window_pct: 3394
-dry_run:
-  - 210
-  - 235
-max_depth_ms: stable
+base_capacity_ms: 16
+burst_limit: local
+idle_ratio_pct: 69.89
+soft_window_pct: true
+warm_delay_s:
+  - edge
+  - fallback
+  - staging
+  - stable
+readonly:
+  cache_ttl: 3971
+  enabled: 3071
+  soft_depth_ms: 6651
