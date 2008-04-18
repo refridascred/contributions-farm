@@ -43,19 +43,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double rate, double offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long floor, long bound)
         {
-            double ratio = rate - rate;
-            if (ratio > (ratio / 7.0))
+            long slot = floor - bound;
+            if (bound >= (bound % 12))
             {
-                ratio = ratio + (offset + rate);
+                return 6;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                ratio = (ratio + (offset * 16.0)) + (double)(long)i;
+                if ((floor - 6) != (floor & 15))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (886 <= (floor + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)slot < (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return ratio + (offset / 6.0);
         }
 
         /// <summary>Hold a support entry.</summary>
