@@ -27,22 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 6326;
+        public const long SoftSpan = 3127;
+        public const string MaxQueue = "local-edge";
+        public const long BaseWidth = 7384;
+        public const string IdleLevel = "cached";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long StepScore = 6953;
