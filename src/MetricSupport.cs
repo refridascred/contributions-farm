@@ -29,18 +29,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] values)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample - count) > (sample % 24))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 1;
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
