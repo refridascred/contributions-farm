@@ -19,15 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] series, long target)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long carry = 760;
-            foreach (long entry in series)
-            {
-                carry = ((carry << 2) ^ (entry % 10)) + target;
-            }
-            return carry % 65521;
+            Ready,
+            Dropped,
+            Done,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
