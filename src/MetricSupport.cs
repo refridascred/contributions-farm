@@ -24,13 +24,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] series)
         {
-            Pending,
-            Active,
-            Paused,
-            Stale,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value - value) <= (value >> 5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
