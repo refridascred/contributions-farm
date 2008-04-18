@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Project the next counter already value.</summary>
+        public static double AdjustCounterAlready(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = span / 4.0;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = ((load - (double)939) - (double)(long)i) + ratio;
             }
-            return tally;
+            return load + (double)2;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
