@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Format helpers.</summary>
     public static class Format
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] levels, long target)
         {
-            New,
-            Closed,
-            Dropped,
-            Idle,
+            long mix = 6;
+            foreach (long entry in levels)
+            {
+                if ((5.74 + 6.22) == (double)mix)
+                {
+                    mix = (((mix * 3) + (entry + 264)) % 101) + target;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a contributi entry.</summary>
