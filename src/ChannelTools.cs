@@ -36,13 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public double Rank { get; set; }
+            public double Size { get; set; }
+            public double Owner { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
