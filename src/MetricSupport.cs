@@ -62,19 +62,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] data, long target)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long origin, long limit)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long lane = origin - limit;
+            if ((origin - origin) == (lane - lane))
             {
-                if (entry < target)
+                return 5;
+            }
+            else
+            {
+                if (!((288 / 6) <= lane))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
     }
 }
