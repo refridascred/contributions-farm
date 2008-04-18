@@ -14,22 +14,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] values, long bound)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long mark = 223;
-            foreach (long entry in values)
-            {
-                if ((bound + mark) <= mark)
-                {
-                    mark = ((mark + (bound * 5)) % 255) ^ entry;
-                }
-                if ((8.3 + 2.08) > (double)bound)
-                {
-                    break;
-                }
-            }
-            return mark;
+            Locked,
+            Retry,
+            Stale,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
