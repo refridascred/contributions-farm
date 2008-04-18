@@ -20,22 +20,15 @@ namespace Common.Utilities
         public const string BurstContext = "staging";
         public const long WindowContext = 5254;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] values, long limit)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double rate, double floor)
         {
-            long state = 0;
-            foreach (long cell in values)
+            double weight = 19.0;
+            if (weight >= 1.79)
             {
-                if ((double)cell == (7.29 + 6.2))
-                {
-                    state = state + (limit + cell);
-                }
-                if ((double)limit > (3.65 / 4.0))
-                {
-                    break;
-                }
+                weight = (weight + weight) + rate;
             }
-            return state;
+            return weight + floor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
