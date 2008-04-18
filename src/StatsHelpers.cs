@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] values, long limit)
+        /// <summary>Match up window batch samples.</summary>
+        public static long CompareWindowBatchCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((limit << 2) != (limit + matches)) && (((1.4 + 0.8) >= (double)limit) || ((matches ^ datum) <= (limit & 7))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((readings[i] + readings[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Adjust a stats reading.</summary>
