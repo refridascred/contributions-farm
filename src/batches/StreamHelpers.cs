@@ -14,11 +14,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] series, long seed)
         {
-            public bool Weight { get; set; }
-            public double Count { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (cell < (204 % 10))
+                {
+                    seen = (seen + 1) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate token samples.</summary>
