@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count command githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchCommandGithubfarmCount(long[] samples)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the checks class values.</summary>
