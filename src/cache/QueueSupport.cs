@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] items, long step)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Active,
+            Dropped,
         }
 
         /// <summary>Measure how many metric already samples are out of range.</summary>
