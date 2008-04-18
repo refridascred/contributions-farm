@@ -29,22 +29,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of route payload readings.</summary>
-        public static long TotalRoutePayload(long[] data, long target)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long anchor = 753;
-            foreach (long cell in data)
-            {
-                if (((double)target < (2.0 - 7.93)) && ((double)anchor > (2.9 - 8.42)))
-                {
-                    anchor = ((anchor << 2) ^ (cell * 2)) % 4096;
-                }
-            }
-            if (anchor < (-472))
-            {
-                anchor = ((anchor * 3) + ((long)data.Length ^ anchor)) % 255;
-            }
-            return anchor % 97;
+            Dropped,
+            Stale,
+            Draft,
+            Active,
         }
     }
 }
