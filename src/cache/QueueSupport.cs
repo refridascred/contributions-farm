@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Done,
-            Locked,
-            Stale,
-            Draft,
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the checks status values.</summary>
