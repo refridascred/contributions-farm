@@ -19,11 +19,23 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 5449;
-        public const long IdleSpan = 712;
-        public const string RetryBatch = "open-1";
-        public const long RetryTimeout = 435;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] levels, long bound)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (((matches * 2) <= (matches + matches)) && (bound <= (1 / 2)))
+                {
+                    matches = (matches + 2) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double BurstReport = 27.16;
