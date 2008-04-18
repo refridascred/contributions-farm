@@ -38,13 +38,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
-        {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitSize = "cached";
+        public const long CacheLevel = 5996;
+        public const long CacheFactor = 8721;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long DefaultInterval = 6300;
