@@ -75,14 +75,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            New,
-            Paused,
-            Closed,
-            Done,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchScore = 3427;
+        public const double DefaultTimeout = 6.51;
+        public const long StepFactor = 5770;
+        public const long MaxTimeout = 130;
+        public const double BurstRatio = 34.61;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long StepRoute(long seed)
