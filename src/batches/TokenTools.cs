@@ -35,31 +35,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long target, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] readings, long step)
         {
-            if ((7.0 / 6.0) >= (double)limit)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit & 3) == (241 - limit))
+                if ((4 >> 3) < (step * 5))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target & 3) == (target + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = (tally + 2) + cell;
                 }
             }
+            return tally;
         }
     }
 }
