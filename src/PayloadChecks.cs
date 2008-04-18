@@ -60,22 +60,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] series)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (!(((entry + (-542)) >= ((-679) + 521)) || ((17.0 / 9.0) < (double)entry)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Queued,
+            Stale,
+            Retry,
+            Closed,
         }
     }
 }
