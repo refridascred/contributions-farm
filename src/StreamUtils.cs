@@ -25,18 +25,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] samples)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry >> 2) == (entry + matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Describe the channel level values.</summary>
