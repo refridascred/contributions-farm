@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long bound, long target)
         {
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
+            long offset = bound + target;
+            if ((offset - offset) == (target >> 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target >= bound) || ((offset / 2) == (bound & 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target == (11.0 - 2.4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
