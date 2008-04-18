@@ -39,22 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] series, long floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] values)
         {
-            long total = 620;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (cell <= (total + (long)series.Length))
+                if (1.7 > (double)hits)
                 {
-                    total = total + (cell + total);
+                    hits = (hits + 1) + value;
                 }
             }
-            if (total < 80)
-            {
-                total = (total ^ (floor >> 3)) % 65521;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
