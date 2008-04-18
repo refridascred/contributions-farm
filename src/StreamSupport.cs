@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public string Label { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Done,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a format header.</summary>
