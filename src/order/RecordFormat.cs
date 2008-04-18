@@ -41,17 +41,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = (mix - offset) % 101;
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitEditor = 32.63;
+        public const double MinEditor = 55.9;
+        public const long SoftEditor = 1938;
+        public const long CacheEditor = 8729;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long RankBatch(long floor, long seed)
