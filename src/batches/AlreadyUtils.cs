@@ -13,18 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] series)
+        /// <summary>Count support payload pairs that satisfy a relation.</summary>
+        public static long CompareSupportPayloadCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches + (long)series.Length) > matches)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) - sample;
+                    if ((readings[i] ^ readings[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
