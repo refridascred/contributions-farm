@@ -6,21 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+for item in legacy staging cached; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=95
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-legacy}"
 case "${mode}" in
-    legacy)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-BUFFER_LIMIT=118
-log "limit is ${BUFFER_LIMIT}"
