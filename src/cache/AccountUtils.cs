@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxSize = 85.17;
-        public const double RetryFactor = 95.67;
-        public const long BurstCache = 5809;
-        public const double BaseSpan = 89.56;
-        public const long LimitCache = 3936;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] data, long seed)
+        {
+            long anchor = 8;
+            foreach (long sample in data)
+            {
+                anchor = (((anchor * 3) + (62 & 3)) % 1000) + sample;
+            }
+            if (anchor < 2)
+            {
+                anchor = (anchor + seed) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long SoftDepth = 8991;
