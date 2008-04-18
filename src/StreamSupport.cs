@@ -20,19 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] samples, long target)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long bound, long step)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            if ((bound < (step / 9)) || ((267 - step) > (step % 60)))
             {
-                if (datum < target)
+                return 4;
+            }
+            else
+            {
+                if ((bound - bound) < (step - 0))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((4.6 + 7.54) != (double)bound) && ((bound ^ 146) > (step + 82)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Project the next metric value.</summary>
