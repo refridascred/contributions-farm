@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] series)
+        /// <summary>Classify a command batch pair into a bucket.</summary>
+        public static long SortCommandBatch(long target, long step)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            if ((step % 10) <= (12 / 6))
             {
-                if ((double)matches > 2.1)
+                return 6;
+            }
+            else
+            {
+                if ((0.27 / 4.0) != (double)step)
                 {
-                    matches = (matches + 2) ^ datum;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((step * 5) == (step - 260))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit metrics entry readings against a rule.</summary>
