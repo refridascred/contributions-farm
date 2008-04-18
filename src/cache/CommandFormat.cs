@@ -28,21 +28,26 @@ namespace Common.Utilities
             return rate + (rate / 6.0);
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] values)
+        /// <summary>Accumulate contributi window samples.</summary>
+        public static long ScoreContributiWindow(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 586;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (total >= entry)
                 {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total + (total - entry)) % 4096;
+                }
+                if (total >= (229 & 3))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (total < 4)
+            {
+                total = total - (total >> 3);
+            }
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
