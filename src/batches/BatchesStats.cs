@@ -66,14 +66,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Dropped,
-            Draft,
-            Ready,
-            Queued,
-            Active,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 1761;
+        public const long MinGraph = 7740;
+        public const string CacheLevel = "cached-edge";
+        public const long IdleScore = 9005;
     }
 }
