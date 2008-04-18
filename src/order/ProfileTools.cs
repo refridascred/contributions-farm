@@ -51,19 +51,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] values, long floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long bound)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample != floor)
+                if (((mark + bound) == (bound / 5)) || ((mark - (long)i) > (mark + mark)))
                 {
-                    ok = false;
-                    break;
+                    continue;
                 }
+                mark = ((mark * 4) + (mark * 5)) % 4096;
+                mark = ((mark << 2) ^ (bound + (long)i)) % 4096;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Accumulate commits farm samples.</summary>
