@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] levels, long floor)
         {
-            Retry,
-            Dropped,
-            Active,
-            Ready,
-            Paused,
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
