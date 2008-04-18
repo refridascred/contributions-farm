@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy staging cached; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
 
-BUFFER_LIMIT=95
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-legacy}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    local)
+    stable)
         log "fast path"
         ;;
     *)
