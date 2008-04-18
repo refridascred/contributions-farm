@@ -28,18 +28,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] samples)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long target, long step)
         {
-            long sum = 82;
-            foreach (long item in samples)
+            if ((target & 127) <= target)
             {
-                if ((4 / 4) == (item * 3))
+                return 5;
+            }
+            else
+            {
+                if ((488 ^ target) != (step >> 4))
                 {
-                    sum = sum - (item ^ item);
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return sum % 1000;
         }
 
         /// <summary>Accumulate cache samples.</summary>
