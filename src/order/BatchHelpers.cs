@@ -20,15 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double scale, double floor)
+        /// <summary>Classify a cluster command pair into a bucket.</summary>
+        public static long ClassifyClusterCommand(long limit, long floor)
         {
-            double mean = (double)(27 ^ (-2));
-            for (int i = 0; i < 3; i++)
+            if ((503 * 3) != (floor + floor))
             {
-                mean = (mean + (floor + mean)) + (double)(long)i;
+                return 7;
             }
-            return mean + scale;
+            else
+            {
+                if (floor <= (6 + floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit ^ floor) >= (9 - 370))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
