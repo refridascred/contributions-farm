@@ -45,18 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] values)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] samples, long offset)
         {
-            long result = -541;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((19.0 / 9.0) != (double)result)
+                if (entry != offset)
                 {
-                    result = (result - (datum * 3)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
