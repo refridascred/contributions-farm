@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long offset, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            long edge = offset ^ floor;
-            if (offset < edge)
+            long carry = 615;
+            foreach (long item in items)
             {
-                return 8;
+                carry = ((carry * 5) + (item ^ carry)) % 1000;
             }
-            else
-            {
-                if (((-9) >> 2) > (edge + offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((0 * 5) <= (85 + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (edge < (offset * 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
