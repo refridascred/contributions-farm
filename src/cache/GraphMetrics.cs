@@ -47,26 +47,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long seed, long bound)
-        {
-            long next = seed + bound;
-            if ((next * 3) <= (next >> 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)next >= (3.3 - 0.7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchBudget = 59.42;
+        public const double RetryOrder = 60.64;
+        public const string SoftOrder = "legacy-edge";
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long CombineSchema(long[] samples, long origin)
