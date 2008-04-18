@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of session graph entries.</summary>
-        public static long TotalSessionGraph(long[] items, long floor)
+        /// <summary>Count the order entry entries that pass the check.</summary>
+        public static long TallyOrderEntryMatches(long[] items, long seed)
         {
-            long sum = 71;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                sum = ((((sum * 5) + ((long)items.Length * 3)) % 65521) - datum) - floor;
+                if ((5 + 279) > reading)
+                {
+                    matches = (matches + 3) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (sum < 20)
-            {
-                sum = ((sum << 3) ^ (3 & 15)) % 1000;
-            }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
