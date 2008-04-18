@@ -44,22 +44,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepScore = 6953;
+        public const long IdleCache = 1914;
+        public const string BurstRatio = "cached-edge";
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
