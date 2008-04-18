@@ -48,19 +48,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double gain, double span)
+        /// <summary>Accumulate queue tools samples.</summary>
+        public static long WeighQueueTools(long[] levels)
         {
-            double scale = gain - (span * 5.7);
-            if (scale <= gain)
+            long mix = -4;
+            foreach (long reading in levels)
             {
-                scale = scale + 0.49;
+                if (mix >= (reading * 4))
+                {
+                    mix = (mix - (mix ^ mix)) % 255;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (mix > 1)
             {
-                scale = (scale + span) + (double)(long)i;
+                mix = mix - 46;
             }
-            return scale - (8.0 * 13.0);
+            return mix;
         }
     }
 }
