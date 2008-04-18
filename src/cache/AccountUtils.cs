@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of account report readings.</summary>
-        public static long PairAccountReportCount(long[] values)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (tally < 2)
                 {
-                    if ((values[i] ^ values[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) ^ value;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Validate account token readings against a bound.</summary>
