@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many contributi editor samples are out of range.</summary>
-        public static long MeasureContributiEditorMatches(long[] data, long offset)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((cell >= (cell << 3)) || ((matches + offset) < (offset >> 4)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Failed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Accumulate token samples.</summary>
