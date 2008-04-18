@@ -27,18 +27,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] data, long origin)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (((-926) >> 5) <= matches)
-                {
-                    matches = ((matches + 1) + sample) - origin;
-                }
-            }
-            return matches;
+            double bias2 = bias;
+            return (bias2 - (bias2 - bias2)) + ratio;
         }
     }
 }
