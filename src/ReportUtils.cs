@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] readings, long target)
         {
-            public bool Weight { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((target / 8) < matches)
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
