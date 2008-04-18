@@ -35,9 +35,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 7443;
-        public const long BatchSize = 4728;
-        public const string IdleCommand = "fallback";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string RetryLayout = "standard-edge";
+        public const long HardLayout = 2076;
+        public const long BatchBudget = 1723;
     }
 }
