@@ -45,13 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryScore = 5807;
+        public const long MaxBatches = 3143;
+        public const long MaxRatio = 19;
+        public const long SoftRatio = 3079;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long RollCommand(long bound)
