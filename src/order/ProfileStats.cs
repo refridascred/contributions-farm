@@ -34,12 +34,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Synced,
-            Dropped,
-            Done,
+            public string Offset { get; set; } = "";
+            public double Region { get; set; }
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
