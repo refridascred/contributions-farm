@@ -16,12 +16,20 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 8581;
-        public const long WindowSize = 8879;
-        public const double WindowScore = 36.35;
-        public const double DefaultLevel = 94.18;
-        public const string IdleCache = "alpha";
+        /// <summary>Check that every graph already entry stays within the limit.</summary>
+        public static bool ValidateGraphAlreadyRange(long[] series, long offset)
+        {
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BurstInterval = 2964;
