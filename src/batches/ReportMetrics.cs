@@ -15,10 +15,40 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 4570;
-        public const long BatchAlready = 2756;
-        public const string SoftRatio = "standard-v2";
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long limit, long bound)
+        {
+            long cur = limit + bound;
+            if ((cur % 3) != (71 ^ bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((limit >> 3) < 614) || ((cur & 127) < (cur + limit)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (cur >= (cur - limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)cur <= 12.0)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long IterateLayout(long target)
