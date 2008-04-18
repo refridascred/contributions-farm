@@ -69,11 +69,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheTimeout = 7374;
-        public const string BaseStream = "fallback-1";
-        public const long BaseWidth = 3815;
-        public const double WindowStream = 7.39;
-        public const long CacheStream = 8883;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public double Token { get; set; }
+            public double Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+        }
     }
 }
