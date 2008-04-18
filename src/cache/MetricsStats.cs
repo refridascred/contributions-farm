@@ -63,10 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 5355;
-        public const long LimitPayload = 5586;
-        public const long WindowSpan = 8107;
-        public const long MaxScore = 7049;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] values, long seed)
+        {
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
