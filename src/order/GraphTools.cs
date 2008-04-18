@@ -65,22 +65,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] data, long bound)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long sum = 667;
+            foreach (long cell in readings)
             {
-                if (entry <= 4)
+                if (((cell << 3) >= (5 + cell)) && (sum > (cell - cell)))
                 {
-                    matches = (matches + 2) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = (((sum * 3) + (sum / 4)) % 65521) - bound;
                 }
             }
-            return matches;
+            return sum % 1000;
         }
     }
 }
