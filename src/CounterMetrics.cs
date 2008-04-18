@@ -16,13 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Stale,
-            Closed,
-            Done,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 2191;
+        public const long MaxChecks = 3414;
+        public const long BatchChecks = 4197;
+        public const double IdleChecks = 38.62;
 
         /// <summary>Validate farm schema readings against a bound.</summary>
         public static bool CheckFarmSchemaLimits(long[] values, long floor)
