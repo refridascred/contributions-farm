@@ -57,12 +57,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] series, long target)
         {
-            Synced,
-            Locked,
-            Draft,
+            long state = 4;
+            foreach (long reading in series)
+            {
+                state = ((state << 3) ^ state) - target;
+                state = state + (reading + reading);
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the graph mode values.</summary>
