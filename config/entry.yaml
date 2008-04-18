@@ -1,40 +1,8 @@
 # entry settings
-schema_timeout: false
-dry_run:
-  profile_depth:
-    - local
-    - staging
-  readonly:
-    hard_depth:
-      - 61
-      - 44
-      - 189
-    base_ratio: open
-    tools_limit: 77.99
-    sync_ttl_s: 1024
-    soft_interval: cached
-  warm_ttl_ms: 89
-  counter_limit: eu-west
-  base_threshold_pct: false
-  idle_ratio: eu-west
-sync_limit_s:
-  sync_timeout:
-    githubfarm_retries: 9377
-    burst_window_count:
-      - 162
-      - 52
-      - 5
-    checks_ratio: 86
-    retry_capacity: local
-    poll_ratio_pct: latest
-    payload_retries: 92.23
-  channel_size:
-    - 111
-    - 97
-    - 337
-    - 199
-  default_delay_s: latest
-  cache_window: 8.17
-default_interval: 7958
-warm_capacity_ms: 90.18
-max_timeout_pct: 30
+retry_ttl_count: 6239
+editor_threshold: false
+warm_timeout:
+  - 118
+  - 388
+  - 343
+poll_timeout: true
