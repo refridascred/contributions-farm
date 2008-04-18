@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] levels, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] readings, long floor)
         {
-            long score = 1;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                score = score + (entry >> 2);
-                score = (score ^ (entry + 98)) % 101;
-                score = (score ^ entry) % 4096;
+                if ((6 + 611) < (floor + datum))
+                {
+                    tally = tally + 1;
+                }
             }
-            if (score < 982)
-            {
-                score = score + (target + score);
-            }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Find the first order context entry that matches the target.</summary>
