@@ -1,6 +1,6 @@
 {
-  "persist": [151, 428, 80],
-  "commits_size": "strict",
-  "verbose": 8,
-  "soft_capacity_ms": 4192
+  "hard_delay_count": true,
+  "strict": ["green", "cached"],
+  "token_limit": 77.69,
+  "idle_size_ms": "eu-west"
 }
