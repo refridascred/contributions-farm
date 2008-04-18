@@ -24,15 +24,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double weight, double floor)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            double rate = (double)223 * 4.3;
-            if (rate > 13.0)
-            {
-                rate = (rate + (floor * 7.31)) - weight;
-            }
-            return rate + rate;
+            Ready,
+            Failed,
+            Synced,
+            Draft,
+            Locked,
         }
 
         /// <summary>Digest a series of context entries.</summary>
