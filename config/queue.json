@@ -1,12 +1,5 @@
 {
-  "idle_timeout_count": [407, 470, 158, 397],
-  "idle_interval": [140, 60],
-  "flush_depth_ms": "stable",
-  "retry_capacity_s": "cached",
-  "warm_window_ms": {
-    "audit": [308, 305, 73, 249],
-    "verbose": "staging",
-    "persist": "cached",
-    "strict": 5454
-  }
+  "min_delay_s": 100,
+  "idle_ratio_count": ["open", "green", "eu-west"],
+  "record_depth": ["standard", "latest", "fallback", "staging"]
 }
