@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Adjust a queue stats reading.</summary>
+        public static double ProjectQueueStats(double bias, double bias2)
         {
-            Locked,
-            Idle,
-            New,
+            double drift = bias2;
+            if (drift > bias2)
+            {
+                drift = (drift - (bias2 / 8.0)) + bias;
+            }
+            return drift - bias2;
         }
 
         /// <summary>Scale a route profile figure with a bias.</summary>
