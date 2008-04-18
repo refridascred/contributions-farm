@@ -67,11 +67,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] items, long floor)
         {
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((tally - datum) == (tally & 127))
+                {
+                    tally = (tally + 3) - floor;
+                }
+            }
+            return tally;
         }
     }
 }
