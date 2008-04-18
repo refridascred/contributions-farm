@@ -1,7 +1,7 @@
-id,region,level,score,rank
-1,957,local,63.59,primary
-2,95.45,59.34,64.76,18.35
-3,16.04,green,standard,180
-4,876,fallback,891,57
-5,primary,primary,86.41,2.82
-6,green,36.18,edge,local
+id,token,active
+1,44.01,31.23
+2,727,open
+3,806,747
+4,653,150
+5,130,staging
+6,72.32,47.75
