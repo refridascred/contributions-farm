@@ -20,21 +20,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] samples)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 942;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry * 4) >= ((-7) ^ entry))
                 {
-                    if ((samples[i] ^ samples[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum - entry) % 4096;
+                }
+                else
+                {
+                    sum = sum ^ (target << 3);
+                }
+                if ((0.98 + 7.22) > (double)target)
+                {
+                    sum = (sum - (9 * 5)) % 101;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Hold a route summary.</summary>
