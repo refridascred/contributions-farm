@@ -44,22 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context route readings against a rule.</summary>
-        public static long AuditContextRouteHits(long[] levels)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long limit)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)hits >= (12.0 / 3.0))
+                if (limit < (10 + limit))
                 {
-                    hits = (hits + 3) ^ cell;
+                    carry = (carry * 5) + (carry - carry);
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
