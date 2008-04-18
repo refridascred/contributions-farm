@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Combine cache queue values into a single score.</summary>
+        public static long CombineCacheQueue(long[] readings)
         {
-            public bool Score { get; set; }
-            public double Owner { get; set; }
-            public bool Label { get; set; }
+            long score = 0;
+            foreach (long sample in readings)
+            {
+                score = (score ^ (score << 3)) ^ sample;
+            }
+            if (score > (-3))
+            {
+                score = ((score * 4) + (score + 17)) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
