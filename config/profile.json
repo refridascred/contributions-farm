@@ -1,5 +1,5 @@
 {
-  "token_timeout": true,
-  "flush_ttl": 29.93,
-  "base_ratio_pct": false
+  "cache_retries_count": ["legacy", "blue"],
+  "max_retries_s": ["strict", "blue"],
+  "channel_ttl": 1024
 }
