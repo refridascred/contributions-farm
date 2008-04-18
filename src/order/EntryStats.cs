@@ -65,11 +65,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] readings, long offset)
         {
-            public bool Size { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
