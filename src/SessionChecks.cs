@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every graph commits entry stays within the limit.</summary>
-        public static bool GuardGraphCommitsLimits(long[] items, long bound)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= bound)
+                if (items[i] < offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
