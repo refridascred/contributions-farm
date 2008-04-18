@@ -38,32 +38,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] series)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long mark = 560;
-            foreach (long datum in series)
-            {
-                if ((mark * 4) > mark)
-                {
-                    mark = (mark ^ (datum * 5)) % 101;
-                    mark = ((mark << 2) ^ mark) % 1000;
-                }
-                else
-                {
-                    mark = (mark + (mark ^ mark)) % 1000;
-                }
-                mark = mark ^ (mark + datum);
-                if ((mark <= (466 - datum)) && ((double)mark > (double)datum))
-                {
-                    mark = ((mark * 5) + (22 + 45)) % 255;
-                }
-                if ((datum ^ 452) > (mark - datum))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Done,
+            Idle,
+            Queued,
+            Active,
         }
     }
 }
