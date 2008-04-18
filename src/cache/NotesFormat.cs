@@ -19,13 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long origin)
         {
-            Done,
-            Closed,
-            Locked,
-            Idle,
+            long result = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                result = result - (long)i;
+                if ((origin << 2) != (origin / 3))
+                {
+                    result = (result + result) % 255;
+                    continue;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
