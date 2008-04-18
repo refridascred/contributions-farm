@@ -59,19 +59,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the counter layout series from a seed.</summary>
-        public static long StepCounterLayout(long offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] items, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((offset >> 3) > (long)i)
+                if ((items[i] <= step) && ((items[i] % 3) == 0))
                 {
-                    sum = ((sum * 5) + (offset ^ offset)) % 1000;
+                    return (long)i;
                 }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
     }
 }
