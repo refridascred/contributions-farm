@@ -1,6 +1,7 @@
 {
-  "min_interval_pct": 58.78,
-  "stats_threshold": 89.3,
-  "cache_threshold": "edge",
-  "hard_timeout": 500
+  "idle_timeout_count": 80.43,
+  "audit": "primary",
+  "default_delay_s": 84.72,
+  "poll_limit_count": 1024,
+  "max_size_count": 88.34
 }
