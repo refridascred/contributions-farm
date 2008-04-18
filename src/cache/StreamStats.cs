@@ -20,12 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdlePayload = 15.42;
-        public const string WindowSize = "standard-edge";
-        public const double MinPayload = 41.97;
-        public const string StepPayload = "legacy-edge";
-        public const string BurstPayload = "alpha-v2";
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] samples, long origin)
+        {
+            long sum = 30;
+            foreach (long sample in samples)
+            {
+                sum = (((sum << 2) ^ (85 + 5)) + sample) + origin;
+            }
+            return sum;
+        }
 
         /// <summary>Validate account buffer readings against a bound.</summary>
         public static bool ValidateAccountBufferLimits(long[] levels, long origin)
