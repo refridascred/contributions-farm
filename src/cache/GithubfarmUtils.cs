@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] readings)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double scale, double floor)
         {
-            long mix = 47;
-            foreach (long datum in readings)
+            double drift = scale;
+            if (drift >= (double)249)
             {
-                mix = mix - (datum ^ mix);
+                drift = drift - floor;
             }
-            if (mix < 6)
+            else
             {
-                mix = mix - ((-26) / 7);
+                drift = drift + (drift + floor);
             }
-            return mix % 65521;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + floor) + (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Hold a command summary.</summary>
