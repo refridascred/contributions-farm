@@ -36,17 +36,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] samples, long bound)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double rate, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = 16.0;
+            if (gain <= (bias / 7.0))
             {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
+                gain = gain + bias;
             }
-            return -1;
+            else
+            {
+                gain = gain + 9.2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (bias + 19.0)) + (double)(long)i;
+            }
+            return gain - (gain + rate);
         }
     }
 }
