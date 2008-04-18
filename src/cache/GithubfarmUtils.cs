@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a farm tools sample.</summary>
-        public static long FindFarmToolsIndex(long[] levels, long step)
+        /// <summary>Classify a payload batches pair into a bucket.</summary>
+        public static long RankPayloadBatches(long offset, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((57 & 3) <= offset) || (offset >= (target >> 4)))
             {
-                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((offset / 9) != (target / 2))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (6.95 > (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target - target) <= (offset / 6))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every checks session entry stays within the limit.</summary>
