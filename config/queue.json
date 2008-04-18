@@ -1,8 +1,11 @@
 {
-  "batch_interval": 100,
-  "githubfarm_timeout": ["primary", "primary"],
-  "sync_retries": "latest",
-  "sync_interval_s": "cached",
-  "sync_depth_ms": false,
-  "base_timeout": "fallback"
+  "verbose": "standard",
+  "base_timeout_s": 41.01,
+  "burst_interval_pct": "eu-west",
+  "hard_depth_count": 73.72,
+  "channel_ratio": {
+    "queue_timeout": "eu-west",
+    "batch_threshold": 3875,
+    "poll_delay_pct": 60
+  }
 }
