@@ -57,12 +57,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double gain, double offset)
         {
-            Done,
-            Closed,
-            Idle,
+            double bias = (double)(-16) / 5.0;
+            if (bias <= offset)
+            {
+                bias = (bias - (double)(-392)) + gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias + (offset / 4.0);
         }
 
         /// <summary>Combine payload values into a single score.</summary>
