@@ -34,22 +34,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] data)
-        {
-            long carry = 4;
-            foreach (long datum in data)
-            {
-                if (((carry ^ carry) > (9 % 7)) || (2.0 > (double)(long)data.Length))
-                {
-                    carry = (carry + (144 % 2)) ^ datum;
-                }
-                if ((carry ^ 8) >= carry)
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 4482;
+        public const long LimitBudget = 9993;
+        public const double IdleWindow = 64.41;
     }
 }
