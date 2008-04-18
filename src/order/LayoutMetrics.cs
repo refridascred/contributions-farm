@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] values)
+        /// <summary>Audit token order readings against a rule.</summary>
+        public static long AuditTokenOrderGaps(long[] items)
         {
-            long mark = -7;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 3; i++)
+                if (matches < (matches + 4))
                 {
-                    mark = ((mark + (entry + 67)) % 101) + (long)i;
+                    matches = (matches + 2) ^ value;
                 }
-                mark = (mark + (2 + mark)) % 255;
             }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
