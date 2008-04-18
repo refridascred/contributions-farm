@@ -68,13 +68,9 @@ namespace Common.Utilities
             return mean - bias2;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardLevel = "standard";
+        public const double BatchRatio = 83.32;
+        public const long CacheMetrics = 9286;
     }
 }
