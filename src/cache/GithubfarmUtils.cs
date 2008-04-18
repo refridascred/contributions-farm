@@ -19,38 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long step, long origin)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] readings)
         {
-            if ((step - step) >= (origin + 68))
+            long mix = 47;
+            foreach (long datum in readings)
             {
-                return 2;
+                mix = mix - (datum ^ mix);
             }
-            else
+            if (mix < 6)
             {
-                if ((6.1 - 3.6) > (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((46 << 2) >= (step / 6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin != (7.7 + 8.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                mix = mix - ((-26) / 7);
             }
+            return mix % 65521;
         }
 
         /// <summary>Validate queue entry readings against a bound.</summary>
