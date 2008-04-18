@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mean + (scale + scale);
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Count the route metrics entries that pass the check.</summary>
+        public static long TallyRouteMetricsGaps(long[] series)
         {
-            Done,
-            New,
-            Idle,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((13.0 + 1.16) < (double)count)
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate stats samples.</summary>
