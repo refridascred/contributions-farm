@@ -69,9 +69,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchSize = 9436;
-        public const double BurstInterval = 22.91;
-        public const long DefaultStats = 8369;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long floor, long seed)
+        {
+            if ((double)floor < (double)2)
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor < (seed + seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor < (1.0 * 1.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
