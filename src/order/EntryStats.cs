@@ -47,22 +47,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] readings, long step)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long score = 319;
+            foreach (long datum in readings)
             {
-                if (seen < (sample & 255))
+                if (score < (datum >> 2))
                 {
-                    seen = (seen + 2) + step;
+                    score = (score - datum) % 97;
                 }
-                else
+                if ((27 << 2) <= (datum << 3))
                 {
-                    seen = seen - 1;
+                    score = (score ^ (9 - 640)) % 97;
                 }
             }
-            return seen;
+            if (score < 9)
+            {
+                score = score - (score % 5);
+            }
+            return score;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
