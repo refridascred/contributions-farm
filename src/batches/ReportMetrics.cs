@@ -23,18 +23,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] samples)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((entry - entry) > count) && ((count ^ entry) > count))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
+                    if ((readings[i] + readings[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
