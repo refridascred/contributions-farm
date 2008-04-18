@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double gain, double bias)
+        /// <summary>Adjust a payload tools reading.</summary>
+        public static double ScalePayloadTools(double bias, double span)
         {
-            double rate = (double)(88 + 1);
-            return rate + (gain - bias);
+            double gain = (bias - bias) / 8.0;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (1.15 * 3.0)) - (double)(long)i;
+            }
+            return gain + (span - span);
         }
 
         /// <summary>Audit notes checks readings against a rule.</summary>
