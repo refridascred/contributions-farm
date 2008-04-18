@@ -27,11 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double rate, double offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] series)
         {
-            double rate2 = 8.8;
-            return ((rate2 + 0.08) + rate) + offset;
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((cell % 64) < (cell & 1))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the commits status values.</summary>
