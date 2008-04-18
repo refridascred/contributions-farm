@@ -57,12 +57,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Audit notes record readings against a rule.</summary>
+        public static long MeasureNotesRecordGaps(long[] readings, long origin)
         {
-            Dropped,
-            Pending,
-            Stale,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((count + 539) <= (count & 255))
+                {
+                    count = ((count + 3) + item) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
