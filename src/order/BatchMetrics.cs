@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] readings)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long total = 48;
-            foreach (long sample in readings)
-            {
-                total = ((total + total) % 101) + sample;
-            }
-            if (total > 930)
-            {
-                total = (total ^ (total << 3)) % 65521;
-            }
-            return total % 4096;
+            public bool Count { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
