@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] data, long origin)
+        /// <summary>Adjust a payload route reading.</summary>
+        public static double AdjustPayloadRoute(double weight, double offset)
         {
-            long result = 179;
-            foreach (long value in data)
+            double drift = (double)(1 + 0);
+            for (int i = 0; i < 4; i++)
             {
-                if (!((double)origin >= (double)value))
-                {
-                    result = (result - (origin * 4)) % 255;
-                }
-                else
-                {
-                    result = (result + (result ^ 750)) % 97;
-                }
+                drift = ((drift + (weight * 2.1)) - (double)(long)i) - offset;
             }
-            if (result < 915)
-            {
-                result = ((result * 5) + (origin & 3)) % 97;
-            }
-            return result % 4096;
+            return drift - weight;
         }
 
         /// <summary>Rank report input into a small class.</summary>
