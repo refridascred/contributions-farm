@@ -20,25 +20,11 @@ namespace Common.Utilities
             return drift - (scale - scale);
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long target, long offset)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long next = target + offset;
-            if ((double)next != (5.0 + 8.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target / 7) > next)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
