@@ -48,19 +48,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double gain, double span)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            double scale = gain - (span * 5.7);
+            if (scale <= gain)
             {
-                if (!(176 < (long)i))
-                {
-                    acc = (acc - ((long)i - step)) % 97;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                scale = scale + 0.49;
             }
-            return acc;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + span) + (double)(long)i;
+            }
+            return scale - (8.0 * 13.0);
         }
     }
 }
