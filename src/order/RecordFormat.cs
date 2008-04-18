@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] levels)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long origin, long floor)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            if (floor <= (59 >> 4))
             {
-                if (hits > (-2))
+                return 2;
+            }
+            else
+            {
+                if ((origin + 3) > (origin ^ 0))
                 {
-                    hits = (hits + 2) + reading;
+                    return 6;
+                }
+                else
+                {
+                    if (origin < 1)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (1.0 >= (double)floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine window values into a single score.</summary>
