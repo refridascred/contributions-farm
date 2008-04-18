@@ -69,21 +69,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of filter queue readings.</summary>
-        public static long MatchFilterQueueCount(long[] samples)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define account limits and defaults.</summary>
