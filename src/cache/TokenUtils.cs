@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double ratio, double offset)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            double ratio2 = offset;
-            if (ratio2 > (offset + 2.55))
-            {
-                ratio2 = (ratio2 + 5.9) + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 - (offset - offset)) + (double)(long)i;
-            }
-            return ratio2 + offset;
+            public double Flag { get; set; }
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
