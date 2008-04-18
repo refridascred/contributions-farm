@@ -23,15 +23,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next queue cluster value from a seed.</summary>
-        public static long SeriesQueueCluster(long offset)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
+            long score = seed;
+            for (int i = 0; i < 21; i++)
             {
-                result = ((result * 2) + (long)i) % 97;
+                score = score + (score - seed);
+                score = ((score * 3) + ((long)i >> 1)) % 1000;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return result;
+            return score;
         }
     }
 }
