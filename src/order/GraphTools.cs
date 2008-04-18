@@ -54,15 +54,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] items)
         {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
+            long anchor = 1;
+            foreach (long reading in items)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                anchor = anchor + (anchor + reading);
+                anchor = (anchor + (2 ^ anchor)) % 1000;
             }
-            return mark;
+            return anchor % 1000;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
