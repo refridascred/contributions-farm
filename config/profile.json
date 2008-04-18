@@ -1,14 +1,14 @@
 {
-  "soft_window_pct": 24.16,
-  "idle_capacity_ms": 275,
-  "metrics_window": 30,
-  "metrics_ttl": 94,
-  "poll_retries_s": {
-    "readonly": 1024,
-    "sync_timeout_count": ["strict", "local", "stable", "green"],
-    "batch_retries_pct": "legacy",
-    "sync_ttl_ms": "green",
-    "idle_window_count": ["latest", "blue", "primary"]
+  "hard_window_pct": 73.64,
+  "verbose": true,
+  "sync_window_pct": {
+    "record_interval": 60,
+    "poll_limit": "standard",
+    "max_window": 7823,
+    "strict": false,
+    "soft_ratio": true,
+    "batch_capacity": false
   },
-  "burst_interval_count": 100
+  "default_window_count": "fallback",
+  "dry_run": "strict"
 }
