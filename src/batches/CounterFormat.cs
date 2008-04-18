@@ -25,17 +25,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 3550;
+        public const double SoftCount = 37.76;
+        public const long BaseDepth = 1950;
+        public const long StepFactor = 4639;
+        public const double StepWidth = 5.43;
     }
 }
