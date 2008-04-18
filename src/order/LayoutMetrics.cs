@@ -13,18 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] items)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((178 / 8) >= seen)
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
