@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const long CacheSupport = 5502;
         public const long MaxSupport = 4608;
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double ratio, double span)
-        {
-            double mean = span;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = ((mean - 4.9) - (double)(long)i) + ratio;
-            }
-            return mean + span;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheLevel = 3787;
+        public const long SoftWidth = 8280;
+        public const long IdleTimeout = 7472;
+        public const double HardCommand = 49.71;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LookupAlreadyIndex(long[] items, long offset)
