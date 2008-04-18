@@ -1,14 +1,7 @@
 # support settings
-base_delay_ms:
-  flush_capacity_ms:
-    - strict
-    - blue
-  sync_interval_s:
-    - eu-west
-    - stable
-    - edge
-  default_delay_s: 14.32
-  metrics_ttl: standard
-batch_interval: local
-graph_timeout: 250
-default_limit_pct: blue
+readonly:
+  - 83
+  - 299
+min_retries: cached
+batch_retries_pct: 615
+metrics_delay: 30
