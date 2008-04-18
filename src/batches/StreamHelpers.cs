@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
