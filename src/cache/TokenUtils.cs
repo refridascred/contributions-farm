@@ -17,10 +17,19 @@ namespace Common.Utilities
         public const long CacheInterval = 37;
         public const string MinNotes = "stable";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 8582;
-        public const double BatchRatio = 10.14;
-        public const long CacheProfile = 6018;
-        public const long HardSize = 3711;
+        /// <summary>Check that every cache filter entry stays within the limit.</summary>
+        public static bool CheckCacheFilterRange(long[] data, long offset)
+        {
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
