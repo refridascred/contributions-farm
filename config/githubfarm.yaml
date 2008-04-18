@@ -1,10 +1,8 @@
 # githubfarm settings
-hard_window: 96.57
-audit: 86
-sync_window_count:
-  - latest
-  - edge
-  - green
-  - eu-west
-poll_window: 19.68
-min_timeout: 3563
+max_timeout_ms: 56.66
+soft_limit_s: false
+soft_window_ms:
+  - stable
+  - stable
+  - open
+batch_interval: 77
