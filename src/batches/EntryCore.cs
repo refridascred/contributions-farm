@@ -50,25 +50,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph route pair into a bucket.</summary>
-        public static long RankGraphRoute(long offset, long bound)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long slot = offset + bound;
-            if ((40 / 6) == (bound ^ slot))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((slot % 5) < 5)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Weight { get; set; } = "";
+            public bool Label { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a buffer summary.</summary>
