@@ -34,19 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batches layout value.</summary>
-        public static double BlendBatchesLayout(double weight, double span)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] levels)
         {
-            double drift = (double)46 + span;
-            if (drift > (weight * 1.79))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + (double)6;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (double)5;
-            }
-            return drift - (span / 7.0);
+            return hits;
         }
     }
 }
