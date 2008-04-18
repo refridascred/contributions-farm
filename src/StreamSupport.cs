@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Idle,
-            Dropped,
-            Closed,
-            Done,
-            Synced,
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of editor account readings.</summary>
