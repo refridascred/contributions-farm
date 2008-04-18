@@ -20,21 +20,19 @@ namespace Common.Utilities
             return load - (bias - bias);
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] values)
+        /// <summary>Validate route entry readings against a bound.</summary>
+        public static bool VerifyRouteEntryRange(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample != seed)
                 {
-                    if ((values[i] + values[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Adjust a tools reading.</summary>
