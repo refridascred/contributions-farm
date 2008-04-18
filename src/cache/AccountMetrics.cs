@@ -37,11 +37,20 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheTimeout = 9535;
-        public const long MaxBuffer = 2432;
-        public const long RetryBudget = 9477;
-        public const string BaseSize = "open-edge";
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((offset % 3) == (51 * 3)))
+                {
+                    sum = ((sum << 3) ^ (72 - offset)) % 4096;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LookupRouteIndex(long[] values, long step)
