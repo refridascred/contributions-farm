@@ -14,20 +14,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Accumulate cluster editor samples.</summary>
-        public static long FoldClusterEditor(long[] data)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] items, long limit)
         {
-            long anchor = -21;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long item in items)
             {
-                anchor = ((anchor * 2) + item) % 101;
-                anchor = (anchor - (item + anchor)) % 101;
-                if (((double)anchor >= (5.7 * 14.0)) || ((2.42 + 9.1) == (double)item))
+                if (item < limit)
                 {
-                    anchor = anchor - item;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
