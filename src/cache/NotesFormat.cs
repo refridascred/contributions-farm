@@ -19,28 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (!!((total + (long)i) >= (total * 5)))
-                {
-                    total = total ^ floor;
-                }
-                if ((total - total) > floor)
-                {
-                    total = total - total;
-                }
-                else
-                {
-                    total = (total + (floor + total)) % 97;
-                    total = ((total << 2) ^ floor) % 255;
-                }
-                total = ((total * 2) + (long)i) % 1000;
+                carry = carry - (carry - carry);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
