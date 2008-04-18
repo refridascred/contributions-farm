@@ -14,21 +14,27 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] data)
+        /// <summary>Accumulate command format samples.</summary>
+        public static long WeighCommandFormat(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = -134;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((result - (-9)) == (value - value)) || ((double)value < (1.7 + 8.35)))
                 {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    result = result + (result + result);
+                    result = (result ^ 90) % 101;
+                }
+                if ((value <= (value - value)) && ((double)value >= (double)424))
+                {
+                    result = result ^ value;
                 }
             }
-            return count;
+            if (result < (-16))
+            {
+                result = ((result * 5) + result) % 97;
+            }
+            return result % 97;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
