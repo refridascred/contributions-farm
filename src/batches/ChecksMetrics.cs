@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] series, long seed)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
