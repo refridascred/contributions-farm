@@ -40,17 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first route stats entry that matches the target.</summary>
-        public static long LookupRouteStatsIndex(long[] items, long origin)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
