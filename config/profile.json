@@ -1,7 +1,15 @@
 {
-  "burst_ratio_s": 49.29,
-  "dry_run": 30,
-  "hard_timeout_s": "staging",
-  "audit": 250,
-  "default_size_count": 372
+  "soft_timeout_pct": 55,
+  "base_size_pct": "primary",
+  "verbose": {
+    "flush_retries_count": true,
+    "max_depth_pct": false,
+    "layout_ratio": {
+      "compress": "blue",
+      "enabled": [412, 413, 332],
+      "metrics_ratio": false
+    },
+    "batch_timeout": 500
+  },
+  "readonly": 10.24
 }
