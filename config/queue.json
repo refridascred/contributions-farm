@@ -1,12 +1,17 @@
 {
-  "strict": {
-    "readonly": "legacy",
-    "route_threshold": 1024,
-    "burst_delay": true,
-    "flush_ratio_pct": 7144
+  "max_ratio": ["stable", "fallback"],
+  "persist": {
+    "base_capacity": 6305,
+    "verbose": "cached",
+    "soft_size_s": 100,
+    "burst_limit_count": 95.75
   },
-  "base_interval_count": "blue",
-  "sync_threshold_ms": "local",
-  "base_depth_s": "strict",
-  "sync_ratio": "local"
+  "record_capacity": "green",
+  "layout_retries": 49.82,
+  "cluster_retries": "legacy",
+  "max_limit": {
+    "compress": "staging",
+    "idle_depth": "local",
+    "context_retries": "stable"
+  }
 }
