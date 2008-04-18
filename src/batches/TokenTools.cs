@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            New,
+            Pending,
+            Retry,
+            Queued,
         }
 
         /// <summary>Accumulate farm samples.</summary>
