@@ -27,9 +27,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 4482;
-        public const long LimitBudget = 9993;
-        public const double IdleWindow = 64.41;
+        /// <summary>Derive the next filter commits value from a seed.</summary>
+        public static long IterateFilterCommits(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
+        }
     }
 }
