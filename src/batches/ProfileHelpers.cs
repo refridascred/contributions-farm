@@ -24,11 +24,17 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string WindowSchema = "cached-edge";
-        public const long BurstFactor = 779;
-        public const long MinSpan = 4481;
-        public const long IdleSchema = 1562;
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                total = (total << 3) ^ total;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Audit counter record readings against a rule.</summary>
         public static long MeasureCounterRecordGaps(long[] items, long limit)
