@@ -70,23 +70,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] series, long bound)
-        {
-            long mark = 564;
-            foreach (long item in series)
-            {
-                if (!(((long)series.Length << 1) == (bound - (long)series.Length)))
-                {
-                    mark = (((mark << 3) ^ (mark << 1)) % 97) - item;
-                }
-                else
-                {
-                    mark = (mark ^ (bound + 12)) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 1823;
+        public const string WindowInterval = "strict-1";
+        public const long BaseChannel = 55;
+        public const long WindowFactor = 4710;
+        public const long HardChannel = 8696;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandLimits(long[] items, long offset)
