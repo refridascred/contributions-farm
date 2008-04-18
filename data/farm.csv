@@ -1,7 +1,10 @@
-id,score,rank,active,token
-1,strict,open,open,83.45
-2,42.53,16.95,fallback,fallback
-3,60.46,latest,557,947
-4,blue,662,edge,907
-5,438,678,local,30.67
-6,874,137,blue,867
+id,state,active,rank
+1,fallback,429,green
+2,509,cached,54.6
+3,202,129,standard
+4,54.26,strict,858
+5,local,77.09,12.27
+6,edge,44.19,852
+7,standard,blue,green
+8,607,standard,latest
+9,38.89,52.23,39.26
