@@ -28,19 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] readings, long bound)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Stale,
+            Pending,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
