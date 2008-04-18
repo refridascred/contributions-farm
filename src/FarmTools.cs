@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 2764;
-        public const double SoftBatches = 30.87;
-        public const long IdleBatches = 856;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleFactor = 97.34;
+        public const long CacheSchema = 4165;
+        public const double RetrySchema = 17.94;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
