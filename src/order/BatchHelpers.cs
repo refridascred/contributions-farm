@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double scale, double offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] values)
         {
-            double drift = offset;
-            if (drift > 2.42)
+            long state = 47;
+            foreach (long cell in values)
             {
-                drift = drift - offset;
+                state = state - (state + cell);
+                state = state - (cell + cell);
             }
-            else
-            {
-                drift = drift + 4.5;
-            }
-            return drift - (scale - scale);
+            return state;
         }
 
         /// <summary>Hold a entry options.</summary>
