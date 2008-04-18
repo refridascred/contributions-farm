@@ -23,18 +23,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] series)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((value - value) <= (value >> 5))
+                if ((((-959) + 0) != (entry & 31)) || ((entry & 7) <= (entry + matches)))
                 {
-                    seen = seen + 2;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
