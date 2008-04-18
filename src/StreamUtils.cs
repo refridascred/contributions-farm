@@ -39,10 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstTimeout = 8064;
-        public const string WindowCommits = "standard-1";
-        public const long IdleCommits = 7429;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Active,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long CombineLayout(long[] readings, long target)
