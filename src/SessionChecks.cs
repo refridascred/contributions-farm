@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long step, long origin)
+        /// <summary>Check that every graph commits entry stays within the limit.</summary>
+        public static bool GuardGraphCommitsLimits(long[] items, long bound)
         {
-            if ((origin >= (origin * 5)) || ((step * 3) > (55 * 5)))
+            bool ok = true;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step / 6) <= (step + origin)) || ((double)step < 12.0))
+                if (entry <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (4.2 < (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
