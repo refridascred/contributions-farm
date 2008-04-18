@@ -1,5 +1,6 @@
 {
-  "compress": "primary",
-  "sync_limit_s": ["strict", "eu-west", "stable"],
-  "enabled": 23
+  "commits_capacity": 19.95,
+  "burst_depth_pct": [132, 213],
+  "retry_delay": 25,
+  "poll_size_ms": 46
 }
