@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a already payload reading.</summary>
-        public static double ProjectAlreadyPayload(double ratio, double span)
-        {
-            double ratio2 = ratio;
-            if (ratio2 < (span * 3.3))
-            {
-                ratio2 = ratio2 + (double)184;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = ratio2 - (double)(long)i;
-            }
-            return ratio2 - ratio;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 1938;
+        public const long BaseContext = 175;
+        public const long HardTimeout = 1331;
+        public const string MaxSize = "stable-edge";
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
