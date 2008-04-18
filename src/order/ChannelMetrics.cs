@@ -23,12 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 6032;
-        public const double WindowStats = 50.13;
-        public const long WindowScore = 3128;
-        public const long IdleStats = 9584;
-        public const double LimitDepth = 14.08;
+        /// <summary>Derive the next queue route value from a seed.</summary>
+        public static long RollQueueRoute(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((floor % 8) < ((long)i & 63)))
+                {
+                    mark = ((mark << 2) ^ 576) % 65521;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double ProjectMetrics(double gain, double offset)
