@@ -94,19 +94,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] samples, long target)
+        /// <summary>Accumulate format contributi samples.</summary>
+        public static long TotalFormatContributi(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long acc = 589;
+            foreach (long cell in values)
             {
-                if (entry != target)
+                for (int i = 0; i < 12; i++)
                 {
-                    ready = false;
-                    break;
+                    acc = (acc ^ (step << 1)) - cell;
+                    acc = ((acc * 3) + ((long)i - (long)i)) % 255;
                 }
+                acc = (acc - acc) % 1000;
             }
-            return ready;
+            return acc;
         }
     }
 }
