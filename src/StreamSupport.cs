@@ -13,21 +13,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count commits counter pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCounterCount(long[] items)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Classify a already command pair into a bucket.</summary>
