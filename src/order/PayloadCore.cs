@@ -15,18 +15,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] samples)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((count + reading) <= 31)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Queued,
+            Pending,
+            Ready,
+            Idle,
         }
 
         /// <summary>Blend two tools measurements.</summary>
