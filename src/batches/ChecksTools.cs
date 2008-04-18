@@ -44,26 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] levels, long seed)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long state = 122;
-            foreach (long reading in levels)
-            {
-                if ((state + seed) == (state ^ reading))
-                {
-                    state = state - (seed >> 2);
-                }
-                if (((seed % 3) < (seed & 1)) || ((long)levels.Length >= (seed / 2)))
-                {
-                    break;
-                }
-            }
-            if (state < 369)
-            {
-                state = (state + (49 * 4)) % 101;
-            }
-            return state % 97;
+            Closed,
+            Draft,
+            Active,
         }
     }
 }
