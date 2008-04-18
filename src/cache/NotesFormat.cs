@@ -42,9 +42,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string RetryLayout = "standard-edge";
-        public const long HardLayout = 2076;
-        public const long BatchBudget = 1723;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((double)state != (1.0 + 4.0)) && (offset <= (49 >> 3)))
+                {
+                    state = (state - (long)i) % 255;
+                }
+                state = (state << 2) ^ (state + (long)i);
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
