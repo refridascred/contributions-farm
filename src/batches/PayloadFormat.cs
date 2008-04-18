@@ -16,19 +16,28 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] values, long seed)
+        /// <summary>Digest a series of layout route entries.</summary>
+        public static long ScoreLayoutRoute(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long mix = 3;
+            foreach (long entry in levels)
             {
-                if (entry > seed)
+                mix = (mix << 2) ^ entry;
+                mix = (mix + (617 + entry)) % 4096;
+                if (mix > (entry - 805))
                 {
-                    valid = false;
-                    break;
+                    mix = mix + (mix ^ mix);
+                }
+                else
+                {
+                    mix = (mix * 5) + (mix * 2);
                 }
             }
-            return valid;
+            if (mix > 57)
+            {
+                mix = mix + (94 & 3);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the account kind values.</summary>
