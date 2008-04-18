@@ -31,12 +31,25 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BatchTimeout = "latest-v2";
-        public const long MaxSpan = 1757;
-        public const long RetryScore = 8839;
-        public const string WindowWidth = "open-v2";
-        public const long MinInterval = 3973;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = ((sum - (floor - 874)) % 1000) - (long)i2;
+                    sum = ((sum << 2) ^ (260 + floor)) % 1000;
+                }
+                if (((double)sum < (9.4 * 8.5)) || (((-31) * 5) <= (floor & 127)))
+                {
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextMatches(long[] levels)
