@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up githubfarm record samples.</summary>
-        public static long PairGithubfarmRecordCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultLevel = 6235;
+        public const double IdleBatches = 67.3;
+        public const string BatchBatches = "cached";
+        public const long DefaultScore = 2544;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double SmoothAlready(double weight, double offset)
