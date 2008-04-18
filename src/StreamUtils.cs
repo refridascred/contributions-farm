@@ -51,25 +51,31 @@ namespace Common.Utilities
         public const long MaxRatio = 19;
         public const long SoftRatio = 3079;
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long bound, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
+            if (bound > (seed % 10))
             {
-                if ((35 % 12) > ((long)i ^ 9))
+                return 3;
+            }
+            else
+            {
+                if (((0 + seed) <= seed) && ((seed + bound) > 70))
                 {
-                    carry = ((carry << 3) ^ (14 << 3)) % 101;
-                    carry = ((carry << 3) ^ (carry - bound)) % 1000;
+                    return 4;
                 }
                 else
                 {
-                    carry = carry + (bound / 5);
+                    if (((double)bound < (2.03 - 17.0)) || ((double)6 >= (double)bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
-                carry = ((carry << 2) ^ ((long)i - bound)) % 101;
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
