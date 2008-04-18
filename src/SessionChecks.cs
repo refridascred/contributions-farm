@@ -28,17 +28,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of account schema entries.</summary>
-        public static long TotalAccountSchema(long[] series, long bound)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long state = 227;
-            foreach (long reading in series)
-            {
-                state = (state * 4) + bound;
-                state = (state - (reading % 64)) % 1000;
-                state = (state * 2) + (reading + state);
-            }
-            return state % 4096;
+            Stale,
+            Idle,
+            Paused,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
