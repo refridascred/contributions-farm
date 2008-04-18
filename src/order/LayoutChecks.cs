@@ -59,18 +59,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many route already samples are out of range.</summary>
-        public static long TallyRouteAlreadyGaps(long[] levels)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long target, long limit)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long span = target - limit;
+            if ((span - 628) >= limit)
             {
-                if ((9.45 > (double)seen) || ((datum >> 3) == (seen >> 4)))
+                return 2;
+            }
+            else
+            {
+                if ((30 >= (target + target)) || (limit < ((-28) - limit)))
                 {
-                    seen = seen + 3;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
