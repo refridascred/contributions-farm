@@ -36,23 +36,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] series, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] levels)
         {
-            long result = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                result = ((result * 2) + result) % 255;
-                if (!(step < item))
+                if (((-580) - matches) == (190 + reading))
                 {
-                    result = (result ^ step) % 101;
-                }
-                if (!((816 + item) != (item << 2)))
-                {
-                    result = (result << 2) ^ (item + result);
+                    matches = matches + 1;
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
