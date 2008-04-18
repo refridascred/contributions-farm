@@ -30,17 +30,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] samples, long step)
+        /// <summary>Check that every account metric entry stays within the limit.</summary>
+        public static bool VerifyAccountMetricLimits(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (samples[i] < step)
+                if (sample <= origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
