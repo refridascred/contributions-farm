@@ -36,16 +36,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double scale, double span)
-        {
-            double bias = scale;
-            if (bias < scale)
-            {
-                bias = (bias + (double)(-234)) - span;
-            }
-            return bias + (double)22;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheInterval = 0.23;
+        public const long CacheGithubfarm = 6344;
+        public const double SoftGithubfarm = 91.99;
+        public const long StepGithubfarm = 6132;
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
