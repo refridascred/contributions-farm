@@ -74,17 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] series, long target)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
