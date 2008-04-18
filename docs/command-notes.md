@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for window live in the config folder and can be overridden per environment.
-Run the commits check before changing any command limits.
+A entry that stays idle for too long is moved to the metric list.
+Keep route and filter names short and lowercase.
 
-Each stream is validated before it reaches the cluster queue.
-The token helpers are pure functions, so they are safe to call from any thread.
-When a commits fails, the report handler retries a few times before giving up.
+The format helpers are pure functions, so they are safe to call from any thread.
+A account that stays idle for too long is moved to the schema list.
+Each stream is validated before it reaches the editor queue.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Keep batches values small
-- Document new schema fields
-- Validate metrics input early
+- Document new farm fields
+- Review layout limits each release
+- Prefer githubfarm defaults
+- Validate checks input early
