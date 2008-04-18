@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of counter record readings.</summary>
-        public static long MatchCounterRecordCount(long[] levels)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
