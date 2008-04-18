@@ -55,21 +55,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Match up support tools samples.</summary>
-        public static long PairSupportToolsCount(long[] items)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry << 2) ^ floor) % 1000;
+                carry = (carry + ((long)i + carry)) % 97;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
     }
 }
