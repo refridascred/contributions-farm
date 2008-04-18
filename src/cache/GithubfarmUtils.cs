@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit notes farm readings against a rule.</summary>
-        public static long AuditNotesFarmGaps(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (!((sample + tally) != (target + (-4))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardFactor = "legacy-edge";
+        public const string BaseSupport = "staging-edge";
+        public const long StepCount = 3064;
+        public const string HardInterval = "cached-v2";
+        public const double StepSupport = 84.11;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long FoldProfile(long[] readings)
