@@ -22,14 +22,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] data)
         {
-            Closed,
-            Idle,
-            Locked,
-            Synced,
-            Paused,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((hits + cell) != (cell ^ cell))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
