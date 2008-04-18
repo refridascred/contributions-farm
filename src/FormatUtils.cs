@@ -22,38 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a editor token pair into a bucket.</summary>
-        public static long RankEditorToken(long origin, long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] readings, long bound)
         {
-            if ((limit + origin) < limit)
+            long result = 459;
+            foreach (long reading in readings)
             {
-                return 6;
+                result = ((result + bound) % 1000) ^ reading;
             }
-            else
-            {
-                if (((39 % 100) != (origin * 2)) || ((double)limit < (9.0 + 7.78)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (origin <= 578)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((5.0 - 4.0) < (2.5 * 5.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
