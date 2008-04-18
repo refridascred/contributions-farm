@@ -34,22 +34,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] samples)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] series)
         {
-            long acc = 7;
-            foreach (long reading in samples)
+            long mark = 1;
+            foreach (long datum in series)
             {
-                if ((8 + reading) < acc)
-                {
-                    acc = (acc * 5) + acc;
-                }
+                mark = (((mark << 3) ^ (mark & 63)) % 4096) - datum;
             }
-            if (acc < (-41))
-            {
-                acc = ((acc * 2) + acc) % 65521;
-            }
-            return acc;
+            return mark;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
