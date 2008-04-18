@@ -26,10 +26,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowCount = 6337;
-        public const long BatchStats = 9267;
-        public const long WindowStats = 4761;
-        public const long SoftScore = 9444;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] series, long seed)
+        {
+            long acc = 83;
+            foreach (long item in series)
+            {
+                acc = (acc << 3) ^ (1 + item);
+                if (acc <= seed)
+                {
+                    acc = (acc * 5) + (acc / 8);
+                }
+                else
+                {
+                    acc = acc - (acc + item);
+                }
+            }
+            return acc % 4096;
+        }
     }
 }
