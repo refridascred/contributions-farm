@@ -15,19 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] readings, long limit)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long target)
         {
-            long acc = 513;
-            foreach (long entry in readings)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                acc = (((acc << 3) ^ (acc & 127)) % 255) - limit;
-                if ((entry ^ (long)readings.Length) != (60 - acc))
-                {
-                    acc = (acc + (acc - entry)) % 101;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Accumulate notes samples.</summary>
