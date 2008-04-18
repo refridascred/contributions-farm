@@ -34,23 +34,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double rate, double bias)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] levels)
         {
-            double gain = 16.0;
-            if (gain <= (bias / 7.0))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                gain = gain + bias;
+                if ((double)hits != (1.6 * 2.0))
+                {
+                    hits = (hits + 3) ^ item;
+                }
             }
-            else
-            {
-                gain = gain + 9.2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (bias + 19.0)) + (double)(long)i;
-            }
-            return gain - (gain + rate);
+            return hits;
         }
     }
 }
