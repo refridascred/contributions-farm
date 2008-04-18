@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double scale, double offset)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            double load = (double)33 - scale;
-            for (int i = 0; i < 5; i++)
-            {
-                load = ((load - scale) + (double)(long)i) - offset;
-            }
-            return load - (load * 1.98);
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
