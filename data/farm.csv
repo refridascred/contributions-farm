@@ -1,6 +1,8 @@
-id,label,count,level
-1,966,613,188
-2,284,74.1,154
-3,74.46,primary,15.77
-4,14.06,368,19.36
-5,blue,662,open
+id,active,owner,region,ratio
+1,edge,617,edge,fallback
+2,60.81,786,cached,85.98
+3,711,primary,fallback,102
+4,140,883,strict,primary
+5,primary,473,open,fallback
+6,blue,66,508,green
+7,primary,local,fallback,primary
