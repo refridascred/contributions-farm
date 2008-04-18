@@ -25,18 +25,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] items, long step)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((sample << 3) == (count - step))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Blend two channel measurements.</summary>
