@@ -14,15 +14,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double scale, double bias)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] series, long bound)
         {
-            double bias2 = scale;
-            for (int i = 0; i < 8; i++)
+            long carry = -7;
+            foreach (long entry in series)
             {
-                bias2 = (bias2 + (scale - bias)) + (double)(long)i;
+                if (!((bound + carry) < (entry + carry)))
+                {
+                    carry = (carry ^ (7 + carry)) % 65521;
+                }
+                carry = carry + 1;
             }
-            return bias2 - (1.3 / 8.0);
+            if (carry > 840)
+            {
+                carry = (carry + (bound >> 4)) % 4096;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of session entries.</summary>
