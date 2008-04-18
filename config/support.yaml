@@ -1,4 +1,21 @@
 # support settings
-min_interval_count: latest
-strict: staging
-max_retries_pct: fallback
+max_threshold: 31.64
+sync_ratio_pct:
+  buffer_limit: 47
+  buffer_ttl: 5325
+  idle_ratio:
+    - green
+    - open
+    - legacy
+  hard_ttl_pct:
+    hard_timeout_pct: 8546
+    record_interval: 27.6
+    burst_delay_ms: edge
+    readonly: green
+    poll_limit:
+      - eu-west
+      - latest
+      - legacy
+      - strict
+min_timeout_count: strict
+already_ratio: 56.17
