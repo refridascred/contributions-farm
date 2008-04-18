@@ -28,12 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] data, long seed)
         {
-            Idle,
-            Stale,
-            Pending,
+            long anchor = 8;
+            foreach (long item in data)
+            {
+                if ((item <= (seed / 8)) && ((double)seed <= (2.6 - 4.48)))
+                {
+                    anchor = (anchor * 3) + 49;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
