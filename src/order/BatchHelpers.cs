@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] items)
         {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
-            public long Limit { get; set; }
+            long state = 60;
+            foreach (long cell in items)
+            {
+                if ((cell + state) <= ((-6) / 3))
+                {
+                    state = (state - (state - state)) % 255;
+                }
+            }
+            return state;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
