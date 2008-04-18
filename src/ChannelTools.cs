@@ -24,24 +24,9 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Rank report metrics input into a small class.</summary>
-        public static long RankReportMetrics(long offset, long floor)
-        {
-            if ((floor - offset) <= floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)floor != (4.0 + 18.0)) && (2 <= (181 + floor)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultSpan = 751;
+        public const long BatchCluster = 5302;
+        public const string HardWidth = "staging-v2";
     }
 }
