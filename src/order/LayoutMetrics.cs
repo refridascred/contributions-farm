@@ -16,11 +16,38 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long target, long target2)
         {
-            public bool Mode { get; set; }
-            public double Region { get; set; }
+            if (((double)target2 != (4.7 * 1.14)) || ((0.1 + 6.86) > (double)target))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((target2 >> 3) >= target2) || ((target2 - target) >= (56 % 7)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target * 5) > (target + target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target + target) >= (target2 + target)) && ((target - target2) >= 506))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
