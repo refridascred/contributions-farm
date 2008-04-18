@@ -25,12 +25,22 @@ namespace Common.Utilities
             return bias2 - (1.3 / 8.0);
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] readings, long origin)
         {
-            public string Count { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Label { get; set; }
+            long carry = 38;
+            foreach (long reading in readings)
+            {
+                if (!((double)reading >= (7.0 + 4.7)))
+                {
+                    carry = ((carry << 3) ^ (154 << 2)) % 65521;
+                }
+            }
+            if (carry < 6)
+            {
+                carry = (carry << 2) ^ origin;
+            }
+            return carry % 1000;
         }
     }
 }
