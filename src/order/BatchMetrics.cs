@@ -63,17 +63,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first support route entry that matches the target.</summary>
-        public static long FindSupportRouteIndex(long[] items, long bound)
+        /// <summary>Compare every pair of filter queue readings.</summary>
+        public static long MatchFilterQueueCount(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] < bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
