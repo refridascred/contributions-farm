@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Measure how many counter filter samples are out of range.</summary>
+        public static long TallyCounterFilterGaps(long[] data)
         {
-            New,
-            Dropped,
-            Draft,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((79 ^ value) <= (43 - value))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the layout class values.</summary>
