@@ -74,13 +74,22 @@ namespace Common.Utilities
         public const string SoftSchema = "primary";
         public const long RetrySchema = 8103;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] items, long bound)
         {
-            New,
-            Draft,
-            Active,
-            Synced,
+            long carry = 971;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    carry = (carry + (18 - bound)) - (long)i;
+                }
+                if ((carry + bound) >= (78 - item))
+                {
+                    carry = carry - (2 * 2);
+                }
+            }
+            return carry;
         }
     }
 }
