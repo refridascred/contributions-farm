@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate editor account samples.</summary>
-        public static long CombineEditorAccount(long[] samples, long seed)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] data, long bound)
         {
-            long mix = 31;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix << 2) ^ seed;
-                mix = (mix * 4) + (datum & 63);
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
