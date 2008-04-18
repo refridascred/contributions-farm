@@ -38,15 +38,19 @@ namespace Common.Utilities
         public const long HardSize = 4659;
         public const long StepCounter = 3620;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] values, long seed)
         {
-            long score = step;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if (item >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Rank githubfarm batch input into a small class.</summary>
