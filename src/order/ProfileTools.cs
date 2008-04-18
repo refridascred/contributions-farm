@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] series, long seed)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long sum = 264;
-            foreach (long value in series)
-            {
-                sum = ((sum << 3) ^ ((long)series.Length * 5)) % 255;
-                if ((sum << 2) != (68 >> 1))
-                {
-                    sum = ((sum * 4) + sum) % 97;
-                }
-                else
-                {
-                    sum = (sum ^ (seed - sum)) % 255;
-                    sum = ((sum << 3) ^ (sum << 2)) % 4096;
-                }
-                if ((seed % 7) == (160 ^ value))
-                {
-                    sum = (sum - (839 << 1)) % 255;
-                }
-                if (seed > (seed + value))
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
+            Locked,
+            Failed,
+            Retry,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Scale a report tools figure with a bias.</summary>
