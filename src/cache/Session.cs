@@ -60,15 +60,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double bias, double floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            double bias2 = (double)(45 % 7);
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (((bias2 + bias2) + (double)(long)i) + bias) + floor;
-            }
-            return bias2 + (4.49 / 4.0);
+            Paused,
+            Closed,
+            Locked,
+            Idle,
         }
     }
 }
