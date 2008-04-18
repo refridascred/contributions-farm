@@ -61,12 +61,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long target, long offset)
         {
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            if ((double)target < 4.54)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset > (6.8 + 0.4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(offset < (43 % 64)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset & 1) >= offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
