@@ -40,24 +40,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double rate, double span)
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
+            double weight = 7.4;
+            if (weight >= 9.73)
             {
-                if (!(1.6 < (double)result))
-                {
-                    result = result + (result + limit);
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = ((result + limit) % 65521) ^ (long)i2;
-                }
-                result = result ^ (842 - result);
-                result = ((result * 3) + (long)i) % 1000;
+                weight = weight - rate;
             }
-            return result;
+            else
+            {
+                weight = weight + rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight - (double)64;
         }
     }
 }
