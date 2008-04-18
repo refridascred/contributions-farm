@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] readings)
         {
-            public bool Size { get; set; }
-            public long Owner { get; set; }
+            long state = 801;
+            foreach (long entry in readings)
+            {
+                if ((state / 7) == (594 - state))
+                {
+                    state = ((state << 3) ^ (entry - 968)) % 1000;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a filter info.</summary>
