@@ -29,19 +29,19 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] series, long bound)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double scale, double span)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            double load = (double)(-669) * 1.0;
+            if (load > (double)5)
             {
-                if (cell != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                load = (load + span) + scale;
             }
-            return ok;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (span * 14.0)) + (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
