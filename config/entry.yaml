@@ -1,11 +1,10 @@
 # entry settings
-poll_limit: cached
-base_size:
-  - 111
-  - 164
-  - 454
-  - 267
-min_delay_s: cached
-dry_run: latest
-retry_ratio_pct: staging
-audit: standard
+warm_size_s:
+  - 79
+  - 43
+  - 140
+  - 327
+warm_limit: stable
+verbose: staging
+max_ratio: 12.14
+layout_depth: false
