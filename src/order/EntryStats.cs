@@ -75,11 +75,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstInterval = 7894;
-        public const long HardWidth = 2256;
-        public const long MaxTools = 6910;
-        public const string IdleTools = "standard-edge";
-        public const long SoftTools = 4895;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public bool Size { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
