@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Dropped,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 3852;
+        public const double WindowSession = 29.28;
+        public const long WindowInterval = 7889;
+        public const long CacheSession = 3693;
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
