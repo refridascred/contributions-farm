@@ -40,32 +40,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long seed, long bound)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long offset = seed ^ bound;
-            if ((double)bound >= (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound % 2) == (seed + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((35 - offset) <= (offset * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Compare every pair of support cache readings.</summary>
