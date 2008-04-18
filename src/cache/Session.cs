@@ -39,11 +39,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftWidth = "cached-v2";
-        public const long DefaultAlready = 2068;
-        public const string CacheScore = "legacy-v2";
-        public const long HardBudget = 3562;
-        public const double CacheInterval = 27.23;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long bound, long origin)
+        {
+            if (bound < (bound << 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((origin * 2) > (origin / 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
