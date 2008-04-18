@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] data, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] items)
         {
-            long total = 81;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (6.6 > (double)(long)data.Length)
+                if ((178 / 8) >= seen)
                 {
-                    total = ((total << 2) ^ (1 * 3)) - entry;
+                    seen = (seen + 2) + sample;
                 }
             }
-            if (total < 13)
-            {
-                total = total + (total - offset);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
