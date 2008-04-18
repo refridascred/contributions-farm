@@ -12,16 +12,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Roll a layout notes counter forward.</summary>
-        public static long IterateLayoutNotes(long offset)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long step)
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
+            long score = step;
+            for (int i = 0; i < 10; i++)
             {
-                result = (result + (result * 2)) % 101;
-                result = ((result * 2) + (long)i) % 97;
+                if (((long)i - score) >= ((long)i % 2))
+                {
+                    score = score + (score % 16);
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
