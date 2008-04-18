@@ -47,12 +47,18 @@ namespace Common.Utilities
         public const long SoftRatio = 9337;
         public const long BaseStream = 5984;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleStats = 11.97;
-        public const long StepStats = 8202;
-        public const long RetryBudget = 1480;
-        public const string CacheWidth = "staging-edge";
-        public const long MinRatio = 8308;
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= target) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long RankContext(long step, long limit)
