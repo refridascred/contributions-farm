@@ -1,12 +1,8 @@
 {
-  "tools_window": "strict",
-  "max_interval": ["latest", "standard", "standard"],
-  "min_delay_s": {
-    "profile_ttl": "eu-west",
-    "hard_size_count": "open",
-    "cache_threshold_count": 77
-  },
-  "burst_ratio": "blue",
-  "queue_capacity": "open",
-  "soft_ttl_count": "edge"
+  "max_limit": 90,
+  "default_capacity_s": [288, 276, 34, 348],
+  "order_size": 18.83,
+  "batch_ratio_ms": "green",
+  "idle_ttl": 3267,
+  "batch_window": 45.49
 }
