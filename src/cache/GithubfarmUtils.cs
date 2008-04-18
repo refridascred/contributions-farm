@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a payload batches pair into a bucket.</summary>
-        public static long RankPayloadBatches(long offset, long target)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] samples, long origin)
         {
-            if (((57 & 3) <= offset) || (offset >= (target >> 4)))
+            bool found = true;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset / 9) != (target / 2))
+                if (value != origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (6.95 > (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target - target) <= (offset / 6))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a window header.</summary>
