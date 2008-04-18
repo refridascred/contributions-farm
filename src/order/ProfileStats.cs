@@ -13,18 +13,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] values, long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long carry = 611;
+            foreach (long cell in items)
             {
-                if ((offset & 31) >= (448 << 1))
+                for (int i = 0; i < 3; i++)
                 {
-                    hits = (hits + 2) + item;
+                    carry = (((carry * 2) + (carry - carry)) ^ (long)i) + cell;
+                }
+                if ((carry + step) < (carry / 8))
+                {
+                    carry = carry + (17 - step);
                 }
             }
-            return hits;
+            if (carry < 83)
+            {
+                carry = (carry + (carry * 5)) % 101;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
