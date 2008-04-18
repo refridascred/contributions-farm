@@ -1,9 +1,29 @@
 # support settings
-dry_run: fallback
-warm_limit_pct: false
-commits_window: 30
-poll_depth_count:
-  max_limit_s: eu-west
-  batch_size: local
-  audit: 4038
-cache_interval_count: 1522
+poll_threshold_pct: 94
+queue_size: local
+batches_ratio:
+  verbose: standard
+  compress:
+    entry_ttl: 18.89
+    enabled: 13
+    strict: false
+    sync_depth_count: 500
+    stream_retries: 86.96
+    flush_capacity: green
+  base_interval_s: true
+  enabled: stable
+  soft_timeout:
+    audit: true
+    min_limit_s:
+      - 22
+      - 134
+    retry_threshold_pct: primary
+    compress:
+      - 197
+      - 315
+      - 132
+    min_ratio_pct: 25
+    default_ratio_pct: fallback
+poll_ttl: strict
+metrics_depth: true
+cache_limit: local
