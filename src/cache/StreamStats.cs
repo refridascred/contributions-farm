@@ -28,18 +28,17 @@ namespace Common.Utilities
         public const string CacheWidth = "staging-edge";
         public const long MinRatio = 8308;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] levels, long origin)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen / 7) <= (5 + reading))
+                if (values[i] == target)
                 {
-                    seen = (seen + 2) - origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
