@@ -49,13 +49,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public bool Size { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheTimeout = 9535;
+        public const long MaxBuffer = 2432;
+        public const long RetryBudget = 9477;
+        public const string BaseSize = "open-edge";
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long GradeMetrics(long offset, long step)
