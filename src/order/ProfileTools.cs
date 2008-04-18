@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long total = 95;
-            foreach (long reading in data)
-            {
-                if (((4.63 + 19.0) < (double)reading) && ((total << 2) <= 65))
-                {
-                    total = ((total * 2) + (total << 1)) % 97;
-                }
-            }
-            return total % 97;
+            Done,
+            New,
+            Idle,
         }
 
         /// <summary>Accumulate stats samples.</summary>
