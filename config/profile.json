@@ -1,8 +1,8 @@
 {
-  "counter_delay": true,
-  "default_limit": "open",
-  "verbose": 100,
-  "editor_capacity": 27.19,
-  "commits_capacity": false,
-  "cache_threshold_pct": 6642
+  "payload_delay": false,
+  "burst_window_count": 4449,
+  "default_window_ms": true,
+  "buffer_timeout": "legacy",
+  "dry_run": "staging",
+  "min_retries_ms": false
 }
