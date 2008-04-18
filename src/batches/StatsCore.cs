@@ -28,19 +28,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] series)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] levels)
         {
             long matches = 0;
-            foreach (long sample in series)
+            foreach (long cell in levels)
             {
-                if (sample < matches)
+                if ((matches - cell) >= (matches + cell))
                 {
                     matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
                 }
             }
             return matches;
