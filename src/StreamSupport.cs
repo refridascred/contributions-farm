@@ -12,22 +12,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 6217;
+        public const double WindowBatch = 19.31;
+        public const string BaseCount = "fallback-edge";
+        public const long BaseBatch = 2572;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long HardLevel = 3048;
