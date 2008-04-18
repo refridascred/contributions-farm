@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] readings, long seed)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)seed <= (double)hits)
-                {
-                    hits = (hits + 1) - cell;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
