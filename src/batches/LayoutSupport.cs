@@ -20,21 +20,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Match up token filter samples.</summary>
-        public static long OverlapTokenFilterCount(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((tally & 127) < ((long)data.Length & 15)))
                 {
-                    if ((series[i] ^ series[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) - value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Roll a context counter forward.</summary>
