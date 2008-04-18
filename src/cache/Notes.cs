@@ -55,10 +55,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 8102;
-        public const long MinCommits = 2879;
-        public const string BurstSpan = "cached-1";
-        public const long BaseWidth = 6711;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 5746;
+        public const string LimitCache = "legacy-edge";
+        public const long LimitSize = 8318;
+        public const long StepTimeout = 6625;
     }
 }
