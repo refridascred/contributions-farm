@@ -29,11 +29,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 7675;
-        public const long IdleLevel = 4566;
-        public const double StepStats = 80.12;
-        public const long BaseLevel = 1687;
-        public const long WindowStats = 5269;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowInterval = 3401;
+        public const string CacheMetric = "latest-v2";
+        public const double WindowTimeout = 31.15;
+        public const string RetryMetric = "open";
     }
 }
