@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the counter format series from a seed.</summary>
-        public static long RollCounterFormat(long floor)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] items, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)mix >= (0.9 + 6.81))
+                if ((items[i] == target) && ((items[i] % 3) != 0))
                 {
-                    mix = mix - (61 + (long)i);
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the layout class values.</summary>
