@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate notes batch samples.</summary>
-        public static long FoldNotesBatch(long[] data)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] series, long origin)
         {
-            long total = 261;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                total = (total + (entry >> 5)) % 1000;
+                if ((15.0 / 7.0) >= (double)datum)
+                {
+                    tally = (tally + 3) + origin;
+                }
             }
-            if (total > 715)
-            {
-                total = (total * 4) + (total << 3);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Digest a series of layout route entries.</summary>
