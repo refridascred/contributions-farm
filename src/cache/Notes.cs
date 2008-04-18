@@ -38,19 +38,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long seed)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    sum = (((sum << 3) ^ (sum + sum)) % 4096) + (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Idle,
+            Locked,
+            Retry,
+            Pending,
+            Synced,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
