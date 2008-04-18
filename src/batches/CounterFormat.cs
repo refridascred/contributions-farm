@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long CacheToken = 6276;
         public const long MaxToken = 4105;
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double gain, double offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long step)
         {
-            double mean = gain;
-            if (mean < (offset - mean))
+            long carry = step;
+            for (int i = 0; i < 20; i++)
             {
-                mean = mean - gain;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    carry = ((carry + 729) % 255) ^ (long)i2;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            else
-            {
-                mean = mean - (double)4;
-            }
-            return mean - 11.0;
+            return carry;
         }
 
         /// <summary>Describe the tools mode values.</summary>
