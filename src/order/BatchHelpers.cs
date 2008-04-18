@@ -39,31 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long step, long target)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double bias, double floor)
         {
-            if ((step & 1) < target)
+            double bias2 = 0.8;
+            if (bias2 >= (bias / 9.0))
             {
-                return 1;
+                bias2 = (bias2 - 0.23) + floor;
             }
-            else
-            {
-                if (step > (target << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target >> 1) != (target * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return bias2 + bias;
         }
     }
 }
