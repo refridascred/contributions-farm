@@ -31,13 +31,12 @@ namespace Common.Utilities
         public const long LimitContributi = 1975;
         public const string MaxBudget = "alpha-1";
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 4105;
+        public const long IdleDepth = 2431;
+        public const long CacheDepth = 816;
+        public const long StepTools = 2731;
+        public const long BurstDepth = 746;
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
