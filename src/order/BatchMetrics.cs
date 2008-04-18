@@ -80,24 +80,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long origin, long floor)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            if ((215 + floor) == (floor % 16))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor > (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Dropped,
+            Idle,
+            Queued,
+            Draft,
         }
     }
 }
