@@ -20,14 +20,10 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepTimeout = 5175;
+        public const double StepBatch = 84.67;
+        public const string MinTimeout = "latest-1";
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricHits(long[] values, long bound)
