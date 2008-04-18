@@ -53,22 +53,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] readings)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long bound, long origin)
         {
-            long carry = 12;
-            foreach (long entry in readings)
+            if ((double)origin >= (2.26 * 6.7))
             {
-                if (2.78 <= (double)entry)
+                return 7;
+            }
+            else
+            {
+                if ((bound + origin) > (bound - origin))
                 {
-                    carry = (carry + (entry << 1)) % 97;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (carry < 20)
-            {
-                carry = (carry * 3) + (carry - carry);
-            }
-            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
