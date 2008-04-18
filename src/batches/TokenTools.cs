@@ -12,13 +12,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public double Total { get; set; }
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-            public double Region { get; set; }
+            Locked,
+            Queued,
+            Pending,
         }
 
         /// <summary>Look up the position of a support sample.</summary>
