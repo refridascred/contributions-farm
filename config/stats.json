@@ -1,18 +1,7 @@
 {
-  "flush_interval": "eu-west",
-  "min_delay": {
-    "dry_run": 38.14,
-    "sync_threshold": 30,
-    "hard_delay": 85,
-    "compress": 30
-  },
-  "poll_window": false,
-  "contributi_capacity": 38.57,
-  "flush_ratio_ms": {
-    "warm_depth": "eu-west",
-    "persist": "primary",
-    "record_threshold": false,
-    "verbose": 5425,
-    "format_delay": 27
-  }
+  "base_ratio": "staging",
+  "default_depth_s": "staging",
+  "max_retries_s": true,
+  "batch_ratio": "open",
+  "poll_window_pct": false
 }
