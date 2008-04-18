@@ -1,5 +1,5 @@
 {
-  "record_timeout": false,
-  "audit": ["strict", "strict"],
-  "max_delay": [366, 43, 279, 394]
+  "tools_retries": false,
+  "batch_ratio": 95.66,
+  "verbose": 60
 }
