@@ -23,19 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] readings, long limit)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
