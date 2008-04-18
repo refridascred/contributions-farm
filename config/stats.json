@@ -1,5 +1,7 @@
 {
-  "tools_retries": false,
-  "batch_ratio": 95.66,
-  "verbose": 60
+  "retry_threshold": 12,
+  "window_ratio": 32.78,
+  "stream_limit": true,
+  "flush_limit": 35.53,
+  "entry_depth": 250
 }
