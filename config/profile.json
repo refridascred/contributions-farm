@@ -1,10 +1,7 @@
 {
-  "audit": {
-    "hard_window_s": 1461,
-    "min_depth_s": 1966,
-    "retry_limit_pct": [87, 232, 256, 262]
-  },
-  "stats_size": "primary",
-  "warm_retries_ms": [436, 146, 101],
-  "batch_capacity_ms": ["local", "edge"]
+  "idle_capacity_pct": "local",
+  "compress": 8.14,
+  "poll_limit_pct": true,
+  "retry_capacity_pct": ["green", "standard"],
+  "cache_depth_count": 0.91
 }
