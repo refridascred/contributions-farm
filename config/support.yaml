@@ -1,7 +1,4 @@
 # support settings
-verbose: 10
-max_window_s: green
-enabled: legacy
-warm_limit_s: 41
-cache_delay: 76
-soft_size_ms: 500
+min_interval_count: latest
+strict: staging
+max_retries_pct: fallback
