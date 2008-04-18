@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] series, long bound)
+        /// <summary>Iterate the queue stream series from a seed.</summary>
+        public static long IterateQueueStream(long offset)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
