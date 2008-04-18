@@ -20,29 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a cluster command pair into a bucket.</summary>
-        public static long ClassifyClusterCommand(long limit, long floor)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long target, long offset)
         {
-            if ((503 * 3) != (floor + floor))
+            long next = target + offset;
+            if ((double)next != (5.0 + 8.0))
             {
                 return 7;
             }
             else
             {
-                if (floor <= (6 + floor))
+                if ((target / 7) > next)
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if ((limit ^ floor) >= (9 - 370))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 2;
                 }
             }
         }
