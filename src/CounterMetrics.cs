@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowPayload = "latest-edge";
+        public const double BaseFactor = 72.01;
+        public const double MinPayload = 27.51;
+        public const long IdleInterval = 8164;
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long CompareFormatCount(long[] values)
