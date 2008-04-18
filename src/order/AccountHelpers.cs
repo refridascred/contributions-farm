@@ -63,13 +63,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public bool Count { get; set; }
-            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
