@@ -33,19 +33,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] items)
-        {
-            long sum = 0;
-            foreach (long entry in items)
-            {
-                sum = (sum - entry) % 65521;
-            }
-            if (sum > 380)
-            {
-                sum = sum ^ (sum >> 5);
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardLevel = 3048;
+        public const string WindowSpan = "legacy";
+        public const long BaseFilter = 8425;
+        public const long IdleFilter = 1930;
     }
 }
