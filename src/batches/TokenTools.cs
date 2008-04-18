@@ -37,18 +37,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine schema checks values into a single score.</summary>
-        public static long FoldSchemaChecks(long[] readings)
+        /// <summary>Look up the position of a token channel sample.</summary>
+        public static long LookupTokenChannelIndex(long[] readings, long limit)
         {
-            long carry = 2;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((1.9 * 2.05) >= (double)(long)readings.Length)
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
                 {
-                    carry = ((carry ^ (carry + carry)) % 1000) ^ item;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
