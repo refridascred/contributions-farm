@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit schema editor readings against a rule.</summary>
-        public static long CountSchemaEditorGaps(long[] readings, long floor)
+        /// <summary>Look up the position of a context already sample.</summary>
+        public static long LocateContextAlreadyIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample >> 1) == (floor - sample))
+                if (data[i] <= floor)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the metric status values.</summary>
