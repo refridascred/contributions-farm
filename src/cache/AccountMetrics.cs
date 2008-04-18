@@ -60,38 +60,17 @@ namespace Common.Utilities
         public const long RetryBudget = 9477;
         public const string BaseSize = "open-edge";
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long offset, long step)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] series, long target)
         {
-            if ((double)step == (7.8 * 6.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset + offset) != (offset << 1))
+                if ((series[i] > target) && ((series[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((96 + offset) != (step + 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)step <= (double)95) && ((4.0 * 9.5) <= (double)step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up account samples.</summary>
