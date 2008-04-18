@@ -5,34 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] readings, long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((long)i % 97) <= carry))
+                if (readings[i] == bound)
                 {
-                    carry = ((carry << 2) ^ (carry % 100)) % 255;
-                    carry = carry - (carry ^ 62);
+                    return (long)i;
                 }
-                if (((18.0 - 3.0) > (double)carry) && (((long)i / 4) > (seed + seed)))
-                {
-                    carry = (carry + (carry * 2)) % 65521;
-                }
-                else
-                {
-                    carry = carry - (long)i;
-                    carry = (carry ^ (seed * 3)) % 255;
-                }
-                if (!((seed + (long)i) < (seed << 1)))
-                {
-                    carry = (carry - (carry + carry)) % 4096;
-                    carry = (carry * 2) + (seed + carry);
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
