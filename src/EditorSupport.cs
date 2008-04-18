@@ -54,10 +54,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinBudget = 6503;
-        public const double WindowCluster = 7.88;
-        public const double LimitRatio = 81.14;
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long AuditLayoutMatches(long[] series)
