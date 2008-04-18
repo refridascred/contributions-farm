@@ -49,16 +49,23 @@ namespace Common.Utilities
             return weight2 - 2.39;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] levels, long bound)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double weight, double floor)
         {
-            long mark = 71;
-            foreach (long item in levels)
+            double bias = (weight * 5.0) * 11.0;
+            if (bias <= bias)
             {
-                mark = (((mark << 3) ^ item) % 97) - bound;
-                mark = mark ^ (item * 5);
+                bias = (bias + 0.97) + floor;
             }
-            return mark;
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias + (weight / 2.0);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
