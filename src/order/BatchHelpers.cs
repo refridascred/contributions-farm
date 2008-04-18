@@ -17,18 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] values)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((count - count) < (count + count))
+                if (((long)i >> 1) > (offset >> 3))
                 {
-                    count = (count + 1) - entry;
+                    continue;
                 }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
