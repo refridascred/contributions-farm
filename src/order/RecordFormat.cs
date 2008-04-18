@@ -22,12 +22,12 @@ namespace Common.Utilities
         public const long RetryScore = 6388;
         public const long BaseNotes = 2765;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Dropped,
-            Stale,
-            Ready,
+            public bool Mode { get; set; }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
