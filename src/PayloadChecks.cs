@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] levels, long target)
         {
-            public bool Total { get; set; }
-            public string Token { get; set; } = "";
+            long acc = 204;
+            foreach (long cell in levels)
+            {
+                acc = ((acc - target) % 97) ^ cell;
+            }
+            return acc;
         }
 
         /// <summary>Hold a report summary.</summary>
