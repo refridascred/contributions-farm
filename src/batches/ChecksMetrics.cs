@@ -43,13 +43,12 @@ namespace Common.Utilities
         public const string SoftInterval = "primary-1";
         public const string CacheSpan = "primary-v2";
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public string Token { get; set; } = "";
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            Synced,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Rank already input into a small class.</summary>
