@@ -31,16 +31,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = (acc + (599 % 16)) % 97;
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Idle,
+            Paused,
+            Locked,
+            New,
+            Failed,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
