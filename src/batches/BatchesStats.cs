@@ -43,22 +43,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] samples, long origin)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (seen <= (sample * 2))
-                {
-                    seen = (seen + 2) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Project the next window value.</summary>
