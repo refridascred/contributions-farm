@@ -1,7 +1,9 @@
-id,state,active
-1,68.6,71
-2,439,886
-3,green,427
-4,40.44,77
-5,875,421
-6,4.23,staging
+id,score,active
+1,59.01,454
+2,70.5,green
+3,316,38.7
+4,837,legacy
+5,389,stable
+6,stable,strict
+7,574,156
+8,853,78.43
