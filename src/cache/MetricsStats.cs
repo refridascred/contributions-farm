@@ -57,39 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long limit, long origin)
+        /// <summary>Fold a list of contributi session readings.</summary>
+        public static long FoldContributiSession(long[] items, long floor)
         {
-            long diff = limit - origin;
-            if ((909 - diff) <= (limit >> 2))
+            long state = 780;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (9 < (limit + limit))
+                if (!((double)floor != (4.0 * 11.0)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((49 & 1) != (9 - limit)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin - limit) < (origin >> 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    state = (((state << 3) ^ 961) % 255) - value;
                 }
             }
+            return state;
         }
     }
 }
