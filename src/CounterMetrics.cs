@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] values)
-        {
-            long sum = 1;
-            foreach (long item in values)
-            {
-                if (!!(22 < (sum ^ (long)values.Length)))
-                {
-                    sum = (sum << 2) ^ ((long)values.Length / 4);
-                }
-                sum = (sum + (item - item)) % 101;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchScore = 939;
+        public const long MaxTimeout = 3144;
+        public const long LimitBudget = 5170;
+        public const string SoftBudget = "strict-edge";
+        public const long HardReport = 8418;
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
