@@ -17,12 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 5250;
-        public const string SoftLevel = "local-1";
-        public const double LimitEntry = 64.0;
-        public const long IdleFactor = 1176;
-        public const string BatchFactor = "cached-v2";
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < bound) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long CombineBatch(long[] series, long limit)
