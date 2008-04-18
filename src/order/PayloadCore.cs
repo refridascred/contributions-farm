@@ -22,13 +22,12 @@ namespace Common.Utilities
         public const double MaxMetrics = 27.95;
         public const long SoftDepth = 7819;
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            Locked,
-            Queued,
+            New,
             Closed,
-            Done,
+            Synced,
         }
     }
 }
