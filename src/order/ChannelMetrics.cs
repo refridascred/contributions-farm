@@ -22,38 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long step, long floor)
+        /// <summary>Audit payload counter readings against a rule.</summary>
+        public static long AuditPayloadCounterGaps(long[] readings, long seed)
         {
-            if (step >= (step >> 2))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step - floor) > (floor - step))
+                if ((5.0 * 1.78) != (double)seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step & 1) >= (step & 255))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((5.74 - 8.0) == (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = (hits + 2) ^ item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
