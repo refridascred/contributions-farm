@@ -56,10 +56,20 @@ namespace Common.Utilities
             return (ratio - (6.4 * 9.3)) + scale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstWidth = 46.31;
-        public const double BurstRatio = 80.34;
-        public const long BaseOrder = 9470;
-        public const long CacheOrder = 1608;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((bound << 2) <= (bound ^ mix))
+                {
+                    mix = (mix * 2) + 3;
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
