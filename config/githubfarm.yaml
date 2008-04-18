@@ -1,7 +1,32 @@
 # githubfarm settings
-cache_size_ms: 77.58
-flush_depth: 41
-cache_window: blue
-sync_ttl_ms: true
-cache_capacity: 73
-idle_delay_pct: false
+poll_threshold_s: 70.77
+hard_ratio: false
+sync_delay:
+  contributi_interval: 7423
+  layout_capacity:
+    cache_window_count: fallback
+    base_ttl_ms: 60
+    commits_limit: 6060
+    retry_threshold_count: 100
+    report_delay: legacy
+  tools_timeout: edge
+max_threshold_pct: cached
+hard_delay_count:
+  strict:
+    - edge
+    - local
+  enabled: 29.95
+  counter_window: 30.34
+  poll_window:
+    poll_interval: true
+    soft_capacity_ms:
+      - 145
+      - 347
+      - 21
+    readonly:
+      - 405
+      - 290
+      - 177
+    burst_depth_s: 100
+    soft_threshold: 15
+    window_window: 6.58
