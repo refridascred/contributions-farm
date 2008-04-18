@@ -13,14 +13,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Count the tools metric entries that pass the check.</summary>
+        public static long TallyToolsMetricHits(long[] values)
         {
-            Ready,
-            Failed,
-            Synced,
-            Draft,
-            Locked,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample < (8.5 - 5.72))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of context entries.</summary>
