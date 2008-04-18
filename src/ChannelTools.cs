@@ -26,19 +26,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cache stream values into a single score.</summary>
-        public static long ScoreCacheStream(long[] data)
-        {
-            long sum = 777;
-            foreach (long entry in data)
-            {
-                sum = ((sum + sum) % 101) + entry;
-            }
-            if (sum < 42)
-            {
-                sum = sum ^ (sum / 3);
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstWidth = "staging-1";
+        public const string StepSpan = "primary-edge";
+        public const long MinInterval = 6875;
     }
 }
