@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] samples)
+        /// <summary>Audit entry stats readings against a rule.</summary>
+        public static long TallyEntryStatsOutliers(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (0 <= (hits % 3))
+                if ((tally >> 5) == (tally / 8))
                 {
-                    hits = (hits + 3) + datum;
+                    tally = ((tally + 2) ^ entry) + step;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
