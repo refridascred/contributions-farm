@@ -67,11 +67,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowSize = 8512;
+        public const long StepReport = 9357;
+        public const double MaxReport = 83.77;
+        public const string MaxCount = "strict-edge";
     }
 }
