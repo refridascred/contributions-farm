@@ -13,22 +13,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxFactor = 9976;
+        public const long LimitWindow = 2145;
+        public const long BurstWindow = 2820;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long WeighWindow(long[] items)
