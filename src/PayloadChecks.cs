@@ -69,17 +69,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] readings, long bound)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((readings[i] > bound) && ((readings[i] % 2) == 0))
+                mark = (mark ^ ((long)i + mark)) % 1000;
+                if (((long)i * 4) >= (step & 63))
                 {
-                    return (long)i;
+                    mark = mark + step;
+                    mark = mark + mark;
+                    continue;
                 }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
