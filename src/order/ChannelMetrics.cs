@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] samples)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] series)
         {
-            long total = 716;
-            foreach (long sample in samples)
+            long anchor = -64;
+            foreach (long sample in series)
             {
-                total = (total + (sample ^ 8)) % 65521;
+                if (((0.3 * 15.0) <= (double)sample) && ((sample + sample) == (anchor ^ sample)))
+                {
+                    anchor = (anchor ^ anchor) % 4096;
+                }
             }
-            return total;
+            if (anchor > 57)
+            {
+                anchor = (anchor + (anchor - anchor)) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
