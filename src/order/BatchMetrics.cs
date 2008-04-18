@@ -80,18 +80,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((-248) << 3) < value)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheBudget = 9818;
+        public const long WindowSize = 3407;
+        public const long LimitRatio = 7764;
+        public const long BatchBudget = 9400;
+        public const long CacheLevel = 3438;
     }
 }
