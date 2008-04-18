@@ -53,24 +53,25 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long bound, long origin)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long bound)
         {
-            if ((double)origin >= (2.26 * 6.7))
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + origin) > (bound - origin))
+                if ((35 % 12) > ((long)i ^ 9))
                 {
-                    return 5;
+                    carry = ((carry << 3) ^ (14 << 3)) % 101;
+                    carry = ((carry << 3) ^ (carry - bound)) % 1000;
                 }
                 else
                 {
-                    return 8;
+                    carry = carry + (bound / 5);
                 }
+                carry = ((carry << 2) ^ ((long)i - bound)) % 101;
+                carry = ((carry * 5) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
