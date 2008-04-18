@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already core helpers.</summary>
     public static class AlreadyCore
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] series)
         {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (!(4.0 >= (double)mix))
+                if ((hits << 2) != (hits ^ sample))
                 {
-                    mix = ((mix * 3) + (seed % 24)) % 255;
+                    hits = hits + 3;
                 }
-                mix = ((mix * 2) + (long)i) % 1000;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
