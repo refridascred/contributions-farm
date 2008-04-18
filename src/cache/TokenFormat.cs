@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] series, long floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((value + floor) < floor)
-                {
-                    hits = hits + 1;
-                }
+                carry = (carry - bound) % 1000;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
