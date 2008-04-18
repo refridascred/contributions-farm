@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] samples)
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
+            long result = 6;
+            foreach (long item in samples)
             {
-                carry = (carry - bound) % 1000;
-                carry = ((carry * 5) + (long)i) % 1000;
+                result = ((result << 2) ^ (result & 31)) - item;
             }
-            return carry;
+            if (result > 90)
+            {
+                result = ((result * 5) + (result + result)) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Locate a order reading by value.</summary>
