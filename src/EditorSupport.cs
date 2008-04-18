@@ -22,17 +22,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] items, long offset)
+        /// <summary>Roll a buffer context counter forward.</summary>
+        public static long StepBufferContext(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
