@@ -60,22 +60,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] readings, long offset)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((27 + datum) < tally))
+                if (samples[i] <= offset)
                 {
-                    tally = (tally + 3) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
