@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] readings)
         {
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            long carry = 2;
+            foreach (long datum in readings)
+            {
+                carry = ((carry - ((long)readings.Length - carry)) % 65521) + datum;
+            }
+            return carry;
         }
 
         /// <summary>Match up counter samples.</summary>
