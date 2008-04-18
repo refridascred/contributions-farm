@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] items, long step)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] readings)
         {
-            long result = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result ^ (result + entry)) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (result > 92)
-            {
-                result = (result * 4) + (step / 8);
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Combine graph payload values into a single score.</summary>
