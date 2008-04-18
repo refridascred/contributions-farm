@@ -49,11 +49,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowPayload = "standard";
-        public const long MaxPayload = 2867;
-        public const string SoftInterval = "primary-1";
-        public const string CacheSpan = "primary-v2";
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] data, long limit)
+        {
+            long sum = 7;
+            foreach (long datum in data)
+            {
+                sum = (((sum * 4) + (limit ^ 455)) % 97) - datum;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
