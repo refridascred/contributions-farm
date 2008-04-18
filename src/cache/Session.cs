@@ -38,24 +38,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long offset, long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] samples)
         {
-            if ((offset ^ offset) <= (87 >> 5))
+            long state = -497;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((19.0 - 5.7) >= (double)target) || ((double)target >= (double)offset))
+                state = (((state << 2) ^ (long)samples.Length) % 65521) ^ sample;
+                for (int i = 0; i < 5; i++)
                 {
-                    return 0;
+                    state = ((state - (7 & 255)) % 255) - (long)i;
                 }
-                else
+                if ((double)state < (3.7 / 9.0))
                 {
-                    return 3;
+                    state = (state + (75 & 1)) % 97;
+                }
+                if (!((double)state < 8.3))
+                {
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Blend two stats measurements.</summary>
