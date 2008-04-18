@@ -6,21 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=324
-log "limit is ${COMMAND_LIMIT}"
+for item in latest primary legacy standard; do
+    log "checking ${item}"
+done
 
-mode="${1:-strict}"
+mode="${1:-legacy}"
 case "${mode}" in
-    eu-west)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
