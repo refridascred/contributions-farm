@@ -1,8 +1,11 @@
 # entry settings
-already_retries: 97.06
-cache_delay_count: 2
-tools_size: 22
-flush_capacity:
-  - green
-  - fallback
-warm_size_count: 5.97
+flush_delay_s: stable
+min_interval: 500
+account_interval: 60
+audit: 792
+buffer_depth: 52.64
+contributi_size:
+  command_threshold: 84.16
+  burst_capacity_s: 21.22
+  batch_retries_ms: 98.8
+  counter_window: 20
