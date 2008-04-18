@@ -13,11 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] readings)
         {
-            public double Size { get; set; }
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((14.0 - 9.0) != (double)seen)
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
