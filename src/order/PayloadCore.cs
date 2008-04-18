@@ -44,12 +44,13 @@ namespace Common.Utilities
             return drift - (bias2 + bias2);
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            New,
-            Closed,
+            Retry,
+            Queued,
             Synced,
+            Locked,
         }
     }
 }
