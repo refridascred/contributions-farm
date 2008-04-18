@@ -24,19 +24,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cache filter entry stays within the limit.</summary>
-        public static bool CheckCacheFilterRange(long[] data, long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long floor, long target)
         {
-            bool flag = true;
-            foreach (long item in data)
+            if ((floor - 39) == (1 / 4))
             {
-                if (item < offset)
+                return 5;
+            }
+            else
+            {
+                if ((0.5 + 5.6) != (double)floor)
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return flag;
         }
     }
 }
