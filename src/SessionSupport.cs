@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] readings, long limit)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if ((tally <= 7) && ((1.14 - 8.36) < (double)tally))
+                if (value != floor)
                 {
-                    tally = ((tally + 3) + item) - limit;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Describe the batch state values.</summary>
