@@ -16,14 +16,11 @@ namespace Common.Utilities
             return gain + (double)324;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Pending,
-            Queued,
-            Locked,
-            New,
-            Idle,
+            public double Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the metric mode values.</summary>
