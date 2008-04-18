@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] values, long limit)
         {
-            Retry,
-            Pending,
-            New,
-            Paused,
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
