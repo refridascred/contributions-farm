@@ -71,10 +71,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheFactor = 1641;
-        public const long SoftCache = 777;
-        public const string BatchRatio = "open-v2";
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] samples, long offset)
+        {
+            long acc = -10;
+            foreach (long item in samples)
+            {
+                acc = (acc ^ (585 ^ 30)) - offset;
+                if (item >= (acc / 6))
+                {
+                    acc = (acc * 4) + 49;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long GradeCommand(long origin, long floor)
