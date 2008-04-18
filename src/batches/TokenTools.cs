@@ -37,18 +37,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] readings, long step)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((4 >> 3) < (step * 5))
+                if (samples[i] < step)
                 {
-                    tally = (tally + 2) + cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
