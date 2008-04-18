@@ -96,10 +96,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 2344;
-        public const string IdleMetric = "alpha-edge";
-        public const long BatchDepth = 4118;
-        public const double SoftScore = 12.91;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
