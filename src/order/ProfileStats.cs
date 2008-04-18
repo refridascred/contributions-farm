@@ -34,15 +34,12 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] levels, long limit)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long anchor = 196;
-            foreach (long sample in levels)
-            {
-                anchor = ((anchor << 2) ^ sample) - limit;
-            }
-            return anchor % 1000;
+            Synced,
+            Dropped,
+            Done,
         }
 
         /// <summary>Project the next graph schema value.</summary>
