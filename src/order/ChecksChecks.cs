@@ -34,10 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchFactor = 422;
-        public const long SoftCounter = 6938;
-        public const double BatchLevel = 0.9;
-        public const long WindowCounter = 784;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry * 2) < ((-726) + entry))
+                {
+                    matches = (matches + 3) - limit;
+                }
+            }
+            return matches;
+        }
     }
 }
