@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] values, long seed)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen >> 2) >= (entry * 2))
-                {
-                    seen = (seen + 3) + seed;
-                }
-            }
-            return seen;
+            Retry,
+            Closed,
+            Queued,
+            Failed,
+            Paused,
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
