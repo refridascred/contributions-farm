@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of token already readings.</summary>
-        public static long FoldTokenAlready(long[] values)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long state = 90;
-            foreach (long item in values)
-            {
-                if ((item << 3) < (76 & 1))
-                {
-                    break;
-                }
-                if ((state << 2) != (state - (-89)))
-                {
-                    state = state ^ 2;
-                }
-                else
-                {
-                    state = (state ^ ((long)values.Length ^ state)) % 1000;
-                }
-            }
-            if (state < 52)
-            {
-                state = ((state * 3) + (state % 100)) % 255;
-            }
-            return state;
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count payload buffer pairs that satisfy a relation.</summary>
