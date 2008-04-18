@@ -21,20 +21,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long origin)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if (score >= (origin / 7))
-                {
-                    score = ((score * 4) + (score * 3)) % 97;
-                }
-                score = (score - (score - origin)) % 97;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public bool Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
