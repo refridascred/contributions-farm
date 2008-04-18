@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
             Retry,
-            Queued,
-            Synced,
-            Locked,
+            Done,
+            Idle,
+            Draft,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
