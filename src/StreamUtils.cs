@@ -64,25 +64,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long floor, long offset)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long seed)
         {
-            long cur = floor - offset;
-            if (((double)72 < (double)offset) && ((4.7 / 2.0) >= (double)cur))
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
             {
-                return 6;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (5.0 > (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return carry;
         }
     }
 }
