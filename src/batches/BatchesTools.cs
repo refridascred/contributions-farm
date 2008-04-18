@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] readings, long step)
         {
-            Pending,
-            Dropped,
-            Paused,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every graph already entry stays within the limit.</summary>
