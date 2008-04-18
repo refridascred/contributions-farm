@@ -58,13 +58,11 @@ namespace Common.Utilities
             return bias + (weight / 2.0);
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSpan = 844;
+        public const long BatchBudget = 7602;
+        public const string SoftSchema = "primary";
+        public const long RetrySchema = 8103;
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
