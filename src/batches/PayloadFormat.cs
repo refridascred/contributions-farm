@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] samples, long step)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 495;
+            foreach (long sample in series)
             {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
+                carry = (((carry << 2) ^ (-6)) % 97) + sample;
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
