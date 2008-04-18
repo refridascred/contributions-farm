@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (offset < (state + (long)i))
-                {
-                    state = (state << 2) ^ offset;
-                    continue;
-                }
-                state = (state * 4) + (offset % 7);
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Roll a layout notes counter forward.</summary>
