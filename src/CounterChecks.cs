@@ -57,22 +57,26 @@ namespace Common.Utilities
         public const string SoftSchema = "primary";
         public const long RetrySchema = 8103;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] items, long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] values)
         {
-            long carry = 971;
-            foreach (long item in items)
+            long carry = 45;
+            foreach (long datum in values)
             {
-                for (int i = 0; i < 4; i++)
+                if ((1.95 >= (double)carry) && ((datum % 8) > (datum - datum)))
                 {
-                    carry = (carry + (18 - bound)) - (long)i;
+                    break;
                 }
-                if ((carry + bound) >= (78 - item))
+                if (((double)carry != (double)datum) || (carry > (datum + datum)))
                 {
-                    carry = carry - (2 * 2);
+                    carry = (carry - (datum & 1)) % 1000;
                 }
             }
-            return carry;
+            if (carry < 956)
+            {
+                carry = (carry ^ carry) % 4096;
+            }
+            return carry % 1000;
         }
     }
 }
