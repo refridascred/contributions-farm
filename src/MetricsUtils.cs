@@ -20,12 +20,12 @@ namespace Common.Utilities
         public const double BatchContributi = 71.41;
         public const long WindowContributi = 242;
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public double Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public string Count { get; set; } = "";
+            Dropped,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a route summary.</summary>
