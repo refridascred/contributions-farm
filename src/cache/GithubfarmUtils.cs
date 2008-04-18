@@ -40,19 +40,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double bias, double floor)
+        /// <summary>Measure how many batches cache samples are out of range.</summary>
+        public static long MeasureBatchesCacheMatches(long[] samples)
         {
-            double mean = floor;
-            if (mean >= (floor / 6.0))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                mean = (mean + 6.0) + bias;
+                if ((double)seen >= (5.1 - 6.5))
+                {
+                    seen = (seen + 1) + datum;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (2.35 - mean);
+            return seen;
         }
     }
 }
