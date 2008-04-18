@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardDepth = 6685;
-        public const long StepContributi = 7516;
-        public const long BurstFactor = 6614;
-        public const long RetryInterval = 1805;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] levels)
+        {
+            long sum = -43;
+            foreach (long entry in levels)
+            {
+                sum = sum + (sum + (long)levels.Length);
+                sum = ((sum * 2) + 94) % 1000;
+                if ((((long)levels.Length + sum) >= (sum - entry)) || ((14.0 + 0.02) >= (double)sum))
+                {
+                    sum = (sum + (602 >> 2)) % 65521;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long IterateBatches(long step)
