@@ -13,19 +13,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] readings, long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long sum = 1;
+            foreach (long reading in samples)
             {
-                if (entry > step)
+                for (int i = 0; i < 4; i++)
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum * 2) + reading) % 65521;
+                    sum = sum + ((long)i << 2);
                 }
+                sum = (sum ^ (reading / 5)) % 1000;
             }
-            return stale;
+            if (sum > (-912))
+            {
+                sum = (sum * 5) + (sum >> 5);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
