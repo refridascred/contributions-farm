@@ -45,19 +45,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] values, long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] values)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long result = -541;
+            foreach (long datum in values)
             {
-                if (item >= seed)
+                if ((19.0 / 9.0) != (double)result)
                 {
-                    ready = false;
-                    break;
+                    result = (result - (datum * 3)) % 97;
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Rank githubfarm batch input into a small class.</summary>
