@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] data)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] series, long origin)
         {
-            long total = -95;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if (7.73 < (double)entry)
+                if (cell <= origin)
                 {
-                    total = ((total << 2) ^ (-50)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            if (total > 64)
-            {
-                total = (total - 23) % 97;
-            }
-            return total;
+            return flag;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
