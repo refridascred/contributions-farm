@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] data)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 8;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                state = ((state << 3) ^ (entry * 3)) % 97;
+                if ((entry % 8) != (80 ^ 8))
                 {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state + (state % 16);
+                }
+                if ((double)state != (9.44 + 0.1))
+                {
+                    state = (state ^ (entry + state)) % 4096;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the notes mode values.</summary>
