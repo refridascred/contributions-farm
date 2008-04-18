@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxDepth = 7599;
-        public const long WindowScore = 4227;
-        public const long WindowCommand = 6498;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((value + floor) < floor)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphMatches(long[] items, long limit)
