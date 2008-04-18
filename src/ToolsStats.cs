@@ -29,14 +29,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] series, long target)
         {
-            Locked,
-            Idle,
-            Stale,
-            Ready,
-            Done,
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
