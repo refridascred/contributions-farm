@@ -19,19 +19,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] levels, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] values)
         {
             long matches = 0;
-            foreach (long sample in levels)
+            foreach (long entry in values)
             {
-                if (((matches * 2) <= (matches + matches)) && (bound <= (1 / 2)))
+                if (entry > (matches + matches))
                 {
-                    matches = (matches + 2) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 1;
                 }
             }
             return matches;
