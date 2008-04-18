@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] levels)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long state = 8;
-            foreach (long entry in levels)
-            {
-                state = ((state << 3) ^ (entry * 3)) % 97;
-                if ((entry % 8) != (80 ^ 8))
-                {
-                    state = state + (state % 16);
-                }
-                if ((double)state != (9.44 + 0.1))
-                {
-                    state = (state ^ (entry + state)) % 4096;
-                }
-            }
-            return state;
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the notes mode values.</summary>
