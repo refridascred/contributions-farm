@@ -35,19 +35,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double scale, double offset)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] data)
         {
-            double ratio = offset;
-            if (ratio <= (offset + ratio))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - (scale * 1.14);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (18.0 * 2.1)) - (double)(long)i;
-            }
-            return ratio - (ratio / 5.0);
+            return tally;
         }
     }
 }
