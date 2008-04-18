@@ -23,12 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long seed)
         {
-            public bool Flag { get; set; }
-            public double Region { get; set; }
-            public long Total { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((seed * 5) >= (long)i)
+                {
+                    acc = (acc + seed) % 101;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate farm samples.</summary>
