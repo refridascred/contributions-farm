@@ -56,13 +56,14 @@ namespace Common.Utilities
             return drift + 12.0;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
+            Synced,
+            Idle,
+            Locked,
+            Stale,
+            Pending,
         }
 
         /// <summary>Define report limits and defaults.</summary>
