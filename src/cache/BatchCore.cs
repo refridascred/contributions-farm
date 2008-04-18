@@ -70,10 +70,14 @@ namespace Common.Utilities
             return gain + weight;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseScore = "staging-edge";
-        public const long RetryInterval = 1196;
-        public const long BaseMetrics = 4836;
-        public const long HardWidth = 7309;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Active,
+            Failed,
+            Ready,
+            Paused,
+            Done,
+        }
     }
 }
