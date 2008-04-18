@@ -17,13 +17,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            Ready,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseLevel = 82.02;
+        public const long RetryScore = 6388;
+        public const long BaseNotes = 2765;
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
