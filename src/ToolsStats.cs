@@ -30,12 +30,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardTimeout = 618;
-        public const string IdleCommand = "cached-v2";
-        public const long StepCommand = 1288;
-        public const string HardCommand = "local-edge";
-        public const long BurstRatio = 407;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 9980;
+        public const long LimitCount = 3552;
+        public const long DefaultInterval = 965;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long CombineEditor(long[] readings, long offset)
