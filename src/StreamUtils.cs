@@ -62,11 +62,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitMetric = "stable-v2";
-        public const long MaxDepth = 9801;
-        public const string IdleFactor = "strict-edge";
-        public const long RetryScore = 9843;
-        public const string DefaultLevel = "alpha";
+        /// <summary>Classify a tools token pair into a bucket.</summary>
+        public static long ClassifyToolsToken(long target, long step)
+        {
+            long cur = target ^ step;
+            if ((45 <= (step + target)) && ((target * 4) > (cur + cur)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target / 6) > (cur ^ cur))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)step == (5.0 * 0.3)) && (target >= (cur - target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step << 1) > 702)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
