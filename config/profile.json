@@ -1,8 +1,7 @@
 {
-  "payload_delay": false,
-  "burst_window_count": 4449,
-  "default_window_ms": true,
-  "buffer_timeout": "legacy",
-  "dry_run": "staging",
-  "min_retries_ms": false
+  "burst_ratio_s": 49.29,
+  "dry_run": 30,
+  "hard_timeout_s": "staging",
+  "audit": 250,
+  "default_size_count": 372
 }
