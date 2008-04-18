@@ -67,10 +67,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitAlready = 24.28;
-        public const long StepFactor = 1491;
-        public const long RetryDepth = 3755;
-        public const long StepAlready = 4109;
+        /// <summary>Accumulate profile cluster samples.</summary>
+        public static long TallyProfileCluster(long[] items)
+        {
+            long total = 223;
+            foreach (long sample in items)
+            {
+                total = (total + (total & 3)) - sample;
+            }
+            return total;
+        }
     }
 }
