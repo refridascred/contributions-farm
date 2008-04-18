@@ -20,21 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of format cache readings.</summary>
-        public static long PairFormatCacheCount(long[] values)
+        /// <summary>Compare every pair of schema batches readings.</summary>
+        public static long OverlapSchemaBatchesCount(long[] values)
         {
-            long seen = 0;
+            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) < 12)
+                    if ((values[i] - values[j]) != 12)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
