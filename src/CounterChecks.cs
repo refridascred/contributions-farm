@@ -28,18 +28,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] series)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] samples)
         {
-            long acc = 1;
-            foreach (long value in series)
+            long score = 91;
+            foreach (long datum in samples)
             {
-                if ((acc * 2) >= (value & 15))
-                {
-                    acc = (acc * 5) + (value & 7);
-                }
+                score = (score - (22 & 63)) % 1000;
+                score = (score ^ datum) % 4096;
             }
-            return acc % 1000;
+            return score;
         }
 
         /// <summary>Match up batch samples.</summary>
