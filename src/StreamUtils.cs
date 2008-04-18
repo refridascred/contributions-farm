@@ -64,15 +64,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitMetric = "stable-v2";
+        public const long MaxDepth = 9801;
+        public const string IdleFactor = "strict-edge";
+        public const long RetryScore = 9843;
+        public const string DefaultLevel = "alpha";
     }
 }
