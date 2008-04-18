@@ -45,11 +45,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public bool Total { get; set; }
-            public double Mode { get; set; }
+            public double Size { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a token stats.</summary>
