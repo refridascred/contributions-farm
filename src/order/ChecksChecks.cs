@@ -38,21 +38,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count channel session pairs that satisfy a relation.</summary>
-        public static long MatchChannelSessionCount(long[] series)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long target, long target2)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long delta = target - target2;
+            if ((double)target > (6.6 * 8.1))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((target << 1) > target2)
                 {
-                    if ((series[i] - series[j]) != 17)
+                    return 0;
+                }
+                else
+                {
+                    if (delta > (target << 3))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
     }
 }
