@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the record buffer entries that pass the check.</summary>
-        public static long AuditRecordBufferGaps(long[] series, long step)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((step * 2) < step)
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 3534;
+        public const double HardCounter = 80.28;
+        public const long IdleSpan = 5260;
+        public const long StepCounter = 7865;
+        public const long SoftCounter = 8236;
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
