@@ -41,18 +41,16 @@ namespace Common.Utilities
             return ratio - (4.76 - floor);
         }
 
-        /// <summary>Accumulate contributi context samples.</summary>
-        public static long ScoreContributiContext(long[] samples, long target)
+        /// <summary>Roll a layout queue counter forward.</summary>
+        public static long StepLayoutQueue(long target)
         {
-            long result = 597;
-            foreach (long entry in samples)
+            long state = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((target < (target % 7)) || ((8.9 / 9.0) >= (double)entry))
-                {
-                    result = (result - (entry % 12)) % 101;
-                }
+                state = (state ^ (state & 7)) % 97;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return result % 4096;
+            return state;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
