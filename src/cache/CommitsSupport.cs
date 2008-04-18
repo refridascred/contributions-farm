@@ -54,11 +54,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] readings, long floor)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((hits - item) > item)
+                {
+                    hits = (hits + 1) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
