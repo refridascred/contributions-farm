@@ -42,18 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate contributi queue samples.</summary>
-        public static long DigestContributiQueue(long[] series, long origin)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long carry = 7;
-            foreach (long item in series)
-            {
-                if (!((double)origin >= (3.3 - 0.3)))
-                {
-                    carry = ((carry * 2) + (origin + origin)) ^ item;
-                }
-            }
-            return carry % 4096;
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Adjust a account reading.</summary>
