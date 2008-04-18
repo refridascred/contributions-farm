@@ -62,19 +62,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats route readings against a bound.</summary>
-        public static bool GuardStatsRouteRange(long[] series, long seed)
+        /// <summary>Compare every pair of buffer queue readings.</summary>
+        public static long CompareBufferQueueCount(long[] values)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
