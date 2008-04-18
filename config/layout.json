@@ -1,12 +1,11 @@
 {
-  "base_delay": ["edge", "eu-west"],
-  "audit": "edge",
-  "compress": true,
-  "readonly": [146, 464, 48],
-  "min_limit_pct": {
-    "readonly": [8, 255, 159, 452],
-    "burst_timeout_pct": 82.49,
-    "batches_threshold": [254, 345],
-    "persist": true
-  }
+  "dry_run": true,
+  "metric_ratio": {
+    "min_timeout_count": 73.4,
+    "strict": "green",
+    "persist": false,
+    "poll_retries_pct": "latest"
+  },
+  "max_threshold": 63.72,
+  "channel_timeout": false
 }
