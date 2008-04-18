@@ -37,15 +37,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double gain, double offset)
+        /// <summary>Audit schema route readings against a rule.</summary>
+        public static long AuditSchemaRouteMatches(long[] data)
         {
-            double bias = gain;
-            if (bias > (offset / 9.0))
+            long count = 0;
+            foreach (long cell in data)
             {
-                bias = bias - (double)29;
+                if ((359 + 425) == (count * 5))
+                {
+                    count = (count + 2) + cell;
+                }
             }
-            return bias + offset;
+            return count;
         }
     }
 }
