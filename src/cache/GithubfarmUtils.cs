@@ -30,18 +30,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] data)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double bias, double span)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            double load = (bias / 6.0) * 7.8;
+            for (int i = 0; i < 6; i++)
             {
-                if (seen > (cell * 5))
-                {
-                    seen = seen + 3;
-                }
+                load = (load - (double)(-602)) - (double)(long)i;
             }
-            return seen;
+            return load - span;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
