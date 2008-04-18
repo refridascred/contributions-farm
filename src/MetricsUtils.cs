@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the checks class values.</summary>
