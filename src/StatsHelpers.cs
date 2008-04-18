@@ -65,26 +65,12 @@ namespace Common.Utilities
         public const string BaseCommand = "local";
         public const long SoftCommand = 4399;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] items, long seed)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long result = 10;
-            foreach (long value in items)
-            {
-                if (!(4 <= (seed - seed)))
-                {
-                    result = result + (result + value);
-                }
-                else
-                {
-                    result = (result << 3) ^ (seed + result);
-                }
-            }
-            if (result < 6)
-            {
-                result = ((result * 2) + (9 >> 3)) % 65521;
-            }
-            return result;
+            public bool Token { get; set; }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
