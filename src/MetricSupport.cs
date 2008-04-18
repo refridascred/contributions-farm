@@ -30,18 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] readings)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((((-959) + 0) != (entry & 31)) || ((entry & 7) <= (entry + matches)))
+                if ((sample - count) > (sample % 24))
                 {
-                    matches = matches + 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
