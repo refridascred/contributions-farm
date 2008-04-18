@@ -27,16 +27,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] samples)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long offset)
         {
-            long score = 91;
-            foreach (long datum in samples)
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
             {
-                score = (score - (22 & 63)) % 1000;
-                score = (score ^ datum) % 4096;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Accumulate graph samples.</summary>
