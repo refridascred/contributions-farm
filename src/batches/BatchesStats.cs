@@ -20,24 +20,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a commits record value against two limits.</summary>
-        public static long ClassifyCommitsRecord(long limit, long limit2)
+        /// <summary>Fold a list of buffer account readings.</summary>
+        public static long TallyBufferAccount(long[] items, long seed)
         {
-            if (!((limit2 & 63) >= (limit2 * 3)))
+            long acc = 987;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit2 < (limit2 % 97))
+                double mean = (double)(acc + (long)items.Length);
+                if (mean >= (mean + mean))
                 {
-                    return 1;
+                    acc = (acc + acc) - sample;
                 }
-                else
+                if ((9.0 + 4.99) <= (double)seed)
                 {
-                    return 0;
+                    acc = (acc - acc) % 1000;
                 }
             }
+            if (acc > 84)
+            {
+                acc = acc + (seed + seed);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
