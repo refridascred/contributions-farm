@@ -12,18 +12,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] values, long seed)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] readings, long target)
         {
-            long acc = 53;
-            foreach (long reading in values)
+            long carry = -5;
+            foreach (long value in readings)
             {
-                if ((3 & 3) > (seed + reading))
+                carry = ((carry ^ target) % 255) + value;
+                if (((target & 127) == (target & 1)) && ((double)carry >= 9.09))
                 {
-                    acc = (acc - (reading - reading)) % 1000;
+                    carry = carry ^ target;
                 }
             }
-            return acc % 1000;
+            return carry;
         }
 
         /// <summary>Describe the contributi status values.</summary>
