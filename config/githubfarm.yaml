@@ -1,8 +1,5 @@
 # githubfarm settings
-max_timeout_ms: 56.66
-soft_limit_s: false
-soft_window_ms:
-  - stable
-  - stable
-  - open
-batch_interval: 77
+dry_run: true
+contributi_threshold: true
+default_ratio_pct: 21.67
+audit: false
