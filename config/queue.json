@@ -1,12 +1,7 @@
 {
-  "enabled": {
-    "retry_limit_pct": 6732,
-    "poll_depth_count": 69,
-    "poll_delay_s": 62,
-    "warm_interval_ms": "standard"
-  },
-  "cluster_ttl": "latest",
-  "burst_window_s": 94.34,
-  "default_interval": false,
-  "metrics_delay": 500
+  "flush_ratio_s": 38.74,
+  "readonly": "blue",
+  "warm_threshold_s": 500,
+  "verbose": "eu-west",
+  "filter_ttl": 3335
 }
