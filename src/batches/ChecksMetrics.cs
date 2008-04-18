@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a payload batches figure with a bias.</summary>
-        public static double SmoothPayloadBatches(double ratio, double bias)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double ratio2 = (double)784;
-            if (ratio2 < (bias - ratio2))
-            {
-                ratio2 = ratio2 - ratio;
-            }
-            return ratio2 - (3.1 - 7.31);
+            public double Level { get; set; }
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
