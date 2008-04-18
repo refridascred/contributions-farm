@@ -12,19 +12,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] data, long step)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long sum = 0;
-            foreach (long item in data)
-            {
-                sum = ((((sum << 3) ^ (sum / 7)) % 101) ^ item) + step;
-                if (((long)data.Length / 9) == (sum / 4))
-                {
-                    sum = (sum * 2) + sum;
-                }
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Scale a schema filter figure with a bias.</summary>
