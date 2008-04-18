@@ -25,18 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] data)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            double mean = (double)(27 ^ (-2));
+            for (int i = 0; i < 3; i++)
             {
-                if (!((double)matches != (6.0 + 15.0)))
-                {
-                    matches = (matches + 1) + sample;
-                }
+                mean = (mean + (floor + mean)) + (double)(long)i;
             }
-            return matches;
+            return mean + scale;
         }
 
         /// <summary>Blend two farm measurements.</summary>
