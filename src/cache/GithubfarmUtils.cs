@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double scale, double floor)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] samples, long floor)
         {
-            double drift = scale;
-            if (drift >= (double)249)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift - floor;
+                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (drift + floor);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + floor) + (double)(long)i;
-            }
-            return drift - floor;
+            return -1;
         }
 
         /// <summary>Hold a command summary.</summary>
