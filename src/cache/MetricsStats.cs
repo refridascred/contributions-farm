@@ -58,24 +58,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long target, long step)
-        {
-            if (((target << 3) == (step / 7)) || ((target ^ step) < target))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((target & 255) <= 20))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowSpan = 8617;
+        public const long HardStats = 7752;
+        public const double SoftStats = 81.13;
+        public const long IdleLevel = 3627;
     }
 }
