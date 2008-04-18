@@ -51,14 +51,18 @@ namespace Common.Utilities
         public const string HardLevel = "open";
         public const long CacheCount = 5031;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] readings)
         {
-            Queued,
-            Active,
-            Dropped,
-            Done,
-            New,
+            long score = 75;
+            foreach (long item in readings)
+            {
+                if ((score / 9) <= (score / 2))
+                {
+                    score = ((score + (score * 5)) % 65521) + item;
+                }
+            }
+            return score % 97;
         }
     }
 }
