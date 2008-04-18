@@ -1,6 +1,7 @@
-id,active,level,token
-1,cached,651,54.56
-2,969,latest,289
-3,edge,strict,latest
-4,1.21,cached,eu-west
-5,74.39,560,57.7
+id,region,level,score,rank
+1,957,local,63.59,primary
+2,95.45,59.34,64.76,18.35
+3,16.04,green,standard,180
+4,876,fallback,891,57
+5,primary,primary,86.41,2.82
+6,green,36.18,edge,local
