@@ -1,7 +1,6 @@
-id,score,active
-1,880,16
-2,latest,127
-3,42.05,blue
-4,edge,35.16
-5,166,legacy
-6,20.94,508
+id,weight,rank
+1,606,175
+2,351,755
+3,latest,legacy
+4,25,466
+5,636,primary
