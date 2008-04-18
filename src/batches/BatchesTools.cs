@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Combine contributi notes values into a single score.</summary>
+        public static long TallyContributiNotes(long[] items)
         {
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
+            long acc = 9;
+            foreach (long sample in items)
+            {
+                acc = ((acc - acc) % 101) - sample;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
