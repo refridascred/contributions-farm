@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 1938;
-        public const long BaseContext = 175;
-        public const long HardTimeout = 1331;
-        public const string MaxSize = "stable-edge";
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long floor, long floor2)
+        {
+            long gap = floor - floor2;
+            if (((gap - floor) > (floor2 << 2)) || ((0 % 24) >= (gap - floor2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (838 >= (369 + floor2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
