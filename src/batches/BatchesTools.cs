@@ -35,18 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] values)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally + value) < (tally + tally))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((values[i] ^ values[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
