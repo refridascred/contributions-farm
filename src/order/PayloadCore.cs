@@ -33,16 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] values)
-        {
-            long total = 160;
-            foreach (long reading in values)
-            {
-                total = (total - total) - reading;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstBudget = 6912;
+        public const double MaxMetrics = 27.95;
+        public const long SoftDepth = 7819;
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long MatchEditorCount(long[] samples)
