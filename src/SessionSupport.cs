@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double bias, double bias2)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            double mean = (double)((-545) + (-40));
-            if (mean > bias2)
-            {
-                mean = mean - (bias2 + bias2);
-            }
-            else
-            {
-                mean = mean - (double)0;
-            }
-            return mean + (9.4 - bias);
+            Dropped,
+            Pending,
+            Draft,
+            Idle,
         }
 
         /// <summary>Accumulate command tools samples.</summary>
