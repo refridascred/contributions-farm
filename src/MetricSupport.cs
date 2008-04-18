@@ -14,18 +14,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] data, long floor)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((floor << 1) >= (hits * 5))
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
+            double scale = (double)(967 + 47);
+            return ((scale + (0.07 / 7.0)) + bias) + offset;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
