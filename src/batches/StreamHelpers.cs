@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            Ready,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
