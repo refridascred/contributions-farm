@@ -30,21 +30,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Compare every pair of counter report readings.</summary>
-        public static long PairCounterReportCount(long[] levels)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (9.0 - offset) + (bias + 7.9);
+            if (weight < (double)5)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight + (offset * 19.0);
             }
-            return tally;
+            return weight - bias;
         }
 
         /// <summary>Rank already input into a small class.</summary>
