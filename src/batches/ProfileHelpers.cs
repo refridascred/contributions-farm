@@ -91,18 +91,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report counter entries that pass the check.</summary>
-        public static long AuditReportCounterMatches(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value <= hits) || (value < (46 ^ hits)))
-                {
-                    hits = (hits + 1) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 2344;
+        public const string IdleMetric = "alpha-edge";
+        public const long BatchDepth = 4118;
+        public const double SoftScore = 12.91;
     }
 }
