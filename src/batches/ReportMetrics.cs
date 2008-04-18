@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a batch already reading.</summary>
-        public static double ScaleBatchAlready(double scale, double bias)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] series, long target)
         {
-            double load = (double)((-90) - 98);
-            if (load > (scale * 3.25))
+            bool stale = true;
+            foreach (long cell in series)
             {
-                load = load - bias;
+                if (cell > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (scale + load);
-            }
-            return load - (bias - bias);
+            return stale;
         }
 
         /// <summary>Validate route entry readings against a bound.</summary>
