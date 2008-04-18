@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] readings)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double ratio, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)(54 % 16);
+            if (drift >= (floor / 9.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift - (drift / 3.0)) - ratio;
             }
-            return count;
+            return drift - (double)59;
         }
 
         /// <summary>Combine cache queue values into a single score.</summary>
