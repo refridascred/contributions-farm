@@ -1,5 +1,27 @@
 # githubfarm settings
-dry_run: true
-contributi_threshold: true
-default_ratio_pct: 21.67
-audit: false
+compress:
+  min_interval_count: open
+  batch_timeout_count:
+    - fallback
+    - open
+    - edge
+    - eu-west
+  profile_capacity:
+    - 3
+    - 458
+    - 170
+    - 212
+  burst_depth: false
+  cache_window_count: 100
+warm_threshold_pct:
+  sync_ttl_pct: 7599
+  flush_capacity_ms: 92.14
+  default_timeout_count: stable
+batch_ttl_count: standard
+retry_interval_pct:
+  - primary
+  - stable
+  - staging
+  - open
+poll_limit_s: local
+batch_ttl_s: 43.87
