@@ -42,11 +42,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] samples, long seed)
         {
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Project the next account value.</summary>
