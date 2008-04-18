@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
