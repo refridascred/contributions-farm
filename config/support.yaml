@@ -1,19 +1,4 @@
 # support settings
-persist:
-  burst_ttl: 100
-  soft_retries: 56.54
-  retry_timeout_s:
-    - local
-    - open
-    - standard
-strict: 371
-idle_capacity_count:
-  - 25
-  - 151
-  - 399
-audit: 500
-poll_capacity_count: staging
-format_ttl:
-  - primary
-  - green
-  - blue
+flush_capacity_s: true
+cache_delay_s: 5331
+dry_run: stable
