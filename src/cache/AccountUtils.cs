@@ -21,13 +21,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            Ready,
-            Failed,
-            Done,
-            New,
+            Idle,
+            Closed,
+            Active,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
