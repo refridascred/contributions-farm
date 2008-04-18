@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const double WindowRatio = 48.66;
         public const string BurstCount = "staging";
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double HardCount = 4.37;
+        public const long IdleCount = 8291;
+        public const long RetrySpan = 3546;
+        public const double BaseCount = 36.1;
+        public const string MinRoute = "primary-edge";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double BatchCount = 2.11;
