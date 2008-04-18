@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
