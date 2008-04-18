@@ -1,16 +1,14 @@
 # Command notes
 
-When a schema fails, the commits handler retries a few times before giving up.
-The farm report groups every layout by support.
-Each editor is validated before it reaches the buffer queue.
+A payload that stays idle for too long is moved to the githubfarm list.
+The batches report groups every contributi by cluster.
 
-Defaults for report live in the config folder and can be overridden per environment.
-Each notes is validated before it reaches the commits queue.
-When a batches fails, the tools handler retries a few times before giving up.
+Each format is validated before it reaches the cache queue.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new cluster fields
-- Keep cluster values small
+- Document new context fields
+- Validate channel input early
 - Log every stats change
-- Prefer context defaults
+- Keep already values small
