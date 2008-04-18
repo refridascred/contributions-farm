@@ -62,15 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] levels, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] data, long target)
         {
-            long sum = 536;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long entry in data)
             {
-                sum = (((sum << 3) ^ item) % 255) + floor;
+                if (entry < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum % 65521;
+            return found;
         }
     }
 }
