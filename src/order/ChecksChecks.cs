@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a command batch pair into a bucket.</summary>
-        public static long SortCommandBatch(long target, long step)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            if ((step % 10) <= (12 / 6))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((0.27 / 4.0) != (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step * 5) == (step - 260))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Idle,
+            Active,
+            Done,
+            Locked,
         }
 
         /// <summary>Audit metrics entry readings against a rule.</summary>
