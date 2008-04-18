@@ -53,19 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double rate, double floor)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            double scale = rate + rate;
-            if (scale >= (double)183)
-            {
-                scale = (scale + rate) + floor;
-            }
-            else
-            {
-                scale = scale + (double)86;
-            }
-            return scale - (0.9 - scale);
+            public bool Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define command limits and defaults.</summary>
