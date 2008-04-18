@@ -30,17 +30,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first command batch entry that matches the target.</summary>
-        public static long FindCommandBatchIndex(long[] levels, long floor)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 5) == 0))
+                if (((long)i >> 5) == (offset & 3))
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ offset) % 1000;
+                    continue;
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a window entry.</summary>
