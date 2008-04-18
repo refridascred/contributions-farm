@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine contributi notes values into a single score.</summary>
-        public static long TallyContributiNotes(long[] items)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long acc = 9;
-            foreach (long sample in items)
-            {
-                acc = ((acc - acc) % 101) - sample;
-            }
-            return acc % 1000;
+            public string Flag { get; set; } = "";
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every graph already entry stays within the limit.</summary>
