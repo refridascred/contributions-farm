@@ -45,11 +45,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] samples, long seed)
         {
-            public double Label { get; set; }
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((seed - matches) > 458)
+                {
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
