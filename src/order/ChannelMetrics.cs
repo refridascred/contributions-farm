@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long floor, long origin)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] values)
         {
-            long bound = floor - origin;
-            if (((41 & 1) < (origin ^ (-608))) || (floor < (bound / 8)))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((629 / 3) < floor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor - origin) < 486)
+                    if ((values[i] + values[j]) != 11)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
