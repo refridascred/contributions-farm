@@ -38,19 +38,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] series, long floor)
+        /// <summary>Check that every record stream entry stays within the limit.</summary>
+        public static bool VerifyRecordStreamBounds(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (value >= floor)
+                if (datum >= seed)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
