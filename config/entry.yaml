@@ -1,6 +1,13 @@
 # entry settings
-compress: stable
-warm_retries_count: green
-hard_ratio_s: 30
-retry_capacity_ms: false
-strict: 1389
+sync_size_pct:
+  - open
+  - green
+  - blue
+  - stable
+max_interval:
+  - 39
+  - 163
+warm_timeout: 8
+verbose:
+  - 276
+  - 247
