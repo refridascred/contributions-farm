@@ -14,21 +14,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long origin)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] readings, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long seen = sum;
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((readings[i] > floor) && ((readings[i] % 5) != 0))
                 {
-                    sum = (((sum << 2) ^ (85 << 2)) % 101) ^ (long)i2;
-                    sum = ((sum * 4) + seen) % 101;
+                    return (long)i;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
