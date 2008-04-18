@@ -27,13 +27,39 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long limit, long origin)
         {
-            Dropped,
-            Retry,
-            Draft,
-            Done,
+            long gap = limit + origin;
+            if (gap > (gap - gap))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin & 31) == (origin - 950))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit >= (10.0 / 8.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((gap + (-298)) == (limit ^ 87))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate stats route readings against a bound.</summary>
