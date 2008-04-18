@@ -1,7 +1,7 @@
-id,token,active
-1,44.01,31.23
-2,727,open
-3,806,747
-4,653,150
-5,130,staging
-6,72.32,47.75
+id,score,rank,active,token
+1,strict,open,open,83.45
+2,42.53,16.95,fallback,fallback
+3,60.46,latest,557,947
+4,blue,662,edge,907
+5,438,678,local,30.67
+6,874,137,blue,867
