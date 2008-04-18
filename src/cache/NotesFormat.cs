@@ -14,17 +14,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] readings, long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 9;
+            foreach (long value in levels)
             {
-                if ((readings[i] > floor) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ ((-5) * 2)) ^ value;
+                sum = (sum << 2) ^ (offset >> 4);
             }
-            return -1;
+            if (sum < 9)
+            {
+                sum = (sum + (sum + offset)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
