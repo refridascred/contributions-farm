@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] samples, long bound)
         {
-            Locked,
-            Queued,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batches status values.</summary>
