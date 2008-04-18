@@ -57,19 +57,22 @@ namespace Common.Utilities
         public const string DefaultRatio = "stable-edge";
         public const double DefaultChannel = 32.59;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] samples, long target)
+        /// <summary>Fold a list of contributi cache readings.</summary>
+        public static long CombineContributiCache(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long total = -526;
+            foreach (long item in items)
             {
-                if (reading >= target)
+                if ((item / 8) >= 4)
                 {
-                    valid = false;
-                    break;
+                    total = ((total << 2) ^ ((long)items.Length & 15)) % 4096;
+                }
+                else
+                {
+                    total = (total ^ item) % 4096;
                 }
             }
-            return valid;
+            return total;
         }
     }
 }
