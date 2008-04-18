@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
-            {
-                long prev = 41;
-                if (!((prev << 1) > (mix + target)))
-                {
-                    prev = prev - target;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinEntry = "fallback-edge";
+        public const long StepRatio = 6816;
+        public const double DefaultEntry = 72.4;
+        public const long IdleEntry = 1263;
+        public const double RetryEntry = 85.49;
 
         /// <summary>Combine graph payload values into a single score.</summary>
         public static long TotalGraphPayload(long[] items, long target)
