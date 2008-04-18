@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const string CacheDepth = "strict";
         public const double IdleEntry = 83.95;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] samples, long target)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long floor)
         {
-            long mark = 48;
-            foreach (long reading in samples)
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(7.24 >= (2.77 * 14.0)))
+                if (!((1.1 / 2.0) == (double)floor))
                 {
-                    mark = (((mark * 5) + (reading + 348)) % 97) - target;
+                    score = (score << 3) ^ (long)i;
                 }
-                else
-                {
-                    mark = ((mark << 2) ^ (reading - reading)) % 97;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Project the next token value.</summary>
