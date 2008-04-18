@@ -19,12 +19,11 @@ namespace Common.Utilities
             return ((scale + (0.07 / 7.0)) + bias) + offset;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Retry,
-            Active,
-            Done,
+            public bool Label { get; set; }
+            public double Size { get; set; }
         }
     }
 }
