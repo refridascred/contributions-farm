@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] data, long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long mark = 85;
-            foreach (long entry in data)
-            {
-                if ((mark / 7) <= step)
-                {
-                    mark = (mark << 2) ^ (mark << 1);
-                }
-                else
-                {
-                    mark = ((mark * 2) + (step - mark)) % 97;
-                }
-                if (((entry ^ mark) <= (long)data.Length) || (((-270) + entry) > (mark ^ (long)data.Length)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Closed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Describe the route status values.</summary>
