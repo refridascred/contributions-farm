@@ -36,17 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a token channel sample.</summary>
-        public static long LookupTokenChannelIndex(long[] readings, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
+                if (!!((double)tally != (0.78 + 10.0)))
                 {
-                    return (long)i;
+                    tally = ((tally + 1) + item) + target;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
