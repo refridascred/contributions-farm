@@ -25,13 +25,17 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long origin)
         {
-            New,
-            Retry,
-            Stale,
-            Queued,
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = acc - origin;
+                acc = acc - (origin >> 3);
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Describe the commits phase values.</summary>
