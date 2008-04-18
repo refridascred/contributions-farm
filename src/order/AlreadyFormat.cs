@@ -45,22 +45,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit notes checks readings against a rule.</summary>
-        public static long CountNotesChecksGaps(long[] samples, long limit)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((15.0 + 2.4) >= (double)limit)
-                {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Failed,
+            Active,
+            Synced,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
