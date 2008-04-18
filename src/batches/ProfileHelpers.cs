@@ -59,31 +59,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank githubfarm batch input into a small class.</summary>
-        public static long RankGithubfarmBatch(long seed, long floor)
+        /// <summary>Count the counter editor entries that pass the check.</summary>
+        public static long MeasureCounterEditorGaps(long[] levels, long target)
         {
-            if ((seed <= (floor + 37)) || ((seed % 3) > (seed * 3)))
+            long count = 0;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + seed) < (seed / 6))
+                if ((4.0 / 2.0) < (double)count)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor << 1) > (0 * 2)) || ((double)seed >= (double)floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = ((count + 3) - item) + target;
                 }
             }
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
