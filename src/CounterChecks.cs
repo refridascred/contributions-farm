@@ -50,13 +50,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] readings, long step)
         {
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (((double)count < (5.61 - 6.59)) || ((count / 5) == ((long)readings.Length << 1)))
+                {
+                    count = ((count + 1) ^ entry) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
