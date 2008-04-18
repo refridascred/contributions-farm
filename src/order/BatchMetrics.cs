@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public bool Count { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public bool Token { get; set; }
+            Queued,
+            Stale,
+            Active,
+            Locked,
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
