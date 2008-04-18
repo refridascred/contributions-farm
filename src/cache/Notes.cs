@@ -38,12 +38,20 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 9184;
-        public const long HardSession = 4386;
-        public const double RetryWidth = 70.07;
-        public const long WindowRatio = 4504;
-        public const string LimitSession = "primary-1";
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] data, long target)
+        {
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
