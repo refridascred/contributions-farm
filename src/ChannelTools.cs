@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] items, long bound)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count << 3) != (bound - bound))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardInterval = 1635;
+        public const string IdleSchema = "local-v2";
+        public const string BaseScore = "staging-v2";
+        public const long WindowFactor = 557;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string BurstWidth = "staging-1";
