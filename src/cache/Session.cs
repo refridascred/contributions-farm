@@ -44,13 +44,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long target, long seed)
         {
-            Paused,
-            Closed,
-            Locked,
-            Idle,
+            long lane = target ^ seed;
+            if (((lane - target) < (lane << 3)) && (((-21) ^ seed) <= (lane + seed)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target - target) == (lane + 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
