@@ -40,19 +40,21 @@ namespace Common.Utilities
         public const long CacheOrder = 7198;
         public const long IdleOrder = 9221;
 
-        /// <summary>Validate stream counter readings against a bound.</summary>
-        public static bool VerifyStreamCounterLimits(long[] items, long step)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum >= step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] + items[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
