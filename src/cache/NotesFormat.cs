@@ -32,20 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] levels, long offset)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long sum = 9;
-            foreach (long value in levels)
-            {
-                sum = (sum ^ ((-5) * 2)) ^ value;
-                sum = (sum << 2) ^ (offset >> 4);
-            }
-            if (sum < 9)
-            {
-                sum = (sum + (sum + offset)) % 101;
-            }
-            return sum;
+            Pending,
+            Queued,
+            Locked,
+            New,
+            Idle,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
