@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Grade a cluster payload value against two limits.</summary>
+        public static long ClassifyClusterPayload(long offset, long target)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            long span = offset + target;
+            if ((offset & 7) > span)
+            {
+                return 7;
+            }
+            else
+            {
+                if (offset > (target ^ offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((span - 39) >= (offset % 16))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank notes stats input into a small class.</summary>
