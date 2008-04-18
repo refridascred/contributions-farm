@@ -34,13 +34,31 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long step, long target)
         {
-            Failed,
-            Idle,
-            Draft,
-            Pending,
+            if ((step & 1) < target)
+            {
+                return 1;
+            }
+            else
+            {
+                if (step > (target << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target >> 1) != (target * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
