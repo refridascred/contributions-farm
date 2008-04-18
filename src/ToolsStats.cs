@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Retry,
-            Pending,
-            Active,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 6316;
+        public const double DefaultAlready = 23.8;
+        public const long HardBudget = 5286;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string SoftTimeout = "local-edge";
