@@ -30,21 +30,14 @@ namespace Common.Utilities
         public const long CacheOrder = 7198;
         public const long IdleOrder = 9221;
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Idle,
+            Locked,
+            Synced,
+            Paused,
         }
     }
 }
