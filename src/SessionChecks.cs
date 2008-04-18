@@ -38,9 +38,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 8483;
-        public const string HardCount = "latest-1";
-        public const long LimitCache = 136;
+        /// <summary>Measure how many profile stats samples are out of range.</summary>
+        public static long MeasureProfileStatsGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((8 + tally) >= tally)
+                {
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
