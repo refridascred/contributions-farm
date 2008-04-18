@@ -46,21 +46,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of support cache readings.</summary>
-        public static long OverlapSupportCacheCount(long[] levels)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Stale,
+            New,
+            Dropped,
         }
     }
 }
