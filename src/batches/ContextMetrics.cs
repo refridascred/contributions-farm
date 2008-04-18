@@ -36,16 +36,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a layout queue counter forward.</summary>
-        public static long StepLayoutQueue(long target)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] samples)
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state ^ (state & 7)) % 97;
-                state = ((state * 3) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
