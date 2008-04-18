@@ -1,30 +1,28 @@
 # entry settings
-strict: 91.35
-min_limit_s:
-  counter_window: 37
-  warm_window:
-    - latest
-    - cached
-  poll_ttl_s: 500
-  poll_ttl: true
-  hard_interval:
-    - 457
-    - 414
-    - 192
-    - 451
-  flush_window: open
-stream_ratio: false
-poll_capacity_count:
-  tools_ttl: 30
-  cache_delay_pct:
-    notes_threshold: 68.71
-    retry_timeout_ms: false
-    enabled: strict
-  cache_depth:
-    verbose: eu-west
-    order_ratio: 95.77
-    counter_timeout:
-      - latest
-      - green
-      - primary
-      - stable
+persist: 41
+support_depth:
+  readonly: cached
+  stats_ratio: false
+  default_capacity_count: 60
+  command_limit:
+    max_interval_pct:
+      - 421
+      - 151
+      - 321
+      - 315
+    account_interval: 21.93
+    default_timeout_ms: 250
+  flush_window_pct: 12
+  verbose:
+    flush_size_s:
+      - 299
+      - 26
+      - 201
+      - 276
+    poll_window_pct: 100
+    soft_timeout_s: true
+    session_size: eu-west
+    max_depth_pct: false
+max_depth: strict
+flush_size_count: legacy
+batch_window: false
