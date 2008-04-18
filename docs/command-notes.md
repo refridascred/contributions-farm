@@ -1,10 +1,15 @@
 # Command notes
 
-The layout module keeps token values in sync with the queue cache.
-When a stats fails, the filter handler retries a few times before giving up.
+The checks report groups every checks by cluster.
+Run the token check before changing any report limits.
+
+The githubfarm report groups every context by stream.
+Each entry is validated before it reaches the contributi queue.
+Keep contributi and context names short and lowercase.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Keep profile values small
-- Document new already fields
+- Prefer filter defaults
+- Validate buffer input early
+- Log every record change
+- Review command limits each release
