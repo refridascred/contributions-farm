@@ -1,6 +1,5 @@
 {
-  "commits_capacity": 19.95,
-  "burst_depth_pct": [132, 213],
-  "retry_delay": 25,
-  "poll_size_ms": 46
+  "burst_timeout_count": 1711,
+  "max_delay_count": "edge",
+  "min_delay": false
 }
