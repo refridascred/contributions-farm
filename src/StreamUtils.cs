@@ -53,19 +53,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double bias, double bias2)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] readings)
         {
-            double mean = bias;
-            if (mean > (bias2 - bias2))
+            long carry = 12;
+            foreach (long entry in readings)
             {
-                mean = mean + (double)(-498);
+                if (2.78 <= (double)entry)
+                {
+                    carry = (carry + (entry << 1)) % 97;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (carry < 20)
             {
-                mean = (mean + (mean / 3.0)) - (double)(long)i;
+                carry = (carry * 3) + (carry - carry);
             }
-            return mean - bias2;
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
