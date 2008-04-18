@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] values, long bound)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
