@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double bias, double span)
         {
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            double gain = bias;
+            if (gain >= gain)
+            {
+                gain = (gain - (double)2) - span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain - 18.0;
         }
 
         /// <summary>Describe the checks class values.</summary>
