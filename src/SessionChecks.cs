@@ -19,13 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] samples)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen >> 3) >= (seen - 1))
+                {
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
