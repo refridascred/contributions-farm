@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] samples, long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] series, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 760;
+            foreach (long entry in series)
             {
-                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 2) ^ (entry % 10)) + target;
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
