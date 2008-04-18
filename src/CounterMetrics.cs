@@ -37,18 +37,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] levels)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] data)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long result = 192;
+            foreach (long cell in data)
             {
-                if ((double)hits != (1.6 * 2.0))
+                result = ((result ^ 2) % 65521) + cell;
+                if ((double)result > 7.8)
                 {
-                    hits = (hits + 3) ^ item;
+                    result = (result - (result & 127)) % 1000;
                 }
             }
-            return hits;
+            if (result > 5)
+            {
+                result = result + (result - result);
+            }
+            return result;
         }
     }
 }
