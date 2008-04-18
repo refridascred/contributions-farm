@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] values, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((values[i] <= step) && ((values[i] % 5) != 0))
+                if (((limit << 2) != (limit + matches)) && (((1.4 + 0.8) >= (double)limit) || ((matches ^ datum) <= (limit & 7))))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Adjust a stats reading.</summary>
