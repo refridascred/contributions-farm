@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] series, long seed)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] > seed) && ((series[i] % 5) == 0))
+                if (values[i] > limit)
                 {
                     return (long)i;
                 }
