@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const double BaseSpan = 89.56;
         public const long LimitCache = 3936;
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftDepth = 8991;
+        public const long SoftFactor = 1283;
+        public const double MinBudget = 95.52;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TotalStream(long[] levels)
