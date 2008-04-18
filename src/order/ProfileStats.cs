@@ -19,19 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cache farm value.</summary>
-        public static double SmoothCacheFarm(double scale, double offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] values)
         {
-            double mean = offset / 7.0;
-            if (mean < (offset * 6.9))
+            long mix = 49;
+            foreach (long item in values)
             {
-                mean = mean + offset;
+                if ((item + mix) != (mix / 3))
+                {
+                    mix = (mix ^ (mix & 1)) % 97;
+                }
+                else
+                {
+                    mix = mix ^ (item * 2);
+                }
             }
-            else
+            if (mix > 840)
             {
-                mean = mean + (offset - mean);
+                mix = mix ^ mix;
             }
-            return mean - scale;
+            return mix;
         }
 
         /// <summary>Describe the farm mode values.</summary>
