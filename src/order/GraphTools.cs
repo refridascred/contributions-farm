@@ -54,23 +54,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next token buffer value from a seed.</summary>
-        public static long RollTokenBuffer(long floor)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] samples, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((floor ^ floor) > 74) && ((double)floor == (15.0 - 3.0)))
+                if (samples[i] > floor)
                 {
-                    anchor = (anchor ^ anchor) % 255;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor * 2) + (long)i;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
