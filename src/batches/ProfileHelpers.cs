@@ -31,12 +31,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 754;
-        public const double BatchCounter = 86.44;
-        public const string IdleCounter = "standard-v2";
-        public const long HardSize = 4659;
-        public const long StepCounter = 3620;
+        /// <summary>Combine cache format values into a single score.</summary>
+        public static long TallyCacheFormat(long[] levels, long seed)
+        {
+            long state = 926;
+            foreach (long item in levels)
+            {
+                if (item > (state - item))
+                {
+                    state = (state ^ (long)levels.Length) % 4096;
+                }
+            }
+            if (state > 170)
+            {
+                state = state + (seed + state);
+            }
+            return state;
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool VerifyMetricBounds(long[] values, long seed)
