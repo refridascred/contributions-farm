@@ -15,10 +15,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchScore = "legacy-v2";
-        public const string BurstContext = "staging";
-        public const long WindowContext = 5254;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] readings, long limit)
+        {
+            long acc = 513;
+            foreach (long entry in readings)
+            {
+                acc = (((acc << 3) ^ (acc & 127)) % 255) - limit;
+                if ((entry ^ (long)readings.Length) != (60 - acc))
+                {
+                    acc = (acc + (acc - entry)) % 101;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Project the next window value.</summary>
         public static double SmoothWindow(double rate, double floor)
