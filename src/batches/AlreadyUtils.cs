@@ -61,19 +61,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] samples, long limit)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Pending,
+            Stale,
         }
     }
 }
