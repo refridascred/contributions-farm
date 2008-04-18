@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const long LimitSpan = 4937;
         public const string BasePayload = "fallback-edge";
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] items, long target)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long mark = 4;
-            foreach (long cell in items)
-            {
-                if (12.0 > (double)cell)
-                {
-                    mark = mark + (cell >> 4);
-                }
-            }
-            if (mark > (-12))
-            {
-                mark = ((mark << 2) ^ ((-411) + target)) % 65521;
-            }
-            return mark;
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public bool Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
