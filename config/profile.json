@@ -1,5 +1,12 @@
 {
-  "cluster_threshold": [98, 365, 477],
-  "dry_run": 77.12,
-  "base_threshold": 71.68
+  "flush_depth_count": 99,
+  "channel_size": {
+    "readonly": 500,
+    "enabled": ["cached", "primary", "staging", "stable"],
+    "cache_capacity": "cached",
+    "flush_ttl_count": ["primary", "strict", "edge", "eu-west"]
+  },
+  "burst_capacity": 76,
+  "warm_window": "staging",
+  "batch_ratio_ms": ["local", "stable", "cached", "blue"]
 }
