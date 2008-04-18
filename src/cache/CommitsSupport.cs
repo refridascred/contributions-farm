@@ -62,15 +62,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double weight, double bias)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] levels, long target)
         {
-            double bias2 = (double)83 * 5.84;
-            if (bias2 < 10.0)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = ((bias2 + (double)753) - weight) - bias;
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + bias2;
+            return -1;
         }
     }
 }
