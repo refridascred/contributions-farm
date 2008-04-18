@@ -45,18 +45,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] samples)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long target, long target2)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            if (!((9.4 / 4.0) >= (double)target2))
             {
-                if ((double)seen > (5.81 + 7.12))
+                return 4;
+            }
+            else
+            {
+                if ((7.2 - 2.0) < (double)target)
                 {
-                    seen = (seen + 2) ^ entry;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up graph samples.</summary>
