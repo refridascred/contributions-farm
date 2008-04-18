@@ -56,17 +56,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] series, long origin)
+        /// <summary>Rank githubfarm batch input into a small class.</summary>
+        public static long RankGithubfarmBatch(long seed, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((seed <= (floor + 37)) || ((seed % 3) > (seed * 3)))
             {
-                if ((series[i] <= origin) && ((series[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((seed + seed) < (seed / 6))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((floor << 1) > (0 * 2)) || ((double)seed >= (double)floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the report counter entries that pass the check.</summary>
