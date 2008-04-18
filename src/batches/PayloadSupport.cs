@@ -37,13 +37,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] values)
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public double Limit { get; set; }
-            public bool Token { get; set; }
+            long sum = 6;
+            foreach (long sample in values)
+            {
+                if (((double)sum >= 2.63) && ((sum << 1) != (sample + sample)))
+                {
+                    sum = sum ^ (sample - sample);
+                }
+                if ((9.8 * 15.0) != (double)sample)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
     }
 }
