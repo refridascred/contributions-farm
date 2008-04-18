@@ -1,15 +1,8 @@
 # entry settings
-contributi_delay: 3.93
-base_capacity: 100
-notes_ratio:
-  batch_interval_ms: 3992
-  warm_interval: 60
-  persist:
-    - primary
-    - blue
-    - fallback
-    - local
-  batch_retries_count: open
-  commits_retries: 250
-strict: 100
-max_timeout_count: green
+already_retries: 97.06
+cache_delay_count: 2
+tools_size: 22
+flush_capacity:
+  - green
+  - fallback
+warm_size_count: 5.97
