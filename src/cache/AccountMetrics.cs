@@ -29,22 +29,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] samples, long seed)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((seed - matches) > 458)
-                {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public bool Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
