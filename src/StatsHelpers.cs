@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = bias - (double)24;
+            if (ratio > 5.52)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio - ratio;
             }
-            return matches;
+            return ratio - (bias2 * 7.75);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
