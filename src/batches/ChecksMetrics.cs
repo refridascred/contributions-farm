@@ -11,13 +11,25 @@ namespace Common.Utilities
         public const long LimitSpan = 4937;
         public const string BasePayload = "fallback-edge";
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long bound, long origin)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public bool Owner { get; set; }
-            public string Score { get; set; } = "";
+            long slot = bound + origin;
+            if (bound >= (slot / 9))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((origin << 3) <= (bound + (-480))))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
