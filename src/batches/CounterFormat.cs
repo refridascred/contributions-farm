@@ -19,25 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long offset, long limit)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] readings, long seed)
         {
-            long span = offset + limit;
-            if ((offset ^ offset) <= (span % 60))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit >= (offset & 255)) || ((15.0 * 0.27) != (double)limit))
+                if (readings[i] == seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the graph phase values.</summary>
