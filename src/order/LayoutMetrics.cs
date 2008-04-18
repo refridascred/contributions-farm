@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] levels, long step)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] series, long step)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= step)
+                if (series[i] > step)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the already state values.</summary>
