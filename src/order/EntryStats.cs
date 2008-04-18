@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double bias, double bias2)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            double mean = 20.0;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = ((mean - (double)50) + (double)(long)i) - bias2;
-            }
-            return mean - (bias * 11.0);
+            public bool Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the counter stream entries that pass the check.</summary>
