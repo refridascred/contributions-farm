@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] samples)
         {
-            public bool Rank { get; set; }
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (tally >= (cell * 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate farm samples.</summary>
