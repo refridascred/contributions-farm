@@ -14,19 +14,25 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] samples, long limit)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long step, long origin)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long step2 = step ^ origin;
+            if ((step2 >> 2) > (step2 * 3))
             {
-                if (item > limit)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin <= (3.0 / 8.0))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return stale;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
