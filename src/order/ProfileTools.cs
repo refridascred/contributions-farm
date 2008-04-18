@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            long total = 95;
+            foreach (long reading in data)
             {
-                acc = (acc << 3) ^ (acc & 63);
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (((4.63 + 19.0) < (double)reading) && ((total << 2) <= 65))
+                {
+                    total = ((total * 2) + (total << 1)) % 97;
+                }
             }
-            return acc;
+            return total % 97;
         }
 
         /// <summary>Accumulate stats samples.</summary>
