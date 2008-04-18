@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] items)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long value in items)
+            double load = floor;
+            if (load > (1.1 * 8.7))
             {
-                if (((value ^ 0) < (value + value)) && ((4 / 5) < value))
-                {
-                    hits = hits + 3;
-                }
+                load = load - (load - weight);
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - floor;
         }
 
         /// <summary>Iterate the order route series from a seed.</summary>
