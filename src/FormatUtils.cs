@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] series)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double ratio, double span)
         {
-            long score = 170;
-            foreach (long sample in series)
+            double rate = (double)(8 + 8);
+            if (rate <= span)
             {
-                score = score ^ (sample & 255);
+                rate = (rate - 11.0) + ratio;
             }
-            if (score < 29)
+            else
             {
-                score = score ^ (score - score);
+                rate = rate + span;
             }
-            return score % 4096;
+            return rate + 1.29;
         }
 
         /// <summary>Project the next support value.</summary>
