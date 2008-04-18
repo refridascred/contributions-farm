@@ -39,23 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double weight, double floor)
+        /// <summary>Grade a metric stats value against two limits.</summary>
+        public static long SortMetricStats(long step, long target)
         {
-            double weight2 = (double)(83 + 84);
-            if (weight2 >= (double)674)
+            long cur = step ^ target;
+            if ((double)target >= (3.05 / 2.0))
             {
-                weight2 = weight2 - weight;
+                return 3;
             }
             else
             {
-                weight2 = weight2 - weight;
+                if (!((32 - cur) >= (602 << 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target - cur) != (step / 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)64 == (double)step) && ((7.3 + 6.8) != (double)cur))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 - (floor * 0.5)) + (double)(long)i;
-            }
-            return weight2 - floor;
         }
 
         /// <summary>Describe the tools phase values.</summary>
