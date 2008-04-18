@@ -27,40 +27,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a context filter value against two limits.</summary>
-        public static long ClassifyContextFilter(long offset, long floor)
-        {
-            long delta = offset - floor;
-            if ((736 & 1) != ((-5) ^ floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset & 7) > 891)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (991 >= (offset + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset + delta) > (floor ^ offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxInterval = 3584;
+        public const string IdleLevel = "latest";
+        public const string SoftCommand = "cached-1";
 
         /// <summary>Match up editor support samples.</summary>
         public static long CompareEditorSupportCount(long[] data)
