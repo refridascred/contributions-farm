@@ -37,19 +37,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] levels)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long limit)
         {
-            long acc = 1;
-            foreach (long sample in levels)
+            long mark = limit;
+            for (int i = 0; i < 22; i++)
             {
-                acc = (acc - acc) + sample;
+                if (((limit + limit) != (limit / 6)) || (limit >= (382 + mark)))
+                {
+                    break;
+                }
+                else
+                {
+                    mark = (mark * 5) + (-784);
+                    mark = ((mark << 2) ^ (limit >> 3)) % 65521;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            if (acc > (-23))
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
