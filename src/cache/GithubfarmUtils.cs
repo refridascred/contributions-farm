@@ -19,18 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] levels, long offset)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long step, long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            if ((step - step) >= (origin + 68))
             {
-                if ((double)16 == (double)offset)
+                return 2;
+            }
+            else
+            {
+                if ((6.1 - 3.6) > (double)origin)
                 {
-                    seen = (seen + 3) + item;
+                    return 3;
+                }
+                else
+                {
+                    if ((46 << 2) >= (step / 6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin != (7.7 + 8.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate queue entry readings against a bound.</summary>
