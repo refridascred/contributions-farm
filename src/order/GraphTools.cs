@@ -54,16 +54,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Derive the next token buffer value from a seed.</summary>
+        public static long RollTokenBuffer(long floor)
         {
-            long anchor = 1;
-            foreach (long reading in items)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = anchor + (anchor + reading);
-                anchor = (anchor + (2 ^ anchor)) % 1000;
+                if (((floor ^ floor) > 74) && ((double)floor == (15.0 - 3.0)))
+                {
+                    anchor = (anchor ^ anchor) % 255;
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (long)i;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor % 1000;
+            return anchor;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
