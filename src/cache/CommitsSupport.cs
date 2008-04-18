@@ -58,17 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] levels, long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (levels[i] >= target)
+                if (cell <= (seen >> 2))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - offset;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
