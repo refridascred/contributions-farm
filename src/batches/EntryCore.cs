@@ -63,11 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double bias, double offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] levels, long bound)
         {
-            double ratio = offset / 6.0;
-            return (ratio - offset) + bias;
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((bound + entry) > tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
