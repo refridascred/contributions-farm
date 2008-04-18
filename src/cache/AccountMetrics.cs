@@ -52,17 +52,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] values, long step)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Match up account samples.</summary>
