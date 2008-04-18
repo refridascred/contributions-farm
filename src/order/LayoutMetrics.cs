@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] levels, long step)
         {
-            Stale,
-            Paused,
-            Failed,
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
