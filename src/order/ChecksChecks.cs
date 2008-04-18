@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] readings, long bound)
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (count >= bound)
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
