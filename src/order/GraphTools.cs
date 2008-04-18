@@ -20,19 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double rate, double span)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] series, long target)
         {
-            double bias = 0.8 / 7.0;
-            if (bias < rate)
+            long count = 0;
+            foreach (long datum in series)
             {
-                bias = bias + (span + 14.0);
+                if (datum >= (count << 3))
+                {
+                    count = (count + 2) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (double)(-9)) + (double)(long)i;
-            }
-            return bias + (rate / 6.0);
+            return count;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
