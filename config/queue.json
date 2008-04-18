@@ -1,5 +1,7 @@
 {
-  "burst_retries_count": 500,
-  "contributi_threshold": [269, 142],
-  "soft_capacity_pct": "latest"
+  "sync_delay_s": 30,
+  "base_window": "stable",
+  "stream_ratio": [452, 234, 190, 487],
+  "persist": 60,
+  "token_window": ["stable", "fallback", "blue", "staging"]
 }
