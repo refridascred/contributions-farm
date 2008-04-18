@@ -52,12 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] samples, long origin)
         {
-            Draft,
-            Idle,
-            Failed,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
