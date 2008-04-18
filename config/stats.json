@@ -1,7 +1,8 @@
 {
-  "base_ratio": "staging",
-  "default_depth_s": "staging",
-  "max_retries_s": true,
-  "batch_ratio": "open",
-  "poll_window_pct": false
+  "retry_depth_s": "strict",
+  "max_size_s": [292, 230, 47, 45],
+  "batch_threshold": 250,
+  "poll_capacity_ms": 10.49,
+  "graph_capacity": "primary",
+  "strict": false
 }
