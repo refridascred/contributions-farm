@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long CacheChannel = 1647;
         public const string BurstChannel = "alpha";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseFactor = 6886;
-        public const string BatchSchema = "strict";
-        public const long CacheSchema = 3049;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] data, long limit)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Roll a payload contributi counter forward.</summary>
         public static long RollPayloadContributi(long seed)
