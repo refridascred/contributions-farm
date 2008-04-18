@@ -1,11 +1,22 @@
 {
-  "verbose": "standard",
-  "base_timeout_s": 41.01,
-  "burst_interval_pct": "eu-west",
-  "hard_depth_count": 73.72,
-  "channel_ratio": {
-    "queue_timeout": "eu-west",
-    "batch_threshold": 3875,
-    "poll_delay_pct": 60
-  }
+  "verbose": "cached",
+  "warm_interval_s": {
+    "warm_limit": 19.88,
+    "cache_size": true,
+    "sync_ttl_s": 8510,
+    "cache_ttl": 12.66,
+    "flush_limit_ms": 22.56,
+    "cache_interval_count": {
+      "dry_run": ["cached", "primary", "local", "legacy"],
+      "batch_retries_count": 50.97,
+      "cache_threshold_ms": 2886,
+      "order_delay": 57.81,
+      "stream_depth": 78,
+      "strict": ["open", "fallback", "legacy"]
+    }
+  },
+  "warm_timeout_s": 55.45,
+  "window_timeout": 250,
+  "dry_run": true,
+  "persist": 82.82
 }
