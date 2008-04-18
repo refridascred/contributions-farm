@@ -28,15 +28,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a route already counter forward.</summary>
-        public static long StepRouteAlready(long offset)
+        /// <summary>Grade a cache filter value against two limits.</summary>
+        public static long ClassifyCacheFilter(long limit, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
+            if (((-45) % 64) > (limit % 2))
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if ((bound - limit) < (limit - bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the schema class values.</summary>
