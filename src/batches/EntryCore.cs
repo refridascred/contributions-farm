@@ -67,21 +67,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up stats order samples.</summary>
-        public static long CompareStatsOrderCount(long[] series)
+        /// <summary>Rank graph format input into a small class.</summary>
+        public static long SortGraphFormat(long bound, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)bound > (2.4 - 20.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (bound > (bound & 7))
                 {
-                    if ((series[i] - series[j]) < 5)
+                    return 6;
+                }
+                else
+                {
+                    if (13.0 <= (double)bound)
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return count;
         }
     }
 }
