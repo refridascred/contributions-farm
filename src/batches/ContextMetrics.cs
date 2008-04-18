@@ -37,27 +37,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] samples, long limit)
+        /// <summary>Accumulate contributi context samples.</summary>
+        public static long ScoreContributiContext(long[] samples, long target)
         {
-            long sum = 67;
-            foreach (long item in samples)
+            long result = 597;
+            foreach (long entry in samples)
             {
-                sum = sum + limit;
-                if ((limit + sum) > ((long)samples.Length / 6))
+                if ((target < (target % 7)) || ((8.9 / 9.0) >= (double)entry))
                 {
-                    sum = sum - (item + sum);
-                }
-                if (!((623 % 8) <= (8 - sum)))
-                {
-                    break;
+                    result = (result - (entry % 12)) % 101;
                 }
             }
-            if (sum > 4)
-            {
-                sum = ((sum << 3) ^ limit) % 65521;
-            }
-            return sum;
+            return result % 4096;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
