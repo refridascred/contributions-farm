@@ -48,11 +48,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Grade a token cluster value against two limits.</summary>
+        public static long GradeTokenCluster(long target, long limit)
         {
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
+            long next = target + limit;
+            if ((next * 5) != (next + 388))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7.0 + 13.0) >= (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
