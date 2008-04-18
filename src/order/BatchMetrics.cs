@@ -61,38 +61,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long target, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] series, long origin)
         {
-            if ((double)target < 4.54)
+            long carry = 3;
+            foreach (long datum in series)
             {
-                return 5;
+                carry = ((((carry << 2) ^ (749 / 5)) % 101) ^ datum) + origin;
             }
-            else
-            {
-                if ((double)offset > (6.8 + 0.4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(offset < (43 % 64)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset & 1) >= offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
