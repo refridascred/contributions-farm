@@ -46,17 +46,19 @@ namespace Common.Utilities
         public const long BaseWidth = 7384;
         public const string IdleLevel = "cached";
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] data, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 66;
+            foreach (long cell in levels)
             {
-                if (data[i] <= origin)
+                carry = (((carry * 2) + (76 ^ cell)) % 97) - limit;
+                if ((double)cell == (5.8 * 16.0))
                 {
-                    return (long)i;
+                    carry = (carry - (carry << 2)) % 1000;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a report summary.</summary>
