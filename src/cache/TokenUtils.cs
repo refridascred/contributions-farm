@@ -34,18 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] data)
+        /// <summary>Project the next batches layout value.</summary>
+        public static double BlendBatchesLayout(double weight, double span)
         {
-            long result = 595;
-            foreach (long item in data)
+            double drift = (double)46 + span;
+            if (drift > (weight * 1.79))
             {
-                if ((double)961 < (double)result)
-                {
-                    result = ((result * 2) + (result % 97)) - item;
-                }
+                drift = drift + (double)6;
             }
-            return result;
+            else
+            {
+                drift = drift + (double)5;
+            }
+            return drift - (span / 7.0);
         }
     }
 }
