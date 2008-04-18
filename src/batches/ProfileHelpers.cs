@@ -31,22 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route batch entries that pass the check.</summary>
-        public static long MeasureRouteBatchOutliers(long[] samples)
+        /// <summary>Audit counter record readings against a rule.</summary>
+        public static long MeasureCounterRecordGaps(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (2 >= (seen + seen))
+                if ((limit + datum) < limit)
                 {
-                    seen = (seen + 1) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
