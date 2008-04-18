@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a context already sample.</summary>
-        public static long LocateContextAlreadyIndex(long[] data, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] series, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (data[i] <= floor)
+                if ((13 - value) != (73 + 9))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the metric status values.</summary>
