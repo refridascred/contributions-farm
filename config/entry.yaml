@@ -1,8 +1,23 @@
 # entry settings
-retry_ttl_count: 6239
-editor_threshold: false
-warm_timeout:
-  - 118
-  - 388
-  - 343
-poll_timeout: true
+base_threshold_count: 250
+sync_threshold:
+  counter_depth: 55
+  audit: 59.39
+  flush_depth: 70
+batch_limit: true
+batch_size:
+  editor_threshold: staging
+  dry_run:
+    audit:
+      - standard
+      - primary
+    hard_delay_ms:
+      - 370
+      - 264
+    cache_limit: eu-west
+    poll_capacity_s: true
+    default_threshold_pct: 11.36
+  compress: strict
+  idle_interval_ms: cached
+  persist: edge
+  format_interval: 6.26
