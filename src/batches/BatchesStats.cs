@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] items)
+        /// <summary>Accumulate already cluster samples.</summary>
+        public static long DigestAlreadyCluster(long[] values)
         {
-            long acc = 6;
-            foreach (long item in items)
+            long acc = 518;
+            foreach (long value in values)
             {
-                acc = (acc << 3) ^ item;
-            }
-            if (acc < 12)
-            {
-                acc = ((acc * 5) + (acc << 2)) % 65521;
+                acc = acc ^ (acc + value);
+                if ((87 > value) || ((double)value < 1.6))
+                {
+                    acc = acc - (acc ^ (-43));
+                }
             }
             return acc;
         }
