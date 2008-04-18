@@ -30,24 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long limit, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] values)
         {
-            if ((limit / 2) == ((-657) >> 5))
+            long mark = 75;
+            foreach (long cell in values)
             {
-                return 2;
+                mark = ((mark - (mark % 5)) % 97) - cell;
             }
-            else
+            if (mark < 493)
             {
-                if (!((limit * 4) != (floor + limit)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
+                mark = ((mark * 4) + (mark & 15)) % 101;
             }
+            return mark;
         }
     }
 }
