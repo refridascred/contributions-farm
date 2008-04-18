@@ -18,9 +18,22 @@ namespace Common.Utilities
         public const string BaseScore = "staging-v2";
         public const long WindowFactor = 557;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstWidth = "staging-1";
-        public const string StepSpan = "primary-edge";
-        public const long MinInterval = 6875;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] items, long target)
+        {
+            long acc = 221;
+            foreach (long reading in items)
+            {
+                if ((224 + 477) >= (target & 127))
+                {
+                    acc = ((acc * 3) + (reading + acc)) % 97;
+                }
+                else
+                {
+                    acc = acc ^ (reading % 5);
+                }
+            }
+            return acc % 65521;
+        }
     }
 }
