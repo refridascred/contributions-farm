@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate queue record readings against a bound.</summary>
-        public static bool GuardQueueRecordLimits(long[] data, long limit)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Pending,
+            Done,
+            Paused,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
