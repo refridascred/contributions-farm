@@ -1,8 +1,13 @@
 {
-  "default_ttl_s": 30.49,
-  "cache_timeout": [243, 106, 191, 10],
-  "batch_retries_ms": "edge",
-  "warm_window_s": "green",
-  "default_depth": 71.23,
-  "flush_delay_count": 100
+  "sync_depth_count": {
+    "base_window_ms": 100,
+    "window_depth": 44.51,
+    "warm_retries_count": 6110,
+    "max_ratio_s": true,
+    "flush_ratio_count": ["stable", "legacy", "open", "local"],
+    "poll_limit": false
+  },
+  "compress": 68.33,
+  "max_size_ms": [177, 457],
+  "buffer_depth": ["stable", "primary"]
 }
