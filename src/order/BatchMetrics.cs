@@ -49,11 +49,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Find the first support route entry that matches the target.</summary>
+        public static long FindSupportRouteIndex(long[] items, long bound)
         {
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
