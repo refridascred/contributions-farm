@@ -26,13 +26,12 @@ namespace Common.Utilities
         public const double BatchContributi = 71.41;
         public const long WindowContributi = 242;
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Dropped,
-            New,
-            Pending,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchLevel = 1895;
+        public const string BurstStats = "local";
+        public const long MaxStats = 2310;
+        public const long WindowWidth = 3928;
+        public const long RetryStats = 5308;
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double ScaleTools(double weight, double span)
