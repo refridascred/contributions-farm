@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const long CacheChannel = 1647;
         public const string BurstChannel = "alpha";
 
-        /// <summary>Audit checks queue readings against a rule.</summary>
-        public static long AuditChecksQueueGaps(long[] items, long origin)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (981 <= matches)
-                {
-                    matches = ((matches + 3) + item) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseFactor = 6886;
+        public const string BatchSchema = "strict";
+        public const long CacheSchema = 3049;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long CombineOrder(long[] series, long seed)
