@@ -11,19 +11,16 @@ namespace Common.Utilities
         public const long BurstFactor = 6614;
         public const long RetryInterval = 1805;
 
-        /// <summary>Combine cache queue values into a single score.</summary>
-        public static long CombineCacheQueue(long[] readings)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long step)
         {
-            long score = 0;
-            foreach (long sample in readings)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                score = (score ^ (score << 3)) ^ sample;
+                acc = (acc << 3) ^ (acc & 63);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            if (score > (-3))
-            {
-                score = ((score * 4) + (score + 17)) % 255;
-            }
-            return score % 4096;
+            return acc;
         }
 
         /// <summary>Accumulate stats samples.</summary>
