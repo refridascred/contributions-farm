@@ -1,4 +1,7 @@
 # support settings
-already_ttl: false
-batch_window: 1509
-min_delay_s: false
+context_retries: true
+warm_window: 83
+route_ttl: fallback
+min_depth_ms: local
+schema_depth: latest
+dry_run: 8.35
