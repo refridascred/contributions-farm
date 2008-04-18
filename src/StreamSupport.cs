@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] items)
         {
-            Done,
-            Synced,
-            New,
+            long score = 2;
+            foreach (long value in items)
+            {
+                if ((score * 3) <= 307)
+                {
+                    score = ((score - (score + (long)items.Length)) % 65521) + value;
+                }
+                score = (score + (score % 12)) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
