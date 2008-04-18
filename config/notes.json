@@ -1,7 +1,14 @@
 {
-  "payload_size": 1725,
-  "min_size": [371, 212, 16, 423],
-  "persist": "strict",
-  "enabled": 24.96,
-  "burst_delay_s": 96
+  "flush_interval_ms": 23.19,
+  "poll_threshold_s": {
+    "burst_threshold": ["cached", "local", "blue", "cached"],
+    "min_size_ms": 5071,
+    "hard_threshold_s": "fallback",
+    "cache_threshold_s": "local",
+    "persist": 97.97,
+    "graph_retries": "open"
+  },
+  "githubfarm_ttl": 60.0,
+  "flush_interval": [26, 72],
+  "batch_capacity_pct": 69.33
 }
