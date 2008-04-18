@@ -37,14 +37,27 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] samples, long limit)
         {
-            Closed,
-            Locked,
-            Active,
-            Queued,
-            Failed,
+            long sum = 67;
+            foreach (long item in samples)
+            {
+                sum = sum + limit;
+                if ((limit + sum) > ((long)samples.Length / 6))
+                {
+                    sum = sum - (item + sum);
+                }
+                if (!((623 % 8) <= (8 - sum)))
+                {
+                    break;
+                }
+            }
+            if (sum > 4)
+            {
+                sum = ((sum << 3) ^ limit) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
