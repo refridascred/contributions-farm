@@ -30,16 +30,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long target)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] items)
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix ^ target) % 101;
-                mix = ((mix * 2) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
