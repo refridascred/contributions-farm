@@ -15,22 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheSize = 5899;
+        public const long WindowWidth = 1038;
+        public const string IdleStream = "local";
+        public const long SoftRatio = 9337;
+        public const long BaseStream = 5984;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsLimits(long[] series, long target)
