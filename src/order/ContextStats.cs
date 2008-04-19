@@ -12,12 +12,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftDepth = 1159;
-        public const long WindowSpan = 8076;
-        public const long SoftAlready = 5241;
-        public const string WindowAlready = "standard-1";
-        public const string DefaultRatio = "alpha-v2";
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public bool Ratio { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TallyRecord(long[] readings)
