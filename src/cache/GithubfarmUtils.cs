@@ -22,18 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] items, long target)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((0 - entry) >= (88 + seen))
-                {
-                    seen = (seen + 2) + target;
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
