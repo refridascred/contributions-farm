@@ -34,19 +34,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate layout support samples.</summary>
-        public static long ScoreLayoutSupport(long[] series)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] values, long target)
         {
-            long mix = 385;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                mix = ((mix - (mix >> 5)) % 65521) ^ entry;
+                if ((target & 31) > (long)values.Length)
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (mix > 79)
-            {
-                mix = (mix << 2) ^ (mix & 255);
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Audit queue counter readings against a rule.</summary>
