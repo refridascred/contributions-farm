@@ -57,12 +57,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Measure how many commits graph samples are out of range.</summary>
+        public static long AuditCommitsGraphMatches(long[] data)
         {
-            public double Score { get; set; }
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((sample & 15) >= (hits - sample))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a route record.</summary>
