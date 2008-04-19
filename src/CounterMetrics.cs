@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowPayload = "latest-edge";
-        public const double BaseFactor = 72.01;
-        public const double MinPayload = 27.51;
-        public const long IdleInterval = 8164;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((step + step) > (step - step))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long CompareFormatCount(long[] values)
