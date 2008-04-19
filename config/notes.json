@@ -1,10 +1,5 @@
 {
-  "metrics_limit": "green",
-  "enabled": 30,
-  "editor_ratio": {
-    "report_threshold": 5799,
-    "max_capacity_count": ["cached", "eu-west", "legacy"],
-    "layout_threshold": 18,
-    "channel_timeout": 49.3
-  }
+  "support_threshold": "strict",
+  "support_capacity": 500,
+  "cache_depth": 28.15
 }
