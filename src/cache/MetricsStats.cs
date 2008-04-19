@@ -34,14 +34,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public double Size { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardFactor = 6108;
+        public const long WindowChecks = 1703;
+        public const long LimitDepth = 8917;
+        public const string BaseWidth = "staging-edge";
+        public const long LimitChecks = 9306;
 
         /// <summary>Rank already input into a small class.</summary>
         public static long BucketAlready(long seed, long floor)
