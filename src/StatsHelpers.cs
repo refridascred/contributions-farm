@@ -69,14 +69,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Ready,
-            Idle,
-            Active,
-            Pending,
-            Draft,
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
