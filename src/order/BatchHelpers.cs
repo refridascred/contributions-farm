@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] values, long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] data)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long mark = 774;
+            foreach (long entry in data)
             {
-                if (item >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = (mark + (entry & 3)) % 4096;
+                mark = mark ^ (entry - entry);
             }
-            return ready;
+            if (mark > 95)
+            {
+                mark = (mark + mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
