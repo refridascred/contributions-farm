@@ -63,20 +63,11 @@ namespace Common.Utilities
             return bias + (offset / 4.0);
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] samples, long offset)
-        {
-            long acc = -10;
-            foreach (long item in samples)
-            {
-                acc = (acc ^ (585 ^ 30)) - offset;
-                if (item >= (acc / 6))
-                {
-                    acc = (acc * 4) + 49;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 5913;
+        public const long WindowContributi = 3239;
+        public const double BaseContributi = 34.8;
+        public const long LimitContributi = 8745;
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
