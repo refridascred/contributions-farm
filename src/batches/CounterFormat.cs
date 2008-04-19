@@ -38,22 +38,13 @@ namespace Common.Utilities
         public const long BatchAccount = 5080;
         public const double BatchDepth = 65.6;
 
-        /// <summary>Fold a list of buffer queue readings.</summary>
-        public static long ScoreBufferQueue(long[] items, long limit)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long state = -132;
-            foreach (long sample in items)
-            {
-                if (((double)(long)items.Length != (16.0 + 3.91)) && ((sample * 4) < sample))
-                {
-                    state = (state - (state ^ 471)) % 65521;
-                }
-            }
-            if (state < 0)
-            {
-                state = state - limit;
-            }
-            return state;
+            Closed,
+            Locked,
+            New,
+            Pending,
         }
     }
 }
