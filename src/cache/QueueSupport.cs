@@ -32,17 +32,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cache graph sample.</summary>
-        public static long SeekCacheGraphIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseInterval = 413;
+        public const double CacheScore = 12.23;
+        public const long HardBudget = 9445;
     }
 }
