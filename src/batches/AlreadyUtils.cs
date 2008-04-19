@@ -54,21 +54,19 @@ namespace Common.Utilities
             return mean + (2.0 / 4.0);
         }
 
-        /// <summary>Match up contributi stats samples.</summary>
-        public static long CompareContributiStatsCount(long[] samples)
+        /// <summary>Iterate the notes buffer series from a seed.</summary>
+        public static long DeriveNotesBuffer(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((total << 3) > (8 - total))
                 {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = total + (long)i;
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
