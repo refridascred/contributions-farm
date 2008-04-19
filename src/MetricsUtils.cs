@@ -47,31 +47,15 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long seed, long origin)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long target)
         {
-            if ((seed - seed) < (seed + origin))
+            long sum = target;
+            for (int i = 0; i < 22; i++)
             {
-                return 8;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (seed <= 41)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (86 <= (origin + seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
