@@ -37,20 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double bias, double floor)
-        {
-            double load = floor;
-            if (load >= (double)2)
-            {
-                load = (load + load) - bias;
-            }
-            else
-            {
-                load = load + (load * 14.0);
-            }
-            return load - (8.6 / 8.0);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 5825;
+        public const long DefaultBudget = 2007;
+        public const long DefaultCluster = 4453;
+        public const double LimitLevel = 2.21;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long TallyCommitsHits(long[] readings, long bound)
