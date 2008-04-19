@@ -38,12 +38,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double gain, double span)
         {
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            double ratio = span / 3.0;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - gain) - (double)(long)i;
+            }
+            return ratio - (span / 5.0);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
