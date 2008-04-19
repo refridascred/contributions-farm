@@ -37,15 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two already entry measurements.</summary>
-        public static double BlendAlreadyEntry(double rate, double floor)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double weight, double offset)
         {
-            double gain = rate;
-            if (gain < (rate - 7.26))
+            double rate = 9.6;
+            if (rate > (double)55)
             {
-                gain = gain + floor;
+                rate = (rate + rate) + offset;
             }
-            return gain + gain;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - weight;
         }
     }
 }
