@@ -53,12 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] readings, long floor)
         {
-            Draft,
-            Failed,
-            Queued,
+            long carry = 183;
+            foreach (long cell in readings)
+            {
+                carry = ((carry - cell) % 1000) + floor;
+            }
+            if (carry > 322)
+            {
+                carry = ((carry * 4) + (706 >> 5)) % 1000;
+            }
+            return carry % 65521;
         }
     }
 }
