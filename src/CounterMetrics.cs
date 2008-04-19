@@ -23,12 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] values, long seed)
         {
-            Closed,
-            Synced,
-            Draft,
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
