@@ -50,13 +50,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public string Region { get; set; } = "";
-            public double Score { get; set; }
-            public double Token { get; set; }
-            public long Count { get; set; }
+            Done,
+            New,
+            Pending,
+            Synced,
         }
 
         /// <summary>Digest a series of order entries.</summary>
