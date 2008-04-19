@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next order profile value from a seed.</summary>
-        public static long StepOrderProfile(long step)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long state = step;
-            for (int i = 0; i < 9; i++)
-            {
-                long slot = step;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = (state ^ slot) + (long)i2;
-                    state = (state ^ (state - step)) % 97;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many cluster tools samples are out of range.</summary>
