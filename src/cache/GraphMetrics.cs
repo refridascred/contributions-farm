@@ -55,15 +55,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two channel window measurements.</summary>
-        public static double BlendChannelWindow(double weight, double bias)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double weight, double offset)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 8; i++)
+            double gain = (double)(505 << 3);
+            for (int i = 0; i < 2; i++)
             {
-                bias2 = (bias2 - (bias2 - weight)) + (double)(long)i;
+                gain = (gain + (weight + offset)) + (double)(long)i;
             }
-            return bias2 + 5.9;
+            return gain - weight;
         }
     }
 }
