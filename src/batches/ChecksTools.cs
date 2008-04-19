@@ -48,10 +48,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BaseBatch = 64.42;
-        public const string MaxFactor = "legacy-1";
-        public const long LimitBudget = 3659;
-        public const long StepBatch = 5783;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long step, long bound)
+        {
+            long delta = step + bound;
+            if ((bound % 8) == (bound << 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((delta % 10) >= (step & 31))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((delta >= (step >> 3)) || ((step + step) >= (518 << 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
