@@ -31,19 +31,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] items, long limit)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long floor, long floor2)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long cur = floor ^ floor2;
+            if (cur < (430 % 2))
             {
-                if (item < limit)
+                return 3;
+            }
+            else
+            {
+                if ((floor + floor2) <= (floor / 2))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (floor < (floor - cur))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (4.5 <= (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
