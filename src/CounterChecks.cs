@@ -12,23 +12,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] series, long seed)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long result = -2;
-            foreach (long datum in series)
-            {
-                result = (result + (result * 4)) % 1000;
-                if ((result ^ result) > (60 + result))
-                {
-                    result = (result ^ (datum % 2)) % 97;
-                }
-                if (seed > (seed * 3))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            Ready,
+            Locked,
+            Idle,
+            Paused,
+            Active,
         }
 
         /// <summary>Audit command session readings against a rule.</summary>
