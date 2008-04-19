@@ -31,19 +31,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long bound)
+        /// <summary>Classify a window record pair into a bucket.</summary>
+        public static long ClassifyWindowRecord(long floor, long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
+            if ((floor * 2) <= ((-72) + origin))
             {
-                if (!(((long)i + 91) != (anchor + anchor)))
-                {
-                    break;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((origin << 1) >= (floor ^ 401))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)floor < (double)origin) || ((13.0 - 7.7) < (double)origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
