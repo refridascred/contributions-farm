@@ -28,12 +28,14 @@ namespace Common.Utilities
         public const string RetryFactor = "cached-1";
         public const long CacheRatio = 7149;
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            Done,
+            Closed,
+            Ready,
+            Queued,
+            Locked,
         }
     }
 }
