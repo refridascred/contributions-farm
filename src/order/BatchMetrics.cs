@@ -48,20 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double gain, double offset)
-        {
-            double bias = (double)(-16) / 5.0;
-            if (bias <= offset)
-            {
-                bias = (bias - (double)(-392)) + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias + (offset / 4.0);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardMetrics = 4.25;
+        public const string MinLevel = "cached-v2";
+        public const long BatchDepth = 9475;
+        public const long BurstFactor = 2347;
+        public const long MaxMetrics = 5471;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BurstContributi = 5913;
