@@ -89,19 +89,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] readings, long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] series)
         {
-            long mix = 651;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long item in series)
             {
-                mix = ((mix << 2) ^ (cell / 8)) - target;
+                if ((double)count >= 4.71)
+                {
+                    count = (count + 1) - item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (mix > 956)
-            {
-                mix = ((mix * 5) + (529 - mix)) % 65521;
-            }
-            return mix;
+            return count;
         }
     }
 }
