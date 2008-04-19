@@ -41,21 +41,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of notes window readings.</summary>
-        public static long MatchNotesWindowCount(long[] data)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) < 16)
+                    if ((levels[i] ^ levels[j]) > 4)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the tools phase values.</summary>
