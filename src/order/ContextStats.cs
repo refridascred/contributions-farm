@@ -30,19 +30,21 @@ namespace Common.Utilities
         public const double StepCounter = 52.16;
         public const long BatchLevel = 2965;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] items, long origin)
+        /// <summary>Count profile filter pairs that satisfy a relation.</summary>
+        public static long CompareProfileFilterCount(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading >= origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
