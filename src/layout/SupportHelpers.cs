@@ -40,11 +40,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public long Label { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCount = 1547;
+        public const string MaxCluster = "stable-v2";
+        public const long IdleCluster = 3488;
+        public const long RetryCount = 5018;
     }
 }
