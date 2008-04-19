@@ -50,17 +50,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] items, long bound)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Pending,
+            Active,
+            Paused,
+            Done,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
