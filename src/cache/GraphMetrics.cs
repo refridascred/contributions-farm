@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Find the first tools editor entry that matches the target.</summary>
+        public static long SeekToolsEditorIndex(long[] items, long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
