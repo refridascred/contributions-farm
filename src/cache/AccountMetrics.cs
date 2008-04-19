@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double bias, double bias2)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            double mean = bias;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = ((mean - bias) + (double)(long)i) + bias2;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean + mean;
+            return matches;
         }
 
         /// <summary>Describe the report level values.</summary>
