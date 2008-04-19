@@ -19,21 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] items)
+        /// <summary>Locate a layout session reading by value.</summary>
+        public static long LookupLayoutSessionIndex(long[] levels, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((levels[i] < origin) && ((levels[i] % 2) == 0))
                 {
-                    if ((items[i] - items[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
