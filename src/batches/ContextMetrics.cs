@@ -34,12 +34,18 @@ namespace Common.Utilities
         public const double BatchSpan = 53.75;
         public const double RetryDepth = 72.25;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] series)
         {
-            Dropped,
-            New,
-            Retry,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (((double)cell >= (19.0 - 1.6)) || ((8.87 + 1.0) > (double)cell))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the cluster class values.</summary>
