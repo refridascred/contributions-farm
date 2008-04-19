@@ -31,11 +31,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 8016;
-        public const long HardCluster = 4077;
-        public const long BurstCluster = 2003;
-        public const long BaseCluster = 8996;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Idle,
+            Retry,
+            Active,
+            Closed,
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double ProjectTools(double gain, double span)
