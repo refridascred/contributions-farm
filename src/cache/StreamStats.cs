@@ -30,16 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long floor)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result << 2) ^ (5 / 9)) % 255;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
