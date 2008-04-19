@@ -1,15 +1,8 @@
 {
-  "stream_limit": "primary",
-  "enabled": true,
-  "report_ttl": 82.19,
-  "readonly": {
-    "flush_threshold": "blue",
-    "sync_window_ms": 40.83,
-    "max_retries": "green"
-  },
-  "report_depth": {
-    "checks_depth": ["blue", "blue"],
-    "sync_ttl_count": "legacy",
-    "entry_depth": false
-  }
+  "poll_window_s": "blue",
+  "batch_ttl": 21.64,
+  "soft_ratio_ms": "green",
+  "persist": "edge",
+  "idle_threshold": ["strict", "cached", "local", "primary"],
+  "idle_depth_ms": true
 }
