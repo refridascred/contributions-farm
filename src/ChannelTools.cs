@@ -35,13 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Ready,
-            Queued,
-            Stale,
-            Paused,
+            public string Count { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
