@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const double BaseCount = 12.59;
         public const long BurstTools = 3364;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] data, long seed)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a editor snapshot.</summary>
