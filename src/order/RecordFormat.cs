@@ -33,12 +33,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] levels, long bound)
         {
-            Retry,
-            Idle,
-            Paused,
+            long carry = -7;
+            foreach (long item in levels)
+            {
+                carry = ((carry * 4) + (bound - 583)) % 4096;
+                if (!(item <= (item + bound)))
+                {
+                    carry = (carry ^ (bound / 6)) % 97;
+                }
+                else
+                {
+                    carry = (carry - (bound - item)) % 101;
+                }
+            }
+            if (carry > 28)
+            {
+                carry = ((carry << 2) ^ (bound / 3)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of counter commits readings.</summary>
