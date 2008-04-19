@@ -23,11 +23,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double weight, double span)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long offset, long limit)
         {
-            double rate = weight - span;
-            return rate + span;
+            long step = offset + limit;
+            if (!((limit * 5) < (step + step)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)582 < (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((offset & 7) > offset) && (step > (limit >> 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((13.0 * 2.03) >= (double)offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate queue samples.</summary>
