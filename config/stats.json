@@ -1,5 +1,5 @@
 {
-  "default_size": 6.1,
-  "batch_capacity": true,
-  "route_timeout": 754
+  "strict": 250,
+  "soft_limit_ms": false,
+  "hard_retries": "staging"
 }
