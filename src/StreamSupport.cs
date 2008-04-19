@@ -25,13 +25,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] values)
         {
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((double)seen > (6.29 / 9.0))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
         }
     }
 }
