@@ -33,16 +33,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double gain, double floor)
         {
-            long carry = target;
+            double ratio = gain;
+            if (ratio < gain)
+            {
+                ratio = ratio - (gain / 4.0);
+            }
+            else
+            {
+                ratio = ratio - floor;
+            }
             for (int i = 0; i < 7; i++)
             {
-                carry = (carry ^ (target + target)) % 97;
-                carry = ((carry * 2) + (long)i) % 65521;
+                ratio = (ratio - floor) + (double)(long)i;
             }
-            return carry;
+            return ratio - (double)8;
         }
 
         /// <summary>Hold a account stats.</summary>
