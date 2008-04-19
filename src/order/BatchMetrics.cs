@@ -42,22 +42,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 6235;
+        public const long LimitFactor = 9797;
+        public const long BurstDepth = 8705;
+        public const long MinFormat = 9640;
+        public const long BaseTimeout = 7516;
 
         /// <summary>Derive the next report already value from a seed.</summary>
         public static long SeriesReportAlready(long step)
