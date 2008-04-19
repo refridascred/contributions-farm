@@ -59,15 +59,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Pending,
-            Failed,
-            Synced,
-            Done,
-            Queued,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 2486;
+        public const long MaxSession = 9138;
+        public const long IdleSession = 4837;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TallyCounter(long[] series, long bound)
