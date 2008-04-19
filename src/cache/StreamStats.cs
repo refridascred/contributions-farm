@@ -27,11 +27,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
