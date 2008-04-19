@@ -1,15 +1,11 @@
 # Command notes
 
-Use queue settings to tune how often already data is refreshed.
-Run the cache check before changing any counter limits.
-The support helpers are pure functions, so they are safe to call from any thread.
-
-The notes helpers are pure functions, so they are safe to call from any thread.
-The schema module keeps schema values in sync with the githubfarm cache.
+Run the counter check before changing any filter limits.
+Defaults for batches live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review support limits each release
-- Document new account fields
-- Keep profile values small
-- Validate window input early
+- Prefer farm defaults
+- Review channel limits each release
+- Document new farm fields
+- Keep queue values small
