@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const double DefaultCommits = 44.5;
         public const long MaxScore = 8809;
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] data, long step)
         {
-            Pending,
-            Ready,
-            Queued,
-            Dropped,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((((double)count < (2.0 / 6.0)) || (reading > (576 >> 1))) || ((reading & 255) <= (step << 2)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine githubfarm stream values into a single score.</summary>
