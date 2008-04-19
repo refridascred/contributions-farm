@@ -16,19 +16,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] items, long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long score = 704;
+            foreach (long reading in values)
             {
-                if (cell <= seed)
+                if ((double)score != (double)reading)
                 {
-                    found = false;
-                    break;
+                    score = ((score << 2) ^ (score ^ 72)) - floor;
+                }
+                else
+                {
+                    score = (score + (9 / 8)) % 101;
                 }
             }
-            return found;
+            if (score > 88)
+            {
+                score = score - (score * 5);
+            }
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
