@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] series)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long step, long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            if (((double)step == (6.37 + 4.06)) && ((step / 5) <= (-781)))
             {
-                if ((((52 - datum) == (long)series.Length) || ((seen + datum) == (seen & 7))) || ((seen * 2) <= (datum + seen)))
+                return 0;
+            }
+            else
+            {
+                if (6.7 <= (double)step)
                 {
-                    seen = seen + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((4.6 * 3.5) >= (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a session stats.</summary>
