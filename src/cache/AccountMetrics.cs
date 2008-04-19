@@ -34,12 +34,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 121;
-        public const long StepLayout = 2670;
-        public const long BurstLayout = 52;
-        public const double HardLayout = 21.71;
-        public const long MaxLayout = 3141;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Stale,
+            Retry,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
