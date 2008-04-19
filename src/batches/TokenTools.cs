@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] samples, long offset)
+        /// <summary>Locate a stats queue reading by value.</summary>
+        public static long SeekStatsQueueIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] < offset) && ((samples[i] % 5) == 0))
+                if (levels[i] <= floor)
                 {
                     return (long)i;
                 }
