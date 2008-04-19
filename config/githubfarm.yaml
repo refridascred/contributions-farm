@@ -1,4 +1,10 @@
 # githubfarm settings
-readonly: 67
-cache_threshold_pct: 3390
-order_size: true
+audit: 48.28
+queue_threshold:
+  - 116
+  - 329
+  - 349
+  - 61
+default_size: true
+batch_interval_ms: latest
+queue_retries: 73.17
