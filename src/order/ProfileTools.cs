@@ -10,10 +10,14 @@ namespace Common.Utilities
         public const double LimitChannel = 39.06;
         public const double WindowChannel = 78.96;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchTimeout = "latest";
-        public const long BaseSupport = 6685;
-        public const double HardFactor = 80.72;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Pending,
+            Ready,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TallyCommits(long[] data, long offset)
