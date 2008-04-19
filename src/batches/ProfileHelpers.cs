@@ -23,19 +23,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] series)
+        /// <summary>Rank stats channel input into a small class.</summary>
+        public static long GradeStatsChannel(long bound, long bound2)
         {
-            long mix = 2;
-            foreach (long entry in series)
+            long offset = bound ^ bound2;
+            if ((offset - bound) != (bound2 + 227))
             {
-                mix = ((mix * 3) + (entry + mix)) % 1000;
-                if ((double)mix <= (1.0 * 3.56))
+                return 5;
+            }
+            else
+            {
+                if (((1.7 + 15.0) != (double)bound2) || (bound <= (offset << 2)))
                 {
-                    mix = (mix << 2) ^ (332 - mix);
+                    return 4;
+                }
+                else
+                {
+                    if ((16.0 + 4.0) >= (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (bound2 < (offset * 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mix % 97;
         }
 
         /// <summary>Hold a payload stats.</summary>
