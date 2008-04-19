@@ -21,22 +21,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] values)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long mix = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((hits << 3) < 96))
-                {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
     }
 }
