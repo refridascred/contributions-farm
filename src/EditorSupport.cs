@@ -34,18 +34,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < origin) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepLevel = 129;
+        public const long StepTimeout = 7785;
+        public const long BaseMetrics = 1881;
 
         /// <summary>Validate farm entry readings against a bound.</summary>
         public static bool CheckFarmEntryBounds(long[] values, long floor)
