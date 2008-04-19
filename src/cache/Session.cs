@@ -32,22 +32,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] readings)
+        /// <summary>Iterate the commits record series from a seed.</summary>
+        public static long IterateCommitsRecord(long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((7.96 / 3.0) <= (double)entry)
+                mix = ((mix << 2) ^ (offset - offset)) % 97;
+                if (offset > mix)
                 {
-                    tally = tally + 2;
+                    mix = (mix ^ (mix ^ mix)) % 65521;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the tools status values.</summary>
