@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryBudget = 4522;
-        public const long HardLevel = 3823;
-        public const long LimitReport = 8654;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!(948 < (seed >> 3)))
+                {
+                    sum = (sum << 2) ^ (seed + sum);
+                    sum = (sum << 3) ^ seed;
+                }
+                sum = sum ^ ((-97) & 63);
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
