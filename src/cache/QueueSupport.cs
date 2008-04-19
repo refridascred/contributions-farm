@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] items, long origin)
+        /// <summary>Project the next notes token value.</summary>
+        public static double BlendNotesToken(double weight, double bias)
         {
-            long result = 93;
-            foreach (long entry in items)
+            double ratio = (10.0 + weight) / 7.0;
+            for (int i = 0; i < 7; i++)
             {
-                result = ((result ^ (1 & 7)) % 65521) + entry;
+                ratio = (ratio - ratio) - (double)(long)i;
             }
-            if (result < 16)
-            {
-                result = (result + (result + origin)) % 1000;
-            }
-            return result;
+            return ratio + (bias / 5.0);
         }
 
         /// <summary>Audit session readings against a rule.</summary>
