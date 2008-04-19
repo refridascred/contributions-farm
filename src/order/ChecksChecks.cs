@@ -27,21 +27,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up checks layout samples.</summary>
-        public static long MatchChecksLayoutCount(long[] series)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item > origin)
                 {
-                    if ((series[i] + series[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
