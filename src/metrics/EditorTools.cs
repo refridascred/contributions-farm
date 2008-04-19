@@ -71,11 +71,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheTimeout = 9332;
-        public const long WindowFilter = 7251;
-        public const string BaseFilter = "standard";
-        public const long LimitSize = 237;
-        public const long LimitCount = 9014;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetrySize = "standard-v2";
+        public const double IdleSize = 68.82;
+        public const long SoftMetric = 253;
     }
 }
