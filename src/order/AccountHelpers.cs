@@ -38,12 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double weight, double span)
         {
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
+            double rate = span;
+            if (rate > (rate - 8.8))
+            {
+                rate = rate + 1.9;
+            }
+            else
+            {
+                rate = rate - (weight - span);
+            }
+            return rate - rate;
         }
 
         /// <summary>Hold a tools info.</summary>
