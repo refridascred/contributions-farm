@@ -12,15 +12,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long offset)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Paused,
+            Done,
+            Queued,
+            Pending,
+            Active,
         }
 
         /// <summary>Look up the position of a cache graph sample.</summary>
