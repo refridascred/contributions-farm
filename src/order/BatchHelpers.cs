@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] levels)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long state = 88;
-            foreach (long cell in levels)
-            {
-                state = (((state * 5) + 77) % 4096) + cell;
-            }
-            if (state < 128)
-            {
-                state = (state - state) % 4096;
-            }
-            return state % 97;
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
