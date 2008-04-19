@@ -20,15 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a contributi channel figure with a bias.</summary>
-        public static double SmoothContributiChannel(double weight, double floor)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double gain, double floor)
         {
-            double mean = weight;
+            double mean = (double)((-28) >> 4);
             for (int i = 0; i < 8; i++)
             {
-                mean = (mean + (double)(long)i) + floor;
+                mean = ((mean + (double)(long)i) - gain) + floor;
             }
-            return mean - (weight + weight);
+            return mean + (double)0;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
