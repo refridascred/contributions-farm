@@ -42,22 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout batch samples are out of range.</summary>
-        public static long MeasureLayoutBatchHits(long[] data)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits + hits) != (entry + entry))
+                if ((values[i] > floor) && ((values[i] % 2) == 0))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
