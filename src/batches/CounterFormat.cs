@@ -14,19 +14,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] series, long seed)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((seed - 0) != (63 + seed))
-                {
-                    tally = (tally + 2) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 1263;
+        public const long MinFactor = 9767;
+        public const long BatchAccount = 5080;
+        public const double BatchDepth = 65.6;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionOutliers(long[] items)
