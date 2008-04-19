@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] levels, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((step + step) > (step - step))
+                if (((matches % 12) != (matches * 5)) || ((entry - matches) < (matches + entry)))
                 {
-                    seen = (seen + 3) ^ cell;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
