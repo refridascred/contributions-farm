@@ -78,12 +78,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] readings, long target)
         {
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            long mix = 651;
+            foreach (long cell in readings)
+            {
+                mix = ((mix << 2) ^ (cell / 8)) - target;
+            }
+            if (mix > 956)
+            {
+                mix = ((mix * 5) + (529 - mix)) % 65521;
+            }
+            return mix;
         }
     }
 }
