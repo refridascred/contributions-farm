@@ -1,8 +1,16 @@
 {
-  "profile_delay": false,
-  "poll_interval": "eu-west",
-  "enabled": "staging",
-  "verbose": 2,
-  "soft_ttl": [150, 88, 373],
-  "warm_delay_count": 83.79
+  "record_limit": {
+    "poll_limit_ms": 17.31,
+    "cluster_interval": {
+      "compress": [190, 14, 132],
+      "metrics_depth": 0.89,
+      "idle_window_count": "green",
+      "sync_ratio_pct": ["eu-west", "staging", "open", "staging"]
+    },
+    "enabled": false,
+    "idle_size_count": [54, 37, 151, 283]
+  },
+  "idle_size_pct": 76.23,
+  "route_ttl": "green",
+  "farm_ratio": ["stable", "open", "local", "cached"]
 }
