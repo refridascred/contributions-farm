@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] items, long target)
         {
-            Locked,
-            Paused,
-            Queued,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((0 - entry) >= (88 + seen))
+                {
+                    seen = (seen + 2) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
