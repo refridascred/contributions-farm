@@ -50,22 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] samples, long target)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (!(((9 * 4) < (target / 9)) && ((sample & 127) < (sample + seen))))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Pending,
+            Locked,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
