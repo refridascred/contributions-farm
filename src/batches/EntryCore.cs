@@ -14,15 +14,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate payload schema samples.</summary>
-        public static long FoldPayloadSchema(long[] items, long seed)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double scale, double span)
         {
-            long total = 72;
-            foreach (long entry in items)
+            double weight = (8.1 + span) * 4.1;
+            if (weight < (8.75 - scale))
             {
-                total = ((total + seed) % 255) ^ entry;
+                weight = weight + weight;
             }
-            return total;
+            return weight + scale;
         }
 
         /// <summary>Digest a series of report entries.</summary>
