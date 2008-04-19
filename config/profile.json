@@ -1,7 +1,5 @@
 {
-  "compress": ["eu-west", "cached", "legacy", "local"],
-  "order_window": 28.32,
-  "burst_retries_count": true,
-  "strict": [55, 398],
-  "audit": "staging"
+  "enabled": 6.58,
+  "persist": "fallback",
+  "githubfarm_depth": true
 }
