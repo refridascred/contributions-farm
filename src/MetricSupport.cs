@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine token farm values into a single score.</summary>
-        public static long DigestTokenFarm(long[] values, long floor)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] values, long limit)
         {
-            long mix = 9;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (5.0 > (double)mix)
+                if ((values[i] > limit) && ((values[i] % 5) == 0))
                 {
-                    mix = mix ^ (cell * 5);
+                    return (long)i;
                 }
-                else
-                {
-                    mix = ((mix << 2) ^ ((-93) ^ floor)) % 97;
-                }
-                mix = mix ^ ((-2) << 1);
             }
-            if (mix > 62)
-            {
-                mix = ((mix * 5) + (floor % 64)) % 255;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a commits info.</summary>
