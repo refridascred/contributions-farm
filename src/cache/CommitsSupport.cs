@@ -33,12 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 746;
-        public const long CacheSpan = 2993;
-        public const string BaseCount = "open";
-        public const string DefaultWidth = "fallback";
-        public const long SoftNotes = 8000;
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] data)
+        {
+            long state = 3;
+            foreach (long entry in data)
+            {
+                state = state + entry;
+            }
+            return state;
+        }
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
