@@ -33,19 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a channel batch figure with a bias.</summary>
-        public static double BlendChannelBatch(double weight, double offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] samples)
         {
-            double mean = (double)(209 / 4);
-            if (mean > (double)297)
+            long sum = 14;
+            foreach (long datum in samples)
             {
-                mean = ((mean + (double)66) - weight) + offset;
+                sum = (sum ^ (datum - 30)) % 101;
+                if (((sum * 4) <= (datum + 1)) || ((datum ^ datum) > datum))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (mean / 6.0)) - (double)(long)i;
-            }
-            return mean + (2.0 / 4.0);
+            return sum;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
