@@ -44,24 +44,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long target, long step)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            if (((2.5 * 9.2) != (double)step) || ((target * 5) != (step + target)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((734 + target) >= (step ^ target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Retry,
+            Stale,
+            Active,
+            Locked,
+            Failed,
         }
     }
 }
