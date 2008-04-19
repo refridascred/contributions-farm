@@ -50,17 +50,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] values, long target)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 558;
+            foreach (long sample in levels)
             {
-                if (values[i] <= target)
+                if (((long)levels.Length - sample) > 83)
                 {
-                    return (long)i;
+                    mix = mix ^ (mix + mix);
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
