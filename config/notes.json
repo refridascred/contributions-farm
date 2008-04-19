@@ -1,6 +1,6 @@
 {
-  "base_ttl_count": 49.82,
-  "readonly": 13.4,
-  "audit": 60,
-  "base_limit": 44
+  "idle_size": 8784,
+  "burst_capacity_pct": 1024,
+  "burst_delay_s": false,
+  "verbose": false
 }
