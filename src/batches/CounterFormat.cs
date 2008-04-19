@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public double Score { get; set; }
-            public bool Count { get; set; }
+            public bool Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
