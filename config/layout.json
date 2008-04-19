@@ -1,5 +1,6 @@
 {
-  "audit": "staging",
-  "sync_ttl_count": 43.13,
-  "idle_delay": false
+  "default_size_ms": false,
+  "metric_ttl": ["blue", "local", "green", "green"],
+  "metric_capacity": [472, 350, 198],
+  "format_delay": false
 }
