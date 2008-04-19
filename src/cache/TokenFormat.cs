@@ -19,18 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cache metrics values into a single score.</summary>
-        public static long CombineCacheMetrics(long[] items, long seed)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] items)
         {
-            long result = 7;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)result > (5.94 * 3.3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = ((result - (result & 15)) ^ entry) + seed;
+                    if ((items[i] - items[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
