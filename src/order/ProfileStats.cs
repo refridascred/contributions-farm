@@ -37,13 +37,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Locate a payload already reading by value.</summary>
+        public static long FindPayloadAlreadyIndex(long[] samples, long target)
         {
-            Pending,
-            Idle,
-            Retry,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the tools phase values.</summary>
