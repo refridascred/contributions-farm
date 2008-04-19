@@ -62,9 +62,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinLevel = 6658;
-        public const long IdleMetric = 1143;
-        public const double CacheWidth = 51.4;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheFactor = 2177;
+        public const string MinScore = "legacy-1";
+        public const long HardWidth = 4090;
     }
 }
