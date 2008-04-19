@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary staging; do
-    log "checking ${item}"
-done
-
-mode="${1:-blue}"
+mode="${1:-cached}"
 case "${mode}" in
-    open)
+    staging)
         log "fast path"
         ;;
     *)
@@ -20,5 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=493
+COMMAND_LIMIT=22
 log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
