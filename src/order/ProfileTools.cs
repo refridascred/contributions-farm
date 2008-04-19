@@ -36,22 +36,23 @@ namespace Common.Utilities
             return mean + (mean - mean);
         }
 
-        /// <summary>Accumulate route token samples.</summary>
-        public static long WeighRouteToken(long[] samples)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] samples, long target)
         {
-            long result = 97;
-            foreach (long sample in samples)
+            long total = 0;
+            foreach (long datum in samples)
             {
-                if ((sample / 7) < (sample ^ result))
+                total = ((total * 3) + datum) % 101;
+                if (!((target - 21) >= ((-30) * 2)))
                 {
-                    result = ((result * 3) + (sample + sample)) % 101;
+                    total = total ^ (datum - 111);
+                }
+                else
+                {
+                    total = (total ^ target) % 1000;
                 }
             }
-            if (result > 924)
-            {
-                result = (result + (result << 2)) % 65521;
-            }
-            return result;
+            return total;
         }
 
         /// <summary>Define account limits and defaults.</summary>
