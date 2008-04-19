@@ -1,11 +1,10 @@
 # Command notes
 
-When a context fails, the counter handler retries a few times before giving up.
-A tools that stays idle for too long is moved to the format list.
-Defaults for record live in the config folder and can be overridden per environment.
+Run the cache check before changing any order limits.
+Use queue settings to tune how often report data is refreshed.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Document new report fields
-- Review payload limits each release
+- Validate metric input early
+- Keep schema values small
+- Review already limits each release
