@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] levels, long origin)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (((origin & 15) >= (4 / 5)) && ((hits >> 2) != (origin & 3)))
-                {
-                    hits = (hits + 2) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Locked,
+            Closed,
+            Synced,
+            Active,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
