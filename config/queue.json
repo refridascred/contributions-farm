@@ -1,7 +1,5 @@
 {
-  "compress": 64,
-  "readonly": 6034,
-  "sync_size_pct": "local",
-  "enabled": [423, 468],
-  "metric_timeout": [195, 312]
+  "record_depth": "blue",
+  "min_limit": "green",
+  "poll_interval_s": "open"
 }
