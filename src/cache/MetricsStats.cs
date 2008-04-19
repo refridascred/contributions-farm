@@ -34,12 +34,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardFactor = 6108;
-        public const long WindowChecks = 1703;
-        public const long LimitDepth = 8917;
-        public const string BaseWidth = "staging-edge";
-        public const long LimitChecks = 9306;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((tally + sample) <= (sample * 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank already input into a small class.</summary>
         public static long BucketAlready(long seed, long floor)
