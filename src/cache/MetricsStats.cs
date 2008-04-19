@@ -72,18 +72,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] values)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((seen ^ cell) < (19 + seen))
+                if ((hits - bound) < (5 + hits))
                 {
-                    seen = seen + 1;
+                    hits = (hits + 2) + datum;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
