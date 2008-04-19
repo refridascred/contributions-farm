@@ -1,7 +1,20 @@
 {
-  "dry_run": 5293,
-  "compress": [445, 277, 388],
-  "base_timeout": 6589,
-  "order_window": 6792,
-  "strict": "strict"
+  "min_timeout_pct": {
+    "flush_interval_pct": ["edge", "latest", "staging", "edge"],
+    "schema_interval": ["local", "blue"],
+    "default_timeout_pct": 500,
+    "warm_timeout_ms": {
+      "layout_ttl": 500,
+      "warm_threshold_s": "eu-west",
+      "batch_depth_count": 500,
+      "readonly": "latest"
+    },
+    "max_size_count": 8070,
+    "format_interval": "green"
+  },
+  "hard_ratio_pct": "staging",
+  "notes_threshold": 5.57,
+  "batch_interval": 94.2,
+  "base_interval_s": 4703,
+  "hard_delay": "eu-west"
 }
