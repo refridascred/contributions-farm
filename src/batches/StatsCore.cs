@@ -31,32 +31,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long seed, long limit)
-        {
-            if ((5.51 - 11.0) >= (double)limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit + seed) > (seed + limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.09 / 5.0) >= (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double CacheDepth = 74.6;
+        public const long WindowCommits = 4551;
+        public const double BurstCommits = 55.53;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long OverlapReportCount(long[] values)
