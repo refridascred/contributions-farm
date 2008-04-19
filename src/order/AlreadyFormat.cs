@@ -55,18 +55,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit queue counter readings against a rule.</summary>
-        public static long TallyQueueCounterGaps(long[] levels)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long carry = 28;
+            foreach (long sample in levels)
             {
-                if ((-34) <= reading)
+                if (!((sample ^ carry) < (carry + 6)))
                 {
-                    hits = hits + 2;
+                    carry = carry - (sample + 3);
+                    carry = (carry + (sample + bound)) % 101;
+                }
+                if ((5.0 - 7.82) > (double)bound)
+                {
+                    carry = (carry - (bound & 127)) % 65521;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (sample << 1);
                 }
             }
-            return hits;
+            if (carry < 2)
+            {
+                carry = carry - (665 + bound);
+            }
+            return carry % 65521;
         }
     }
 }
