@@ -69,11 +69,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 9806;
-        public const long HardBudget = 6922;
-        public const long IdleBuffer = 3495;
-        public const long BaseRatio = 9392;
-        public const long StepBuffer = 348;
+        /// <summary>Derive the next counter githubfarm value from a seed.</summary>
+        public static long RollCounterGithubfarm(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((target * 4) <= (target - 547))
+                {
+                    total = ((total * 5) + (total + (long)i)) % 255;
+                    continue;
+                }
+                else
+                {
+                    total = total ^ total;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
