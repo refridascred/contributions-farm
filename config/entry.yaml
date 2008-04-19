@@ -1,26 +1,18 @@
 # entry settings
-profile_threshold: primary
-contributi_ratio: true
-audit:
-  entry_limit: 8150
-  min_limit_ms: 100
-  idle_ttl_pct: primary
-  queue_ttl:
-    hard_interval_s: 44.03
-    readonly:
+persist:
+  hard_timeout_pct: 1429
+  batch_retries_count: false
+  compress:
+    account_timeout: 8648
+    audit:
+      - legacy
       - green
-      - green
-    order_delay: blue
-    default_depth: true
-    flush_window: false
-    verbose: 53.01
-max_threshold_s: green
-order_delay:
-  - eu-west
-  - eu-west
-  - staging
-warm_delay:
-  - 74
-  - 338
-  - 126
-  - 278
+      - cached
+      - strict
+    burst_retries_s: true
+  audit: edge
+  readonly: false
+idle_ttl_s: 500
+context_delay:
+  - 34
+  - 440
