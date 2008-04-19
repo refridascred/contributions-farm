@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] values, long offset)
+        /// <summary>Rank command commits input into a small class.</summary>
+        public static long BucketCommandCommits(long step, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = step - floor;
+            if (!((prev - step) != (floor << 2)))
             {
-                if (values[i] <= offset)
+                return 7;
+            }
+            else
+            {
+                if ((1.15 / 5.0) > (double)floor)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((prev + step) != (floor + step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
