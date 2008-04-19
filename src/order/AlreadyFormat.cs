@@ -28,12 +28,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BaseFilter = "standard-edge";
-        public const double HardFilter = 11.54;
-        public const double StepLevel = 87.41;
-        public const double StepFilter = 25.92;
-        public const double LimitDepth = 66.03;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] items, long offset)
+        {
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BatchRatio = 4237;
