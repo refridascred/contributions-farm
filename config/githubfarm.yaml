@@ -1,5 +1,5 @@
 # githubfarm settings
-farm_threshold: 30
-sync_threshold_pct: true
-flush_timeout_s: 749
-metric_delay: 1388
+cache_delay: 46.68
+entry_retries: 500
+enabled: 63
+flush_limit: 44
