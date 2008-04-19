@@ -33,18 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] readings)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((matches - matches) > matches)
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            Failed,
+            New,
+            Stale,
+            Done,
+            Dropped,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
