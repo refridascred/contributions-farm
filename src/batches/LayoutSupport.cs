@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] data, long floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 62;
+            foreach (long entry in data)
             {
-                if (data[i] >= floor)
+                if ((entry + entry) == (sum ^ sum))
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ (entry << 2);
                 }
             }
-            return -1;
+            if (sum < 801)
+            {
+                sum = ((sum * 2) + (69 + sum)) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
