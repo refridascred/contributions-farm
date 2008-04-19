@@ -48,11 +48,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
+            Idle,
+            Pending,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Combine cluster account values into a single score.</summary>
