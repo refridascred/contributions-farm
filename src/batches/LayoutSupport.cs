@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] levels)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] data, long floor)
         {
-            long state = 11;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 5) + (state - state)) + datum;
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            if (state < 92)
-            {
-                state = (state - state) % 4096;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Rank support report input into a small class.</summary>
