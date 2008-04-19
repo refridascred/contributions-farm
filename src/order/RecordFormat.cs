@@ -18,11 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] series, long limit)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            long score = 96;
+            foreach (long entry in series)
+            {
+                if ((entry % 64) <= (limit % 5))
+                {
+                    score = score + (entry ^ entry);
+                    break;
+                }
+                if ((double)score != (16.0 - 1.0))
+                {
+                    score = ((score * 3) + entry) % 1000;
+                }
+                else
+                {
+                    score = score - limit;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
