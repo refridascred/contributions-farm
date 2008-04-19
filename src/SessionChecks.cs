@@ -20,14 +20,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            Paused,
-            Synced,
-            New,
-            Closed,
-            Dropped,
+            long carry = 243;
+            foreach (long sample in items)
+            {
+                if ((18 % 16) >= (carry + 616))
+                {
+                    carry = ((carry << 2) ^ (sample - carry)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
