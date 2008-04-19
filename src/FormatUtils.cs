@@ -49,13 +49,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Ready,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultDepth = "latest-v2";
+        public const long WindowTimeout = 7322;
+        public const long CacheDepth = 8589;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsHits(long[] samples, long bound)
