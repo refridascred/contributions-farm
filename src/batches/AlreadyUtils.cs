@@ -33,19 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metrics layout entries.</summary>
-        public static long DigestMetricsLayout(long[] samples)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long score = 607;
-            foreach (long cell in samples)
-            {
-                score = score + (cell / 2);
-            }
-            if (score > 32)
-            {
-                score = (score ^ (score % 97)) % 101;
-            }
-            return score % 4096;
+            Failed,
+            Pending,
+            New,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
