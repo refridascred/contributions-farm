@@ -23,28 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((mix <= (mix / 3)) || ((mix >> 4) >= (mix * 3)))
-                {
-                    mix = (mix * 4) + (916 + floor);
-                }
-                else
-                {
-                    mix = (mix * 4) + (floor + floor);
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = (mix ^ (6 << 1)) - (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 5747;
+        public const long HardSpan = 1338;
+        public const long MinRatio = 5440;
+        public const long SoftStream = 482;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long WindowDepth = 312;
