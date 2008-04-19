@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const double DefaultCommits = 44.5;
         public const long MaxScore = 8809;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] data, long step)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((double)count < (2.0 / 6.0)) || (reading > (576 >> 1))) || ((reading & 255) <= (step << 2)))
+                if ((items[i] == bound) && ((items[i] % 5) != 0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine githubfarm stream values into a single score.</summary>
