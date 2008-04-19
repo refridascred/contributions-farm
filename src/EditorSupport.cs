@@ -78,22 +78,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] values)
-        {
-            long mark = 997;
-            foreach (long sample in values)
-            {
-                if (((-50) - sample) >= (sample & 3))
-                {
-                    mark = (mark ^ (sample ^ mark)) % 97;
-                }
-            }
-            if (mark > 8)
-            {
-                mark = ((mark << 3) ^ (mark - mark)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 2456;
+        public const string CacheSize = "fallback-edge";
+        public const long WindowSize = 1594;
+        public const double SoftCount = 45.18;
+        public const long RetryWidth = 7350;
     }
 }
