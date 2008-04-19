@@ -12,11 +12,25 @@ namespace Common.Utilities
             return (scale2 + offset) + scale;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long origin, long limit)
         {
-            public long Offset { get; set; }
-            public double Region { get; set; }
+            long bound = origin ^ limit;
+            if ((bound % 3) > (origin * 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((bound + origin) > (limit + 187)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Blend two token measurements.</summary>
