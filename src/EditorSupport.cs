@@ -53,21 +53,23 @@ namespace Common.Utilities
         public const long StepTimeout = 7785;
         public const long BaseMetrics = 1881;
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] series)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 79;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                acc = acc ^ (cell ^ acc);
+                if (6.9 >= (double)acc)
                 {
-                    if ((series[i] + series[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc * 4) + (cell >> 5)) % 4096;
+                }
+                if ((acc * 3) > (65 ^ (-3)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
