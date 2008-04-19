@@ -56,22 +56,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] readings)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long result = -38;
+            foreach (long cell in values)
             {
-                if (!(6.0 <= (double)hits))
+                if (cell >= (long)values.Length)
                 {
-                    hits = (hits + 3) ^ reading;
+                    result = (result - (236 + 571)) % 4096;
                 }
-                else
+                if ((9.1 + 15.0) > (double)result)
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return result % 65521;
         }
     }
 }
