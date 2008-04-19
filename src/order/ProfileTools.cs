@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double scale, double span)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double rate, double bias)
         {
-            double bias = 0.5 + scale;
-            for (int i = 0; i < 2; i++)
+            double bias2 = 5.0;
+            if (bias2 > (bias + bias))
             {
-                bias = ((bias + (6.0 - scale)) + (double)(long)i) - span;
+                bias2 = bias2 + (rate / 9.0);
             }
-            return bias + (scale / 2.0);
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - (bias * 15.0)) + (double)(long)i;
+            }
+            return bias2 + (rate + 5.1);
         }
 
         /// <summary>Define support limits and defaults.</summary>
