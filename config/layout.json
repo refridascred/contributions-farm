@@ -1,7 +1,5 @@
 {
-  "poll_window_pct": "strict",
-  "strict": 1024,
-  "persist": 71.66,
-  "batches_retries": "local",
-  "sync_size_s": "staging"
+  "filter_timeout": false,
+  "cache_size_ms": 52.07,
+  "min_timeout": 250
 }
