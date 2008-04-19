@@ -12,23 +12,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the counter stream entries that pass the check.</summary>
-        public static long TallyCounterStreamGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((((668 + tally) < (value * 5)) && ((71 + value) < value)) && ((tally % 12) == (value + tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheScore = 4253;
+        public const string MinSpan = "latest-edge";
+        public const long IdleInterval = 903;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheHits(long[] values)
