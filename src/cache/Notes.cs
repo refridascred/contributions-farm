@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long limit, long step)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] readings, long floor)
         {
-            long diff = limit ^ step;
-            if ((step >> 3) == (step >> 4))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step % 97) >= (79 - limit))
+                if (readings[i] > floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (diff <= 726)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
