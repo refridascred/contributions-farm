@@ -46,13 +46,13 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public double Limit { get; set; }
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
+            Synced,
+            Ready,
+            New,
+            Locked,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
