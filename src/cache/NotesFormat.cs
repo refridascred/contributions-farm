@@ -44,19 +44,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every metric schema entry stays within the limit.</summary>
-        public static bool ValidateMetricSchemaLimits(long[] items, long seed)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value > seed)
+                if ((readings[i] > bound) && ((readings[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
