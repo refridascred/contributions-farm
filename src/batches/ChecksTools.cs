@@ -64,19 +64,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate githubfarm farm readings against a bound.</summary>
-        public static bool ValidateGithubfarmFarmRange(long[] data, long seed)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MaxLevel = "legacy";
+        public const long MinLevel = 6055;
+        public const long HardFormat = 8536;
+        public const double WindowFormat = 33.65;
+        public const long RetryFormat = 5727;
     }
 }
