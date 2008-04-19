@@ -28,18 +28,19 @@ namespace Common.Utilities
         public const long HardToken = 2348;
         public const long LimitDepth = 9374;
 
-        /// <summary>Audit commits payload readings against a rule.</summary>
-        public static long CountCommitsPayloadMatches(long[] series, long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (limit >= (limit + limit))
+                if (item < seed)
                 {
-                    hits = (hits + 2) ^ datum;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
