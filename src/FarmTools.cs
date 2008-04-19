@@ -13,22 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 4349;
+        public const double BatchTimeout = 67.41;
+        public const double BurstLevel = 74.96;
+        public const double StepProfile = 4.27;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double SmoothFarm(double gain, double offset)
