@@ -13,11 +13,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long bound, long seed)
         {
-            public bool Label { get; set; }
-            public bool Level { get; set; }
+            long slot = bound + seed;
+            if ((8 + 956) < (bound / 6))
+            {
+                return 7;
+            }
+            else
+            {
+                if (16.0 < (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed < (slot >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((24 - seed) >= (slot ^ slot))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
