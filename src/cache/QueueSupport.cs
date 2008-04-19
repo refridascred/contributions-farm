@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of metric graph readings.</summary>
-        public static long CombineMetricGraph(long[] values, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] values)
         {
-            long state = 53;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long datum in values)
             {
-                state = (((state ^ state) % 1000) - value) - seed;
+                if ((datum + count) > (count & 7))
+                {
+                    count = count + 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Blend two layout report measurements.</summary>
