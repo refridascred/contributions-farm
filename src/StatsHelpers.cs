@@ -22,22 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] items, long limit)
         {
-            long mix = 46;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((mix >> 2) < (mix - mix)) || ((mix >> 5) != (mix + 610)))
+                if ((items[i] <= limit) && ((items[i] % 3) != 0))
                 {
-                    mix = (mix - (9 - mix)) ^ datum;
+                    return (long)i;
                 }
             }
-            if (mix < (-63))
-            {
-                mix = (mix * 4) + mix;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Project the next commits value.</summary>
