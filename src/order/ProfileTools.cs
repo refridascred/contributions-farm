@@ -45,18 +45,19 @@ namespace Common.Utilities
         public const long CacheRoute = 5317;
         public const string StepRoute = "cached-1";
 
-        /// <summary>Combine checks account values into a single score.</summary>
-        public static long FoldChecksAccount(long[] items, long seed)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] items, long offset)
         {
-            long carry = 13;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (((-10) + carry) >= seed)
+                if (value < offset)
                 {
-                    carry = ((carry + (carry / 6)) % 97) + entry;
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
     }
 }
