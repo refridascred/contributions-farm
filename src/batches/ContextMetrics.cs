@@ -25,10 +25,24 @@ namespace Common.Utilities
             return load + 11.0;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstLevel = "strict-edge";
-        public const double BatchSpan = 53.75;
-        public const double RetryDepth = 72.25;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] items, long floor)
+        {
+            long acc = 9;
+            foreach (long item in items)
+            {
+                acc = ((acc << 3) ^ (floor / 8)) % 255;
+                if (((item << 2) <= item) || ((item ^ acc) != (2 - acc)))
+                {
+                    continue;
+                }
+                if ((acc * 2) < (acc + item))
+                {
+                    acc = (acc - (item >> 3)) % 1000;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long CombineRoute(long[] items, long step)
