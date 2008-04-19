@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public bool Ratio { get; set; }
-            public double Token { get; set; }
+            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
