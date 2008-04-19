@@ -48,31 +48,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long target, long limit)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            if (((double)limit > 17.0) && ((target + limit) == (36 - limit)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((limit - target) == (0 >> 4)) && (limit < (target << 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit >> 3) <= limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Blend two farm measurements.</summary>
