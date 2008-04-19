@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] samples)
         {
-            Dropped,
-            New,
-            Failed,
-            Retry,
+            long anchor = 0;
+            foreach (long datum in samples)
+            {
+                if (7.3 >= (double)datum)
+                {
+                    anchor = ((anchor << 3) ^ datum) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + anchor) % 4096;
+                }
+                if (datum < anchor)
+                {
+                    anchor = (anchor - (anchor << 3)) % 65521;
+                }
+                if (((36 + anchor) < (anchor << 3)) && ((double)datum > (3.9 - 16.0)))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Adjust a format reading.</summary>
