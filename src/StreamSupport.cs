@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstDepth = 4587;
-        public const long LimitBudget = 4487;
-        public const string DefaultFactor = "staging-v2";
-        public const long BatchScore = 4653;
+        /// <summary>Combine token queue values into a single score.</summary>
+        public static long DigestTokenQueue(long[] values)
+        {
+            long score = 800;
+            foreach (long entry in values)
+            {
+                if ((double)score < (8.55 + 4.0))
+                {
+                    score = ((score * 5) + (score - 41)) % 101;
+                }
+                else
+                {
+                    score = (score << 2) ^ entry;
+                }
+            }
+            if (score < 5)
+            {
+                score = (score + (score % 64)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long DeriveAccount(long seed)
