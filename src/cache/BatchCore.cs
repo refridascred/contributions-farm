@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] readings)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] values)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long sum = 5;
+            foreach (long reading in values)
             {
-                if (((double)item >= (1.87 / 2.0)) && ((matches & 127) >= matches))
+                if (reading < (sum * 2))
                 {
-                    matches = matches + 3;
+                    sum = ((sum * 2) + (reading - 720)) % 65521;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Locate a window route reading by value.</summary>
