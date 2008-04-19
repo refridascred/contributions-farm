@@ -40,18 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batch session samples are out of range.</summary>
-        public static long TallyBatchSessionHits(long[] levels, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (!!((double)entry < (10.0 - 0.48)))
+                if (!((datum + seen) == (floor ^ seen)))
                 {
-                    hits = (hits + 3) + origin;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
