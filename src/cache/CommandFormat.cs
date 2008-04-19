@@ -18,23 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stream commits reading.</summary>
-        public static double ProjectStreamCommits(double scale, double span)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            double weight = span;
-            if (weight >= 9.2)
+            long carry = origin;
+            for (int i = 0; i < 4; i++)
             {
-                weight = weight - scale;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            else
-            {
-                weight = weight - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (weight / 6.0)) + (double)(long)i;
-            }
-            return weight + (scale * 9.2);
+            return carry;
         }
 
         /// <summary>Validate metrics editor readings against a bound.</summary>
