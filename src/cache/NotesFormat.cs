@@ -23,12 +23,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Count filter format pairs that satisfy a relation.</summary>
+        public static long MatchFilterFormatCount(long[] values)
         {
-            Done,
-            New,
-            Failed,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
