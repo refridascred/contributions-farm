@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double scale, double floor)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double scale2 = 6.99;
-            if (scale2 < scale2)
-            {
-                scale2 = scale2 + (double)6;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 - floor) + (double)(long)i;
-            }
-            return scale2 + (scale / 5.0);
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Compare every pair of account readings.</summary>
