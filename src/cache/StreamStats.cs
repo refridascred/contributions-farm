@@ -19,18 +19,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] readings)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double bias, double span)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double drift = (span - span) * 9.4;
+            for (int i = 0; i < 6; i++)
             {
-                if ((count ^ 9) >= (entry + count))
-                {
-                    count = count + 2;
-                }
+                drift = (drift - drift) - (double)(long)i;
             }
-            return count;
+            return drift - bias;
         }
 
         /// <summary>Describe the layout kind values.</summary>
