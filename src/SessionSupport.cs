@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
+            Stale,
+            Done,
+            Failed,
+            Retry,
             Dropped,
-            Pending,
-            Draft,
-            Synced,
         }
 
         /// <summary>Check that every farm graph entry stays within the limit.</summary>
