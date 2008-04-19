@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many token route samples are out of range.</summary>
-        public static long CountTokenRouteGaps(long[] values, long floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long seed, long origin)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long cur = seed - origin;
+            if (((cur - origin) != (origin + cur)) && ((3.0 / 5.0) <= (double)cur))
             {
-                if ((double)seen == (double)floor)
+                return 6;
+            }
+            else
+            {
+                if ((double)origin != (2.4 / 8.0))
                 {
-                    seen = (seen + 1) + cell;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Adjust a stream commits reading.</summary>
