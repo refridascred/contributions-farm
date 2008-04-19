@@ -58,11 +58,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 6856;
-        public const long DefaultEntry = 1750;
-        public const string MaxInterval = "latest-1";
-        public const long RetrySize = 7225;
-        public const long HardEntry = 2430;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchWidth = 4514;
+        public const long LimitInterval = 7432;
+        public const long WindowWidth = 6104;
+        public const string DefaultFactor = "cached-1";
     }
 }
