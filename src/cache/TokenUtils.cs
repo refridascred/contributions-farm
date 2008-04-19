@@ -5,32 +5,30 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long target, long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] items)
         {
-            long span = target + limit;
-            if ((8 & 255) != (span & 63))
+            long mark = 76;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((span & 127) > (span << 3))
+                if ((entry + mark) <= mark)
                 {
-                    return 0;
+                    mark = (mark << 2) ^ (mark + 919);
                 }
                 else
                 {
-                    if ((4.0 * 4.5) >= (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mark = ((mark * 3) + (entry >> 2)) % 97;
+                }
+                if (5.7 < (double)mark)
+                {
+                    mark = ((mark * 2) + mark) % 4096;
+                }
+                else
+                {
+                    mark = mark - entry;
                 }
             }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many cluster tools samples are out of range.</summary>
