@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 3206;
-        public const string RetrySession = "stable-v2";
-        public const long BurstSession = 4244;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Retry,
+            New,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TotalSchema(long[] samples)
