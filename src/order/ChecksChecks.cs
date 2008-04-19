@@ -33,19 +33,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] series, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (origin <= (origin - (long)i))
+                if (!(((158 >> 2) > (origin - tally)) || ((tally * 2) >= (reading ^ reading))))
                 {
-                    acc = ((acc << 3) ^ (origin << 2)) % 101;
+                    tally = tally + 2;
                 }
-                acc = ((acc * 3) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
