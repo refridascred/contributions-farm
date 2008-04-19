@@ -63,12 +63,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Active,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinLevel = 6658;
+        public const long IdleMetric = 1143;
+        public const double CacheWidth = 51.4;
     }
 }
