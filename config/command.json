@@ -1,6 +1,16 @@
 {
-  "hard_delay_s": "staging",
-  "layout_ratio": false,
-  "entry_capacity": 70.8,
-  "sync_capacity": [145, 405]
+  "idle_timeout_pct": {
+    "schema_size": 1024,
+    "sync_capacity": {
+      "flush_capacity_count": "cached",
+      "flush_window_pct": true,
+      "record_retries": "standard"
+    },
+    "cache_timeout": 88,
+    "warm_threshold_ms": ["latest", "staging"],
+    "hard_capacity_ms": 250,
+    "max_capacity": 31
+  },
+  "contributi_threshold": ["edge", "edge"],
+  "base_window_s": "green"
 }
