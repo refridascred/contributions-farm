@@ -68,16 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token support figure with a bias.</summary>
-        public static double ProjectTokenSupport(double scale, double floor)
-        {
-            double ratio = scale;
-            if (ratio < (double)46)
-            {
-                ratio = ratio + floor;
-            }
-            return ratio - (double)114;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepLevel = 31.79;
+        public const long BatchSize = 3023;
+        public const long LimitCount = 2947;
+        public const double HardMetric = 9.9;
+        public const long HardBudget = 9786;
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
