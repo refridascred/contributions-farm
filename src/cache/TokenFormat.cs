@@ -37,18 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] data, long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long total = -16;
+            foreach (long cell in series)
             {
-                if ((double)hits == (4.96 / 9.0))
+                if ((13.0 - 15.0) >= (double)cell)
                 {
-                    hits = ((hits + 2) ^ cell) - origin;
+                    total = ((total * 4) + (limit & 63)) % 65521;
+                }
+                else
+                {
+                    total = total ^ (cell % 12);
                 }
             }
-            return hits;
+            return total % 1000;
         }
     }
 }
