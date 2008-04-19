@@ -33,18 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] readings, long floor)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (!((floor / 2) >= (seen << 2)))
-                {
-                    seen = (seen + 3) - reading;
-                }
-            }
-            return seen;
+            Dropped,
+            Synced,
+            Retry,
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
