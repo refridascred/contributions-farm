@@ -86,17 +86,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] series, long target)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = (floor + rate) + rate;
+            return ratio - floor;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
