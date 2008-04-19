@@ -63,22 +63,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] values)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long result = -38;
-            foreach (long cell in values)
-            {
-                if (cell >= (long)values.Length)
-                {
-                    result = (result - (236 + 571)) % 4096;
-                }
-                if ((9.1 + 15.0) > (double)result)
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            Queued,
+            Ready,
+            Stale,
         }
     }
 }
