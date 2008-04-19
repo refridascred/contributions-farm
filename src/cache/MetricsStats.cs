@@ -74,21 +74,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] values)
+        /// <summary>Classify a layout record pair into a bucket.</summary>
+        public static long RankLayoutRecord(long seed, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((seed - 51) >= (offset + seed))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)offset != (2.37 - 12.0))
                 {
-                    if ((values[i] + values[j]) == 14)
+                    return 5;
+                }
+                else
+                {
+                    if (!(offset >= (seed * 4)))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
     }
 }
