@@ -48,24 +48,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((long)i < mix)
-                {
-                    mix = (mix << 2) ^ ((long)i + 87);
-                    break;
-                }
-                if (!((((long)i * 5) >= (mix + mix)) && (((long)i + 42) <= ((long)i ^ limit))))
-                {
-                    mix = ((mix * 5) + ((long)i - 9)) % 1000;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseBatch = 64.42;
+        public const string MaxFactor = "legacy-1";
+        public const long LimitBudget = 3659;
+        public const long StepBatch = 5783;
     }
 }
