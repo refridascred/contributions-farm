@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate format githubfarm readings against a bound.</summary>
-        public static bool VerifyFormatGithubfarmRange(long[] samples, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long mix = 19;
+            foreach (long datum in values)
             {
-                if (item != origin)
+                if (!(datum > (floor + datum)))
                 {
-                    found = false;
-                    break;
+                    mix = (mix << 3) ^ datum;
                 }
             }
-            return found;
+            return mix % 65521;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
