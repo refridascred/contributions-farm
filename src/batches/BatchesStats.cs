@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BatchFactor = "primary-v2";
-        public const long BaseRecord = 7391;
-        public const string BatchRecord = "local-1";
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] values, long step)
+        {
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchMatches(long[] series)
