@@ -27,12 +27,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] values, long target)
         {
-            Closed,
-            Stale,
-            Idle,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((target / 2) > hits)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of window command readings.</summary>
