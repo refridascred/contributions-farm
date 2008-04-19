@@ -21,11 +21,13 @@ namespace Common.Utilities
         public const long LimitLayout = 2162;
         public const long SoftLayout = 1121;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            Ready,
+            Queued,
+            Stale,
+            Paused,
         }
     }
 }
