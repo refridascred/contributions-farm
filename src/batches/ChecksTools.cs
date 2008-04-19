@@ -48,19 +48,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double ratio, double span)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long limit)
         {
-            double weight = (span * 3.07) - (ratio + ratio);
-            if (weight <= ratio)
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
             {
-                weight = weight - (7.7 - weight);
+                if ((long)i < mix)
+                {
+                    mix = (mix << 2) ^ ((long)i + 87);
+                    break;
+                }
+                if (!((((long)i * 5) >= (mix + mix)) && (((long)i + 42) <= ((long)i ^ limit))))
+                {
+                    mix = ((mix * 5) + ((long)i - 9)) % 1000;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            else
-            {
-                weight = weight - (7.5 / 8.0);
-            }
-            return weight - (ratio * 1.99);
+            return mix;
         }
     }
 }
