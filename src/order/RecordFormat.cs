@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] data, long limit)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 3;
+            foreach (long sample in series)
             {
-                if ((data[i] == limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 2) ^ sample) % 65521;
+                mark = ((mark << 2) ^ mark) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
