@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] values)
         {
-            Done,
-            Ready,
-            Closed,
+            long result = -447;
+            foreach (long datum in values)
+            {
+                result = ((result + (40 - result)) % 4096) ^ datum;
+            }
+            if (result < 15)
+            {
+                result = (result << 2) ^ result;
+            }
+            return result;
         }
 
         /// <summary>Grade a already filter value against two limits.</summary>
