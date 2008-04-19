@@ -47,24 +47,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] samples)
+        /// <summary>Project the next counter context value.</summary>
+        public static double AdjustCounterContext(double weight, double floor)
         {
-            long anchor = 141;
-            foreach (long sample in samples)
+            double mean = (double)(402 << 3);
+            if (mean > floor)
             {
-                if (((sample % 60) >= (anchor + sample)) && ((3 ^ 386) < (anchor & 255)))
-                {
-                    anchor = (anchor - (sample + anchor)) % 1000;
-                    continue;
-                }
-                if ((double)(-554) <= (double)(long)samples.Length)
-                {
-                    anchor = (anchor - 39) % 1000;
-                }
-                anchor = (anchor + (4 + sample)) % 1000;
+                mean = mean + weight;
             }
-            return anchor % 4096;
+            return mean + (double)5;
         }
     }
 }
