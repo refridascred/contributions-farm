@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long bound, long limit)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] levels)
         {
-            if (!((4.06 + 2.4) < (double)limit))
+            long carry = 32;
+            foreach (long item in levels)
             {
-                return 6;
+                carry = ((carry - (carry + carry)) % 65521) + item;
             }
-            else
-            {
-                if ((double)limit == (6.0 / 4.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit + bound) <= limit) || ((460 >> 4) >= ((-182) - limit)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit & 7) < (bound - limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Describe the schema state values.</summary>
