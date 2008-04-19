@@ -40,17 +40,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a format schema reading by value.</summary>
-        public static long SeekFormatSchemaIndex(long[] readings, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 5;
+            foreach (long item in values)
             {
-                if ((readings[i] < step) && ((readings[i] % 5) != 0))
+                if (((mix << 1) <= item) && ((0 / 8) >= (mix - mix)))
                 {
-                    return (long)i;
+                    mix = (mix ^ (mix - mix)) % 101;
+                }
+                if (((mix + mix) > (5 ^ item)) && (39 >= (mix + 214)))
+                {
+                    mix = (mix << 3) ^ item;
                 }
             }
-            return -1;
+            return mix % 65521;
         }
     }
 }
