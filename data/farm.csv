@@ -1,6 +1,9 @@
-id,label,rank,level
-1,10.33,open,staging
-2,75.57,4.73,18.52
-3,10.21,195,0.9
-4,185,strict,58.59
-5,32,68.36,282
+id,active,rank,ratio,region
+1,cached,72,897,13.36
+2,935,stable,393,89.5
+3,521,63.8,457,green
+4,staging,840,318,staging
+5,cached,eu-west,50.62,579
+6,677,30.08,staging,stable
+7,838,410,797,67.59
+8,76.49,502,strict,open
