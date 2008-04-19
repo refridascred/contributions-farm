@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate cluster githubfarm samples.</summary>
-        public static long TallyClusterGithubfarm(long[] values)
+        /// <summary>Compare every pair of schema editor readings.</summary>
+        public static long MatchSchemaEditorCount(long[] data)
         {
-            long total = 23;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((total * 2) <= value)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total * 5) + total;
+                    if ((data[i] ^ data[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if (((4.1 * 2.6) < (double)total) || (total >= (564 - 3)))
-                {
-                    total = total ^ (value ^ 72);
-                    continue;
-                }
-                total = ((total * 2) + (total - total)) % 4096;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Combine report values into a single score.</summary>
