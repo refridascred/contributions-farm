@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long target, long bound)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long seed)
         {
-            if ((target * 4) == (bound * 2))
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((45 % 60) >= bound)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 4;
+                    mark = ((mark + (seed / 6)) % 97) + (long)i2;
                 }
-                else
-                {
-                    if ((bound << 3) < bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
+            return mark;
         }
 
         /// <summary>Find the first tools stats entry that matches the target.</summary>
