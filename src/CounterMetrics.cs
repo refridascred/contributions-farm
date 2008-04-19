@@ -36,10 +36,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitWidth = 52.67;
-        public const long BatchFactor = 3574;
-        public const string BaseSize = "standard-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 1609;
+        public const double StepCommand = 96.73;
+        public const long SoftSpan = 2284;
 
         /// <summary>Scale a entry queue figure with a bias.</summary>
         public static double SmoothEntryQueue(double gain, double floor)
