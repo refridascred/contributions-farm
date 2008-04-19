@@ -51,19 +51,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double rate, double bias)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            double mean = (rate / 2.0) - (2.36 * 2.73);
-            if (mean >= rate)
-            {
-                mean = (mean - (double)7) + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (13.0 / 2.0)) + (double)(long)i;
-            }
-            return mean + mean;
+            Pending,
+            New,
+            Synced,
+            Ready,
+            Retry,
         }
     }
 }
