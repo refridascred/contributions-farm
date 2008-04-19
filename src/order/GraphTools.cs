@@ -65,18 +65,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] items)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((3 + matches) == (item + (long)items.Length)) || (((matches ^ item) == (item + matches)) && ((matches & 7) == (item / 3))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Synced,
+            Closed,
+            Ready,
         }
     }
 }
