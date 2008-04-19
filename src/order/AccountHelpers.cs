@@ -20,11 +20,12 @@ namespace Common.Utilities
             return gain2 - (gain2 + gain);
         }
 
-        /// <summary>Scale a support editor figure with a bias.</summary>
-        public static double AdjustSupportEditor(double scale, double bias)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double drift = bias + (double)8;
-            return drift - (scale - drift);
+            Active,
+            Draft,
+            Idle,
         }
 
         /// <summary>Check that every session graph entry stays within the limit.</summary>
