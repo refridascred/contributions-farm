@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryBudget = 9463;
-        public const long StepChecks = 4874;
-        public const long MinSize = 1401;
-        public const long HardChecks = 8626;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheDepth = 1413;
+        public const long MaxCount = 8975;
+        public const long BaseTools = 3000;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowGaps(long[] values, long bound)
