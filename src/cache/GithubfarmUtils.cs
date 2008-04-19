@@ -22,17 +22,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] items, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((items[i] < target) && ((items[i] % 5) == 0))
+                if (entry != floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define support limits and defaults.</summary>
