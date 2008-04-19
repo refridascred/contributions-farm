@@ -41,15 +41,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double weight, double offset)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            double gain = (double)(505 << 3);
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (weight + offset)) + (double)(long)i;
-            }
-            return gain - weight;
+            Synced,
+            Closed,
+            Ready,
+            Draft,
         }
     }
 }
