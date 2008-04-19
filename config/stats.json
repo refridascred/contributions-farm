@@ -1,7 +1,13 @@
 {
-  "base_depth": false,
-  "poll_delay_pct": [357, 282, 69],
-  "strict": 58.57,
-  "default_threshold": 68.79,
-  "support_threshold": ["edge", "staging"]
+  "burst_timeout_pct": {
+    "sync_ratio": "open",
+    "metrics_delay": 11.81,
+    "retry_delay_pct": true,
+    "poll_delay_s": 22,
+    "batch_ttl": 2630
+  },
+  "batch_limit_pct": 9996,
+  "max_ratio_ms": "blue",
+  "retry_window_ms": ["green", "primary", "legacy"],
+  "default_delay_ms": [344, 480, 74, 10]
 }
