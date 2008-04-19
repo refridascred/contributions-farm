@@ -45,10 +45,23 @@ namespace Common.Utilities
             return weight + (8.0 + weight);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryOrder = "staging-v2";
-        public const double BurstOrder = 76.85;
-        public const long BatchRatio = 8279;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] items, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample > 6.58)
+                {
+                    matches = (matches + 2) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next queue value.</summary>
         public static double ProjectQueue(double gain, double offset)
