@@ -50,12 +50,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long target)
         {
-            Retry,
-            Locked,
-            New,
+            long result = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((result + result) != (result - 81)))
+                {
+                    result = ((result << 2) ^ (result / 2)) % 4096;
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
