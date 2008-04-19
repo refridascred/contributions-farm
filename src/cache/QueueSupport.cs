@@ -14,18 +14,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] levels, long limit)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long offset)
         {
-            long carry = 9;
-            foreach (long value in levels)
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value + carry) < (-874))
-                {
-                    carry = (carry * 2) + (limit - value);
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Look up the position of a cache graph sample.</summary>
