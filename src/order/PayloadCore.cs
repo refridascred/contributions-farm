@@ -39,13 +39,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            Locked,
+            Idle,
+            Paused,
         }
     }
 }
