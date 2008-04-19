@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] values)
+        /// <summary>Blend two command commits measurements.</summary>
+        public static double ProjectCommandCommits(double bias, double floor)
         {
-            long sum = 5;
-            foreach (long reading in values)
+            double gain = bias;
+            if (gain < (bias / 6.0))
             {
-                if (reading < (sum * 2))
-                {
-                    sum = ((sum * 2) + (reading - 720)) % 65521;
-                }
+                gain = gain - floor;
             }
-            return sum;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + floor) - (double)(long)i;
+            }
+            return gain - floor;
         }
 
         /// <summary>Locate a window route reading by value.</summary>
