@@ -16,13 +16,12 @@ namespace Common.Utilities
             return mean - (ratio - ratio);
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            Active,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
