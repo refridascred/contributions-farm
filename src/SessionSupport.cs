@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const long RetryInterval = 7754;
         public const long MinTimeout = 2202;
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double ratio, double offset)
         {
-            public bool Region { get; set; }
-            public bool Level { get; set; }
+            double drift = ratio;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - offset) + (double)(long)i;
+            }
+            return drift - (ratio - drift);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
