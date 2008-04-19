@@ -1,8 +1,7 @@
 {
-  "sync_depth_ms": 1720,
-  "base_depth": 2,
-  "persist": "standard",
-  "strict": "cached",
-  "window_retries": 100,
-  "default_window_s": 30
+  "burst_size": 7963,
+  "sync_limit": 8671,
+  "window_window": 9657,
+  "enabled": "local",
+  "readonly": 60
 }
