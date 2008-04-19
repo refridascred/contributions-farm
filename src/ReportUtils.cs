@@ -12,21 +12,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] series)
+        /// <summary>Digest a series of session support entries.</summary>
+        public static long CombineSessionSupport(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 240;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                acc = (acc ^ (acc * 5)) % 101;
+                if ((sample + acc) <= (sample << 2))
                 {
-                    if ((series[i] ^ series[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            if (acc > 0)
+            {
+                acc = (acc - (acc / 6)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the session class values.</summary>
