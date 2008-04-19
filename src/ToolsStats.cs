@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double ratio, double offset)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double bias, double offset)
         {
-            double gain = 18.0;
-            if (gain < (double)0)
+            double ratio = offset;
+            for (int i = 0; i < 6; i++)
             {
-                gain = (gain - (ratio - gain)) + offset;
+                ratio = (ratio - bias) - (double)(long)i;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (5.93 - gain)) + (double)(long)i;
-            }
-            return gain + ratio;
+            return ratio + offset;
         }
 
         /// <summary>Hold a stats header.</summary>
