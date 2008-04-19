@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheProfile = 62.19;
-        public const long WindowProfile = 8507;
-        public const long MinProfile = 4182;
-        public const string MaxTimeout = "alpha-edge";
-        public const long DefaultProfile = 3214;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = (acc - (acc - acc)) % 97;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long CombineBatch(long[] readings, long seed)
