@@ -33,27 +33,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] levels, long bound)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long carry = -7;
-            foreach (long item in levels)
-            {
-                carry = ((carry * 4) + (bound - 583)) % 4096;
-                if (!(item <= (item + bound)))
-                {
-                    carry = (carry ^ (bound / 6)) % 97;
-                }
-                else
-                {
-                    carry = (carry - (bound - item)) % 101;
-                }
-            }
-            if (carry > 28)
-            {
-                carry = ((carry << 2) ^ (bound / 3)) % 4096;
-            }
-            return carry;
+            public long Weight { get; set; }
+            public double Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Compare every pair of counter commits readings.</summary>
