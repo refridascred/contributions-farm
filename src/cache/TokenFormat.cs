@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Audit payload session readings against a rule.</summary>
+        public static long TallyPayloadSessionOutliers(long[] levels)
         {
-            Pending,
-            Active,
-            Closed,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item == (8.2 + 0.9))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
