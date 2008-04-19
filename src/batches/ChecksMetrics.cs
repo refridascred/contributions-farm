@@ -82,18 +82,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] items, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((tally - datum) == (tally & 127))
+                if (!((matches >= (32 % 2)) || ((double)matches <= (double)sample)))
                 {
-                    tally = (tally + 3) - floor;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
