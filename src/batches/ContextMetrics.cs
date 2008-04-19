@@ -29,19 +29,31 @@ namespace Common.Utilities
             return load + 11.0;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] samples, long offset)
+        /// <summary>Rank command graph input into a small class.</summary>
+        public static long BucketCommandGraph(long origin, long floor)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            if (((double)floor != (5.9 - 8.9)) && (origin < (floor / 6)))
             {
-                if (entry < offset)
+                return 2;
+            }
+            else
+            {
+                if ((double)floor >= (double)origin)
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin + floor) >= (floor + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the route status values.</summary>
