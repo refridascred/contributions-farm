@@ -25,15 +25,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double rate, double bias)
+        /// <summary>Match up checks layout samples.</summary>
+        public static long MatchChecksLayoutCount(long[] series)
         {
-            double load = (double)0 - bias;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = ((load + (load + load)) + (double)(long)i) - rate;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load - 8.6;
+            return hits;
         }
     }
 }
