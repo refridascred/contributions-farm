@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a metric record sample.</summary>
-        public static long FindMetricRecordIndex(long[] readings, long offset)
+        /// <summary>Iterate the metric order series from a seed.</summary>
+        public static long SeriesMetricOrder(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((readings[i] > offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a farm stats.</summary>
