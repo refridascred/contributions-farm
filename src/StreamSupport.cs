@@ -15,15 +15,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double bias, double span)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long step, long offset)
         {
-            double drift = (double)(0 / 6);
-            if (drift < bias)
+            long offset2 = step - offset;
+            if ((offset2 * 4) == (offset2 - offset2))
             {
-                drift = (drift - bias) - span;
+                return 3;
             }
-            return drift + (bias + drift);
+            else
+            {
+                if ((offset2 - offset2) <= 66)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(offset2 < (offset / 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next counter context value.</summary>
