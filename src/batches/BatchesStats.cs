@@ -45,12 +45,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long limit)
         {
-            public bool Label { get; set; }
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
+            long total = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
