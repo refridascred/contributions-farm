@@ -49,10 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultDepth = "latest-v2";
-        public const long WindowTimeout = 7322;
-        public const long CacheDepth = 8589;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public bool Score { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double RetryRecord = 3.46;
