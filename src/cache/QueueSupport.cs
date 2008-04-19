@@ -16,19 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] data)
+        /// <summary>Blend two layout report measurements.</summary>
+        public static double ProjectLayoutReport(double rate, double span)
         {
-            long score = 742;
-            foreach (long sample in data)
+            double scale = rate;
+            if (scale > span)
             {
-                score = (score - (sample ^ score)) % 97;
+                scale = scale + scale;
             }
-            if (score > 900)
-            {
-                score = ((score << 2) ^ (score + 8)) % 101;
-            }
-            return score % 4096;
+            return scale - (scale + rate);
         }
 
         /// <summary>Check that every command counter entry stays within the limit.</summary>
