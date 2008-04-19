@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] series, long seed)
+        /// <summary>Combine context counter values into a single score.</summary>
+        public static long TallyContextCounter(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long mark = 8;
+            foreach (long datum in data)
             {
-                if (reading <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (((mark ^ (366 >> 4)) % 101) ^ datum) - offset;
             }
-            return flag;
+            return mark % 97;
         }
 
         /// <summary>Hold a editor options.</summary>
