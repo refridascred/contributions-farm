@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every counter token entry stays within the limit.</summary>
-        public static bool GuardCounterTokenBounds(long[] values, long bound)
+        /// <summary>Iterate the metric format series from a seed.</summary>
+        public static long StepMetricFormat(long seed)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long state = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell < bound)
+                if (!((double)seed > (16.0 + 8.6)))
                 {
-                    valid = false;
-                    break;
+                    state = state - (0 + state);
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
