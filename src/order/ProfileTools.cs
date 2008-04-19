@@ -44,18 +44,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] values)
-        {
-            long score = 4;
-            foreach (long item in values)
-            {
-                if (((8.0 - 3.0) == (double)score) && ((double)score != (double)item))
-                {
-                    score = (score + (score - item)) % 97;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepSpan = 4013;
+        public const string IdleWidth = "primary-v2";
+        public const long StepSize = 4761;
+        public const long SoftLevel = 1026;
     }
 }
