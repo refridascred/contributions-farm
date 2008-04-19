@@ -1,6 +1,6 @@
-id,rank,region,weight
-1,713,915,122
-2,15.62,standard,28.92
-3,strict,local,108
-4,green,310,529
-5,487,421,open
+id,ratio,active
+1,109,0
+2,451,local
+3,open,412
+4,fallback,776
+5,412,primary
