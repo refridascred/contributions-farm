@@ -65,18 +65,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many layout contributi samples are out of range.</summary>
-        public static long AuditLayoutContributiOutliers(long[] data, long floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)sample > (7.59 - 3.13)) || ((sample > (tally + floor)) && ((sample ^ sample) < 384)))
+                if (readings[i] < bound)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the layout status values.</summary>
