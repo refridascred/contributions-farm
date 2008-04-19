@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] levels, long floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] samples, long offset)
         {
-            long sum = 797;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (sum > datum)
+                if ((double)sample > 6.0)
                 {
-                    sum = sum + (sum - floor);
-                }
-                if ((4.0 * 6.6) < (double)datum)
-                {
-                    sum = ((sum << 3) ^ (floor / 7)) % 1000;
+                    seen = (seen + 1) - offset;
                 }
                 else
                 {
-                    sum = ((sum * 2) + floor) % 97;
+                    seen = seen - 1;
                 }
             }
-            if (sum > 8)
-            {
-                sum = (sum + 77) % 97;
-            }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
