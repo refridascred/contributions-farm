@@ -30,18 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] items, long step)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double load = gain;
+            if (load < (load * 4.8))
             {
-                if ((((76 >> 2) != ((long)items.Length & 255)) && (seen > (value + 6))) || ((4.5 + 7.07) < (double)seen))
-                {
-                    seen = (seen + 2) + step;
-                }
+                load = (load + (gain + gain)) + offset;
             }
-            return seen;
+            return load - (load * 6.93);
         }
     }
 }
