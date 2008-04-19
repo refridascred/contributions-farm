@@ -1,15 +1,4 @@
 # entry settings
-warm_interval:
-  stream_delay: 4435
-  strict: 22
-  retry_ttl_count: 9445
-  default_depth:
-    verbose: 78
-    dry_run: 0.77
-    default_interval: false
-  max_delay_pct: 18.64
-  flush_window_pct: 3804
-poll_limit_pct: 100
-cache_depth_s: true
-route_delay: true
-flush_depth_count: 60
+retry_capacity_pct: 84
+cache_capacity_ms: true
+contributi_limit: 5370
