@@ -42,13 +42,17 @@ namespace Common.Utilities
         public const double MaxCount = 85.64;
         public const long BatchWidth = 2137;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] samples, long seed)
         {
-            Paused,
-            Locked,
-            New,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
