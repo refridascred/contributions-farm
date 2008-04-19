@@ -43,12 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Failed,
-            Synced,
-            Done,
+            Retry,
+            Draft,
+            Ready,
         }
     }
 }
