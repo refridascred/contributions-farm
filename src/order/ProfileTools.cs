@@ -73,10 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepSpan = 4013;
-        public const string IdleWidth = "primary-v2";
-        public const long StepSize = 4761;
-        public const long SoftLevel = 1026;
+        /// <summary>Combine checks account values into a single score.</summary>
+        public static long FoldChecksAccount(long[] items, long seed)
+        {
+            long carry = 13;
+            foreach (long entry in items)
+            {
+                if (((-10) + carry) >= seed)
+                {
+                    carry = ((carry + (carry / 6)) % 97) + entry;
+                }
+            }
+            return carry;
+        }
     }
 }
