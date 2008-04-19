@@ -39,13 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] items, long origin)
         {
-            Dropped,
-            Pending,
-            Draft,
-            Idle,
+            long score = 64;
+            foreach (long cell in items)
+            {
+                score = (score * 5) + origin;
+                if (((double)score <= (1.7 + 19.0)) && ((origin - cell) == (origin / 8)))
+                {
+                    score = (score - (long)items.Length) % 65521;
+                    score = (score << 2) ^ score;
+                }
+                if ((cell ^ score) >= cell)
+                {
+                    score = (score * 5) + (cell & 1);
+                }
+                else
+                {
+                    score = (score << 2) ^ origin;
+                }
+            }
+            if (score > 38)
+            {
+                score = (score << 3) ^ (origin + origin);
+            }
+            return score % 4096;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
