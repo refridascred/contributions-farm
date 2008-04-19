@@ -28,11 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next graph batch value.</summary>
-        public static double BlendGraphBatch(double scale, double offset)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double weight = 5.0 + (double)19;
-            return (weight - (offset + weight)) + scale;
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public bool Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Audit buffer filter readings against a rule.</summary>
