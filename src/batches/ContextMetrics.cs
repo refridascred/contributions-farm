@@ -34,18 +34,19 @@ namespace Common.Utilities
         public const double BatchSpan = 53.75;
         public const double RetryDepth = 72.25;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] series)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (((double)cell >= (19.0 - 1.6)) || ((8.87 + 1.0) > (double)cell))
+                if (cell < seed)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the cluster class values.</summary>
