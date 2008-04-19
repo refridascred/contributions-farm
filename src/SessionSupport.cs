@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long origin)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] series, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(total <= (origin * 2)))
+                if ((series[i] <= step) && ((series[i] % 3) != 0))
                 {
-                    total = (total - (-60)) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    total = total ^ total;
-                }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a metric record.</summary>
