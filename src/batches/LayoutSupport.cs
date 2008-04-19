@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] series)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long state = 11;
+            foreach (long datum in levels)
             {
-                if ((entry ^ matches) <= entry)
-                {
-                    matches = matches + 1;
-                }
+                state = ((state * 5) + (state - state)) + datum;
             }
-            return matches;
+            if (state < 92)
+            {
+                state = (state - state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Describe the token phase values.</summary>
