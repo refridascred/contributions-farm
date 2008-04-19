@@ -1,5 +1,7 @@
 {
-  "account_interval": "blue",
-  "strict": "latest",
-  "burst_window": 54
+  "idle_depth_ms": 12.68,
+  "soft_ttl_ms": "blue",
+  "already_retries": 71.51,
+  "base_threshold": 2887,
+  "poll_size_pct": 46.41
 }
