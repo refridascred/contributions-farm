@@ -30,19 +30,12 @@ namespace Common.Utilities
             return mean + (double)0;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] levels, long seed)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            New,
+            Closed,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
