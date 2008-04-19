@@ -25,22 +25,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] series, long origin)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long target, long bound)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            if (!((bound ^ target) > (-615)))
             {
-                if (!(((158 >> 2) > (origin - tally)) || ((tally * 2) >= (reading ^ reading))))
+                return 0;
+            }
+            else
+            {
+                if ((double)bound >= 7.1)
                 {
-                    tally = tally + 2;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 2;
                 }
             }
-            return tally;
         }
     }
 }
