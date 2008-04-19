@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate schema buffer samples.</summary>
-        public static long CombineSchemaBuffer(long[] levels)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            long score = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score - (long)levels.Length) % 4096;
-                if (4 > (score + sample))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] - levels[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score > 13)
-            {
-                score = score + (score + 592);
-            }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Measure how many cluster tools samples are out of range.</summary>
