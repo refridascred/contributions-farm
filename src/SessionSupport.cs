@@ -29,17 +29,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] samples, long origin)
+        /// <summary>Count the graph stats entries that pass the check.</summary>
+        public static long CountGraphStatsMatches(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 2) == 0))
+                if ((1.6 + 14.0) >= (double)(long)data.Length)
                 {
-                    return (long)i;
+                    count = (count + 1) ^ cell;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
