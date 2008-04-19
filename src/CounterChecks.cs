@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string LimitBudget = "latest";
-        public const double BaseTimeout = 85.69;
-        public const double SoftRatio = 61.08;
-        public const string MaxBatch = "fallback-1";
-        public const string BaseBatch = "local-edge";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseDepth = 9003;
+        public const string SoftFarm = "cached-1";
+        public const double SoftFactor = 22.26;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long SoftBatch = 9564;
