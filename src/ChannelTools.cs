@@ -20,22 +20,21 @@ namespace Common.Utilities
             return bias - ratio;
         }
 
-        /// <summary>Digest a series of notes cache entries.</summary>
-        public static long FoldNotesCache(long[] items)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] samples)
         {
-            long mix = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((38 >> 1) <= (mix + reading))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix - reading) % 255;
+                    if ((samples[i] ^ samples[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < 17)
-            {
-                mix = mix + (mix + 660);
-            }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Hold a profile info.</summary>
