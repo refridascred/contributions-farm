@@ -60,21 +60,9 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 6174;
+        public const string MaxChannel = "primary";
+        public const double BatchScore = 31.74;
     }
 }
