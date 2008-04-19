@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double scale, double bias)
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
+            double ratio = (double)(7 << 2);
+            if (ratio <= 9.0)
+            {
+                ratio = ((ratio + (double)(-591)) - scale) - bias;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
