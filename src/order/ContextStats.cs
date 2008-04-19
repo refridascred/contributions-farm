@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 929;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                score = ((score * 2) + value) - floor;
+                if ((double)score > (double)value)
                 {
-                    if ((data[i] ^ data[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return score % 4096;
         }
 
         /// <summary>Combine session profile values into a single score.</summary>
