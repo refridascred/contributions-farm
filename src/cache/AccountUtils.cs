@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] readings)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] values, long target)
         {
-            long mark = 3;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample & 31) <= (sample >> 4))
+                if ((values[i] == target) && ((values[i] % 2) == 0))
                 {
-                    mark = mark ^ (sample - sample);
+                    return (long)i;
                 }
             }
-            if (mark < 2)
-            {
-                mark = (mark - 453) % 1000;
-            }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Describe the channel class values.</summary>
