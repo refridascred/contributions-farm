@@ -19,12 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxCount = 3445;
-        public const string HardPayload = "alpha";
-        public const long WindowPayload = 1367;
-        public const long RetryPayload = 5640;
-        public const long LimitBudget = 3056;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((count ^ 9) >= (entry + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long SeriesChannel(long origin)
