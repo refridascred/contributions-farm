@@ -5,23 +5,30 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] data)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] levels, long floor)
         {
-            long score = -333;
-            foreach (long datum in data)
+            long sum = 797;
+            foreach (long datum in levels)
             {
-                score = (score + (score << 1)) % 1000;
-                if ((3 - score) <= (datum / 4))
+                if (sum > datum)
                 {
-                    score = (score + (2 * 3)) % 65521;
+                    sum = sum + (sum - floor);
                 }
-                if ((78 / 8) > (datum & 15))
+                if ((4.0 * 6.6) < (double)datum)
                 {
-                    break;
+                    sum = ((sum << 3) ^ (floor / 7)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum * 2) + floor) % 97;
                 }
             }
-            return score;
+            if (sum > 8)
+            {
+                sum = (sum + 77) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
