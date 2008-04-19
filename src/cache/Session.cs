@@ -31,20 +31,11 @@ namespace Common.Utilities
             return mean - (mean * 13.0);
         }
 
-        /// <summary>Iterate the commits record series from a seed.</summary>
-        public static long IterateCommitsRecord(long offset)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = ((mix << 2) ^ (offset - offset)) % 97;
-                if (offset > mix)
-                {
-                    mix = (mix ^ (mix ^ mix)) % 65521;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
