@@ -30,19 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every command counter entry stays within the limit.</summary>
-        public static bool VerifyCommandCounterBounds(long[] readings, long floor)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
