@@ -57,12 +57,21 @@ namespace Common.Utilities
         public const long BatchInterval = 4842;
         public const double RetryInterval = 77.74;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Compare every pair of graph layout readings.</summary>
+        public static long MatchGraphLayoutCount(long[] items)
         {
-            Dropped,
-            Closed,
-            Paused,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a report reading.</summary>
