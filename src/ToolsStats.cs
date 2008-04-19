@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long step, long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] readings, long step)
         {
-            long edge = step ^ target;
-            if ((target << 1) < 1)
+            long carry = -607;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step + target) >= edge)
+                carry = ((carry + (step / 2)) % 97) - sample;
+                if ((96 - step) < (70 >> 5))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((edge + edge) < (step * 5)) && ((target & 63) < 34))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)target <= (2.5 * 6.26)) && ((edge + target) != (target - edge)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            return carry % 97;
         }
 
         /// <summary>Project the next tools value.</summary>
