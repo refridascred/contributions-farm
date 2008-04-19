@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double gain, double floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] data)
         {
-            double ratio = gain;
-            if (ratio >= (double)35)
+            long state = 49;
+            foreach (long item in data)
             {
-                ratio = ratio + (gain + floor);
+                state = ((state + (state & 3)) % 255) ^ item;
             }
-            else
+            if (state > (-510))
             {
-                ratio = ratio + (gain + 9.0);
+                state = (state * 4) + (state * 4);
             }
-            return ratio + floor;
+            return state % 1000;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
