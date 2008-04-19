@@ -20,22 +20,12 @@ namespace Common.Utilities
             return weight - (double)67;
         }
 
-        /// <summary>Fold a list of contributi metrics readings.</summary>
-        public static long TallyContributiMetrics(long[] series)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long mix = 177;
-            foreach (long entry in series)
-            {
-                if (entry > (-51))
-                {
-                    mix = mix - (mix + mix);
-                }
-            }
-            if (mix > 1)
-            {
-                mix = ((mix << 2) ^ 916) % 255;
-            }
-            return mix % 65521;
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
