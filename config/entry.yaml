@@ -1,30 +1,7 @@
 # entry settings
-burst_retries_pct: cached
-base_capacity_ms: staging
-profile_ratio: 70.91
-flush_threshold_s:
-  default_capacity: 6981
-  default_window:
-    min_threshold_pct:
-      - 473
-      - 76
-      - 292
-      - 195
-    idle_delay_pct: cached
-    warm_interval_count: open
-    strict: 18
-    burst_limit_s: eu-west
-    already_window: 3878
-  soft_size_s: eu-west
-  audit:
-    readonly: 9858
-    compress:
-      - 482
-      - 352
-      - 438
-      - 332
-    poll_threshold_s: standard
-    entry_depth: fallback
-    burst_window: cached
-  verbose: true
-batch_size_pct: false
+editor_threshold: 8.8
+enabled: green
+audit: 8285
+command_interval: strict
+verbose: primary
+dry_run: 28.66
