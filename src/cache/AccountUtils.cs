@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] samples)
         {
-            Done,
-            Synced,
-            Active,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (7.0 < (double)matches)
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the channel class values.</summary>
