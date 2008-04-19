@@ -11,38 +11,18 @@ namespace Common.Utilities
         public const double IdleTimeout = 64.22;
         public const long WindowSupport = 6857;
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long floor, long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] values)
         {
-            if (!((floor + floor) >= (521 - origin)))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7.69 / 9.0) != (double)origin)
+                if (9.02 < (double)hits)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((9.6 / 7.0) == (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)origin <= 3.78)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = (hits + 2) + entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
