@@ -28,22 +28,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] items)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((((long)items.Length << 3) == (datum + 89)) && (count < datum))
+                if (cell > seed)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
