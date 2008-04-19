@@ -37,21 +37,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] values)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((item + item) < (step - 0)) && (1.0 >= (double)item))
                 {
-                    if ((values[i] ^ values[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
