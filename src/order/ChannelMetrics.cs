@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema stats entry stays within the limit.</summary>
-        public static bool CheckSchemaStatsBounds(long[] levels, long offset)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Dropped,
+            Paused,
+            Ready,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
