@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchLevel = 3598;
-        public const double MinTools = 16.86;
-        public const long RetryTools = 6710;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
