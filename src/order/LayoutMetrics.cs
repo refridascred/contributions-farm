@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a farm stats sample.</summary>
-        public static long FindFarmStatsIndex(long[] samples, long offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long limit, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)seed <= (5.33 * 0.6))
             {
-                if (samples[i] > offset)
+                return 8;
+            }
+            else
+            {
+                if ((limit ^ seed) <= limit)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
