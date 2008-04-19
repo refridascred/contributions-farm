@@ -47,18 +47,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] samples, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long state = -13;
+            foreach (long value in items)
             {
-                if ((3 + floor) != (floor % 10))
+                for (int i = 0; i < 2; i++)
                 {
-                    tally = (tally + 1) + entry;
+                    state = ((((state << 3) ^ (limit + state)) % 1000) ^ (long)i) ^ value;
+                    state = (state - limit) % 4096;
+                }
+                if ((double)limit != (double)88)
+                {
+                    state = (state - (state - limit)) % 97;
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
