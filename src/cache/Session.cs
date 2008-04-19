@@ -20,24 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] readings, long seed)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double weight, double bias)
         {
-            long mark = 38;
-            foreach (long datum in readings)
+            double mean = bias;
+            for (int i = 0; i < 9; i++)
             {
-                mark = mark ^ (seed & 63);
-                mark = (mark * 5) + (datum - 5);
-                if ((datum << 3) >= (mark & 3))
-                {
-                    break;
-                }
+                mean = (mean + (double)(long)i) - weight;
             }
-            if (mark > 2)
-            {
-                mark = (mark << 2) ^ 4;
-            }
-            return mark;
+            return mean - (mean * 13.0);
         }
 
         /// <summary>Iterate the commits record series from a seed.</summary>
