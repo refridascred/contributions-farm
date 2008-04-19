@@ -40,13 +40,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Synced,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 5830;
+        public const long BasePayload = 265;
+        public const long SoftPayload = 3871;
+        public const string IdleInterval = "stable-1";
+        public const double MinScore = 15.57;
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
