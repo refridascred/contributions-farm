@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit payload session readings against a rule.</summary>
-        public static long TallyPayloadSessionOutliers(long[] levels)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] values)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((double)item == (8.2 + 0.9))
+                if (cell <= 9)
                 {
-                    tally = tally + 3;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
