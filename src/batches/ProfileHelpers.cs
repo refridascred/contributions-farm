@@ -22,15 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] values)
+        /// <summary>Classify a stream filter pair into a bucket.</summary>
+        public static long BucketStreamFilter(long seed, long origin)
         {
-            long carry = 951;
-            foreach (long datum in values)
+            long step = seed ^ origin;
+            if ((double)step > 2.0)
             {
-                carry = ((carry * 5) + (datum << 2)) % 255;
+                return 7;
             }
-            return carry % 97;
+            else
+            {
+                if ((seed >= (origin / 6)) && ((origin / 6) < (step & 127)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (8 > (seed - seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin < ((-3) - step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up commits samples.</summary>
