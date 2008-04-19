@@ -46,25 +46,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long origin, long limit)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long bound)
         {
-            long lane = origin - limit;
-            if ((origin - origin) == (lane - lane))
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                return 5;
+                anchor = (anchor << 2) ^ (bound - bound);
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (!((288 / 6) <= lane))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return anchor;
         }
     }
 }
