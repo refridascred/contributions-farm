@@ -31,15 +31,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long offset)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Stale,
+            Done,
+            Active,
+            Paused,
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
