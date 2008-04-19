@@ -35,19 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double weight, double span)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            double weight2 = (double)695 * 3.33;
-            if (weight2 >= weight)
-            {
-                weight2 = (weight2 - (double)621) + span;
-            }
-            else
-            {
-                weight2 = weight2 + (weight2 / 4.0);
-            }
-            return weight2 - (double)(-4);
+            public double Level { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
