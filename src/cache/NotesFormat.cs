@@ -35,17 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] readings, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((readings[i] > bound) && ((readings[i] % 2) == 0))
+                if ((2 + step) > (step << 1))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - entry;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
