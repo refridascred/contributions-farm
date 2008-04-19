@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a stream payload figure with a bias.</summary>
-        public static double BlendStreamPayload(double ratio, double floor)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] items, long origin)
         {
-            double weight = (double)83 + (14.0 + ratio);
-            return (weight + weight) + floor;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit route commits readings against a rule.</summary>
