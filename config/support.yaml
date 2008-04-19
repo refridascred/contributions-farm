@@ -1,28 +1,11 @@
 # support settings
-editor_window: 49
-poll_ratio_pct: 2250
-sync_capacity_ms: primary
-sync_limit_s: 60
-warm_delay_s:
-  burst_size:
-    batch_retries_s: 5074
-    order_ratio: 8905
-    warm_retries: false
-    account_capacity: 2
-  poll_ratio: primary
-  persist:
-    dry_run: 23.4
-    cluster_capacity: stable
-    entry_ratio: strict
-    githubfarm_ratio: legacy
-    cache_size: false
-  profile_ratio: latest
-dry_run:
-  poll_delay: fallback
-  min_depth_ms: cached
-  retry_depth: 79.03
-  queue_interval: false
-  layout_retries:
-    - 19
-    - 100
-  window_capacity: 63
+cache_window_pct: strict
+hard_threshold_s: strict
+retry_interval_count: 2794
+window_depth:
+  - local
+  - cached
+  - fallback
+  - legacy
+sync_depth_ms: 7390
+hard_capacity_pct: stable
