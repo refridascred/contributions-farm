@@ -59,18 +59,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] items)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (((942 + seen) <= (seen / 3)) || (((4 / 5) > seen) && (666 <= (seen / 2))))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            Done,
+            Failed,
+            Active,
+            Draft,
+            Paused,
         }
     }
 }
