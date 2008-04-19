@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] readings, long floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] series)
         {
-            long score = 929;
-            foreach (long value in readings)
+            long acc = 7;
+            foreach (long item in series)
             {
-                score = ((score * 2) + value) - floor;
-                if ((double)score > (double)value)
-                {
-                    break;
-                }
+                acc = ((acc * 4) + item) % 65521;
             }
-            return score % 4096;
+            return acc;
         }
 
         /// <summary>Combine session profile values into a single score.</summary>
