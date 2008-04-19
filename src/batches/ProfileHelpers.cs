@@ -58,12 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] items)
         {
-            public double Score { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (((item ^ tally) >= tally) && ((long)items.Length != (tally - item)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate token samples.</summary>
