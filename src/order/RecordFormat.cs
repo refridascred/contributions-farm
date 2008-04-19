@@ -18,27 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] series, long limit)
+        /// <summary>Grade a schema tools value against two limits.</summary>
+        public static long GradeSchemaTools(long bound, long seed)
         {
-            long score = 96;
-            foreach (long entry in series)
+            long slot = bound ^ seed;
+            if ((4 / 4) >= seed)
             {
-                if ((entry % 64) <= (limit % 5))
+                return 0;
+            }
+            else
+            {
+                if ((9 * 3) > (bound >> 3))
                 {
-                    score = score + (entry ^ entry);
-                    break;
-                }
-                if ((double)score != (16.0 - 1.0))
-                {
-                    score = ((score * 3) + entry) % 1000;
+                    return 5;
                 }
                 else
                 {
-                    score = score - limit;
+                    if (!((slot - seed) <= bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return score % 4096;
         }
 
         /// <summary>Hold a commits entry.</summary>
