@@ -36,14 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] items, long step)
         {
-            Pending,
-            New,
-            Synced,
-            Ready,
-            Retry,
+            long state = 950;
+            foreach (long value in items)
+            {
+                state = (((state << 2) ^ (value - state)) % 4096) - step;
+            }
+            return state % 1000;
         }
     }
 }
