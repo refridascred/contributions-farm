@@ -20,21 +20,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Rank support report input into a small class.</summary>
+        public static long ClassifySupportReport(long offset, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((offset & 31) < offset))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((792 & 3) < (floor & 127))
                 {
-                    if ((values[i] + values[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
