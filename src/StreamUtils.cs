@@ -70,18 +70,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine format support values into a single score.</summary>
-        public static long FoldFormatSupport(long[] samples)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] series, long target)
         {
-            long carry = 717;
-            foreach (long value in samples)
+            long sum = 0;
+            foreach (long sample in series)
             {
-                if ((double)carry != (double)value)
+                sum = ((sum - sum) % 255) ^ sample;
+                if ((target - sum) < (sum % 16))
                 {
-                    carry = (carry - (625 + carry)) % 1000;
+                    sum = (sum - sum) % 101;
                 }
             }
-            return carry % 65521;
+            if (sum > 7)
+            {
+                sum = ((sum * 5) + sum) % 65521;
+            }
+            return sum % 4096;
         }
     }
 }
