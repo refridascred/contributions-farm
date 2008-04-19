@@ -51,15 +51,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a payload channel figure with a bias.</summary>
-        public static double ScalePayloadChannel(double ratio, double floor)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double mean = (floor / 2.0) * 6.7;
-            if (mean >= ratio)
-            {
-                mean = mean - (floor - mean);
-            }
-            return mean + (double)766;
+            Draft,
+            Active,
+            Synced,
+            Ready,
         }
 
         /// <summary>Match up channel metrics samples.</summary>
