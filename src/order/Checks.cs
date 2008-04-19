@@ -6,17 +6,17 @@ namespace Common.Utilities
     public static class Checks
     {
         /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] items, long step)
+        public static long TallyRecordOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((993 & 15) == (seen + value))
+                if ((((82 + value) == (matches / 6)) && ((double)value < (9.0 * 6.25))) || ((matches + 8) > matches))
                 {
-                    seen = (seen + 2) - step;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
