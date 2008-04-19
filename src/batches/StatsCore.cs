@@ -47,17 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] readings, long offset)
+        /// <summary>Check that every token schema entry stays within the limit.</summary>
+        public static bool ValidateTokenSchemaBounds(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (readings[i] > offset)
+                if (cell <= bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Rank support channel input into a small class.</summary>
