@@ -39,19 +39,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] levels, long limit)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long floor, long offset)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            if ((6.8 < (double)offset) && (0 > floor))
             {
-                if (entry != limit)
+                return 5;
+            }
+            else
+            {
+                if ((offset << 3) > floor)
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return flag;
         }
 
         /// <summary>Fold a list of buffer contributi readings.</summary>
