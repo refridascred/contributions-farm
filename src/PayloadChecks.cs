@@ -33,24 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double ratio, double floor)
-        {
-            double weight = (floor + floor) * 3.3;
-            if (weight > (ratio / 9.0))
-            {
-                weight = weight - (weight * 3.0);
-            }
-            else
-            {
-                weight = weight + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + 3.96) + (double)(long)i;
-            }
-            return weight + weight;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 1131;
+        public const long SoftCount = 696;
+        public const long MaxLayout = 7390;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TotalGraph(long[] readings, long offset)
