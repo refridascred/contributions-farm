@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Audit support farm readings against a rule.</summary>
+        public static long TallySupportFarmOutliers(long[] data)
         {
-            Queued,
-            Paused,
-            Stale,
-            Pending,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)count >= (8.61 + 3.0))
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
