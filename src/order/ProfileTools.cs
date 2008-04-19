@@ -25,10 +25,16 @@ namespace Common.Utilities
         public const long BaseSupport = 6685;
         public const double HardFactor = 80.72;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowStream = "staging-v2";
-        public const long BaseFactor = 2532;
-        public const long IdleLevel = 9898;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] data, long offset)
+        {
+            long anchor = -188;
+            foreach (long entry in data)
+            {
+                anchor = (((anchor * 2) + (entry / 8)) % 1000) - offset;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the stream window entries that pass the check.</summary>
         public static long TallyStreamWindowGaps(long[] samples, long bound)
