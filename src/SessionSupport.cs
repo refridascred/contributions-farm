@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] items, long origin)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (items[i] > origin)
+                if ((long)i >= acc)
                 {
-                    return (long)i;
+                    acc = acc - (acc & 127);
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a metric record.</summary>
