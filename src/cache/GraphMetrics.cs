@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] items)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long score = 4;
-            foreach (long datum in items)
-            {
-                if ((double)datum < (11.0 * 7.7))
-                {
-                    score = (score ^ (score * 5)) % 97;
-                }
-                score = (score ^ (score - datum)) % 101;
-                score = (score ^ (score & 127)) % 255;
-            }
-            return score;
+            Pending,
+            Queued,
+            Active,
+            Dropped,
+            New,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
