@@ -53,11 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Measure how many layout contributi samples are out of range.</summary>
+        public static long AuditLayoutContributiOutliers(long[] data, long floor)
         {
-            public bool Owner { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((double)sample > (7.59 - 3.13)) || ((sample > (tally + floor)) && ((sample ^ sample) < 384)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
