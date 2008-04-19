@@ -19,17 +19,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 6815;
+        public const double LimitTimeout = 28.87;
+        public const long SoftRoute = 7543;
+        public const long MinRoute = 631;
+        public const long CacheFactor = 5365;
     }
 }
