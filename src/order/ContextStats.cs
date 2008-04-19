@@ -25,32 +25,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] readings)
-        {
-            long mark = 818;
-            foreach (long value in readings)
-            {
-                long delta = mark;
-                if (delta < (delta + 37))
-                {
-                    mark = mark + (mark % 16);
-                }
-                else
-                {
-                    mark = (mark * 4) + (942 * 2);
-                }
-                if (!((mark & 15) <= (mark + value)))
-                {
-                    mark = ((mark * 4) + (507 * 2)) % 255;
-                }
-            }
-            if (mark > 2)
-            {
-                mark = (mark ^ (mark + 358)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 478;
+        public const double StepCounter = 52.16;
+        public const long BatchLevel = 2965;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportLimits(long[] items, long origin)
