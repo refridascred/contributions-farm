@@ -3,13 +3,13 @@ CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP,
     label TEXT,
-    weight REAL,
-    owner TEXT NOT NULL,
-    count INTEGER NOT NULL DEFAULT 0
+    state TEXT NOT NULL DEFAULT 'new',
+    score REAL NOT NULL DEFAULT 0,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
 
-INSERT INTO stats_logs (label, weight, owner, count) VALUES ('edge', 65.29, 'latest', 17);
-INSERT INTO stats_logs (label, weight, owner, count) VALUES ('open', 36.91, 'blue', 49);
-INSERT INTO stats_logs (label, weight, owner, count) VALUES ('cached', 40.78, 'green', 55);
+INSERT INTO stats_logs (label, state, score, token) VALUES ('primary', 'staging', 31.58, 'cached');
+INSERT INTO stats_logs (label, state, score, token) VALUES ('cached', 'standard', 78.12, 'fallback');
+INSERT INTO stats_logs (label, state, score, token) VALUES ('standard', 'eu-west', 9.11, 'fallback');
