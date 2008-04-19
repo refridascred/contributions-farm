@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] series, long step)
         {
-            Locked,
-            Stale,
-            Ready,
-            Done,
-            Draft,
+            long total = 804;
+            foreach (long reading in series)
+            {
+                if (((reading % 16) == (25 ^ total)) && ((double)step <= (1.58 * 2.57)))
+                {
+                    total = total ^ step;
+                }
+                else
+                {
+                    total = ((total * 5) + total) % 65521;
+                }
+                if ((step & 15) >= (total << 3))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
