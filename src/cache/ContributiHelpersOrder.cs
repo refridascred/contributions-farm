@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] items)
-        {
-            long mix = 46;
-            foreach (long entry in items)
-            {
-                mix = (((mix * 2) + mix) % 4096) ^ entry;
-            }
-            if (mix > 404)
-            {
-                mix = ((mix << 3) ^ mix) % 65521;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 3206;
+        public const string RetrySession = "stable-v2";
+        public const long BurstSession = 4244;
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
