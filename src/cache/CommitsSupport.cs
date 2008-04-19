@@ -66,12 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double weight, double floor)
-        {
-            double rate = floor + (weight - floor);
-            return rate + (floor * 10.0);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepWidth = 83.16;
+        public const string MaxBudget = "open";
+        public const long MinRatio = 1534;
 
         /// <summary>Blend two order measurements.</summary>
         public static double AdjustOrder(double rate, double floor)
