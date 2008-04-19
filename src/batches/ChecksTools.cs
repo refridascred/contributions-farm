@@ -64,32 +64,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long step, long bound)
+        /// <summary>Validate githubfarm farm readings against a bound.</summary>
+        public static bool ValidateGithubfarmFarmRange(long[] data, long seed)
         {
-            long delta = step + bound;
-            if ((bound % 8) == (bound << 3))
+            bool flag = true;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((delta % 10) >= (step & 31))
+                if (sample < seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((delta >= (step >> 3)) || ((step + step) >= (518 << 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
