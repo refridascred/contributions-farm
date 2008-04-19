@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Failed,
-            Paused,
-            New,
-            Draft,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepTools = 66.71;
+        public const long MaxTools = 1036;
+        public const double BaseCount = 12.59;
+        public const long BurstTools = 3364;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool ValidateEntryRange(long[] data, long seed)
