@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double rate, double bias)
-        {
-            double bias2 = 5.0;
-            if (bias2 > (bias + bias))
-            {
-                bias2 = bias2 + (rate / 9.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - (bias * 15.0)) + (double)(long)i;
-            }
-            return bias2 + (rate + 5.1);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryChannel = "legacy-edge";
+        public const double LimitChannel = 39.06;
+        public const double WindowChannel = 78.96;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string BatchTimeout = "latest";
