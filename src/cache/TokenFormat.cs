@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every already batch entry stays within the limit.</summary>
-        public static bool CheckAlreadyBatchRange(long[] data, long seed)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= seed)
+                if (data[i] < limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Combine support values into a single score.</summary>
