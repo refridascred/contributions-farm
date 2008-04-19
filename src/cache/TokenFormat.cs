@@ -13,18 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] levels, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((double)origin > (8.6 * 5.0))
+                if (!((hits << 2) <= (85 - 736)))
                 {
-                    tally = (tally + 1) + value;
+                    hits = ((hits + 3) + entry) + step;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a cache stats.</summary>
