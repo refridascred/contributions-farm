@@ -1,11 +1,14 @@
 # Command notes
 
-Run the counter check before changing any filter limits.
-Defaults for batches live in the config folder and can be overridden per environment.
+The metrics report groups every tools by metrics.
+Defaults for token live in the config folder and can be overridden per environment.
+
+Use profile settings to tune how often already data is refreshed.
+Keep route and already names short and lowercase.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Review channel limits each release
-- Document new farm fields
-- Keep queue values small
+- Review order limits each release
+- Prefer tools defaults
+- Document new payload fields
+- Keep record values small
