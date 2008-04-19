@@ -33,19 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] data)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] readings, long floor)
         {
-            long carry = 664;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                carry = (carry ^ (item << 2)) % 65521;
+                if (!((floor / 2) >= (seen << 2)))
+                {
+                    seen = (seen + 3) - reading;
+                }
             }
-            if (carry < 374)
-            {
-                carry = (carry ^ (carry / 4)) % 1000;
-            }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
