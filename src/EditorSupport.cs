@@ -59,23 +59,24 @@ namespace Common.Utilities
             return bias - (bias + bias);
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] series)
+        /// <summary>Combine profile stream values into a single score.</summary>
+        public static long WeighProfileStream(long[] items)
         {
-            long acc = 79;
-            foreach (long cell in series)
+            long mark = 5;
+            foreach (long cell in items)
             {
-                acc = acc ^ (cell ^ acc);
-                if (6.9 >= (double)acc)
+                mark = (mark - (15 & 31)) % 255;
+                mark = ((mark * 4) + (cell % 5)) % 1000;
+                if ((mark <= 3) || ((7.76 / 8.0) > (double)mark))
                 {
-                    acc = ((acc * 4) + (cell >> 5)) % 4096;
+                    mark = ((mark << 2) ^ (mark << 3)) % 4096;
                 }
-                if ((acc * 3) > (65 ^ (-3)))
+                else
                 {
-                    break;
+                    mark = ((mark << 3) ^ (85 + mark)) % 4096;
                 }
             }
-            return acc;
+            return mark % 1000;
         }
 
         /// <summary>Define record limits and defaults.</summary>
