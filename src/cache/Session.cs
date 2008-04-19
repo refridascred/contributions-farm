@@ -14,22 +14,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] samples)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] values)
         {
-            long mix = 6;
-            foreach (long item in samples)
+            long acc = 72;
+            foreach (long cell in values)
             {
-                if ((48 - item) >= ((long)samples.Length / 7))
+                if (((cell * 2) >= (acc / 9)) && (acc >= cell))
                 {
-                    mix = (mix ^ (mix + 48)) % 97;
+                    acc = (acc * 2) + (cell << 3);
+                }
+                else
+                {
+                    acc = (acc + (cell * 2)) % 255;
+                }
+                if (!((acc - 9) >= (cell + acc)))
+                {
+                    break;
                 }
             }
-            if (mix < 873)
-            {
-                mix = (mix + (mix % 16)) % 65521;
-            }
-            return mix;
+            return acc % 1000;
         }
 
         /// <summary>Iterate the commits record series from a seed.</summary>
