@@ -38,15 +38,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cache buffer value from a seed.</summary>
-        public static long RollCacheBuffer(long limit)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            New,
+            Closed,
+            Synced,
+            Draft,
+            Paused,
         }
     }
 }
