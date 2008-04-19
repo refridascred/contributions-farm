@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultTimeout = 34.17;
-        public const double MinScore = 11.68;
-        public const long LimitDepth = 7205;
-        public const double HardToken = 20.22;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BatchFactor = "primary-v2";
+        public const long BaseRecord = 7391;
+        public const string BatchRecord = "local-1";
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
