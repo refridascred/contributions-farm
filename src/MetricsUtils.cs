@@ -41,12 +41,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepLevel = 31.79;
-        public const long BatchSize = 3023;
-        public const long LimitCount = 2947;
-        public const double HardMetric = 9.9;
-        public const long HardBudget = 9786;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxInterval = 152;
+        public const long CacheOrder = 2001;
+        public const string HardScore = "open-1";
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
