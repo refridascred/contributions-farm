@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] values)
+        /// <summary>Adjust a context buffer reading.</summary>
+        public static double AdjustContextBuffer(double gain, double offset)
         {
-            long mix = 5;
-            foreach (long item in values)
-            {
-                if ((56 * 4) < (243 + item))
-                {
-                    mix = mix + ((-73) % 2);
-                    mix = (mix - 877) % 4096;
-                }
-                if ((item + item) == (item - (long)values.Length))
-                {
-                    mix = (mix + mix) % 65521;
-                }
-                if ((mix << 3) < item)
-                {
-                    break;
-                }
-            }
-            if (mix > 4)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            double weight = (double)(2 / 7);
+            return ((weight - weight) + gain) + offset;
         }
 
         /// <summary>Project the next window value.</summary>
