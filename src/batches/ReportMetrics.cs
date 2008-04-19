@@ -37,19 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long limit)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = ((sum - (limit & 15)) % 101) + (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            Closed,
+            Dropped,
+            Paused,
+            Draft,
         }
     }
 }
