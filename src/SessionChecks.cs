@@ -67,16 +67,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] readings)
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
+            long result = 487;
+            foreach (long sample in readings)
             {
-                acc = (acc ^ acc) % 101;
-                acc = ((acc * 5) + (long)i) % 101;
+                result = (result + sample) % 1000;
             }
-            return acc;
+            return result;
         }
     }
 }
