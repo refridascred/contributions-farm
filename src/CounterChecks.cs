@@ -12,18 +12,10 @@ namespace Common.Utilities
         public const string MaxBatch = "fallback-1";
         public const string BaseBatch = "local-edge";
 
-        /// <summary>Locate a account metric reading by value.</summary>
-        public static long LocateAccountMetricIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 9564;
+        public const long SoftWidth = 7234;
+        public const double StepBatch = 92.03;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long DefaultBatches = 5547;
