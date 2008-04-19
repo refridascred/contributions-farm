@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate payload stream readings against a bound.</summary>
-        public static bool ValidatePayloadStreamRange(long[] items, long limit)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Look up the position of a metrics already sample.</summary>
