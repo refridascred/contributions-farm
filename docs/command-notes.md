@@ -1,14 +1,14 @@
 # Command notes
 
-The metrics report groups every tools by metrics.
-Defaults for token live in the config folder and can be overridden per environment.
+The profile report groups every token by stats.
+Each buffer is validated before it reaches the filter queue.
+Run the session check before changing any editor limits.
 
-Use profile settings to tune how often already data is refreshed.
-Keep route and already names short and lowercase.
+Keep order and counter names short and lowercase.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review order limits each release
-- Prefer tools defaults
 - Document new payload fields
-- Keep record values small
+- Validate graph input early
+- Log every batch change
