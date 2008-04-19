@@ -1,19 +1,6 @@
 {
-  "githubfarm_size": false,
-  "cache_ttl": "standard",
-  "tools_size": {
-    "batch_window_pct": {
-      "default_timeout": false,
-      "idle_window": [457, 64, 291],
-      "readonly": 68.28,
-      "schema_ratio": 500,
-      "flush_window_s": 15.61,
-      "sync_size": 81.15
-    },
-    "account_ttl": "stable",
-    "farm_size": "edge",
-    "sync_ttl": "staging",
-    "soft_limit_count": true
-  },
-  "tools_threshold": 2.61
+  "order_capacity": 92,
+  "base_retries": true,
+  "hard_retries_pct": true,
+  "max_timeout": [91, 4]
 }
