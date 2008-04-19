@@ -34,22 +34,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] data)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] items, long target)
         {
-            long sum = 85;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample + sum) == (sum + 76))
+                if ((items[i] < target) && ((items[i] % 5) == 0))
                 {
-                    sum = (sum + sum) % 101;
-                }
-                if ((sample - sum) < sample)
-                {
-                    sum = (sum - (sample - sample)) % 255;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
