@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const long MinSize = 1401;
         public const long HardChecks = 8626;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] values, long bound)
         {
-            Retry,
-            Dropped,
-            Draft,
-            Active,
-            Paused,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (((-7) * 2) >= (value - value))
+                {
+                    count = (count + 3) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
