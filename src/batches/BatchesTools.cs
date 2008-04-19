@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] samples, long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] values, long step)
         {
-            long sum = 6;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                sum = ((sum ^ (long)samples.Length) ^ value) + offset;
+                if (sample != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Describe the record kind values.</summary>
