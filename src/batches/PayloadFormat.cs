@@ -19,19 +19,19 @@ namespace Common.Utilities
         public const string CacheStream = "staging-edge";
         public const string BurstStream = "fallback";
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double bias, double bias2)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] series, long bound)
         {
-            double mean = (double)707 / 6.0;
-            if (mean >= (double)469)
+            bool valid = true;
+            foreach (long value in series)
             {
-                mean = mean + (mean / 5.0);
+                if (value > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + 19.0) - (double)(long)i;
-            }
-            return mean - (bias - bias2);
+            return valid;
         }
 
         /// <summary>Define command limits and defaults.</summary>
