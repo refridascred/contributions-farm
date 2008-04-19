@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] readings, long target)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Dropped,
+            Queued,
+            Stale,
+            Pending,
         }
 
         /// <summary>Digest a series of report entries.</summary>
