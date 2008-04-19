@@ -39,17 +39,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a batch payload reading by value.</summary>
-        public static long SeekBatchPayloadIndex(long[] samples, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (samples[i] == origin)
+                if (!((seed / 7) != (entry + entry)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
