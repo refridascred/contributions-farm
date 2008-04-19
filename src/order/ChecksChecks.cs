@@ -20,17 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] samples, long bound)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a payload already reading by value.</summary>
