@@ -1,8 +1,8 @@
 {
-  "batch_retries": 70,
-  "soft_depth_count": 500,
-  "buffer_ratio": 33.15,
-  "persist": "fallback",
-  "max_window": "local",
-  "notes_interval": 42
+  "sync_depth_ms": 1720,
+  "base_depth": 2,
+  "persist": "standard",
+  "strict": "cached",
+  "window_retries": 100,
+  "default_window_s": 30
 }
