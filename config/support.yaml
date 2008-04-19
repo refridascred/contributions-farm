@@ -1,6 +1,7 @@
 # support settings
-strict: fallback
-persist: 92
-enabled: 33.09
-poll_threshold: 55
-min_timeout_pct: 3070
+order_limit: 30.05
+batch_size: 24.1
+cache_size_pct: 11.16
+sync_timeout_pct: 63.53
+hard_window_pct: standard
+poll_interval_pct: staging
