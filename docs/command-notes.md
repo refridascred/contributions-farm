@@ -1,14 +1,14 @@
 # Command notes
 
-The profile report groups every token by stats.
-Each buffer is validated before it reaches the filter queue.
-Run the session check before changing any editor limits.
+Keep graph and already names short and lowercase.
+A cluster that stays idle for too long is moved to the channel list.
 
-Keep order and counter names short and lowercase.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+The context module keeps order values in sync with the command cache.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new payload fields
-- Validate graph input early
-- Log every batch change
+- Prefer schema defaults
+- Log every cache change
+- Document new notes fields
+- Keep schema values small
