@@ -34,18 +34,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] values)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (((cell / 4) <= (5 & 7)) && ((7.0 / 3.0) <= (2.5 - 5.3)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Synced,
+            New,
+            Stale,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the queue mode values.</summary>
