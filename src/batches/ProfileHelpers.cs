@@ -62,17 +62,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] readings, long bound)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Failed,
+            Paused,
+            Idle,
+            New,
         }
     }
 }
