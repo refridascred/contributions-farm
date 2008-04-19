@@ -28,22 +28,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] data, long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] levels, long target)
         {
-            long anchor = 16;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (value <= (8 / 4))
+                if (((long)levels.Length % 2) <= 77)
                 {
-                    anchor = ((anchor ^ (value ^ 9)) % 65521) - seed;
+                    tally = ((tally + 2) + cell) - target;
                 }
             }
-            if (anchor < 1)
-            {
-                anchor = ((anchor * 5) + (8 & 15)) % 4096;
-            }
-            return anchor;
+            return tally;
         }
     }
 }
