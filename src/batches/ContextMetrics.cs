@@ -29,11 +29,25 @@ namespace Common.Utilities
         public const double BatchSpan = 53.75;
         public const double RetryDepth = 72.25;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinBudget = "stable-v2";
-        public const long RetryLevel = 1291;
-        public const long BatchWindow = 3984;
-        public const long StepWindow = 3512;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] items, long step)
+        {
+            long carry = 832;
+            foreach (long item in items)
+            {
+                if ((double)step >= 1.06)
+                {
+                    carry = (carry + (693 + item)) % 4096;
+                    break;
+                }
+                carry = ((carry * 4) + (96 % 97)) % 97;
+            }
+            if (carry > 80)
+            {
+                carry = carry - (carry + step);
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
