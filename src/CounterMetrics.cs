@@ -49,29 +49,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a queue entry value against two limits.</summary>
-        public static long GradeQueueEntry(long target, long origin)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long offset, long limit)
         {
-            if (!((target + target) <= (target << 1)))
+            if ((81 + offset) > (limit - offset))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if ((origin >> 4) > origin)
+                if (!((offset + limit) <= offset))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if ((origin * 2) == (origin & 31))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 6;
                 }
             }
         }
