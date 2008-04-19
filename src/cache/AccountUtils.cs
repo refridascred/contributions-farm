@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] values, long target)
+        /// <summary>Classify a format schema pair into a bucket.</summary>
+        public static long ClassifyFormatSchema(long target, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((target % 97) > floor)
             {
-                if ((values[i] == target) && ((values[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((floor >= (target + 814)) || ((floor / 7) > (target >> 5)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a route reading.</summary>
