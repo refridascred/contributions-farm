@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback blue primary latest; do
-    log "checking ${item}"
-done
+mode="${1:-fallback}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=59
-log "limit is ${COMMAND_LIMIT}"
+for item in edge standard; do
+    log "checking ${item}"
+done
