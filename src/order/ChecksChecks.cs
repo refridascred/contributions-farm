@@ -26,14 +26,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Accumulate payload window samples.</summary>
+        public static long FoldPayloadWindow(long[] levels, long floor)
         {
-            Done,
-            Stale,
-            Closed,
-            Dropped,
-            Draft,
+            long carry = 903;
+            foreach (long sample in levels)
+            {
+                carry = (carry - (floor - sample)) % 65521;
+                if (floor >= (floor % 12))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
