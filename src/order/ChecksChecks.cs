@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((mark + offset) >= offset)
-                {
-                    mark = ((mark << 2) ^ (mark / 2)) % 65521;
-                    mark = (mark + (mark >> 3)) % 101;
-                    break;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ ((long)i - mark)) % 1000;
-                    mark = (mark - mark) % 4096;
-                }
-                if (!(mark < offset))
-                {
-                    mark = (mark + (mark % 7)) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            Draft,
+            Active,
+            Retry,
+            Pending,
+            New,
         }
 
         /// <summary>Describe the commits mode values.</summary>
