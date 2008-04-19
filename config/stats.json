@@ -1,8 +1,21 @@
 {
-  "base_ratio": "fallback",
-  "filter_limit": 500,
-  "verbose": 500,
-  "counter_window": "legacy",
-  "compress": "green",
-  "warm_timeout_count": ["primary", "standard", "staging"]
+  "graph_ttl": {
+    "poll_window_count": true,
+    "metric_retries": 37.69,
+    "token_ratio": true,
+    "default_capacity_s": "staging"
+  },
+  "cache_depth": {
+    "report_ratio": {
+      "poll_ttl_pct": "edge",
+      "verbose": 60,
+      "token_timeout": true
+    },
+    "burst_ttl_pct": true,
+    "entry_ratio": "fallback",
+    "editor_size": "latest",
+    "poll_retries_count": [104, 139, 204, 314],
+    "default_interval_pct": 9464
+  },
+  "warm_retries": "eu-west"
 }
