@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metric layout sample.</summary>
-        public static long LookupMetricLayoutIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftFilter = "open-edge";
+        public const long LimitFilter = 6789;
+        public const long StepLevel = 6819;
+        public const long LimitScore = 9832;
+        public const double MinDepth = 76.52;
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
