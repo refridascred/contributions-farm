@@ -1,7 +1,6 @@
 {
-  "cache_capacity": "green",
-  "flush_retries_count": 60,
-  "hard_retries_count": 7001,
-  "profile_depth": true,
-  "flush_limit": 43.52
+  "max_ratio_pct": ["blue", "edge"],
+  "cache_ratio_pct": "blue",
+  "readonly": 13,
+  "window_delay": "primary"
 }
