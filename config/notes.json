@@ -1,6 +1,8 @@
 {
-  "enabled": "fallback",
-  "record_ratio": "staging",
-  "dry_run": true,
-  "default_depth_s": 45
+  "base_ratio_pct": 100,
+  "support_limit": "strict",
+  "sync_interval_ms": "primary",
+  "entry_ttl": 28.76,
+  "sync_retries": "staging",
+  "burst_size_s": "primary"
 }
