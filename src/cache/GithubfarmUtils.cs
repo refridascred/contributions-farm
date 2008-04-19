@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count channel session pairs that satisfy a relation.</summary>
-        public static long CompareChannelSessionCount(long[] values)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = span;
+            if (rate <= rate)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = (rate - (double)3) - scale;
             }
-            return count;
+            return rate - (double)(-75);
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
