@@ -39,14 +39,10 @@ namespace Common.Utilities
         public const string BatchLevel = "stable";
         public const double HardCache = 57.32;
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Pending,
-            Done,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchInterval = 4440;
+        public const string BaseRatio = "primary";
+        public const long MaxCommand = 9053;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long ScoreLayout(long[] readings)
