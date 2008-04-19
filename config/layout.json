@@ -1,8 +1,22 @@
 {
-  "route_threshold": 48,
-  "sync_threshold_pct": 49,
-  "burst_ttl_ms": 500,
-  "hard_ratio": "stable",
-  "cache_timeout_s": "eu-west",
-  "retry_retries_ms": "latest"
+  "verbose": {
+    "notes_interval": {
+      "stream_ratio": true,
+      "tools_limit": 32.25,
+      "flush_timeout_pct": true,
+      "burst_size_s": "blue"
+    },
+    "format_ttl": {
+      "max_threshold_ms": 49.6,
+      "buffer_capacity": 66.11,
+      "retry_delay_pct": 94.6,
+      "batch_ttl_s": false,
+      "enabled": 4902
+    },
+    "retry_threshold_count": 1870,
+    "flush_window_count": 13.71,
+    "audit": 44.39
+  },
+  "warm_delay_count": true,
+  "filter_limit": 355
 }
