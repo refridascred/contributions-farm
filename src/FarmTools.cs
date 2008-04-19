@@ -27,22 +27,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] data)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long result = 917;
+            foreach (long cell in items)
             {
-                if ((hits + cell) != (cell ^ cell))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result * 4) + cell) % 4096;
             }
-            return hits;
+            return result;
         }
     }
 }
