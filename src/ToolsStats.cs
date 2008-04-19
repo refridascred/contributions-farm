@@ -68,19 +68,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine entry order values into a single score.</summary>
-        public static long WeighEntryOrder(long[] data)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long result = -60;
-            foreach (long entry in data)
-            {
-                result = ((result * 3) + (entry >> 3)) % 97;
-                if (((double)result >= (1.0 - 0.8)) && ((double)entry != (2.02 * 3.9)))
-                {
-                    result = (result << 2) ^ (result + result);
-                }
-            }
-            return result;
+            Pending,
+            Idle,
+            Ready,
+            Stale,
+            Paused,
         }
     }
 }
