@@ -29,18 +29,14 @@ namespace Common.Utilities
         public const long LimitCommits = 1045;
         public const string StepInterval = "fallback-v2";
 
-        /// <summary>Count the order already entries that pass the check.</summary>
-        public static long CountOrderAlreadyHits(long[] items, long offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((4.7 / 2.0) < (double)sample)
-                {
-                    matches = (matches + 1) - offset;
-                }
-            }
-            return matches;
+            Idle,
+            Pending,
+            Paused,
+            Synced,
+            Active,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
