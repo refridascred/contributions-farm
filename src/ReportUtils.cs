@@ -29,19 +29,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] data, long bound)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Done,
+            Ready,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the schema kind values.</summary>
