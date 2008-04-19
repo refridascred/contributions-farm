@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+CHANNEL_LIMIT=328
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-eu-west}"
 case "${mode}" in
-    fallback)
+    standard)
         log "fast path"
         ;;
     *)
@@ -16,12 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in standard cached edge green; do
+for item in strict eu-west green; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
