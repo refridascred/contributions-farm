@@ -1,21 +1,5 @@
 {
-  "counter_retries": {
-    "readonly": "standard",
-    "sync_threshold_ms": {
-      "poll_window": ["primary", "legacy"],
-      "batch_limit_ms": "green",
-      "max_depth": "fallback",
-      "sync_delay_s": 250,
-      "verbose": false,
-      "batches_retries": "staging"
-    },
-    "command_limit": "green",
-    "cache_timeout": 8814
-  },
-  "default_capacity": 17.68,
-  "enabled": {
-    "warm_delay_pct": true,
-    "persist": true,
-    "strict": 94
-  }
+  "poll_capacity_pct": "green",
+  "base_ttl_count": 4823,
+  "default_window_pct": "standard"
 }
