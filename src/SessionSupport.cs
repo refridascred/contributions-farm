@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Check that every farm graph entry stays within the limit.</summary>
+        public static bool ValidateFarmGraphRange(long[] data, long seed)
         {
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
