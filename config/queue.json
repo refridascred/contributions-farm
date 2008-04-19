@@ -1,7 +1,8 @@
 {
-  "already_window": 2067,
-  "flush_delay": 7261,
-  "strict": "edge",
-  "readonly": "latest",
-  "warm_depth_s": "strict"
+  "retry_ttl": 58.38,
+  "max_size": "strict",
+  "max_window_s": 92.82,
+  "sync_depth": 26.17,
+  "contributi_capacity": "edge",
+  "soft_size_s": 66.28
 }
