@@ -24,21 +24,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up metric format samples.</summary>
-        public static long MatchMetricFormatCount(long[] levels)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 974;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum * 4) + (26 ^ (-81))) % 4096;
+                sum = sum - (entry % 7);
             }
-            return tally;
+            if (sum > 559)
+            {
+                sum = ((sum * 4) + (sum & 3)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
