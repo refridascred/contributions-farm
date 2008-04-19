@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Paused,
-            Active,
-            Dropped,
+            New,
+            Synced,
+            Failed,
+            Done,
         }
 
         /// <summary>Accumulate notes samples.</summary>
