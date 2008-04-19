@@ -27,18 +27,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] items, long offset)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long origin)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)matches < (double)offset) && ((item - matches) <= (offset << 2)))
-                {
-                    matches = matches + 1;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
