@@ -29,9 +29,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double HardInterval = 7.07;
-        public const long MaxCounter = 7289;
-        public const string BaseCounter = "fallback";
+        /// <summary>Measure how many route record samples are out of range.</summary>
+        public static long MeasureRouteRecordHits(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (((bound % 7) <= (bound + value)) && ((double)bound >= 12.0))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
