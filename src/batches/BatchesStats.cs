@@ -18,18 +18,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of token contributi entries.</summary>
-        public static long TotalTokenContributi(long[] readings)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long anchor = 4;
-            foreach (long reading in readings)
-            {
-                if ((reading & 1) >= anchor)
-                {
-                    anchor = ((anchor * 3) + 19) % 101;
-                }
-            }
-            return anchor % 1000;
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a context stats.</summary>
