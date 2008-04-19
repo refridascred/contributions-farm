@@ -1,5 +1,13 @@
 {
-  "format_depth": false,
-  "flush_depth_count": "edge",
-  "retry_delay": [19, 266, 100]
+  "batches_size": 32,
+  "already_ratio": {
+    "max_depth": "green",
+    "report_capacity": false,
+    "warm_retries_count": 95,
+    "notes_timeout": [442, 312]
+  },
+  "min_limit": "open",
+  "compress": 3039,
+  "cache_capacity": "local",
+  "tools_window": false
 }
