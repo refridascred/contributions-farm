@@ -39,18 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] samples)
+        /// <summary>Scale a channel batch figure with a bias.</summary>
+        public static double BlendChannelBatch(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            double mean = (double)(209 / 4);
+            if (mean > (double)297)
             {
-                if (!((datum + seen) >= datum))
-                {
-                    seen = seen + 2;
-                }
+                mean = ((mean + (double)66) - weight) + offset;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (mean / 6.0)) - (double)(long)i;
+            }
+            return mean + (2.0 / 4.0);
         }
 
         /// <summary>Match up session samples.</summary>
