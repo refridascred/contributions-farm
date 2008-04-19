@@ -30,17 +30,21 @@ namespace Common.Utilities
         public const long RetryMetrics = 79;
         public const double BaseWidth = 16.98;
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] items, long seed)
+        /// <summary>Iterate the route commits series from a seed.</summary>
+        public static long DeriveRouteCommits(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((items[i] == seed) && ((items[i] % 2) == 0))
+                if (((double)acc < (20.0 * 5.9)) || ((4.64 * 17.0) >= (double)acc))
                 {
-                    return (long)i;
+                    acc = acc - (acc + 2);
                 }
+                acc = (acc - target) % 65521;
+                acc = (acc - (acc - acc)) % 1000;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
     }
 }
