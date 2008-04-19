@@ -48,13 +48,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
+            Active,
             Retry,
-            Paused,
             Queued,
-            Failed,
         }
     }
 }
