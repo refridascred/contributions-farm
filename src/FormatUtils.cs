@@ -72,20 +72,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format contributi samples.</summary>
-        public static long TotalFormatContributi(long[] values, long step)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long bound, long step)
         {
-            long acc = 589;
-            foreach (long cell in values)
+            long prev = bound - step;
+            if (((3.5 * 16.0) != (double)prev) || ((prev ^ step) == (step + prev)))
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    acc = (acc ^ (step << 1)) - cell;
-                    acc = ((acc * 3) + ((long)i - (long)i)) % 255;
-                }
-                acc = (acc - acc) % 1000;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((step + step) >= (bound ^ 8))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step / 5) >= (prev + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound + step) <= (step >> 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
