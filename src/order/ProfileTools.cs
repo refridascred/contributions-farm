@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const double LimitChannel = 39.06;
         public const double WindowChannel = 78.96;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            Pending,
-            Ready,
             Done,
-            Dropped,
+            Queued,
+            Stale,
+            Active,
         }
 
         /// <summary>Project the next stats stream value.</summary>
