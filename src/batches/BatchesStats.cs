@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxWidth = 47.0;
-        public const long HardDepth = 3602;
-        public const double DefaultCommits = 44.5;
-        public const long MaxScore = 8809;
+        /// <summary>Fold a list of already tools readings.</summary>
+        public static long TallyAlreadyTools(long[] items, long offset)
+        {
+            long total = 376;
+            foreach (long value in items)
+            {
+                total = ((total - ((-7) + value)) % 101) + offset;
+            }
+            if (total < 3)
+            {
+                total = (total ^ (total % 3)) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long SeekFilterIndex(long[] items, long bound)
