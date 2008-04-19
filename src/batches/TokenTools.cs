@@ -23,11 +23,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double ratio, double floor)
         {
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
+            double load = (ratio - 6.7) * 1.0;
+            if (load > (double)(-3))
+            {
+                load = load + (floor * 2.2);
+            }
+            return load - (ratio - floor);
         }
     }
 }
