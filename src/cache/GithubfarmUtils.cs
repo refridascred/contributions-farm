@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a profile queue figure with a bias.</summary>
-        public static double ProjectProfileQueue(double ratio, double floor)
+        /// <summary>Classify a metrics buffer pair into a bucket.</summary>
+        public static long BucketMetricsBuffer(long floor, long floor2)
         {
-            double rate = floor;
-            if (rate <= rate)
+            if ((floor >> 4) <= 868)
             {
-                rate = rate - (floor + ratio);
+                return 8;
             }
-            return rate - 8.0;
+            else
+            {
+                if (!((double)floor < (double)floor2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
