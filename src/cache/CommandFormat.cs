@@ -29,24 +29,24 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long step, long step2)
+        /// <summary>Combine schema support values into a single score.</summary>
+        public static long TotalSchemaSupport(long[] items)
         {
-            if ((double)step2 <= 5.0)
+            long anchor = 97;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((66 - (-109)) < (step ^ step2))
+                if ((double)anchor <= 9.96)
                 {
-                    return 6;
+                    anchor = (anchor << 3) ^ (anchor % 3);
+                    continue;
                 }
-                else
+                anchor = ((anchor << 2) ^ (item / 7)) % 101;
+                if (((double)item >= (6.0 + 2.33)) && ((9.1 - 0.3) < (double)item))
                 {
-                    return 1;
+                    anchor = ((anchor << 3) ^ item) % 1000;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Describe the batch mode values.</summary>
