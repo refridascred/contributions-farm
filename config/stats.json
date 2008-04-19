@@ -1,6 +1,5 @@
 {
-  "window_ttl": 15.46,
-  "poll_retries_ms": 93.94,
-  "cluster_threshold": "legacy",
-  "sync_window_count": "eu-west"
+  "poll_ratio": [349, 339, 199, 371],
+  "soft_capacity_pct": 16.34,
+  "compress": false
 }
