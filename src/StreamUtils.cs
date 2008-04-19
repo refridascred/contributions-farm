@@ -31,12 +31,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 8016;
+        public const long HardCluster = 4077;
+        public const long BurstCluster = 2003;
+        public const long BaseCluster = 8996;
 
         /// <summary>Adjust a tools reading.</summary>
         public static double ProjectTools(double gain, double span)
