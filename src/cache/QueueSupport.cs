@@ -19,23 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metric farm entries.</summary>
-        public static long CombineMetricFarm(long[] items)
+        /// <summary>Look up the position of a window tools sample.</summary>
+        public static long LocateWindowToolsIndex(long[] readings, long origin)
         {
-            long state = 94;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state << 3) ^ (value << 2);
-                if ((574 - value) != (25 + value))
+                if ((readings[i] == origin) && ((readings[i] % 5) != 0))
                 {
-                    state = state ^ (value << 2);
-                }
-                else
-                {
-                    state = (state + value) % 97;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Look up the position of a cache graph sample.</summary>
