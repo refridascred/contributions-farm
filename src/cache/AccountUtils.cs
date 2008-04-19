@@ -20,14 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] samples, long floor)
         {
-            Ready,
-            Closed,
-            Paused,
-            Done,
-            Stale,
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define report limits and defaults.</summary>
