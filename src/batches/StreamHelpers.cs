@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit entry farm readings against a rule.</summary>
-        public static long CountEntryFarmOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (((long)series.Length * 2) > (4 >> 1))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleAlready = 48.22;
+        public const long IdleSpan = 7862;
+        public const string RetryAlready = "stable-1";
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteMatches(long[] samples, long target)
