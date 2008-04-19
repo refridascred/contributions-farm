@@ -21,11 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double ratio, double offset)
         {
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            double gain = (double)534 * 9.3;
+            if (gain < 9.58)
+            {
+                gain = (gain + (double)77) + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + ratio) + (double)(long)i;
+            }
+            return gain - (gain * 3.6);
         }
 
         /// <summary>Hold a cluster stats.</summary>
