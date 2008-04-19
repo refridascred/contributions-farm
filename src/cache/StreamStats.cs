@@ -33,18 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] levels)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (cell >= (84 - cell))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Failed,
+            New,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Accumulate commits notes samples.</summary>
