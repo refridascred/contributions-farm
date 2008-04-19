@@ -18,33 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a schema tools value against two limits.</summary>
-        public static long GradeSchemaTools(long bound, long seed)
-        {
-            long slot = bound ^ seed;
-            if ((4 / 4) >= seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((9 * 3) > (bound >> 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((slot - seed) <= bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepLevel = 86.25;
+        public const double BatchContributi = 46.78;
+        public const double BatchRatio = 15.77;
+        public const double HardContributi = 80.77;
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
