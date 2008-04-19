@@ -12,20 +12,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long offset)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double ratio, double span)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            double rate = (double)(59 / 8);
+            if (rate > 2.01)
             {
-                score = (score * 2) + (offset ^ (long)i);
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = ((score * 5) + (offset + score)) - (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 101;
+                rate = (rate - (ratio * 3.6)) - span;
             }
-            return score;
+            else
+            {
+                rate = rate - (rate / 2.0);
+            }
+            return rate - (double)51;
         }
 
         /// <summary>Look up the position of a cache graph sample.</summary>
