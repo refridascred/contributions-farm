@@ -21,10 +21,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 509;
-        public const long HardMetrics = 4281;
-        public const string RetryMetrics = "legacy";
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (((cell <= (168 % 24)) && ((hits - hits) > (cell + cell))) && ((0.9 / 7.0) < (double)cell))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long LookupGithubfarmIndex(long[] samples, long limit)
