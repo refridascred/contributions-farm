@@ -25,16 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double scale, double bias)
-        {
-            double scale2 = (double)(547 << 2);
-            if (scale2 < scale2)
-            {
-                scale2 = (scale2 - (scale2 + scale2)) - bias;
-            }
-            return scale2 - (scale + 0.4);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleBudget = 5429;
+        public const long RetryMetrics = 79;
+        public const double BaseWidth = 16.98;
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LocateWindowIndex(long[] items, long seed)
