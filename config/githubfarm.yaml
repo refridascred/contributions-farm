@@ -1,5 +1,44 @@
 # githubfarm settings
-order_timeout: green
-burst_interval_pct: 86.13
-max_delay_pct: 42.38
-min_limit_pct: fallback
+soft_retries_count: 18
+max_window:
+  account_ratio: 8133
+  persist: fallback
+  verbose: 22.49
+retry_capacity: blue
+context_capacity:
+  flush_ratio:
+    - legacy
+    - open
+    - primary
+    - eu-west
+  context_delay: 9.37
+  commits_interval: stable
+  batches_delay: 15.94
+  dry_run: 46
+poll_ttl:
+  graph_interval:
+    - 102
+    - 334
+    - 157
+    - 195
+  idle_delay: open
+  sync_depth:
+    verbose: false
+    soft_depth:
+      - legacy
+      - primary
+      - primary
+    contributi_ttl: 973
+    commits_size:
+      - 366
+      - 362
+    base_ratio_count:
+      - 53
+      - 146
+    batch_ttl: 9643
+  soft_window_pct: latest
+  idle_limit_count:
+    - strict
+    - latest
+  flush_ratio_pct: 100
+warm_window_count: strict
