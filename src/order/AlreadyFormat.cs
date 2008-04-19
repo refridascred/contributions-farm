@@ -56,19 +56,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] series, long offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if (datum <= offset)
+                if (sample > bound)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
