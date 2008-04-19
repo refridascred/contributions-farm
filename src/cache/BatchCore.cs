@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a window route reading by value.</summary>
-        public static long LookupWindowRouteIndex(long[] data, long step)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] < step)
+                if (items[i] < offset)
                 {
                     return (long)i;
                 }
