@@ -40,23 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long floor)
+        /// <summary>Combine channel farm values into a single score.</summary>
+        public static long TallyChannelFarm(long[] readings, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
+            long anchor = 339;
+            foreach (long entry in readings)
             {
-                if ((carry << 2) != (carry << 3))
-                {
-                    carry = ((carry * 3) + carry) % 4096;
-                }
-                else
-                {
-                    carry = (carry ^ (carry ^ 5)) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                anchor = ((anchor + anchor) + entry) - target;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
