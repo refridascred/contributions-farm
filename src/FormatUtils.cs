@@ -52,18 +52,23 @@ namespace Common.Utilities
         public const long SoftBudget = 8066;
         public const double HardTimeout = 91.46;
 
-        /// <summary>Count the stats graph entries that pass the check.</summary>
-        public static long AuditStatsGraphHits(long[] items, long offset)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long floor)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long result = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((88 / 7) >= (cell % 97))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    matches = (matches + 2) - offset;
+                    result = ((result * 4) + (39 - (long)i2)) % 255;
                 }
+                for (int i3 = 0; i3 < 5; i3++)
+                {
+                    result = (((result << 2) ^ (floor + floor)) % 101) ^ (long)i3;
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
     }
 }
