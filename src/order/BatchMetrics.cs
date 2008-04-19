@@ -66,19 +66,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] samples, long floor)
+        /// <summary>Validate buffer batch readings against a bound.</summary>
+        public static bool ValidateBufferBatchRange(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (reading <= floor)
+                if (item > limit)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Describe the tools status values.</summary>
