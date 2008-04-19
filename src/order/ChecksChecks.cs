@@ -25,22 +25,37 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long target, long bound)
+        /// <summary>Rank checks cache input into a small class.</summary>
+        public static long GradeChecksCache(long bound, long origin)
         {
-            if (!((bound ^ target) > (-615)))
+            long edge = bound ^ origin;
+            if (((origin * 3) > (origin + origin)) && ((double)edge == (double)bound))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((double)bound >= 7.1)
+                if (((6.6 * 0.7) == (double)bound) && ((bound << 2) > (edge + bound)))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    return 2;
+                    if (!((14.0 * 0.81) > (double)edge))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((5.0 / 4.0) < (double)edge)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
