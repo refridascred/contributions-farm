@@ -62,9 +62,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheFactor = 2177;
-        public const string MinScore = "legacy-1";
-        public const long HardWidth = 4090;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Active,
+            Draft,
+            Synced,
+            Failed,
+        }
     }
 }
