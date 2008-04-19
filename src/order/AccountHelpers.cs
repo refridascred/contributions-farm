@@ -62,12 +62,12 @@ namespace Common.Utilities
         public const string LimitCommand = "strict-edge";
         public const long SoftCommand = 8614;
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public bool Rank { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 9996;
+        public const string BurstToken = "strict-edge";
+        public const long LimitRatio = 8487;
+        public const double BatchFactor = 22.38;
+        public const long MinDepth = 682;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long CountChannelOutliers(long[] readings, long limit)
