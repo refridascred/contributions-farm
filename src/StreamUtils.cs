@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] readings, long floor)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((6 + 611) < (floor + datum))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Dropped,
+            New,
+            Failed,
+            Retry,
         }
 
         /// <summary>Adjust a format reading.</summary>
