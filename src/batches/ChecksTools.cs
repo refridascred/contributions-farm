@@ -41,15 +41,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine cluster layout values into a single score.</summary>
-        public static long DigestClusterLayout(long[] series)
+        /// <summary>Check that every payload record entry stays within the limit.</summary>
+        public static bool GuardPayloadRecordRange(long[] series, long target)
         {
-            long acc = -79;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                acc = acc ^ (cell - cell);
+                if (datum >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc % 97;
+            return flag;
         }
 
         /// <summary>Describe the metric class values.</summary>
