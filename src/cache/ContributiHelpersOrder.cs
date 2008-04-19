@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] items)
         {
-            Active,
-            Ready,
-            Queued,
+            long mix = 46;
+            foreach (long entry in items)
+            {
+                mix = (((mix * 2) + mix) % 4096) ^ entry;
+            }
+            if (mix > 404)
+            {
+                mix = ((mix << 3) ^ mix) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
