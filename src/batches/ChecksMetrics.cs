@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] readings)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] samples, long step)
         {
-            long sum = 782;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (((double)sum >= 4.54) && ((10.0 / 2.0) == (double)sum))
+                if (matches >= step)
                 {
-                    sum = ((sum * 5) + datum) % 101;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum * 5)) % 65521;
+                    matches = (matches + 3) + value;
                 }
             }
-            if (sum > (-1))
-            {
-                sum = sum - (sum - 4);
-            }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Digest a series of order entries.</summary>
