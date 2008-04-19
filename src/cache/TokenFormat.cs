@@ -37,22 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] items)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((tally + item) >= (8 + item))
+                if ((double)hits == (4.96 / 9.0))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = ((hits + 2) ^ cell) - origin;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
