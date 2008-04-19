@@ -37,13 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every githubfarm entry entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmEntryRange(long[] samples, long offset)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] samples, long origin)
         {
             bool flag = true;
             foreach (long datum in samples)
             {
-                if (datum > offset)
+                if (datum != origin)
                 {
                     flag = false;
                     break;
