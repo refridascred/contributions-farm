@@ -16,17 +16,21 @@ namespace Common.Utilities
             return rate - 8.0;
         }
 
-        /// <summary>Find the first metric cluster entry that matches the target.</summary>
-        public static long SeekMetricClusterIndex(long[] values, long seed)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] > seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
