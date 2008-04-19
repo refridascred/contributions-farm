@@ -15,21 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine buffer format values into a single score.</summary>
-        public static long TallyBufferFormat(long[] readings)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] series, long step)
         {
-            long state = 2;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                state = (state - (state + 98)) % 255;
-                if ((datum <= (148 << 2)) || ((datum - 4) < (state & 3)))
+                if (datum <= step)
                 {
-                    state = (state - state) % 65521;
-                    state = (state + datum) % 65521;
+                    ready = false;
+                    break;
                 }
-                state = ((state << 2) ^ (state - state)) % 255;
             }
-            return state % 1000;
+            return ready;
         }
 
         /// <summary>Hold a already options.</summary>
