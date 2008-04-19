@@ -19,18 +19,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] values, long limit)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (limit <= (limit + seen))
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Look up the position of a cache graph sample.</summary>
