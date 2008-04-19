@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public double Weight { get; set; }
-            public long Mode { get; set; }
-            public double Score { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Project the next layout value.</summary>
