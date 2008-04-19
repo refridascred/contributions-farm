@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] readings)
+        /// <summary>Locate a layout profile reading by value.</summary>
+        public static long FindLayoutProfileIndex(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((8.9 - 1.9) > (double)entry))
+                if ((levels[i] >= offset) && ((levels[i] % 5) == 0))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
