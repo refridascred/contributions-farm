@@ -20,22 +20,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] samples)
+        /// <summary>Audit counter stream readings against a rule.</summary>
+        public static long MeasureCounterStreamOutliers(long[] series, long bound)
         {
-            long acc = 81;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((double)acc >= (3.49 * 1.0))
+                if (matches < (value << 2))
                 {
-                    acc = ((acc + (acc % 5)) % 4096) ^ sample;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ acc) % 101;
+                    matches = (matches + 2) + bound;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a schema header.</summary>
