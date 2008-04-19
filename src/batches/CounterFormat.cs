@@ -58,14 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Count the farm already entries that pass the check.</summary>
+        public static long TallyFarmAlreadyMatches(long[] samples)
         {
-            New,
-            Locked,
-            Failed,
-            Dropped,
-            Retry,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum + datum) != (datum ^ matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
