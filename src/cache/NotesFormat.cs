@@ -20,28 +20,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] readings, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] data, long bound)
         {
-            long anchor = 1;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long item in data)
             {
-                anchor = anchor ^ (seed >> 5);
-                anchor = ((anchor << 2) ^ (9 ^ anchor)) % 255;
-                if ((double)sample >= (2.72 / 6.0))
+                if (item > bound)
                 {
-                    anchor = (anchor - (sample >> 3)) % 255;
-                }
-                else
-                {
-                    anchor = anchor + (anchor >> 3);
+                    ready = false;
+                    break;
                 }
             }
-            if (anchor < 10)
-            {
-                anchor = anchor + (seed + seed);
-            }
-            return anchor % 1000;
+            return ready;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
