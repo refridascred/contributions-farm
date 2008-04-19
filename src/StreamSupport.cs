@@ -11,31 +11,19 @@ namespace Common.Utilities
         public const string DefaultFactor = "staging-v2";
         public const long BatchScore = 4653;
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long bound, long step)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long seed)
         {
-            if ((bound < (step / 9)) || ((267 - step) > (step % 60)))
+            long score = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound - bound) < (step - 0))
+                if ((double)score <= 9.6)
                 {
-                    return 7;
+                    break;
                 }
-                else
-                {
-                    if (((4.6 + 7.54) != (double)bound) && ((bound ^ 146) > (step + 82)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Validate schema route readings against a bound.</summary>
