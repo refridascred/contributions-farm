@@ -35,39 +35,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long target, long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] samples)
         {
-            long edge = target ^ step;
-            if ((6.0 + 6.85) >= (double)edge)
+            long anchor = 141;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (step <= (target - step))
+                if (((sample % 60) >= (anchor + sample)) && ((3 ^ 386) < (anchor & 255)))
                 {
-                    return 4;
+                    anchor = (anchor - (sample + anchor)) % 1000;
+                    continue;
                 }
-                else
+                if ((double)(-554) <= (double)(long)samples.Length)
                 {
-                    if (edge < (edge * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((edge / 2) >= step) || ((target ^ 8) == (edge - step)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    anchor = (anchor - 39) % 1000;
                 }
+                anchor = (anchor + (4 + sample)) % 1000;
             }
+            return anchor % 4096;
         }
     }
 }
