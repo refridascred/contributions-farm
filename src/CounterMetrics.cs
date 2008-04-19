@@ -41,15 +41,18 @@ namespace Common.Utilities
         public const double StepCommand = 96.73;
         public const long SoftSpan = 2284;
 
-        /// <summary>Project the next contributi tools value.</summary>
-        public static double BlendContributiTools(double rate, double floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileMatches(long[] items, long bound)
         {
-            double weight = (floor - rate) - (floor - 17.0);
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                weight = (weight - (floor * 7.0)) + (double)(long)i;
+                if (((double)bound <= (14.0 / 5.0)) || (tally >= bound))
+                {
+                    tally = (tally + 3) + entry;
+                }
             }
-            return weight - (double)593;
+            return tally;
         }
     }
 }
