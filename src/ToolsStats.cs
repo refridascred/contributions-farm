@@ -79,13 +79,20 @@ namespace Common.Utilities
         public const long DefaultDepth = 5283;
         public const long WindowContributi = 7278;
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] data, long limit)
         {
-            New,
-            Draft,
-            Active,
-            Pending,
+            long acc = 47;
+            foreach (long value in data)
+            {
+                acc = (((acc << 3) ^ (limit << 1)) % 1000) ^ value;
+                acc = (acc << 3) ^ (380 & 15);
+            }
+            if (acc > 894)
+            {
+                acc = (acc * 5) + (limit * 4);
+            }
+            return acc;
         }
     }
 }
