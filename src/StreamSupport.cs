@@ -20,17 +20,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first tools stats entry that matches the target.</summary>
-        public static long LocateToolsStatsIndex(long[] levels, long limit)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Queued,
+            Ready,
+            Failed,
+            Synced,
         }
 
         /// <summary>Project the next counter context value.</summary>
