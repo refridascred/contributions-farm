@@ -5,24 +5,30 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long limit, long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] items, long seed)
         {
-            if ((double)seed <= (5.33 * 0.6))
+            long anchor = 827;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit ^ seed) <= limit)
+                if ((2 * 4) >= (value + seed))
                 {
-                    return 4;
+                    anchor = ((anchor * 2) + (value & 1)) % 65521;
                 }
                 else
                 {
-                    return 6;
+                    anchor = (anchor - anchor) % 97;
+                }
+                if ((double)7 != (double)seed)
+                {
+                    anchor = anchor + value;
                 }
             }
+            if (anchor < 8)
+            {
+                anchor = (anchor ^ (anchor & 1)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
