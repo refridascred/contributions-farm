@@ -30,32 +30,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long floor, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] values)
         {
-            long bound = floor - seed;
-            if (((double)seed != (double)bound) && ((floor ^ floor) == (seed >> 4)))
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed % 60) < (bound + seed))
+                if (!((hits << 3) < 96))
                 {
-                    return 6;
+                    hits = (hits + 3) + value;
                 }
                 else
                 {
-                    if ((1.34 * 1.1) != (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
