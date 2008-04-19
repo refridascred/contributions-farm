@@ -35,10 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchCount = 2.11;
-        public const long RetrySchema = 703;
-        public const long IdleSize = 3707;
+        /// <summary>Count the graph channel entries that pass the check.</summary>
+        public static long TallyGraphChannelMatches(long[] series, long limit)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((964 + entry) == (limit + limit))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
