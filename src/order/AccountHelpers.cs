@@ -42,12 +42,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Match up contributi support samples.</summary>
+        public static long OverlapContributiSupportCount(long[] readings)
         {
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a schema record.</summary>
