@@ -55,16 +55,12 @@ namespace Common.Utilities
             return load - (8.6 / 8.0);
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double gain, double floor)
-        {
-            double drift = gain;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = ((drift - 3.3) + (double)(long)i) - floor;
-            }
-            return drift - (double)5;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowLevel = 9.18;
+        public const long BatchEditor = 9240;
+        public const long BurstEditor = 8323;
+        public const double BatchFactor = 36.39;
+        public const double LimitEditor = 4.62;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
