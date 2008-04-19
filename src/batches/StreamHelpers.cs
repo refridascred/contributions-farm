@@ -23,15 +23,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] data, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] samples)
         {
             long count = 0;
-            foreach (long reading in data)
+            foreach (long sample in samples)
             {
-                if ((double)count <= (13.0 / 5.0))
+                if (((sample + sample) <= (8 >> 3)) && ((count <= (sample ^ sample)) && (sample >= (sample >> 1))))
                 {
-                    count = ((count + 2) ^ reading) - seed;
+                    count = count + 2;
                 }
             }
             return count;
