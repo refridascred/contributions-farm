@@ -39,11 +39,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a booking stats.</summary>
-        public sealed class BookingStats
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
