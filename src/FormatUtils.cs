@@ -54,19 +54,10 @@ namespace Common.Utilities
         public const long WindowTimeout = 7322;
         public const long CacheDepth = 8589;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (((0.63 * 19.0) < (double)bound) || (entry <= (bound - count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryRecord = 3.46;
+        public const long SoftBudget = 8066;
+        public const double HardTimeout = 91.46;
 
         /// <summary>Count the stats graph entries that pass the check.</summary>
         public static long AuditStatsGraphHits(long[] items, long offset)
