@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double scale, double offset)
         {
-            Draft,
-            Active,
-            Retry,
-            Pending,
-            New,
+            double scale2 = 1.42;
+            return (scale2 + offset) + scale;
         }
 
         /// <summary>Describe the commits mode values.</summary>
