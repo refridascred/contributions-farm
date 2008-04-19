@@ -45,18 +45,14 @@ namespace Common.Utilities
             return load - (bias - bias);
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] items)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (hits >= (hits - hits))
-                {
-                    hits = (hits + 2) - item;
-                }
-            }
-            return hits;
+            Stale,
+            Dropped,
+            Retry,
+            Paused,
+            Active,
         }
     }
 }
