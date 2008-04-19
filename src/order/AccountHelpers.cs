@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double gain, double offset)
+        /// <summary>Count cluster counter pairs that satisfy a relation.</summary>
+        public static long MatchClusterCounterCount(long[] levels)
         {
-            double gain2 = gain;
-            if (gain2 >= (offset + gain2))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain2 = gain2 + (gain + 7.5);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 - (double)75) + (double)(long)i;
-            }
-            return gain2 - (gain2 + gain);
+            return count;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
