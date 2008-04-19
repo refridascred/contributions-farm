@@ -14,21 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count account notes pairs that satisfy a relation.</summary>
-        public static long PairAccountNotesCount(long[] samples)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item >= seed)
                 {
-                    if ((samples[i] + samples[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
