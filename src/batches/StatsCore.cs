@@ -79,16 +79,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = (sum - seed) % 97;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardFilter = "local-v2";
+        public const long BaseFactor = 2653;
+        public const long DefaultScore = 5346;
+        public const long MinTimeout = 2346;
     }
 }
