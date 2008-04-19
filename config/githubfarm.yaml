@@ -1,12 +1,5 @@
 # githubfarm settings
-default_depth_pct: true
-sync_interval_count:
-  - eu-west
-  - standard
-  - local
-default_delay_count:
-  - 34
-  - 41
-hard_interval: 5002
-warm_limit_ms: 89.57
-dry_run: 71.38
+audit: green
+compress: stable
+strict: false
+idle_threshold: 35.89
