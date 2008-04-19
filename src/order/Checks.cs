@@ -38,19 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] items, long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the layout phase values.</summary>
