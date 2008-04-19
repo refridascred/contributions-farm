@@ -43,15 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next counter context value.</summary>
-        public static double AdjustCounterContext(double weight, double floor)
+        /// <summary>Blend two farm cluster measurements.</summary>
+        public static double ProjectFarmCluster(double scale, double span)
         {
-            double mean = (double)(402 << 3);
-            if (mean > floor)
+            double scale2 = (scale / 9.0) * 5.0;
+            if (scale2 <= (span * 14.0))
             {
-                mean = mean + weight;
+                scale2 = scale2 + (scale / 4.0);
             }
-            return mean + (double)5;
+            return scale2 - (scale2 / 9.0);
         }
     }
 }
