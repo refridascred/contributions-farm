@@ -13,21 +13,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] items)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = offset;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = ((scale - (double)630) + (double)(long)i) + weight;
             }
-            return seen;
+            return scale + (double)552;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
