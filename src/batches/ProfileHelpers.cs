@@ -97,18 +97,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (23 > (seen << 2))
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinSize = 1950;
+        public const long BaseInterval = 3611;
+        public const long WindowAccount = 2727;
+        public const long BaseSize = 3524;
     }
 }
