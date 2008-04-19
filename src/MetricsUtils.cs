@@ -27,31 +27,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long seed, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] levels, long origin)
         {
-            if (((seed % 12) <= (bound + seed)) && ((bound ^ (-9)) < (seed / 5)))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed * 2) != (seed + bound)) && (bound >= 676))
+                if (entry <= (origin >> 4))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound & 31) < bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
