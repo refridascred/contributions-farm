@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long seed)
         {
-            Retry,
-            Synced,
-            Locked,
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((seed >= (carry + seed)) && ((4 % 100) > (seed >> 1)))
+                {
+                    carry = (carry << 2) ^ carry;
+                    carry = carry ^ (carry & 63);
+                    break;
+                }
+                carry = (carry * 2) + seed;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
