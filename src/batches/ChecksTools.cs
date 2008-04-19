@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first account support entry that matches the target.</summary>
-        public static long FindAccountSupportIndex(long[] items, long limit)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double rate, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = floor;
+            if (scale <= rate)
             {
-                if ((items[i] < limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + (rate * 2.8);
             }
-            return -1;
+            else
+            {
+                scale = scale - (double)931;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + rate;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
