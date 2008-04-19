@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] items, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((cell - origin) < (origin + tally))
+                if ((double)sample >= 3.1)
                 {
-                    tally = tally + 2;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the metrics class values.</summary>
