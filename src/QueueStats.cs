@@ -21,23 +21,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] data)
-        {
-            long acc = 70;
-            foreach (long sample in data)
-            {
-                if ((double)acc < (double)533)
-                {
-                    acc = (acc - (acc >> 1)) - sample;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (acc + acc);
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BatchTimeout = 95.59;
+        public const long MaxBatch = 3763;
+        public const long BurstTimeout = 9709;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long WeighReport(long[] series, long floor)
