@@ -54,19 +54,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next layout stream value.</summary>
-        public static double SmoothLayoutStream(double weight, double offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] items)
         {
-            double rate = weight;
-            if (rate > (offset * 7.0))
+            long hits = 0;
+            foreach (long value in items)
             {
-                rate = rate + rate;
+                if (!(((hits + value) < (hits - hits)) && ((value >> 2) < value)))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (double)760) - (double)(long)i;
-            }
-            return rate - (rate + rate);
+            return hits;
         }
     }
 }
