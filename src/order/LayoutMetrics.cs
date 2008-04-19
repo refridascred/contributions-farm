@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] samples, long limit)
+        /// <summary>Compare every pair of order record readings.</summary>
+        public static long MatchOrderRecordCount(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum >= limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] + items[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
