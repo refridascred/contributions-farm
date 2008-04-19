@@ -51,11 +51,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleSpan = 3081;
-        public const double MaxEditor = 39.03;
-        public const double BatchLevel = 2.83;
-        public const double RetryRatio = 7.0;
-        public const long BatchSize = 9698;
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = anchor + (step * 2);
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
