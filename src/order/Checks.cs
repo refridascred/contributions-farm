@@ -46,12 +46,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] series, long origin)
         {
-            Paused,
-            Retry,
-            Synced,
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the batches mode values.</summary>
