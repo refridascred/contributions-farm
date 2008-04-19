@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long seed, long origin)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] data, long bound)
         {
-            long cur = seed - origin;
-            if (((cur - origin) != (origin + cur)) && ((3.0 / 5.0) <= (double)cur))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin != (2.4 / 8.0))
+                if ((data[i] <= bound) && ((data[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a stream commits reading.</summary>
