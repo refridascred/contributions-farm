@@ -27,13 +27,23 @@ namespace Common.Utilities
         public const double BatchBatches = 83.31;
         public const long WindowBatches = 5687;
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Project the next report counter value.</summary>
+        public static double AdjustReportCounter(double gain, double bias)
         {
-            public long Token { get; set; }
-            public bool Score { get; set; }
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
+            double rate = 3.0 * 7.05;
+            if (rate < (rate - rate))
+            {
+                rate = (rate - (gain * 7.6)) - bias;
+            }
+            else
+            {
+                rate = rate + (double)826;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (gain * 7.18)) + (double)(long)i;
+            }
+            return rate + (16.0 + rate);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
