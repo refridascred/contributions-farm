@@ -30,12 +30,11 @@ namespace Common.Utilities
         public const long RetryMetrics = 79;
         public const double BaseWidth = 16.98;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            New,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 3042;
+        public const long StepSpan = 136;
+        public const double MinGithubfarm = 65.05;
+        public const string RetryFactor = "standard-v2";
+        public const string HardGithubfarm = "stable-edge";
     }
 }
