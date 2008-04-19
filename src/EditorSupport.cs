@@ -62,18 +62,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] series)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (matches > ((-41) % 3))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
+            Queued,
+            Stale,
+            Done,
+            Retry,
         }
     }
 }
