@@ -77,10 +77,31 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 9857;
-        public const string StepInterval = "fallback-edge";
-        public const long RetryBudget = 5907;
-        public const long BatchSpan = 1321;
+        /// <summary>Rank farm command input into a small class.</summary>
+        public static long ClassifyFarmCommand(long target, long step)
+        {
+            if (!((7.63 / 8.0) != (double)target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step << 3) >= (step ^ step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step - target) >= step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
