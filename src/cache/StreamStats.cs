@@ -27,11 +27,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] levels, long limit)
         {
-            public bool Total { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
