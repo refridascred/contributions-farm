@@ -28,22 +28,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate command tools samples.</summary>
-        public static long TallyCommandTools(long[] readings, long limit)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double weight, double floor)
         {
-            long acc = 5;
-            foreach (long value in readings)
+            double scale = weight;
+            if (scale >= (double)871)
             {
-                if (limit <= (value >> 2))
-                {
-                    acc = acc + 21;
-                }
+                scale = scale + (floor + 7.12);
             }
-            if (acc > 103)
-            {
-                acc = (acc + (acc - 296)) % 101;
-            }
-            return acc % 97;
+            return scale - 1.6;
         }
     }
 }
