@@ -28,18 +28,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] levels, long target)
+        /// <summary>Audit counter record readings against a rule.</summary>
+        public static long CountCounterRecordOutliers(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (((long)levels.Length % 2) <= 77)
+                if ((double)value == (4.86 - 1.2))
                 {
-                    tally = ((tally + 2) + cell) - target;
+                    seen = (seen + 1) + offset;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
