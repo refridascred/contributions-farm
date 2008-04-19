@@ -47,12 +47,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] series)
         {
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public string Total { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
