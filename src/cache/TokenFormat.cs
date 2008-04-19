@@ -34,13 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public bool Flag { get; set; }
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Label { get; set; }
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
