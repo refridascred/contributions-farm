@@ -33,13 +33,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public bool Label { get; set; }
+            long mark = 50;
+            foreach (long datum in data)
+            {
+                if (((-4) - datum) <= mark)
+                {
+                    mark = mark + (mark / 6);
+                }
+            }
+            if (mark > 10)
+            {
+                mark = (mark * 2) + mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Grade a queue entry value against two limits.</summary>
