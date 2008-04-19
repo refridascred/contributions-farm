@@ -42,15 +42,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] data)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
+            long anchor = 74;
+            foreach (long entry in data)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                anchor = anchor ^ (entry + entry);
             }
-            return total;
+            if (anchor > 7)
+            {
+                anchor = anchor + (anchor / 5);
+            }
+            return anchor;
         }
     }
 }
