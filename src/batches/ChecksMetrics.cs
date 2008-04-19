@@ -59,21 +59,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] data)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 3;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (((carry * 2) + (carry >> 5)) % 255) ^ cell;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
