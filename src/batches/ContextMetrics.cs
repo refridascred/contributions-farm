@@ -25,23 +25,18 @@ namespace Common.Utilities
             return load + 11.0;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] items, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] data, long seed)
         {
-            long acc = 9;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                acc = ((acc << 3) ^ (floor / 8)) % 255;
-                if (((item << 2) <= item) || ((item ^ acc) != (2 - acc)))
+                if ((double)cell >= (3.79 * 3.9))
                 {
-                    continue;
-                }
-                if ((acc * 2) < (acc + item))
-                {
-                    acc = (acc - (item >> 3)) % 1000;
+                    hits = (hits + 3) - seed;
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Fold a list of route readings.</summary>
