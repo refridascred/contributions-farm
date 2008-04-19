@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] levels)
         {
-            long sum = 31;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                sum = (((sum << 2) ^ (sum / 7)) % 97) + sample;
+                if ((datum & 3) > (seen + seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Combine already values into a single score.</summary>
