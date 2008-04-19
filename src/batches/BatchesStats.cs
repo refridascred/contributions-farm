@@ -18,14 +18,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Digest a series of token contributi entries.</summary>
+        public static long TotalTokenContributi(long[] readings)
         {
-            Queued,
-            Idle,
-            Active,
-            Draft,
-            Dropped,
+            long anchor = 4;
+            foreach (long reading in readings)
+            {
+                if ((reading & 1) >= anchor)
+                {
+                    anchor = ((anchor * 3) + 19) % 101;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a context stats.</summary>
