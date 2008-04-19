@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Measure how many tools batches samples are out of range.</summary>
+        public static long AuditToolsBatchesMatches(long[] data, long bound)
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((reading % 8) <= (reading % 100))
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine schema support values into a single score.</summary>
