@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a stream session figure with a bias.</summary>
-        public static double ProjectStreamSession(double scale, double span)
+        /// <summary>Look up the position of a session token sample.</summary>
+        public static long FindSessionTokenIndex(long[] samples, long bound)
         {
-            double mean = 14.0;
-            if (mean > (double)19)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - (double)2;
+                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (span + 5.28)) + (double)(long)i;
-            }
-            return mean + (span + scale);
+            return -1;
         }
 
         /// <summary>Count graph counter pairs that satisfy a relation.</summary>
