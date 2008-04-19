@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double bias, double span)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] values, long bound)
         {
-            double drift = (span - bias) + (span * 4.3);
-            return drift + drift;
+            long score = -6;
+            foreach (long datum in values)
+            {
+                if (((bound - bound) == (datum - score)) || ((double)score <= (2.79 * 7.2)))
+                {
+                    score = (score + (402 + (-7))) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Accumulate support samples.</summary>
