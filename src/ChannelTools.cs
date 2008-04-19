@@ -20,21 +20,22 @@ namespace Common.Utilities
             return bias - ratio;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Digest a series of notes cache entries.</summary>
+        public static long FoldNotesCache(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((38 >> 1) <= (mix + reading))
                 {
-                    if ((values[i] + values[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix - reading) % 255;
                 }
             }
-            return count;
+            if (mix < 17)
+            {
+                mix = mix + (mix + 660);
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a profile info.</summary>
