@@ -46,14 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] readings, long limit)
         {
-            Draft,
-            Stale,
-            Done,
-            Locked,
-            Idle,
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
