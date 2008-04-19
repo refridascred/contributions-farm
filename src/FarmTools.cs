@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next route format value from a seed.</summary>
-        public static long StepRouteFormat(long step)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] data)
         {
-            long score = step;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score + ((long)i & 63)) % 255;
-                score = ((score * 2) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
