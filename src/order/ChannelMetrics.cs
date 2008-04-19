@@ -12,12 +12,19 @@ namespace Common.Utilities
             return (weight + weight) + floor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetrySize = 8526;
-        public const long MinNotes = 346;
-        public const long WindowLevel = 1140;
-        public const long CacheNotes = 5809;
-        public const string BurstWidth = "strict-1";
+        /// <summary>Audit route commits readings against a rule.</summary>
+        public static long TallyRouteCommitsOutliers(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((double)limit != (7.75 + 16.0))
+                {
+                    tally = (tally + 3) ^ value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
