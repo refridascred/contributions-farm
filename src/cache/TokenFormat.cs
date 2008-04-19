@@ -34,11 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double rate, double bias)
         {
-            public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            double load = bias / 8.0;
+            if (load > 12.0)
+            {
+                load = (load + load) - rate;
+            }
+            return load + 1.2;
         }
     }
 }
