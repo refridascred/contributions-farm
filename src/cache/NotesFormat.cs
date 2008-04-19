@@ -20,19 +20,20 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] data, long bound)
+        /// <summary>Iterate the graph format series from a seed.</summary>
+        public static long RollGraphFormat(long step)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long acc = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (item > bound)
+                if ((double)acc <= 0.33)
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc * 4) + (2 + step)) % 97;
+                    acc = ((acc << 3) ^ (acc / 7)) % 1000;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
