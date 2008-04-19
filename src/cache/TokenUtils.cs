@@ -47,14 +47,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Stale,
-            Paused,
-            Synced,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSize = 3812;
+        public const long MaxSchema = 9076;
+        public const long IdleSchema = 136;
+        public const string SoftSchema = "fallback-v2";
     }
 }
