@@ -37,10 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 2210;
-        public const long StepCommand = 3836;
-        public const double MaxScore = 30.58;
-        public const long RetryBudget = 1532;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = ((sum - (limit & 15)) % 101) + (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
