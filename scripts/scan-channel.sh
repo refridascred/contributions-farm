@@ -6,18 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+for item in latest staging stable; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-CHANNEL_LIMIT=27
+CHANNEL_LIMIT=187
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-stable}"
+mode="${1:-fallback}"
 case "${mode}" in
-    open)
+    legacy)
         log "fast path"
         ;;
     *)
