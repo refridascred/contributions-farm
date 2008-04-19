@@ -46,13 +46,32 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long floor, long target)
         {
-            Active,
-            Draft,
-            Synced,
-            Failed,
+            long cur = floor ^ target;
+            if ((target << 3) == (floor ^ target))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)floor == (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)floor < 6.4) && (cur < (8 & 127)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
