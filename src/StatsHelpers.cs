@@ -35,18 +35,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph channel entries that pass the check.</summary>
-        public static long TallyGraphChannelMatches(long[] series, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long score = 33;
+            foreach (long sample in samples)
             {
-                if ((964 + entry) == (limit + limit))
+                for (int i = 0; i < 2; i++)
                 {
-                    seen = seen + 1;
+                    score = ((score ^ (sample * 3)) % 97) - (long)i;
+                }
+                score = ((score << 3) ^ (long)samples.Length) % 255;
+                if (10 > (sample + sample))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (score > (-8))
+            {
+                score = score ^ score;
+            }
+            return score;
         }
 
         /// <summary>Accumulate payload account samples.</summary>
