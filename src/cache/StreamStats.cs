@@ -42,19 +42,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every tools context entry stays within the limit.</summary>
-        public static bool VerifyToolsContextBounds(long[] items, long floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Stale,
+            Locked,
+            Idle,
+            Retry,
         }
     }
 }
