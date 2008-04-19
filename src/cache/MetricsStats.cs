@@ -47,18 +47,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] levels)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long target, long limit)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            if (((double)limit > 17.0) && ((target + limit) == (36 - limit)))
             {
-                if ((double)4 >= (double)entry)
+                return 6;
+            }
+            else
+            {
+                if (((limit - target) == (0 >> 4)) && (limit < (target << 2)))
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit >> 3) <= limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
