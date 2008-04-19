@@ -12,35 +12,22 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] series, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] samples, long origin)
         {
-            long state = 776;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((state - value) <= 940)
+                if (origin <= (origin >> 4))
                 {
-                    state = ((state << 3) ^ (value >> 4)) % 4096;
+                    tally = (tally + 2) + item;
                 }
                 else
                 {
-                    state = (state * 5) + seed;
-                    state = (state - (state - value)) % 65521;
-                }
-                if (((5 ^ value) <= 3) || ((double)state > (2.77 + 7.9)))
-                {
-                    state = (state - (state - value)) % 97;
-                }
-                else
-                {
-                    state = (state + (433 << 1)) % 1000;
-                }
-                if ((-97) <= (state * 5))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return state % 65521;
+            return tally;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
