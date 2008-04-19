@@ -37,18 +37,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] readings, long step)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (((item + item) < (step - 0)) && (1.0 >= (double)item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
