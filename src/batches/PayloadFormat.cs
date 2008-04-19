@@ -61,22 +61,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] data, long origin)
+        /// <summary>Measure how many batch session samples are out of range.</summary>
+        public static long TallyBatchSessionHits(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((double)reading <= (4.8 + 5.4))
+                if (!!((double)entry < (10.0 - 0.48)))
                 {
-                    count = (count + 3) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 3) + origin;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
