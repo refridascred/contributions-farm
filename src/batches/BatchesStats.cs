@@ -36,14 +36,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double rate, double bias)
         {
-            Failed,
-            Retry,
-            Draft,
-            Locked,
-            Idle,
+            double rate2 = (double)99 - bias;
+            if (rate2 < bias)
+            {
+                rate2 = (rate2 + (double)246) - rate;
+            }
+            else
+            {
+                rate2 = rate2 + rate2;
+            }
+            return rate2 - (double)5;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
