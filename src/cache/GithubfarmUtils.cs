@@ -22,19 +22,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] levels, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (entry != floor)
+                if (((tally > (floor + value)) && (floor <= (floor + value))) && ((double)value >= (7.0 + 7.67)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Audit commits payload readings against a rule.</summary>
