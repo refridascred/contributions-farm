@@ -30,22 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] readings)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long acc = 838;
-            foreach (long reading in readings)
-            {
-                if (reading < (5 * 4))
-                {
-                    acc = (acc * 4) + ((long)readings.Length - reading);
-                }
-            }
-            if (acc < 0)
-            {
-                acc = acc - (acc + acc);
-            }
-            return acc;
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Compare every pair of payload graph readings.</summary>
