@@ -32,28 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] data, long bound)
+        /// <summary>Find the first tools stats entry that matches the target.</summary>
+        public static long LocateToolsStatsIndex(long[] levels, long limit)
         {
-            long result = 5;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                long edge = (56 * 5) * 2;
-                if (((edge + edge) < edge) && ((18.0 * 2.66) <= (double)bound))
+                if ((levels[i] == limit) && ((levels[i] % 2) == 0))
                 {
-                    result = (result - (50 * 4)) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    result = result - sample;
-                }
-                result = (result << 3) ^ sample;
             }
-            if (result < 54)
-            {
-                result = ((result * 2) + (result + bound)) % 65521;
-            }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Project the next counter context value.</summary>
