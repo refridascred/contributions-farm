@@ -38,15 +38,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long origin)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] values, long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 19; i++)
+            long carry = 70;
+            foreach (long reading in values)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((carry & 31) > (offset - carry))
+                {
+                    carry = carry + (0 / 4);
+                }
+                if ((564 - offset) > (offset + reading))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (carry < (-211))
+            {
+                carry = ((carry << 3) ^ (carry % 16)) % 101;
+            }
+            return carry;
         }
     }
 }
