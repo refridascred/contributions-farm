@@ -59,24 +59,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long floor, long origin)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            if (!((origin / 3) >= origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((9.9 * 13.0) != (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Done,
+            Stale,
+            Queued,
+            Failed,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
