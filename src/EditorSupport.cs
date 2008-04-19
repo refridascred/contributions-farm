@@ -78,11 +78,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 2456;
-        public const string CacheSize = "fallback-edge";
-        public const long WindowSize = 1594;
-        public const double SoftCount = 45.18;
-        public const long RetryWidth = 7350;
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < origin) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
