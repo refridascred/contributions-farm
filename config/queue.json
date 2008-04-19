@@ -1,17 +1,6 @@
 {
-  "audit": {
-    "warm_depth_s": true,
-    "sync_ttl_count": ["stable", "cached", "fallback", "edge"],
-    "batch_interval_s": ["strict", "eu-west", "local"]
-  },
-  "batches_retries": 3.1,
-  "dry_run": "cached",
-  "min_delay_count": 36.57,
-  "commits_ttl": 43,
-  "compress": {
-    "base_ratio": 97.65,
-    "base_ttl": 5575,
-    "support_size": 20,
-    "context_limit": 88
-  }
+  "tools_ttl": [459, 288],
+  "enabled": 1024,
+  "sync_capacity_ms": true,
+  "farm_retries": "stable"
 }
