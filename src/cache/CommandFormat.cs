@@ -57,38 +57,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long seed, long origin)
-        {
-            if (((double)seed >= (double)origin) || ((double)origin >= 5.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)origin < (4.0 + 5.8)) || ((2.97 / 8.0) == (double)seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((origin - seed) < (origin / 7)) || ((seed + origin) != (origin & 15)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed % 8) >= seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchRatio = 1430;
+        public const long MinAlready = 6338;
+        public const string WindowAlready = "strict";
     }
 }
