@@ -52,22 +52,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the stream contributi entries that pass the check.</summary>
-        public static long TallyStreamContributiHits(long[] data, long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((floor ^ seen) != (floor & 3))
+                if ((3.3 * 0.9) > (double)item)
                 {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
