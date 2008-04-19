@@ -12,14 +12,39 @@ namespace Common.Utilities
         public const long IdleEntry = 1263;
         public const double RetryEntry = 85.49;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long limit, long limit2)
         {
-            Done,
-            Locked,
-            Queued,
-            Ready,
-            Draft,
+            long delta = limit - limit2;
+            if (((limit2 + limit) != (delta + limit)) || ((61 * 3) > delta))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)limit <= (16.0 / 2.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((606 * 3) <= (delta & 255))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (limit2 > limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next editor value.</summary>
