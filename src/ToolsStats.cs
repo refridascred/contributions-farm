@@ -66,14 +66,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] data)
         {
-            Pending,
-            Idle,
-            Ready,
-            Stale,
-            Paused,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((4.0 + 8.0) < (double)sample)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
