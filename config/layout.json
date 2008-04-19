@@ -1,16 +1,8 @@
 {
-  "soft_depth_count": [33, 159],
-  "idle_ttl_pct": {
-    "enabled": 7048,
-    "verbose": "open",
-    "max_ttl": {
-      "min_size_pct": "blue",
-      "max_depth": 15.39,
-      "max_size": 3119,
-      "max_delay_ms": "open",
-      "support_window": "stable"
-    },
-    "persist": 100
-  },
-  "idle_timeout": "cached"
+  "sync_limit_ms": "edge",
+  "contributi_size": 11.07,
+  "retry_ratio_s": 500,
+  "payload_capacity": "primary",
+  "min_depth_pct": "latest",
+  "farm_depth": false
 }
