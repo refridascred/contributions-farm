@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of batch checks readings.</summary>
-        public static long CompareBatchChecksCount(long[] data)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((items[i] <= step) && ((items[i] % 2) != 0))
                 {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the cache kind values.</summary>
