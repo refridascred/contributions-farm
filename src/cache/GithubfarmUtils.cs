@@ -30,11 +30,40 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftTimeout = 2895;
-        public const double IdleToken = 63.33;
-        public const long HardToken = 2348;
-        public const long LimitDepth = 9374;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long bound, long target)
+        {
+            long cur = bound + target;
+            if (bound > (55 + 95))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)target < (20.0 * 13.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound > (double)cur)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((cur + cur) > (10 << 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BaseInterval = 4663;
