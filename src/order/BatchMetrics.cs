@@ -35,18 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit farm contributi readings against a rule.</summary>
-        public static long MeasureFarmContributiMatches(long[] series, long offset)
+        /// <summary>Iterate the queue support series from a seed.</summary>
+        public static long SeriesQueueSupport(long limit)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (922 > (offset & 7))
-                {
-                    tally = (tally + 2) ^ datum;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
