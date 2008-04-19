@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] items, long seed)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long anchor = 827;
-            foreach (long value in items)
-            {
-                if ((2 * 4) >= (value + seed))
-                {
-                    anchor = ((anchor * 2) + (value & 1)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 97;
-                }
-                if ((double)7 != (double)seed)
-                {
-                    anchor = anchor + value;
-                }
-            }
-            if (anchor < 8)
-            {
-                anchor = (anchor ^ (anchor & 1)) % 97;
-            }
-            return anchor;
+            Locked,
+            Paused,
+            Draft,
+            Active,
+            Synced,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
