@@ -69,10 +69,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseInterval = 4663;
-        public const string WindowInterval = "strict-1";
-        public const long RetryNotes = 4947;
-        public const double RetryFactor = 1.06;
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
