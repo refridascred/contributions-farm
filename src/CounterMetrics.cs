@@ -23,19 +23,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] values, long seed)
+        /// <summary>Iterate the githubfarm profile series from a seed.</summary>
+        public static long RollGithubfarmProfile(long origin)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell <= seed)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
