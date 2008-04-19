@@ -43,13 +43,13 @@ namespace Common.Utilities
             return load - 2.6;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            Paused,
-            Closed,
-            Failed,
-            Ready,
+            Synced,
+            Locked,
+            Retry,
+            Pending,
         }
 
         /// <summary>Digest a series of already cluster entries.</summary>
