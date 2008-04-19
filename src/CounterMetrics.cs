@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] readings)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long origin, long seed)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long edge = origin + seed;
+            if ((3.2 + 5.0) == (double)seed)
             {
-                if ((seen & 127) <= (seen / 3))
+                return 5;
+            }
+            else
+            {
+                if ((origin >> 4) > (seed + seed))
                 {
-                    seen = (seen + 2) - reading;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)edge <= (double)860)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(edge >= (origin - 829)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
