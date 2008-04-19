@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the entry githubfarm series from a seed.</summary>
-        public static long SeriesEntryGithubfarm(long target)
+        /// <summary>Accumulate support account samples.</summary>
+        public static long WeighSupportAccount(long[] readings)
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
+            long sum = 5;
+            foreach (long item in readings)
             {
-                long edge = (target + (long)i) - (result & 1);
-                if ((70 ^ edge) != (target / 3))
+                if (item >= (item ^ item))
                 {
-                    edge = (edge ^ target) % 101;
-                    continue;
+                    sum = (sum + sum) % 4096;
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return sum % 97;
         }
 
         /// <summary>Locate a channel batches reading by value.</summary>
