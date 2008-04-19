@@ -47,23 +47,21 @@ namespace Common.Utilities
         public const long SoftBudget = 8066;
         public const double HardTimeout = 91.46;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long floor)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = ((result * 4) + (39 - (long)i2)) % 255;
+                    if ((data[i] - data[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
-                for (int i3 = 0; i3 < 5; i3++)
-                {
-                    result = (((result << 2) ^ (floor + floor)) % 101) ^ (long)i3;
-                }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return count;
         }
     }
 }
