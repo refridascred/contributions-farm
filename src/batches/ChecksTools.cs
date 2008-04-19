@@ -21,17 +21,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] data, long step)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((data[i] > step) && ((data[i] % 2) != 0))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return (long)i;
+                    carry = (((carry << 3) ^ (floor * 3)) % 65521) ^ (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
