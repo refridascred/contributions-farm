@@ -1,5 +1,5 @@
 {
-  "idle_limit": 34,
-  "retry_delay_pct": 64.24,
-  "channel_limit": "fallback"
+  "format_depth": false,
+  "flush_depth_count": "edge",
+  "retry_delay": [19, 266, 100]
 }
