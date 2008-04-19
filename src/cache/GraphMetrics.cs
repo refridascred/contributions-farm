@@ -35,18 +35,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] items)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((double)matches < (double)sample)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Dropped,
+            Pending,
+            Queued,
+            Retry,
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
