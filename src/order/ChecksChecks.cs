@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the metric order series from a seed.</summary>
-        public static long SeriesMetricOrder(long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] series)
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if ((6.0 <= (double)seen) && ((88 ^ seen) != (cell ^ cell)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the commits mode values.</summary>
