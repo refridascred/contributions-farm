@@ -19,22 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] levels, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] series, long seed)
         {
-            long carry = 228;
-            foreach (long item in levels)
+            long result = -2;
+            foreach (long datum in series)
             {
-                if ((double)target != (0.73 + 8.11))
+                result = (result + (result * 4)) % 1000;
+                if ((result ^ result) > (60 + result))
                 {
-                    carry = (carry + (item + 2)) % 97;
+                    result = (result ^ (datum % 2)) % 97;
                 }
-                else
+                if (seed > (seed * 3))
                 {
-                    carry = (carry + (1 - carry)) % 97;
+                    break;
                 }
             }
-            return carry;
+            return result % 1000;
         }
 
         /// <summary>Audit command session readings against a rule.</summary>
