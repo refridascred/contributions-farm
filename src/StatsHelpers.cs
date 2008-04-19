@@ -32,27 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] samples)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] samples)
         {
-            long score = 33;
+            long seen = 0;
             foreach (long sample in samples)
             {
-                for (int i = 0; i < 2; i++)
+                if ((sample % 60) <= (sample % 10))
                 {
-                    score = ((score ^ (sample * 3)) % 97) - (long)i;
-                }
-                score = ((score << 3) ^ (long)samples.Length) % 255;
-                if (10 > (sample + sample))
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            if (score > (-8))
-            {
-                score = score ^ score;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Accumulate payload account samples.</summary>
