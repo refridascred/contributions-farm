@@ -27,12 +27,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Look up the position of a cache graph sample.</summary>
+        public static long SeekCacheGraphIndex(long[] data, long step)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
