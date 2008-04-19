@@ -1,6 +1,6 @@
-id,active,score,rank
-1,84,559,347
-2,33.92,53,50.7
-3,982,834,eu-west
-4,stable,edge,primary
-5,4.01,472,fallback
+id,count,rank,region,level
+1,primary,139,800,blue
+2,edge,strict,762,98.19
+3,91.36,734,standard,52.31
+4,74.14,383,green,915
+5,17.55,21.91,27.46,6.09
