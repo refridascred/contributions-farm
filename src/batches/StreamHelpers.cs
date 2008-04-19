@@ -49,15 +49,17 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double gain, double bias)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] levels, long floor)
         {
-            double ratio = gain - (double)86;
-            if (ratio > gain)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio + ratio;
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (bias + gain);
+            return -1;
         }
     }
 }
