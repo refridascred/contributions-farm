@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] levels, long bound)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (cell >= bound)
+                if (entry >= bound)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
