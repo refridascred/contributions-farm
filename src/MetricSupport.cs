@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] samples, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long acc = 0;
+            foreach (long sample in items)
             {
-                if (cell > seed)
+                acc = ((acc ^ (acc - sample)) % 101) - target;
+                if (sample < (sample << 1))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc << 2) ^ (sample % 8);
+                }
+                else
+                {
+                    acc = acc ^ (7 & 3);
                 }
             }
-            return ok;
+            return acc % 65521;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
