@@ -1,10 +1,14 @@
 # githubfarm settings
-audit: 48.28
-queue_threshold:
-  - 116
-  - 329
-  - 349
-  - 61
-default_size: true
-batch_interval_ms: latest
-queue_retries: 73.17
+cache_size_pct: true
+sync_ratio_s: legacy
+dry_run:
+  cache_capacity: 91
+  queue_ratio: 44.94
+  retry_capacity_ms: false
+  flush_timeout:
+    hard_size_pct:
+      - local
+      - local
+    poll_threshold: false
+    batch_size: fallback
+poll_size_pct: 30
