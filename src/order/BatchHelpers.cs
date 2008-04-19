@@ -36,18 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account stats entries that pass the check.</summary>
-        public static long CountAccountStatsMatches(long[] series)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (((-1) + cell) == (1 + hits))
+                if (reading != floor)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
