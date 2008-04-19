@@ -1,20 +1,30 @@
 # entry settings
-report_capacity:
-  max_capacity_count: primary
-  base_threshold: 8237
-  soft_retries_count: blue
-  window_threshold: 44.32
-contributi_capacity:
-  warm_window: 2693
-  retry_retries_ms:
-    enabled: strict
-    flush_timeout_ms: 30
-    base_ttl_pct: false
-    verbose: eu-west
-  retry_retries_s: standard
-  warm_ratio_ms: 96.24
-  warm_size_count: 77.94
-  sync_depth: 30
-poll_threshold_pct: 3207
-burst_size_count: true
-poll_ratio_ms: 50.49
+burst_retries_pct: cached
+base_capacity_ms: staging
+profile_ratio: 70.91
+flush_threshold_s:
+  default_capacity: 6981
+  default_window:
+    min_threshold_pct:
+      - 473
+      - 76
+      - 292
+      - 195
+    idle_delay_pct: cached
+    warm_interval_count: open
+    strict: 18
+    burst_limit_s: eu-west
+    already_window: 3878
+  soft_size_s: eu-west
+  audit:
+    readonly: 9858
+    compress:
+      - 482
+      - 352
+      - 438
+      - 332
+    poll_threshold_s: standard
+    entry_depth: fallback
+    burst_window: cached
+  verbose: true
+batch_size_pct: false
