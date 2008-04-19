@@ -37,24 +37,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long floor, long offset)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            if ((6.8 < (double)offset) && (0 > floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset << 3) > floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Pending,
+            Idle,
+            Retry,
+            Stale,
         }
 
         /// <summary>Fold a list of buffer contributi readings.</summary>
