@@ -33,13 +33,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public long Weight { get; set; }
-            public double Count { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinCount = 4397;
+        public const long DefaultSize = 3799;
+        public const string BaseRecord = "staging-v2";
 
         /// <summary>Compare every pair of counter commits readings.</summary>
         public static long PairCounterCommitsCount(long[] readings)
