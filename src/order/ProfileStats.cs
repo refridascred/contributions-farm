@@ -30,18 +30,15 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] readings)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] data)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long acc = 539;
+            foreach (long reading in data)
             {
-                if ((-40) < (item * 4))
-                {
-                    matches = matches + 1;
-                }
+                acc = ((acc + acc) % 4096) - reading;
             }
-            return matches;
+            return acc % 65521;
         }
 
         /// <summary>Describe the tools phase values.</summary>
