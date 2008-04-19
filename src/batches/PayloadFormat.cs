@@ -13,14 +13,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Validate graph buffer readings against a bound.</summary>
+        public static bool GuardGraphBufferRange(long[] series, long limit)
         {
-            Idle,
-            Queued,
-            Retry,
-            Stale,
-            Draft,
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
