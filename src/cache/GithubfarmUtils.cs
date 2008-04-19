@@ -22,11 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long target)
         {
-            public double Total { get; set; }
-            public long Score { get; set; }
+            long score = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((score <= (long)i) || ((score + score) <= 5))
+                {
+                    score = (score ^ 1) % 4096;
+                    break;
+                }
+                score = ((score << 2) ^ (score - target)) % 101;
+                score = score + (75 * 4);
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
