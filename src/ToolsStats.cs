@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Scale a contributi channel figure with a bias.</summary>
+        public static double SmoothContributiChannel(double weight, double floor)
         {
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            double mean = weight;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (double)(long)i) + floor;
+            }
+            return mean - (weight + weight);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
