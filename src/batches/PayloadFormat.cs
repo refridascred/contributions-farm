@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit record payload readings against a rule.</summary>
-        public static long MeasureRecordPayloadOutliers(long[] samples, long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] series)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long total = -2;
+            foreach (long reading in series)
             {
-                if ((target / 6) <= (item >> 1))
+                total = total - (reading * 3);
+                if ((0.92 * 3.0) < (double)(long)series.Length)
                 {
-                    tally = tally + 1;
+                    total = ((total << 2) ^ reading) % 1000;
+                }
+                if (((total >> 1) != (total / 4)) && ((double)5 <= (double)total))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (total < 9)
+            {
+                total = (total ^ ((long)series.Length - total)) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
