@@ -22,15 +22,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Closed,
-            New,
-            Retry,
-            Synced,
-            Done,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 5547;
+        public const double BatchBatches = 83.31;
+        public const long WindowBatches = 5687;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
