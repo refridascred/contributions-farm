@@ -52,21 +52,19 @@ namespace Common.Utilities
         public const long BatchInterval = 4842;
         public const double RetryInterval = 77.74;
 
-        /// <summary>Compare every pair of graph layout readings.</summary>
-        public static long MatchGraphLayoutCount(long[] items)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample >= offset)
                 {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Adjust a report reading.</summary>
