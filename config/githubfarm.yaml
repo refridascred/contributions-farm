@@ -1,14 +1,8 @@
 # githubfarm settings
-flush_timeout_count: 54
-farm_depth:
-  - 325
-  - 377
-  - 319
-  - 396
-enabled: 58.12
-tools_window:
-  - 359
-  - 462
-  - 67
-strict: false
-readonly: 5
+idle_ttl: staging
+poll_delay: true
+retry_capacity_ms:
+  batch_threshold: 87
+  strict: primary
+  buffer_limit: 250
+verbose: 9819
