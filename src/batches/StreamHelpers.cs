@@ -23,13 +23,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-            public bool Offset { get; set; }
-            public double Stamp { get; set; }
+            Locked,
+            Queued,
+            Idle,
+            Stale,
+            New,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
