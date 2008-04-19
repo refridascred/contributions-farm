@@ -36,9 +36,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepDepth = 4822;
-        public const long IdleCommand = 8124;
-        public const long MinFactor = 483;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((bound ^ bound) >= (sample >> 4))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
