@@ -33,13 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] data, long step)
         {
-            public string Size { get; set; } = "";
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
