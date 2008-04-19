@@ -1,21 +1,5 @@
 # support settings
-dry_run:
-  - blue
-  - fallback
-  - eu-west
-  - open
-account_size:
-  base_delay:
-    cache_timeout: legacy
-    graph_interval: false
-    support_depth: 8.1
-    idle_capacity_pct: legacy
-  sync_interval_ms:
-    poll_ttl_pct: 783
-    batch_capacity_s: standard
-    idle_retries_s: 51
-    enabled: 3893
-    soft_timeout_count: 100
-    flush_ratio_s: open
-  window_limit: 250
-checks_ttl: 100
+support_size: stable
+notes_interval: 7016
+cache_delay_pct: false
+account_timeout: primary
