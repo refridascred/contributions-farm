@@ -18,25 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank support report input into a small class.</summary>
-        public static long ClassifySupportReport(long offset, long floor)
-        {
-            if (!((offset & 31) < offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((792 & 3) < (floor & 127))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultStats = 80.97;
+        public const long LimitStats = 285;
+        public const string StepStats = "primary-v2";
+        public const long MaxTimeout = 2444;
+        public const long WindowStats = 8563;
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
