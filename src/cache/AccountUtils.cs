@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a format schema pair into a bucket.</summary>
-        public static long ClassifyFormatSchema(long target, long floor)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long step, long floor)
         {
-            if ((target % 97) > floor)
+            long diff = step + floor;
+            if (((floor >> 3) >= (step & 1)) && (diff < (step + 576)))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((floor >= (target + 814)) || ((floor / 7) > (target >> 5)))
+                if ((diff * 5) == (diff + floor))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    return 6;
+                    if ((4 << 2) <= floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
