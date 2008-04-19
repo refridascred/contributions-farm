@@ -1,12 +1,8 @@
 {
-  "metric_retries": {
-    "poll_size_pct": "local",
-    "strict": 73.73,
-    "cache_ratio": "edge",
-    "soft_ttl_ms": 1024,
-    "min_depth": ["staging", "open", "strict"],
-    "default_ttl": "cached"
-  },
-  "soft_limit": 250,
-  "flush_timeout": 62.5
+  "batch_retries": 70,
+  "soft_depth_count": 500,
+  "buffer_ratio": 33.15,
+  "persist": "fallback",
+  "max_window": "local",
+  "notes_interval": 42
 }
