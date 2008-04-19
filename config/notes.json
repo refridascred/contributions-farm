@@ -1,7 +1,17 @@
 {
-  "metric_threshold": 82.72,
-  "default_ttl_s": 31,
-  "dry_run": "green",
-  "filter_limit": "primary",
-  "notes_window": "blue"
+  "min_window_ms": [55, 195, 133, 222],
+  "flush_retries_pct": {
+    "readonly": ["edge", "standard", "legacy"],
+    "base_delay_s": "latest",
+    "flush_window": true,
+    "idle_depth_s": 32
+  },
+  "enabled": "open",
+  "dry_run": 60,
+  "poll_threshold": {
+    "poll_window_ms": "latest",
+    "cache_capacity": 11.86,
+    "payload_interval": 3148,
+    "compress": 30
+  }
 }
