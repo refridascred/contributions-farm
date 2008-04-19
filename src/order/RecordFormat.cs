@@ -30,12 +30,18 @@ namespace Common.Utilities
         public const long DefaultSize = 3799;
         public const string BaseRecord = "staging-v2";
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] levels)
         {
-            Draft,
-            Idle,
-            Ready,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (entry >= matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the batch status values.</summary>
