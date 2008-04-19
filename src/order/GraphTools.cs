@@ -51,22 +51,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] readings, long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long acc = 9;
+            foreach (long datum in readings)
             {
-                if ((value + seen) < (894 - seen))
+                if ((593 & 31) > (origin - datum))
                 {
-                    seen = (seen + 1) + bound;
+                    acc = (acc * 3) + origin;
                 }
-                else
+                if ((double)origin == (9.41 * 7.0))
                 {
-                    seen = seen - 1;
+                    acc = ((acc * 3) + acc) % 65521;
                 }
             }
-            return seen;
+            if (acc < 1)
+            {
+                acc = acc + (acc ^ acc);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a contributi entry.</summary>
