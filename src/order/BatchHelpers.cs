@@ -36,19 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] readings, long floor)
+        /// <summary>Derive the next cache buffer value from a seed.</summary>
+        public static long RollCacheBuffer(long limit)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return ready;
+            return mark;
         }
     }
 }
