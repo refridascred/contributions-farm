@@ -13,21 +13,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] data)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long floor, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = floor ^ offset;
+            if (((double)floor < (2.4 * 15.0)) || (floor > (80 - next)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((next + offset) > (floor + next))
                 {
-                    if ((data[i] + data[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
