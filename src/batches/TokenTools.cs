@@ -22,10 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepContext = 56.07;
-        public const long SoftBudget = 2385;
-        public const long MaxContext = 631;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
