@@ -29,11 +29,10 @@ namespace Common.Utilities
             return load + 11.0;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double WindowFactor = 42.12;
-        public const long WindowContext = 8324;
-        public const long IdleContext = 9558;
-        public const long MaxSpan = 5307;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstLevel = "strict-edge";
+        public const double BatchSpan = 53.75;
+        public const double RetryDepth = 72.25;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
