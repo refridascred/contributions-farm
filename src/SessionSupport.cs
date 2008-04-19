@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] data)
+        /// <summary>Rank commits order input into a small class.</summary>
+        public static long GradeCommitsOrder(long offset, long offset2)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            if ((offset - offset2) < offset2)
             {
-                if ((((entry & 63) <= entry) || ((entry >> 5) < entry)) || !((tally % 8) > entry))
+                return 3;
+            }
+            else
+            {
+                if (offset2 > ((-27) + 7))
                 {
-                    tally = tally + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (!((offset2 + offset) >= (977 ^ offset)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((offset2 * 5) > offset2) && (offset <= (offset / 3)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the report mode values.</summary>
