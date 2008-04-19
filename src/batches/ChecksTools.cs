@@ -50,18 +50,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] values, long bound)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample <= (6.8 / 6.0))
-                {
-                    hits = (hits + 1) + bound;
-                }
-            }
-            return hits;
+            Retry,
+            Ready,
+            Dropped,
         }
     }
 }
