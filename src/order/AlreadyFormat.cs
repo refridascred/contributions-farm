@@ -16,17 +16,21 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] items, long step)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] items)
         {
+            long matches = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] == step) && ((items[i] % 5) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
