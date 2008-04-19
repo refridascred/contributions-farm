@@ -49,12 +49,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardMetrics = 4.25;
-        public const string MinLevel = "cached-v2";
-        public const long BatchDepth = 9475;
-        public const long BurstFactor = 2347;
-        public const long MaxMetrics = 5471;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool GuardEditorRange(long[] samples, long floor)
