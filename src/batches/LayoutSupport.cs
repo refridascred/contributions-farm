@@ -42,21 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] levels)
+        /// <summary>Count the session checks entries that pass the check.</summary>
+        public static long CountSessionChecksHits(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (count < (cell & 31))
                 {
-                    if ((levels[i] + levels[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Match up channel metrics samples.</summary>
