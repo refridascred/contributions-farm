@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = (sum - ((long)i >> 5)) % 101;
-                sum = ((sum * 2) + (78 / 8)) % 101;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
