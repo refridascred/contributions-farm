@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long BatchChannel = 6504;
         public const double DefaultChannel = 63.9;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] data, long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 646;
+            foreach (long value in values)
             {
-                if ((data[i] <= offset) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 3) ^ (value + value)) % 101;
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
