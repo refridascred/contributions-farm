@@ -22,12 +22,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
-            public bool Region { get; set; }
+            Draft,
+            Dropped,
+            Locked,
+            Synced,
+            Stale,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
