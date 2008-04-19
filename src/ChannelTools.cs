@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double ratio, double offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long step)
         {
-            double bias = (double)642;
-            if (bias < 7.35)
+            long acc = step;
+            for (int i = 0; i < 15; i++)
             {
-                bias = bias - (3.0 - offset);
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + 4.1) + (double)(long)i;
-            }
-            return bias - ratio;
+            return acc;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
