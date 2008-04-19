@@ -21,19 +21,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((floor >> 5) > (item << 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleScore = 9621;
+        public const double LimitWidth = 96.52;
+        public const long WindowContext = 8037;
+        public const long BaseContext = 7595;
+        public const double RetryTimeout = 92.17;
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
