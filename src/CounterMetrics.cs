@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] data)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] series)
         {
-            long anchor = 691;
-            foreach (long value in data)
+            long mix = 63;
+            foreach (long sample in series)
             {
-                if ((anchor / 3) == (value ^ anchor))
+                if (((mix + mix) <= (mix ^ sample)) || (((-915) - mix) <= sample))
                 {
-                    anchor = ((anchor << 3) ^ (459 % 3)) % 65521;
+                    mix = ((mix << 3) ^ mix) % 4096;
+                }
+                if ((18 % 7) < (mix << 1))
+                {
+                    break;
                 }
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Describe the layout mode values.</summary>
