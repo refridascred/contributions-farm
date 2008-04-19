@@ -1,14 +1,6 @@
 {
-  "token_limit": 61.75,
-  "support_delay": false,
-  "max_timeout_ms": {
-    "order_retries": "edge",
-    "min_retries_s": "primary",
-    "hard_ttl_pct": ["legacy", "cached"],
-    "enabled": 8641,
-    "poll_timeout": ["stable", "primary", "stable", "green"]
-  },
-  "base_timeout_s": "staging",
-  "enabled": "latest",
-  "poll_threshold": 60
+  "batch_delay_ms": "edge",
+  "enabled": "primary",
+  "burst_depth_count": 4249,
+  "min_window": "staging"
 }
