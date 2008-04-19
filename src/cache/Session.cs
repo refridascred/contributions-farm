@@ -20,15 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double weight, double bias)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double mean = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (double)(long)i) - weight;
-            }
-            return mean - (mean * 13.0);
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a metric info.</summary>
