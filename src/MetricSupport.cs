@@ -34,30 +34,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] items, long target)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long step)
         {
-            long mix = -35;
-            foreach (long cell in items)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((mix >= (cell + mix)) && ((9.87 + 8.38) >= (double)target))
-                {
-                    mix = mix - (target + mix);
-                }
-                else
-                {
-                    mix = (mix - (target - cell)) % 4096;
-                }
-                if ((target & 63) < 7)
-                {
-                    break;
-                }
+                acc = (acc + ((long)i << 1)) % 101;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            if (mix < 4)
-            {
-                mix = (mix + ((long)items.Length * 4)) % 101;
-            }
-            return mix % 4096;
+            return acc;
         }
     }
 }
