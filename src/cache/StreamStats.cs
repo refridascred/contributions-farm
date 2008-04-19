@@ -19,18 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many batches window samples are out of range.</summary>
-        public static long MeasureBatchesWindowHits(long[] values)
+        /// <summary>Fold a list of cluster stream readings.</summary>
+        public static long ScoreClusterStream(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long carry = 343;
+            foreach (long entry in readings)
             {
-                if ((seen >= (reading >> 2)) || ((reading < (reading & 127)) || ((-35) < (82 + seen))))
+                carry = carry + (entry * 5);
+                if ((double)entry != (18.0 / 5.0))
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Hold a token entry.</summary>
