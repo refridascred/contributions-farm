@@ -1,8 +1,6 @@
 {
-  "poll_window": ["staging", "edge", "strict"],
-  "batch_limit_s": 1024,
-  "hard_threshold_ms": 60.91,
-  "hard_delay_s": false,
-  "githubfarm_timeout": "edge",
-  "warm_delay": false
+  "max_capacity_count": "open",
+  "retry_interval": 250,
+  "poll_interval_pct": "primary",
+  "verbose": 23.56
 }
