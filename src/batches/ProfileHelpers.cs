@@ -110,9 +110,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinSpan = 4745;
-        public const string RetryFilter = "latest";
-        public const long MaxFactor = 6828;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long offset, long bound)
+        {
+            long span = offset - bound;
+            if ((double)offset > (double)span)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)65 > (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
