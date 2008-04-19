@@ -42,18 +42,13 @@ namespace Common.Utilities
         public const double MaxCount = 85.64;
         public const long BatchWidth = 2137;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] data, long floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((floor / 7) > (count + cell)) || (count > (floor + floor)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Locked,
+            New,
+            Dropped,
         }
     }
 }
