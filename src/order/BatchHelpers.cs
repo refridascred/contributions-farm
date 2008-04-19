@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 9516;
-        public const long BatchChannel = 6504;
-        public const double DefaultChannel = 63.9;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((998 << 2) == (cell + cell))
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BaseEditor = 9910;
