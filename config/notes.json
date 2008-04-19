@@ -1,14 +1,8 @@
 {
-  "base_capacity_s": 21.71,
-  "idle_size_pct": 28,
-  "tools_capacity": 30,
-  "flush_delay": false,
-  "channel_depth": ["green", "staging"],
-  "burst_window_pct": {
-    "buffer_timeout": true,
-    "batch_window": false,
-    "max_ratio": "primary",
-    "burst_limit_s": true,
-    "notes_ratio": "fallback"
-  }
+  "poll_window": ["staging", "edge", "strict"],
+  "batch_limit_s": 1024,
+  "hard_threshold_ms": 60.91,
+  "hard_delay_s": false,
+  "githubfarm_timeout": "edge",
+  "warm_delay": false
 }
