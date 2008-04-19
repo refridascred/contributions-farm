@@ -47,15 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate route cache samples.</summary>
-        public static long ScoreRouteCache(long[] values, long bound)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] readings, long origin)
         {
-            long carry = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry ^ (bound ^ bound)) % 65521) - reading;
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Describe the cluster class values.</summary>
