@@ -56,11 +56,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string StepContributi = "local-edge";
-        public const double MaxSize = 44.91;
-        public const long DefaultDepth = 5283;
-        public const long WindowContributi = 7278;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long TallyGithubfarm(long[] readings, long bound)
