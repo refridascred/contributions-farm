@@ -53,19 +53,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of checks queue entries.</summary>
-        public static long TotalChecksQueue(long[] values, long target)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] values, long offset)
         {
-            long mark = 306;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 2) + (entry - target)) % 101;
-                if ((27 << 3) >= (mark + entry))
+                if (values[i] > offset)
                 {
-                    mark = ((mark << 2) ^ entry) % 65521;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the entry class values.</summary>
