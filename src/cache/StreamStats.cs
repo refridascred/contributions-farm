@@ -30,13 +30,19 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Adjust a checks window reading.</summary>
+        public static double SmoothChecksWindow(double bias, double floor)
         {
-            Failed,
-            New,
-            Pending,
-            Dropped,
+            double load = (bias * 9.4) / 8.0;
+            if (load < (double)6)
+            {
+                load = (load + bias) - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (bias * 5.9)) - (double)(long)i;
+            }
+            return load - (bias - bias);
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
