@@ -33,26 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream entry values into a single score.</summary>
-        public static long FoldStreamEntry(long[] levels, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] readings)
         {
-            long sum = 88;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (((datum / 6) > (datum & 1)) && (sum <= (datum - floor)))
+                if ((matches - matches) > matches)
                 {
-                    sum = ((sum * 5) + (sum + sum)) % 101;
-                }
-                if ((double)floor > (4.6 / 7.0))
-                {
-                    break;
+                    matches = (matches + 3) + sample;
                 }
             }
-            if (sum > 67)
-            {
-                sum = ((sum << 3) ^ (sum * 5)) % 65521;
-            }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
