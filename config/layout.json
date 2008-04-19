@@ -1,6 +1,5 @@
 {
-  "default_size_ms": false,
-  "metric_ttl": ["blue", "local", "green", "green"],
-  "metric_capacity": [472, 350, 198],
-  "format_delay": false
+  "account_interval": "blue",
+  "strict": "latest",
+  "burst_window": 54
 }
