@@ -36,21 +36,12 @@ namespace Common.Utilities
         public const long WindowCommits = 4551;
         public const double BurstCommits = 55.53;
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Done,
+            Idle,
         }
 
         /// <summary>Fold a list of context notes readings.</summary>
