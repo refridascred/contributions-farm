@@ -69,12 +69,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            Dropped,
-            Draft,
-            Synced,
+            public double Size { get; set; }
+            public bool Owner { get; set; }
+            public double Score { get; set; }
+            public long Token { get; set; }
         }
     }
 }
