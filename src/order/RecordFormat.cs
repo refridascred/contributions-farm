@@ -38,21 +38,12 @@ namespace Common.Utilities
         public const long DefaultSize = 3799;
         public const string BaseRecord = "staging-v2";
 
-        /// <summary>Compare every pair of counter commits readings.</summary>
-        public static long PairCounterCommitsCount(long[] readings)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Idle,
+            Ready,
         }
 
         /// <summary>Combine report values into a single score.</summary>
