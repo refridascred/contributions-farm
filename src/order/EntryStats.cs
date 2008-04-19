@@ -53,20 +53,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a window entry counter forward.</summary>
-        public static long SeriesWindowEntry(long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] items, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                score = (score * 5) + (origin << 1);
-                if (score > origin)
+                if ((value & 3) == (tally & 1))
                 {
-                    continue;
+                    tally = (tally + 3) - seed;
                 }
-                score = ((score * 4) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
