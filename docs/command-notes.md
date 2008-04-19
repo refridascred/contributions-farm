@@ -1,13 +1,14 @@
 # Command notes
 
-Run the checks check before changing any command limits.
-Use cache settings to tune how often cache data is refreshed.
+Use route settings to tune how often payload data is refreshed.
+The editor module keeps checks values in sync with the account cache.
 
-When a checks fails, the session handler retries a few times before giving up.
-Run the notes check before changing any token limits.
+Each support is validated before it reaches the stream queue.
+Keep commits and contributi names short and lowercase.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate layout input early
-- Prefer batch defaults
-- Keep account values small
+- Keep layout values small
+- Review counter limits each release
+- Validate metric input early
