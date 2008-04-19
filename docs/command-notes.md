@@ -1,10 +1,10 @@
 # Command notes
 
-Keep format and context names short and lowercase.
-Each cluster is validated before it reaches the route queue.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Each contributi is validated before it reaches the contributi queue.
 
 ## Guidelines
 
-- Keep farm values small
-- Log every layout change
-- Review schema limits each release
+- Validate layout input early
+- Review metric limits each release
+- Prefer command defaults
