@@ -20,11 +20,18 @@ namespace Common.Utilities
             return weight - (double)67;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] readings, long seed)
         {
-            public double Size { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((seed + reading) >= (reading % 97))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
