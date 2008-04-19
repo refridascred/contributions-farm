@@ -26,12 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 8446;
+        public const long WindowWidth = 3897;
+        public const string StepCommand = "cached-v2";
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
