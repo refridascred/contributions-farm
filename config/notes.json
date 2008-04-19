@@ -1,7 +1,8 @@
 {
-  "token_delay": "green",
-  "githubfarm_delay": 9057,
-  "audit": "primary",
-  "sync_ratio_ms": true,
-  "cache_size_s": 100
+  "readonly": 14,
+  "token_limit": "eu-west",
+  "enabled": true,
+  "hard_retries": 482,
+  "cache_depth": "open",
+  "sync_capacity": "green"
 }
