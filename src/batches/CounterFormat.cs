@@ -58,18 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm already entries that pass the check.</summary>
-        public static long TallyFarmAlreadyMatches(long[] samples)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((datum + datum) != (datum ^ matches))
+                if ((double)count >= (double)47)
                 {
-                    matches = matches + 2;
+                    count = ((count + 1) + sample) + seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
