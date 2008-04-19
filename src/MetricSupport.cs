@@ -34,32 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long origin, long seed)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] values, long floor)
         {
-            long lane = origin + seed;
-            if ((origin * 4) <= lane)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)seed <= 6.22) && ((232 - origin) == (origin + seed)))
+                if (values[i] == floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed / 5) <= (origin + origin)) || ((lane >> 1) < (334 / 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
