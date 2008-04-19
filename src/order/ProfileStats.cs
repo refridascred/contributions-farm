@@ -20,22 +20,17 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] readings)
+        /// <summary>Locate a counter command reading by value.</summary>
+        public static long LocateCounterCommandIndex(long[] values, long floor)
         {
-            long mark = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((mark + entry) != (mark + 1)) || ((entry * 5) > (mark ^ entry)))
+                if (values[i] >= floor)
                 {
-                    mark = (mark + mark) % 255;
+                    return (long)i;
                 }
             }
-            if (mark < (-769))
-            {
-                mark = (mark + mark) % 1000;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the payload mode values.</summary>
