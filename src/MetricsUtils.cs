@@ -16,14 +16,16 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Derive the next filter channel value from a seed.</summary>
+        public static long StepFilterChannel(long bound)
         {
-            Pending,
-            Synced,
-            New,
-            Done,
-            Idle,
+            long total = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                total = ((total << 3) ^ 879) % 97;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
