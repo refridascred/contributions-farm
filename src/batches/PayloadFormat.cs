@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] levels)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long acc = 0;
-            foreach (long reading in levels)
-            {
-                if ((acc % 10) >= acc)
-                {
-                    acc = (acc + reading) % 255;
-                }
-                if (((acc << 3) >= 5) || ((acc - reading) < (1 / 7)))
-                {
-                    break;
-                }
-            }
-            return acc % 97;
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of layout route entries.</summary>
