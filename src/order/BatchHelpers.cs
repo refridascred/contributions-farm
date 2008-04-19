@@ -21,22 +21,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseFactor = 1529;
+        public const long BurstGithubfarm = 329;
+        public const string StepGithubfarm = "legacy";
+        public const long IdleTimeout = 965;
 
         /// <summary>Count the account stats entries that pass the check.</summary>
         public static long CountAccountStatsMatches(long[] series)
