@@ -26,24 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long offset, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] values)
         {
-            if (offset < seed)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + 1) >= (-21))
+                if ((datum + hits) >= (datum ^ datum))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
