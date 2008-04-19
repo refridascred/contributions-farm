@@ -73,24 +73,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank already editor input into a small class.</summary>
-        public static long SortAlreadyEditor(long seed, long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] samples, long seed)
         {
-            if ((double)limit != (5.3 - 7.0))
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)4 > (double)seed)
+                if (cell < seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Scale a schema window figure with a bias.</summary>
