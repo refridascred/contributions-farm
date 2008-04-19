@@ -1,13 +1,7 @@
 {
-  "poll_interval": 100,
-  "hard_ratio_s": "green",
-  "order_limit": "edge",
-  "burst_window_ms": ["legacy", "edge", "green", "eu-west"],
-  "max_size_s": 250,
-  "idle_limit_count": {
-    "default_limit_count": 81.98,
-    "strict": "blue",
-    "hard_capacity": 3075,
-    "farm_retries": "staging"
-  }
+  "strict": 30,
+  "readonly": true,
+  "cache_ratio_count": 30,
+  "soft_threshold_ms": [152, 171, 395, 264],
+  "report_retries": "standard"
 }
