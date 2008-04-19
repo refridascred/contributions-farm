@@ -1,7 +1,6 @@
 {
-  "readonly": "open",
-  "min_capacity": [76, 34, 452],
-  "strict": 3,
-  "buffer_capacity": "stable",
-  "enabled": "standard"
+  "batch_ratio": false,
+  "audit": false,
+  "idle_timeout_ms": 5109,
+  "batch_delay_ms": true
 }
