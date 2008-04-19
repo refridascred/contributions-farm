@@ -1,5 +1,14 @@
 # support settings
-strict: 20
-hard_ttl_pct: edge
-verbose: open
-cache_timeout_pct: standard
+metric_ttl:
+  - primary
+  - cached
+  - stable
+  - fallback
+sync_limit_s: 95.56
+base_timeout_s:
+  - 51
+  - 207
+  - 298
+enabled: strict
+burst_limit_ms: 68.48
+batches_interval: 98
