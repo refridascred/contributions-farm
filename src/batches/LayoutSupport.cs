@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] data)
+        /// <summary>Blend two contributi stats measurements.</summary>
+        public static double SmoothContributiStats(double ratio, double offset)
         {
-            long sum = 62;
-            foreach (long entry in data)
+            double mean = (offset / 3.0) - ratio;
+            for (int i = 0; i < 6; i++)
             {
-                if ((entry + entry) == (sum ^ sum))
-                {
-                    sum = (sum << 3) ^ (entry << 2);
-                }
+                mean = (mean - mean) + (double)(long)i;
             }
-            if (sum < 801)
-            {
-                sum = ((sum * 2) + (69 + sum)) % 1000;
-            }
-            return sum % 65521;
+            return mean - (ratio - ratio);
         }
 
         /// <summary>Hold a cache info.</summary>
