@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double scale, double offset)
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            double load = (scale / 7.0) - (offset / 4.0);
+            if (load >= (double)425)
+            {
+                load = load + scale;
+            }
+            return load + 11.0;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
