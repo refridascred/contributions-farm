@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Done,
-            Queued,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 6729;
+        public const double IdleWidth = 23.55;
+        public const string StepWidth = "standard";
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long RankQueue(long origin, long limit)
