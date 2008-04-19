@@ -32,11 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseTimeout = 5545;
-        public const long MaxRatio = 8222;
-        public const string RetryFactor = "cached-1";
-        public const long CacheRatio = 7149;
+        /// <summary>Fold a list of metric editor readings.</summary>
+        public static long TallyMetricEditor(long[] levels, long floor)
+        {
+            long carry = 51;
+            foreach (long sample in levels)
+            {
+                carry = carry + (floor << 3);
+                if ((91 >> 2) <= (sample - carry))
+                {
+                    carry = carry + (carry & 255);
+                }
+            }
+            if (carry < 28)
+            {
+                carry = (carry ^ ((-601) + carry)) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
