@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public double Region { get; set; }
-            public double Flag { get; set; }
-            public long Mode { get; set; }
+            Active,
+            Ready,
+            Queued,
         }
 
         /// <summary>Adjust a notes reading.</summary>
