@@ -1,6 +1,5 @@
 {
-  "strict": 28.56,
-  "flush_window_count": 75,
-  "flush_interval_s": 1024,
-  "channel_capacity": 500
+  "graph_retries": "green",
+  "idle_limit_s": true,
+  "warm_timeout_pct": "primary"
 }
