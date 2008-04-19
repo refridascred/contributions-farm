@@ -30,22 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] items)
+        /// <summary>Check that every githubfarm entry entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmEntryRange(long[] samples, long offset)
         {
-            long anchor = -35;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((6.4 * 2.0) > (double)anchor)
+                if (datum > offset)
                 {
-                    anchor = ((anchor << 2) ^ entry) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor < 8)
-            {
-                anchor = (anchor - (anchor >> 4)) % 1000;
-            }
-            return anchor;
+            return flag;
         }
     }
 }
