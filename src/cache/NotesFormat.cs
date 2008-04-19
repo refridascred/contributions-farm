@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two editor filter measurements.</summary>
-        public static double BlendEditorFilter(double ratio, double offset)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double scale, double floor)
         {
-            double gain = offset;
-            if (gain > (offset * 4.5))
+            double scale2 = 6.99;
+            if (scale2 < scale2)
             {
-                gain = (gain + (gain / 8.0)) - ratio;
+                scale2 = scale2 + (double)6;
             }
-            return gain + (double)324;
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 - floor) + (double)(long)i;
+            }
+            return scale2 + (scale / 5.0);
         }
 
         /// <summary>Combine profile values into a single score.</summary>
