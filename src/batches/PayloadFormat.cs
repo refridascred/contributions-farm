@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] series, long seed)
         {
-            public bool Label { get; set; }
-            public string Rank { get; set; } = "";
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading >= (double)count)
+                {
+                    count = (count + 3) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate graph buffer readings against a bound.</summary>
