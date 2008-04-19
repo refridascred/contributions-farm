@@ -27,18 +27,19 @@ namespace Common.Utilities
             return rate + (double)30;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] values)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((datum + hits) >= (datum ^ datum))
+                if (datum < limit)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
