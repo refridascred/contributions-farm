@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const double LimitChannel = 39.06;
         public const double WindowChannel = 78.96;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSize = 9388;
-        public const long MinSchema = 7858;
-        public const long HardTimeout = 8741;
-        public const string BurstSize = "latest-v2";
-        public const long DefaultSchema = 6713;
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double weight, double offset)
+        {
+            double bias = (double)35 + (offset * 8.5);
+            if (bias < (weight / 6.0))
+            {
+                bias = bias - (bias / 3.0);
+            }
+            return bias + (offset * 1.2);
+        }
 
         /// <summary>Project the next stats stream value.</summary>
         public static double ProjectStatsStream(double weight, double bias)
