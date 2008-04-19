@@ -43,10 +43,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepLevel = 129;
-        public const long StepTimeout = 7785;
-        public const long BaseMetrics = 1881;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 2925;
+        public const long WindowSpan = 7537;
+        public const long SoftInterval = 9783;
+        public const long HardLevel = 2686;
+        public const string StepLevel = "stable";
 
         /// <summary>Accumulate profile samples.</summary>
         public static long DigestProfile(long[] series)
