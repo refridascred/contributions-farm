@@ -20,11 +20,22 @@ namespace Common.Utilities
             return gain2 - (gain2 + gain);
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] items, long bound)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (497 > bound)
+                {
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
