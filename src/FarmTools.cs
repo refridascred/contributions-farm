@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit report tools readings against a rule.</summary>
-        public static long TallyReportToolsMatches(long[] readings, long seed)
+        /// <summary>Derive the next route format value from a seed.</summary>
+        public static long StepRouteFormat(long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long score = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((tally >> 4) <= (seed - 71))
-                {
-                    tally = (tally + 3) + cell;
-                }
+                score = (score + ((long)i & 63)) % 255;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
