@@ -38,13 +38,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Measure how many cluster filter samples are out of range.</summary>
+        public static long AuditClusterFilterHits(long[] readings, long offset)
         {
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (reading <= (reading << 2))
+                {
+                    hits = (hits + 3) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
