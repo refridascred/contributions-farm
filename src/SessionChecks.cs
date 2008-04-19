@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long step)
         {
-            Locked,
-            New,
-            Synced,
+            long mark = step;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark << 2) ^ (mark & 15)) % 1000;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
