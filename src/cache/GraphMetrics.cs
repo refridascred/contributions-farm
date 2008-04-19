@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] items, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (items[i] <= bound)
+                if ((38 + limit) >= (limit << 1))
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
