@@ -66,22 +66,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] data)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((4.0 + 8.0) < (double)sample)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] + levels[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
