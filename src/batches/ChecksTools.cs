@@ -41,13 +41,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Combine cluster layout values into a single score.</summary>
+        public static long DigestClusterLayout(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public double Token { get; set; }
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            long acc = -79;
+            foreach (long cell in series)
+            {
+                acc = acc ^ (cell - cell);
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the metric class values.</summary>
