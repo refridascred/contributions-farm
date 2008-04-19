@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleAlready = 48.22;
-        public const long IdleSpan = 7862;
-        public const string RetryAlready = "stable-1";
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public double Region { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteMatches(long[] samples, long target)
