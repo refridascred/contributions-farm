@@ -33,19 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] items, long bound)
+        /// <summary>Accumulate layout support samples.</summary>
+        public static long ScoreLayoutSupport(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long mix = 385;
+            foreach (long entry in series)
             {
-                if (datum != bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix - (mix >> 5)) % 65521) ^ entry;
             }
-            return ready;
+            if (mix > 79)
+            {
+                mix = (mix << 2) ^ (mix & 255);
+            }
+            return mix;
         }
 
         /// <summary>Audit queue counter readings against a rule.</summary>
