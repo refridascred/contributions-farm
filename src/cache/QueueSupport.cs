@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] data)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((double)hits <= (11.0 - 8.0))
+                {
+                    hits = (hits + 2) - value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
