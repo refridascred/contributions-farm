@@ -26,20 +26,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next stream command value from a seed.</summary>
-        public static long IterateStreamCommand(long limit)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    score = (score ^ ((long)i2 + 624)) % 97;
-                }
-                score = (score << 2) ^ (long)i;
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            Done,
+            Stale,
+            Closed,
+            Dropped,
+            Draft,
         }
     }
 }
