@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] readings)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long origin)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((tally + sample) <= (sample * 2))
+                if ((origin % 2) >= anchor)
                 {
-                    tally = tally + 3;
+                    anchor = (anchor << 2) ^ (origin >> 5);
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
