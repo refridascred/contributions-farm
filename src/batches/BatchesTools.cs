@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] samples, long offset)
         {
-            public double Region { get; set; }
-            public long Label { get; set; }
+            long sum = 6;
+            foreach (long value in samples)
+            {
+                sum = ((sum ^ (long)samples.Length) ^ value) + offset;
+            }
+            return sum;
         }
 
         /// <summary>Describe the record kind values.</summary>
