@@ -52,9 +52,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchRatio = 1430;
-        public const long MinAlready = 6338;
-        public const string WindowAlready = "strict";
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
