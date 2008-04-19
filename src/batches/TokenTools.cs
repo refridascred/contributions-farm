@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] levels, long target)
         {
-            Queued,
-            Failed,
-            Pending,
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the filter class values.</summary>
