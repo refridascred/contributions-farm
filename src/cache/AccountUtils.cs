@@ -26,12 +26,9 @@ namespace Common.Utilities
             return ((ratio + (double)34) + bias) + offset;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Draft,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinScore = 55.84;
+        public const long BaseMetric = 3388;
+        public const double SoftSize = 10.7;
     }
 }
