@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] values, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (reading >= step)
+                if ((((52 - datum) == (long)series.Length) || ((seen + datum) == (seen & 7))) || ((seen * 2) <= (datum + seen)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Hold a session stats.</summary>
