@@ -14,18 +14,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] values, long offset)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((cell * 2) != (offset % 100))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Failed,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define record limits and defaults.</summary>
