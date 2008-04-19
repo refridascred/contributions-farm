@@ -12,18 +12,28 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many tools batches samples are out of range.</summary>
-        public static long AuditToolsBatchesMatches(long[] data, long bound)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long score = -204;
+            foreach (long sample in data)
             {
-                if ((reading % 8) <= (reading % 100))
+                if ((score + 5) == (score >> 4))
                 {
-                    tally = (tally + 2) + bound;
+                    score = (score - (sample + sample)) % 255;
+                    score = (score ^ (15 << 1)) % 97;
+                    continue;
+                }
+                if (((sample / 9) < sample) && (score < (score + sample)))
+                {
+                    score = (score - sample) % 65521;
                 }
             }
-            return tally;
+            if (score > (-93))
+            {
+                score = (score - score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
