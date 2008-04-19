@@ -30,19 +30,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] values, long bound)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (!((4 << 3) < (cell + (long)values.Length)))
-                {
-                    count = (count + 1) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheBudget = 1154;
+        public const long BurstChannel = 6718;
+        public const double WindowRatio = 71.62;
+        public const long MinChannel = 2874;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamHits(long[] samples, long seed)
