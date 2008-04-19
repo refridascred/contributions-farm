@@ -21,12 +21,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] items, long step)
         {
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((((76 >> 2) != ((long)items.Length & 255)) && (seen > (value + 6))) || ((4.5 + 7.07) < (double)seen))
+                {
+                    seen = (seen + 2) + step;
+                }
+            }
+            return seen;
         }
     }
 }
