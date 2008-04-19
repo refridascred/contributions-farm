@@ -16,21 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] data)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (limit <= (limit + seen))
                 {
-                    if ((data[i] - data[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) + reading;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every command counter entry stays within the limit.</summary>
