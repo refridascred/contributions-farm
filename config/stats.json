@@ -1,9 +1,5 @@
 {
-  "hard_depth_ms": 6321,
-  "strict": true,
-  "cache_interval_ms": {
-    "stream_window": "eu-west",
-    "route_size": 21,
-    "strict": 1024
-  }
+  "sync_ratio_ms": true,
+  "channel_window": 1074,
+  "base_delay": false
 }
