@@ -31,22 +31,13 @@ namespace Common.Utilities
         public const long HardStream = 7856;
         public const string DefaultStream = "cached-v2";
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] values)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long total = 814;
-            foreach (long reading in values)
-            {
-                if (!((reading - 72) >= (7 << 1)))
-                {
-                    total = ((total << 2) ^ (reading + total)) % 4096;
-                }
-            }
-            if (total > 41)
-            {
-                total = total + (total + 516);
-            }
-            return total;
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the entry kind values.</summary>
