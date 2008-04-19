@@ -87,12 +87,38 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long bound, long limit)
         {
-            New,
-            Done,
-            Stale,
+            if ((1.99 * 3.55) >= (double)limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound + bound) < limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((1 / 5) > limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound <= (limit << 2)) && (limit < (limit + bound)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the commits class values.</summary>
