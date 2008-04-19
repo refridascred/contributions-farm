@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            Synced,
-            Paused,
-            Dropped,
+            Draft,
+            Retry,
+            New,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the session mode values.</summary>
