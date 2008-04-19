@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank command commits input into a small class.</summary>
-        public static long BucketCommandCommits(long step, long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] items, long limit)
         {
-            long prev = step - floor;
-            if (!((prev - step) != (floor << 2)))
+            long sum = 8;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1.15 / 5.0) > (double)floor)
+                if ((double)3 >= (double)sum)
                 {
-                    return 2;
+                    sum = sum + (entry - limit);
                 }
                 else
                 {
-                    if ((prev + step) != (floor + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    sum = ((sum << 2) ^ (limit + entry)) % 101;
                 }
             }
+            return sum;
         }
 
         /// <summary>Check that every record queue entry stays within the limit.</summary>
