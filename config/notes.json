@@ -1,6 +1,20 @@
 {
-  "soft_threshold": [400, 320, 313],
-  "profile_retries": "primary",
-  "already_limit": false,
-  "readonly": 8444
+  "max_retries_pct": {
+    "poll_depth_pct": {
+      "window_ttl": 51.13,
+      "flush_limit": 78,
+      "verbose": ["latest", "cached", "green"]
+    },
+    "profile_timeout": true,
+    "stats_interval": "stable",
+    "batch_depth_count": {
+      "sync_capacity": 2199,
+      "flush_limit": "stable",
+      "strict": "local"
+    },
+    "retry_retries_pct": 6850
+  },
+  "burst_delay_ms": "blue",
+  "base_interval_pct": "strict",
+  "dry_run": "staging"
 }
