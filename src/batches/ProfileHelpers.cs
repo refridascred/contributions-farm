@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] items)
+        /// <summary>Count editor notes pairs that satisfy a relation.</summary>
+        public static long CompareEditorNotesCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7 ^ seen) != (datum + datum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((levels[i] ^ levels[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of format entries.</summary>
