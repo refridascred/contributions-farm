@@ -18,14 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] readings, long seed)
         {
-            Queued,
-            Stale,
-            Dropped,
-            Synced,
-            Ready,
+            long anchor = 1;
+            foreach (long sample in readings)
+            {
+                anchor = anchor ^ (seed >> 5);
+                anchor = ((anchor << 2) ^ (9 ^ anchor)) % 255;
+                if ((double)sample >= (2.72 / 6.0))
+                {
+                    anchor = (anchor - (sample >> 3)) % 255;
+                }
+                else
+                {
+                    anchor = anchor + (anchor >> 3);
+                }
+            }
+            if (anchor < 10)
+            {
+                anchor = anchor + (seed + seed);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Check that every metric schema entry stays within the limit.</summary>
