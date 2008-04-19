@@ -38,22 +38,21 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] levels, long origin)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] data)
         {
-            long acc = 608;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (8.1 > (double)datum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc + datum) % 255;
+                    if ((data[i] - data[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc > (-4))
-            {
-                acc = acc + (origin / 2);
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Measure how many batch session samples are out of range.</summary>
