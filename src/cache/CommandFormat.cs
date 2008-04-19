@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultLevel = 6235;
-        public const double IdleBatches = 67.3;
-        public const string BatchBatches = "cached";
-        public const long DefaultScore = 2544;
+        /// <summary>Measure how many token route samples are out of range.</summary>
+        public static long CountTokenRouteGaps(long[] values, long floor)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((double)seen == (double)floor)
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a stream commits reading.</summary>
         public static double ProjectStreamCommits(double scale, double span)
