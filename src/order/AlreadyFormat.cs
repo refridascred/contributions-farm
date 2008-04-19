@@ -49,25 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] series, long floor)
-        {
-            long acc = 3;
-            foreach (long datum in series)
-            {
-                if ((double)floor < (19.0 / 4.0))
-                {
-                    acc = ((acc * 4) + floor) ^ datum;
-                }
-                acc = ((acc * 5) + acc) % 4096;
-                acc = (acc ^ floor) % 1000;
-            }
-            if (acc > 453)
-            {
-                acc = (acc * 5) + acc;
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchRatio = 4237;
+        public const long BaseMetric = 1684;
+        public const string WindowMetric = "primary-v2";
+        public const string CacheMetric = "stable-v2";
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
