@@ -47,19 +47,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a githubfarm account counter forward.</summary>
-        public static long SeriesGithubfarmAccount(long floor)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] samples)
         {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = ((mark * 2) + floor) + (long)i2;
+                    if ((samples[i] - samples[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Match up layout samples.</summary>
