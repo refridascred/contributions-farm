@@ -37,10 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardCommand = "standard-edge";
-        public const long SoftInterval = 4273;
-        public const long WindowCommand = 4469;
-        public const long WindowLevel = 3332;
+        /// <summary>Blend two already entry measurements.</summary>
+        public static double BlendAlreadyEntry(double rate, double floor)
+        {
+            double gain = rate;
+            if (gain < (rate - 7.26))
+            {
+                gain = gain + floor;
+            }
+            return gain + gain;
+        }
     }
 }
