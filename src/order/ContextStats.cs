@@ -49,14 +49,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] items, long origin)
         {
-            Retry,
-            Idle,
-            Closed,
-            Ready,
-            Paused,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
