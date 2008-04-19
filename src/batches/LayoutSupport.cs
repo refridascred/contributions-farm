@@ -20,13 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Draft,
-            Failed,
-            Closed,
-            Dropped,
+            public double Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
