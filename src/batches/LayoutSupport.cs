@@ -48,21 +48,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long seed)
+        /// <summary>Scale a payload channel figure with a bias.</summary>
+        public static double ScalePayloadChannel(double ratio, double floor)
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
+            double mean = (floor / 2.0) * 6.7;
+            if (mean >= ratio)
             {
-                total = total - (seed + seed);
-                if (!((seed / 8) > total))
-                {
-                    total = total ^ (long)i;
-                }
-                total = total + (seed + (long)i);
-                total = ((total * 5) + (long)i) % 4093;
+                mean = mean - (floor - mean);
             }
-            return total;
+            return mean + (double)766;
         }
 
         /// <summary>Match up channel metrics samples.</summary>
