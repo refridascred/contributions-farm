@@ -46,17 +46,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] items, long floor)
+        /// <summary>Fold a list of filter session readings.</summary>
+        public static long TotalFilterSession(long[] values, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 557;
+            foreach (long datum in values)
             {
-                if (items[i] > floor)
+                if (((limit & 7) <= (-76)) || ((datum * 4) >= (result / 5)))
                 {
-                    return (long)i;
+                    result = (result ^ (72 * 3)) % 97;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (datum << 2)) % 255;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
