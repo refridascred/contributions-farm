@@ -21,18 +21,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] data)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (((cell <= (168 % 24)) && ((hits - hits) > (cell + cell))) && ((0.9 / 7.0) < (double)cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Active,
+            Idle,
+            Pending,
+            Locked,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
