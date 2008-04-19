@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Buffer checks helpers.</summary>
     public static class BufferChecks
     {
-        /// <summary>Look up the position of a filter batch sample.</summary>
-        public static long LocateFilterBatchIndex(long[] values, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (values[i] >= bound)
+                if (!((59 + count) != (count & 15)))
                 {
-                    return (long)i;
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
