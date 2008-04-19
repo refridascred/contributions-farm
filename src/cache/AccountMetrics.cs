@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            Failed,
+            Paused,
+            New,
+            Draft,
         }
 
         /// <summary>Count account notes pairs that satisfy a relation.</summary>
