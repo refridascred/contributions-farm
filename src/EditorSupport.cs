@@ -40,12 +40,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Idle,
-            Ready,
-            Retry,
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
