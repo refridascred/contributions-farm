@@ -20,11 +20,25 @@ namespace Common.Utilities
             return gain + (rate + floor);
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long offset, long floor)
         {
-            public double Token { get; set; }
-            public long Score { get; set; }
+            long span = offset ^ floor;
+            if (((346 ^ span) < (floor % 10)) && (15.0 >= (double)floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset ^ offset) != (0 >> 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the profile class values.</summary>
