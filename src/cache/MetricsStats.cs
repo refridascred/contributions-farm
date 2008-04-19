@@ -13,25 +13,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] items)
+        /// <summary>Grade a already filter value against two limits.</summary>
+        public static long SortAlreadyFilter(long origin, long floor)
         {
-            long sum = 77;
-            foreach (long reading in items)
+            if ((523 - origin) >= floor)
             {
-                sum = (sum + (sum % 5)) % 255;
-                if (5.0 < (double)sum)
+                return 8;
+            }
+            else
+            {
+                if ((2 >> 1) >= (floor - 151))
                 {
-                    sum = (sum - reading) % 97;
-                    sum = sum ^ (reading - reading);
+                    return 6;
                 }
                 else
                 {
-                    sum = (sum << 2) ^ (6 ^ reading);
+                    if (((double)origin >= 19.0) && ((double)origin < (7.3 / 7.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                sum = (sum * 2) + (reading - reading);
             }
-            return sum;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
