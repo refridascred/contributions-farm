@@ -24,12 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public bool Count { get; set; }
+            Done,
+            Queued,
+            New,
+            Synced,
         }
 
         /// <summary>Look up the position of a cache graph sample.</summary>
