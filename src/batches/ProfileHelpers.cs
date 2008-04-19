@@ -84,15 +84,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 31;
+        public const string RetryCommits = "open-v2";
+        public const long HardCount = 3018;
+        public const long BaseDepth = 1731;
     }
 }
