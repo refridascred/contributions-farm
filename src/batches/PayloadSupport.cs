@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Stale,
-            Locked,
-            Closed,
-            Synced,
-            Active,
+            public double Level { get; set; }
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Grade a contributi record value against two limits.</summary>
