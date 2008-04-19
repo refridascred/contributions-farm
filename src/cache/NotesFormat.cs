@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a editor profile value against two limits.</summary>
-        public static long BucketEditorProfile(long bound, long bound2)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] samples, long step)
         {
-            long span = bound - bound2;
-            if (((-5) + bound) != (bound2 - span))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (span > (bound % 10))
+                if (!((seen << 3) <= (item % 3)) && ((seen & 3) >= (4 + item)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    seen = (seen + 3) + step;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
