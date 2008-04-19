@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] readings, long floor)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double ratio, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (double)642;
+            if (bias < 7.35)
             {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
+                bias = bias - (3.0 - offset);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + 4.1) + (double)(long)i;
+            }
+            return bias - ratio;
         }
 
         /// <summary>Match up stream samples.</summary>
