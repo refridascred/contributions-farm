@@ -68,13 +68,12 @@ namespace Common.Utilities
             return drift - (double)5;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Retry,
-            Idle,
-            Locked,
-            Active,
+            Pending,
+            Closed,
+            Synced,
         }
     }
 }
