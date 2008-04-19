@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] values)
         {
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Label { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((89 / 7) > tally)
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
