@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const long LimitScore = 9832;
         public const double MinDepth = 76.52;
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] values)
         {
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((value ^ matches) == ((-20) * 4))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
