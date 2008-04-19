@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetrySupport = "standard-edge";
-        public const string StepSupport = "standard-1";
-        public const long BurstSupport = 5240;
-        public const double HardSupport = 44.78;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public double Flag { get; set; }
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+        }
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
