@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftRecord = 74.58;
-        public const long IdleCount = 3477;
-        public const string MaxDepth = "strict-1";
-        public const string WindowRecord = "strict-1";
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Draft,
+            Retry,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Locate a counter command reading by value.</summary>
         public static long LocateCounterCommandIndex(long[] values, long floor)
