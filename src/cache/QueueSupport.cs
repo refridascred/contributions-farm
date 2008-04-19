@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double ratio, double offset)
+        /// <summary>Fold a list of metric graph readings.</summary>
+        public static long CombineMetricGraph(long[] values, long seed)
         {
-            double load = 3.0;
-            if (load <= offset)
+            long state = 53;
+            foreach (long value in values)
             {
-                load = (load + (double)948) + ratio;
+                state = (((state ^ state) % 1000) - value) - seed;
             }
-            else
-            {
-                load = load + 9.57;
-            }
-            return load + (offset * 2.0);
+            return state;
         }
 
         /// <summary>Accumulate notes samples.</summary>
