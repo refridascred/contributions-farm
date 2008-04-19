@@ -48,19 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] data, long limit)
+        /// <summary>Check that every order commits entry stays within the limit.</summary>
+        public static bool ValidateOrderCommitsLimits(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (reading > limit)
+                if (value > origin)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
