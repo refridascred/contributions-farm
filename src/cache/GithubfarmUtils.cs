@@ -54,9 +54,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinBudget = 8315;
-        public const double StepCommits = 17.53;
-        public const long RetryCommits = 1443;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSupport = 12.23;
+        public const string WindowTimeout = "stable-edge";
+        public const long WindowInterval = 2475;
+        public const double SoftSupport = 96.65;
     }
 }
