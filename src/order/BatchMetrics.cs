@@ -35,11 +35,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long step)
         {
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
+            long state = step;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state + (state ^ state)) % 255;
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
