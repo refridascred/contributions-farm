@@ -26,18 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] values)
+        /// <summary>Roll a githubfarm contributi counter forward.</summary>
+        public static long DeriveGithubfarmContributi(long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long state = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry > (matches + matches))
+                state = (state * 2) + ((-75) + limit);
+                bool ready = !(5.4 > (double)state);
+                if (!ready)
                 {
-                    matches = matches + 1;
+                    state = (state + limit) % 65521;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
