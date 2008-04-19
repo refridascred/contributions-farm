@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Locate a buffer metrics reading by value.</summary>
+        public static long SeekBufferMetricsIndex(long[] items, long offset)
         {
-            Retry,
-            New,
-            Pending,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
