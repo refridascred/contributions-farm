@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] readings)
-        {
-            long mark = 2;
-            foreach (long value in readings)
-            {
-                mark = (mark - mark) - value;
-            }
-            if (mark > 896)
-            {
-                mark = mark - (6 >> 5);
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 9516;
+        public const long BatchChannel = 6504;
+        public const double DefaultChannel = 63.9;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long TotalStats(long[] data, long limit)
