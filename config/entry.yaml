@@ -1,11 +1,6 @@
 # entry settings
-compress: open
-cache_delay_count:
-  compress:
-    base_window: 62.64
-    enabled: local
-    tools_delay: local
-  warm_depth_s: green
-  notes_limit: 86
-schema_retries: local
-record_interval: 1075
+entry_ratio: true
+idle_threshold: edge
+hard_retries_s: false
+support_threshold: latest
+base_size_count: 26
