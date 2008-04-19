@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank commits order input into a small class.</summary>
-        public static long GradeCommitsOrder(long offset, long offset2)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            if ((offset - offset2) < offset2)
-            {
-                return 3;
-            }
-            else
-            {
-                if (offset2 > ((-27) + 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((offset2 + offset) >= (977 ^ offset)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((offset2 * 5) > offset2) && (offset <= (offset / 3)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Pending,
+            Draft,
+            Synced,
         }
 
         /// <summary>Check that every farm graph entry stays within the limit.</summary>
