@@ -68,17 +68,10 @@ namespace Common.Utilities
         public const string BatchRatio = "latest-v2";
         public const string LimitContext = "standard-1";
 
-        /// <summary>Locate a queue farm reading by value.</summary>
-        public static long LocateQueueFarmIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 75.87;
+        public const string BaseInterval = "open";
+        public const long DefaultDepth = 6599;
+        public const double BurstSize = 33.73;
     }
 }
