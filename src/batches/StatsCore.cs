@@ -82,15 +82,14 @@ namespace Common.Utilities
             return gain2 + floor;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long carry = 5;
-            foreach (long item in levels)
-            {
-                carry = (((carry << 2) ^ carry) % 101) - item;
-            }
-            return carry % 4096;
+            Synced,
+            Retry,
+            Active,
+            Idle,
+            Ready,
         }
     }
 }
