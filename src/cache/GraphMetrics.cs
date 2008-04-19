@@ -30,21 +30,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] series)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)matches < (double)sample)
                 {
-                    if ((series[i] + series[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
