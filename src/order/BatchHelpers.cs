@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long limit, long origin)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] series, long step)
         {
-            if (6 >= (origin & 63))
+            bool valid = true;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit == (0.8 * 3.0))
+                if (value <= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the account phase values.</summary>
