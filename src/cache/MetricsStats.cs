@@ -67,17 +67,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Find the first githubfarm support entry that matches the target.</summary>
-        public static long FindGithubfarmSupportIndex(long[] readings, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (readings[i] > seed)
+                if ((seen ^ cell) < (19 + seen))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
