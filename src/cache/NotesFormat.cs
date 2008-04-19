@@ -23,31 +23,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a window record pair into a bucket.</summary>
-        public static long ClassifyWindowRecord(long floor, long origin)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] series, long target)
         {
-            if ((floor * 2) <= ((-72) + origin))
+            long mark = 1;
+            foreach (long sample in series)
             {
-                return 3;
+                mark = ((mark - (383 >> 2)) % 65521) ^ sample;
+                mark = (mark ^ (mark + 236)) % 1000;
+                mark = ((mark * 2) + target) % 97;
             }
-            else
-            {
-                if ((origin << 1) >= (floor ^ 401))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)floor < (double)origin) || ((13.0 - 7.7) < (double)origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mark % 1000;
         }
     }
 }
