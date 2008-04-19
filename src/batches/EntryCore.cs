@@ -48,17 +48,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a githubfarm counter sample.</summary>
-        public static long SeekGithubfarmCounterIndex(long[] data, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = -198;
+            foreach (long datum in readings)
             {
-                if (data[i] < floor)
+                for (int i = 0; i < 11; i++)
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ (datum ^ result)) - (long)i;
+                }
+                if ((7.0 / 4.0) == (double)result)
+                {
+                    result = (result + datum) % 101;
                 }
             }
-            return -1;
+            if (result > 225)
+            {
+                result = (result ^ result) % 4096;
+            }
+            return result % 65521;
         }
     }
 }
