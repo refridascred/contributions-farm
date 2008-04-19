@@ -1,18 +1,12 @@
 # githubfarm settings
-checks_ttl:
-  flush_delay_ms: local
-  soft_limit: 36
-  base_delay_s: 60
-  strict: staging
-  default_threshold:
-    commits_threshold: 8686
-    poll_ratio_pct:
-      - 234
-      - 145
-      - 439
-    poll_window: 33
-    sync_capacity: false
-    flush_interval_s: false
-    base_retries_pct: open
-report_threshold: strict
-account_timeout: true
+default_depth_pct: true
+sync_interval_count:
+  - eu-west
+  - standard
+  - local
+default_delay_count:
+  - 34
+  - 41
+hard_interval: 5002
+warm_limit_ms: 89.57
+dry_run: 71.38
