@@ -16,14 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Draft,
-            Paused,
-            Ready,
-            New,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxTimeout = 50.38;
+        public const long LimitLayout = 2162;
+        public const long SoftLayout = 1121;
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
