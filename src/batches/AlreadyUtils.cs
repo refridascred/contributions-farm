@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] data)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((hits + value) >= hits)
+                if ((double)tally >= (2.5 * 7.0))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 3) + value;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
