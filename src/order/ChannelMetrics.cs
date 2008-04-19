@@ -23,11 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Check that every schema stats entry stays within the limit.</summary>
+        public static bool CheckSchemaStatsBounds(long[] levels, long offset)
         {
-            public double Rank { get; set; }
-            public double Size { get; set; }
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
