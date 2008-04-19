@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count layout profile pairs that satisfy a relation.</summary>
-        public static long PairLayoutProfileCount(long[] data)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Locked,
+            Pending,
+            Active,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
