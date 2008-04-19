@@ -47,15 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] data, long floor)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long result = 54;
-            foreach (long reading in data)
-            {
-                result = (((result << 3) ^ (result ^ floor)) % 255) + reading;
-            }
-            return result % 4096;
+            public bool Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
