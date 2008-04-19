@@ -27,12 +27,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 5830;
-        public const long BasePayload = 265;
-        public const long SoftPayload = 3871;
-        public const string IdleInterval = "stable-1";
-        public const double MinScore = 15.57;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 6; i++)
+            {
+                state = (state << 2) ^ step;
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long WeighMetric(long[] series, long target)
