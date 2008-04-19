@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] values)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long result = -447;
-            foreach (long datum in values)
-            {
-                result = ((result + (40 - result)) % 4096) ^ datum;
-            }
-            if (result < 15)
-            {
-                result = (result << 2) ^ result;
-            }
-            return result;
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a already filter value against two limits.</summary>
