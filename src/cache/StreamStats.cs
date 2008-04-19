@@ -12,11 +12,17 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double gain, double span)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] readings, long seed)
         {
-            double bias = (double)(959 + (-9));
-            return (bias - span) + gain;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a queue stats.</summary>
