@@ -1,5 +1,8 @@
 {
-  "cache_retries_count": ["legacy", "blue"],
-  "max_retries_s": ["strict", "blue"],
-  "channel_ttl": 1024
+  "profile_delay": false,
+  "poll_interval": "eu-west",
+  "enabled": "staging",
+  "verbose": 2,
+  "soft_ttl": [150, 88, 373],
+  "warm_delay_count": 83.79
 }
