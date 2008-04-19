@@ -30,11 +30,18 @@ namespace Common.Utilities
         public const long RetryMetrics = 79;
         public const double BaseWidth = 16.98;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 3042;
-        public const long StepSpan = 136;
-        public const double MinGithubfarm = 65.05;
-        public const string RetryFactor = "standard-v2";
-        public const string HardGithubfarm = "stable-edge";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((((double)seen == (3.0 + 7.38)) && (sample >= 185)) && ((seen << 2) >= (sample / 6)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
