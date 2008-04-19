@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long offset)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long limit, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
+            if ((limit >> 5) <= limit)
             {
-                if (((sum << 3) <= (-95)) || ((sum + 480) > ((long)i ^ sum)))
-                {
-                    sum = ((sum << 3) ^ (314 % 7)) % 101;
-                }
-                if ((1.96 * 5.8) == (double)offset)
-                {
-                    sum = (sum * 2) + offset;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if ((limit < bound) || ((double)bound != (6.4 - 16.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(((-35) << 1) > bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((bound - bound) < limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
