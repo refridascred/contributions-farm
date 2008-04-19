@@ -1,11 +1,7 @@
 {
-  "retry_size_count": 65.78,
-  "batch_retries_pct": {
-    "min_window_ms": 15.21,
-    "compress": "strict",
-    "readonly": 3,
-    "burst_delay": "standard"
-  },
-  "default_depth_ms": true,
-  "format_ratio": 8624
+  "burst_limit": true,
+  "burst_threshold_pct": "cached",
+  "sync_size_count": "open",
+  "schema_delay": [244, 284, 379],
+  "default_size": "standard"
 }
