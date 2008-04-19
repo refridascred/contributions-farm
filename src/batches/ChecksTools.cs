@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long origin, long seed)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
+            long next = origin ^ seed;
+            if ((next <= (next - origin)) || ((9 / 8) > (next - seed)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed - origin) != (93 * 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin <= (9.0 + 7.86))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((3.76 / 5.0) <= (double)next)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
