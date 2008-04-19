@@ -1,4 +1,10 @@
 # entry settings
-retry_capacity_pct: 84
-cache_capacity_ms: true
-contributi_limit: 5370
+stream_delay: fallback
+base_retries:
+  - blue
+  - green
+  - legacy
+cache_size: cached
+dry_run: 93
+commits_delay: false
+profile_depth: 537
