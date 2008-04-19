@@ -20,19 +20,22 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Iterate the order route series from a seed.</summary>
-        public static long StepOrderRoute(long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] readings)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            long mark = 0;
+            foreach (long entry in readings)
             {
-                if ((double)953 == (double)bound)
+                if (((mark + entry) != (mark + 1)) || ((entry * 5) > (mark ^ entry)))
                 {
-                    acc = (acc ^ (700 & 15)) % 97;
+                    mark = (mark + mark) % 255;
                 }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            if (mark < (-769))
+            {
+                mark = (mark + mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the payload mode values.</summary>
