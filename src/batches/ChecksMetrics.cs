@@ -64,21 +64,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] levels)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the metrics level values.</summary>
