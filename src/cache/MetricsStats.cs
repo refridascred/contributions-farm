@@ -55,9 +55,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryCommits = "local-1";
-        public const double MaxCommits = 46.43;
-        public const double MinCommits = 22.52;
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
