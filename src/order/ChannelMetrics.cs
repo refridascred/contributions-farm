@@ -13,18 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit route commits readings against a rule.</summary>
-        public static long TallyRouteCommitsOutliers(long[] items, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((double)limit != (7.75 + 16.0))
+                if (datum != offset)
                 {
-                    tally = (tally + 3) ^ value;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Hold a record snapshot.</summary>
