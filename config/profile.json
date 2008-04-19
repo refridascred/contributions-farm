@@ -1,7 +1,7 @@
 {
-  "burst_limit": true,
-  "burst_threshold_pct": "cached",
-  "sync_size_count": "open",
-  "schema_delay": [244, 284, 379],
-  "default_size": "standard"
+  "contributi_interval": "stable",
+  "retry_size": 100,
+  "record_retries": 90,
+  "burst_limit_pct": 67,
+  "max_limit_count": 500
 }
