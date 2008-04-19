@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] values, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long sum = 2;
+            foreach (long reading in levels)
             {
-                if (entry != offset)
+                if (((sum / 9) < (reading << 2)) || ((sum + sum) < (sum - reading)))
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum * 2) + (sum + (long)levels.Length)) % 101;
+                }
+                else
+                {
+                    sum = (sum * 5) + reading;
                 }
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
