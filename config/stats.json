@@ -1,5 +1,8 @@
 {
-  "layout_depth": [2, 258, 415, 372],
-  "flush_size_s": "blue",
-  "min_window_s": ["legacy", "open"]
+  "cache_capacity_s": "blue",
+  "retry_size": 100,
+  "soft_size_s": 71.88,
+  "compress": 250,
+  "graph_ttl": false,
+  "cache_ratio": true
 }
