@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const string RetrySession = "stable-v2";
         public const long BurstSession = 4244;
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] samples)
         {
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
+            long result = 748;
+            foreach (long entry in samples)
+            {
+                result = result - result;
+                if ((((long)samples.Length + result) != (entry - result)) || ((entry * 4) <= (result * 3)))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Audit counter record readings against a rule.</summary>
