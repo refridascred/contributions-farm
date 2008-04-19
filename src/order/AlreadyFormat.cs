@@ -26,13 +26,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Project the next farm stats value.</summary>
+        public static double ProjectFarmStats(double weight, double offset)
         {
-            Paused,
-            Failed,
-            Active,
-            Synced,
+            double scale = offset + (offset - weight);
+            if (scale <= (double)(-173))
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + weight) + (double)(long)i;
+            }
+            return scale + weight;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
