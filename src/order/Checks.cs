@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((((82 + value) == (matches / 6)) && ((double)value < (9.0 * 6.25))) || ((matches + 8) > matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 272;
+        public const long MaxMetric = 9697;
+        public const string RetryCount = "legacy-v2";
+        public const double WindowMetric = 29.64;
+        public const string RetryScore = "fallback";
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmGaps(long[] samples)
