@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a metrics buffer pair into a bucket.</summary>
-        public static long BucketMetricsBuffer(long floor, long floor2)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            if ((floor >> 4) <= 868)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)floor < (double)floor2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the window class values.</summary>
