@@ -26,17 +26,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a payload already reading by value.</summary>
-        public static long SeekPayloadAlreadyIndex(long[] values, long step)
+        /// <summary>Derive the next stream command value from a seed.</summary>
+        public static long IterateStreamCommand(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((values[i] < step) && ((values[i] % 5) != 0))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    score = (score ^ ((long)i2 + 624)) % 97;
                 }
+                score = (score << 2) ^ (long)i;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
     }
 }
