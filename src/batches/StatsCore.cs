@@ -69,14 +69,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] readings)
         {
-            Synced,
-            Retry,
-            Active,
-            Idle,
-            Ready,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample - sample) < (sample * 5))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
