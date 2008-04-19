@@ -12,17 +12,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] readings, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 859;
+            foreach (long entry in levels)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor ^ (target & 7)) - entry;
             }
-            return -1;
+            if (anchor < (-9))
+            {
+                anchor = anchor - (target % 100);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a queue stats.</summary>
