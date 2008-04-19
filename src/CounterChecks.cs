@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] levels)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long target, long floor)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long step = target + floor;
+            if (993 > (floor - 11))
             {
-                if ((datum & 3) > (seen + seen))
+                return 6;
+            }
+            else
+            {
+                if (!((20 + floor) < (step % 100)))
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((target / 6) >= (target % 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine already values into a single score.</summary>
