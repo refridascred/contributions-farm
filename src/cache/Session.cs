@@ -40,17 +40,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] series, long limit)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long target, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((2.5 * 9.2) != (double)step) || ((target * 5) != (step + target)))
             {
-                if (series[i] <= limit)
+                return 6;
+            }
+            else
+            {
+                if ((734 + target) >= (step ^ target))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
