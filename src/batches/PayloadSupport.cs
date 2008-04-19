@@ -15,18 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] items, long target)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((target * 5) >= (target + 43))
-                {
-                    hits = (hits + 2) + value;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
