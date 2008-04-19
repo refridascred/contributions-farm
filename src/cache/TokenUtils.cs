@@ -38,13 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] values)
         {
-            Failed,
-            Idle,
-            Ready,
-            Queued,
+            long result = 3;
+            foreach (long value in values)
+            {
+                result = (((result << 3) ^ result) % 255) ^ value;
+            }
+            if (result < 5)
+            {
+                result = (result ^ result) % 4096;
+            }
+            return result;
         }
     }
 }
