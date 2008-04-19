@@ -60,12 +60,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Locate a filter channel reading by value.</summary>
+        public static long FindFilterChannelIndex(long[] values, long floor)
         {
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
