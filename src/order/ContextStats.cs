@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] series, long offset)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((double)seen > (double)offset)
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
