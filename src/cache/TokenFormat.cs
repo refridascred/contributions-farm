@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] values)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (cell <= 9)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public double Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
