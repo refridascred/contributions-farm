@@ -1,5 +1,5 @@
 {
-  "retry_interval_pct": false,
-  "min_ttl_count": "cached",
-  "max_interval": false
+  "audit": "staging",
+  "sync_ttl_count": 43.13,
+  "idle_delay": false
 }
