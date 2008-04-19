@@ -1,5 +1,5 @@
 {
-  "idle_window_s": 9962,
-  "min_threshold_pct": "stable",
-  "entry_capacity": 30.03
+  "dry_run": [116, 330, 484],
+  "batches_retries": 4228,
+  "soft_threshold_s": "cached"
 }
