@@ -38,19 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] values, long bound)
+        /// <summary>Count the account stats entries that pass the check.</summary>
+        public static long CountAccountStatsMatches(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (sample < bound)
+                if (((-1) + cell) == (1 + hits))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
