@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] series)
+        /// <summary>Accumulate report githubfarm samples.</summary>
+        public static long TallyReportGithubfarm(long[] samples)
         {
-            long mark = 3;
-            foreach (long sample in series)
+            long result = 482;
+            foreach (long reading in samples)
             {
-                mark = ((mark << 2) ^ sample) % 65521;
-                mark = ((mark << 2) ^ mark) % 101;
+                if ((reading + result) >= (76 - reading))
+                {
+                    result = result + (reading << 3);
+                }
+                else
+                {
+                    result = result - (reading ^ reading);
+                }
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
