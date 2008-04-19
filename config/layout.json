@@ -1,20 +1,6 @@
 {
-  "dry_run": {
-    "queue_ttl": "green",
-    "base_depth_ms": {
-      "max_delay_count": 250,
-      "audit": 500,
-      "batch_window": false
-    },
-    "report_capacity": [484, 315],
-    "cache_limit_ms": true
-  },
-  "idle_threshold": "latest",
-  "cache_timeout": [78, 419],
-  "verbose": {
-    "base_window": 8.33,
-    "flush_limit_pct": false,
-    "cache_limit": false
-  },
-  "retry_delay_count": false
+  "buffer_size": 43.16,
+  "warm_retries": "green",
+  "dry_run": "latest",
+  "poll_delay_pct": "standard"
 }
