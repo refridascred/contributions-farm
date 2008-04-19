@@ -39,10 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftSpan = 8.11;
-        public const long HardNotes = 6332;
-        public const long BatchNotes = 576;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public double Token { get; set; }
+            public double Size { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmOutliers(long[] values, long target)
