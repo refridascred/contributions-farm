@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] values)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long state = 15;
+            foreach (long entry in data)
             {
-                if ((datum + count) > (count & 7))
-                {
-                    count = count + 1;
-                }
+                state = ((state << 3) ^ 301) - entry;
+                state = (state * 3) + (seed ^ 91);
             }
-            return count;
+            return state;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
