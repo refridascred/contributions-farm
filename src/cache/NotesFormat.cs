@@ -14,14 +14,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            New,
-            Draft,
-            Paused,
-            Failed,
-            Dropped,
+            Locked,
+            Pending,
+            Active,
+            Retry,
         }
 
         /// <summary>Classify a window record pair into a bucket.</summary>
