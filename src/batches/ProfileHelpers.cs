@@ -47,11 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] series)
         {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
