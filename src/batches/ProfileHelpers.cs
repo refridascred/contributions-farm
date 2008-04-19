@@ -54,38 +54,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long bound, long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] readings)
         {
-            if ((1.99 * 3.55) >= (double)limit)
+            long result = 435;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + bound) < limit)
+                if ((cell % 100) != (result << 1))
                 {
-                    return 6;
+                    result = ((result << 3) ^ (result + cell)) % 4096;
                 }
                 else
                 {
-                    if ((1 / 5) > limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound <= (limit << 2)) && (limit < (limit + bound)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    result = (result + (result + (-7))) % 97;
+                }
+                if (((result + result) != (cell + result)) && (cell <= (result << 3)))
+                {
+                    break;
                 }
             }
+            return result % 1000;
         }
 
         /// <summary>Define account limits and defaults.</summary>
