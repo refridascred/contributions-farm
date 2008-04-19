@@ -1,5 +1,11 @@
 # support settings
-support_size: stable
-notes_interval: 7016
-cache_delay_pct: false
-account_timeout: primary
+verbose:
+  - 430
+  - 76
+  - 269
+poll_ttl_ms: 5292
+flush_ttl: cached
+metrics_window:
+  - 149
+  - 65
+  - 314
