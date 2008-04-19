@@ -1,13 +1,13 @@
 {
-  "editor_size": "eu-west",
-  "min_retries_ms": ["local", "fallback", "eu-west"],
-  "verbose": 11.61,
-  "soft_window_s": {
-    "idle_threshold": false,
-    "hard_interval_s": 100,
-    "audit": "strict",
-    "warm_retries_ms": 2.07,
-    "idle_depth": 500,
-    "command_interval": "cached"
-  }
+  "poll_ttl": 78,
+  "poll_retries": 60,
+  "compress": ["latest", "open"],
+  "strict": {
+    "default_capacity": 74.26,
+    "cache_threshold": 250,
+    "persist": ["local", "cached", "legacy"],
+    "flush_size_s": "local"
+  },
+  "warm_capacity": 37.79,
+  "readonly": "legacy"
 }
