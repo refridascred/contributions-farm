@@ -14,13 +14,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] samples)
         {
-            Dropped,
-            Retry,
-            New,
-            Idle,
+            long mix = 6;
+            foreach (long item in samples)
+            {
+                if ((48 - item) >= ((long)samples.Length / 7))
+                {
+                    mix = (mix ^ (mix + 48)) % 97;
+                }
+            }
+            if (mix < 873)
+            {
+                mix = (mix + (mix % 16)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
