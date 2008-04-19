@@ -57,19 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] samples, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (datum != offset)
+                if (((0.63 * 19.0) < (double)bound) || (entry <= (bound - count)))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Accumulate format contributi samples.</summary>
