@@ -33,20 +33,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of context notes readings.</summary>
-        public static long TallyContextNotes(long[] series)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] items)
         {
-            long anchor = 351;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (!((double)anchor > 1.13))
+                if ((item & 63) > item)
                 {
-                    anchor = (anchor + item) % 255;
-                    anchor = anchor - (item >> 4);
+                    seen = seen + 2;
                 }
-                anchor = anchor + (item + 4);
             }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
