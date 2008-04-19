@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 8957;
-        public const long WindowChecks = 4928;
-        public const string CacheChecks = "fallback-edge";
-        public const long BatchChecks = 9369;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 7819;
+        public const long CacheRatio = 3540;
+        public const long WindowRatio = 2104;
+        public const long LimitBuffer = 9669;
 
         /// <summary>Match up route samples.</summary>
         public static long CompareRouteCount(long[] items)
