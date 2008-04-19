@@ -51,32 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long floor, long target)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long cur = floor ^ target;
-            if ((target << 3) == (floor ^ target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor == (double)target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)floor < 6.4) && (cur < (8 & 127)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Retry,
+            Closed,
+            Idle,
         }
     }
 }
