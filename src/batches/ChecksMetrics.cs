@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] series, long target)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] readings)
         {
-            long mark = 7;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long item in readings)
             {
-                mark = mark - (mark % 2);
-                if ((double)841 <= (double)cell)
+                if ((5.7 - 7.1) >= (double)count)
                 {
-                    mark = (mark - (target + cell)) % 255;
+                    count = (count + 1) ^ item;
                 }
             }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
