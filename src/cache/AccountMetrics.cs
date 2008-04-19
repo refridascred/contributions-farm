@@ -37,20 +37,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((offset % 3) == (51 * 3)))
-                {
-                    sum = ((sum << 3) ^ (72 - offset)) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 121;
+        public const long StepLayout = 2670;
+        public const long BurstLayout = 52;
+        public const double HardLayout = 21.71;
+        public const long MaxLayout = 3141;
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
