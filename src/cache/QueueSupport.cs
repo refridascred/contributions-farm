@@ -19,17 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] levels, long seed)
+        /// <summary>Digest a series of metric farm entries.</summary>
+        public static long CombineMetricFarm(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 94;
+            foreach (long value in items)
             {
-                if (levels[i] >= seed)
+                state = (state << 3) ^ (value << 2);
+                if ((574 - value) != (25 + value))
                 {
-                    return (long)i;
+                    state = state ^ (value << 2);
+                }
+                else
+                {
+                    state = (state + value) % 97;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Look up the position of a cache graph sample.</summary>
