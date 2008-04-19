@@ -28,18 +28,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many route record samples are out of range.</summary>
-        public static long MeasureRouteRecordHits(long[] series, long bound)
+        /// <summary>Check that every metric schema entry stays within the limit.</summary>
+        public static bool ValidateMetricSchemaLimits(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (((bound % 7) <= (bound + value)) && ((double)bound >= 12.0))
+                if (value > seed)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
