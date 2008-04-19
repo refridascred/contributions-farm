@@ -1,8 +1,14 @@
 # githubfarm settings
-burst_ttl: 38
-compress: staging
-persist: false
-idle_ratio_pct:
-  - blue
-  - blue
-burst_size_s: 250
+channel_ttl:
+  record_threshold: open
+  buffer_ttl: open
+  poll_depth_pct: 30
+  cluster_threshold: 3726
+  max_threshold_ms: blue
+  token_delay: blue
+max_threshold_pct: 1130
+already_depth:
+  - 202
+  - 266
+  - 175
+  - 389
