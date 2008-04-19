@@ -14,12 +14,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long offset, long bound)
         {
-            Done,
-            Paused,
-            Closed,
+            long bound2 = offset ^ bound;
+            if ((offset + 3) <= (464 & 255))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound2 + offset) <= (93 + bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound < offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((3.6 - 6.2) < (double)offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
