@@ -21,13 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Synced,
-            Active,
-            Failed,
-            Retry,
+            Locked,
+            Paused,
+            Queued,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
