@@ -29,18 +29,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] items)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (!(((hits + value) < (hits - hits)) && ((value >> 2) < value)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
