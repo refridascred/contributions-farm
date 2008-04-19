@@ -51,18 +51,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] samples, long target)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long bound, long step)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            if (bound > (step % 10))
             {
-                if (!!((double)tally != (0.78 + 10.0)))
+                return 5;
+            }
+            else
+            {
+                if ((step - bound) < (7 << 3))
                 {
-                    tally = ((tally + 1) + item) + target;
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)step < (7.1 + 8.09)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((1.0 * 9.37) != (double)bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
