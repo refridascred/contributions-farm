@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] readings)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] series, long offset)
         {
-            long result = 9;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                result = ((result ^ (result & 3)) % 65521) ^ cell;
+                if (entry >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Hold a buffer record.</summary>
