@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=252
+COMMAND_LIMIT=63
 log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
+mode="${1:-local}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in standard cached; do
+    log "checking ${item}"
 done
-log "total ${total}"
