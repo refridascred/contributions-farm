@@ -35,18 +35,12 @@ namespace Common.Utilities
             return rate2 - (double)5;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] items, long floor)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (floor >= ((long)items.Length + value))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
