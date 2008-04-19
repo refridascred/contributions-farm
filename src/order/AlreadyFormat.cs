@@ -13,11 +13,33 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 7516;
-        public const long MaxContext = 1680;
-        public const long CacheSize = 629;
-        public const long IdleContext = 5594;
+        /// <summary>Classify a window counter pair into a bucket.</summary>
+        public static long RankWindowCounter(long bound, long offset)
+        {
+            long gap = bound + offset;
+            if ((4.0 + 8.0) < (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)bound >= 5.42) || ((offset - 2) != (offset - gap)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((14.0 * 3.52) < (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long ScoreMetric(long[] series, long limit)
