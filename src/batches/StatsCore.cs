@@ -57,19 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] readings, long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] values)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (datum >= step)
+                if (((item - item) > (count - 9)) || ((count < item) && ((count - count) != (count / 3))))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
