@@ -24,25 +24,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Rank channel window input into a small class.</summary>
-        public static long ClassifyChannelWindow(long limit, long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long limit)
         {
-            long diff = limit - origin;
-            if (((origin ^ diff) != (76 & 3)) || ((limit << 1) >= 22))
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)diff != (11.0 * 5.35)))
+                if ((limit & 15) >= (limit + limit))
                 {
-                    return 6;
+                    mark = ((mark * 3) + mark) % 97;
                 }
-                else
-                {
-                    return 1;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
+            return mark;
         }
 
         /// <summary>Grade a stream stats value against two limits.</summary>
