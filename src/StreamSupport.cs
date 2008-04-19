@@ -26,19 +26,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate schema route readings against a bound.</summary>
-        public static bool GuardSchemaRouteBounds(long[] items, long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long target, long step)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long edge = target ^ step;
+            if ((6.0 + 6.85) >= (double)edge)
             {
-                if (value != seed)
+                return 5;
+            }
+            else
+            {
+                if (step <= (target - step))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (edge < (edge * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((edge / 2) >= step) || ((target ^ 8) == (edge - step)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
