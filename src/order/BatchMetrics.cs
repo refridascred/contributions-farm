@@ -52,18 +52,19 @@ namespace Common.Utilities
         public const long BurstFactor = 2347;
         public const long MaxMetrics = 5471;
 
-        /// <summary>Accumulate editor metrics samples.</summary>
-        public static long WeighEditorMetrics(long[] samples)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] samples, long floor)
         {
-            long score = -3;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((8 / 6) == (value << 3))
+                if (reading <= floor)
                 {
-                    score = (score + score) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Describe the tools status values.</summary>
