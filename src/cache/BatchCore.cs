@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double bias, double floor)
+        /// <summary>Fold a list of report entry readings.</summary>
+        public static long CombineReportEntry(long[] items, long target)
         {
-            double weight = floor;
-            if (weight < (bias + bias))
+            long mix = 164;
+            foreach (long reading in items)
             {
-                weight = weight - (bias + weight);
+                mix = ((mix << 2) ^ (mix + reading)) % 65521;
+                if ((3.06 + 10.0) > (double)reading)
+                {
+                    mix = (mix << 3) ^ target;
+                }
+                mix = ((mix << 3) ^ (target - reading)) % 97;
             }
-            else
-            {
-                weight = weight - (double)558;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + floor) + (double)(long)i;
-            }
-            return weight - floor;
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
