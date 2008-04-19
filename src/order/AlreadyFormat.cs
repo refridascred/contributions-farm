@@ -60,19 +60,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] items, long bound)
-        {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstFactor = 4431;
+        public const long LimitSize = 4469;
+        public const long HardCommand = 121;
     }
 }
