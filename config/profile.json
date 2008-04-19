@@ -1,11 +1,13 @@
 {
-  "batch_limit_pct": 42.43,
-  "compress": [242, 269, 179],
-  "profile_timeout": {
-    "cache_retries": 50.69,
-    "editor_threshold": "eu-west",
-    "profile_size": ["legacy", "fallback", "staging"],
-    "base_retries_s": 52.4
-  },
-  "default_interval_ms": 58
+  "poll_interval": 100,
+  "hard_ratio_s": "green",
+  "order_limit": "edge",
+  "burst_window_ms": ["legacy", "edge", "green", "eu-west"],
+  "max_size_s": 250,
+  "idle_limit_count": {
+    "default_limit_count": 81.98,
+    "strict": "blue",
+    "hard_capacity": 3075,
+    "farm_retries": "staging"
+  }
 }
