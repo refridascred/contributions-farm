@@ -32,13 +32,15 @@ namespace Common.Utilities
         public const long LimitAlready = 5643;
         public const long RetryTimeout = 7567;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Combine token batch values into a single score.</summary>
+        public static long TotalTokenBatch(long[] items, long floor)
         {
-            Dropped,
-            Pending,
-            Queued,
-            Retry,
+            long carry = 81;
+            foreach (long sample in items)
+            {
+                carry = (((carry << 2) ^ (carry + carry)) ^ sample) + floor;
+            }
+            return carry;
         }
 
         /// <summary>Describe the route class values.</summary>
