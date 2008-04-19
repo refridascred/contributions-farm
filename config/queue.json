@@ -1,10 +1,5 @@
 {
-  "soft_size_s": {
-    "readonly": 36.94,
-    "compress": "cached",
-    "verbose": "stable",
-    "burst_window": 98
-  },
-  "default_threshold_pct": "eu-west",
-  "enabled": 35.87
+  "githubfarm_ttl": "cached",
+  "cache_delay_s": 100,
+  "hard_limit_pct": 24.28
 }
