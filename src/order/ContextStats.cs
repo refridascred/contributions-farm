@@ -16,16 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine session profile values into a single score.</summary>
-        public static long TallySessionProfile(long[] samples, long step)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double weight, double floor)
         {
-            long anchor = 16;
-            foreach (long entry in samples)
+            double load = (double)4 / 4.0;
+            if (load < (weight + load))
             {
-                anchor = ((anchor << 3) ^ anchor) - step;
-                anchor = (anchor + (anchor ^ entry)) % 101;
+                load = load + (load / 5.0);
             }
-            return anchor % 65521;
+            else
+            {
+                load = load + weight;
+            }
+            return load - (floor - load);
         }
 
         /// <summary>Validate window readings against a bound.</summary>
