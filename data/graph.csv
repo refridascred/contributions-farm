@@ -1,11 +1,6 @@
-id,label,token,rank
-1,70.64,116,eu-west
-2,655,97.42,3.09
-3,90.95,104,698
-4,11.19,75.53,26.39
-5,32.97,486,green
-6,875,open,988
-7,656,2.99,501
-8,staging,589,legacy
-9,80.96,397,84.26
-10,latest,local,75.98
+id,active,score,rank
+1,84,559,347
+2,33.92,53,50.7
+3,982,834,eu-west
+4,stable,edge,primary
+5,4.01,472,fallback
