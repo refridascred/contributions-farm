@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] levels, long offset)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double gain, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = gain;
+            if (ratio >= (double)35)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (gain + floor);
             }
-            return -1;
+            else
+            {
+                ratio = ratio + (gain + 9.0);
+            }
+            return ratio + floor;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
