@@ -57,19 +57,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits graph samples are out of range.</summary>
-        public static long AuditCommitsGraphMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample & 15) >= (hits - sample))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepCommand = "standard-v2";
+        public const string LimitCommand = "strict-edge";
+        public const long SoftCommand = 8614;
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
