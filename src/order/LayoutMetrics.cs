@@ -42,12 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] values, long floor)
+        /// <summary>Locate a format schema reading by value.</summary>
+        public static long SeekFormatSchemaIndex(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] > floor) && ((values[i] % 2) == 0))
+                if ((readings[i] < step) && ((readings[i] % 5) != 0))
                 {
                     return (long)i;
                 }
