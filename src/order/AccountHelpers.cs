@@ -40,19 +40,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double weight, double span)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] values)
         {
-            double rate = span;
-            if (rate > (rate - 8.8))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate + 1.9;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - (weight - span);
-            }
-            return rate - rate;
+            return matches;
         }
 
         /// <summary>Hold a tools info.</summary>
