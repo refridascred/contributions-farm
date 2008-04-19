@@ -27,23 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] items, long limit)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] values)
         {
-            long state = -13;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 2; i++)
+                if ((cell >= (count + cell)) && ((7.84 - 1.0) <= (double)count))
                 {
-                    state = ((((state << 3) ^ (limit + state)) % 1000) ^ (long)i) ^ value;
-                    state = (state - limit) % 4096;
-                }
-                if ((double)limit != (double)88)
-                {
-                    state = (state - (state - limit)) % 97;
+                    count = count + 2;
                 }
             }
-            return state;
+            return count;
         }
     }
 }
