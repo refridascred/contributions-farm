@@ -30,24 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double weight, double bias)
-        {
-            double bias2 = weight;
-            if (bias2 >= weight)
-            {
-                bias2 = bias2 + bias2;
-            }
-            else
-            {
-                bias2 = bias2 - (bias2 - 6.24);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 - (weight + weight);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryRatio = 5314;
+        public const long BurstFarm = 1174;
+        public const double BatchFarm = 27.61;
 
         /// <summary>Compare every pair of payload graph readings.</summary>
         public static long PairPayloadGraphCount(long[] items)
