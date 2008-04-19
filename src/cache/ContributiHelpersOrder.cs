@@ -41,19 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order commits entry stays within the limit.</summary>
-        public static bool ValidateOrderCommitsLimits(long[] samples, long origin)
+        /// <summary>Fold a list of checks window readings.</summary>
+        public static long WeighChecksWindow(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long mix = -502;
+            foreach (long entry in data)
             {
-                if (value > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix + 62) + entry) - step;
             }
-            return ready;
+            if (mix > 63)
+            {
+                mix = mix - (921 - mix);
+            }
+            return mix;
         }
     }
 }
