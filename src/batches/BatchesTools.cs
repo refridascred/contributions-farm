@@ -20,10 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchScore = 3937;
-        public const string StepContributi = "staging-edge";
-        public const string WindowFactor = "legacy-v2";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSize = 3617;
+        public const long RetrySession = 767;
+        public const long IdleSession = 3125;
+        public const long DefaultBudget = 51;
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long BucketEditor(long target, long offset)
