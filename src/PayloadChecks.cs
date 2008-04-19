@@ -18,24 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] data, long limit)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long total = 9;
-            foreach (long cell in data)
-            {
-                total = total ^ (total % 24);
-                total = total ^ (limit - 887);
-                if ((cell % 8) > cell)
-                {
-                    total = ((total << 2) ^ limit) % 101;
-                }
-            }
-            if (total < 634)
-            {
-                total = (total << 3) ^ limit;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Blend two session measurements.</summary>
