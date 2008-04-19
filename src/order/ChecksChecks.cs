@@ -16,25 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long origin, long limit)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] items, long step)
         {
-            long bound = origin ^ limit;
-            if ((bound % 3) > (origin * 3))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((bound + origin) > (limit + 187)))
+                if ((items[i] == step) && ((items[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two token measurements.</summary>
