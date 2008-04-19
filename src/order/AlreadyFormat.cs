@@ -13,32 +13,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a window counter pair into a bucket.</summary>
-        public static long RankWindowCounter(long bound, long offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] readings, long offset)
         {
-            long gap = bound + offset;
-            if ((4.0 + 8.0) < (double)bound)
+            long score = 6;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)bound >= 5.42) || ((offset - 2) != (offset - gap)))
+                if ((offset - score) > (score + cell))
                 {
-                    return 2;
+                    score = (score * 5) + (offset - offset);
                 }
-                else
+                if ((offset ^ score) < score)
                 {
-                    if ((14.0 * 3.52) < (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return score % 1000;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
