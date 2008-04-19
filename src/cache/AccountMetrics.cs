@@ -55,21 +55,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] samples)
+        /// <summary>Combine cluster account values into a single score.</summary>
+        public static long DigestClusterAccount(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 68;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (((sum << 2) ^ (477 << 2)) % 101) ^ value;
             }
-            return hits;
+            if (sum < 1)
+            {
+                sum = ((sum * 5) + (8 & 31)) % 1000;
+            }
+            return sum % 65521;
         }
     }
 }
