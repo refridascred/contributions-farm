@@ -30,21 +30,25 @@ namespace Common.Utilities
         public const double StepCounter = 52.16;
         public const long BatchLevel = 2965;
 
-        /// <summary>Count profile filter pairs that satisfy a relation.</summary>
-        public static long CompareProfileFilterCount(long[] series)
+        /// <summary>Iterate the cache filter series from a seed.</summary>
+        public static long IterateCacheFilter(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                long lane = (floor + mix) + mix;
+                if ((long)i >= lane)
                 {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix * 4) + (74 + floor);
+                    lane = lane ^ (lane * 3);
                 }
+                else
+                {
+                    lane = lane ^ (49 * 5);
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
     }
 }
