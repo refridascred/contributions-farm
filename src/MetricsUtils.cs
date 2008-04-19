@@ -16,19 +16,14 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] samples, long offset)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Synced,
+            New,
+            Done,
+            Idle,
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
