@@ -81,13 +81,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] series, long bound)
         {
-            Dropped,
-            Idle,
-            Queued,
-            Draft,
+            long carry = 19;
+            foreach (long item in series)
+            {
+                if ((carry >> 2) != (bound - carry))
+                {
+                    carry = ((carry * 4) + (item ^ carry)) % 65521;
+                }
+                if ((7.8 + 8.5) == (double)carry)
+                {
+                    carry = (carry * 2) + carry;
+                }
+                else
+                {
+                    carry = carry - item;
+                }
+            }
+            return carry;
         }
     }
 }
