@@ -12,19 +12,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] readings, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((3 / 9) != (offset % 60)))
+                if (readings[i] <= limit)
                 {
-                    state = (state - ((long)i % 64)) % 1000;
+                    return (long)i;
                 }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
