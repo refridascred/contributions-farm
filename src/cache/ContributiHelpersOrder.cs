@@ -13,36 +13,29 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long bound, long seed)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long limit, long seed)
         {
-            long slot = bound + seed;
-            if ((8 + 956) < (bound / 6))
+            long step = limit ^ seed;
+            if ((7.0 / 5.0) >= (double)step)
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if (16.0 < (double)seed)
+                if ((limit + seed) > (seed * 2))
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    if (seed < (slot >> 2))
+                    if (5.72 <= (double)step)
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        if ((24 - seed) >= (slot ^ slot))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 4;
                     }
                 }
             }
