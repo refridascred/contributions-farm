@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric editor readings.</summary>
-        public static long TallyMetricEditor(long[] levels, long floor)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long carry = 51;
-            foreach (long sample in levels)
-            {
-                carry = carry + (floor << 3);
-                if ((91 >> 2) <= (sample - carry))
-                {
-                    carry = carry + (carry & 255);
-                }
-            }
-            if (carry < 28)
-            {
-                carry = (carry ^ ((-601) + carry)) % 255;
-            }
-            return carry;
+            Queued,
+            Failed,
+            Pending,
         }
 
         /// <summary>Describe the filter class values.</summary>
