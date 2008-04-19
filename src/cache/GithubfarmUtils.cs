@@ -69,21 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] levels)
+        /// <summary>Measure how many notes profile samples are out of range.</summary>
+        public static long MeasureNotesProfileOutliers(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((matches >= (1 + matches)) || ((matches > (matches * 5)) || (item > (2 & 15))))
                 {
-                    if ((levels[i] ^ levels[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
