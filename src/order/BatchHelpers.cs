@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double gain, double floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] values, long seed)
         {
-            double rate = gain;
-            if (rate >= (floor / 7.0))
+            bool ok = true;
+            foreach (long sample in values)
             {
-                rate = rate - rate;
+                if (sample > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + floor;
-            }
-            return rate - rate;
+            return ok;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
