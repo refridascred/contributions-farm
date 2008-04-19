@@ -31,31 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a stream stats value against two limits.</summary>
-        public static long GradeStreamStats(long target, long seed)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] items, long limit)
         {
-            if ((double)seed >= 3.2)
+            bool stale = true;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target & 3) >= (seed & 127))
+                if (item < limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target == (1.89 * 7.7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
