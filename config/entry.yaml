@@ -1,21 +1,18 @@
 # entry settings
-min_capacity_count: 26.92
-cluster_depth: 94.31
-warm_limit_ms: 30.9
-flush_interval_count: 71.74
-base_depth_ms:
-  verbose: 19.12
-  cache_threshold_pct:
-    burst_threshold_ms:
-      - stable
-      - open
-    retry_window_ms: 70
-    dry_run: legacy
-    record_capacity: stable
-  base_retries_count: 250
-  hard_ratio_pct: true
-  stats_limit:
-    - latest
-    - eu-west
-    - eu-west
-  sync_depth_s: 500
+soft_limit_pct:
+  poll_capacity: 10.93
+  editor_timeout:
+    - 400
+    - 203
+    - 89
+  poll_threshold: 60.38
+  readonly: 80.1
+  already_threshold: 250
+batch_threshold:
+  - 176
+  - 97
+  - 221
+  - 37
+min_threshold: 22
+hard_delay_pct: latest
+batch_window_s: 30.2
