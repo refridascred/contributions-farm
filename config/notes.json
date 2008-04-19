@@ -1,24 +1,6 @@
 {
-  "soft_capacity_pct": 28,
-  "checks_retries": "stable",
-  "min_limit": {
-    "cache_ratio": {
-      "hard_window_count": 63,
-      "batch_interval_ms": false,
-      "poll_capacity_count": false,
-      "cache_delay": 2166,
-      "queue_interval": 1099,
-      "compress": "stable"
-    },
-    "default_interval": ["legacy", "local", "blue"],
-    "enabled": "legacy",
-    "record_interval": true,
-    "order_ttl": 72.97,
-    "idle_limit_ms": {
-      "record_ttl": "eu-west",
-      "compress": 47.89,
-      "cache_ttl_s": "latest"
-    }
-  },
-  "editor_retries": 7922
+  "enabled": "fallback",
+  "record_ratio": "staging",
+  "dry_run": true,
+  "default_depth_s": 45
 }
