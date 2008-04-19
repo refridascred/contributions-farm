@@ -27,12 +27,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleSpan = 9020;
-        public const double StepBuffer = 47.93;
-        public const double IdleDepth = 25.61;
-        public const double MaxInterval = 58.15;
-        public const long DefaultCount = 4764;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            New,
+            Idle,
+            Closed,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
