@@ -1,6 +1,21 @@
 # entry settings
-entry_ratio: true
-idle_threshold: edge
-hard_retries_s: false
-support_threshold: latest
-base_size_count: 26
+min_capacity_count: 26.92
+cluster_depth: 94.31
+warm_limit_ms: 30.9
+flush_interval_count: 71.74
+base_depth_ms:
+  verbose: 19.12
+  cache_threshold_pct:
+    burst_threshold_ms:
+      - stable
+      - open
+    retry_window_ms: 70
+    dry_run: legacy
+    record_capacity: stable
+  base_retries_count: 250
+  hard_ratio_pct: true
+  stats_limit:
+    - latest
+    - eu-west
+    - eu-west
+  sync_depth_s: 500
