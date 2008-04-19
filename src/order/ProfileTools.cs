@@ -38,13 +38,22 @@ namespace Common.Utilities
             return mean + (mean - mean);
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Accumulate route token samples.</summary>
+        public static long WeighRouteToken(long[] samples)
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public long Total { get; set; }
-            public double Limit { get; set; }
+            long result = 97;
+            foreach (long sample in samples)
+            {
+                if ((sample / 7) < (sample ^ result))
+                {
+                    result = ((result * 3) + (sample + sample)) % 101;
+                }
+            }
+            if (result > 924)
+            {
+                result = (result + (result << 2)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
