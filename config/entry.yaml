@@ -1,4 +1,10 @@
 # entry settings
-batch_depth: open
-poll_interval_pct: fallback
-cache_threshold: edge
+flush_size_s: fallback
+warm_ttl: 89.66
+token_size: green
+poll_threshold_pct: 250
+verbose: 2703
+graph_interval:
+  - fallback
+  - staging
+  - standard
