@@ -43,19 +43,21 @@ namespace Common.Utilities
             return scale + (bias + scale);
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] data, long seed)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a contributi summary.</summary>
