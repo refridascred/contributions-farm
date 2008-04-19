@@ -20,10 +20,19 @@ namespace Common.Utilities
             return scale2 - (double)290;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheScore = 4253;
-        public const string MinSpan = "latest-edge";
-        public const long IdleInterval = 903;
+        /// <summary>Measure how many metric record samples are out of range.</summary>
+        public static long AuditMetricRecordHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((value + 688) < (0 - value))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheHits(long[] values)
