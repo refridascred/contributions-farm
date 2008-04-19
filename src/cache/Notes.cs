@@ -54,13 +54,25 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Rank entry context input into a small class.</summary>
+        public static long RankEntryContext(long offset, long limit)
         {
-            Locked,
-            Queued,
-            Ready,
-            Pending,
+            long next = offset - limit;
+            if (((7.0 * 9.0) == (double)limit) || ((offset + next) == (2 / 8)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((offset - next) != (next + limit)) && ((offset + limit) < (offset * 4)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
