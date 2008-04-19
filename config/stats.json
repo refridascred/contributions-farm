@@ -1,19 +1,8 @@
 {
-  "editor_window": 67.93,
-  "warm_ttl": ["local", "strict"],
-  "idle_threshold_pct": {
-    "session_retries": 23,
-    "layout_timeout": "blue",
-    "retry_ratio_ms": 12.41,
-    "verbose": 250,
-    "sync_limit": {
-      "account_delay": 59,
-      "sync_capacity_count": 3351,
-      "already_ttl": 9,
-      "enabled": 88,
-      "sync_delay": "fallback",
-      "verbose": 1.97
-    }
-  },
-  "poll_window_pct": 3409
+  "soft_ttl_pct": 92.14,
+  "warm_ratio_ms": false,
+  "verbose": 6,
+  "enabled": ["eu-west", "cached", "standard", "fallback"],
+  "format_ttl": 119,
+  "hard_delay_ms": true
 }
