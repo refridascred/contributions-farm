@@ -10,14 +10,22 @@ namespace Common.Utilities
         public const long BaseRecord = 7391;
         public const string BatchRecord = "local-1";
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Digest a series of metric batch entries.</summary>
+        public static long TallyMetricBatch(long[] readings)
         {
-            Idle,
-            Dropped,
-            Failed,
-            New,
-            Queued,
+            long mark = 2;
+            foreach (long datum in readings)
+            {
+                if (503 <= mark)
+                {
+                    mark = ((mark - (mark / 7)) % 4096) + datum;
+                }
+            }
+            if (mark > 217)
+            {
+                mark = (mark * 3) + mark;
+            }
+            return mark;
         }
 
         /// <summary>Blend two notes measurements.</summary>
