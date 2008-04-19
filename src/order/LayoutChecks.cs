@@ -56,14 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Dropped,
-            New,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchContext = 75.21;
+        public const long MinContext = 8152;
+        public const long WindowContext = 1519;
+        public const long LimitCount = 2808;
+        public const long BurstContext = 1842;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LocateFarmIndex(long[] items, long step)
