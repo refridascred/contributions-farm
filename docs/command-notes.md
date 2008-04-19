@@ -1,11 +1,10 @@
 # Command notes
 
-A cache that stays idle for too long is moved to the schema list.
-Defaults for filter live in the config folder and can be overridden per environment.
+When a entry fails, the token handler retries a few times before giving up.
+Each queue is validated before it reaches the route queue.
 
 ## Guidelines
 
-- Validate queue input early
-- Keep account values small
-- Review cache limits each release
-- Document new githubfarm fields
+- Document new editor fields
+- Log every commits change
+- Validate farm input early
