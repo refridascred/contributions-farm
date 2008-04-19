@@ -14,16 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] data)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long state = 18;
-            foreach (long datum in data)
-            {
-                state = ((state - state) % 101) + datum;
-                state = (state ^ (842 << 1)) % 1000;
-            }
-            return state;
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a support header.</summary>
