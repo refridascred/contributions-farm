@@ -13,19 +13,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] readings)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] data)
         {
-            long mark = 995;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (((mark << 2) ^ (mark << 3)) % 255) - item;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mark > 9)
-            {
-                mark = (mark ^ (mark >> 1)) % 4096;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
