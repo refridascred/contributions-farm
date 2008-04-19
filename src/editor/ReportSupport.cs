@@ -26,12 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxDepth = "primary-edge";
-        public const long SoftInterval = 813;
-        public const double CacheTimeout = 16.41;
-        public const double SoftAlready = 61.82;
-        public const string DefaultAlready = "staging-1";
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] samples, long bound)
+        {
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
