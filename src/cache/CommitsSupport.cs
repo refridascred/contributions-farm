@@ -47,15 +47,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Derive the next batches commits value from a seed.</summary>
-        public static long DeriveBatchesCommits(long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] series, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
+            bool found = true;
+            foreach (long cell in series)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                if (cell < bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
