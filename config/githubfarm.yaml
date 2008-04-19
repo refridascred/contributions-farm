@@ -1,5 +1,19 @@
 # githubfarm settings
-audit: green
-compress: stable
-strict: false
-idle_threshold: 35.89
+compress:
+  cache_limit_s: false
+  warm_capacity_count: 250
+  enabled: latest
+  flush_retries_pct:
+    warm_threshold_count:
+      - 269
+      - 358
+      - 364
+      - 153
+    cache_ttl_ms: true
+    default_interval: standard
+    retry_retries: local
+    graph_ratio: true
+  already_capacity: 54
+githubfarm_depth: 35
+persist: 67.0
+token_ttl: cached
