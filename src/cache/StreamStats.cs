@@ -19,19 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] levels, long target)
+        /// <summary>Measure how many batches window samples are out of range.</summary>
+        public static long MeasureBatchesWindowHits(long[] values)
         {
-            long anchor = 859;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                anchor = (anchor ^ (target & 7)) - entry;
+                if ((seen >= (reading >> 2)) || ((reading < (reading & 127)) || ((-35) < (82 + seen))))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (anchor < (-9))
-            {
-                anchor = anchor - (target % 100);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a token entry.</summary>
