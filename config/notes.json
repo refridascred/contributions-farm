@@ -1,8 +1,6 @@
 {
-  "readonly": 14,
-  "token_limit": "eu-west",
-  "enabled": true,
-  "hard_retries": 482,
-  "cache_depth": "open",
-  "sync_capacity": "green"
+  "strict": 28.56,
+  "flush_window_count": 75,
+  "flush_interval_s": 1024,
+  "channel_capacity": 500
 }
