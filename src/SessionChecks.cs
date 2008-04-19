@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double gain, double offset)
-        {
-            double load = offset;
-            if (load <= load)
-            {
-                load = load - (double)(-76);
-            }
-            else
-            {
-                load = load + (gain + load);
-            }
-            return load - (double)6;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSize = 4.13;
+        public const long IdleSupport = 2164;
+        public const double IdleTimeout = 64.22;
+        public const long WindowSupport = 6857;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long RankLayout(long floor, long origin)
