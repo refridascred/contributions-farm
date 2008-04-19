@@ -17,19 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] items, long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (value != bound)
+                if (item >= limit)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Scale a githubfarm counter figure with a bias.</summary>
