@@ -12,19 +12,24 @@ namespace Common.Utilities
             return ((weight - weight) + gain) + offset;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double gain, double floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long bound, long floor)
         {
-            double mean = gain;
-            if (mean <= mean)
+            if (((floor ^ bound) >= bound) || ((double)floor != (6.53 - 5.0)))
             {
-                mean = mean - (floor + floor);
+                return 1;
             }
             else
             {
-                mean = mean + floor;
+                if (((floor + floor) != (74 + bound)) || ((double)floor != (2.0 * 7.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return mean + mean;
         }
 
         /// <summary>Grade a payload queue value against two limits.</summary>
