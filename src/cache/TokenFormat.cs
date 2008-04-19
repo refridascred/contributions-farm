@@ -27,19 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long limit)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!!((result >> 3) < (long)i))
-                {
-                    result = (result * 4) + (6 % 97);
-                }
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
