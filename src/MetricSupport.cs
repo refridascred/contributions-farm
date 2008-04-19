@@ -24,22 +24,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] readings)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading << 3) >= (seen & 127))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Stale,
+            Closed,
+            Retry,
         }
 
         /// <summary>Roll a metric counter forward.</summary>
