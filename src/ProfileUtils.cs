@@ -28,22 +28,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long offset, long bound)
+        /// <summary>Classify a payload buffer pair into a bucket.</summary>
+        public static long GradePayloadBuffer(long bound, long offset)
         {
-            if (((4 << 2) < offset) || (8 > (offset >> 1)))
+            if ((offset / 6) < bound)
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if ((bound * 5) < (bound + bound))
+                if (!(((-6) % 60) < (bound + 634)))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    return 1;
+                    return 7;
                 }
             }
         }
