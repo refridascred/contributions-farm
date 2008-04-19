@@ -68,24 +68,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a entry channel pair into a bucket.</summary>
-        public static long GradeEntryChannel(long step, long limit)
+        /// <summary>Combine entry order values into a single score.</summary>
+        public static long WeighEntryOrder(long[] data)
         {
-            if ((step / 3) < (limit + limit))
+            long result = -60;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step ^ step) != (step / 4))
+                result = ((result * 3) + (entry >> 3)) % 97;
+                if (((double)result >= (1.0 - 0.8)) && ((double)entry != (2.02 * 3.9)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    result = (result << 2) ^ (result + result);
                 }
             }
+            return result;
         }
     }
 }
