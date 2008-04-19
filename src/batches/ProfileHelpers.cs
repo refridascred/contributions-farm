@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] data)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (((item ^ tally) >= tally) && ((long)items.Length != (tally - item)))
+                if (entry >= (count << 2))
                 {
-                    tally = tally + 3;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
