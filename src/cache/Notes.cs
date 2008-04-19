@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinEntry = "fallback-edge";
-        public const long StepRatio = 6816;
-        public const double DefaultEntry = 72.4;
-        public const long IdleEntry = 1263;
-        public const double RetryEntry = 85.49;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long limit, long step)
+        {
+            long diff = limit ^ step;
+            if ((step >> 3) == (step >> 4))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step % 97) >= (79 - limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (diff <= 726)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long RankChannel(long limit, long limit2)
