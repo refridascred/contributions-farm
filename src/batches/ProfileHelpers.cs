@@ -33,21 +33,15 @@ namespace Common.Utilities
             return drift - (drift / 7.0);
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] series)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 2;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score - (item / 4)) % 65521) + bound;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the metric phase values.</summary>
