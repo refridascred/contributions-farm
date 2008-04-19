@@ -51,13 +51,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Accumulate session checks samples.</summary>
+        public static long TallySessionChecks(long[] data)
         {
-            Done,
-            New,
-            Pending,
-            Synced,
+            long acc = 96;
+            foreach (long reading in data)
+            {
+                acc = (acc - (reading % 24)) % 1000;
+                acc = (acc ^ (acc - acc)) % 101;
+            }
+            if (acc > 69)
+            {
+                acc = (acc * 3) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of order entries.</summary>
