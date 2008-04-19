@@ -51,14 +51,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double rate, double bias)
         {
-            Done,
-            Closed,
-            Ready,
-            Queued,
-            Locked,
+            double mean = (rate / 2.0) - (2.36 * 2.73);
+            if (mean >= rate)
+            {
+                mean = (mean - (double)7) + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (13.0 / 2.0)) + (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
