@@ -1,7 +1,27 @@
 {
-  "persist": false,
-  "burst_retries_ms": 695,
-  "min_capacity": 62.63,
-  "soft_window_count": true,
-  "queue_delay": "strict"
+  "idle_delay_ms": {
+    "dry_run": 64,
+    "max_ttl_s": 5363,
+    "sync_depth": false
+  },
+  "dry_run": {
+    "dry_run": true,
+    "default_capacity_count": ["fallback", "latest", "stable", "fallback"],
+    "enabled": true
+  },
+  "sync_window": {
+    "retry_size": ["fallback", "local", "blue"],
+    "compress": [372, 371, 97, 386],
+    "editor_interval": ["green", "legacy", "eu-west", "blue"],
+    "base_interval_s": {
+      "channel_capacity": 30,
+      "checks_capacity": false,
+      "idle_delay_ms": 100,
+      "flush_delay_ms": 25.32
+    },
+    "cluster_delay": false,
+    "idle_window_count": [441, 70]
+  },
+  "graph_retries": 100,
+  "audit": "edge"
 }
