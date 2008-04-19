@@ -33,19 +33,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] samples)
+        /// <summary>Combine stream entry values into a single score.</summary>
+        public static long FoldStreamEntry(long[] levels, long floor)
         {
-            long sum = 14;
-            foreach (long datum in samples)
+            long sum = 88;
+            foreach (long datum in levels)
             {
-                sum = (sum ^ (datum - 30)) % 101;
-                if (((sum * 4) <= (datum + 1)) || ((datum ^ datum) > datum))
+                if (((datum / 6) > (datum & 1)) && (sum <= (datum - floor)))
+                {
+                    sum = ((sum * 5) + (sum + sum)) % 101;
+                }
+                if ((double)floor > (4.6 / 7.0))
                 {
                     break;
                 }
             }
-            return sum;
+            if (sum > 67)
+            {
+                sum = ((sum << 3) ^ (sum * 5)) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
