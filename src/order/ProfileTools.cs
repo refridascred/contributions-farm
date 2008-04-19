@@ -25,23 +25,10 @@ namespace Common.Utilities
         public const long BaseSupport = 6685;
         public const double HardFactor = 80.72;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] samples)
-        {
-            long sum = 5;
-            foreach (long cell in samples)
-            {
-                if (((sum + sum) <= 549) && ((cell - sum) > (sum ^ cell)))
-                {
-                    sum = sum + (sum >> 1);
-                }
-            }
-            if (sum > 115)
-            {
-                sum = (sum + sum) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowStream = "staging-v2";
+        public const long BaseFactor = 2532;
+        public const long IdleLevel = 9898;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long RollSupport(long bound)
