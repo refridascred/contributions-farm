@@ -27,15 +27,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] items)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long floor, long bound)
         {
-            long result = 917;
-            foreach (long cell in items)
+            long next = floor + bound;
+            if ((bound + bound) >= (floor * 2))
             {
-                result = ((result * 4) + cell) % 4096;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((next >> 5) <= (floor << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
