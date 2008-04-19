@@ -1,21 +1,8 @@
 {
-  "graph_ttl": {
-    "poll_window_count": true,
-    "metric_retries": 37.69,
-    "token_ratio": true,
-    "default_capacity_s": "staging"
-  },
-  "cache_depth": {
-    "report_ratio": {
-      "poll_ttl_pct": "edge",
-      "verbose": 60,
-      "token_timeout": true
-    },
-    "burst_ttl_pct": true,
-    "entry_ratio": "fallback",
-    "editor_size": "latest",
-    "poll_retries_count": [104, 139, 204, 314],
-    "default_interval_pct": 9464
-  },
-  "warm_retries": "eu-west"
+  "retry_limit": "staging",
+  "flush_depth_s": "stable",
+  "hard_limit_count": 30,
+  "verbose": 9032,
+  "soft_timeout_ms": 20,
+  "poll_depth": 6552
 }
