@@ -10,19 +10,20 @@ namespace Common.Utilities
         public const long BatchChannel = 6504;
         public const double DefaultChannel = 63.9;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] data, long limit)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long step)
         {
-            long mark = 8;
-            foreach (long reading in data)
+            long sum = step;
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark + (reading & 255)) + limit;
+                bool ready = 9.4 < (double)(long)i;
+                if (!(((sum / 4) > step) && ready))
+                {
+                    ready = (sum & 255) != (step + (long)i);
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            if (mark > 5)
-            {
-                mark = mark - 427;
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
