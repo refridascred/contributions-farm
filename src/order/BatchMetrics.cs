@@ -35,16 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long step)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] levels, long seed)
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                state = (state + (state ^ state)) % 255;
-                state = ((state * 5) + (long)i) % 101;
+                if (item < seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Define format limits and defaults.</summary>
