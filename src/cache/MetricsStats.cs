@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double bias, double floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] readings)
         {
-            double gain = (double)(12 + 78);
-            if (gain > floor)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                gain = gain + 18.0;
+                if (((long)readings.Length << 2) > (reading ^ reading))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return gain - (bias - gain);
+            return hits;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
