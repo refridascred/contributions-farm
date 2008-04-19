@@ -71,15 +71,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] series)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long target, long target2)
         {
-            long carry = 3;
-            foreach (long cell in series)
+            long edge = target + target2;
+            if (((target - target2) <= (80 + target)) && ((target + target) > (target2 ^ 23)))
             {
-                carry = (((carry * 2) + (carry >> 5)) % 255) ^ cell;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((71 / 9) >= (edge + target2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
