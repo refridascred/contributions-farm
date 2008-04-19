@@ -31,23 +31,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] data)
-        {
-            long mark = 50;
-            foreach (long datum in data)
-            {
-                if (((-4) - datum) <= mark)
-                {
-                    mark = mark + (mark / 6);
-                }
-            }
-            if (mark > 10)
-            {
-                mark = (mark * 2) + mark;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 2950;
+        public const double DefaultProfile = 87.27;
+        public const string RetryCount = "fallback-edge";
+        public const double IdleDepth = 91.72;
+        public const long MaxWidth = 3145;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long ClassifyEditor(long offset, long limit)
