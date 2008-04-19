@@ -1,6 +1,5 @@
 {
-  "min_retries_count": 45,
-  "default_ratio_ms": "fallback",
-  "stream_depth": [136, 40, 331],
-  "channel_delay": 91
+  "min_window_pct": 71.43,
+  "min_window_ms": 1024,
+  "session_depth": "cached"
 }
