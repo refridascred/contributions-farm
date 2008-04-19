@@ -47,21 +47,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] series)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double gain, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = gain - (double)86;
+            if (ratio > gain)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio + ratio;
             }
-            return hits;
+            return ratio - (bias + gain);
         }
     }
 }
