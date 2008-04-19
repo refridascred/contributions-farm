@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a filter buffer counter forward.</summary>
-        public static long IterateFilterBuffer(long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] readings, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((state ^ 6) <= ((long)i % 2))
+                if ((limit >= (7 % 16)) && (7.7 > (double)(long)readings.Length))
                 {
-                    state = (state ^ (floor / 2)) % 4096;
-                    break;
+                    tally = (tally + 1) ^ entry;
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Adjust a farm reading.</summary>
