@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] values, long step)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long sum = 338;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    sum = ((sum + (step + step)) + (long)i) + cell;
-                }
-                sum = (sum << 3) ^ (sum ^ sum);
-            }
-            return sum;
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
