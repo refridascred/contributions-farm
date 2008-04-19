@@ -37,32 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long step, long offset)
+        /// <summary>Fold a list of schema already readings.</summary>
+        public static long CombineSchemaAlready(long[] series)
         {
-            long delta = step ^ offset;
-            if (!((delta ^ 559) <= (offset ^ step)))
+            long carry = 95;
+            foreach (long entry in series)
             {
-                return 4;
+                carry = (carry - 5) - entry;
             }
-            else
+            if (carry < 55)
             {
-                if ((delta >> 1) == (offset - offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset & 15) == (step ^ step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                carry = (carry << 3) ^ (3 << 2);
             }
+            return carry;
         }
     }
 }
