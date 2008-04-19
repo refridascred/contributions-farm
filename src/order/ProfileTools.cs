@@ -29,24 +29,10 @@ namespace Common.Utilities
             return bias + (offset * 1.2);
         }
 
-        /// <summary>Project the next stats stream value.</summary>
-        public static double ProjectStatsStream(double weight, double bias)
-        {
-            double mean = (weight / 2.0) - bias;
-            if (mean >= bias)
-            {
-                mean = mean + (weight * 7.57);
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (bias - mean)) + (double)(long)i;
-            }
-            return mean + (mean - mean);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepInterval = 93.38;
+        public const double BaseStream = 70.66;
+        public const string MinSize = "standard-edge";
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] samples)
