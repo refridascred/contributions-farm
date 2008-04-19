@@ -38,18 +38,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] items, long offset)
+        /// <summary>Combine cache order values into a single score.</summary>
+        public static long TotalCacheOrder(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long mix = 583;
+            foreach (long value in series)
             {
-                if ((double)entry > 16.0)
-                {
-                    seen = (seen + 3) - offset;
-                }
+                mix = (mix + origin) % 97;
+                mix = (mix ^ value) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
