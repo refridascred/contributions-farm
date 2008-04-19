@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] samples, long seed)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 31;
+            foreach (long sample in items)
             {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 2) ^ (sum / 7)) % 97) + sample;
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Combine already values into a single score.</summary>
