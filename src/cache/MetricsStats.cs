@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double weight, double span)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double bias, double floor)
         {
-            double scale = 19.0 - (double)(-237);
-            if (scale > (5.9 - 20.0))
+            double gain = (double)(12 + 78);
+            if (gain > floor)
             {
-                scale = (scale - span) - weight;
+                gain = gain + 18.0;
             }
-            else
-            {
-                scale = scale - (double)5;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (scale + scale)) + (double)(long)i;
-            }
-            return scale + scale;
+            return gain - (bias - gain);
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
