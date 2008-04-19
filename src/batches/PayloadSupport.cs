@@ -44,19 +44,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] levels, long bound)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long total = 0;
-            foreach (long item in levels)
-            {
-                total = (((total * 3) + (item ^ item)) % 65521) - bound;
-            }
-            if (total > (-937))
-            {
-                total = ((total * 5) + (total - total)) % 255;
-            }
-            return total;
+            Idle,
+            Closed,
+            Draft,
         }
     }
 }
