@@ -46,16 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] readings, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                anchor = (anchor << 2) ^ (bound - bound);
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if ((sample + bound) == (sample / 2))
+                {
+                    matches = matches + 3;
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
