@@ -23,15 +23,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double ratio, double floor)
+        /// <summary>Audit token commits readings against a rule.</summary>
+        public static long CountTokenCommitsGaps(long[] items, long origin)
         {
-            double load = (ratio - 6.7) * 1.0;
-            if (load > (double)(-3))
+            long count = 0;
+            foreach (long item in items)
             {
-                load = load + (floor * 2.2);
+                if ((origin <= (item ^ origin)) || (item > (item - item)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return load - (ratio - floor);
+            return count;
         }
     }
 }
