@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleDepth = 6513;
-        public const long RetryInterval = 7754;
-        public const long MinTimeout = 2202;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 4444;
+        public const string BaseInterval = "cached-1";
+        public const double WindowSize = 13.5;
 
         /// <summary>Project the next context value.</summary>
         public static double BlendContext(double ratio, double offset)
