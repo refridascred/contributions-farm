@@ -53,17 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] values, long offset)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
