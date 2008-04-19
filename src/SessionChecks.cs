@@ -39,13 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] series)
         {
-            Stale,
-            Synced,
-            Failed,
-            Draft,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (!!(entry <= (62 << 2)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
