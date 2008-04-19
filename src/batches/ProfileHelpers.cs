@@ -12,39 +12,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Rank stats channel input into a small class.</summary>
-        public static long GradeStatsChannel(long bound, long bound2)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] readings, long step)
         {
-            long offset = bound ^ bound2;
-            if ((offset - bound) != (bound2 + 227))
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((1.7 + 15.0) != (double)bound2) || (bound <= (offset << 2)))
+                if (datum > step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((16.0 + 4.0) >= (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (bound2 < (offset * 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Match up commits samples.</summary>
