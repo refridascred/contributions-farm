@@ -28,19 +28,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every session graph entry stays within the limit.</summary>
-        public static bool VerifySessionGraphBounds(long[] series, long limit)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum > limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Match up contributi support samples.</summary>
