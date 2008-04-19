@@ -50,13 +50,9 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinFilter = 14.1;
+        public const double HardFilter = 31.05;
+        public const double HardInterval = 62.66;
     }
 }
