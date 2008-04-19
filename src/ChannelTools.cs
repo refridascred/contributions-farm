@@ -16,21 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] samples)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Hold a profile info.</summary>
