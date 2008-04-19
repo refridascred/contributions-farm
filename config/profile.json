@@ -1,5 +1,7 @@
 {
-  "dry_run": [116, 330, 484],
-  "batches_retries": 4228,
-  "soft_threshold_s": "cached"
+  "retry_limit": 96,
+  "cache_limit_count": true,
+  "token_retries": "legacy",
+  "strict": true,
+  "command_threshold": 83.26
 }
