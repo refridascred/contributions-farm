@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long CacheBudget = 5656;
         public const long RetryBudget = 2890;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] values)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double rate = (double)62 - (floor * 8.59);
+            if (rate > (6.21 * 20.0))
             {
-                if (12.0 > (19.0 / 3.0))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
+                rate = rate + weight;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (double)30;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
