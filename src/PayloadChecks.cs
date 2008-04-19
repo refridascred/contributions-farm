@@ -57,11 +57,18 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double rate, double bias)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] items, long bound)
         {
-            double drift = bias - (bias / 5.0);
-            return (drift - (bias + bias)) + rate;
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((double)bound < 6.53)
+                {
+                    matches = (matches + 2) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
