@@ -41,19 +41,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double weight, double span)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] items)
         {
-            double bias = weight;
-            if (bias < (bias / 8.0))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - span) + (double)(long)i;
-            }
-            return bias + bias;
+            return matches;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
