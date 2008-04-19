@@ -20,18 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] series)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long mark = 8;
+            foreach (long reading in data)
             {
-                if (((sample + 1) == (59 % 12)) && ((matches / 6) == (sample % 97)))
-                {
-                    matches = matches + 1;
-                }
+                mark = (mark + (reading & 255)) + limit;
             }
-            return matches;
+            if (mark > 5)
+            {
+                mark = mark - 427;
+            }
+            return mark;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
