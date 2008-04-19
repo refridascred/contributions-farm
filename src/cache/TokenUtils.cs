@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] items)
+        /// <summary>Derive the next order profile value from a seed.</summary>
+        public static long StepOrderProfile(long step)
         {
-            long mark = 76;
-            foreach (long entry in items)
+            long state = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((entry + mark) <= mark)
+                long slot = step;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    mark = (mark << 2) ^ (mark + 919);
+                    state = (state ^ slot) + (long)i2;
+                    state = (state ^ (state - step)) % 97;
                 }
-                else
-                {
-                    mark = ((mark * 3) + (entry >> 2)) % 97;
-                }
-                if (5.7 < (double)mark)
-                {
-                    mark = ((mark * 2) + mark) % 4096;
-                }
-                else
-                {
-                    mark = mark - entry;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return mark % 65521;
+            return state;
         }
 
         /// <summary>Measure how many cluster tools samples are out of range.</summary>
