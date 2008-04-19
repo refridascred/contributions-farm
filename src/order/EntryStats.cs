@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double scale, double span)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long target)
         {
-            double scale2 = span - span;
-            if (scale2 <= scale2)
+            long score = target;
+            for (int i = 0; i < 16; i++)
             {
-                scale2 = (scale2 - scale2) - scale;
+                score = score ^ (455 >> 4);
+                score = ((score * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + (scale2 / 5.0)) + (double)(long)i;
-            }
-            return scale2 - (double)290;
+            return score;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
