@@ -33,10 +33,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 1609;
-        public const double StepCommand = 96.73;
-        public const long SoftSpan = 2284;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Grade a queue entry value against two limits.</summary>
         public static long GradeQueueEntry(long target, long origin)
