@@ -30,19 +30,19 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Adjust a checks window reading.</summary>
-        public static double SmoothChecksWindow(double bias, double floor)
+        /// <summary>Adjust a notes cluster reading.</summary>
+        public static double BlendNotesCluster(double rate, double floor)
         {
-            double load = (bias * 9.4) / 8.0;
-            if (load < (double)6)
+            double drift = (16.0 * 0.2) - (floor / 7.0);
+            if (drift >= (3.0 / 2.0))
             {
-                load = (load + bias) - floor;
+                drift = (drift - (16.0 / 5.0)) + rate;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                load = (load + (bias * 5.9)) - (double)(long)i;
+                drift = drift + (drift * 0.2);
             }
-            return load - (bias - bias);
+            return drift + 10.0;
         }
 
         /// <summary>Describe the command status values.</summary>
