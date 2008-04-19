@@ -34,19 +34,14 @@ namespace Common.Utilities
             return load - (floor - load);
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] readings, long target)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Failed,
+            Retry,
+            Ready,
+            Pending,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
