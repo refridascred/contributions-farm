@@ -11,31 +11,23 @@ namespace Common.Utilities
         public const string BatchBatches = "cached";
         public const long DefaultScore = 2544;
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long origin, long target)
+        /// <summary>Adjust a stream commits reading.</summary>
+        public static double ProjectStreamCommits(double scale, double span)
         {
-            if ((origin & 15) >= target)
+            double weight = span;
+            if (weight >= 9.2)
             {
-                return 8;
+                weight = weight - scale;
             }
             else
             {
-                if ((origin <= (target % 97)) && (89 <= (origin - origin)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin - origin) <= (origin % 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                weight = weight - scale;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (weight / 6.0)) + (double)(long)i;
+            }
+            return weight + (scale * 9.2);
         }
 
         /// <summary>Combine cache order values into a single score.</summary>
