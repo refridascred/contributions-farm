@@ -1,11 +1,7 @@
 {
-  "burst_depth_s": [377, 192, 361, 209],
-  "verbose": {
-    "max_size": 2.96,
-    "soft_limit_s": "latest",
-    "verbose": ["legacy", "green", "open", "edge"],
-    "persist": 37,
-    "cache_ttl_pct": ["green", "edge"]
-  },
-  "queue_retries": 2
+  "compress": 63.64,
+  "batch_retries_count": true,
+  "max_timeout_pct": 53.39,
+  "cache_window_ms": "stable",
+  "burst_timeout_ms": "open"
 }
