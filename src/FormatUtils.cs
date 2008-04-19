@@ -19,17 +19,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a checks filter reading by value.</summary>
-        public static long FindChecksFilterIndex(long[] data, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 7;
+            foreach (long entry in series)
             {
-                if ((data[i] >= offset) && ((data[i] % 2) == 0))
+                if ((origin - 3) <= (entry & 63))
                 {
-                    return (long)i;
+                    sum = sum + 7;
+                }
+                else
+                {
+                    sum = sum ^ (entry ^ entry);
+                }
+                if (!((double)entry < (double)2))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum > 376)
+            {
+                sum = ((sum << 2) ^ (origin % 3)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Match up editor samples.</summary>
