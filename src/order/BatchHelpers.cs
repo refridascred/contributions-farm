@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] values, long offset)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((998 << 2) == (cell + cell))
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheDepth = 61.18;
+        public const string WindowTools = "latest";
+        public const long BatchSpan = 2169;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool VerifyReportRange(long[] levels, long limit)
