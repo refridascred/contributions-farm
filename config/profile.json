@@ -1,5 +1,5 @@
 {
-  "hard_interval_ms": "local",
-  "compress": "local",
-  "cache_threshold_pct": 12.0
+  "idle_window_s": 9962,
+  "min_threshold_pct": "stable",
+  "entry_capacity": 30.03
 }
