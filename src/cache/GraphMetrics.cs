@@ -43,12 +43,20 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowSize = 3423;
-        public const double BatchDepth = 33.51;
-        public const double DefaultPayload = 1.23;
-        public const long BurstFactor = 6817;
-        public const long BurstWidth = 2305;
+        /// <summary>Validate checks payload readings against a bound.</summary>
+        public static bool CheckChecksPayloadLimits(long[] values, long target)
+        {
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long RetryBudget = 3927;
