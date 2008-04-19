@@ -28,19 +28,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] samples, long seed)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a filter info.</summary>
