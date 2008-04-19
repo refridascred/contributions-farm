@@ -45,12 +45,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Roll a githubfarm account counter forward.</summary>
+        public static long SeriesGithubfarmAccount(long floor)
         {
-            Synced,
-            Draft,
-            Dropped,
+            long mark = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = ((mark * 2) + floor) + (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Rank already input into a small class.</summary>
