@@ -27,18 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] values, long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] samples, long origin)
         {
-            long mark = 106;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (((cell & 1) == (bound + cell)) && ((mark << 1) > (cell % 12)))
+                if (item >= origin)
                 {
-                    mark = ((mark * 3) + (mark >> 1)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return mark % 97;
+            return found;
         }
     }
 }
