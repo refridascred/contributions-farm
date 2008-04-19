@@ -33,19 +33,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate metrics editor readings against a bound.</summary>
-        public static bool GuardMetricsEditorBounds(long[] series, long floor)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long target)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long carry = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (carry ^ (target + target)) % 97;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Hold a account stats.</summary>
