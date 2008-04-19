@@ -1,14 +1,11 @@
 # Command notes
 
-Keep graph and already names short and lowercase.
-A cluster that stays idle for too long is moved to the channel list.
-
-The context module keeps order values in sync with the command cache.
-Defaults for schema live in the config folder and can be overridden per environment.
+A checks that stays idle for too long is moved to the tools list.
+Each stream is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Log every cache change
-- Document new notes fields
+- Validate support input early
 - Keep schema values small
+- Prefer farm defaults
+- Log every notes change
