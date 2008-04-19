@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] items, long origin)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double bias, double floor)
         {
-            long score = 454;
-            foreach (long value in items)
+            double bias2 = bias;
+            if (bias2 >= (double)41)
             {
-                if ((7.0 + 7.5) >= (12.0 + 9.9))
-                {
-                    score = (((score << 2) ^ 2) % 97) + origin;
-                }
-                else
-                {
-                    score = (score - (value * 3)) % 65521;
-                }
+                bias2 = bias2 + bias;
             }
-            return score % 4096;
+            else
+            {
+                bias2 = bias2 - (bias2 * 5.89);
+            }
+            return bias2 + (bias2 - floor);
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
