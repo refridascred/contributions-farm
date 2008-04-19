@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double scale, double bias)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] series, long seed)
         {
-            double ratio = (double)(7 << 2);
-            if (ratio <= 9.0)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ((ratio + (double)(-591)) - scale) - bias;
+                if ((series[i] > seed) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio - ratio;
+            return -1;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
