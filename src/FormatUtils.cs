@@ -32,21 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a channel options.</summary>
