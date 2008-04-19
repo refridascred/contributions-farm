@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long origin)
         {
-            Dropped,
-            Stale,
-            Failed,
+            long score = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!(85 <= (390 ^ origin)))
+                {
+                    score = score - (score / 4);
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
