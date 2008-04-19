@@ -25,21 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] items)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Synced,
+            Active,
+            Failed,
+            Retry,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
