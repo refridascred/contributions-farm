@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] samples)
+        /// <summary>Check that every already batch entry stays within the limit.</summary>
+        public static bool CheckAlreadyBatchRange(long[] data, long seed)
         {
-            long result = 6;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long item in data)
             {
-                result = ((result << 2) ^ (result & 31)) - item;
+                if (item <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (result > 90)
-            {
-                result = ((result * 5) + (result + result)) % 255;
-            }
-            return result % 65521;
+            return ready;
         }
 
         /// <summary>Audit counter stream readings against a rule.</summary>
