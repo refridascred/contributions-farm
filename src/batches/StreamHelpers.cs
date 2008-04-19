@@ -13,18 +13,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] samples, long target)
+        /// <summary>Scale a support layout figure with a bias.</summary>
+        public static double ProjectSupportLayout(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            double bias2 = rate;
+            if (bias2 > (2.31 - 10.0))
             {
-                if ((seen - seen) >= (item + seen))
-                {
-                    seen = (seen + 2) + target;
-                }
+                bias2 = bias2 - (bias * 9.1);
             }
-            return seen;
+            return bias2 - (8.1 / 2.0);
         }
 
         /// <summary>Describe the metrics level values.</summary>
