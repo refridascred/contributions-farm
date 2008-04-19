@@ -41,13 +41,17 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 8427;
         public const string IdleRatio = "standard";
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] readings, long limit)
         {
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
