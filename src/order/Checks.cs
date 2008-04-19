@@ -30,19 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (!((step << 1) <= ((long)levels.Length + value)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseWidth = 1695;
+        public const long HardStream = 7856;
+        public const string DefaultStream = "cached-v2";
 
         /// <summary>Accumulate batch samples.</summary>
         public static long WeighBatch(long[] values)
