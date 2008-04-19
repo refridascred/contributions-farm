@@ -71,11 +71,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long target)
         {
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
+            {
+                long bound = target ^ ((long)i & 7);
+                long lane = (target - anchor) >> 2;
+                if (((double)lane < (4.0 / 8.0)) || (bound >= target))
+                {
+                    anchor = (anchor - lane) % 4096;
+                    anchor = anchor + (lane & 63);
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
