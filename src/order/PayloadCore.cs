@@ -16,17 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] series, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (series[i] > bound)
+                if ((cell + tally) < (tally + cell))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Project the next support value.</summary>
