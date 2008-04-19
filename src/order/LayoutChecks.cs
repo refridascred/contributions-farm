@@ -60,28 +60,11 @@ namespace Common.Utilities
         public const string StepLevel = "staging-edge";
         public const long LimitBudget = 6468;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] series)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long score = 89;
-            foreach (long item in series)
-            {
-                if (!(28 >= (score * 4)))
-                {
-                    score = ((score << 2) ^ score) % 4096;
-                    score = ((score << 2) ^ (item >> 5)) % 4096;
-                    continue;
-                }
-                if ((score << 3) >= (item + item))
-                {
-                    score = ((score << 3) ^ ((long)series.Length - 699)) % 101;
-                }
-                else
-                {
-                    score = (score ^ item) % 4096;
-                }
-            }
-            return score;
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
