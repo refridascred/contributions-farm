@@ -47,12 +47,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 6235;
-        public const long LimitFactor = 9797;
-        public const long BurstDepth = 8705;
-        public const long MinFormat = 9640;
-        public const long BaseTimeout = 7516;
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank already editor input into a small class.</summary>
         public static long SortAlreadyEditor(long seed, long limit)
