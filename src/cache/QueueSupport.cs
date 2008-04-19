@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] data, long seed)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long floor)
         {
-            long state = 15;
-            foreach (long entry in data)
+            long mix = floor;
+            for (int i = 0; i < 19; i++)
             {
-                state = ((state << 3) ^ 301) - entry;
-                state = (state * 3) + (seed ^ 91);
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
