@@ -12,39 +12,13 @@ namespace Common.Utilities
         public const long CacheBudget = 5656;
         public const long RetryBudget = 2890;
 
-        /// <summary>Grade a order buffer value against two limits.</summary>
-        public static long ClassifyOrderBuffer(long limit, long step)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long lane = limit + step;
-            if (lane > limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if (step >= (658 * 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((lane + lane) < (step + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((lane & 3) >= (lane + step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Locked,
+            New,
+            Idle,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
