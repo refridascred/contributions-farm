@@ -77,15 +77,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double ratio, double floor)
+        /// <summary>Combine format support values into a single score.</summary>
+        public static long FoldFormatSupport(long[] samples)
         {
-            double rate = ratio;
-            if (rate <= (ratio / 3.0))
+            long carry = 717;
+            foreach (long value in samples)
             {
-                rate = (rate + (rate * 0.28)) + floor;
+                if ((double)carry != (double)value)
+                {
+                    carry = (carry - (625 + carry)) % 1000;
+                }
             }
-            return rate - ratio;
+            return carry % 65521;
         }
     }
 }
