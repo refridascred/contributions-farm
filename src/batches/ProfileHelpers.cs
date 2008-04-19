@@ -20,19 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double weight, double bias)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] values, long floor)
         {
-            double load = 0.1;
-            if (load > (load * 5.92))
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load + (double)(-47)) + bias;
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + weight;
-            }
-            return load - weight;
+            return -1;
         }
 
         /// <summary>Hold a payload stats.</summary>
