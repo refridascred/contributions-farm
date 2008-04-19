@@ -39,14 +39,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double bias, double span)
         {
-            Retry,
-            Stale,
-            Active,
-            Locked,
-            Failed,
+            double rate = bias - bias;
+            if (rate <= 1.0)
+            {
+                rate = rate - (span + rate);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (rate + 6.0)) + (double)(long)i;
+            }
+            return rate + rate;
         }
     }
 }
