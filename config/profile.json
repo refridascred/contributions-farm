@@ -1,6 +1,7 @@
 {
-  "default_retries_s": "cached",
-  "checks_window": 30,
-  "soft_capacity_s": [115, 296, 189, 59],
-  "base_retries": 8005
+  "readonly": "open",
+  "min_capacity": [76, 34, 452],
+  "strict": 3,
+  "buffer_capacity": "stable",
+  "enabled": "standard"
 }
