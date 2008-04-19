@@ -47,19 +47,32 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] series, long bound)
+        /// <summary>Grade a payload queue value against two limits.</summary>
+        public static long BucketPayloadQueue(long origin, long seed)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long slot = origin - seed;
+            if (((697 % 8) < (slot + origin)) && ((origin << 2) <= (4 * 3)))
             {
-                if (cell < bound)
+                return 0;
+            }
+            else
+            {
+                if (((slot % 10) <= (seed & 127)) && (slot >= (slot & 63)))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((double)origin <= (double)50) && (seed <= (seed / 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Scale a account commits figure with a bias.</summary>
