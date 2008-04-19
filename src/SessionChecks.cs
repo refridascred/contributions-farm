@@ -20,12 +20,18 @@ namespace Common.Utilities
             return load - (double)6;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] values)
         {
-            Paused,
-            Done,
-            Dropped,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((reading > matches) && ((matches - matches) > (41 + reading)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
