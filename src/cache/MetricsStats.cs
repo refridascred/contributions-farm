@@ -28,19 +28,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit cluster metric readings against a rule.</summary>
-        public static long MeasureClusterMetricGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (((value - value) <= (value + value)) || ((seen + value) > 380))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheRatio = 9808;
+        public const double RetryAccount = 23.2;
+        public const string MaxTimeout = "alpha-v2";
 
         /// <summary>Grade a stream stats value against two limits.</summary>
         public static long GradeStreamStats(long target, long seed)
