@@ -1,6 +1,5 @@
 {
-  "already_size": 8378,
-  "sync_ratio_ms": 23.27,
-  "compress": ["fallback", "local"],
-  "hard_interval_pct": "strict"
+  "retry_threshold_count": false,
+  "warm_capacity_pct": 31.98,
+  "flush_threshold_s": false
 }
