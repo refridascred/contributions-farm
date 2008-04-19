@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long origin, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] readings, long floor)
         {
-            long prev = origin - step;
-            if ((step - prev) == (prev ^ origin))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((prev + 378) != (origin - origin))
+                if ((((tally + entry) != (tally & 255)) && (6.7 <= (double)floor)) && ((entry ^ floor) < (entry + 774)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((prev >> 4) <= origin) && ((step + origin) > (8 * 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)origin <= (3.7 * 19.0)) && ((6.1 / 6.0) != (double)prev))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
