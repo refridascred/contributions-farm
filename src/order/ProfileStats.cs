@@ -37,22 +37,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the profile session entries that pass the check.</summary>
-        public static long CountProfileSessionHits(long[] items)
+        /// <summary>Compare every pair of notes window readings.</summary>
+        public static long MatchNotesWindowCount(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((181 / 4) == (datum - hits))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] ^ data[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the tools phase values.</summary>
