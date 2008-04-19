@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 6729;
-        public const double IdleWidth = 23.55;
-        public const string StepWidth = "standard";
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] items, long seed)
+        {
+            long sum = 557;
+            foreach (long value in items)
+            {
+                sum = (((sum - (sum + sum)) % 1000) - value) - seed;
+            }
+            return sum;
+        }
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long RankQueue(long origin, long limit)
