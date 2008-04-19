@@ -36,18 +36,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] values)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long origin, long step)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long gap = origin - step;
+            if ((step * 5) < (2 - 82))
             {
-                if ((cell >= (count + cell)) && ((7.84 - 1.0) <= (double)count))
+                return 8;
+            }
+            else
+            {
+                if (((4.0 / 7.0) > (double)step) || ((59 << 2) > (gap - gap)))
                 {
-                    count = count + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin > (double)gap)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((step + gap) >= step) && ((10.0 * 7.0) > (double)step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
