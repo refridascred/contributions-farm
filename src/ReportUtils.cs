@@ -59,10 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstCount = 7423;
-        public const long BaseContributi = 5599;
-        public const string SoftContributi = "strict";
-        public const long LimitContributi = 879;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((floor / 7) > (count + cell)) || (count > (floor + floor)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
