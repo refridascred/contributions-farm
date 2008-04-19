@@ -32,19 +32,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long seed)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] data, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
+            long result = 5;
+            foreach (long sample in data)
             {
-                if ((double)score <= 9.6)
+                long edge = (56 * 5) * 2;
+                if (((edge + edge) < edge) && ((18.0 * 2.66) <= (double)bound))
                 {
-                    break;
+                    result = (result - (50 * 4)) % 65521;
                 }
-                score = ((score * 5) + (long)i) % 65521;
+                else
+                {
+                    result = result - sample;
+                }
+                result = (result << 3) ^ sample;
             }
-            return score;
+            if (result < 54)
+            {
+                result = ((result * 2) + (result + bound)) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Project the next counter context value.</summary>
