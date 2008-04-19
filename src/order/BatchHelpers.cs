@@ -10,20 +10,17 @@ namespace Common.Utilities
         public const long BatchChannel = 6504;
         public const double DefaultChannel = 63.9;
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] data, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                bool ready = 9.4 < (double)(long)i;
-                if (!(((sum / 4) > step) && ready))
+                if ((data[i] <= offset) && ((data[i] % 2) != 0))
                 {
-                    ready = (sum & 255) != (step + (long)i);
+                    return (long)i;
                 }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
