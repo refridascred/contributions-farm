@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] samples, long limit)
+        /// <summary>Check that every entry cache entry stays within the limit.</summary>
+        public static bool GuardEntryCacheBounds(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 5) != 0))
+                if (entry > seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
