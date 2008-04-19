@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell < (5.0 / 9.0))
-                {
-                    hits = (hits + 2) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchOrder = "stable";
+        public const long MaxOrder = 7630;
+        public const long HardBudget = 5075;
+        public const string IdleOrder = "stable-1";
+        public const long BurstOrder = 3289;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
