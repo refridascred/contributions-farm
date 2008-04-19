@@ -34,19 +34,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((2.7 - 2.0) != (double)anchor)
-                {
-                    anchor = ((anchor * 2) + (anchor - (long)i)) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 2210;
+        public const long StepCommand = 3836;
+        public const double MaxScore = 30.58;
+        public const long RetryBudget = 1532;
     }
 }
