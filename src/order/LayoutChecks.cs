@@ -32,19 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] samples, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long mix = 2;
+            foreach (long datum in items)
             {
-                if (value < target)
+                if ((mix + datum) >= (-3))
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix << 2) ^ datum) - bound;
                 }
             }
-            return valid;
+            return mix % 4096;
         }
 
         /// <summary>Match up token samples.</summary>
