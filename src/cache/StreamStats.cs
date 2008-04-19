@@ -26,19 +26,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] items, long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (entry < limit)
+                if (seen <= (seen % 7))
                 {
-                    ok = false;
-                    break;
+                    seen = ((seen + 3) - reading) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
