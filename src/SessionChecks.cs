@@ -20,18 +20,38 @@ namespace Common.Utilities
             return load - (double)6;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] values)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            if (!((floor + floor) >= (521 - origin)))
             {
-                if ((reading > matches) && ((matches - matches) > (41 + reading)))
+                return 5;
+            }
+            else
+            {
+                if ((7.69 / 9.0) != (double)origin)
                 {
-                    matches = matches + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((9.6 / 7.0) == (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)origin <= 3.78)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
