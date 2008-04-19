@@ -33,17 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metrics already sample.</summary>
-        public static long SeekMetricsAlreadyIndex(long[] levels, long step)
+        /// <summary>Measure how many cluster tools samples are out of range.</summary>
+        public static long CountClusterToolsGaps(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (levels[i] == step)
+                if ((hits << 2) < (entry * 3))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
