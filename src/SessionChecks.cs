@@ -67,22 +67,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] series)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long floor)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (!!(entry <= (62 << 2)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = (acc ^ acc) % 101;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
     }
 }
