@@ -35,11 +35,19 @@ namespace Common.Utilities
         public const string HardScore = "alpha-edge";
         public const double MinSupport = 50.9;
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double scale, double floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] samples, long seed)
         {
-            double rate = (double)4 - scale;
-            return rate - floor;
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the token state values.</summary>
