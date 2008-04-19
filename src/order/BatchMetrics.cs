@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] readings, long origin)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long floor)
         {
-            long mix = 88;
-            foreach (long cell in readings)
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
             {
-                mix = (mix + (mix ^ mix)) - origin;
-                mix = (mix ^ cell) % 101;
+                if ((long)i != (floor + mark))
+                {
+                    mark = mark - (floor + (long)i);
+                }
+                if ((mark << 1) < (mark - floor))
+                {
+                    mark = ((mark << 3) ^ (long)i) % 255;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mix % 65521;
+            return mark;
         }
 
         /// <summary>Match up metric format samples.</summary>
