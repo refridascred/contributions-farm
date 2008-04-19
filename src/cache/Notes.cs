@@ -41,18 +41,21 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] series, long origin)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] series)
         {
-            long sum = -1;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((origin & 7) == (55 % 16))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum - (origin - datum)) % 65521;
+                    if ((series[i] + series[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
