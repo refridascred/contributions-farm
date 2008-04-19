@@ -1,7 +1,5 @@
 {
-  "contributi_interval": "stable",
-  "retry_size": 100,
-  "record_retries": 90,
-  "burst_limit_pct": 67,
-  "max_limit_count": 500
+  "sync_capacity": ["cached", "cached"],
+  "default_ratio_ms": ["latest", "eu-west", "staging", "green"],
+  "retry_depth": 1024
 }
