@@ -16,13 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] samples)
         {
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell * 4) != (tally % 100))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
