@@ -1,10 +1,28 @@
 # githubfarm settings
-token_retries: standard
-batch_delay: 33
-burst_threshold: 15.97
-filter_delay:
-  - 180
-  - 364
-  - 306
-  - 192
-sync_depth: primary
+base_capacity_pct: standard
+metrics_depth:
+  cache_limit_pct:
+    cache_limit_s:
+      - strict
+      - blue
+    verbose: edge
+    min_limit_ms: standard
+    cache_timeout: open
+    farm_capacity: 34
+  poll_window_pct:
+    context_capacity: fallback
+    notes_delay: 8570
+    stream_capacity: true
+    stats_limit: 382
+  poll_limit_ms:
+    - 494
+    - 26
+    - 167
+    - 97
+idle_limit: false
+base_window: false
+support_retries:
+  - latest
+  - cached
+  - eu-west
+  - eu-west
