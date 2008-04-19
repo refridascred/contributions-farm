@@ -32,22 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] levels, long step)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] series, long bound)
         {
-            long acc = 34;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (acc < (acc << 1))
+                if ((series[i] <= bound) && ((series[i] % 2) == 0))
                 {
-                    acc = acc + (value << 3);
+                    return (long)i;
                 }
             }
-            if (acc > (-71))
-            {
-                acc = (acc ^ (step * 3)) % 255;
-            }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
