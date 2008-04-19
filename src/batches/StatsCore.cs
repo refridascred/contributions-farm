@@ -79,10 +79,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardFilter = "local-v2";
-        public const long BaseFactor = 2653;
-        public const long DefaultScore = 5346;
-        public const long MinTimeout = 2346;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Ready,
+            Stale,
+            Closed,
+        }
     }
 }
