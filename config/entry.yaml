@@ -1,9 +1,8 @@
 # entry settings
-default_capacity_s: 7
-idle_ratio: 100
-record_depth: false
-flush_interval_count: 60
-context_interval: true
-poll_delay_count:
-  - 326
-  - 426
+idle_size: stable
+hard_limit_count: false
+flush_limit:
+  - 220
+  - 341
+  - 462
+payload_retries: true
