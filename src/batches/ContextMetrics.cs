@@ -47,18 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] data, long seed)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading < (double)512)
-                {
-                    count = (count + 3) - seed;
-                }
-            }
-            return count;
+            Dropped,
+            New,
+            Retry,
         }
 
         /// <summary>Describe the cluster class values.</summary>
