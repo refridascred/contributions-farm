@@ -1,14 +1,10 @@
 # Command notes
 
-Defaults for notes live in the config folder and can be overridden per environment.
-Defaults for report live in the config folder and can be overridden per environment.
-
-The schema report groups every session by token.
-A stats that stays idle for too long is moved to the layout list.
+Keep format and context names short and lowercase.
+Each cluster is validated before it reaches the route queue.
 
 ## Guidelines
 
-- Log every metrics change
-- Review metric limits each release
-- Validate report input early
-- Keep cache values small
+- Keep farm values small
+- Log every layout change
+- Review schema limits each release
