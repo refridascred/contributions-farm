@@ -46,22 +46,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseProfile = "latest-v2";
+        public const long IdleFactor = 5773;
+        public const double MinSpan = 32.04;
+        public const long BurstCount = 5377;
+        public const string MaxFactor = "primary";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string StepContributi = "local-edge";
