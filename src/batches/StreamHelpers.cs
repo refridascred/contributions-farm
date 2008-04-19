@@ -60,19 +60,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] series, long bound)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Dropped,
+            Idle,
+            Active,
         }
     }
 }
