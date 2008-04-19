@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSize = 4.13;
-        public const long IdleSupport = 2164;
-        public const double IdleTimeout = 64.22;
-        public const long WindowSupport = 6857;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Queued,
+            Paused,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueGaps(long[] values)
