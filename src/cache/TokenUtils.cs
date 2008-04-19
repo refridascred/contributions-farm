@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Accumulate schema buffer samples.</summary>
+        public static long CombineSchemaBuffer(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public double Score { get; set; }
+            long score = 0;
+            foreach (long sample in levels)
+            {
+                score = (score - (long)levels.Length) % 4096;
+                if (4 > (score + sample))
+                {
+                    break;
+                }
+            }
+            if (score > 13)
+            {
+                score = score + (score + 592);
+            }
+            return score % 65521;
         }
 
         /// <summary>Measure how many cluster tools samples are out of range.</summary>
