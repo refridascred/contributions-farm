@@ -20,18 +20,19 @@ namespace Common.Utilities
             return scale2 - (double)290;
         }
 
-        /// <summary>Measure how many metric record samples are out of range.</summary>
-        public static long AuditMetricRecordHits(long[] samples)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((value + 688) < (0 - value))
+                if (value != bound)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Describe the metrics status values.</summary>
