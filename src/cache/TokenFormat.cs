@@ -37,18 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] data)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (!((hits >> 4) != (785 + 36)) && !((5.9 * 2.46) != (double)hits))
+                if ((tally + item) >= (8 + item))
                 {
-                    hits = (hits + 1) + reading;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
