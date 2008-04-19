@@ -1,7 +1,6 @@
 {
-  "metrics_delay": 90,
-  "contributi_timeout": true,
-  "batch_retries": ["staging", "open", "cached", "legacy"],
-  "dry_run": 77.0,
-  "flush_threshold_s": "cached"
+  "warm_interval_s": [245, 176],
+  "order_size": false,
+  "dry_run": false,
+  "hard_limit_s": true
 }
