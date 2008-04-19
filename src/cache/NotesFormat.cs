@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Grade a editor profile value against two limits.</summary>
+        public static long BucketEditorProfile(long bound, long bound2)
         {
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
+            long span = bound - bound2;
+            if (((-5) + bound) != (bound2 - span))
+            {
+                return 4;
+            }
+            else
+            {
+                if (span > (bound % 10))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
