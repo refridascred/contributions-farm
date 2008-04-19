@@ -61,16 +61,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long seed)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = mark + seed;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
