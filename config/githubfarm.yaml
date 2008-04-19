@@ -1,5 +1,4 @@
 # githubfarm settings
-cache_delay: 46.68
-entry_retries: 500
-enabled: 63
-flush_limit: 44
+retry_depth: 47.66
+idle_timeout_s: eu-west
+poll_ttl_s: fallback
