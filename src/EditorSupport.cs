@@ -36,11 +36,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
             public long Flag { get; set; }
-            public bool Count { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
