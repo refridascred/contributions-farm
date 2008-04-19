@@ -38,13 +38,15 @@ namespace Common.Utilities
         public const string BatchGraph = "legacy";
         public const long BaseSpan = 7841;
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double bias, double span)
         {
-            Pending,
-            Idle,
-            Synced,
-            Paused,
+            double gain = (1.06 - bias) - bias;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (bias + span)) + (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Blend two batch measurements.</summary>
