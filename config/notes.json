@@ -1,20 +1,7 @@
 {
-  "enabled": 100,
-  "route_ttl": 65.64,
-  "soft_interval_ms": "green",
-  "cache_ttl_pct": ["primary", "latest"],
-  "burst_window_count": {
-    "compress": 37.08,
-    "max_size_pct": 30,
-    "max_interval_pct": 85.45,
-    "cache_size": {
-      "retry_delay_count": 21,
-      "batch_ratio": 623,
-      "payload_depth": [208, 457, 325],
-      "retry_delay_pct": "latest",
-      "max_delay_s": 1094
-    },
-    "strict": [487, 271, 219]
-  },
-  "warm_capacity_pct": 73.77
+  "token_delay": "green",
+  "githubfarm_delay": 9057,
+  "audit": "primary",
+  "sync_ratio_ms": true,
+  "cache_size_s": 100
 }
