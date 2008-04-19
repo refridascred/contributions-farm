@@ -50,22 +50,13 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] samples)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (!((tally / 8) <= value))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
