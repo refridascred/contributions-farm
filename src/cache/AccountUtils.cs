@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] values, long bound)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Combine metric contributi values into a single score.</summary>
