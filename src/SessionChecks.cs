@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the cache route series from a seed.</summary>
-        public static long IterateCacheRoute(long target)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the graph state values.</summary>
