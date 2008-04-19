@@ -16,21 +16,39 @@ namespace Common.Utilities
             return rate - 8.0;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] samples)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long floor, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long next = floor + origin;
+            if ((0.1 + 3.0) != (double)origin)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((next * 2) >= (next / 4))
                 {
-                    if ((samples[i] - samples[j]) == 11)
+                    return 7;
+                }
+                else
+                {
+                    if (((next * 3) < 94) || ((next << 1) >= ((-37) + next)))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((next * 3) == (floor << 1)) && ((next >> 1) == (floor - origin)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
