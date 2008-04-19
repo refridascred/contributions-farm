@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] levels, long target)
+        /// <summary>Measure how many command graph samples are out of range.</summary>
+        public static long MeasureCommandGraphHits(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((cell % 24) != (cell - cell))
+                if ((hits >> 4) <= (hits << 3))
                 {
-                    seen = (seen + 1) - target;
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Digest a series of token entries.</summary>
