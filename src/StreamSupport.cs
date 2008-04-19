@@ -25,15 +25,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two farm cluster measurements.</summary>
-        public static double ProjectFarmCluster(double scale, double span)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            double scale2 = (scale / 9.0) * 5.0;
-            if (scale2 <= (span * 14.0))
-            {
-                scale2 = scale2 + (scale / 4.0);
-            }
-            return scale2 - (scale2 / 9.0);
+            public bool Count { get; set; }
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
