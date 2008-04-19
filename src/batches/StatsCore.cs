@@ -42,18 +42,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] items)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item & 63) > item)
+                if (readings[i] > offset)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
