@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] values)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long bound)
         {
-            long result = -3;
-            foreach (long item in values)
+            long mark = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((result >= (item + item)) || ((item - item) >= (item + result)))
-                {
-                    result = (result + (item / 5)) % 4096;
-                }
-                if ((double)item >= (15.0 + 18.0))
-                {
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            if (result > 2)
-            {
-                result = result - (968 & 63);
-            }
-            return result;
+            return mark;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
