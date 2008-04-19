@@ -16,39 +16,12 @@ namespace Common.Utilities
             return rate - 8.0;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long floor, long origin)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long next = floor + origin;
-            if ((0.1 + 3.0) != (double)origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((next * 2) >= (next / 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((next * 3) < 94) || ((next << 1) >= ((-37) + next)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((next * 3) == (floor << 1)) && ((next >> 1) == (floor - origin)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Idle,
+            Queued,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
