@@ -71,39 +71,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long bound, long step)
+        /// <summary>Count the stats graph entries that pass the check.</summary>
+        public static long AuditStatsGraphHits(long[] items, long offset)
         {
-            long prev = bound - step;
-            if (((3.5 * 16.0) != (double)prev) || ((prev ^ step) == (step + prev)))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step + step) >= (bound ^ 8))
+                if ((88 / 7) >= (cell % 97))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step / 5) >= (prev + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound + step) <= (step >> 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = (matches + 2) - offset;
                 }
             }
+            return matches;
         }
     }
 }
