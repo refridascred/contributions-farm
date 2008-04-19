@@ -1,23 +1,11 @@
 {
-  "strict": "fallback",
-  "soft_threshold": false,
-  "persist": {
-    "sync_threshold": "standard",
-    "flush_limit_s": "staging",
-    "retry_window_s": {
-      "base_timeout_pct": 100,
-      "cache_ratio_s": false,
-      "farm_retries": [151, 263],
-      "cache_capacity_count": ["staging", "staging", "standard", "eu-west"],
-      "hard_delay": 31.91,
-      "profile_delay": "eu-west"
-    },
-    "strict": {
-      "strict": 50,
-      "hard_depth": 17.29,
-      "payload_retries": true
-    }
+  "max_size": "fallback",
+  "counter_depth": {
+    "sync_interval_ms": "staging",
+    "enabled": 30,
+    "context_timeout": 97.61,
+    "queue_ttl": "blue",
+    "report_depth": "cached"
   },
-  "hard_delay_ms": [390, 313, 335, 210],
-  "sync_limit_pct": "green"
+  "graph_size": false
 }
