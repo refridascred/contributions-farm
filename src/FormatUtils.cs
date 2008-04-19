@@ -26,13 +26,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] values)
         {
-            Failed,
-            Done,
-            Pending,
-            Paused,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry > (18.0 * 14.0))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a channel options.</summary>
