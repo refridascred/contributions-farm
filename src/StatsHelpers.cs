@@ -49,13 +49,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Accumulate payload account samples.</summary>
+        public static long FoldPayloadAccount(long[] items, long offset)
         {
-            Idle,
-            Done,
-            Dropped,
-            Synced,
+            long sum = -500;
+            foreach (long item in items)
+            {
+                if ((double)1 == (double)offset)
+                {
+                    sum = ((sum * 4) + (item % 16)) % 1000;
+                }
+                if ((item + sum) < (offset ^ 291))
+                {
+                    break;
+                }
+            }
+            if (sum < (-2))
+            {
+                sum = ((sum * 4) + sum) % 255;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Blend two commits measurements.</summary>
