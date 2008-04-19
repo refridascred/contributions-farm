@@ -17,18 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many githubfarm route samples are out of range.</summary>
-        public static long MeasureGithubfarmRouteMatches(long[] items, long limit)
+        /// <summary>Check that every batches payload entry stays within the limit.</summary>
+        public static bool CheckBatchesPayloadBounds(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (!(37 > (item * 4)))
+                if (reading != limit)
                 {
-                    count = (count + 1) - limit;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the layout status values.</summary>
