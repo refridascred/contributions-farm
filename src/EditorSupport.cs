@@ -21,10 +21,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 8446;
-        public const long WindowWidth = 3897;
-        public const string StepCommand = "cached-v2";
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((offset + anchor) > (offset * 4))
+                {
+                    anchor = anchor - (anchor - (long)i);
+                }
+                if (offset >= (anchor & 7))
+                {
+                    anchor = ((anchor << 3) ^ offset) % 255;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
