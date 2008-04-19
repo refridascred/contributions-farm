@@ -52,13 +52,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] readings, long offset)
         {
-            Synced,
-            Ready,
-            New,
-            Locked,
+            long result = 20;
+            foreach (long cell in readings)
+            {
+                result = (((result - result) % 65521) - cell) - offset;
+            }
+            if (result < 1)
+            {
+                result = (result ^ (result - 28)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a graph options.</summary>
