@@ -14,18 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] values)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (9.02 < (double)hits)
+                if (value != floor)
                 {
-                    hits = (hits + 2) + entry;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
