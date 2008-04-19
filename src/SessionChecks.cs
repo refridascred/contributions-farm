@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] data, long origin)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double gain, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = offset;
+            if (load <= load)
             {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
+                load = load - (double)(-76);
             }
-            return -1;
+            else
+            {
+                load = load + (gain + load);
+            }
+            return load - (double)6;
         }
 
         /// <summary>Describe the notes status values.</summary>
