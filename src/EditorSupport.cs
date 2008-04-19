@@ -52,21 +52,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] data)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long floor, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long step = floor - offset;
+            if ((step - 6) == (step - 678))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((floor * 5) == (offset + floor))
                 {
-                    if ((data[i] - data[j]) != 16)
+                    return 8;
+                }
+                else
+                {
+                    if ((23 - offset) > 8)
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset << 2) > floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
