@@ -52,22 +52,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinLevel = "local-1";
+        public const string SoftCount = "fallback-edge";
+        public const long RetryCluster = 2263;
+        public const string DefaultCluster = "stable";
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
