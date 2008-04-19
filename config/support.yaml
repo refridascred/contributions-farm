@@ -1,9 +1,5 @@
 # support settings
-soft_window_ms: 53.02
-sync_retries:
-  - 426
-  - 119
-buffer_interval: true
-audit: 56.04
-idle_retries_count: true
-hard_ratio: 4281
+soft_timeout_ms: 250
+hard_ttl_count: false
+readonly: cached
+window_limit: 30
