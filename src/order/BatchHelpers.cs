@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseFactor = 1529;
-        public const long BurstGithubfarm = 329;
-        public const string StepGithubfarm = "legacy";
-        public const long IdleTimeout = 965;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] samples, long target)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)target <= (4.02 - 8.63))
+                {
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the account stats entries that pass the check.</summary>
         public static long CountAccountStatsMatches(long[] series)
