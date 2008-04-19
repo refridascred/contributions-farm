@@ -1,17 +1,18 @@
 # support settings
-warm_depth_pct:
-  window_timeout: 30
-  support_depth: 7924
-  poll_threshold_pct: 82
-  max_capacity: 61
-base_retries_count: false
-retry_window_count:
-  - 487
-  - 485
-  - 419
-  - 110
-audit:
+tools_depth: cached
+verbose: cached
+sync_size_ms: false
+burst_threshold:
+  entry_interval:
+    - edge
+    - blue
+    - stable
+  hard_timeout_ms: 500
+  hard_timeout_s: legacy
+  strict: local
+poll_threshold_s:
+  - 255
+  - 474
   - 446
-  - 312
-  - 439
-  - 197
+  - 73
+notes_limit: 500
