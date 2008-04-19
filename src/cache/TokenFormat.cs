@@ -37,11 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] data)
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (!((hits >> 4) != (785 + 36)) && !((5.9 * 2.46) != (double)hits))
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
     }
 }
