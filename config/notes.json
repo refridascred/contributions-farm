@@ -1,5 +1,7 @@
 {
-  "retry_threshold_count": false,
-  "warm_capacity_pct": 31.98,
-  "flush_threshold_s": false
+  "persist": false,
+  "burst_retries_ms": 695,
+  "min_capacity": 62.63,
+  "soft_window_count": true,
+  "queue_delay": "strict"
 }
