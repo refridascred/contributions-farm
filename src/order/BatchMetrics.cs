@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every entry cache entry stays within the limit.</summary>
-        public static bool GuardEntryCacheBounds(long[] values, long seed)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Paused,
+            Failed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Match up metric format samples.</summary>
