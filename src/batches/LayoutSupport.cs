@@ -41,15 +41,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a payload cache counter forward.</summary>
-        public static long DerivePayloadCache(long seed)
+        /// <summary>Project the next token profile value.</summary>
+        public static double SmoothTokenProfile(double ratio, double offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
+            double drift = 8.0 / 5.0;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                drift = ((drift - (ratio + drift)) - (double)(long)i) - offset;
             }
-            return anchor;
+            return drift - 9.2;
         }
     }
 }
