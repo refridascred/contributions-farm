@@ -1,17 +1,8 @@
 {
-  "batch_interval": "eu-west",
-  "entry_retries": {
-    "audit": [292, 466, 410, 259],
-    "min_window_count": 16,
-    "support_interval": {
-      "layout_limit": ["eu-west", "latest"],
-      "token_limit": false,
-      "strict": 42.1,
-      "sync_ttl": "legacy",
-      "readonly": "fallback"
-    }
-  },
-  "hard_size": [370, 252, 235],
-  "idle_threshold": 6604,
-  "compress": ["blue", "local"]
+  "route_threshold": 48,
+  "sync_threshold_pct": 49,
+  "burst_ttl_ms": 500,
+  "hard_ratio": "stable",
+  "cache_timeout_s": "eu-west",
+  "retry_retries_ms": "latest"
 }
