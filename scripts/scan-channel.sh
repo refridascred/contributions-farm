@@ -7,23 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 3); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-fallback}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=260
+log "limit is ${CHANNEL_LIMIT}"
