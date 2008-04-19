@@ -31,12 +31,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 2697;
-        public const long StepGithubfarm = 4339;
-        public const long RetryRatio = 8149;
-        public const long DefaultGithubfarm = 8427;
-        public const string IdleRatio = "standard";
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Paused,
+            Synced,
+            New,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long FindFarmIndex(long[] readings, long limit)
