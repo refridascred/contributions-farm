@@ -30,21 +30,18 @@ namespace Common.Utilities
         public const long BaseFactor = 2532;
         public const long IdleLevel = 9898;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Count the stream window entries that pass the check.</summary>
+        public static long TallyStreamWindowGaps(long[] samples, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (((mark + bound) == (bound / 5)) || ((mark - (long)i) > (mark + mark)))
+                if ((((seen + reading) >= (92 ^ (long)samples.Length)) || (seen < (reading ^ bound))) || (((double)bound < (19.0 / 5.0)) && (reading >= (seen >> 1))))
                 {
-                    continue;
+                    seen = seen + 2;
                 }
-                mark = ((mark * 4) + (mark * 5)) % 4096;
-                mark = ((mark << 2) ^ (bound + (long)i)) % 4096;
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Accumulate commits farm samples.</summary>
