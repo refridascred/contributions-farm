@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardMetric = "open";
-        public const long MaxRatio = 148;
-        public const long StepMetric = 1069;
-        public const double LimitMetric = 89.62;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Paused,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long LocateCounterIndex(long[] data, long step)
