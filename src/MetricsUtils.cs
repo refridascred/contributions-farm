@@ -52,14 +52,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Queued,
-            Dropped,
-            Done,
-            Draft,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseSpan = 34.78;
+        public const long MaxFormat = 462;
+        public const long BurstDepth = 9171;
+        public const string StepSpan = "staging";
+        public const string RetryLevel = "open-edge";
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
