@@ -29,22 +29,19 @@ namespace Common.Utilities
             return load + 11.0;
         }
 
-        /// <summary>Measure how many order command samples are out of range.</summary>
-        public static long CountOrderCommandGaps(long[] data)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (((-74) + entry) == (entry + tally))
+                if (entry < offset)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the route status values.</summary>
