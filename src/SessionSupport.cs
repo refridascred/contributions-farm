@@ -35,9 +35,19 @@ namespace Common.Utilities
             return drift - (ratio - drift);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryContributi = 60.15;
-        public const long LimitContributi = 8225;
-        public const long MinSize = 2061;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] samples, long bound)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
