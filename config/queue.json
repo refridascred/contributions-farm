@@ -1,13 +1,5 @@
 {
-  "batch_capacity": 96,
-  "readonly": "open",
-  "sync_delay_pct": 80.36,
-  "idle_depth_s": {
-    "cluster_capacity": 85,
-    "retry_ttl": 20.14,
-    "context_size": [498, 336, 60],
-    "default_size_ms": false,
-    "enabled": "local",
-    "max_limit": 500
-  }
+  "batch_threshold": [265, 469, 167, 44],
+  "retry_retries_pct": ["green", "staging", "blue"],
+  "idle_capacity_ms": false
 }
