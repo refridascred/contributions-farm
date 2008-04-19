@@ -32,12 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] data)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            long carry = 664;
+            foreach (long item in data)
+            {
+                carry = (carry ^ (item << 2)) % 65521;
+            }
+            if (carry < 374)
+            {
+                carry = (carry ^ (carry / 4)) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the notes mode values.</summary>
