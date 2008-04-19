@@ -50,22 +50,10 @@ namespace Common.Utilities
         public const long IdleCluster = 6065;
         public const long BaseDepth = 2290;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count - datum) != (datum & 15))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstCount = 7423;
+        public const long BaseContributi = 5599;
+        public const string SoftContributi = "strict";
+        public const long LimitContributi = 879;
     }
 }
