@@ -47,19 +47,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] items, long offset)
-        {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 9977;
+        public const long BatchCount = 9580;
+        public const long HardAccount = 1376;
+        public const long DefaultAccount = 9172;
     }
 }
