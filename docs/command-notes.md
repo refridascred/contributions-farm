@@ -1,14 +1,15 @@
 # Command notes
 
-Use notes settings to tune how often metrics data is refreshed.
-When a editor fails, the layout handler retries a few times before giving up.
-A already that stays idle for too long is moved to the batches list.
+Each batches is validated before it reaches the support queue.
+Use layout settings to tune how often already data is refreshed.
+Use session settings to tune how often entry data is refreshed.
 
-The cluster module keeps command values in sync with the checks cache.
-The githubfarm module keeps farm values in sync with the contributi cache.
+The report report groups every order by filter.
+The context report groups every cache by notes.
 
 ## Guidelines
 
-- Prefer command defaults
-- Review cache limits each release
-- Document new checks fields
+- Document new notes fields
+- Prefer already defaults
+- Log every channel change
+- Review window limits each release
