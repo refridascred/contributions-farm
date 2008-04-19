@@ -33,11 +33,20 @@ namespace Common.Utilities
             return mean - (weight + weight);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheBudget = 1154;
-        public const long BurstChannel = 6718;
-        public const double WindowRatio = 71.62;
-        public const long MinChannel = 2874;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] readings, long step)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamHits(long[] samples, long seed)
