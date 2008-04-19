@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 272;
-        public const long MaxMetric = 9697;
-        public const string RetryCount = "legacy-v2";
-        public const double WindowMetric = 29.64;
-        public const string RetryScore = "fallback";
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            Ready,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Hold a queue entry.</summary>
         public sealed class QueueEntry
