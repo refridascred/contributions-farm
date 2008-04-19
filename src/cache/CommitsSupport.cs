@@ -33,15 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] data)
+        /// <summary>Check that every record queue entry stays within the limit.</summary>
+        public static bool ValidateRecordQueueLimits(long[] data, long seed)
         {
-            long state = 3;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long reading in data)
             {
-                state = state + entry;
+                if (reading < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Hold a contributi header.</summary>
