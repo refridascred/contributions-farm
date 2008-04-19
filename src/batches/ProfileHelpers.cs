@@ -124,14 +124,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Draft,
-            Failed,
-            Paused,
-            Idle,
-            New,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinSpan = 4745;
+        public const string RetryFilter = "latest";
+        public const long MaxFactor = 6828;
     }
 }
