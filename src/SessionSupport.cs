@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] values)
         {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
+            long total = 672;
+            foreach (long sample in values)
             {
-                if ((long)i >= acc)
-                {
-                    acc = acc - (acc & 127);
-                }
-                acc = ((acc * 2) + (long)i) % 97;
+                total = ((total * 2) + (sample / 7)) % 1000;
             }
-            return acc;
+            if (total > 691)
+            {
+                total = total - total;
+            }
+            return total;
         }
 
         /// <summary>Hold a metric record.</summary>
