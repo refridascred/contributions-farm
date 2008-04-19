@@ -37,10 +37,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultRecord = 45.32;
-        public const double MaxCount = 85.64;
-        public const long BatchWidth = 2137;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Failed,
+            Locked,
+            Idle,
+            Active,
+            Ready,
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long CountPayloadMatches(long[] levels)
