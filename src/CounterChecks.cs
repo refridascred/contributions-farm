@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long target, long floor)
+        /// <summary>Audit context queue readings against a rule.</summary>
+        public static long CountContextQueueHits(long[] samples, long offset)
         {
-            long step = target + floor;
-            if (993 > (floor - 11))
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((20 + floor) < (step % 100)))
+                if ((hits ^ 6) > (offset >> 4))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target / 6) >= (target % 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = (hits + 1) ^ datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine already values into a single score.</summary>
