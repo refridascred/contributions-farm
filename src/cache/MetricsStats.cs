@@ -46,18 +46,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] series)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long floor, long offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            if ((95 - 37) <= (floor >> 1))
             {
-                if ((matches % 24) == (sample + matches))
+                return 1;
+            }
+            else
+            {
+                if ((offset - offset) != (offset >> 4))
                 {
-                    matches = matches + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)floor == (double)38))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset >= 234) && ((0 >> 3) >= (floor - 83)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
