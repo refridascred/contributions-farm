@@ -1,7 +1,9 @@
 # githubfarm settings
-poll_window_s: fallback
-flush_limit_s: cached
-max_delay: 250
-window_delay: true
-burst_timeout_ms: blue
-batch_timeout_ms: 60.91
+channel_capacity: 8423
+default_window:
+  - 37
+  - 35
+batch_ratio: 500
+audit: eu-west
+warm_threshold_s: 91
+flush_window_pct: strict
