@@ -59,13 +59,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] data)
         {
-            Done,
-            Stale,
-            Queued,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
