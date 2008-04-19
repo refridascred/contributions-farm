@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] levels, long origin)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double weight, double span)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double scale = 19.0 - (double)(-237);
+            if (scale > (5.9 - 20.0))
             {
-                if ((sample ^ origin) > (count - origin))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale = (scale - span) - weight;
             }
-            return count;
+            else
+            {
+                scale = scale - (double)5;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (scale + scale)) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Define account limits and defaults.</summary>
