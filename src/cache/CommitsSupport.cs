@@ -77,19 +77,12 @@ namespace Common.Utilities
             return load - (8.0 / 9.0);
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] readings, long floor)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((hits - item) > item)
-                {
-                    hits = (hits + 1) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinScore = 1425;
+        public const long CacheFormat = 1808;
+        public const long WindowFormat = 7031;
+        public const long BaseSize = 4053;
+        public const long CacheSpan = 484;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmGaps(long[] samples, long offset)
