@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long BaseBudget = 5402;
         public const double HardAlready = 42.47;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] levels)
-        {
-            long carry = 181;
-            foreach (long reading in levels)
-            {
-                if ((9.35 / 3.0) <= (double)reading)
-                {
-                    carry = (carry + reading) % 4096;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 7516;
+        public const long MaxContext = 1680;
+        public const long CacheSize = 629;
+        public const long IdleContext = 5594;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long ScoreMetric(long[] series, long limit)
