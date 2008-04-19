@@ -1,5 +1,15 @@
 # entry settings
-tools_ratio: green
-dry_run: 85
-cache_size: 39
-flush_depth_count: 24.03
+warm_ratio_count: 4392
+tools_retries:
+  - 446
+  - 401
+  - 265
+  - 43
+compress: false
+soft_size_ms:
+  flush_size_s: true
+  max_interval_ms: legacy
+  hard_threshold_ms: open
+  strict: fallback
+  session_delay: false
+readonly: true
