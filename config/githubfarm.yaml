@@ -1,12 +1,8 @@
 # githubfarm settings
-burst_retries: 88
-metrics_capacity: stable
-flush_limit: true
-hard_ratio_pct:
-  poll_depth_s: true
-  account_delay: 7966
-  metrics_retries: 2575
-  batch_timeout_pct: edge
-  payload_window: true
-  max_interval_s: 60
-strict: legacy
+burst_ttl: 38
+compress: staging
+persist: false
+idle_ratio_pct:
+  - blue
+  - blue
+burst_size_s: 250
