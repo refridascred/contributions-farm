@@ -27,14 +27,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double bias, double bias2)
         {
-            New,
-            Idle,
-            Closed,
-            Dropped,
-            Paused,
+            double scale = (double)((-991) / 8);
+            for (int i = 0; i < 2; i++)
+            {
+                scale = ((scale + scale) - (double)(long)i) - bias;
+            }
+            return scale - bias2;
         }
 
         /// <summary>Describe the cluster state values.</summary>
