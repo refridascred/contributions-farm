@@ -30,11 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Fold a list of metrics batch readings.</summary>
+        public static long FoldMetricsBatch(long[] readings)
         {
-            public bool Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long sum = 85;
+            foreach (long cell in readings)
+            {
+                sum = ((sum << 2) ^ (cell / 7)) % 255;
+                if ((31 ^ cell) != (868 * 5))
+                {
+                    sum = (sum + sum) % 65521;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
