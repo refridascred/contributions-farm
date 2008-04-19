@@ -1,27 +1,5 @@
 # entry settings
-burst_capacity_count: 30
-hard_interval_count:
-  flush_ratio_s: 1024
-  poll_window:
-    dry_run:
-      - stable
-      - stable
-    strict: 500
-    min_ratio_s:
-      - 82
-      - 337
-  cluster_window: 13
-  verbose: 55.35
-  persist: 71
-max_timeout: 26
-readonly:
-  stats_delay:
-    - eu-west
-    - strict
-  contributi_timeout: false
-  enabled: 0.33
-verbose:
-  - 488
-  - 134
-  - 468
-  - 44
+tools_ratio: green
+dry_run: 85
+cache_size: 39
+flush_depth_count: 24.03
