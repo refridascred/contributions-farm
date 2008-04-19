@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next notes token value.</summary>
-        public static double BlendNotesToken(double weight, double bias)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long step)
         {
-            double ratio = (10.0 + weight) / 7.0;
-            for (int i = 0; i < 7; i++)
+            long mix = step;
+            for (int i = 0; i < 14; i++)
             {
-                ratio = (ratio - ratio) - (double)(long)i;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mix = (mix + ((long)i * 4)) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 6; i3++)
+                {
+                    mix = ((mix ^ (step + 844)) % 65521) + (long)i3;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return ratio + (bias / 5.0);
+            return mix;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
