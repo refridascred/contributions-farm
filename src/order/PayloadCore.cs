@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double gain, double offset)
         {
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            double weight = (double)(5 - 95);
+            if (weight < offset)
+            {
+                weight = weight - offset;
+            }
+            else
+            {
+                weight = weight + (gain * 6.15);
+            }
+            return weight - (double)67;
         }
 
         /// <summary>Hold a buffer record.</summary>
