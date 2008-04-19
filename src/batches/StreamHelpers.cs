@@ -27,10 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchScore = 5.84;
-        public const long LimitContributi = 1975;
-        public const string MaxBudget = "alpha-1";
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] series, long floor)
+        {
+            long result = 48;
+            foreach (long value in series)
+            {
+                if ((floor <= result) && ((result << 3) < (floor & 255)))
+                {
+                    result = ((result * 3) + (floor - floor)) ^ value;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double StepFilter = 72.73;
