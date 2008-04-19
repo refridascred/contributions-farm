@@ -68,15 +68,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] items, long floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] levels)
         {
             long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)(long)items.Length >= (4.4 + 4.1)) && (1.0 < (double)reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) + floor;
+                    if ((levels[i] + levels[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
