@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] items, long floor)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double mean = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if ((194 * 2) <= (datum ^ floor))
-                {
-                    tally = tally + 1;
-                }
+                mean = ((mean - bias) + (double)(long)i) + bias2;
             }
-            return tally;
+            return mean + mean;
         }
 
         /// <summary>Describe the report level values.</summary>
