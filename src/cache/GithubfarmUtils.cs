@@ -16,12 +16,17 @@ namespace Common.Utilities
             return rate - 8.0;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Find the first metric cluster entry that matches the target.</summary>
+        public static long SeekMetricClusterIndex(long[] values, long seed)
         {
-            Dropped,
-            Idle,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
