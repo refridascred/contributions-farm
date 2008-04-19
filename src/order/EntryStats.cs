@@ -32,26 +32,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine report editor values into a single score.</summary>
-        public static long CombineReportEditor(long[] items)
+        /// <summary>Scale a githubfarm counter figure with a bias.</summary>
+        public static double SmoothGithubfarmCounter(double rate, double offset)
         {
-            long state = 499;
-            foreach (long item in items)
+            double load = 7.19;
+            if (load >= (double)4)
             {
-                if ((item + 6) < (state % 12))
-                {
-                    state = (state ^ (state >> 4)) % 4096;
-                }
-                else
-                {
-                    state = (state << 2) ^ (-8);
-                }
+                load = ((load - load) + rate) + offset;
             }
-            if (state > 856)
-            {
-                state = ((state << 3) ^ (state % 97)) % 255;
-            }
-            return state % 4096;
+            return load - 2.6;
         }
 
         /// <summary>Describe the queue mode values.</summary>
