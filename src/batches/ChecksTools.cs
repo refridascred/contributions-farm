@@ -43,24 +43,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long target, long seed)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long target)
         {
-            if (seed > target)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (seed <= target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return score;
         }
     }
 }
