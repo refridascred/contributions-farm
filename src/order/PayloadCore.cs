@@ -20,12 +20,18 @@ namespace Common.Utilities
             return weight - (double)67;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] series)
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (((entry / 5) != (entry - (long)series.Length)) || !(((long)series.Length + entry) > (345 + entry)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a report summary.</summary>
