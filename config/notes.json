@@ -1,17 +1,10 @@
 {
-  "min_window_ms": [55, 195, 133, 222],
-  "flush_retries_pct": {
-    "readonly": ["edge", "standard", "legacy"],
-    "base_delay_s": "latest",
-    "flush_window": true,
-    "idle_depth_s": 32
+  "dry_run": {
+    "cache_window_s": 9,
+    "enabled": true,
+    "entry_ttl": "primary"
   },
-  "enabled": "open",
-  "dry_run": 60,
-  "poll_threshold": {
-    "poll_window_ms": "latest",
-    "cache_capacity": 11.86,
-    "payload_interval": 3148,
-    "compress": 30
-  }
+  "verbose": "stable",
+  "hard_window_count": ["legacy", "edge", "fallback", "blue"],
+  "base_limit_pct": 92
 }
