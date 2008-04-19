@@ -37,13 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Queued,
-            Ready,
-            Pending,
-            Stale,
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
     }
 }
