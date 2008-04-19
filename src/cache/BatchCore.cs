@@ -47,14 +47,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long origin)
         {
-            Failed,
-            Ready,
-            Synced,
-            New,
-            Draft,
+            long sum = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
