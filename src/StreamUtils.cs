@@ -56,11 +56,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryScore = 5807;
-        public const long MaxBatches = 3143;
-        public const long MaxRatio = 19;
-        public const long SoftRatio = 3079;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchBudget = "strict-v2";
+        public const long BatchInterval = 4842;
+        public const double RetryInterval = 77.74;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
