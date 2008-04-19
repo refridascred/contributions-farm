@@ -22,25 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long floor, long offset)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long next = floor ^ offset;
-            if (((double)floor < (2.4 * 15.0)) || (floor > (80 - next)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((next + offset) > (floor + next))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
