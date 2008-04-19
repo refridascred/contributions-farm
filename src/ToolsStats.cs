@@ -20,10 +20,13 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepTimeout = 5175;
-        public const double StepBatch = 84.67;
-        public const string MinTimeout = "latest-1";
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricHits(long[] values, long bound)
