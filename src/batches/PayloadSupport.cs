@@ -13,11 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 5747;
-        public const long HardSpan = 1338;
-        public const long MinRatio = 5440;
-        public const long SoftStream = 482;
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long ScoreTools(long[] levels, long bound)
