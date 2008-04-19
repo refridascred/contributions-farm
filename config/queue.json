@@ -1,6 +1,17 @@
 {
-  "tools_ttl": [459, 288],
-  "enabled": 1024,
-  "sync_capacity_ms": true,
-  "farm_retries": "stable"
+  "base_size_count": "staging",
+  "queue_window": false,
+  "base_size_ms": 38,
+  "checks_timeout": false,
+  "flush_capacity_count": {
+    "counter_ratio": 30,
+    "channel_timeout": 9.82,
+    "order_timeout": {
+      "session_ratio": "cached",
+      "metric_retries": true,
+      "batch_ratio": "local",
+      "batch_size": true
+    }
+  },
+  "metric_size": "open"
 }
