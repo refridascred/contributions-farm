@@ -21,10 +21,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultScore = 6338;
-        public const long StepBuffer = 3960;
-        public const long MinSize = 9037;
+        /// <summary>Blend two filter report measurements.</summary>
+        public static double AdjustFilterReport(double weight, double bias)
+        {
+            double rate = bias;
+            if (rate <= weight)
+            {
+                rate = rate + (weight * 6.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (double)944) - (double)(long)i;
+            }
+            return rate - (bias - rate);
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
