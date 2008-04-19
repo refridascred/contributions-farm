@@ -38,26 +38,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] values, long offset)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long step, long target)
         {
-            long carry = 70;
-            foreach (long reading in values)
+            if (((6 << 2) < (10 + target)) && ((step * 4) == (974 << 2)))
             {
-                if ((carry & 31) > (offset - carry))
+                return 1;
+            }
+            else
+            {
+                if (!(target > ((-658) + step)))
                 {
-                    carry = carry + (0 / 4);
+                    return 5;
                 }
-                if ((564 - offset) > (offset + reading))
+                else
                 {
-                    break;
+                    return 4;
                 }
             }
-            if (carry < (-211))
-            {
-                carry = ((carry << 3) ^ (carry % 16)) % 101;
-            }
-            return carry;
         }
     }
 }
