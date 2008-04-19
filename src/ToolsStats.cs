@@ -41,19 +41,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] items)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] items, long floor)
         {
-            long mix = 72;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((reading % 7) >= reading)
+                if ((count & 7) >= ((long)items.Length << 1))
                 {
-                    mix = mix - mix;
+                    count = ((count + 2) + datum) + floor;
                 }
-                mix = mix - (reading ^ mix);
             }
-            return mix % 97;
+            return count;
         }
 
         /// <summary>Locate a account reading by value.</summary>
