@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long limit, long origin)
+        /// <summary>Validate payload stream readings against a bound.</summary>
+        public static bool ValidatePayloadStreamRange(long[] items, long limit)
         {
-            long bound = limit ^ origin;
-            if (limit < (31 << 3))
+            bool flag = true;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound < (5.96 + 7.0))
+                if (datum != limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Look up the position of a metrics already sample.</summary>
