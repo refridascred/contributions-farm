@@ -20,21 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] readings)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = 0.1;
+            if (load > (load * 5.92))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = (load + (double)(-47)) + bias;
             }
-            return matches;
+            else
+            {
+                load = load + weight;
+            }
+            return load - weight;
         }
 
         /// <summary>Hold a payload stats.</summary>
