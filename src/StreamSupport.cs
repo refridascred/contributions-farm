@@ -15,14 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double bias, double span)
         {
-            Stale,
-            Queued,
-            Ready,
-            Failed,
-            Synced,
+            double drift = (double)(0 / 6);
+            if (drift < bias)
+            {
+                drift = (drift - bias) - span;
+            }
+            return drift + (bias + drift);
         }
 
         /// <summary>Project the next counter context value.</summary>
