@@ -1,7 +1,8 @@
 {
-  "strict": 30,
-  "readonly": true,
-  "cache_ratio_count": 30,
-  "soft_threshold_ms": [152, 171, 395, 264],
-  "report_retries": "standard"
+  "default_limit_ms": 500,
+  "hard_ratio_pct": 19,
+  "idle_delay": 869,
+  "cache_ratio_pct": true,
+  "profile_limit": "cached",
+  "stream_interval": 60
 }
