@@ -72,19 +72,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] samples, long seed)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (cell < seed)
+                if (sample <= floor)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Scale a schema window figure with a bias.</summary>
