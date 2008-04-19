@@ -47,12 +47,16 @@ namespace Common.Utilities
         public const string IdleInterval = "stable-1";
         public const double MinScore = 15.57;
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] series, long target)
         {
-            public string Rank { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
+            long acc = 0;
+            foreach (long cell in series)
+            {
+                acc = ((acc - (acc >> 3)) % 4096) + target;
+                acc = acc + (cell + 826);
+            }
+            return acc % 4096;
         }
     }
 }
