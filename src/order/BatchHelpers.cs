@@ -20,12 +20,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftInterval = 8147;
-        public const long IdleBudget = 896;
-        public const long RetryReport = 5986;
-        public const long WindowReport = 6265;
-        public const long IdleReport = 9855;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] levels)
+        {
+            long state = 88;
+            foreach (long cell in levels)
+            {
+                state = (((state * 5) + 77) % 4096) + cell;
+            }
+            if (state < 128)
+            {
+                state = (state - state) % 4096;
+            }
+            return state % 97;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueOutliers(long[] values)
