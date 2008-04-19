@@ -33,18 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record account samples are out of range.</summary>
-        public static long AuditRecordAccountGaps(long[] levels)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((value / 9) != (hits + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
