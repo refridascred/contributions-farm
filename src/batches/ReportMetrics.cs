@@ -16,12 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] values, long offset)
         {
-            New,
-            Failed,
-            Ready,
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
