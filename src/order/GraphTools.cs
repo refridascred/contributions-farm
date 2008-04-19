@@ -57,20 +57,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of layout tools entries.</summary>
-        public static long ScoreLayoutTools(long[] series)
-        {
-            long anchor = -3;
-            foreach (long reading in series)
-            {
-                if ((480 - anchor) > reading)
-                {
-                    break;
-                }
-                anchor = anchor - reading;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 2838;
+        public const double BatchSupport = 12.52;
+        public const long RetrySupport = 398;
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
