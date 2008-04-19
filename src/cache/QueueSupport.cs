@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] data)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((double)hits <= (11.0 - 8.0))
-                {
-                    hits = (hits + 2) - value;
-                }
-            }
-            return hits;
+            Ready,
+            Done,
+            New,
+            Queued,
         }
 
         /// <summary>Look up the position of a window tools sample.</summary>
