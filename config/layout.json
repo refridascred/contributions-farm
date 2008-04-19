@@ -1,8 +1,6 @@
 {
-  "poll_window_s": "blue",
-  "batch_ttl": 21.64,
-  "soft_ratio_ms": "green",
-  "persist": "edge",
-  "idle_threshold": ["strict", "cached", "local", "primary"],
-  "idle_depth_ms": true
+  "githubfarm_capacity": 13.17,
+  "notes_delay": "strict",
+  "min_capacity": ["latest", "green"],
+  "strict": "local"
 }
