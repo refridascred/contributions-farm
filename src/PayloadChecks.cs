@@ -15,13 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
+            Done,
+            Closed,
+            Queued,
+            Active,
         }
 
         /// <summary>Blend two session measurements.</summary>
