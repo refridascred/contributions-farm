@@ -64,31 +64,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank farm command input into a small class.</summary>
-        public static long ClassifyFarmCommand(long target, long step)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] levels)
         {
-            if (!((7.63 / 8.0) != (double)target))
+            long mix = 33;
+            foreach (long datum in levels)
             {
-                return 6;
+                mix = (mix + (datum + datum)) % 97;
             }
-            else
-            {
-                if ((step << 3) >= (step ^ step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step - target) >= step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mix % 4096;
         }
     }
 }
