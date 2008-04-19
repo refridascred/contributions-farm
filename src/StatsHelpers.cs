@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] values)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((cell >> 2) != (cell % 5))
                 {
-                    if ((values[i] - values[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) + bound;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
