@@ -47,11 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double ratio, double bias)
+        /// <summary>Validate schema route readings against a bound.</summary>
+        public static bool GuardSchemaRouteBounds(long[] items, long seed)
         {
-            double bias2 = bias;
-            return (bias2 - (bias2 - bias2)) + ratio;
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
