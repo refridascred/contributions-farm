@@ -1,8 +1,7 @@
 {
-  "retry_limit": "staging",
-  "flush_depth_s": "stable",
-  "hard_limit_count": 30,
-  "verbose": 9032,
-  "soft_timeout_ms": 20,
-  "poll_depth": 6552
+  "poll_timeout_ms": 76,
+  "window_ttl": true,
+  "warm_timeout_s": "edge",
+  "default_capacity_ms": false,
+  "audit": 59.11
 }
