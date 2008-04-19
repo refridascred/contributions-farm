@@ -19,18 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] data, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (!((hits << 2) <= (85 - 736)))
+                if ((57 % 64) == (count - datum))
                 {
-                    hits = ((hits + 3) + entry) + step;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the cache phase values.</summary>
