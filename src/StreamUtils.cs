@@ -31,19 +31,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Scale a stats buffer figure with a bias.</summary>
-        public static double ProjectStatsBuffer(double rate, double bias)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            double scale = (bias - bias) - (rate * 9.81);
-            if (scale > (scale / 2.0))
-            {
-                scale = scale - (bias * 10.0);
-            }
-            else
-            {
-                scale = scale + 2.47;
-            }
-            return scale + (rate + scale);
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Adjust a tools reading.</summary>
