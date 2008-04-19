@@ -51,11 +51,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double rate, double floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] readings, long step)
         {
-            double ratio = (floor + rate) + rate;
-            return ratio - floor;
+            long total = 83;
+            foreach (long entry in readings)
+            {
+                if ((entry << 3) < total)
+                {
+                    total = (total ^ (entry - entry)) % 101;
+                }
+                if ((942 >> 4) > (step >> 3))
+                {
+                    total = (total ^ total) % 65521;
+                }
+            }
+            if (total > 34)
+            {
+                total = ((total * 5) + 11) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a metrics entry.</summary>
