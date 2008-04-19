@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double weight, double floor)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double ratio, double floor)
         {
-            double load = floor;
-            if (load > (1.1 * 8.7))
+            double ratio2 = floor;
+            if (ratio2 < (ratio - floor))
             {
-                load = load - (load - weight);
+                ratio2 = ratio2 + ratio2;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                load = (load + load) + (double)(long)i;
+                ratio2 = ratio2 - (double)7;
             }
-            return load - floor;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 - (ratio2 - ratio2)) + (double)(long)i;
+            }
+            return ratio2 - (2.69 + 3.0);
         }
 
         /// <summary>Locate a counter command reading by value.</summary>
