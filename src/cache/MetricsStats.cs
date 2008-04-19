@@ -47,10 +47,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstLevel = 938;
-        public const double CacheFactor = 61.79;
-        public const long MinSize = 9104;
+        /// <summary>Check that every channel stream entry stays within the limit.</summary>
+        public static bool GuardChannelStreamLimits(long[] levels, long bound)
+        {
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountMatches(long[] levels)
