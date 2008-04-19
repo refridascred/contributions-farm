@@ -33,11 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxAccount = 11.33;
-        public const string DefaultWidth = "alpha-edge";
-        public const long SoftAccount = 1884;
-        public const long BaseAccount = 4148;
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmMatches(long[] samples, long target)
