@@ -13,22 +13,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] readings, long offset)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] items, long step)
         {
-            long score = 6;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((offset - score) > (score + cell))
+                if ((items[i] == step) && ((items[i] % 5) == 0))
                 {
-                    score = (score * 5) + (offset - offset);
-                }
-                if ((offset ^ score) < score)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
