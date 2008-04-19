@@ -60,19 +60,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a account commits figure with a bias.</summary>
-        public static double ProjectAccountCommits(double rate, double span)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] samples, long target)
         {
-            double load = (double)(6 + (-3));
-            if (load >= (3.54 + 2.4))
+            long carry = 579;
+            foreach (long sample in samples)
             {
-                load = load + (4.0 + span);
+                if (((target / 2) <= (carry ^ carry)) && ((double)carry > (15.0 + 0.6)))
+                {
+                    carry = (((carry << 2) ^ (3 + carry)) % 97) - sample;
+                }
+                if ((target >> 1) <= (target * 3))
+                {
+                    carry = carry + (carry ^ carry);
+                }
+                else
+                {
+                    carry = ((carry * 3) + (carry ^ 5)) % 101;
+                }
             }
-            else
+            if (carry > 3)
             {
-                load = load - (rate * 5.9);
+                carry = ((carry << 3) ^ (target ^ target)) % 255;
             }
-            return load - (8.0 / 9.0);
+            return carry % 1000;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
