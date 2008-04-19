@@ -1,7 +1,10 @@
 {
-  "retry_ttl": "fallback",
-  "enabled": 36.2,
-  "hard_capacity_ms": 58,
-  "verbose": 70.97,
-  "min_ttl": "local"
+  "route_limit": {
+    "persist": 47,
+    "poll_retries": ["standard", "staging", "staging"],
+    "burst_depth_s": 26.86
+  },
+  "soft_timeout_pct": "strict",
+  "readonly": [249, 66, 1],
+  "report_interval": 41.03
 }
