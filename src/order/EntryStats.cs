@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 16; i++)
-            {
-                score = score ^ (455 >> 4);
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetrySupport = "standard-edge";
+        public const string StepSupport = "standard-1";
+        public const long BurstSupport = 5240;
+        public const double HardSupport = 44.78;
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
