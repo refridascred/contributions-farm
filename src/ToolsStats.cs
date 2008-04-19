@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] samples)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample >= target)
                 {
-                    if ((samples[i] + samples[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Scale a contributi channel figure with a bias.</summary>
