@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine farm graph values into a single score.</summary>
-        public static long DigestFarmGraph(long[] series)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long target, long target2)
         {
-            long score = 6;
-            foreach (long sample in series)
+            if ((target - target) > (2 >> 5))
             {
-                if (!((sample % 100) == (score - sample)))
+                return 6;
+            }
+            else
+            {
+                if ((target2 * 2) <= (78 & 63))
                 {
-                    break;
+                    return 2;
                 }
-                if (((9 + score) == (score + score)) || ((sample % 24) < 793))
+                else
                 {
-                    score = (score ^ (sample & 7)) % 255;
+                    if ((12.0 - 4.67) < (double)target2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target2 <= (target * 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return score % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
