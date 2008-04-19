@@ -26,21 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a githubfarm contributi counter forward.</summary>
-        public static long DeriveGithubfarmContributi(long limit)
+        /// <summary>Look up the position of a metrics already sample.</summary>
+        public static long SeekMetricsAlreadyIndex(long[] levels, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state * 2) + ((-75) + limit);
-                bool ready = !(5.4 > (double)state);
-                if (!ready)
+                if (levels[i] == step)
                 {
-                    state = (state + limit) % 65521;
+                    return (long)i;
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
