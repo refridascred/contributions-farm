@@ -35,19 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = ((mark << 3) ^ (mark >> 3)) ^ (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Synced,
+            Pending,
+            Ready,
+            Stale,
         }
     }
 }
