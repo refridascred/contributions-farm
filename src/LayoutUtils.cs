@@ -25,19 +25,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate githubfarm counter readings against a bound.</summary>
-        public static bool CheckGithubfarmCounterLimits(long[] items, long offset)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            double bias = span;
+            if (bias < bias)
             {
-                if (cell < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = bias + ratio;
             }
-            return ready;
+            return bias + bias;
         }
     }
 }
