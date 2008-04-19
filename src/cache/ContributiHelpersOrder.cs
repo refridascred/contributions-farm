@@ -37,19 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double weight, double offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] data, long seed)
         {
-            double rate = 9.6;
-            if (rate > (double)55)
+            long anchor = 16;
+            foreach (long value in data)
             {
-                rate = (rate + rate) + offset;
+                if (value <= (8 / 4))
+                {
+                    anchor = ((anchor ^ (value ^ 9)) % 65521) - seed;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (anchor < 1)
             {
-                rate = (rate + rate) + (double)(long)i;
+                anchor = ((anchor * 5) + (8 & 15)) % 4096;
             }
-            return rate - weight;
+            return anchor;
         }
     }
 }
