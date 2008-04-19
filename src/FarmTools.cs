@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 818;
-        public const long BatchRatio = 5535;
-        public const long BatchEntry = 6986;
-        public const double CacheTimeout = 48.37;
-        public const long CacheEntry = 542;
+        /// <summary>Audit report tools readings against a rule.</summary>
+        public static long TallyReportToolsMatches(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((tally >> 4) <= (seed - 71))
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
