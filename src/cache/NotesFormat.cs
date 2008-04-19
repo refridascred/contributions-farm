@@ -23,17 +23,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] series, long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] values)
         {
-            long mark = 1;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in values)
             {
-                mark = ((mark - (383 >> 2)) % 65521) ^ sample;
-                mark = (mark ^ (mark + 236)) % 1000;
-                mark = ((mark * 2) + target) % 97;
+                if ((count - count) <= count)
+                {
+                    count = (count + 1) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark % 1000;
+            return count;
         }
     }
 }
