@@ -18,16 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] samples, long bound)
+        /// <summary>Count graph counter pairs that satisfy a relation.</summary>
+        public static long CompareGraphCounterCount(long[] values)
         {
-            long carry = 547;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry << 3) ^ (bound - bound)) % 97;
-                carry = (carry ^ (sample % 24)) % 255;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Check that every githubfarm entry entry stays within the limit.</summary>
