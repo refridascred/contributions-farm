@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit counter stream readings against a rule.</summary>
-        public static long MeasureCounterStreamOutliers(long[] series, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long anchor = 22;
+            foreach (long entry in samples)
             {
-                if (matches < (value << 2))
-                {
-                    matches = (matches + 2) + bound;
-                }
+                anchor = (anchor ^ (entry - 9)) - seed;
             }
-            return matches;
+            if (anchor < 5)
+            {
+                anchor = (anchor ^ 136) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
