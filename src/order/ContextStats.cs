@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] series)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] series, long offset)
         {
-            long acc = 7;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                acc = ((acc * 4) + item) % 65521;
+                if ((double)seen > (double)offset)
+                {
+                    seen = (seen + 2) ^ cell;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Adjust a batches reading.</summary>
