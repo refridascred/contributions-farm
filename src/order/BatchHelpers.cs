@@ -20,13 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] series)
         {
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((sample + 1) == (59 % 12)) && ((matches / 6) == (sample % 97)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
