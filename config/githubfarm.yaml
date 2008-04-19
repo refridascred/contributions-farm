@@ -1,9 +1,14 @@
 # githubfarm settings
-channel_capacity: 8423
-default_window:
-  - 37
-  - 35
-batch_ratio: 500
-audit: eu-west
-warm_threshold_s: 91
-flush_window_pct: strict
+flush_timeout_count: 54
+farm_depth:
+  - 325
+  - 377
+  - 319
+  - 396
+enabled: 58.12
+tools_window:
+  - 359
+  - 462
+  - 67
+strict: false
+readonly: 5
