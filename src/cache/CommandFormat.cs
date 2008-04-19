@@ -56,15 +56,14 @@ namespace Common.Utilities
             return ratio - (double)8;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double scale, double bias)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            double scale2 = (double)(955 + 7);
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = ((scale2 + scale) + (double)(long)i) - bias;
-            }
-            return scale2 - (double)5;
+            Paused,
+            Locked,
+            Retry,
+            Ready,
+            Dropped,
         }
     }
 }
