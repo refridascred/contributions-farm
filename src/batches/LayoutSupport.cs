@@ -40,18 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] levels)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((matches << 2) != (matches % 97))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the notes status values.</summary>
