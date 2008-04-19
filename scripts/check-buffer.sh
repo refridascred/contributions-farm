@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=70
+BUFFER_LIMIT=104
 log "limit is ${BUFFER_LIMIT}"
 
-for item in stable staging blue green; do
+for item in eu-west edge local; do
     log "checking ${item}"
 done
