@@ -1,6 +1,11 @@
-id,score,weight,count,active
-1,123,575,499,583
-2,197,952,green,837
-3,13,45.77,open,eu-west
-4,342,2.52,251,25.91
-5,staging,open,green,974
+id,rank,owner,token,label
+1,1,open,30.79,25.24
+2,0,955,868,324
+3,126,196,edge,38.89
+4,cached,74.66,legacy,open
+5,918,91.3,546,57.98
+6,42.48,52.44,59.18,300
+7,41.33,90.5,blue,98.58
+8,759,88.24,639,599
+9,legacy,primary,85.07,12.78
+10,30.36,839,76.44,cached
