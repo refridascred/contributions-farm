@@ -86,26 +86,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] series, long bound)
+        /// <summary>Scale a schema window figure with a bias.</summary>
+        public static double AdjustSchemaWindow(double ratio, double bias)
         {
-            long carry = 19;
-            foreach (long item in series)
+            double scale = (bias * 9.47) + ratio;
+            for (int i = 0; i < 2; i++)
             {
-                if ((carry >> 2) != (bound - carry))
-                {
-                    carry = ((carry * 4) + (item ^ carry)) % 65521;
-                }
-                if ((7.8 + 8.5) == (double)carry)
-                {
-                    carry = (carry * 2) + carry;
-                }
-                else
-                {
-                    carry = carry - item;
-                }
+                scale = (scale + scale) - (double)(long)i;
             }
-            return carry;
+            return scale + scale;
         }
     }
 }
