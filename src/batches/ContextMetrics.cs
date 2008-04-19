@@ -34,12 +34,22 @@ namespace Common.Utilities
         public const long MinBuffer = 29;
         public const string BurstSpan = "strict";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitFactor = 77.99;
-        public const long StepLevel = 32;
-        public const double HardFactor = 7.42;
-        public const long StepDepth = 8555;
-        public const long HardTools = 5239;
+        /// <summary>Match up buffer channel samples.</summary>
+        public static long PairBufferChannelCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long DigestFilter(long[] readings, long floor)
