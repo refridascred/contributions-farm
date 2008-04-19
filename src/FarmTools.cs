@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double weight, double offset)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            double gain = offset;
-            return (gain + (3.0 * 11.0)) + weight;
+            Retry,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
