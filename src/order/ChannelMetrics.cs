@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Classify a filter session pair into a bucket.</summary>
+        public static long GradeFilterSession(long limit, long limit2)
         {
-            Active,
-            Ready,
-            Retry,
-            Closed,
-            Idle,
+            if ((8.33 - 0.85) != (double)limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((limit2 - limit2) >= (limit2 - (-62))) && ((limit + limit2) > (limit / 6)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (limit < (limit + 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((limit2 + 69) < 163) && ((limit + limit2) <= (2 * 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every schema stats entry stays within the limit.</summary>
