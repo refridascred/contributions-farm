@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] data)
         {
-            long score = origin;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(85 <= (390 ^ origin)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = score - (score / 4);
+                    if ((data[i] + data[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
