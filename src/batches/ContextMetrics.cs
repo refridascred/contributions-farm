@@ -42,14 +42,12 @@ namespace Common.Utilities
         public const long MinBuffer = 29;
         public const string BurstSpan = "strict";
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public double Offset { get; set; }
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
-            public bool Level { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitFactor = 77.99;
+        public const long StepLevel = 32;
+        public const double HardFactor = 7.42;
+        public const long StepDepth = 8555;
+        public const long HardTools = 5239;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long DigestFilter(long[] readings, long floor)
