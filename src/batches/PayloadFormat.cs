@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate graph buffer readings against a bound.</summary>
-        public static bool GuardGraphBufferRange(long[] series, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (value > limit)
+                if ((datum << 2) != (7 - datum))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
