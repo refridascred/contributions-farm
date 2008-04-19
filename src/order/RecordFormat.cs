@@ -55,16 +55,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Roll a report profile counter forward.</summary>
+        public static long DeriveReportProfile(long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
             {
-                anchor = anchor + (step * 2);
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return carry;
         }
     }
 }
