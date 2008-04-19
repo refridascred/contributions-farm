@@ -15,31 +15,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank filter window input into a small class.</summary>
-        public static long GradeFilterWindow(long seed, long target)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            if (!(target <= (target & 7)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((target / 3) >= (target >> 4)) && ((23 % 10) < (target >> 4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + seed) < target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Done,
+            Synced,
+            Paused,
+            Failed,
+            New,
         }
 
         /// <summary>Blend two farm cluster measurements.</summary>
