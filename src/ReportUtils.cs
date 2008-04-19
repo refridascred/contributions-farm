@@ -35,19 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] values, long step)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Measure how many support filter samples are out of range.</summary>
