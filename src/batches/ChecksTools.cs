@@ -30,10 +30,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxInterval = 3584;
-        public const string IdleLevel = "latest";
-        public const string SoftCommand = "cached-1";
+        /// <summary>Count the stream contributi entries that pass the check.</summary>
+        public static long TallyStreamContributiHits(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((floor ^ seen) != (floor & 3))
+                {
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long RankCluster(long target, long seed)
