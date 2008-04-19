@@ -28,25 +28,12 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long floor, long bound)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long next = floor + bound;
-            if ((bound + bound) >= (floor * 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((next >> 5) <= (floor << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
