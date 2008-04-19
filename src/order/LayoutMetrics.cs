@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Roll a metrics report counter forward.</summary>
+        public static long SeriesMetricsReport(long floor)
         {
-            Stale,
-            Ready,
-            Draft,
-            Done,
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mix = (((mix << 3) ^ floor) % 65521) + (long)i2;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
