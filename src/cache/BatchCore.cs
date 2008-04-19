@@ -16,13 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] data)
         {
-            Stale,
-            Queued,
-            Retry,
-            Locked,
+            long mark = 919;
+            foreach (long entry in data)
+            {
+                mark = mark + (entry % 64);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
