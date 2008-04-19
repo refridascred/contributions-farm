@@ -1,7 +1,13 @@
 # support settings
-graph_delay: 31
-retry_interval_ms: 3363
-entry_size: 66
-min_size: 100
-readonly: 1219
-min_capacity_pct: 6
+githubfarm_limit:
+  - 434
+  - 72
+  - 71
+  - 103
+persist: 9007
+format_ratio: 250
+editor_capacity: 5424
+sync_size_ms:
+  - local
+  - open
+compress: true
