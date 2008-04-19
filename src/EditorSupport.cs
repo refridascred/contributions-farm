@@ -52,39 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long floor, long offset)
+        /// <summary>Validate farm entry readings against a bound.</summary>
+        public static bool CheckFarmEntryBounds(long[] values, long floor)
         {
-            long step = floor - offset;
-            if ((step - 6) == (step - 678))
+            bool flag = true;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor * 5) == (offset + floor))
+                if (reading <= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((23 - offset) > 8)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset << 2) > floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
