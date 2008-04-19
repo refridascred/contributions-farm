@@ -32,14 +32,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Combine report editor values into a single score.</summary>
+        public static long CombineReportEditor(long[] items)
         {
-            Synced,
-            New,
-            Stale,
-            Queued,
-            Ready,
+            long state = 499;
+            foreach (long item in items)
+            {
+                if ((item + 6) < (state % 12))
+                {
+                    state = (state ^ (state >> 4)) % 4096;
+                }
+                else
+                {
+                    state = (state << 2) ^ (-8);
+                }
+            }
+            if (state > 856)
+            {
+                state = ((state << 3) ^ (state % 97)) % 255;
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the queue mode values.</summary>
