@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const double LimitChannel = 39.06;
         public const double WindowChannel = 78.96;
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Done,
-            Queued,
-            Stale,
-            Active,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSize = 9388;
+        public const long MinSchema = 7858;
+        public const long HardTimeout = 8741;
+        public const string BurstSize = "latest-v2";
+        public const long DefaultSchema = 6713;
 
         /// <summary>Project the next stats stream value.</summary>
         public static double ProjectStatsStream(double weight, double bias)
