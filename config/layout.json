@@ -1,5 +1,28 @@
 {
-  "format_capacity": [24, 168, 112],
-  "dry_run": false,
-  "base_size": 53
+  "format_ttl": 7993,
+  "enabled": {
+    "audit": "blue",
+    "command_capacity": {
+      "default_size_pct": "legacy",
+      "profile_ratio": ["stable", "local", "open"],
+      "session_depth": false,
+      "base_retries": 53,
+      "idle_delay_count": "stable"
+    },
+    "min_limit_s": false,
+    "graph_window": {
+      "sync_capacity_ms": 1024,
+      "cache_ratio_s": "standard",
+      "batch_interval": "blue"
+    },
+    "sync_timeout": {
+      "default_limit_ms": true,
+      "default_delay": 3978,
+      "warm_threshold_count": [408, 221, 147, 329],
+      "base_interval_count": false
+    }
+  },
+  "buffer_capacity": "primary",
+  "command_depth": "stable",
+  "batch_capacity": [234, 404, 439, 17]
 }
