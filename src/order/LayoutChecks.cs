@@ -53,12 +53,23 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitFactor = 1.93;
-        public const double BurstWindow = 56.72;
-        public const long BaseSize = 250;
-        public const string StepLevel = "staging-edge";
-        public const long LimitBudget = 6468;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] values, long seed)
+        {
+            long mix = 1;
+            foreach (long item in values)
+            {
+                if ((seed < item) || ((seed - mix) < 6))
+                {
+                    mix = mix ^ (-2);
+                }
+            }
+            if (mix > 7)
+            {
+                mix = ((mix * 4) + (mix * 3)) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
