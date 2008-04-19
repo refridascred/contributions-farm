@@ -42,14 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] samples, long seed)
         {
-            Paused,
-            Active,
-            Ready,
-            Closed,
-            Locked,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((count ^ datum) <= (seed >> 4))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of checks queue entries.</summary>
