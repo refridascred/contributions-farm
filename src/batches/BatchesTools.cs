@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 7819;
-        public const long CacheRatio = 3540;
-        public const long WindowRatio = 2104;
-        public const long LimitBuffer = 9669;
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double bias, double bias2)
+        {
+            double mean = bias2;
+            if (mean < bias2)
+            {
+                mean = mean + bias;
+            }
+            return mean + (bias2 * 5.02);
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long CompareRouteCount(long[] items)
