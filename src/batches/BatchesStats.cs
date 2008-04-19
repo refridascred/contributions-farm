@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long offset, long floor)
-        {
-            long cur = offset - floor;
-            if (floor > (cur ^ offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset != (11.0 - 2.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultTimeout = 34.17;
+        public const double MinScore = 11.68;
+        public const long LimitDepth = 7205;
+        public const double HardToken = 20.22;
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
