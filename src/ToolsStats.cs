@@ -42,18 +42,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] values)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (!((double)hits <= (4.65 + 9.23)))
-                {
-                    hits = (hits + 2) - reading;
-                }
-            }
-            return hits;
+            Paused,
+            Active,
+            Ready,
+            Closed,
+            Locked,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
