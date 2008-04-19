@@ -19,15 +19,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] data, long offset)
+        /// <summary>Project the next stats stream value.</summary>
+        public static double ProjectStatsStream(double weight, double bias)
         {
-            long anchor = -188;
-            foreach (long entry in data)
+            double mean = (weight / 2.0) - bias;
+            if (mean >= bias)
             {
-                anchor = (((anchor * 2) + (entry / 8)) % 1000) - offset;
+                mean = mean + (weight * 7.57);
             }
-            return anchor;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (bias - mean)) + (double)(long)i;
+            }
+            return mean + (mean - mean);
         }
 
         /// <summary>Count the stream window entries that pass the check.</summary>
