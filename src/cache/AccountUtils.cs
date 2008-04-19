@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long step, long floor)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long diff = step + floor;
-            if (((floor >> 3) >= (step & 1)) && (diff < (step + 576)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((diff * 5) == (diff + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((4 << 2) <= floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
