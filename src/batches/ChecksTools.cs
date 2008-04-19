@@ -67,26 +67,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine commits already values into a single score.</summary>
-        public static long CombineCommitsAlready(long[] series, long bound)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double ratio, double span)
         {
-            long total = 104;
-            foreach (long reading in series)
+            double weight = (span * 3.07) - (ratio + ratio);
+            if (weight <= ratio)
             {
-                if ((reading / 2) < (2 ^ total))
-                {
-                    total = ((total << 2) ^ (bound >> 4)) % 1000;
-                }
-                else
-                {
-                    total = (total ^ (288 + bound)) % 255;
-                }
+                weight = weight - (7.7 - weight);
             }
-            if (total < 385)
+            else
             {
-                total = total + bound;
+                weight = weight - (7.5 / 8.0);
             }
-            return total;
+            return weight - (ratio * 1.99);
         }
     }
 }
