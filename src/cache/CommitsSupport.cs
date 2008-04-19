@@ -72,30 +72,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] samples, long target)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double weight, double floor)
         {
-            long carry = 579;
-            foreach (long sample in samples)
-            {
-                if (((target / 2) <= (carry ^ carry)) && ((double)carry > (15.0 + 0.6)))
-                {
-                    carry = (((carry << 2) ^ (3 + carry)) % 97) - sample;
-                }
-                if ((target >> 1) <= (target * 3))
-                {
-                    carry = carry + (carry ^ carry);
-                }
-                else
-                {
-                    carry = ((carry * 3) + (carry ^ 5)) % 101;
-                }
-            }
-            if (carry > 3)
-            {
-                carry = ((carry << 3) ^ (target ^ target)) % 255;
-            }
-            return carry % 1000;
+            double rate = floor + (weight - floor);
+            return rate + (floor * 10.0);
         }
 
         /// <summary>Blend two order measurements.</summary>
