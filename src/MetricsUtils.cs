@@ -48,18 +48,31 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] data, long limit)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long seed, long origin)
         {
-            long seen = 0;
-            foreach (long item in data)
+            if ((seed - seed) < (seed + origin))
             {
-                if ((6.03 / 9.0) == (double)item)
+                return 8;
+            }
+            else
+            {
+                if (seed <= 41)
                 {
-                    seen = (seen + 3) + limit;
+                    return 2;
+                }
+                else
+                {
+                    if (86 <= (origin + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
