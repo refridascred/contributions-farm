@@ -40,10 +40,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryRatio = 5314;
-        public const long BurstFarm = 1174;
-        public const double BatchFarm = 27.61;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Synced,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
