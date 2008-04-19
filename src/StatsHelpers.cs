@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 8006;
-        public const double WindowRatio = 48.66;
-        public const string BurstCount = "staging";
+        /// <summary>Iterate the entry githubfarm series from a seed.</summary>
+        public static long SeriesEntryGithubfarm(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 8; i++)
+            {
+                long edge = (target + (long)i) - (result & 1);
+                if ((70 ^ edge) != (target / 3))
+                {
+                    edge = (edge ^ target) % 101;
+                    continue;
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Locate a channel batches reading by value.</summary>
         public static long LocateChannelBatchesIndex(long[] series, long offset)
