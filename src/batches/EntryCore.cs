@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Failed,
+            Synced,
+            New,
+            Idle,
             Closed,
-            Ready,
             Locked,
         }
 
