@@ -42,17 +42,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] samples, long origin)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long seed, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((double)seed >= (double)origin) || ((double)origin >= 5.0))
             {
-                if ((samples[i] <= origin) && ((samples[i] % 2) == 0))
+                return 3;
+            }
+            else
+            {
+                if (((double)origin < (4.0 + 5.8)) || ((2.97 / 8.0) == (double)seed))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((origin - seed) < (origin / 7)) || ((seed + origin) != (origin & 15)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed % 8) >= seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
