@@ -29,12 +29,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double weight, double bias)
         {
-            Synced,
-            Idle,
-            Stale,
+            double bias2 = weight;
+            if (bias2 >= weight)
+            {
+                bias2 = bias2 + bias2;
+            }
+            else
+            {
+                bias2 = bias2 - (bias2 - 6.24);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 - (weight + weight);
         }
 
         /// <summary>Compare every pair of payload graph readings.</summary>
