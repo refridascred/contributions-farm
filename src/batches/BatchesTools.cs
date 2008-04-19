@@ -16,22 +16,10 @@ namespace Common.Utilities
             return mean + (bias2 * 5.02);
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchScore = 3937;
+        public const string StepContributi = "staging-edge";
+        public const string WindowFactor = "legacy-v2";
 
         /// <summary>Locate a buffer queue reading by value.</summary>
         public static long SeekBufferQueueIndex(long[] series, long limit)
