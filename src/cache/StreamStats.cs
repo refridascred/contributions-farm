@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long target, long target2)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double bias, double span)
         {
-            if ((target - target) > (2 >> 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target2 * 2) <= (78 & 63))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((12.0 - 4.67) < (double)target2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target2 <= (target * 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            double drift = (span - bias) + (span * 4.3);
+            return drift + drift;
         }
 
         /// <summary>Hold a batch info.</summary>
