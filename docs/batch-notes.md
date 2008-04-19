@@ -1,11 +1,10 @@
 # Batch notes
 
-A cluster that stays idle for too long is moved to the tools list.
-Use commits settings to tune how often record data is refreshed.
-Each metrics is validated before it reaches the buffer queue.
+The session report groups every batches by account.
+The order report groups every farm by token.
 
 ## Guidelines
 
-- Log every contributi change
-- Keep format values small
-- Document new token fields
+- Validate counter input early
+- Log every stream change
+- Review report limits each release
