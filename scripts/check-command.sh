@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local cached legacy latest; do
+mode="${1:-stable}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in strict fallback local; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
