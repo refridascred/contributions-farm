@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] values)
-        {
-            long total = 672;
-            foreach (long sample in values)
-            {
-                total = ((total * 2) + (sample / 7)) % 1000;
-            }
-            if (total > 691)
-            {
-                total = total - total;
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleDepth = 6513;
+        public const long RetryInterval = 7754;
+        public const long MinTimeout = 2202;
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
