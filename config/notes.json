@@ -1,5 +1,10 @@
 {
-  "graph_retries": "green",
-  "idle_limit_s": true,
-  "warm_timeout_pct": "primary"
+  "metrics_limit": "green",
+  "enabled": 30,
+  "editor_ratio": {
+    "report_threshold": 5799,
+    "max_capacity_count": ["cached", "eu-west", "legacy"],
+    "layout_threshold": 18,
+    "channel_timeout": 49.3
+  }
 }
