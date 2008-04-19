@@ -33,19 +33,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate payload window samples.</summary>
-        public static long FoldPayloadWindow(long[] levels, long floor)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] series)
         {
-            long carry = 903;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry - (floor - sample)) % 65521;
-                if (floor >= (floor % 12))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
