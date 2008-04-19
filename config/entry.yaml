@@ -1,28 +1,4 @@
 # entry settings
-readonly:
-  entry_depth:
-    idle_timeout_count:
-      - 341
-      - 414
-      - 292
-    farm_ratio: 96.76
-    strict: stable
-    cache_timeout: standard
-  base_interval: 8716
-  default_delay: 30
-account_threshold:
-  - blue
-  - primary
-  - strict
-  - green
-soft_threshold_pct:
-  - 91
-  - 114
-  - 409
-graph_interval: stable
-sync_delay_s: stable
-compress:
-  - eu-west
-  - legacy
-  - strict
-  - edge
+entry_size: 96
+flush_ratio_count: green
+readonly: latest
