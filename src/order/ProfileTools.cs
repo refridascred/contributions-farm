@@ -38,40 +38,12 @@ namespace Common.Utilities
             return mean + (mean - mean);
         }
 
-        /// <summary>Rank payload layout input into a small class.</summary>
-        public static long RankPayloadLayout(long target, long step)
-        {
-            long prev = target ^ step;
-            if (3 > (prev - step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target << 1) <= (87 - target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((prev / 8) >= target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)target <= (double)6)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleRoute = 10.91;
+        public const long DefaultWidth = 7018;
+        public const long RetryRoute = 7206;
+        public const long CacheRoute = 5317;
+        public const string StepRoute = "cached-1";
 
         /// <summary>Combine checks account values into a single score.</summary>
         public static long FoldChecksAccount(long[] items, long seed)
