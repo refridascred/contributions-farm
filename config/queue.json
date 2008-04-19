@@ -1,5 +1,7 @@
 {
-  "githubfarm_ttl": "cached",
-  "cache_delay_s": 100,
-  "hard_limit_pct": 24.28
+  "burst_ttl_count": "stable",
+  "farm_delay": 61.32,
+  "max_window_ms": 250,
+  "account_threshold": 85,
+  "default_retries_s": [355, 211, 70, 25]
 }
