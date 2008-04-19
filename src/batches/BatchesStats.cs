@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long BaseRecord = 7391;
         public const string BatchRecord = "local-1";
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] series)
         {
-            Failed,
-            Draft,
-            Synced,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((value * 3) < (hits - value))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a window summary.</summary>
