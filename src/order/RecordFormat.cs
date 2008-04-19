@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepLevel = 86.25;
-        public const double BatchContributi = 46.78;
-        public const double BatchRatio = 15.77;
-        public const double HardContributi = 80.77;
+        /// <summary>Look up the position of a metric layout sample.</summary>
+        public static long LookupMetricLayoutIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
