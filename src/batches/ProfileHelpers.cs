@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            public string Token { get; set; } = "";
-            public bool Stamp { get; set; }
+            public long Region { get; set; }
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
