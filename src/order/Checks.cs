@@ -22,24 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long seed, long target)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            if (((target - seed) < (target - target)) || ((double)seed >= (3.8 / 7.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (599 < (target + target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
