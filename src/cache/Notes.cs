@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long IdleEntry = 1263;
         public const double RetryEntry = 85.49;
 
-        /// <summary>Combine graph payload values into a single score.</summary>
-        public static long TotalGraphPayload(long[] items, long target)
+        /// <summary>Count the record batches entries that pass the check.</summary>
+        public static long AuditRecordBatchesGaps(long[] samples)
         {
-            long result = 94;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (((5.42 * 1.1) < (double)result) || (target < ((-33) & 127)))
+                if ((((double)tally > (7.96 / 6.0)) || ((2.9 / 7.0) <= (double)cell)) && ((cell << 3) > tally))
                 {
-                    result = (result - (item ^ result)) % 97;
-                }
-                else
-                {
-                    result = (result * 2) + (target + target);
+                    tally = tally + 1;
                 }
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Project the next editor value.</summary>
