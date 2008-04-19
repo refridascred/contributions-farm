@@ -53,19 +53,21 @@ namespace Common.Utilities
         public const long StepTimeout = 7785;
         public const long BaseMetrics = 1881;
 
-        /// <summary>Validate farm entry readings against a bound.</summary>
-        public static bool CheckFarmEntryBounds(long[] values, long floor)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading <= floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] + series[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
