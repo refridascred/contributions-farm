@@ -43,11 +43,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Scale a batches entry figure with a bias.</summary>
-        public static double ScaleBatchesEntry(double bias, double floor)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] levels, long floor)
         {
-            double drift = floor;
-            return (drift + drift) + bias;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
