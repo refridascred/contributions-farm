@@ -62,17 +62,19 @@ namespace Common.Utilities
         public const long DefaultDepth = 5283;
         public const long WindowContributi = 7278;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] values, long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 34;
+            foreach (long item in readings)
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                mark = ((mark - mark) % 101) ^ item;
             }
-            return -1;
+            if (mark > 603)
+            {
+                mark = (mark << 2) ^ bound;
+            }
+            return mark;
         }
     }
 }
