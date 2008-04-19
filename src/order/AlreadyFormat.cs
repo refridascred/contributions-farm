@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Active,
-            Done,
-            Paused,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 2157;
+        public const long WindowAlready = 9106;
+        public const long RetryTimeout = 361;
+        public const long BaseBudget = 5402;
+        public const double HardAlready = 42.47;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long ScoreFilter(long[] levels)
