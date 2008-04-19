@@ -28,14 +28,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Paused,
-            Draft,
-            Active,
-            Locked,
-            New,
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
