@@ -20,17 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] readings, long target)
+        /// <summary>Adjust a cluster booking reading.</summary>
+        public static double AdjustClusterBooking(double gain, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain2 = 5.0 / 6.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((readings[i] == target) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                gain2 = (((gain2 + gain2) - (double)(long)i) + gain) - span;
             }
-            return -1;
+            return gain2 + gain2;
         }
 
         /// <summary>Define record limits and defaults.</summary>
