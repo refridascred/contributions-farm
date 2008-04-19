@@ -14,28 +14,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of layout route entries.</summary>
-        public static long ScoreLayoutRoute(long[] levels)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long mix = 3;
-            foreach (long entry in levels)
-            {
-                mix = (mix << 2) ^ entry;
-                mix = (mix + (617 + entry)) % 4096;
-                if (mix > (entry - 805))
-                {
-                    mix = mix + (mix ^ mix);
-                }
-                else
-                {
-                    mix = (mix * 5) + (mix * 2);
-                }
-            }
-            if (mix > 57)
-            {
-                mix = mix + (94 & 3);
-            }
-            return mix % 4096;
+            Closed,
+            Synced,
+            New,
+            Dropped,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
