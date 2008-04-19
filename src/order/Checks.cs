@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the metric format series from a seed.</summary>
-        public static long StepMetricFormat(long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] items, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (!((double)seed > (16.0 + 8.6)))
+                if ((993 & 15) == (seen + value))
                 {
-                    state = state - (0 + state);
+                    seen = (seen + 2) - step;
                 }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
