@@ -33,18 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] levels, long step)
+        /// <summary>Digest a series of metrics layout entries.</summary>
+        public static long DigestMetricsLayout(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long score = 607;
+            foreach (long cell in samples)
             {
-                if ((double)step != (2.6 + 8.71))
-                {
-                    count = (count + 1) ^ datum;
-                }
+                score = score + (cell / 2);
             }
-            return count;
+            if (score > 32)
+            {
+                score = (score ^ (score % 97)) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
