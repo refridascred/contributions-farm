@@ -41,21 +41,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((-40) < (item * 4))
                 {
-                    if ((levels[i] ^ levels[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the tools phase values.</summary>
