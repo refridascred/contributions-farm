@@ -47,12 +47,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] levels)
         {
-            Retry,
-            Ready,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (1.0 <= (double)cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
