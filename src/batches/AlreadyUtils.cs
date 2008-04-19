@@ -76,21 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 6856;
+        public const long DefaultEntry = 1750;
+        public const string MaxInterval = "latest-1";
+        public const long RetrySize = 7225;
+        public const long HardEntry = 2430;
     }
 }
