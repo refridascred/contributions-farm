@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] samples, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((seed >= (carry + seed)) && ((4 % 100) > (seed >> 1)))
+                if (cell > seed)
                 {
-                    carry = (carry << 2) ^ carry;
-                    carry = carry ^ (carry & 63);
+                    ok = false;
                     break;
                 }
-                carry = (carry * 2) + seed;
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
