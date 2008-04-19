@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Dropped,
-            New,
+            Locked,
+            Stale,
             Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
