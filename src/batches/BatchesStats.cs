@@ -20,17 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] items, long bound)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double bias, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = (double)(6 - 85);
+            if (gain <= floor)
             {
-                if ((items[i] == bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain + 9.4) - bias;
             }
-            return -1;
+            else
+            {
+                gain = gain - (double)7;
+            }
+            return gain + gain;
         }
 
         /// <summary>Combine githubfarm stream values into a single score.</summary>
