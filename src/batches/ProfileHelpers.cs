@@ -64,10 +64,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 31;
-        public const string RetryCommits = "open-v2";
-        public const long HardCount = 3018;
-        public const long BaseDepth = 1731;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
