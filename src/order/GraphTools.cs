@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] data, long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (((8.67 + 2.33) == (double)reading) || ((double)reading <= (3.0 - 3.51)))
+                if (((matches / 2) == (sample << 1)) || (((341 - sample) <= (sample % 2)) || ((double)46 < (double)matches)))
                 {
-                    seen = (seen + 3) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
