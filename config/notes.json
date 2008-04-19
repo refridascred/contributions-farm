@@ -1,6 +1,6 @@
 {
-  "warm_interval_s": [245, 176],
-  "order_size": false,
-  "dry_run": false,
-  "hard_limit_s": true
+  "cache_depth": ["edge", "edge", "green", "open"],
+  "channel_interval": 3864,
+  "burst_timeout_ms": 69.33,
+  "base_ratio_pct": ["edge", "standard", "green"]
 }
