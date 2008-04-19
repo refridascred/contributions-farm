@@ -1,11 +1,5 @@
 # support settings
-poll_window_s: 500
-order_window: 30
-session_limit: 67
-cache_delay_s:
-  - fallback
-  - standard
-  - cached
-  - edge
-poll_ttl: open
-base_retries: 29.47
+strict: 20
+hard_ttl_pct: edge
+verbose: open
+cache_timeout_pct: standard
