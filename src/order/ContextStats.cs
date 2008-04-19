@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] readings)
         {
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
+            long mark = 995;
+            foreach (long item in readings)
+            {
+                mark = (((mark << 2) ^ (mark << 3)) % 255) - item;
+            }
+            if (mark > 9)
+            {
+                mark = (mark ^ (mark >> 1)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
