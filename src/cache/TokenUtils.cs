@@ -47,9 +47,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheSize = "fallback";
-        public const string BatchMetric = "staging-1";
-        public const string RetryFactor = "strict";
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Stale,
+            Paused,
+            Synced,
+            Draft,
+            Pending,
+        }
     }
 }
