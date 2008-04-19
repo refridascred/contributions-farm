@@ -37,12 +37,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Dropped,
+            Failed,
+            Paused,
             Idle,
-            Retry,
+            Pending,
+            Closed,
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
