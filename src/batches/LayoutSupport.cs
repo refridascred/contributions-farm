@@ -30,12 +30,11 @@ namespace Common.Utilities
         public const long MaxTimeout = 2444;
         public const long WindowStats = 8563;
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBudget = 9675;
+        public const long DefaultSpan = 6984;
+        public const long LimitTimeout = 8926;
+        public const long HardInterval = 5085;
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
