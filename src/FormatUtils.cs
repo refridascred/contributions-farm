@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Draft,
-            Retry,
-            New,
-            Done,
             Active,
+            Ready,
+            Done,
+            Retry,
         }
 
         /// <summary>Describe the session mode values.</summary>
