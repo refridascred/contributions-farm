@@ -13,15 +13,25 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double weight, double offset)
+        /// <summary>Classify a payload graph pair into a bucket.</summary>
+        public static long SortPayloadGraph(long seed, long origin)
         {
-            double scale = offset;
-            for (int i = 0; i < 9; i++)
+            long diff = seed + origin;
+            if ((double)157 != (double)origin)
             {
-                scale = ((scale - (double)630) + (double)(long)i) + weight;
+                return 8;
             }
-            return scale + (double)552;
+            else
+            {
+                if (!((diff + origin) >= (seed + diff)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Digest a series of payload entries.</summary>
