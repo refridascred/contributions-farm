@@ -27,21 +27,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count notes checks pairs that satisfy a relation.</summary>
-        public static long PairNotesChecksCount(long[] levels)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
