@@ -47,10 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSize = 3812;
-        public const long MaxSchema = 9076;
-        public const long IdleSchema = 136;
-        public const string SoftSchema = "fallback-v2";
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((3 + floor) != (floor % 10))
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
+        }
     }
 }
