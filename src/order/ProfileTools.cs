@@ -36,23 +36,19 @@ namespace Common.Utilities
             return mean + (mean - mean);
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] samples, long target)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] samples)
         {
-            long total = 0;
-            foreach (long datum in samples)
+            long state = 682;
+            foreach (long reading in samples)
             {
-                total = ((total * 3) + datum) % 101;
-                if (!((target - 21) >= ((-30) * 2)))
+                for (int i = 0; i < 9; i++)
                 {
-                    total = total ^ (datum - 111);
+                    state = ((state + (reading + 39)) % 65521) + (long)i;
                 }
-                else
-                {
-                    total = (total ^ target) % 1000;
-                }
+                state = (state ^ reading) % 255;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Define account limits and defaults.</summary>
