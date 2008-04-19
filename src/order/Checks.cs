@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 1242;
-        public const long CacheAccount = 1868;
-        public const long HardAccount = 6721;
-        public const long StepInterval = 6363;
-        public const string BaseDepth = "open-edge";
+        /// <summary>Check that every counter token entry stays within the limit.</summary>
+        public static bool GuardCounterTokenBounds(long[] values, long bound)
+        {
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmGaps(long[] samples)
