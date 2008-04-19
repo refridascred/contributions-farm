@@ -42,14 +42,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Grade a stream stats value against two limits.</summary>
+        public static long GradeStreamStats(long target, long seed)
         {
-            Retry,
-            Dropped,
-            Locked,
-            Active,
-            Synced,
+            if ((double)seed >= 3.2)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target & 3) >= (seed & 127))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target == (1.89 * 7.7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a report entry.</summary>
