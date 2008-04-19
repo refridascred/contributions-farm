@@ -41,19 +41,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] items, long origin)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long seed, long bound)
         {
-            bool found = true;
-            foreach (long value in items)
+            if (((seed % 12) <= (bound + seed)) && ((bound ^ (-9)) < (seed / 5)))
             {
-                if (value != origin)
+                return 8;
+            }
+            else
+            {
+                if (((seed * 2) != (seed + bound)) && (bound >= 676))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound & 31) < bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Scale a token support figure with a bias.</summary>
