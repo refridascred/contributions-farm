@@ -16,26 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] readings, long target)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] items, long seed)
         {
-            long sum = 942;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if ((entry * 4) >= ((-7) ^ entry))
+                if (cell <= seed)
                 {
-                    sum = (sum - entry) % 4096;
-                }
-                else
-                {
-                    sum = sum ^ (target << 3);
-                }
-                if ((0.98 + 7.22) > (double)target)
-                {
-                    sum = (sum - (9 * 5)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
