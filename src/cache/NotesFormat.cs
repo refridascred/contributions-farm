@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
+            Queued,
+            Stale,
+            Dropped,
+            Synced,
             Ready,
-            Draft,
-            New,
         }
 
         /// <summary>Measure how many route record samples are out of range.</summary>
