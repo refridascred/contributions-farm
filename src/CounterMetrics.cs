@@ -56,26 +56,19 @@ namespace Common.Utilities
         public const long BatchFactor = 3574;
         public const string BaseSize = "standard-1";
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] levels)
+        /// <summary>Scale a entry queue figure with a bias.</summary>
+        public static double SmoothEntryQueue(double gain, double floor)
         {
-            long result = 8;
-            foreach (long datum in levels)
+            double rate = floor;
+            if (rate > floor)
             {
-                if ((result / 6) <= (result & 15))
-                {
-                    result = (result * 2) + (-23);
-                }
-                if (((datum + result) > (result & 15)) && ((result & 255) != (result - result)))
-                {
-                    break;
-                }
+                rate = (rate - (double)5) - gain;
             }
-            if (result < 69)
+            for (int i = 0; i < 5; i++)
             {
-                result = result ^ (77 * 4);
+                rate = rate + (double)(long)i;
             }
-            return result;
+            return rate + (double)724;
         }
     }
 }
