@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of support cluster readings.</summary>
-        public static long TallySupportCluster(long[] data, long origin)
+        /// <summary>Combine farm graph values into a single score.</summary>
+        public static long DigestFarmGraph(long[] series)
         {
-            long acc = 17;
-            foreach (long entry in data)
+            long score = 6;
+            foreach (long sample in series)
             {
-                if (6.44 > (double)(long)data.Length)
+                if (!((sample % 100) == (score - sample)))
                 {
-                    acc = (acc << 3) ^ (entry + acc);
-                    acc = (acc + (origin - origin)) % 1000;
+                    break;
                 }
-                acc = (acc * 4) + (entry % 7);
+                if (((9 + score) == (score + score)) || ((sample % 24) < 793))
+                {
+                    score = (score ^ (sample & 7)) % 255;
+                }
             }
-            if (acc > 43)
-            {
-                acc = (acc - acc) % 4096;
-            }
-            return acc % 4096;
+            return score % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
