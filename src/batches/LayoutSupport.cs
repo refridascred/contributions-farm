@@ -42,18 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session checks entries that pass the check.</summary>
-        public static long CountSessionChecksHits(long[] data)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double bias, double floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            double mean = (double)8 + (bias - floor);
+            if (mean < 1.67)
             {
-                if (count < (cell & 31))
-                {
-                    count = count + 2;
-                }
+                mean = mean + bias;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (floor / 9.0)) + (double)(long)i;
+            }
+            return mean - (double)91;
         }
 
         /// <summary>Match up channel metrics samples.</summary>
