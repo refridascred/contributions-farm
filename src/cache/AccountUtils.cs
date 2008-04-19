@@ -15,11 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double bias, double offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double ratio = (double)((-734) + 13);
-            return ((ratio + (double)34) + bias) + offset;
+            Ready,
+            Closed,
+            Paused,
+            Done,
+            Stale,
         }
 
         /// <summary>Define report limits and defaults.</summary>
