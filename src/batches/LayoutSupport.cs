@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] items)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] series)
         {
-            long count = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((item / 7) >= count)
+                if ((entry ^ matches) <= entry)
                 {
-                    count = count + 2;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the token phase values.</summary>
