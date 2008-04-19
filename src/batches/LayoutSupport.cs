@@ -16,12 +16,18 @@ namespace Common.Utilities
             return mean - (ratio - ratio);
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] data)
         {
-            Active,
-            Retry,
-            Paused,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count < (count * 4)) && ((397 + entry) == (entry - entry)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
