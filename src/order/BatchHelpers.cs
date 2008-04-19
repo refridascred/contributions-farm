@@ -19,12 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 9910;
-        public const double WindowBudget = 41.36;
-        public const long WindowEditor = 1842;
-        public const string IdleEditor = "standard-v2";
-        public const long StepWidth = 7557;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] levels, long limit)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long IterateBatches(long target)
