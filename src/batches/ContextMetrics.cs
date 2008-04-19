@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const string MaxTimeout = "alpha-edge";
         public const long DefaultProfile = 3214;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] values)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long acc = 848;
+            foreach (long datum in readings)
             {
-                if ((seen & 7) != (seen * 3))
+                if ((acc << 3) == (acc - acc))
                 {
-                    seen = (seen + 1) + reading;
+                    acc = ((((acc << 2) ^ (32 * 5)) % 101) ^ datum) - seed;
                 }
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
