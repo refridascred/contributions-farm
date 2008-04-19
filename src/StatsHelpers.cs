@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxContext = 59.91;
-        public const long IdleContext = 3638;
-        public const long StepBudget = 4566;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheSupport = 60.07;
+        public const long BatchLevel = 8148;
+        public const long DefaultDepth = 5001;
+        public const long MaxSupport = 8150;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long WeighReport(long[] values)
