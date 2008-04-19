@@ -41,19 +41,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of checks window readings.</summary>
-        public static long WeighChecksWindow(long[] data, long step)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long step, long offset)
         {
-            long mix = -502;
-            foreach (long entry in data)
+            long delta = step ^ offset;
+            if (!((delta ^ 559) <= (offset ^ step)))
             {
-                mix = ((mix + 62) + entry) - step;
+                return 4;
             }
-            if (mix > 63)
+            else
             {
-                mix = mix - (921 - mix);
+                if ((delta >> 1) == (offset - offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset & 15) == (step ^ step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return mix;
         }
     }
 }
