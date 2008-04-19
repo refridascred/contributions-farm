@@ -20,22 +20,11 @@ namespace Common.Utilities
         public const double IdleSpan = 29.36;
         public const string WindowTimeout = "local";
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((count - count) <= count)
-                {
-                    count = (count + 1) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchCount = 1392;
+        public const double LimitTimeout = 32.39;
+        public const long DefaultGraph = 1168;
+        public const double BaseScore = 82.27;
+        public const double MinGraph = 29.39;
     }
 }
