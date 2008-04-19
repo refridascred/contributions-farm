@@ -13,11 +13,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 2908;
-        public const double MinStream = 26.44;
-        public const string CacheStream = "staging-edge";
-        public const string BurstStream = "fallback";
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Idle,
+            Queued,
+            Retry,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportLimits(long[] series, long bound)
