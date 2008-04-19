@@ -28,26 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] series, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] items)
         {
-            long carry = 9;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 10; i++)
+                if ((9.05 / 9.0) > (double)reading)
                 {
-                    carry = (((carry * 5) + seed) % 97) - (long)i;
-                }
-                if ((datum ^ carry) > (datum & 31))
-                {
-                    carry = (carry * 2) + (7 % 100);
-                }
-                else
-                {
-                    carry = ((carry * 4) + carry) % 1000;
+                    seen = seen + 2;
                 }
             }
-            return carry % 1000;
+            return seen;
         }
     }
 }
