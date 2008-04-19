@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] levels, long bound)
         {
-            Closed,
-            Failed,
-            Ready,
-            Dropped,
-            Paused,
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the checks status values.</summary>
