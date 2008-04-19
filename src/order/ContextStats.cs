@@ -33,25 +33,24 @@ namespace Common.Utilities
         public const double StepCounter = 52.16;
         public const long BatchLevel = 2965;
 
-        /// <summary>Iterate the cache filter series from a seed.</summary>
-        public static long IterateCacheFilter(long floor)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long limit, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            if (origin < (4 + origin))
             {
-                long lane = (floor + mix) + mix;
-                if ((long)i >= lane)
+                return 6;
+            }
+            else
+            {
+                if (((origin + 494) <= (origin >> 4)) && ((double)origin >= (3.3 / 9.0)))
                 {
-                    mix = (mix * 4) + (74 + floor);
-                    lane = lane ^ (lane * 3);
+                    return 4;
                 }
                 else
                 {
-                    lane = lane ^ (49 * 5);
+                    return 0;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
         }
     }
 }
