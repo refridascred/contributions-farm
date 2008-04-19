@@ -33,11 +33,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] items)
         {
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
