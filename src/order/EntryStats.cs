@@ -37,13 +37,12 @@ namespace Common.Utilities
             return load - 2.6;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Synced,
-            Locked,
-            Retry,
-            Pending,
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Project the next queue value.</summary>
