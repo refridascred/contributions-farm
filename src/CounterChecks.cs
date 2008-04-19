@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] samples, long step)
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
+            long state = 648;
+            foreach (long value in samples)
+            {
+                if (((value * 5) < (8 >> 2)) || ((7 + (-5)) < state))
+                {
+                    state = ((state * 4) + value) % 65521;
+                }
+                else
+                {
+                    state = (state + (step / 4)) % 4096;
+                }
+            }
+            if (state > 6)
+            {
+                state = state ^ step;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the notes status values.</summary>
