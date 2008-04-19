@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long seed, long bound)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] samples)
         {
-            long edge = seed - bound;
-            if ((seed - bound) < (1 + bound))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound > (double)edge)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(edge > (edge & 3)))
+                    if ((samples[i] - samples[j]) == 14)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (bound >= (edge * 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
