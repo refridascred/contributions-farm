@@ -22,39 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a stream filter pair into a bucket.</summary>
-        public static long BucketStreamFilter(long seed, long origin)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double gain, double bias)
         {
-            long step = seed ^ origin;
-            if ((double)step > 2.0)
+            double drift = gain;
+            if (drift > (double)0)
             {
-                return 7;
+                drift = drift - (bias / 5.0);
             }
-            else
-            {
-                if ((seed >= (origin / 6)) && ((origin / 6) < (step & 127)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (8 > (seed - seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin < ((-3) - step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return drift - (drift / 7.0);
         }
 
         /// <summary>Match up commits samples.</summary>
