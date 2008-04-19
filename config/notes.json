@@ -1,6 +1,6 @@
 {
-  "idle_size": 8784,
-  "burst_capacity_pct": 1024,
-  "burst_delay_s": false,
-  "verbose": false
+  "soft_threshold": [400, 320, 313],
+  "profile_retries": "primary",
+  "already_limit": false,
+  "readonly": 8444
 }
