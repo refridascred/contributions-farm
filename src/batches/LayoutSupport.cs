@@ -61,21 +61,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] levels)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark * 4) + mark;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
     }
 }
