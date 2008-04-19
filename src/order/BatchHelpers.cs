@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long mark = 774;
-            foreach (long entry in data)
-            {
-                mark = (mark + (entry & 3)) % 4096;
-                mark = mark ^ (entry - entry);
-            }
-            if (mark > 95)
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark;
+            Closed,
+            Draft,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
