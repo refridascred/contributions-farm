@@ -37,13 +37,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Closed,
-            Dropped,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepDepth = 4822;
+        public const long IdleCommand = 8124;
+        public const long MinFactor = 483;
     }
 }
