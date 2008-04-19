@@ -63,12 +63,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Synced,
-            Closed,
-            Ready,
+            Retry,
+            Idle,
+            Locked,
+            Active,
         }
     }
 }
