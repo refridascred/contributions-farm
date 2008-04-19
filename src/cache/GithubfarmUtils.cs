@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] samples)
+        /// <summary>Iterate the notes layout series from a seed.</summary>
+        public static long StepNotesLayout(long offset)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long total = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((((tally >> 2) > (entry - tally)) && ((entry << 3) <= (entry + entry))) || ((tally > (89 / 5)) && (entry < (tally << 2))))
+                if (!((offset >> 5) > (0 - (long)i)))
                 {
-                    tally = tally + 1;
+                    total = (total << 2) ^ (offset - offset);
+                    break;
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the window class values.</summary>
