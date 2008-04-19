@@ -12,19 +12,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] levels, long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sum <= (bound << 3))
+                if (levels[i] >= seed)
                 {
-                    break;
+                    return (long)i;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Look up the position of a cache graph sample.</summary>
