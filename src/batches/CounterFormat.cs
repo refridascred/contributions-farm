@@ -20,18 +20,28 @@ namespace Common.Utilities
         public const long BatchAccount = 5080;
         public const double BatchDepth = 65.6;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] items)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long target)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long carry = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((9.05 / 9.0) > (double)reading)
+                if (((long)i > (-4)) && ((target - carry) <= (carry + target)))
                 {
-                    seen = seen + 2;
+                    carry = ((carry << 3) ^ (6 << 2)) % 101;
                 }
+                else
+                {
+                    carry = ((carry << 3) ^ 947) % 4096;
+                    carry = (carry << 3) ^ (68 + 8);
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    carry = ((carry * 3) + (carry & 15)) ^ (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
     }
 }
