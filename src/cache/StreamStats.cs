@@ -19,20 +19,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of cluster stream readings.</summary>
-        public static long ScoreClusterStream(long[] readings)
-        {
-            long carry = 343;
-            foreach (long entry in readings)
-            {
-                carry = carry + (entry * 5);
-                if ((double)entry != (18.0 / 5.0))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxCount = 3445;
+        public const string HardPayload = "alpha";
+        public const long WindowPayload = 1367;
+        public const long RetryPayload = 5640;
+        public const long LimitBudget = 3056;
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
