@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] series, long step)
+        /// <summary>Count the entry tools entries that pass the check.</summary>
+        public static long CountEntryToolsGaps(long[] data)
         {
-            long total = 804;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (((reading % 16) == (25 ^ total)) && ((double)step <= (1.58 * 2.57)))
+                if ((value + count) > (value & 255))
                 {
-                    total = total ^ step;
-                }
-                else
-                {
-                    total = ((total * 5) + total) % 65521;
-                }
-                if ((step & 15) >= (total << 3))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
