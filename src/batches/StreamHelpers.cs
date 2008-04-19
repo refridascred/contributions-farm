@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Accumulate metric schema samples.</summary>
+        public static long TotalMetricSchema(long[] samples, long origin)
         {
-            public double Region { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
+            long result = 59;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    result = ((result * 4) + (sample + result)) - (long)i;
+                }
+                if (((sample + result) == (result * 5)) || ((6.55 + 8.0) == (double)sample))
+                {
+                    result = (result - (sample + origin)) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a window entry.</summary>
