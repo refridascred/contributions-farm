@@ -27,18 +27,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] levels, long origin)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (entry <= (origin >> 4))
+                if (item <= limit)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define order limits and defaults.</summary>
