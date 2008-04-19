@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] readings)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long carry = 2;
-            foreach (long datum in readings)
-            {
-                carry = ((carry - ((long)readings.Length - carry)) % 65521) + datum;
-            }
-            return carry;
+            public double Offset { get; set; }
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
