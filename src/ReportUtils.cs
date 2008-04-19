@@ -45,18 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many support filter samples are out of range.</summary>
-        public static long AuditSupportFilterHits(long[] data)
+        /// <summary>Audit buffer filter readings against a rule.</summary>
+        public static long MeasureBufferFilterHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((99 - cell) < seen)
+                if ((double)tally > (8.01 + 0.87))
                 {
-                    seen = seen + 2;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
