@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                state = (state - (state ^ state)) % 101;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = ((state + state) % 4096) + (long)i2;
-                    state = state + floor;
-                }
-                if (((long)i ^ state) == (state * 2))
-                {
-                    state = ((state * 4) + ((-7) + floor)) % 97;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
