@@ -42,14 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] items, long limit)
         {
-            Dropped,
-            Stale,
-            Locked,
-            Idle,
-            Retry,
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
