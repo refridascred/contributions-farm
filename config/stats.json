@@ -1,5 +1,5 @@
 {
-  "sync_ratio_ms": true,
-  "channel_window": 1074,
-  "base_delay": false
+  "default_size": 6.1,
+  "batch_capacity": true,
+  "route_timeout": 754
 }
