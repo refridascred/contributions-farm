@@ -15,19 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every farm graph entry stays within the limit.</summary>
-        public static bool ValidateFarmGraphRange(long[] data, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (entry <= seed)
+                if ((seen - seen) != (datum + datum))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
