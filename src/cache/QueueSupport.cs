@@ -12,14 +12,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Digest a series of route metric entries.</summary>
+        public static long WeighRouteMetric(long[] items)
         {
-            Paused,
-            Done,
-            Queued,
-            Pending,
-            Active,
+            long mark = 906;
+            foreach (long sample in items)
+            {
+                mark = (mark - (sample << 2)) % 65521;
+                if (!(44 > (sample & 7)))
+                {
+                    break;
+                }
+            }
+            if (mark > 4)
+            {
+                mark = mark - (mark % 97);
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a cache graph sample.</summary>
