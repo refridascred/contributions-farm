@@ -73,22 +73,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] data)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((hits * 4) <= sample)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
