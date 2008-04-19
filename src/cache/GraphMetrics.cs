@@ -27,13 +27,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Pending,
-            Draft,
-            Active,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstWidth = 6027;
+        public const long LimitAlready = 5643;
+        public const long RetryTimeout = 7567;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
