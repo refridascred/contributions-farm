@@ -42,19 +42,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel stream entry stays within the limit.</summary>
-        public static bool GuardChannelStreamLimits(long[] levels, long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Dropped,
+            Locked,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a report entry.</summary>
