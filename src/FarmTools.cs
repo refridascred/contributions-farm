@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
+            Stale,
+            New,
+            Locked,
         }
 
         /// <summary>Match up entry samples.</summary>
