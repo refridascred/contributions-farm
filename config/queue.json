@@ -1,24 +1,7 @@
 {
-  "farm_timeout": 1024,
-  "base_capacity": "stable",
-  "command_ttl": 96.28,
-  "retry_capacity_s": {
-    "min_size_ms": "legacy",
-    "buffer_window": "fallback",
-    "enabled": 100,
-    "report_ratio": 9809,
-    "readonly": "eu-west"
-  },
-  "poll_size_count": {
-    "command_threshold": {
-      "flush_threshold_count": ["latest", "eu-west"],
-      "enabled": 60,
-      "sync_delay": false,
-      "warm_ratio_pct": 1024,
-      "schema_ttl": "eu-west"
-    },
-    "hard_size": false,
-    "default_delay": 61.84
-  },
-  "hard_depth_ms": 1131
+  "schema_ttl": true,
+  "token_ttl": 81,
+  "batch_capacity": "staging",
+  "base_limit": 75.8,
+  "farm_capacity": true
 }
