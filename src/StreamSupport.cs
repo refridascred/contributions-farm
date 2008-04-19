@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mark = ((mark + (seed / 6)) % 97) + (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Locked,
+            Paused,
+            Retry,
+            New,
+            Closed,
         }
 
         /// <summary>Describe the route status values.</summary>
