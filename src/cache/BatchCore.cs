@@ -29,12 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxBudget = 2373;
-        public const long MinLevel = 7408;
-        public const string BurstTimeout = "open-v2";
-        public const string WindowCounter = "primary-edge";
-        public const long DefaultLevel = 351;
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long RollCluster(long origin)
