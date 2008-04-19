@@ -48,18 +48,11 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] samples, long offset)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (cell <= (seen >> 2))
-                {
-                    seen = (seen + 3) - offset;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
