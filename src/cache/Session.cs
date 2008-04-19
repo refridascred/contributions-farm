@@ -23,18 +23,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] series)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((item * 2) <= item)
+                if ((7.96 / 3.0) <= (double)entry)
                 {
-                    seen = seen + 2;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the tools status values.</summary>
