@@ -16,11 +16,26 @@ namespace Common.Utilities
             return gain + (double)324;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] samples, long bound)
         {
-            public double Stamp { get; set; }
-            public double Token { get; set; }
+            long state = 119;
+            foreach (long sample in samples)
+            {
+                if ((double)bound >= (16.0 * 15.0))
+                {
+                    state = state ^ sample;
+                }
+                else
+                {
+                    state = (state ^ bound) % 255;
+                }
+            }
+            if (state > 19)
+            {
+                state = ((state << 3) ^ 3) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Count filter format pairs that satisfy a relation.</summary>
