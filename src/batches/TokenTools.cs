@@ -25,38 +25,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long bound, long step)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            if (bound > (step % 10))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step - bound) < (7 << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)step < (7.1 + 8.09)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((1.0 * 9.37) != (double)bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
