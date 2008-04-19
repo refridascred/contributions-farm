@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 8957;
+        public const long WindowChecks = 4928;
+        public const string CacheChecks = "fallback-edge";
+        public const long BatchChecks = 9369;
 
         /// <summary>Match up route samples.</summary>
         public static long CompareRouteCount(long[] items)
