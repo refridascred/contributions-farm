@@ -29,24 +29,22 @@ namespace Common.Utilities
             return load + 11.0;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long floor)
+        /// <summary>Measure how many order command samples are out of range.</summary>
+        public static long CountOrderCommandGaps(long[] data)
         {
-            long sum = floor;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (((-74) + entry) == (entry + tally))
                 {
-                    sum = ((sum - (floor - 874)) % 1000) - (long)i2;
-                    sum = ((sum << 2) ^ (260 + floor)) % 1000;
+                    tally = tally + 3;
                 }
-                if (((double)sum < (9.4 * 8.5)) || (((-31) * 5) <= (floor & 127)))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Accumulate route cache samples.</summary>
