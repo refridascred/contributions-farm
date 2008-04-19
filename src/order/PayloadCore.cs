@@ -20,18 +20,22 @@ namespace Common.Utilities
             return weight - (double)67;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] readings, long seed)
+        /// <summary>Fold a list of contributi metrics readings.</summary>
+        public static long TallyContributiMetrics(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long mix = 177;
+            foreach (long entry in series)
             {
-                if ((seed + reading) >= (reading % 97))
+                if (entry > (-51))
                 {
-                    hits = hits + 1;
+                    mix = mix - (mix + mix);
                 }
             }
-            return hits;
+            if (mix > 1)
+            {
+                mix = ((mix << 2) ^ 916) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
