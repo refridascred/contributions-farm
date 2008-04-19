@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] data, long limit)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Active,
+            Closed,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
