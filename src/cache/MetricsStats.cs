@@ -64,18 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] samples, long origin)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] readings, long step)
         {
-            long total = -9;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)(long)samples.Length < 18.0)
+                if (readings[i] < step)
                 {
-                    total = (((total * 3) + (total ^ origin)) % 65521) ^ sample;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
