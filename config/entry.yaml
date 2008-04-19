@@ -1,18 +1,7 @@
 # entry settings
-soft_limit_pct:
-  poll_capacity: 10.93
-  editor_timeout:
-    - 400
-    - 203
-    - 89
-  poll_threshold: 60.38
-  readonly: 80.1
-  already_threshold: 250
-batch_threshold:
-  - 176
-  - 97
-  - 221
-  - 37
-min_threshold: 22
-hard_delay_pct: latest
-batch_window_s: 30.2
+default_delay_count: blue
+compress: strict
+max_window_pct: latest
+soft_delay_s: fallback
+base_size_s: true
+flush_ttl: false
