@@ -43,12 +43,26 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] levels)
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
+            long result = 8;
+            foreach (long datum in levels)
+            {
+                if ((result / 6) <= (result & 15))
+                {
+                    result = (result * 2) + (-23);
+                }
+                if (((datum + result) > (result & 15)) && ((result & 255) != (result - result)))
+                {
+                    break;
+                }
+            }
+            if (result < 69)
+            {
+                result = result ^ (77 * 4);
+            }
+            return result;
         }
     }
 }
