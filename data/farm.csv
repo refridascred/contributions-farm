@@ -1,10 +1,6 @@
-id,state,region
-1,fallback,blue
-2,545,stable
-3,open,525
-4,215,65.5
-5,474,blue
-6,open,89.73
-7,16.95,662
-8,95.39,open
-9,287,362
+id,token,active
+1,89.63,340
+2,open,latest
+3,482,local
+4,edge,544
+5,869,14.91
