@@ -69,11 +69,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitFarm = 18.77;
-        public const long WindowFarm = 5760;
-        public const double BaseFarm = 34.32;
-        public const long SoftFarm = 3105;
-        public const double BaseWidth = 12.39;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleSpan = 3081;
+        public const double MaxEditor = 39.03;
+        public const double BatchLevel = 2.83;
+        public const double RetryRatio = 7.0;
+        public const long BatchSize = 9698;
     }
 }
