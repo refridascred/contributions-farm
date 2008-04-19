@@ -36,18 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] data, long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] items)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long state = 87;
+            foreach (long sample in items)
             {
-                if ((9.44 * 7.7) != (double)offset)
+                for (int i = 0; i < 6; i++)
                 {
-                    hits = (hits + 1) + value;
+                    state = ((state << 3) ^ (state / 4)) - (long)i;
                 }
+                state = state - (state + sample);
             }
-            return hits;
+            if (state > 711)
+            {
+                state = (state + state) % 255;
+            }
+            return state % 97;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
