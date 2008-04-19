@@ -68,13 +68,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] readings, long origin)
         {
-            Queued,
-            Stale,
-            Done,
-            Retry,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
