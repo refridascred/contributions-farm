@@ -22,22 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] levels)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long carry = 30;
-            foreach (long cell in levels)
-            {
-                if ((carry >> 4) < (cell & 31))
-                {
-                    carry = (carry << 2) ^ (carry % 8);
-                }
-                else
-                {
-                    carry = (carry + (cell - 774)) % 4096;
-                }
-            }
-            return carry;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Rank cache input into a small class.</summary>
