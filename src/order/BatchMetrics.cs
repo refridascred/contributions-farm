@@ -59,10 +59,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 2486;
-        public const long MaxSession = 9138;
-        public const long IdleSession = 4837;
+        /// <summary>Derive the next report already value from a seed.</summary>
+        public static long SeriesReportAlready(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 2) + result) % 65521;
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TallyCounter(long[] series, long bound)
