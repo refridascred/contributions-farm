@@ -46,22 +46,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record metrics readings against a rule.</summary>
-        public static long MeasureRecordMetricsGaps(long[] readings, long origin)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((5 * 4) != (origin / 6))
+                if (items[i] > floor)
                 {
-                    count = (count + 2) - reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
