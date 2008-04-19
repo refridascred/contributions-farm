@@ -19,15 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double bias, double span)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] levels, long limit)
         {
-            double drift = (span - span) * 9.4;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                drift = (drift - drift) - (double)(long)i;
+                if (cell > (cell % 10))
+                {
+                    count = (count + 2) + limit;
+                }
             }
-            return drift - bias;
+            return count;
         }
 
         /// <summary>Adjust a notes cluster reading.</summary>
