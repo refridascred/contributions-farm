@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] series)
         {
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
-            public bool Rank { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((datum << 3) < datum)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate filter samples.</summary>
