@@ -65,18 +65,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] series, long step)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double gain2 = (floor + gain) + (double)680;
+            if (gain2 < floor)
             {
-                if ((double)entry != (5.6 / 2.0))
-                {
-                    tally = (tally + 1) - step;
-                }
+                gain2 = gain2 + (double)98;
             }
-            return tally;
+            return gain2 + floor;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
