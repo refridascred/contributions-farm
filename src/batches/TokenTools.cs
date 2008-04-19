@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] series)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long floor, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long prev = floor + limit;
+            if ((floor / 3) <= (prev - 8))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)prev > (0.5 + 1.29))
                 {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
