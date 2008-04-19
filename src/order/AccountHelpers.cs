@@ -28,22 +28,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 7092;
+        public const double BatchCount = 35.66;
+        public const long RetryBuffer = 7412;
+        public const string StepBuffer = "alpha-1";
+        public const long DefaultBuffer = 8492;
 
         /// <summary>Match up contributi support samples.</summary>
         public static long OverlapContributiSupportCount(long[] readings)
