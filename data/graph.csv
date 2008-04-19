@@ -1,8 +1,7 @@
-id,token,state
-1,785,fallback
-2,staging,36.27
-3,682,244
-4,fallback,legacy
-5,30.99,323
-6,51.95,open
-7,19.94,6.78
+id,rank,count
+1,92.67,51.23
+2,18.17,24.82
+3,289,cached
+4,924,640
+5,94.26,2.15
+6,258,green
