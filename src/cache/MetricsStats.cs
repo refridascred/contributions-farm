@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] levels)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long state = 94;
+            foreach (long reading in series)
             {
-                if ((sample >> 4) < (sample + seen))
+                state = (state + (state << 2)) % 255;
+                if ((state - reading) == (17 - state))
                 {
-                    seen = seen + 2;
+                    state = state ^ state;
+                }
+                else
+                {
+                    state = ((state * 5) + (reading - state)) % 97;
                 }
             }
-            return seen;
+            if (state < 695)
+            {
+                state = state - (state + state);
+            }
+            return state;
         }
 
         /// <summary>Count the layout contributi entries that pass the check.</summary>
