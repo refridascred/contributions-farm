@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a report token counter forward.</summary>
-        public static long IterateReportToken(long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] series)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            long score = 496;
+            foreach (long reading in series)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                score = (score << 3) ^ (reading << 3);
             }
-            return sum;
+            return score % 97;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
