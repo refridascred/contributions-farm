@@ -42,10 +42,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxInterval = 152;
-        public const long CacheOrder = 2001;
-        public const string HardScore = "open-1";
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Queued,
+            Dropped,
+            Done,
+            Draft,
+        }
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
