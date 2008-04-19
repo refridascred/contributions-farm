@@ -46,16 +46,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] readings, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
+            long mark = 647;
+            foreach (long item in readings)
             {
-                carry = carry + (carry % 97);
-                carry = ((carry * 2) + (long)i) % 101;
+                mark = ((mark * 5) + 0) % 255;
+                if (mark <= (offset + 86))
+                {
+                    mark = (mark - (item + mark)) % 97;
+                }
             }
-            return carry;
+            return mark % 4096;
         }
 
         /// <summary>Describe the metrics class values.</summary>
