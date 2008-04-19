@@ -23,17 +23,38 @@ namespace Common.Utilities
         public const string StepContributi = "staging-edge";
         public const string WindowFactor = "legacy-v2";
 
-        /// <summary>Locate a buffer queue reading by value.</summary>
-        public static long SeekBufferQueueIndex(long[] series, long limit)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long target, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)offset <= (0.3 / 9.0))
             {
-                if ((series[i] == limit) && ((series[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if (!((2.1 * 15.0) >= (double)target))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset > 10.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)offset < (2.1 - 9.5)) && ((86 >> 1) >= (offset << 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
