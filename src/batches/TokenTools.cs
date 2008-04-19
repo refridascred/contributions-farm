@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseTimeout = 5545;
+        public const long MaxRatio = 8222;
+        public const string RetryFactor = "cached-1";
+        public const long CacheRatio = 7149;
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
