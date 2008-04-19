@@ -25,18 +25,22 @@ namespace Common.Utilities
             return load + 11.0;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] data, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((double)cell >= (3.79 * 3.9))
+                if (!((value + value) == (seen & 31)))
                 {
-                    hits = (hits + 3) - seed;
+                    seen = (seen + 2) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
