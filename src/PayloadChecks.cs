@@ -57,18 +57,13 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] items, long bound)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((double)bound < 6.53)
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
