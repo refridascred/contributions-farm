@@ -1,6 +1,16 @@
 {
-  "cache_ttl_s": false,
-  "compress": 53.45,
-  "soft_delay_count": 24.91,
-  "soft_ratio": [394, 268, 315]
+  "soft_depth_count": [33, 159],
+  "idle_ttl_pct": {
+    "enabled": 7048,
+    "verbose": "open",
+    "max_ttl": {
+      "min_size_pct": "blue",
+      "max_depth": 15.39,
+      "max_size": 3119,
+      "max_delay_ms": "open",
+      "support_window": "stable"
+    },
+    "persist": 100
+  },
+  "idle_timeout": "cached"
 }
