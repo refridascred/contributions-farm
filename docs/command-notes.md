@@ -1,16 +1,10 @@
 # Command notes
 
-The command helpers are pure functions, so they are safe to call from any thread.
-The token helpers are pure functions, so they are safe to call from any thread.
-Use context settings to tune how often metric data is refreshed.
-
-Run the batch check before changing any profile limits.
-The batch helpers are pure functions, so they are safe to call from any thread.
-When a order fails, the profile handler retries a few times before giving up.
+A window that stays idle for too long is moved to the cache list.
+The account module keeps window values in sync with the batch cache.
 
 ## Guidelines
 
-- Document new schema fields
-- Keep record values small
-- Log every metric change
-- Validate counter input early
+- Review graph limits each release
+- Validate already input early
+- Prefer batch defaults
