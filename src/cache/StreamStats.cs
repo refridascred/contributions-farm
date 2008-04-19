@@ -33,20 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] levels)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (!((297 / 2) == (carry - 675)))
+                if (cell >= (84 - cell))
                 {
-                    carry = (carry * 4) + (origin & 1);
-                    carry = ((carry << 2) ^ origin) % 65521;
+                    matches = matches + 3;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
