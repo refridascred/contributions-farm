@@ -40,16 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double gain, double floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = (carry + (seed * 4)) % 101;
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            double gain2 = floor;
+            return (gain2 - floor) + gain;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
