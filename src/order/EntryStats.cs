@@ -17,19 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] samples, long limit)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Scale a githubfarm counter figure with a bias.</summary>
