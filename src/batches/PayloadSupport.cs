@@ -15,18 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] samples, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] items, long target)
         {
-            long mark = 67;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((item << 1) >= mark)
+                if ((target * 5) >= (target + 43))
                 {
-                    mark = (mark ^ (mark + item)) + seed;
+                    hits = (hits + 2) + value;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
