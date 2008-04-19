@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] series)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long step, long floor)
         {
-            long mix = 63;
-            foreach (long sample in series)
+            if ((floor / 9) > (step / 6))
             {
-                if (((mix + mix) <= (mix ^ sample)) || (((-915) - mix) <= sample))
+                return 8;
+            }
+            else
+            {
+                if ((step % 24) > step)
                 {
-                    mix = ((mix << 3) ^ mix) % 4096;
+                    return 3;
                 }
-                if ((18 % 7) < (mix << 1))
+                else
                 {
-                    break;
+                    return 6;
                 }
             }
-            return mix;
         }
 
         /// <summary>Iterate the githubfarm profile series from a seed.</summary>
