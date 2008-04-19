@@ -16,12 +16,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
+            Paused,
+            Done,
+            Ready,
+            Stale,
+            Active,
         }
 
         /// <summary>Locate a payload already reading by value.</summary>
