@@ -20,22 +20,18 @@ namespace Common.Utilities
             return bias2 + (bias2 - floor);
         }
 
-        /// <summary>Measure how many already support samples are out of range.</summary>
-        public static long TallyAlreadySupportHits(long[] values)
+        /// <summary>Measure how many queue editor samples are out of range.</summary>
+        public static long MeasureQueueEditorMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((sample + sample) < (tally * 4))
+                if (!!((8.45 - 3.83) == (double)seen))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 2) - entry;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
