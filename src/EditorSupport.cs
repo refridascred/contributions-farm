@@ -78,22 +78,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] readings, long origin)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long mark = 997;
+            foreach (long sample in values)
             {
-                if ((origin >> 4) > origin)
+                if (((-50) - sample) >= (sample & 3))
                 {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mark = (mark ^ (sample ^ mark)) % 97;
                 }
             }
-            return hits;
+            if (mark > 8)
+            {
+                mark = ((mark << 3) ^ (mark - mark)) % 1000;
+            }
+            return mark;
         }
     }
 }
