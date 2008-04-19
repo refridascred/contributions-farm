@@ -71,22 +71,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] data, long limit)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((double)limit > 9.19)
-                {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public double Region { get; set; }
         }
     }
 }
