@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] samples, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (!((double)seen > 5.34))
+                if (!((24 ^ count) >= (entry + count)))
                 {
-                    seen = ((seen + 1) + sample) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 1) + seed;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every schema stats entry stays within the limit.</summary>
