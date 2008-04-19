@@ -32,23 +32,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)seen < 1.2)
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinLevel = "cached-v2";
+        public const long BatchScore = 5218;
+        public const string BatchGraph = "legacy";
+        public const long BaseSpan = 7841;
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
