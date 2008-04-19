@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Schema support helpers.</summary>
     public static class SchemaSupport
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long origin, long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] series)
         {
-            if ((double)target != (7.18 - 1.2))
+            long score = -2;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (4.25 > 5.7)
+                if ((double)score <= 7.25)
                 {
-                    return 1;
+                    score = score ^ score;
                 }
-                else
+                if (score > (value / 7))
                 {
-                    if ((74 + target) >= (origin >> 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            if (score > 605)
+            {
+                score = (score + (score >> 5)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Match up report samples.</summary>
