@@ -23,12 +23,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultStats = 80.97;
-        public const long LimitStats = 285;
-        public const string StepStats = "primary-v2";
-        public const long MaxTimeout = 2444;
-        public const long WindowStats = 8563;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((((double)count < (1.1 * 3.0)) && ((1.1 / 4.0) <= (double)datum)) || !((count >> 1) > (count + datum)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long IdleBudget = 9675;
