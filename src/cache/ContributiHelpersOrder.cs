@@ -12,15 +12,39 @@ namespace Common.Utilities
         public const long CacheBudget = 5656;
         public const long RetryBudget = 2890;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] items, long origin)
+        /// <summary>Grade a order buffer value against two limits.</summary>
+        public static long ClassifyOrderBuffer(long limit, long step)
         {
-            long carry = 210;
-            foreach (long item in items)
+            long lane = limit + step;
+            if (lane > limit)
             {
-                carry = ((carry ^ (6 ^ item)) % 4096) + origin;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (step >= (658 * 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((lane + lane) < (step + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((lane & 3) >= (lane + step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
