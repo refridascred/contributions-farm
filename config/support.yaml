@@ -1,9 +1,9 @@
 # support settings
-record_timeout: 42.44
-editor_timeout:
-  - 287
-  - 110
-  - 263
-flush_timeout_s: blue
-soft_retries: eu-west
-readonly: 67.11
+compress: strict
+metric_depth: true
+base_ratio: staging
+enabled:
+  idle_interval_ms: true
+  support_ratio: false
+  audit: 92
+  support_size: strict
