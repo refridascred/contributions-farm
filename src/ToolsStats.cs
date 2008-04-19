@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] readings, long step)
+        /// <summary>Count the route cache entries that pass the check.</summary>
+        public static long AuditRouteCacheOutliers(long[] readings, long limit)
         {
-            long carry = -607;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                carry = ((carry + (step / 2)) % 97) - sample;
-                if ((96 - step) < (70 >> 5))
+                if (hits >= (hits + limit))
                 {
-                    break;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Project the next tools value.</summary>
