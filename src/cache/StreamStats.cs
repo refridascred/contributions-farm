@@ -42,26 +42,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate commits notes samples.</summary>
-        public static long ScoreCommitsNotes(long[] levels, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] items)
         {
-            long total = 35;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 8; i++)
+                if (hits >= (hits - hits))
                 {
-                    total = ((total * 4) + (offset * 3)) - (long)i;
-                }
-                if ((891 & 127) == (total + offset))
-                {
-                    total = ((total << 3) ^ (cell ^ cell)) % 97;
+                    hits = (hits + 2) - item;
                 }
             }
-            if (total < 84)
-            {
-                total = (total * 5) + (offset + offset);
-            }
-            return total;
+            return hits;
         }
     }
 }
