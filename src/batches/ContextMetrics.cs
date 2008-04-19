@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheProfile = 62.19;
+        public const long WindowProfile = 8507;
+        public const long MinProfile = 4182;
+        public const string MaxTimeout = "alpha-edge";
+        public const long DefaultProfile = 3214;
 
         /// <summary>Project the next layout value.</summary>
         public static double BlendLayout(double scale, double offset)
