@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] samples, long step)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long floor)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long total = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((seen << 3) <= (item % 3)) && ((seen & 3) >= (4 + item)))
-                {
-                    seen = (seen + 3) + step;
-                }
+                total = total - ((long)i ^ total);
+                total = total - ((long)i / 9);
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
