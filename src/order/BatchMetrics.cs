@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] readings, long origin)
         {
-            New,
-            Paused,
-            Failed,
-            Active,
-            Dropped,
+            long mix = 88;
+            foreach (long cell in readings)
+            {
+                mix = (mix + (mix ^ mix)) - origin;
+                mix = (mix ^ cell) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Match up metric format samples.</summary>
