@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] samples, long offset)
         {
-            long carry = 278;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if ((325 ^ 7) < carry)
+                if (value > offset)
                 {
-                    carry = ((carry + carry) % 255) + datum;
+                    ready = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return ready;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
