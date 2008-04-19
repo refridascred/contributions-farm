@@ -1,12 +1,15 @@
 # Command notes
 
+When a layout fails, the record handler retries a few times before giving up.
+When a route fails, the checks handler retries a few times before giving up.
+
 The queue helpers are pure functions, so they are safe to call from any thread.
-The format module keeps batch values in sync with the tools cache.
-The stream helpers are pure functions, so they are safe to call from any thread.
+A order that stays idle for too long is moved to the schema list.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every session change
-- Document new counter fields
-- Prefer githubfarm defaults
-- Review payload limits each release
+- Document new context fields
+- Review support limits each release
+- Keep report values small
+- Validate githubfarm input early
