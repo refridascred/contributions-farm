@@ -34,13 +34,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] readings, long target)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Label { get; set; }
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the tools mode values.</summary>
