@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] items)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long result = 697;
-            foreach (long value in items)
-            {
-                result = (result ^ (result & 7)) % 97;
-                result = result ^ (value - value);
-            }
-            if (result < 62)
-            {
-                result = ((result << 2) ^ (result * 2)) % 255;
-            }
-            return result;
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a report summary.</summary>
