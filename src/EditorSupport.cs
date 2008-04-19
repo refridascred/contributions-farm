@@ -44,12 +44,20 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 2925;
-        public const long WindowSpan = 7537;
-        public const long SoftInterval = 9783;
-        public const long HardLevel = 2686;
-        public const string StepLevel = "stable";
+        /// <summary>Blend two buffer checks measurements.</summary>
+        public static double SmoothBufferChecks(double gain, double offset)
+        {
+            double bias = offset;
+            if (bias >= (gain + gain))
+            {
+                bias = bias + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias - (bias + bias);
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long DigestProfile(long[] series)
