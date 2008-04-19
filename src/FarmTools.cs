@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Blend two report measurements.</summary>
