@@ -37,19 +37,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate checks payload readings against a bound.</summary>
-        public static bool CheckChecksPayloadLimits(long[] values, long target)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long value in values)
+            double scale = 1.43;
+            if (scale >= floor)
             {
-                if (value >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale - (3.71 / 2.0);
             }
-            return ready;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (bias + scale)) + (double)(long)i;
+            }
+            return scale + (double)708;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
