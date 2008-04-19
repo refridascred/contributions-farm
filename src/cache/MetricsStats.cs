@@ -24,10 +24,26 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheRatio = 9808;
-        public const double RetryAccount = 23.2;
-        public const string MaxTimeout = "alpha-v2";
+        /// <summary>Rank channel window input into a small class.</summary>
+        public static long ClassifyChannelWindow(long limit, long origin)
+        {
+            long diff = limit - origin;
+            if (((origin ^ diff) != (76 & 3)) || ((limit << 1) >= 22))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)diff != (11.0 * 5.35)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Grade a stream stats value against two limits.</summary>
         public static long GradeStreamStats(long target, long seed)
