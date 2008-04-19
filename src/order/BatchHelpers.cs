@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] items)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long step)
         {
-            long state = 60;
-            foreach (long cell in items)
+            long state = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((cell + state) <= ((-6) / 3))
-                {
-                    state = (state - (state - state)) % 255;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
             return state;
         }
