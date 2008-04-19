@@ -1,19 +1,8 @@
 # support settings
-sync_limit:
-  - 288
-  - 294
-  - 129
-batch_size_ms:
-  warm_ttl_s:
-    - edge
-    - local
-    - local
-  sync_ttl_s: 500
-  flush_capacity_count:
-    - latest
-    - primary
-    - cached
-    - legacy
-  idle_capacity: 91.34
-base_limit: false
-idle_capacity_ms: 9178
+readonly: 8
+sync_timeout_ms:
+  - latest
+  - strict
+hard_interval_s: false
+cache_window: false
+dry_run: 11
