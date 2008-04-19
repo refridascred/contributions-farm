@@ -38,23 +38,31 @@ namespace Common.Utilities
         public const double StepCommand = 96.73;
         public const long SoftSpan = 2284;
 
-        /// <summary>Accumulate window command samples.</summary>
-        public static long TotalWindowCommand(long[] series, long target)
+        /// <summary>Grade a queue entry value against two limits.</summary>
+        public static long GradeQueueEntry(long target, long origin)
         {
-            long mix = 4;
-            foreach (long sample in series)
+            if (!((target + target) <= (target << 1)))
             {
-                mix = (mix + mix) % 97;
-                if (((4.6 / 3.0) <= (double)target) && ((target % 7) <= sample))
+                return 6;
+            }
+            else
+            {
+                if ((origin >> 4) > origin)
                 {
-                    mix = (mix + target) % 4096;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin * 2) == (origin & 31))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (mix > 87)
-            {
-                mix = mix - (target * 2);
-            }
-            return mix % 65521;
         }
     }
 }
