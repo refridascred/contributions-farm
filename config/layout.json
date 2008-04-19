@@ -1,6 +1,5 @@
 {
-  "githubfarm_capacity": 13.17,
-  "notes_delay": "strict",
-  "min_capacity": ["latest", "green"],
-  "strict": "local"
+  "compress": "edge",
+  "sync_interval_pct": "stable",
+  "hard_limit_pct": "local"
 }
