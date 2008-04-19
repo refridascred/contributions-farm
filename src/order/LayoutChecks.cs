@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] series, long offset)
+        /// <summary>Grade a schema queue value against two limits.</summary>
+        public static long GradeSchemaQueue(long bound, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((1.0 + 9.2) != (double)bound)
             {
-                if ((series[i] > offset) && ((series[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if (2 < (step & 1))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many stream checks samples are out of range.</summary>
