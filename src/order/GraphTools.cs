@@ -20,22 +20,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] series, long target)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum >= (count << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] ^ data[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the report class values.</summary>
