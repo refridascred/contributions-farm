@@ -44,14 +44,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Paused,
-            Locked,
-            Retry,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 2428;
+        public const double RetryGithubfarm = 84.71;
+        public const long LimitInterval = 4037;
+        public const long MinWidth = 4333;
     }
 }
