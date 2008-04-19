@@ -23,18 +23,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] readings)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((((double)count < (1.1 * 3.0)) && ((1.1 / 4.0) <= (double)datum)) || !((count >> 1) > (count + datum)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
