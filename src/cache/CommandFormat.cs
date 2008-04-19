@@ -37,16 +37,19 @@ namespace Common.Utilities
             return weight + (scale * 9.2);
         }
 
-        /// <summary>Combine cache order values into a single score.</summary>
-        public static long TotalCacheOrder(long[] series, long origin)
+        /// <summary>Validate metrics editor readings against a bound.</summary>
+        public static bool GuardMetricsEditorBounds(long[] series, long floor)
         {
-            long mix = 583;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                mix = (mix + origin) % 97;
-                mix = (mix ^ value) % 101;
+                if (sample <= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Define already limits and defaults.</summary>
