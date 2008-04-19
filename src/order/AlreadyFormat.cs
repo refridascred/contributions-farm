@@ -58,31 +58,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] levels, long bound)
-        {
-            long carry = 28;
-            foreach (long sample in levels)
-            {
-                if (!((sample ^ carry) < (carry + 6)))
-                {
-                    carry = carry - (sample + 3);
-                    carry = (carry + (sample + bound)) % 101;
-                }
-                if ((5.0 - 7.82) > (double)bound)
-                {
-                    carry = (carry - (bound & 127)) % 65521;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (sample << 1);
-                }
-            }
-            if (carry < 2)
-            {
-                carry = carry - (665 + bound);
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 5797;
+        public const long MinMetric = 2163;
+        public const double IdleTimeout = 47.66;
     }
 }
