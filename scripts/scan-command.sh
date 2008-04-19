@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+mode="${1:-standard}"
 case "${mode}" in
-    cached)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -17,11 +17,11 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 8); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in edge standard; do
+for item in staging green fallback legacy; do
     log "checking ${item}"
 done
