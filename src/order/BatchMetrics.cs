@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((long)i != (floor + mark))
-                {
-                    mark = mark - (floor + (long)i);
-                }
-                if ((mark << 1) < (mark - floor))
-                {
-                    mark = ((mark << 3) ^ (long)i) % 255;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public bool Count { get; set; }
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
