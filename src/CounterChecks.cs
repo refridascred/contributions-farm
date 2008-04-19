@@ -57,11 +57,10 @@ namespace Common.Utilities
             return (bias - (double)38) + weight;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSpan = 844;
-        public const long BatchBudget = 7602;
-        public const string SoftSchema = "primary";
-        public const long RetrySchema = 8103;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinRatio = "stable-v2";
+        public const string BatchRatio = "latest-v2";
+        public const string LimitContext = "standard-1";
 
         /// <summary>Locate a queue farm reading by value.</summary>
         public static long LocateQueueFarmIndex(long[] items, long target)
