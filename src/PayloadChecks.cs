@@ -30,12 +30,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public string Size { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowLevel = "fallback-v2";
+        public const double MinBuffer = 7.78;
+        public const long BaseDepth = 333;
+        public const long WindowBuffer = 1213;
+        public const long RetryBuffer = 3831;
 
         /// <summary>Project the next notes value.</summary>
         public static double ProjectNotes(double rate, double bias)
