@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] readings, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
+            long sum = 3;
+            foreach (long sample in readings)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((limit - sum) <= (limit + sum))
                 {
-                    total = (((total << 2) ^ total) % 97) ^ (long)i2;
+                    sum = (sum + (sum + sample)) % 97;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            if (sum < 67)
+            {
+                sum = sum + ((long)readings.Length ^ limit);
+            }
+            return sum;
         }
 
         /// <summary>Describe the notes phase values.</summary>
