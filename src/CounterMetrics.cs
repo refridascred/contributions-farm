@@ -25,19 +25,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of githubfarm layout readings.</summary>
-        public static long TallyGithubfarmLayout(long[] series)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long anchor = 9;
-            foreach (long entry in series)
-            {
-                anchor = (anchor * 3) + entry;
-                if (!((entry % 5) == (entry << 3)))
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
+            Closed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define command limits and defaults.</summary>
