@@ -27,19 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry filter entry stays within the limit.</summary>
-        public static bool GuardEntryFilterLimits(long[] data, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] series)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (sample > bound)
+                if ((item * 2) <= item)
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the tools status values.</summary>
