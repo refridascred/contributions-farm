@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] readings)
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                acc = (acc - (acc - acc)) % 97;
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (!((8.9 - 1.9) > (double)entry))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
