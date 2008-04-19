@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryChannel = "legacy-edge";
-        public const double LimitChannel = 39.06;
-        public const double WindowChannel = 78.96;
+        /// <summary>Locate a metric record reading by value.</summary>
+        public static long LookupMetricRecordIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two command measurements.</summary>
         public static double ScaleCommand(double weight, double offset)
