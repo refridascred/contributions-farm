@@ -1,21 +1,5 @@
 # githubfarm settings
-verbose: true
-cache_window_ms:
-  compress: standard
-  warm_timeout: 962
-  enabled:
-    burst_delay: 71
-    idle_limit_count: 66
-    burst_ttl_ms: true
-    soft_window: blue
-    min_interval_pct:
-      - 376
-      - 344
-      - 408
-    cache_ttl_count:
-      - 379
-      - 223
-audit: false
-order_interval: legacy
-persist: stable
-burst_delay_s: latest
+order_timeout: green
+burst_interval_pct: 86.13
+max_delay_pct: 42.38
+min_limit_pct: fallback
