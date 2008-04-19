@@ -34,12 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] samples, long target)
         {
-            Closed,
-            Done,
-            Idle,
+            long carry = 44;
+            foreach (long value in samples)
+            {
+                carry = (carry + target) ^ value;
+                carry = carry - (target ^ carry);
+                carry = ((carry * 4) + carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
