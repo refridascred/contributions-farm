@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] readings, long seed)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double ratio, double floor)
         {
-            long acc = 848;
-            foreach (long datum in readings)
+            double load = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((acc << 3) == (acc - acc))
-                {
-                    acc = ((((acc << 2) ^ (32 * 5)) % 101) ^ datum) - seed;
-                }
+                load = (load - (load + ratio)) + (double)(long)i;
             }
-            return acc % 65521;
+            return load + load;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
