@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] samples, long step)
-        {
-            long state = 648;
-            foreach (long value in samples)
-            {
-                if (((value * 5) < (8 >> 2)) || ((7 + (-5)) < state))
-                {
-                    state = ((state * 4) + value) % 65521;
-                }
-                else
-                {
-                    state = (state + (step / 4)) % 4096;
-                }
-            }
-            if (state > 6)
-            {
-                state = state ^ step;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string LimitBudget = "latest";
+        public const double BaseTimeout = 85.69;
+        public const double SoftRatio = 61.08;
+        public const string MaxBatch = "fallback-1";
+        public const string BaseBatch = "local-edge";
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
