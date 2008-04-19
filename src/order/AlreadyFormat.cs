@@ -44,18 +44,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] levels)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long acc = 3;
+            foreach (long datum in series)
             {
-                if ((seen % 5) < (seen & 7))
+                if ((double)floor < (19.0 / 4.0))
                 {
-                    seen = (seen + 3) + datum;
+                    acc = ((acc * 4) + floor) ^ datum;
                 }
+                acc = ((acc * 5) + acc) % 4096;
+                acc = (acc ^ floor) % 1000;
             }
-            return seen;
+            if (acc > 453)
+            {
+                acc = (acc * 5) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Describe the tools status values.</summary>
