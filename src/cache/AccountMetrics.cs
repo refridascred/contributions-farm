@@ -35,13 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] items, long step)
         {
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (sample < (614 >> 5))
+                {
+                    matches = (matches + 3) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the session kind values.</summary>
