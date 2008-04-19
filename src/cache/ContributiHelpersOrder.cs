@@ -13,19 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double weight, double floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double rate = (double)62 - (floor * 8.59);
-            if (rate > (6.21 * 20.0))
-            {
-                rate = rate + weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (double)30;
+            public bool Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
