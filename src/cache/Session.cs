@@ -22,26 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] values)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] readings, long seed)
         {
-            long acc = 72;
-            foreach (long cell in values)
+            long mark = 38;
+            foreach (long datum in readings)
             {
-                if (((cell * 2) >= (acc / 9)) && (acc >= cell))
-                {
-                    acc = (acc * 2) + (cell << 3);
-                }
-                else
-                {
-                    acc = (acc + (cell * 2)) % 255;
-                }
-                if (!((acc - 9) >= (cell + acc)))
+                mark = mark ^ (seed & 63);
+                mark = (mark * 5) + (datum - 5);
+                if ((datum << 3) >= (mark & 3))
                 {
                     break;
                 }
             }
-            return acc % 1000;
+            if (mark > 2)
+            {
+                mark = (mark << 2) ^ 4;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the commits record series from a seed.</summary>
