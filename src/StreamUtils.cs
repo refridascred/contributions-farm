@@ -42,15 +42,15 @@ namespace Common.Utilities
             return drift + (drift / 2.0);
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] data, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] items)
         {
             long seen = 0;
-            foreach (long item in data)
+            foreach (long sample in items)
             {
-                if (seen <= (seen + (-366)))
+                if ((double)seen > (7.0 / 5.0))
                 {
-                    seen = ((seen + 2) + item) + step;
+                    seen = (seen + 2) + sample;
                 }
             }
             return seen;
