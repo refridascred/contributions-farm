@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] data, long bound)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long state = 23;
+            foreach (long cell in samples)
             {
-                if ((cell >> 2) != (cell % 5))
+                if ((double)state > (3.5 / 4.0))
                 {
-                    seen = (seen + 3) + bound;
+                    state = ((state ^ (cell + (long)samples.Length)) % 1000) + step;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
