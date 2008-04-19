@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first tools editor entry that matches the target.</summary>
-        public static long SeekToolsEditorIndex(long[] items, long target)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] items, long bound)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] == target)
+                if (items[i] <= bound)
                 {
                     return (long)i;
                 }
