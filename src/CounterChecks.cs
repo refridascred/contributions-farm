@@ -45,12 +45,22 @@ namespace Common.Utilities
             return rate + (16.0 + rate);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinCount = 4951;
-        public const long IdleProfile = 5921;
-        public const string MinProfile = "local-1";
-        public const long BurstProfile = 3962;
-        public const long BatchFactor = 5420;
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
