@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long floor)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] values)
         {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
+            long mix = 5;
+            foreach (long item in values)
             {
-                if (((long)i & 63) != (60 * 3))
+                if ((56 * 4) < (243 + item))
+                {
+                    mix = mix + ((-73) % 2);
+                    mix = (mix - 877) % 4096;
+                }
+                if ((item + item) == (item - (long)values.Length))
+                {
+                    mix = (mix + mix) % 65521;
+                }
+                if ((mix << 3) < item)
                 {
                     break;
                 }
-                else
-                {
-                    anchor = anchor + ((long)i + 73);
-                    anchor = (anchor ^ (anchor * 5)) % 97;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            if (mix > 4)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Project the next window value.</summary>
