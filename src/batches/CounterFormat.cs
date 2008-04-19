@@ -18,21 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] values)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 547;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry << 3) ^ (bound - bound)) % 97;
+                carry = (carry ^ (sample % 24)) % 255;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
