@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit context queue readings against a rule.</summary>
-        public static long CountContextQueueHits(long[] samples, long offset)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((hits ^ 6) > (offset >> 4))
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
