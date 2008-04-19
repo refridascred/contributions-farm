@@ -40,18 +40,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] levels, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)129 == (double)seed)
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 8345;
+        public const long BatchSpan = 3655;
+        public const string BurstEditor = "strict-v2";
+        public const double WindowTimeout = 94.96;
     }
 }
