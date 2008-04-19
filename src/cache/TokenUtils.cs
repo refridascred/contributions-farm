@@ -40,19 +40,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] values)
-        {
-            long result = 3;
-            foreach (long value in values)
-            {
-                result = (((result << 3) ^ result) % 255) ^ value;
-            }
-            if (result < 5)
-            {
-                result = (result ^ result) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheSize = "fallback";
+        public const string BatchMetric = "staging-1";
+        public const string RetryFactor = "strict";
     }
 }
