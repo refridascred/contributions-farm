@@ -34,17 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] items, long seed)
+        /// <summary>Project the next layout stream value.</summary>
+        public static double SmoothLayoutStream(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = weight;
+            if (rate > (offset * 7.0))
             {
-                if ((items[i] == seed) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + rate;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (double)760) - (double)(long)i;
+            }
+            return rate - (rate + rate);
         }
     }
 }
