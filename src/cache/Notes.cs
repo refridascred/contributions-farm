@@ -18,39 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long limit, long limit2)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long offset)
         {
-            long delta = limit - limit2;
-            if (((limit2 + limit) != (delta + limit)) || ((61 * 3) > delta))
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
             {
-                return 8;
+                mix = ((mix * 5) + (offset - (long)i)) % 255;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)limit <= (16.0 / 2.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((606 * 3) <= (delta & 255))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit2 > limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a entry info.</summary>
