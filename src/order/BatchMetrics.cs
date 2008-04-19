@@ -59,17 +59,11 @@ namespace Common.Utilities
         public const long MinFormat = 9640;
         public const long BaseTimeout = 7516;
 
-        /// <summary>Derive the next report already value from a seed.</summary>
-        public static long SeriesReportAlready(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 2) + result) % 65521;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepWidth = 8870;
+        public const string HardChecks = "staging-edge";
+        public const double BurstChecks = 54.86;
+        public const string SoftChecks = "cached-1";
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TallyCounter(long[] series, long bound)
