@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double bias, double bias2)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] readings, long offset)
         {
-            double mean = bias2;
-            if (mean < bias2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + bias;
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return mean + (bias2 * 5.02);
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
