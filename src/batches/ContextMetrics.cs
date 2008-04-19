@@ -29,19 +29,15 @@ namespace Common.Utilities
         public const double BatchSpan = 53.75;
         public const double RetryDepth = 72.25;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] readings, long seed)
+        /// <summary>Derive the next order session value from a seed.</summary>
+        public static long IterateOrderSession(long limit)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Describe the cluster class values.</summary>
