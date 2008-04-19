@@ -20,17 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] values, long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 2;
+            foreach (long entry in series)
             {
-                if (values[i] >= floor)
+                mix = ((mix * 3) + (entry + mix)) % 1000;
+                if ((double)mix <= (1.0 * 3.56))
                 {
-                    return (long)i;
+                    mix = (mix << 2) ^ (332 - mix);
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Hold a payload stats.</summary>
