@@ -69,15 +69,25 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double gain, double floor)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long offset, long offset2)
         {
-            double gain2 = (floor + gain) + (double)680;
-            if (gain2 < floor)
+            long edge = offset ^ offset2;
+            if (((edge - offset2) == (edge - offset)) || ((offset + 9) == (10 + offset)))
             {
-                gain2 = gain2 + (double)98;
+                return 5;
             }
-            return gain2 + floor;
+            else
+            {
+                if (((35 - edge) < (offset + 4)) && ((1.05 * 2.83) < (double)offset2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the stream phase values.</summary>
