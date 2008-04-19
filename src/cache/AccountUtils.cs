@@ -33,15 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] values)
         {
-            long mark = 3;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in values)
             {
-                mark = ((mark << 3) ^ (cell % 2)) % 97;
+                if (value >= (value - value))
+                {
+                    count = count + 1;
+                }
             }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Blend two context measurements.</summary>
