@@ -37,19 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of schema already readings.</summary>
-        public static long CombineSchemaAlready(long[] series)
-        {
-            long carry = 95;
-            foreach (long entry in series)
-            {
-                carry = (carry - 5) - entry;
-            }
-            if (carry < 55)
-            {
-                carry = (carry << 3) ^ (3 << 2);
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "standard-edge";
+        public const long SoftInterval = 4273;
+        public const long WindowCommand = 4469;
+        public const long WindowLevel = 3332;
     }
 }
