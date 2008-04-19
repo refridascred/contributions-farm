@@ -25,11 +25,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double scale, double span)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] levels, long step)
         {
-            double mean = (span * 0.62) / 3.0;
-            return mean - scale;
+            long acc = 34;
+            foreach (long value in levels)
+            {
+                if (acc < (acc << 1))
+                {
+                    acc = acc + (value << 3);
+                }
+            }
+            if (acc > (-71))
+            {
+                acc = (acc ^ (step * 3)) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Scale a batches entry figure with a bias.</summary>
