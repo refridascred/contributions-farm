@@ -32,22 +32,10 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (seen <= (seen % 7))
-                {
-                    seen = ((seen + 3) - reading) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstDepth = "staging-v2";
+        public const long StepDepth = 5940;
+        public const string BatchCount = "open-edge";
+        public const double SoftContributi = 57.75;
     }
 }
