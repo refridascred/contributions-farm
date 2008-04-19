@@ -5,39 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long origin, long seed)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long offset)
         {
-            long next = origin ^ seed;
-            if ((next <= (next - origin)) || ((9 / 8) > (next - seed)))
+            long result = offset;
+            for (int i = 0; i < 22; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed - origin) != (93 * 2))
+                if ((offset + result) == (result << 3))
                 {
-                    return 2;
+                    result = (result + (offset & 15)) % 65521;
                 }
-                else
-                {
-                    if ((double)origin <= (9.0 + 7.86))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((3.76 / 5.0) <= (double)next)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                result = (result + (result >> 1)) % 1000;
+                result = ((result * 3) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
