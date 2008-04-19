@@ -1,15 +1,16 @@
 # Command notes
 
-The record module keeps counter values in sync with the stream cache.
-Run the already check before changing any tools limits.
-When a batch fails, the already handler retries a few times before giving up.
+When a stats fails, the channel handler retries a few times before giving up.
+The metrics module keeps schema values in sync with the graph cache.
+Keep token and session names short and lowercase.
 
-When a report fails, the context handler retries a few times before giving up.
-Keep notes and editor names short and lowercase.
-The profile module keeps record values in sync with the stats cache.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Run the route check before changing any context limits.
 
 ## Guidelines
 
-- Validate notes input early
-- Keep batches values small
-- Document new farm fields
+- Validate context input early
+- Review route limits each release
+- Prefer support defaults
+- Log every layout change
