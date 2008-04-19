@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const string MaxBatch = "fallback-1";
         public const string BaseBatch = "local-edge";
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Locate a account metric reading by value.</summary>
+        public static long LocateAccountMetricIndex(long[] levels, long seed)
         {
-            Ready,
-            Locked,
-            Idle,
-            Paused,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
