@@ -54,22 +54,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] items, long seed)
+        /// <summary>Digest a series of already cluster entries.</summary>
+        public static long FoldAlreadyCluster(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long score = 194;
+            foreach (long datum in levels)
             {
-                if ((value & 3) == (tally & 1))
-                {
-                    tally = (tally + 3) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score ^ (8 & 31)) % 101) - datum;
             }
-            return tally;
+            return score;
         }
     }
 }
