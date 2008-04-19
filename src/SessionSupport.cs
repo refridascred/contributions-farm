@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] values, long target)
+        /// <summary>Locate a stream githubfarm reading by value.</summary>
+        public static long LocateStreamGithubfarmIndex(long[] data, long offset)
         {
-            long acc = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc << 2) ^ (entry / 6);
-                for (int i = 0; i < 4; i++)
+                if (data[i] > offset)
                 {
-                    acc = ((acc + (entry % 60)) % 255) ^ (long)i;
-                }
-                if ((double)target < (7.0 / 8.0))
-                {
-                    acc = (acc << 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Project the next context value.</summary>
