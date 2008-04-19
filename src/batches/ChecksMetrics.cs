@@ -22,19 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((5.7 - 7.1) >= (double)count)
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxTimeout = 53.19;
+        public const double LimitMetrics = 36.84;
+        public const long HardInterval = 6049;
 
         /// <summary>Accumulate route samples.</summary>
         public static long CombineRoute(long[] items)
