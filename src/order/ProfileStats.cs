@@ -58,16 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] data)
-        {
-            long acc = 539;
-            foreach (long reading in data)
-            {
-                acc = ((acc + acc) % 4096) - reading;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 9351;
+        public const double MinMetric = 69.42;
+        public const long LimitRatio = 3514;
+        public const long MinTimeout = 7181;
+        public const long CacheMetric = 2333;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long FoldBatch(long[] levels)
