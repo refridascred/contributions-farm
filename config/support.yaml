@@ -1,11 +1,29 @@
 # support settings
-verbose:
-  - 430
-  - 76
-  - 269
-poll_ttl_ms: 5292
-flush_ttl: cached
-metrics_window:
-  - 149
-  - 65
-  - 314
+flush_ttl:
+  - strict
+  - primary
+  - latest
+stats_retries: false
+burst_timeout_pct: eu-west
+audit: 60
+queue_limit:
+  default_timeout_s:
+    hard_limit: 6331
+    verbose:
+      - edge
+      - local
+    cache_retries_count: legacy
+    cache_threshold_s: standard
+  max_depth: 30
+  command_depth: false
+  enabled:
+    strict: 61.23
+    burst_timeout: 100
+    batches_delay: 60
+    context_ttl: 82
+    metric_window:
+      - 364
+      - 125
+      - 274
+      - 93
+  token_size: 22.98
