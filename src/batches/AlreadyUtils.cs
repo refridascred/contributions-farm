@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count support payload pairs that satisfy a relation.</summary>
-        public static long CompareSupportPayloadCount(long[] readings)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] data)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((hits + value) >= hits)
                 {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
