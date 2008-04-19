@@ -26,12 +26,20 @@ namespace Common.Utilities
         public const long RetryPayload = 5640;
         public const long LimitBudget = 3056;
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long origin)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((297 / 2) == (carry - 675)))
+                {
+                    carry = (carry * 4) + (origin & 1);
+                    carry = ((carry << 2) ^ origin) % 65521;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
