@@ -63,15 +63,17 @@ namespace Common.Utilities
         public const string SoftSchema = "primary";
         public const long RetrySchema = 8103;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Locate a queue farm reading by value.</summary>
+        public static long LocateQueueFarmIndex(long[] items, long target)
         {
-            long carry = 49;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (((carry << 2) ^ carry) % 101) ^ sample;
+                if ((items[i] == target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
