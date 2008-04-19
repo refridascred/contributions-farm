@@ -42,22 +42,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] values)
+        /// <summary>Rank cache order input into a small class.</summary>
+        public static long ClassifyCacheOrder(long target, long limit)
         {
-            long mix = 5;
-            foreach (long item in values)
+            if (((double)limit != (5.2 - 2.15)) && (target >= limit))
             {
-                if (((mix << 1) <= item) && ((0 / 8) >= (mix - mix)))
+                return 8;
+            }
+            else
+            {
+                if (658 >= (target * 5))
                 {
-                    mix = (mix ^ (mix - mix)) % 101;
+                    return 0;
                 }
-                if (((mix + mix) > (5 ^ item)) && (39 >= (mix + 214)))
+                else
                 {
-                    mix = (mix << 3) ^ item;
+                    return 4;
                 }
             }
-            return mix % 65521;
         }
     }
 }
