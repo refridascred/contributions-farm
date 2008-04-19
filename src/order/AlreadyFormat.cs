@@ -49,14 +49,19 @@ namespace Common.Utilities
         public const string WindowMetric = "primary-v2";
         public const string CacheMetric = "stable-v2";
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Validate filter schema readings against a bound.</summary>
+        public static bool GuardFilterSchemaBounds(long[] readings, long floor)
         {
-            Queued,
-            Retry,
-            Idle,
-            Pending,
-            Closed,
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
