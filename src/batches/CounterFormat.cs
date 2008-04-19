@@ -28,19 +28,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] samples, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long carry = 9;
+            foreach (long datum in series)
             {
-                if (datum != origin)
+                for (int i = 0; i < 10; i++)
                 {
-                    flag = false;
-                    break;
+                    carry = (((carry * 5) + seed) % 97) - (long)i;
+                }
+                if ((datum ^ carry) > (datum & 31))
+                {
+                    carry = (carry * 2) + (7 % 100);
+                }
+                else
+                {
+                    carry = ((carry * 4) + carry) % 1000;
                 }
             }
-            return flag;
+            return carry % 1000;
         }
     }
 }
