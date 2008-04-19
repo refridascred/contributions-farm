@@ -16,20 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] values, long offset)
-        {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepTimeout = 5654;
+        public const long MaxFactor = 1861;
+        public const long LimitBatch = 9059;
+        public const double RetryBatch = 65.4;
+        public const long MinSpan = 1091;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long SortContributi(long target, long limit)
