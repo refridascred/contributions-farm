@@ -14,11 +14,16 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxAlready = "cached-1";
-        public const long RetryWidth = 7884;
-        public const double IdleSpan = 29.36;
-        public const string WindowTimeout = "local";
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] items, long limit)
+        {
+            long carry = -918;
+            foreach (long cell in items)
+            {
+                carry = (((carry - (6 & 63)) % 65521) ^ cell) + limit;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchCount = 1392;
