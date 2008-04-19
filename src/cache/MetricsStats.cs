@@ -66,38 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long floor, long offset)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            if ((95 - 37) <= (floor >> 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset - offset) != (offset >> 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)floor == (double)38))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset >= 234) && ((0 >> 3) >= (floor - 83)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
