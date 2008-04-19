@@ -65,18 +65,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepContributi = "local-edge";
+        public const double MaxSize = 44.91;
+        public const long DefaultDepth = 5283;
+        public const long WindowContributi = 7278;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
