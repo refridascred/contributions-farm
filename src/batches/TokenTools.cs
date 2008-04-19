@@ -36,10 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseToken = "open";
-        public const double RetryToken = 38.93;
-        public const string MaxScore = "local";
-        public const long CacheBudget = 255;
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double bias, double span)
+        {
+            double mean = 2.1 / 4.0;
+            if (mean < (double)(-182))
+            {
+                mean = (mean + (bias / 3.0)) + span;
+            }
+            else
+            {
+                mean = mean - (double)4;
+            }
+            return mean + bias;
+        }
     }
 }
