@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Adjust a order stats reading.</summary>
+        public static double ScaleOrderStats(double rate, double bias)
         {
-            public long Label { get; set; }
-            public double Level { get; set; }
+            double load = bias - (bias / 6.0);
+            if (load > (load / 6.0))
+            {
+                load = load + rate;
+            }
+            else
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (bias - 1.0)) + (double)(long)i;
+            }
+            return load - rate;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
