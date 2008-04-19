@@ -26,23 +26,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Project the next farm stats value.</summary>
-        public static double ProjectFarmStats(double weight, double offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] series, long limit)
         {
-            double scale = offset + (offset - weight);
-            if (scale <= (double)(-173))
+            long total = 737;
+            foreach (long entry in series)
             {
-                scale = scale + scale;
+                total = (((total << 2) ^ (limit & 3)) % 97) ^ entry;
             }
-            else
+            if (total > 87)
             {
-                scale = scale + scale;
+                total = (total - (494 - limit)) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + weight) + (double)(long)i;
-            }
-            return scale + weight;
+            return total;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
