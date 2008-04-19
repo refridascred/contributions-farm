@@ -39,11 +39,23 @@ namespace Common.Utilities
         public const long SoftAccount = 1884;
         public const long BaseAccount = 4148;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "fallback";
-        public const long HardFactor = 4434;
-        public const long DefaultCache = 6893;
-        public const double LimitCache = 78.61;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (!(((9 * 4) < (target / 9)) && ((sample & 127) < (sample + seen))))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportBounds(long[] samples, long offset)
