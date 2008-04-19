@@ -37,18 +37,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] values)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long origin, long seed)
         {
-            long anchor = 9;
-            foreach (long item in values)
+            long lane = origin + seed;
+            if ((origin * 4) <= lane)
             {
-                if ((6.72 - 2.33) <= (double)item)
+                return 6;
+            }
+            else
+            {
+                if (((double)seed <= 6.22) && ((232 - origin) == (origin + seed)))
                 {
-                    anchor = anchor - anchor;
+                    return 4;
+                }
+                else
+                {
+                    if (((seed / 5) <= (origin + origin)) || ((lane >> 1) < (334 / 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return anchor % 1000;
         }
     }
 }
