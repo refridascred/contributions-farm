@@ -111,21 +111,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] series)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (23 > (seen << 2))
                 {
-                    if ((series[i] ^ series[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) + item;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
