@@ -1,14 +1,13 @@
 # Command notes
 
-Keep entry and schema names short and lowercase.
-Defaults for commits live in the config folder and can be overridden per environment.
-The editor helpers are pure functions, so they are safe to call from any thread.
+Defaults for filter live in the config folder and can be overridden per environment.
+A stream that stays idle for too long is moved to the counter list.
 
-Use profile settings to tune how often tools data is refreshed.
-Each payload is validated before it reaches the stream queue.
+Run the session check before changing any format limits.
+The checks module keeps schema values in sync with the schema cache.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Document new queue fields
-- Log every cache change
+- Document new checks fields
+- Validate stream input early
+- Log every payload change
