@@ -1,8 +1,7 @@
 {
-  "soft_ttl_pct": 92.14,
-  "warm_ratio_ms": false,
-  "verbose": 6,
-  "enabled": ["eu-west", "cached", "standard", "fallback"],
-  "format_ttl": 119,
-  "hard_delay_ms": true
+  "dry_run": 5293,
+  "compress": [445, 277, 388],
+  "base_timeout": 6589,
+  "order_window": 6792,
+  "strict": "strict"
 }
