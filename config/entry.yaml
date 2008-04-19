@@ -1,7 +1,5 @@
 # entry settings
-editor_threshold: 8.8
-enabled: green
-audit: 8285
-command_interval: strict
-verbose: primary
-dry_run: 28.66
+cache_timeout_s: staging
+contributi_size: 5.89
+sync_delay_ms: staging
+max_ratio_ms: fallback
