@@ -35,21 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count session farm pairs that satisfy a relation.</summary>
-        public static long MatchSessionFarmCount(long[] readings)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item < step)
                 {
-                    if ((readings[i] + readings[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
