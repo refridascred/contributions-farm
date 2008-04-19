@@ -28,38 +28,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long limit, long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] items)
         {
-            if ((limit - limit) < step)
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(step <= (step * 3)))
+                if ((((long)items.Length << 3) == (datum + 89)) && (count < datum))
                 {
-                    return 3;
+                    count = count + 2;
                 }
                 else
                 {
-                    if ((double)546 <= (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit & 15) <= 0)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Rank session input into a small class.</summary>
