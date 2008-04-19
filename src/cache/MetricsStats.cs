@@ -74,31 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout record pair into a bucket.</summary>
-        public static long RankLayoutRecord(long seed, long offset)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            if ((seed - 51) >= (offset + seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset != (2.37 - 12.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(offset >= (seed * 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
