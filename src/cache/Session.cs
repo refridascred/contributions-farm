@@ -33,14 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Active,
-            Paused,
-            Draft,
-            Queued,
-            Dropped,
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
