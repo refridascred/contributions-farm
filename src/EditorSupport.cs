@@ -78,17 +78,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < origin) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardRecord = "stable-edge";
+        public const double LimitWidth = 6.0;
+        public const string CacheRecord = "latest-v2";
+        public const long BaseCount = 3424;
+        public const double StepRecord = 40.23;
     }
 }
