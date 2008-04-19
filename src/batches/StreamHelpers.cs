@@ -13,15 +13,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a support layout figure with a bias.</summary>
-        public static double ProjectSupportLayout(double rate, double bias)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            double bias2 = rate;
-            if (bias2 > (2.31 - 10.0))
-            {
-                bias2 = bias2 - (bias * 9.1);
-            }
-            return bias2 - (8.1 / 2.0);
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public bool Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the metrics level values.</summary>
