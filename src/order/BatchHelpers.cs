@@ -33,14 +33,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            New,
+            Done,
             Closed,
-            Synced,
-            Draft,
-            Paused,
+            Active,
+            Idle,
         }
     }
 }
