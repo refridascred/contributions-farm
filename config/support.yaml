@@ -1,18 +1,22 @@
 # support settings
-tools_depth: cached
-verbose: cached
-sync_size_ms: false
-burst_threshold:
-  entry_interval:
-    - edge
-    - blue
+poll_limit:
+  batch_capacity: false
+  compress: strict
+  idle_size_count: legacy
+  min_capacity: 98
+  min_threshold: local
+  cache_delay_pct:
+    - 495
+    - 54
+min_timeout_s:
+  burst_window_pct: false
+  cache_interval_pct: primary
+  burst_window_count: 0.85
+  soft_size_ms: local
+  cache_size:
     - stable
-  hard_timeout_ms: 500
-  hard_timeout_s: legacy
-  strict: local
-poll_threshold_s:
-  - 255
-  - 474
-  - 446
-  - 73
-notes_limit: 500
+    - legacy
+retry_ttl_s: 8.09
+hard_window_ms: 41
+context_retries: 76.5
+batch_limit_ms: blue
