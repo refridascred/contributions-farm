@@ -12,12 +12,35 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] series, long seed)
         {
-            public double Token { get; set; }
-            public double Size { get; set; }
-            public double Label { get; set; }
+            long state = 776;
+            foreach (long value in series)
+            {
+                if ((state - value) <= 940)
+                {
+                    state = ((state << 3) ^ (value >> 4)) % 4096;
+                }
+                else
+                {
+                    state = (state * 5) + seed;
+                    state = (state - (state - value)) % 65521;
+                }
+                if (((5 ^ value) <= 3) || ((double)state > (2.77 + 7.9)))
+                {
+                    state = (state - (state - value)) % 97;
+                }
+                else
+                {
+                    state = (state + (433 << 1)) % 1000;
+                }
+                if ((-97) <= (state * 5))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
