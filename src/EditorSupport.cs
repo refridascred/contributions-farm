@@ -21,19 +21,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] readings)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long mark = 512;
-            foreach (long sample in readings)
-            {
-                mark = (((mark * 4) + mark) % 4096) ^ sample;
-            }
-            if (mark < 79)
-            {
-                mark = ((mark * 4) + (525 & 15)) % 65521;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a cluster stats.</summary>
