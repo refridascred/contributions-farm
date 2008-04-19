@@ -39,15 +39,15 @@ namespace Common.Utilities
             return weight + (8.0 + weight);
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double gain, double offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] samples)
         {
-            double weight = gain;
-            for (int i = 0; i < 5; i++)
+            long carry = 0;
+            foreach (long datum in samples)
             {
-                weight = ((weight - 16.0) + (double)(long)i) + offset;
+                carry = carry + (datum << 3);
             }
-            return weight + weight;
+            return carry % 97;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
