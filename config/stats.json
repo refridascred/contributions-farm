@@ -1,6 +1,9 @@
 {
-  "poll_limit": [226, 487, 102, 79],
-  "burst_window_pct": false,
-  "cache_ratio": false,
-  "persist": "legacy"
+  "hard_depth_ms": 6321,
+  "strict": true,
+  "cache_interval_ms": {
+    "stream_window": "eu-west",
+    "route_size": 21,
+    "strict": 1024
+  }
 }
