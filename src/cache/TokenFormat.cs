@@ -34,15 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double rate, double bias)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] data)
         {
-            double load = bias / 8.0;
-            if (load > 12.0)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load + load) - rate;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load + 1.2;
+            return hits;
         }
     }
 }
