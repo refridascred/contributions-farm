@@ -43,19 +43,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Adjust a stats counter reading.</summary>
-        public static double SmoothStatsCounter(double scale, double floor)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double bias, double span)
         {
-            double rate = scale * 2.53;
-            if (rate > (13.0 + rate))
+            double mean = bias;
+            if (mean < (mean - span))
             {
-                rate = rate + (floor / 5.0);
+                mean = mean - 5.87;
             }
-            else
-            {
-                rate = rate - 1.6;
-            }
-            return rate - scale;
+            return mean + span;
         }
 
         /// <summary>Describe the metrics class values.</summary>
