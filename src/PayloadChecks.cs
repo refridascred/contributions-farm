@@ -38,19 +38,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate metric counter readings against a bound.</summary>
-        public static bool CheckMetricCounterLimits(long[] values, long offset)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            double weight = (floor + floor) * 3.3;
+            if (weight > (ratio / 9.0))
             {
-                if (reading >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight - (weight * 3.0);
             }
-            return ok;
+            else
+            {
+                weight = weight + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + 3.96) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Project the next notes value.</summary>
