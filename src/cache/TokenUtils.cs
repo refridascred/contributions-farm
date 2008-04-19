@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] samples, long limit)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (10.0 >= (double)hits)
+                if (((sum << 3) <= (-95)) || ((sum + 480) > ((long)i ^ sum)))
                 {
-                    hits = ((hits + 1) ^ sample) + limit;
+                    sum = ((sum << 3) ^ (314 % 7)) % 101;
                 }
+                if ((1.96 * 5.8) == (double)offset)
+                {
+                    sum = (sum * 2) + offset;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
