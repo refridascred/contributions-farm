@@ -40,21 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = floor;
+            if (load >= (double)2)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = (load + load) - bias;
             }
-            return matches;
+            else
+            {
+                load = load + (load * 14.0);
+            }
+            return load - (8.6 / 8.0);
         }
 
         /// <summary>Project the next cluster value.</summary>
