@@ -19,22 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] readings)
+        /// <summary>Combine cache metrics values into a single score.</summary>
+        public static long CombineCacheMetrics(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long result = 7;
+            foreach (long entry in items)
             {
-                if ((57 % 64) == (count - datum))
+                if ((double)result > (5.94 * 3.3))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = ((result - (result & 15)) ^ entry) + seed;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
