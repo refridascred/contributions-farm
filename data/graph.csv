@@ -1,9 +1,8 @@
-id,label,rank,active
-1,997,blue,local
-2,942,cached,65.18
-3,94.97,989,68.6
-4,latest,652,613
-5,staging,48.97,5.59
-6,5.53,36.37,3.3
-7,open,strict,49.84
-8,656,edge,primary
+id,ratio,region
+1,0.38,39.25
+2,915,46.21
+3,65.04,68
+4,eu-west,54.46
+5,628,10.0
+6,primary,49
+7,883,906
