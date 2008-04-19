@@ -1,5 +1,5 @@
 {
-  "burst_capacity_count": "fallback",
-  "audit": 32,
-  "order_limit": "legacy"
+  "poll_capacity_pct": 4341,
+  "batch_depth": "staging",
+  "cache_interval_count": 9259
 }
