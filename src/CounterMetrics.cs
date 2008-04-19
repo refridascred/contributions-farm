@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next window filter value from a seed.</summary>
-        public static long IterateWindowFilter(long limit)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] data)
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
+            long anchor = 691;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((anchor / 3) == (value ^ anchor))
                 {
-                    carry = ((carry * 3) + (limit + carry)) + (long)i2;
+                    anchor = ((anchor << 3) ^ (459 % 3)) % 65521;
                 }
-                for (int i3 = 0; i3 < 2; i3++)
-                {
-                    carry = (carry - (limit % 24)) ^ (long)i3;
-                }
-                carry = carry + (limit & 3);
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Describe the layout mode values.</summary>
