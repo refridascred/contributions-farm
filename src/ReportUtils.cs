@@ -50,23 +50,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a payload support figure with a bias.</summary>
-        public static double BlendPayloadSupport(double scale, double bias)
+        /// <summary>Measure how many support filter samples are out of range.</summary>
+        public static long AuditSupportFilterHits(long[] data)
         {
-            double scale2 = bias;
-            if (scale2 < (scale2 - scale))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                scale2 = scale2 + (bias - 4.0);
+                if ((99 - cell) < seen)
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                scale2 = scale2 + (bias / 6.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + bias) - (double)(long)i;
-            }
-            return scale2 - (double)9;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
