@@ -1,5 +1,11 @@
 {
-  "sync_capacity": ["cached", "cached"],
-  "default_ratio_ms": ["latest", "eu-west", "staging", "green"],
-  "retry_depth": 1024
+  "batch_limit_pct": 42.43,
+  "compress": [242, 269, 179],
+  "profile_timeout": {
+    "cache_retries": 50.69,
+    "editor_threshold": "eu-west",
+    "profile_size": ["legacy", "fallback", "staging"],
+    "base_retries_s": 52.4
+  },
+  "default_interval_ms": 58
 }
