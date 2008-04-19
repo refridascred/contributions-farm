@@ -13,13 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Dropped,
-            Stale,
-            Ready,
-            Locked,
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
