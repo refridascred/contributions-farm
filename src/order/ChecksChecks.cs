@@ -33,38 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long floor, long target)
+        /// <summary>Locate a payload already reading by value.</summary>
+        public static long SeekPayloadAlreadyIndex(long[] values, long step)
         {
-            if (((2 + target) >= (-9)) || ((target % 64) < floor))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((target + floor) < (target - floor)))
+                if ((values[i] < step) && ((values[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor <= (4.1 * 5.36))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((77 / 9) <= (floor / 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
