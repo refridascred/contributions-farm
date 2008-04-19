@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const long MinRatio = 5440;
         public const long SoftStream = 482;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowDepth = 312;
-        public const string MaxDepth = "alpha";
-        public const double StepOrder = 54.0;
-        public const double MaxTimeout = 2.45;
-        public const long CacheBudget = 6313;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] levels, long bound)
+        {
+            long total = 0;
+            foreach (long item in levels)
+            {
+                total = (((total * 3) + (item ^ item)) % 65521) - bound;
+            }
+            if (total > (-937))
+            {
+                total = ((total * 5) + (total - total)) % 255;
+            }
+            return total;
+        }
     }
 }
