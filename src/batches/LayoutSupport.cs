@@ -36,13 +36,22 @@ namespace Common.Utilities
         public const long LimitTimeout = 8926;
         public const long HardInterval = 5085;
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] samples)
         {
-            Draft,
-            Active,
-            Synced,
-            Ready,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell >> 4) >= tally)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
