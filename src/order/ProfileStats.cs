@@ -41,14 +41,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            Closed,
-            Stale,
-            Active,
-            Synced,
-            Idle,
+            long carry = 7;
+            foreach (long item in levels)
+            {
+                if ((5.0 / 2.0) < (double)item)
+                {
+                    carry = (carry ^ (item % 24)) % 4096;
+                }
+            }
+            return carry;
         }
     }
 }
