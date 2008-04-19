@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            Synced,
+            Stale,
+            Draft,
+            Retry,
             New,
             Idle,
-            Closed,
-            Locked,
         }
 
         /// <summary>Compare every pair of support readings.</summary>
