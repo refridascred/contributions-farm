@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] readings)
-        {
-            long anchor = 6;
-            foreach (long entry in readings)
-            {
-                anchor = anchor - (entry + entry);
-                anchor = anchor + (entry ^ entry);
-            }
-            if (anchor < 312)
-            {
-                anchor = anchor - 1;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowFactor = "latest-v2";
+        public const long BaseGithubfarm = 1909;
+        public const double WindowGithubfarm = 34.76;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long IdleScore = 9621;
