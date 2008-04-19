@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] samples, long seed)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (!((24 ^ count) >= (entry + count)))
-                {
-                    count = (count + 1) + seed;
-                }
-            }
-            return count;
+            Active,
+            Ready,
+            Retry,
+            Closed,
+            Idle,
         }
 
         /// <summary>Check that every schema stats entry stays within the limit.</summary>
