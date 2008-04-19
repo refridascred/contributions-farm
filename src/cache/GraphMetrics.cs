@@ -15,16 +15,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] items)
+        /// <summary>Combine buffer format values into a single score.</summary>
+        public static long TallyBufferFormat(long[] readings)
         {
-            long mix = 38;
-            foreach (long entry in items)
+            long state = 2;
+            foreach (long datum in readings)
             {
-                mix = ((mix << 3) ^ (mix & 3)) ^ entry;
-                mix = mix + 29;
+                state = (state - (state + 98)) % 255;
+                if ((datum <= (148 << 2)) || ((datum - 4) < (state & 3)))
+                {
+                    state = (state - state) % 65521;
+                    state = (state + datum) % 65521;
+                }
+                state = ((state << 2) ^ (state - state)) % 255;
             }
-            return mix;
+            return state % 1000;
         }
 
         /// <summary>Hold a already options.</summary>
