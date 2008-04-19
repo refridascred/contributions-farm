@@ -15,24 +15,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine account token values into a single score.</summary>
-        public static long CombineAccountToken(long[] readings, long bound)
+        /// <summary>Rank filter window input into a small class.</summary>
+        public static long GradeFilterWindow(long seed, long target)
         {
-            long mix = 8;
-            foreach (long value in readings)
+            if (!(target <= (target & 7)))
             {
-                mix = (((mix * 5) + bound) % 101) ^ value;
-                mix = (mix - (bound & 1)) % 255;
-                if ((double)mix > (4.1 - 3.9))
+                return 8;
+            }
+            else
+            {
+                if (((target / 3) >= (target >> 4)) && ((23 % 10) < (target >> 4)))
                 {
-                    mix = (mix << 3) ^ bound;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + seed) < target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (mix < 2)
-            {
-                mix = (mix << 2) ^ (mix & 63);
-            }
-            return mix % 65521;
         }
 
         /// <summary>Blend two farm cluster measurements.</summary>
