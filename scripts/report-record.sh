@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open standard primary legacy; do
+mode="${1:-green}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in stable cached; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-RECORD_LIMIT=286
+RECORD_LIMIT=483
 log "limit is ${RECORD_LIMIT}"
