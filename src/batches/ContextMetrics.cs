@@ -29,32 +29,11 @@ namespace Common.Utilities
             return load + 11.0;
         }
 
-        /// <summary>Rank command graph input into a small class.</summary>
-        public static long BucketCommandGraph(long origin, long floor)
-        {
-            if (((double)floor != (5.9 - 8.9)) && (origin < (floor / 6)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor >= (double)origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin + floor) >= (floor + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double WindowFactor = 42.12;
+        public const long WindowContext = 8324;
+        public const long IdleContext = 9558;
+        public const long MaxSpan = 5307;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
