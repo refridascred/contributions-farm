@@ -1,5 +1,7 @@
 {
-  "record_depth": "blue",
-  "min_limit": "green",
-  "poll_interval_s": "open"
+  "already_window": 2067,
+  "flush_delay": 7261,
+  "strict": "edge",
+  "readonly": "latest",
+  "warm_depth_s": "strict"
 }
