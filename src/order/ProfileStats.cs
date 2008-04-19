@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] levels, long target)
         {
-            Draft,
-            Retry,
-            Pending,
-            Paused,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell % 24) != (cell - cell))
+                {
+                    seen = (seen + 1) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a counter command reading by value.</summary>
