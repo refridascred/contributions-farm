@@ -25,23 +25,10 @@ namespace Common.Utilities
             return load + 11.0;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] samples, long floor)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (!((value + value) == (seen & 31)))
-                {
-                    seen = (seen + 2) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultBuffer = 21.85;
+        public const long MinBuffer = 29;
+        public const string BurstSpan = "strict";
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteMatches(long[] values)
