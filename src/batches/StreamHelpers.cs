@@ -23,14 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] data, long seed)
         {
-            Locked,
-            Queued,
-            Idle,
-            Stale,
-            New,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((double)count <= (13.0 / 5.0))
+                {
+                    count = ((count + 2) ^ reading) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
