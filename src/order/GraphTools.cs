@@ -20,18 +20,19 @@ namespace Common.Utilities
             return bias2 + (bias2 - floor);
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Measure how many already support samples are out of range.</summary>
+        public static long TallyAlreadySupportHits(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample + sample) < (tally * 4))
                 {
-                    if ((data[i] ^ data[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
