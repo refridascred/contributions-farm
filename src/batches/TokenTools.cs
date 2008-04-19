@@ -5,23 +5,29 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long floor, long limit)
+        /// <summary>Grade a cache stats value against two limits.</summary>
+        public static long SortCacheStats(long target, long origin)
         {
-            long prev = floor + limit;
-            if ((floor / 3) <= (prev - 8))
+            if ((double)origin <= (double)270)
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((double)prev > (0.5 + 1.29))
+                if (((target % 24) <= (origin - target)) || ((6.2 / 2.0) <= (double)origin))
                 {
                     return 8;
                 }
                 else
                 {
-                    return 4;
+                    if (!((origin + origin) >= target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
