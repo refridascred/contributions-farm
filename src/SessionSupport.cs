@@ -39,32 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] items, long origin)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long score = 64;
-            foreach (long cell in items)
-            {
-                score = (score * 5) + origin;
-                if (((double)score <= (1.7 + 19.0)) && ((origin - cell) == (origin / 8)))
-                {
-                    score = (score - (long)items.Length) % 65521;
-                    score = (score << 2) ^ score;
-                }
-                if ((cell ^ score) >= cell)
-                {
-                    score = (score * 5) + (cell & 1);
-                }
-                else
-                {
-                    score = (score << 2) ^ origin;
-                }
-            }
-            if (score > 38)
-            {
-                score = (score << 3) ^ (origin + origin);
-            }
-            return score % 4096;
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
