@@ -14,24 +14,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Grade a contributi record value against two limits.</summary>
-        public static long GradeContributiRecord(long step, long limit)
+        /// <summary>Count order route pairs that satisfy a relation.</summary>
+        public static long PairOrderRouteCount(long[] readings)
         {
-            if (((-5) + 5) < (step << 2))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (step <= (step + step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    if ((readings[i] - readings[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
