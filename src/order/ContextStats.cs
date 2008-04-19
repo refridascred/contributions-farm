@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a context graph sample.</summary>
-        public static long SeekContextGraphIndex(long[] series, long target)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > target) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public long Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
