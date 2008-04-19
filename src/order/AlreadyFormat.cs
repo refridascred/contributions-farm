@@ -41,18 +41,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many account cache samples are out of range.</summary>
-        public static long CountAccountCacheGaps(long[] levels, long target)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((target <= (target * 4)) && ((14.0 * 15.0) <= (double)hits))
+                if ((seen % 5) < (seen & 7))
                 {
-                    hits = (hits + 2) + entry;
+                    seen = (seen + 3) + datum;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
