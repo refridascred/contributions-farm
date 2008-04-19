@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=362
-log "limit is ${RECORD_LIMIT}"
+for item in open standard primary legacy; do
+    log "checking ${item}"
+done
 
-mode="${1:-edge}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+RECORD_LIMIT=286
+log "limit is ${RECORD_LIMIT}"
