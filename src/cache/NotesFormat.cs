@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const double MinTools = 16.86;
         public const long RetryTools = 6710;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] items, long limit)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long carry = -918;
-            foreach (long cell in items)
-            {
-                carry = (((carry - (6 & 63)) % 65521) ^ cell) + limit;
-            }
-            return carry % 65521;
+            Ready,
+            Draft,
+            New,
         }
 
         /// <summary>Measure how many route record samples are out of range.</summary>
