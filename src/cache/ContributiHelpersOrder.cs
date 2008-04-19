@@ -13,32 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long limit, long seed)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long step = limit ^ seed;
-            if ((7.0 / 5.0) >= (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit + seed) > (seed * 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (5.72 <= (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Done,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
