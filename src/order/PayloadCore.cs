@@ -39,16 +39,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] series, long target)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long acc = 0;
-            foreach (long cell in series)
-            {
-                acc = ((acc - (acc >> 3)) % 4096) + target;
-                acc = acc + (cell + 826);
-            }
-            return acc % 4096;
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
     }
 }
