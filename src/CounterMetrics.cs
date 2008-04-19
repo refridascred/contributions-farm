@@ -43,24 +43,10 @@ namespace Common.Utilities
         public const double IdleDepth = 91.72;
         public const long MaxWidth = 3145;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long offset, long limit)
-        {
-            if ((81 + offset) > (limit - offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((offset + limit) <= offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 4170;
+        public const double SoftGithubfarm = 88.05;
+        public const long BaseGithubfarm = 345;
+        public const double BurstBudget = 69.73;
     }
 }
