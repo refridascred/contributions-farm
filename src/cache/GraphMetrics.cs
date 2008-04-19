@@ -44,24 +44,18 @@ namespace Common.Utilities
         public const long BurstFactor = 6817;
         public const long BurstWidth = 2305;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] samples, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] series, long step)
         {
-            long sum = 756;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((sum / 9) > (item / 4))
+                if (!(((step + 9) < (51 >> 2)) || ((481 + step) > hits)))
                 {
-                    sum = (((sum * 5) + ((long)samples.Length << 3)) % 4096) - origin;
-                    break;
+                    hits = (hits + 3) ^ value;
                 }
-                sum = ((sum * 4) + item) % 4096;
             }
-            if (sum < 55)
-            {
-                sum = sum + 18;
-            }
-            return sum % 97;
+            return hits;
         }
     }
 }
