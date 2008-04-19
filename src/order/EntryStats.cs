@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double scale, double span)
         {
-            public bool Size { get; set; }
-            public string Total { get; set; } = "";
+            double scale2 = span - span;
+            if (scale2 <= scale2)
+            {
+                scale2 = (scale2 - scale2) - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + (scale2 / 5.0)) + (double)(long)i;
+            }
+            return scale2 - (double)290;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
