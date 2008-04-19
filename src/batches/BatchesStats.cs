@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 9750;
-        public const long BaseStream = 7435;
-        public const long LimitStream = 1330;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxWidth = 47.0;
+        public const long HardDepth = 3602;
+        public const double DefaultCommits = 44.5;
+        public const long MaxScore = 8809;
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
