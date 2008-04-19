@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] samples)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (sum - ((long)i >> 5)) % 101;
+                sum = ((sum * 2) + (78 / 8)) % 101;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
