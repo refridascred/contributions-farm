@@ -25,18 +25,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] items, long step)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (sample < (614 >> 5))
-                {
-                    matches = (matches + 3) + step;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the session kind values.</summary>
