@@ -1,5 +1,7 @@
 {
-  "order_threshold": true,
-  "retry_retries_s": "fallback",
-  "warm_capacity_count": false
+  "compress": ["eu-west", "cached", "legacy", "local"],
+  "order_window": 28.32,
+  "burst_retries_count": true,
+  "strict": [55, 398],
+  "audit": "staging"
 }
