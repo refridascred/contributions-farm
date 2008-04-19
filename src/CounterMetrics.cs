@@ -40,21 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] values)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Idle,
+            Retry,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a batch options.</summary>
