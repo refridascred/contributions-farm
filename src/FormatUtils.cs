@@ -79,20 +79,13 @@ namespace Common.Utilities
         public const long SoftBudget = 8066;
         public const double HardTimeout = 91.46;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long seed)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((seed + 855) > seed)
-                {
-                    break;
-                }
-                carry = (carry + (long)i) % 97;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Ready,
+            Idle,
+            Done,
+            Active,
         }
     }
 }
