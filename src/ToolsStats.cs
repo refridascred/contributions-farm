@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] levels, long target)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long step, long target)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long edge = step ^ target;
+            if ((target << 1) < 1)
             {
-                if (sample >= target)
+                return 3;
+            }
+            else
+            {
+                if ((step + target) >= edge)
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((edge + edge) < (step * 5)) && ((target & 63) < 34))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)target <= (2.5 * 6.26)) && ((edge + target) != (target - edge)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Project the next tools value.</summary>
