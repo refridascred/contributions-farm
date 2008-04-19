@@ -43,17 +43,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stream route entry that matches the target.</summary>
-        public static long SeekStreamRouteIndex(long[] levels, long floor)
+        /// <summary>Count filter payload pairs that satisfy a relation.</summary>
+        public static long OverlapFilterPayloadCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] == floor) && ((levels[i] % 2) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
