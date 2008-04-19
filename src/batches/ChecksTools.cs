@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double rate, double floor)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            double scale = floor;
-            if (scale <= rate)
-            {
-                scale = scale + (rate * 2.8);
-            }
-            else
-            {
-                scale = scale - (double)931;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + rate;
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Roll a checks counter forward.</summary>
