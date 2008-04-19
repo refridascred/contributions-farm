@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate support account samples.</summary>
-        public static long WeighSupportAccount(long[] readings)
-        {
-            long sum = 5;
-            foreach (long item in readings)
-            {
-                if (item >= (item ^ item))
-                {
-                    sum = (sum + sum) % 4096;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxContext = 59.91;
+        public const long IdleContext = 3638;
+        public const long StepBudget = 4566;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long WeighReport(long[] values)
