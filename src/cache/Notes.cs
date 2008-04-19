@@ -47,15 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double bias, double offset)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            double weight = (9.0 - offset) + (bias + 7.9);
-            if (weight < (double)5)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight + (offset * 19.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight - bias;
+            return tally;
         }
 
         /// <summary>Describe the format level values.</summary>
