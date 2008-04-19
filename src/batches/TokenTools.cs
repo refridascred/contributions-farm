@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a cache stats value against two limits.</summary>
-        public static long SortCacheStats(long target, long origin)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] items, long bound)
         {
-            if ((double)origin <= (double)270)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target % 24) <= (origin - target)) || ((6.2 / 2.0) <= (double)origin))
+                if (items[i] < bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((origin + origin) >= target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of metric editor readings.</summary>
