@@ -29,17 +29,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first command batches entry that matches the target.</summary>
-        public static long LookupCommandBatchesIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryContributi = 60.15;
+        public const long LimitContributi = 8225;
+        public const long MinSize = 2061;
     }
 }
