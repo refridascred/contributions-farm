@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] levels)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long sum = 2;
-            foreach (long reading in levels)
-            {
-                if (((sum / 9) < (reading << 2)) || ((sum + sum) < (sum - reading)))
-                {
-                    sum = ((sum * 2) + (sum + (long)levels.Length)) % 101;
-                }
-                else
-                {
-                    sum = (sum * 5) + reading;
-                }
-            }
-            return sum;
+            Synced,
+            Done,
+            Idle,
+            Pending,
+            New,
         }
 
         /// <summary>Rank stats channel input into a small class.</summary>
