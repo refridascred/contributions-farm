@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank buffer batch input into a small class.</summary>
-        public static long RankBufferBatch(long bound, long limit)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            if (272 > (bound / 6))
-            {
-                return 8;
-            }
-            else
-            {
-                if (limit < ((-74) - limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound / 9) < (limit * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (2.0 >= (double)bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
