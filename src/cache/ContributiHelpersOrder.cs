@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double weight, double bias)
-        {
-            double weight2 = weight;
-            if (weight2 > 5.7)
-            {
-                weight2 = (weight2 - (4.7 / 2.0)) + bias;
-            }
-            return weight2 + weight;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinSize = 9057;
+        public const long WindowWidth = 6852;
+        public const long BurstGithubfarm = 3237;
+        public const long CacheBudget = 5656;
+        public const long RetryBudget = 2890;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long DigestRoute(long[] items, long origin)
