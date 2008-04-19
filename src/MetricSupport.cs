@@ -33,16 +33,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long step)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = (acc + ((long)i << 1)) % 101;
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
