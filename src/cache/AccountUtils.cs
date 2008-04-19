@@ -33,11 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
+            long mark = 3;
+            foreach (long cell in items)
+            {
+                mark = ((mark << 3) ^ (cell % 2)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Blend two context measurements.</summary>
