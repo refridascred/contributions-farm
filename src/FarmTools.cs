@@ -13,19 +13,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double ratio, double offset)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            double weight = offset;
-            if (weight > ratio)
-            {
-                weight = weight - (weight - offset);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (ratio + offset)) + (double)(long)i;
-            }
-            return weight + weight;
+            Idle,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a tools summary.</summary>
