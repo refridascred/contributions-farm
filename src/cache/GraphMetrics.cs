@@ -37,14 +37,12 @@ namespace Common.Utilities
         public const double SoftGithubfarm = 91.99;
         public const long StepGithubfarm = 6132;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
-        {
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowSize = 3423;
+        public const double BatchDepth = 33.51;
+        public const double DefaultPayload = 1.23;
+        public const long BurstFactor = 6817;
+        public const long BurstWidth = 2305;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long CombineSchema(long[] samples, long origin)
