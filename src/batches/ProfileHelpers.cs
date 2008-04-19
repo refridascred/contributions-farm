@@ -46,15 +46,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double bias, double span)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long floor)
         {
-            double mean = bias;
-            if (mean < (mean - span))
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
             {
-                mean = mean - 5.87;
+                carry = carry + (carry % 97);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return mean + span;
+            return carry;
         }
 
         /// <summary>Describe the metrics class values.</summary>
