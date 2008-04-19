@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                total = total - ((long)i ^ total);
-                total = total - ((long)i / 9);
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchLevel = 3598;
+        public const double MinTools = 16.86;
+        public const long RetryTools = 6710;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long CombineFarm(long[] items, long limit)
