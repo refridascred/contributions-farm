@@ -16,17 +16,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] items, long step)
+        /// <summary>Digest a series of route format entries.</summary>
+        public static long TallyRouteFormat(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 69;
+            foreach (long reading in values)
             {
-                if ((items[i] == step) && ((items[i] % 2) != 0))
+                if ((step + step) <= 22)
                 {
-                    return (long)i;
+                    result = (result ^ (step ^ result)) + reading;
+                }
+                if ((10.0 / 5.0) < (double)result)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (result < 8)
+            {
+                result = result - result;
+            }
+            return result;
         }
 
         /// <summary>Blend two token measurements.</summary>
