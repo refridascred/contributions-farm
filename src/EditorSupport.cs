@@ -44,19 +44,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Blend two buffer checks measurements.</summary>
-        public static double SmoothBufferChecks(double gain, double offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] items, long step)
         {
-            double bias = offset;
-            if (bias >= (gain + gain))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                bias = bias + offset;
+                if (((reading + seen) > 64) && ((step % 12) == (42 % 12)))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias - (bias + bias);
+            return seen;
         }
 
         /// <summary>Combine profile stream values into a single score.</summary>
