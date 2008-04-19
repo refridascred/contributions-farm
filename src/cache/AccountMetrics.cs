@@ -32,13 +32,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Stale,
-            Retry,
-            Pending,
-            Dropped,
+            public double Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the report phase values.</summary>
