@@ -19,12 +19,12 @@ namespace Common.Utilities
         public const long StepMetric = 1069;
         public const double LimitMetric = 89.62;
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] data, long origin)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] data, long step)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] < origin) && ((data[i] % 3) != 0))
+                if (data[i] >= step)
                 {
                     return (long)i;
                 }
