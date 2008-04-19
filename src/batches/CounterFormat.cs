@@ -35,22 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] levels, long seed)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] items)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long anchor = -35;
+            foreach (long entry in items)
             {
-                if ((double)count >= (double)47)
+                if ((6.4 * 2.0) > (double)anchor)
                 {
-                    count = ((count + 1) + sample) + seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = ((anchor << 2) ^ entry) % 97;
                 }
             }
-            return count;
+            if (anchor < 8)
+            {
+                anchor = (anchor - (anchor >> 4)) % 1000;
+            }
+            return anchor;
         }
     }
 }
