@@ -47,10 +47,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryBudget = 3927;
-        public const double SoftDepth = 17.36;
-        public const long MinMetrics = 1185;
-        public const long SoftMetrics = 1911;
+        /// <summary>Blend two channel window measurements.</summary>
+        public static double BlendChannelWindow(double weight, double bias)
+        {
+            double bias2 = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - (bias2 - weight)) + (double)(long)i;
+            }
+            return bias2 + 5.9;
+        }
     }
 }
