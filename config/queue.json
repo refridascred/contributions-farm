@@ -1,7 +1,10 @@
 {
-  "schema_ttl": true,
-  "token_ttl": 81,
-  "batch_capacity": "staging",
-  "base_limit": 75.8,
-  "farm_capacity": true
+  "soft_size_s": {
+    "readonly": 36.94,
+    "compress": "cached",
+    "verbose": "stable",
+    "burst_window": 98
+  },
+  "default_threshold_pct": "eu-west",
+  "enabled": 35.87
 }
