@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheScore = 33.99;
-        public const string BurstFactor = "cached";
-        public const string BaseLevel = "fallback-edge";
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > offset) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many stream checks samples are out of range.</summary>
         public static long CountStreamChecksGaps(long[] values, long step)
