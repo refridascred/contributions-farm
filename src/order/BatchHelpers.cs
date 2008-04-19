@@ -33,21 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] values)
+        /// <summary>Accumulate cache stream samples.</summary>
+        public static long TotalCacheStream(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 72;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((cell >> 2) > (mix >> 2)) || ((cell + cell) <= (mix + cell)))
                 {
-                    if ((values[i] + values[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix ^ (cell % 100)) % 97;
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
