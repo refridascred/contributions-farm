@@ -54,24 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long seed, long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] levels)
         {
-            if ((seed + floor) <= (seed ^ floor))
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)floor < (5.6 * 3.0)))
+                if ((double)4 >= (double)entry)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
