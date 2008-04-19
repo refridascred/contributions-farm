@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long step, long step2)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] samples, long seed)
         {
-            long edge = step ^ step2;
-            if ((double)edge < 1.7)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step2 * 3) >= (step - edge)) || (step >= (step2 - step)))
+                if ((seed % 3) > ((long)samples.Length + 9))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((402 >> 1) >= (step2 + edge))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = (matches + 1) + sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next support value.</summary>
