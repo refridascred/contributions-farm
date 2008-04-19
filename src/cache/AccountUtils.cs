@@ -40,18 +40,23 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] readings)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            double ratio = 8.1 * 3.14;
+            if (ratio > ratio)
             {
-                if ((((double)seen == (3.0 + 7.38)) && (sample >= 185)) && ((seen << 2) >= (sample / 6)))
-                {
-                    seen = seen + 2;
-                }
+                ratio = (ratio + (7.4 * 9.0)) - bias;
             }
-            return seen;
+            else
+            {
+                ratio = ratio + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (gain / 2.0)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
     }
 }
