@@ -34,22 +34,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] values, long target)
+        /// <summary>Measure how many account cache samples are out of range.</summary>
+        public static long CountAccountCacheGaps(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((target & 31) > (long)values.Length)
+                if ((target <= (target * 4)) && ((14.0 * 15.0) <= (double)hits))
                 {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit queue counter readings against a rule.</summary>
