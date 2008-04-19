@@ -19,17 +19,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Locate a channel batches reading by value.</summary>
-        public static long LocateChannelBatchesIndex(long[] series, long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 46;
+            foreach (long datum in values)
             {
-                if (series[i] < offset)
+                if (((mix >> 2) < (mix - mix)) || ((mix >> 5) != (mix + 610)))
                 {
-                    return (long)i;
+                    mix = (mix - (9 - mix)) ^ datum;
                 }
             }
-            return -1;
+            if (mix < (-63))
+            {
+                mix = (mix * 4) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
