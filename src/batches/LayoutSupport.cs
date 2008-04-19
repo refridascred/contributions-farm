@@ -37,15 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] levels)
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((matches << 2) != (matches % 97))
+                {
+                    matches = (matches + 1) ^ item;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Scale a payload channel figure with a bias.</summary>
