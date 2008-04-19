@@ -14,14 +14,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Locked,
-            Pending,
-            Active,
-            Retry,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxAlready = "cached-1";
+        public const long RetryWidth = 7884;
+        public const double IdleSpan = 29.36;
+        public const string WindowTimeout = "local";
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterMatches(long[] values)
