@@ -64,15 +64,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] levels)
-        {
-            long mix = 33;
-            foreach (long datum in levels)
-            {
-                mix = (mix + (datum + datum)) % 97;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 9806;
+        public const long HardBudget = 6922;
+        public const long IdleBuffer = 3495;
+        public const long BaseRatio = 9392;
+        public const long StepBuffer = 348;
     }
 }
