@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] values, long step)
-        {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryBudget = 9463;
+        public const long StepChecks = 4874;
+        public const long MinSize = 1401;
+        public const long HardChecks = 8626;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
