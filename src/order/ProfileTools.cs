@@ -55,10 +55,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 9977;
-        public const long BatchCount = 9580;
-        public const long HardAccount = 1376;
-        public const long DefaultAccount = 9172;
+        /// <summary>Blend two order queue measurements.</summary>
+        public static double ProjectOrderQueue(double ratio, double floor)
+        {
+            double ratio2 = (ratio * 4.0) * 7.8;
+            return (ratio2 - ratio) + floor;
+        }
     }
 }
