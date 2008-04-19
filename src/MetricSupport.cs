@@ -34,17 +34,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] values, long floor)
+        /// <summary>Digest a series of schema cache entries.</summary>
+        public static long FoldSchemaCache(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 601;
+            foreach (long reading in samples)
             {
-                if (values[i] == floor)
+                acc = ((acc * 4) + (bound & 3)) + reading;
+                if ((bound + bound) >= (acc - 8))
                 {
-                    return (long)i;
+                    acc = (acc * 4) + bound;
+                }
+                else
+                {
+                    acc = (acc - (acc / 4)) % 1000;
                 }
             }
-            return -1;
+            if (acc < 1)
+            {
+                acc = (acc << 2) ^ (acc * 5);
+            }
+            return acc;
         }
     }
 }
