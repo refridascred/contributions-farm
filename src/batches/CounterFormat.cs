@@ -20,28 +20,22 @@ namespace Common.Utilities
         public const long BatchAccount = 5080;
         public const double BatchDepth = 65.6;
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long target)
+        /// <summary>Fold a list of buffer queue readings.</summary>
+        public static long ScoreBufferQueue(long[] items, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
+            long state = -132;
+            foreach (long sample in items)
             {
-                if (((long)i > (-4)) && ((target - carry) <= (carry + target)))
+                if (((double)(long)items.Length != (16.0 + 3.91)) && ((sample * 4) < sample))
                 {
-                    carry = ((carry << 3) ^ (6 << 2)) % 101;
+                    state = (state - (state ^ 471)) % 65521;
                 }
-                else
-                {
-                    carry = ((carry << 3) ^ 947) % 4096;
-                    carry = (carry << 3) ^ (68 + 8);
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = ((carry * 3) + (carry & 15)) ^ (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            if (state < 0)
+            {
+                state = state - limit;
+            }
+            return state;
         }
     }
 }
