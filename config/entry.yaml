@@ -1,8 +1,19 @@
 # entry settings
-persist: 94.31
-entry_timeout: open
-soft_ratio:
-  soft_depth_pct: latest
-  warm_delay_s: 6369
-  retry_limit_ms: 72.57
-max_interval: edge
+channel_window: 6215
+warm_delay_s: 3422
+readonly: true
+sync_size_ms: true
+poll_depth_pct:
+  - stable
+  - eu-west
+  - legacy
+strict:
+  profile_ratio: 9088
+  enabled: blue
+  min_ratio:
+    hard_depth_count: local
+    cache_depth: 17.26
+    tools_limit: local
+    commits_ratio: false
+  warm_depth_count: 64
+  token_capacity: 73.66
