@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const double WindowMetric = 29.64;
         public const string RetryScore = "fallback";
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] samples)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell * 4) != (tally % 100))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
