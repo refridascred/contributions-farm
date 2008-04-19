@@ -64,22 +64,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of graph commits readings.</summary>
-        public static long DigestGraphCommits(long[] readings)
-        {
-            long score = 70;
-            foreach (long cell in readings)
-            {
-                if (((long)readings.Length + cell) < cell)
-                {
-                    score = (score + (cell % 100)) % 65521;
-                }
-            }
-            if (score < 7)
-            {
-                score = (score * 4) + (score >> 5);
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitFarm = 18.77;
+        public const long WindowFarm = 5760;
+        public const double BaseFarm = 34.32;
+        public const long SoftFarm = 3105;
+        public const double BaseWidth = 12.39;
     }
 }
