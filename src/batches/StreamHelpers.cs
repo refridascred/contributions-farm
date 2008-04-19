@@ -60,13 +60,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Draft,
-            Dropped,
-            Idle,
-            Active,
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
