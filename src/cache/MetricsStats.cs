@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Locked,
-            Idle,
-            Dropped,
-            Draft,
+            Done,
+            Ready,
+            Closed,
         }
 
         /// <summary>Fold a list of route readings.</summary>
