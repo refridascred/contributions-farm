@@ -87,15 +87,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a schema window figure with a bias.</summary>
-        public static double AdjustSchemaWindow(double ratio, double bias)
+        /// <summary>Count checks cluster pairs that satisfy a relation.</summary>
+        public static long OverlapChecksClusterCount(long[] values)
         {
-            double scale = (bias * 9.47) + ratio;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = (scale + scale) - (double)(long)i;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale + scale;
+            return seen;
         }
     }
 }
