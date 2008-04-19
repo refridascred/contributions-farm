@@ -30,21 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] values)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 838;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading < (5 * 4))
                 {
-                    if ((values[i] ^ values[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc * 4) + ((long)readings.Length - reading);
                 }
             }
-            return seen;
+            if (acc < 0)
+            {
+                acc = acc - (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of payload graph readings.</summary>
