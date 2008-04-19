@@ -20,26 +20,18 @@ namespace Common.Utilities
             return scale2 + (scale / 5.0);
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] samples, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] readings, long target)
         {
-            long state = 119;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((double)bound >= (16.0 * 15.0))
+                if (!!((target % 2) <= sample))
                 {
-                    state = state ^ sample;
-                }
-                else
-                {
-                    state = (state ^ bound) % 255;
+                    seen = seen + 2;
                 }
             }
-            if (state > 19)
-            {
-                state = ((state << 3) ^ 3) % 1000;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
