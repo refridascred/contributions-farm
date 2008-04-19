@@ -62,14 +62,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Scale a account commits figure with a bias.</summary>
+        public static double ProjectAccountCommits(double rate, double span)
         {
-            Stale,
-            Dropped,
-            Failed,
-            Draft,
-            Done,
+            double load = (double)(6 + (-3));
+            if (load >= (3.54 + 2.4))
+            {
+                load = load + (4.0 + span);
+            }
+            else
+            {
+                load = load - (rate * 5.9);
+            }
+            return load - (8.0 / 9.0);
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
