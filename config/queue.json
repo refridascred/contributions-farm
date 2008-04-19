@@ -1,16 +1,7 @@
 {
-  "warm_timeout": true,
-  "max_threshold_ms": true,
-  "profile_capacity": "strict",
-  "retry_size_count": {
-    "farm_limit": 98,
-    "max_capacity": 100,
-    "max_window_ms": {
-      "soft_ttl_count": 40,
-      "cache_capacity_count": "strict",
-      "soft_timeout": ["primary", "strict"],
-      "soft_threshold_count": 7121
-    },
-    "min_delay": "blue"
-  }
+  "token_ttl": "fallback",
+  "filter_size": 2715,
+  "enabled": true,
+  "window_timeout": false,
+  "poll_capacity": 49
 }
