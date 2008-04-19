@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long limit, long bound)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long limit, long origin)
         {
-            if ((limit >> 5) <= limit)
+            long bound = limit ^ origin;
+            if (limit < (31 << 3))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((limit < bound) || ((double)bound != (6.4 - 16.0)))
+                if ((double)bound < (5.96 + 7.0))
                 {
                     return 0;
                 }
                 else
                 {
-                    if (!(((-35) << 1) > bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((bound - bound) < limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
