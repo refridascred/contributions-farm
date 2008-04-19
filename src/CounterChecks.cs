@@ -41,19 +41,25 @@ namespace Common.Utilities
         public const string BatchRatio = "latest-v2";
         public const string LimitContext = "standard-1";
 
-        /// <summary>Validate schema order readings against a bound.</summary>
-        public static bool CheckSchemaOrderBounds(long[] samples, long origin)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long bound, long target)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long offset = bound + target;
+            if ((19.0 + 1.91) == (double)offset)
             {
-                if (sample >= origin)
+                return 5;
+            }
+            else
+            {
+                if (offset <= (bound << 2))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return flag;
         }
     }
 }
