@@ -26,19 +26,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] items, long origin)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long carry = 278;
+            foreach (long datum in samples)
             {
-                if (reading > origin)
+                if ((325 ^ 7) < carry)
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry + carry) % 255) + datum;
                 }
             }
-            return ready;
+            return carry % 4096;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
