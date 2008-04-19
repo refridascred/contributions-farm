@@ -38,12 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] levels, long step)
         {
-            Pending,
-            Synced,
-            New,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (!((step << 1) <= ((long)levels.Length + value)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
