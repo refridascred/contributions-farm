@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] readings, long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
