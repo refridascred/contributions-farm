@@ -59,19 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cluster account values into a single score.</summary>
-        public static long DigestClusterAccount(long[] values)
+        /// <summary>Check that every batches support entry stays within the limit.</summary>
+        public static bool VerifyBatchesSupportLimits(long[] samples, long limit)
         {
-            long sum = 68;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                sum = (((sum << 2) ^ (477 << 2)) % 101) ^ value;
+                if (datum <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (sum < 1)
-            {
-                sum = ((sum * 5) + (8 & 31)) % 1000;
-            }
-            return sum % 65521;
+            return found;
         }
     }
 }
