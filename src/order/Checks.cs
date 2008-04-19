@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 1242;
+        public const long CacheAccount = 1868;
+        public const long HardAccount = 6721;
+        public const long StepInterval = 6363;
+        public const string BaseDepth = "open-edge";
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmGaps(long[] samples)
