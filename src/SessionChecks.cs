@@ -13,18 +13,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardMetric = "open";
+        public const long MaxRatio = 148;
+        public const long StepMetric = 1069;
+        public const double LimitMetric = 89.62;
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long LocateCommandIndex(long[] data, long origin)
