@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                long span = anchor % 5;
-                long span2 = (anchor - bound) ^ (span + bound);
-                anchor = ((anchor * 5) + (5 + span2)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 5726;
+        public const long DefaultTimeout = 3326;
+        public const string BatchSize = "open-v2";
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool CheckContributiLimits(long[] levels, long floor)
