@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit support farm readings against a rule.</summary>
-        public static long TallySupportFarmOutliers(long[] data)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)count >= (8.61 + 3.0))
-                {
-                    count = (count + 3) + value;
-                }
+                long span = anchor % 5;
+                long span2 = (anchor - bound) ^ (span + bound);
+                anchor = ((anchor * 5) + (5 + span2)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
