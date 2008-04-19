@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] samples, long seed)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed % 3) > ((long)samples.Length + 9))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) + sample;
+                    if ((levels[i] ^ levels[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Project the next support value.</summary>
