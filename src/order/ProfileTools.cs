@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double scale, double span)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double scale, double span)
         {
-            double mean = scale + (double)(-439);
-            if (mean < scale)
+            double bias = 0.5 + scale;
+            for (int i = 0; i < 2; i++)
             {
-                mean = mean + scale;
+                bias = ((bias + (6.0 - scale)) + (double)(long)i) - span;
             }
-            else
-            {
-                mean = mean - (scale - span);
-            }
-            return mean + (scale + scale);
+            return bias + (scale / 2.0);
         }
 
         /// <summary>Define support limits and defaults.</summary>
