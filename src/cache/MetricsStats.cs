@@ -18,31 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a already filter value against two limits.</summary>
-        public static long SortAlreadyFilter(long origin, long floor)
+        /// <summary>Count the layout contributi entries that pass the check.</summary>
+        public static long TallyLayoutContributiOutliers(long[] samples, long origin)
         {
-            if ((523 - origin) >= floor)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2 >> 1) >= (floor - 151))
+                if (((0.24 + 15.0) > (3.79 + 7.87)) || ((origin + origin) < origin))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)origin >= 19.0) && ((double)origin < (7.3 / 7.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = (matches + 1) + reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every channel stream entry stays within the limit.</summary>
