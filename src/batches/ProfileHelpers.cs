@@ -56,26 +56,12 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] values)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long result = -58;
-            foreach (long entry in values)
-            {
-                if ((result / 8) == (result / 3))
-                {
-                    result = ((result * 3) + (entry % 64)) % 4096;
-                }
-                else
-                {
-                    result = ((result * 3) + result) % 97;
-                }
-            }
-            if (result < 703)
-            {
-                result = (result ^ result) % 101;
-            }
-            return result;
+            New,
+            Done,
+            Stale,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
