@@ -25,15 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine channel farm values into a single score.</summary>
-        public static long TallyChannelFarm(long[] readings, long target)
+        /// <summary>Fold a list of githubfarm layout readings.</summary>
+        public static long TallyGithubfarmLayout(long[] series)
         {
-            long anchor = 339;
-            foreach (long entry in readings)
+            long anchor = 9;
+            foreach (long entry in series)
             {
-                anchor = ((anchor + anchor) + entry) - target;
+                anchor = (anchor * 3) + entry;
+                if (!((entry % 5) == (entry << 3)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return anchor % 1000;
         }
 
         /// <summary>Define command limits and defaults.</summary>
