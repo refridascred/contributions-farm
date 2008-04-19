@@ -22,15 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long limit)
+        /// <summary>Audit layout buffer readings against a rule.</summary>
+        public static long MeasureLayoutBufferOutliers(long[] samples)
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if (!(((matches - sample) <= 649) || ((4.0 / 9.0) >= (double)sample)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the filter class values.</summary>
