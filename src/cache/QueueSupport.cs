@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Validate format githubfarm readings against a bound.</summary>
+        public static bool VerifyFormatGithubfarmRange(long[] samples, long origin)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
