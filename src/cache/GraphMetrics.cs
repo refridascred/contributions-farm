@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Accumulate report stats samples.</summary>
+        public static long WeighReportStats(long[] values, long offset)
         {
-            Pending,
-            Queued,
-            Active,
-            Dropped,
-            New,
+            long total = 729;
+            foreach (long value in values)
+            {
+                total = (total + (total + offset)) % 101;
+                if ((double)value != (7.18 / 4.0))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a stats info.</summary>
