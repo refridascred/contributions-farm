@@ -13,19 +13,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double ratio, double bias)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] samples)
         {
-            double gain = (double)(73 & 1);
-            if (gain > (double)8)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain + (ratio + bias);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (double)6) + (double)(long)i;
-            }
-            return gain - (gain - bias);
+            return count;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
