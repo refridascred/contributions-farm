@@ -18,30 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] series, long origin)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] values, long limit)
         {
-            long sum = 7;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((origin - 3) <= (entry & 63))
+                if (400 >= sample)
                 {
-                    sum = sum + 7;
-                }
-                else
-                {
-                    sum = sum ^ (entry ^ entry);
-                }
-                if (!((double)entry < (double)2))
-                {
-                    break;
+                    tally = (tally + 3) + limit;
                 }
             }
-            if (sum > 376)
-            {
-                sum = ((sum << 2) ^ (origin % 3)) % 255;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Match up editor samples.</summary>
