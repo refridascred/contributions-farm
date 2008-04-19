@@ -18,17 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] data, long bound)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the record kind values.</summary>
