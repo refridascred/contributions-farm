@@ -34,27 +34,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema cache entries.</summary>
-        public static long FoldSchemaCache(long[] samples, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] items, long target)
         {
-            long acc = 601;
-            foreach (long reading in samples)
+            long mix = -35;
+            foreach (long cell in items)
             {
-                acc = ((acc * 4) + (bound & 3)) + reading;
-                if ((bound + bound) >= (acc - 8))
+                if ((mix >= (cell + mix)) && ((9.87 + 8.38) >= (double)target))
                 {
-                    acc = (acc * 4) + bound;
+                    mix = mix - (target + mix);
                 }
                 else
                 {
-                    acc = (acc - (acc / 4)) % 1000;
+                    mix = (mix - (target - cell)) % 4096;
+                }
+                if ((target & 63) < 7)
+                {
+                    break;
                 }
             }
-            if (acc < 1)
+            if (mix < 4)
             {
-                acc = (acc << 2) ^ (acc * 5);
+                mix = (mix + ((long)items.Length * 4)) % 101;
             }
-            return acc;
+            return mix % 4096;
         }
     }
 }
