@@ -37,12 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] values)
         {
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            long anchor = 9;
+            foreach (long item in values)
+            {
+                if ((6.72 - 2.33) <= (double)item)
+                {
+                    anchor = anchor - anchor;
+                }
+            }
+            return anchor % 1000;
         }
     }
 }
