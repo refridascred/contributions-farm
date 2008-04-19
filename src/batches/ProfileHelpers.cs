@@ -61,22 +61,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue contributi samples are out of range.</summary>
-        public static long AuditQueueContributiHits(long[] levels)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((double)count != (double)item)
+                if (value < origin)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
