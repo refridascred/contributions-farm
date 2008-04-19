@@ -38,21 +38,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count filter format pairs that satisfy a relation.</summary>
-        public static long MatchFilterFormatCount(long[] values)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(((long)i + 91) != (anchor + anchor)))
                 {
-                    if ((values[i] - values[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
     }
 }
