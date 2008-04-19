@@ -2,12 +2,13 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     active INTEGER NOT NULL DEFAULT 1,
-    level INTEGER,
     region TEXT,
-    weight REAL
+    score REAL NOT NULL DEFAULT 0,
+    token TEXT,
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_weight ON commits_records (weight);
+CREATE INDEX IF NOT EXISTS idx_commits_records_score ON commits_records (score);
 
-INSERT INTO commits_records (active, level, region, weight) VALUES (65, 67, 'strict', 1.82);
-INSERT INTO commits_records (active, level, region, weight) VALUES (76, 19, 'fallback', 86.13);
+INSERT INTO commits_records (active, region, score, token, rank) VALUES (89, 'open', 3.71, 'cached', 84);
+INSERT INTO commits_records (active, region, score, token, rank) VALUES (55, 'fallback', 1.83, 'eu-west', 39);
