@@ -1,6 +1,15 @@
 # githubfarm settings
-token_window: 100
-sync_delay_ms:
-  - 162
-  - 371
-idle_threshold_count: 0.96
+batch_limit: staging
+hard_size_ms: primary
+readonly:
+  - 338
+  - 363
+sync_threshold_pct: edge
+batch_size_pct: 20
+idle_interval_s:
+  retry_threshold: fallback
+  min_window_ms: 1024
+  flush_interval: cached
+  sync_capacity_count: 55
+  warm_ttl_ms: 7246
+  readonly: edge
