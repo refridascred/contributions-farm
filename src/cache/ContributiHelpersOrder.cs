@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long CacheBudget = 5656;
         public const long RetryBudget = 2890;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] values)
         {
-            Paused,
-            Locked,
-            New,
-            Idle,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (12.0 > (19.0 / 3.0))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
