@@ -20,25 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] readings, long limit)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] readings)
         {
-            long sum = -51;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                double mean = (double)(5 + sum);
-                if (!((0.71 * 8.8) <= (5.32 + mean)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum * 4) + (limit + limit);
-                    mean = mean + (4.71 + mean);
-                }
-                sum = sum + (sum * 5);
-                if (datum > 2)
-                {
-                    break;
+                    if ((readings[i] + readings[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a payload stats.</summary>
