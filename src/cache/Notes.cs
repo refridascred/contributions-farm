@@ -30,20 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metrics batch readings.</summary>
-        public static long FoldMetricsBatch(long[] readings)
-        {
-            long sum = 85;
-            foreach (long cell in readings)
-            {
-                sum = ((sum << 2) ^ (cell / 7)) % 255;
-                if ((31 ^ cell) != (868 * 5))
-                {
-                    sum = (sum + sum) % 65521;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSupport = "primary-1";
+        public const string BatchRatio = "local-v2";
+        public const string HardScore = "alpha-edge";
+        public const double MinSupport = 50.9;
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double ProjectMetric(double scale, double floor)
