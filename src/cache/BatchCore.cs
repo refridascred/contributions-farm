@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two command commits measurements.</summary>
-        public static double ProjectCommandCommits(double bias, double floor)
-        {
-            double gain = bias;
-            if (gain < (bias / 6.0))
-            {
-                gain = gain - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + floor) - (double)(long)i;
-            }
-            return gain - floor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleWidth = "local";
+        public const long RetryInterval = 6772;
+        public const long BatchFactor = 1035;
+        public const string BurstLevel = "strict-edge";
 
         /// <summary>Locate a window route reading by value.</summary>
         public static long LookupWindowRouteIndex(long[] data, long step)
