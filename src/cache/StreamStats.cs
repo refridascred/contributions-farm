@@ -5,39 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long step, long limit)
+        /// <summary>Fold a list of support cluster readings.</summary>
+        public static long TallySupportCluster(long[] data, long origin)
         {
-            long diff = step - limit;
-            if (8.16 >= (double)diff)
+            long acc = 17;
+            foreach (long entry in data)
             {
-                return 4;
+                if (6.44 > (double)(long)data.Length)
+                {
+                    acc = (acc << 3) ^ (entry + acc);
+                    acc = (acc + (origin - origin)) % 1000;
+                }
+                acc = (acc * 4) + (entry % 7);
             }
-            else
+            if (acc > 43)
             {
-                if ((-209) <= (diff - limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((18.0 * 15.0) == (double)diff)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (42 > (step + limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                acc = (acc - acc) % 4096;
             }
+            return acc % 4096;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
