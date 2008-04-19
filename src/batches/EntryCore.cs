@@ -61,12 +61,21 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Match up commits order samples.</summary>
+        public static long OverlapCommitsOrderCount(long[] samples)
         {
-            Queued,
-            Ready,
-            Stale,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
