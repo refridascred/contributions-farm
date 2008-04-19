@@ -43,16 +43,24 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long seed, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            if ((seed + floor) <= (seed ^ floor))
             {
-                carry = (carry ^ (bound * 4)) % 101;
-                carry = ((carry * 4) + (long)i) % 65521;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (!((double)floor < (5.6 * 3.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
