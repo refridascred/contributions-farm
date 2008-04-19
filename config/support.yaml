@@ -1,5 +1,11 @@
 # support settings
-soft_timeout_ms: 250
-hard_ttl_count: false
-readonly: cached
-window_limit: 30
+poll_window_s: 500
+order_window: 30
+session_limit: 67
+cache_delay_s:
+  - fallback
+  - standard
+  - cached
+  - edge
+poll_ttl: open
+base_retries: 29.47
