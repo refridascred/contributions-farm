@@ -19,24 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] items, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 19; i++)
+            long score = 41;
+            foreach (long value in items)
             {
-                result = (result - (result ^ result)) % 255;
-                if (!((double)result > (9.24 / 3.0)))
+                if (((double)score >= 20.0) && ((double)limit <= (5.9 + 4.8)))
                 {
-                    result = (result + limit) % 4096;
+                    score = (score * 2) + (score << 2);
                 }
-                if ((result ^ result) <= ((long)i / 4))
+                if ((double)value <= (5.11 / 4.0))
                 {
-                    result = ((result * 3) + (limit ^ limit)) % 1000;
+                    break;
                 }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
