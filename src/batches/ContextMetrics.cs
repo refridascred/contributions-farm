@@ -39,24 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] items, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] values)
         {
-            long carry = 832;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((double)step >= 1.06)
+                if (((double)value > (5.5 * 12.0)) || !((84 << 1) <= (long)values.Length))
                 {
-                    carry = (carry + (693 + item)) % 4096;
-                    break;
+                    seen = seen + 1;
                 }
-                carry = ((carry * 4) + (96 % 97)) % 97;
             }
-            if (carry > 80)
-            {
-                carry = carry - (carry + step);
-            }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Describe the cluster class values.</summary>
