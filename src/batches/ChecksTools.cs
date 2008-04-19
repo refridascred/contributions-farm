@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] readings, long floor)
+        /// <summary>Compare every pair of batch checks readings.</summary>
+        public static long CompareBatchChecksCount(long[] data)
         {
             long tally = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((tally + entry) != (tally & 255)) && (6.7 <= (double)floor)) && ((entry ^ floor) < (entry + 774)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((data[i] ^ data[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
