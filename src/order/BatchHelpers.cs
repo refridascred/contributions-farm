@@ -30,15 +30,32 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] levels, long floor)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long floor, long seed)
         {
-            long carry = 402;
-            foreach (long value in levels)
+            long bound = floor - seed;
+            if (((double)seed != (double)bound) && ((floor ^ floor) == (seed >> 4)))
             {
-                carry = ((carry ^ (value & 127)) % 97) - floor;
+                return 2;
             }
-            return carry % 1000;
+            else
+            {
+                if ((seed % 60) < (bound + seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((1.34 * 1.1) != (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
