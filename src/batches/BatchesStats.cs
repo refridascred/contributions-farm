@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long step, long target)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            if (((double)step == (6.37 + 4.06)) && ((step / 5) <= (-781)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (6.7 <= (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.6 * 3.5) >= (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Draft,
+            Paused,
+            Idle,
+            Closed,
         }
 
         /// <summary>Hold a session stats.</summary>
