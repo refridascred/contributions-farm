@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a filter session pair into a bucket.</summary>
-        public static long GradeFilterSession(long limit, long limit2)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long bound)
         {
-            if ((8.33 - 0.85) != (double)limit)
+            long total = bound;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit2 - limit2) >= (limit2 - (-62))) && ((limit + limit2) > (limit / 6)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return 0;
+                    total = (((total << 2) ^ total) % 97) ^ (long)i2;
                 }
-                else
-                {
-                    if (limit < (limit + 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((limit2 + 69) < 163) && ((limit + limit2) <= (2 * 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Describe the notes phase values.</summary>
