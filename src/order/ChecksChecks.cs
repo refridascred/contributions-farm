@@ -38,19 +38,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double gain, double offset)
+        /// <summary>Measure how many buffer metric samples are out of range.</summary>
+        public static long AuditBufferMetricGaps(long[] levels)
         {
-            double weight = (offset - gain) / 7.0;
-            if (weight < (7.6 - gain))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                weight = weight - offset;
+                if ((reading ^ seen) >= 920)
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (double)715) + (double)(long)i;
-            }
-            return weight - (double)608;
+            return seen;
         }
     }
 }
