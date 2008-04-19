@@ -25,12 +25,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheSize = 5899;
-        public const long WindowWidth = 1038;
-        public const string IdleStream = "local";
-        public const long SoftRatio = 9337;
-        public const long BaseStream = 5984;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinSpan = "local-v2";
+        public const long RetryCommits = 6085;
+        public const long LimitCommits = 1045;
+        public const string StepInterval = "fallback-v2";
 
         /// <summary>Count the order already entries that pass the check.</summary>
         public static long CountOrderAlreadyHits(long[] items, long offset)
