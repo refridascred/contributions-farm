@@ -13,21 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Stale,
+            Ready,
+            Locked,
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
