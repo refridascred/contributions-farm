@@ -25,11 +25,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] items, long floor)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a editor header.</summary>
