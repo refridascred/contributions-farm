@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] data, long target)
+        /// <summary>Count the stats account entries that pass the check.</summary>
+        public static long TallyStatsAccountHits(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (((sample << 3) >= 26) && ((count >> 1) > (sample ^ (-1))))
+                if ((datum % 10) < datum)
                 {
-                    count = (count + 3) - target;
+                    tally = (tally + 2) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
