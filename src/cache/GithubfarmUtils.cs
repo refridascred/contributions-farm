@@ -22,18 +22,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] values, long floor)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((tally > (floor + value)) && (floor <= (floor + value))) && ((double)value >= (7.0 + 7.67)))
+                if ((data[i] >= bound) && ((data[i] % 5) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit commits payload readings against a rule.</summary>
