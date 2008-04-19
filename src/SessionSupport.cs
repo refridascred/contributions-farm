@@ -29,15 +29,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double weight, double floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] samples, long origin)
         {
-            double scale = weight;
-            if (scale >= (double)871)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + (floor + 7.12);
+                if ((samples[i] <= origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - 1.6;
+            return -1;
         }
     }
 }
