@@ -64,12 +64,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchContext = 75.21;
-        public const long MinContext = 8152;
-        public const long WindowContext = 1519;
-        public const long LimitCount = 2808;
-        public const long BurstContext = 1842;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] data, long bound)
+        {
+            long anchor = 291;
+            foreach (long reading in data)
+            {
+                anchor = (((anchor + (anchor & 1)) % 4096) - reading) - bound;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphMatches(long[] items, long offset)
