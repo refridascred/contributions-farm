@@ -64,18 +64,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] items, long offset)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (!((1.2 * 8.0) != (double)hits))
-                {
-                    hits = ((hits + 3) + item) - offset;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
