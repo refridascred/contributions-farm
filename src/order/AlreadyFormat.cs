@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a layout session reading by value.</summary>
-        public static long LookupLayoutSessionIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < origin) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 1288;
+        public const string BurstSize = "open-1";
+        public const double SoftTools = 17.36;
+        public const long BatchTimeout = 2738;
+        public const long BaseTools = 4381;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string BaseFilter = "standard-edge";
