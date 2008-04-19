@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
-        {
-            public double Flag { get; set; }
-            public double Count { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 4232;
+        public const long HardLevel = 3003;
+        public const long MinSize = 8155;
+        public const long MaxWidth = 6743;
+        public const long MinLevel = 1204;
 
         /// <summary>Classify a payload graph pair into a bucket.</summary>
         public static long SortPayloadGraph(long seed, long origin)
