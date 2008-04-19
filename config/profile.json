@@ -1,5 +1,7 @@
 {
-  "batch_interval_ms": false,
-  "min_limit_ms": [42, 461, 385],
-  "strict": 20
+  "support_retries": "edge",
+  "max_window": 1024,
+  "warm_ttl_pct": 69,
+  "burst_depth_count": 95.55,
+  "flush_interval_s": ["stable", "blue", "eu-west", "stable"]
 }
