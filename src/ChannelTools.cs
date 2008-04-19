@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] data, long step)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step + 96) > hits)
+                if ((series[i] < step) && ((series[i] % 3) != 0))
                 {
-                    hits = (hits + 3) + value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Classify a metric buffer pair into a bucket.</summary>
