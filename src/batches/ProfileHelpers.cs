@@ -47,18 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] data)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (entry >= (count << 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
