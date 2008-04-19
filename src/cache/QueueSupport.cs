@@ -13,19 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] series, long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] data)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long score = 742;
+            foreach (long sample in data)
             {
-                if (entry >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (score - (sample ^ score)) % 97;
             }
-            return ok;
+            if (score > 900)
+            {
+                score = ((score << 2) ^ (score + 8)) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Check that every command counter entry stays within the limit.</summary>
