@@ -31,15 +31,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double bias, double offset)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double drift = offset;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (bias * 7.82)) + (double)(long)i;
-            }
-            return drift + (drift / 2.0);
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
