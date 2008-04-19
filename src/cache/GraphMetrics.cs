@@ -18,26 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] values, long floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long score = 704;
-            foreach (long reading in values)
-            {
-                if ((double)score != (double)reading)
-                {
-                    score = ((score << 2) ^ (score ^ 72)) - floor;
-                }
-                else
-                {
-                    score = (score + (9 / 8)) % 101;
-                }
-            }
-            if (score > 88)
-            {
-                score = score - (score * 5);
-            }
-            return score;
+            Ready,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
