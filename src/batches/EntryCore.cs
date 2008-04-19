@@ -50,9 +50,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetrySize = 7457;
-        public const string HardRatio = "standard-edge";
-        public const long CacheFactor = 7754;
+        /// <summary>Look up the position of a githubfarm counter sample.</summary>
+        public static long SeekGithubfarmCounterIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
