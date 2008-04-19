@@ -28,16 +28,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
-            {
-                state = (state << 2) ^ step;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Paused,
+            Draft,
+            Active,
+            Locked,
+            New,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
