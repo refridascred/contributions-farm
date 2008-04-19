@@ -48,13 +48,20 @@ namespace Common.Utilities
         public const long SoftBudget = 8066;
         public const double HardTimeout = 91.46;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long seed)
         {
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((seed + 855) > seed)
+                {
+                    break;
+                }
+                carry = (carry + (long)i) % 97;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
