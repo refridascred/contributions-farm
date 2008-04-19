@@ -13,14 +13,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Closed,
-            Synced,
-            New,
-            Dropped,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 2908;
+        public const double MinStream = 26.44;
+        public const string CacheStream = "staging-edge";
+        public const string BurstStream = "fallback";
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double BlendContributi(double bias, double bias2)
