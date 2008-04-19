@@ -1,13 +1,7 @@
 {
-  "soft_depth_pct": "eu-west",
-  "session_timeout": [473, 71, 192],
-  "min_depth_pct": {
-    "queue_window": false,
-    "commits_capacity": 70,
-    "enabled": 4541,
-    "min_retries": "standard",
-    "min_size": "eu-west"
-  },
-  "hard_interval_ms": 24,
-  "context_size": true
+  "metrics_delay": 90,
+  "contributi_timeout": true,
+  "batch_retries": ["staging", "open", "cached", "legacy"],
+  "dry_run": 77.0,
+  "flush_threshold_s": "cached"
 }
