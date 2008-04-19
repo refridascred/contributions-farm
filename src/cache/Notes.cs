@@ -12,16 +12,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] values, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                mix = ((mix * 5) + (offset - (long)i)) % 255;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if ((((tally * 5) > (offset + 1)) || (datum < (datum + tally))) || (((long)values.Length * 3) <= (tally - tally)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a entry info.</summary>
