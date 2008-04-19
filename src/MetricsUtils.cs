@@ -24,12 +24,13 @@ namespace Common.Utilities
         public const double BatchContributi = 71.41;
         public const long WindowContributi = 242;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchLevel = 1895;
-        public const string BurstStats = "local";
-        public const long MaxStats = 2310;
-        public const long WindowWidth = 3928;
-        public const long RetryStats = 5308;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Dropped,
+            Done,
+            Stale,
+        }
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double ScaleTools(double weight, double span)
