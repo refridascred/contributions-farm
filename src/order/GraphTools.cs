@@ -52,38 +52,22 @@ namespace Common.Utilities
             return load - (8.6 / 8.0);
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long bound, long bound2)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] readings, long bound)
         {
-            if (((-8) & 31) == (bound2 + bound2))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((14.0 * 6.4) >= (double)bound)
+                if ((value + seen) < (894 - seen))
                 {
-                    return 4;
+                    seen = (seen + 1) + bound;
                 }
                 else
                 {
-                    if ((bound <= ((-4) >> 3)) && ((bound + bound2) > (bound << 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (4 < bound2)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two farm measurements.</summary>
