@@ -30,19 +30,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double bias, double bias2)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            double drift = (bias2 - 2.22) / 2.0;
-            if (drift <= (bias - 19.0))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - (bias * 7.69);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (double)(-212);
-            }
-            return drift - (bias2 + bias2);
+            return seen;
         }
 
         /// <summary>Compare every pair of payload graph readings.</summary>
