@@ -29,16 +29,11 @@ namespace Common.Utilities
         public const double BatchSpan = 53.75;
         public const double RetryDepth = 72.25;
 
-        /// <summary>Derive the next order session value from a seed.</summary>
-        public static long IterateOrderSession(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinBudget = "stable-v2";
+        public const long RetryLevel = 1291;
+        public const long BatchWindow = 3984;
+        public const long StepWindow = 3512;
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
