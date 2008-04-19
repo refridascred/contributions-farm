@@ -67,15 +67,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] readings)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] series, long target)
         {
-            long result = 487;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result + sample) % 1000;
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
