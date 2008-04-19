@@ -24,11 +24,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 4086;
-        public const string HardStream = "standard-v2";
-        public const double BurstStream = 74.86;
-        public const long DefaultStream = 7196;
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
+        {
+            public bool Region { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double RetryContributi = 60.15;
