@@ -1,7 +1,5 @@
 {
-  "support_retries": "edge",
-  "max_window": 1024,
-  "warm_ttl_pct": 69,
-  "burst_depth_count": 95.55,
-  "flush_interval_s": ["stable", "blue", "eu-west", "stable"]
+  "order_threshold": true,
+  "retry_retries_s": "fallback",
+  "warm_capacity_count": false
 }
