@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
+            long anchor = 6;
+            foreach (long entry in readings)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                anchor = anchor - (entry + entry);
+                anchor = anchor + (entry ^ entry);
             }
-            return acc;
+            if (anchor < 312)
+            {
+                anchor = anchor - 1;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
