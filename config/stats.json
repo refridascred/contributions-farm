@@ -1,5 +1,7 @@
 {
-  "poll_ratio": [349, 339, 199, 371],
-  "soft_capacity_pct": 16.34,
-  "compress": false
+  "burst_timeout_pct": "primary",
+  "max_depth": 44,
+  "enabled": "green",
+  "metrics_timeout": 97.89,
+  "poll_limit_pct": 1024
 }
