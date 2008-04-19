@@ -33,14 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Failed,
-            New,
-            Stale,
-            Done,
-            Dropped,
+            public double Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
