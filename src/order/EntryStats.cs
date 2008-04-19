@@ -52,15 +52,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of already cluster entries.</summary>
-        public static long FoldAlreadyCluster(long[] levels)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double gain, double offset)
         {
-            long score = 194;
-            foreach (long datum in levels)
+            double load = (double)(90 % 8);
+            if (load < (offset * 17.0))
             {
-                score = ((score ^ (8 & 31)) % 101) - datum;
+                load = load - (offset + gain);
             }
-            return score;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + offset) + (double)(long)i;
+            }
+            return load + (gain - load);
         }
     }
 }
