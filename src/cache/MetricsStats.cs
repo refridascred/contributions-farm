@@ -59,23 +59,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double scale, double bias)
+        /// <summary>Find the first githubfarm support entry that matches the target.</summary>
+        public static long FindGithubfarmSupportIndex(long[] readings, long seed)
         {
-            double load = (double)(28 - 8);
-            if (load >= (bias * 4.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load + 8.0;
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (scale - load);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (load - bias)) + (double)(long)i;
-            }
-            return load + (scale * 6.0);
+            return -1;
         }
     }
 }
