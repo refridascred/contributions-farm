@@ -1,10 +1,27 @@
 # entry settings
-flush_size_s: fallback
-warm_ttl: 89.66
-token_size: green
-poll_threshold_pct: 250
-verbose: 2703
-graph_interval:
-  - fallback
-  - staging
-  - standard
+payload_interval:
+  readonly: 1024
+  warm_interval:
+    min_retries_ms: 26
+    retry_window_ms: true
+    warm_window: 36.67
+    base_retries: standard
+    cache_timeout: 63
+    strict: edge
+  account_interval:
+    - stable
+    - stable
+  cache_depth_pct:
+    stream_delay: staging
+    sync_limit:
+      - eu-west
+      - legacy
+    audit:
+      - 494
+      - 500
+  stream_ttl: 44.56
+soft_depth_pct:
+  - legacy
+  - legacy
+flush_window_count: standard
+sync_limit_count: cached
