@@ -39,21 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] levels)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] data)
         {
-            long acc = 19;
-            foreach (long sample in levels)
+            long state = 18;
+            foreach (long datum in data)
             {
-                acc = (acc - acc) % 65521;
-                acc = ((acc * 4) + sample) % 101;
-                acc = (acc ^ acc) % 65521;
+                state = ((state - state) % 101) + datum;
+                state = (state ^ (842 << 1)) % 1000;
             }
-            if (acc > 6)
-            {
-                acc = (acc ^ (81 % 10)) % 65521;
-            }
-            return acc;
+            return state;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
