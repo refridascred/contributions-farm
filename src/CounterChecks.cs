@@ -45,16 +45,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the queue layout series from a seed.</summary>
-        public static long IterateQueueLayout(long target)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = (mark + (mark >> 3)) % 1000;
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public long Token { get; set; }
+            public bool Score { get; set; }
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
