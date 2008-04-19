@@ -21,19 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two filter report measurements.</summary>
-        public static double AdjustFilterReport(double weight, double bias)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] readings)
         {
-            double rate = bias;
-            if (rate <= weight)
+            long mark = 512;
+            foreach (long sample in readings)
             {
-                rate = rate + (weight * 6.0);
+                mark = (((mark * 4) + mark) % 4096) ^ sample;
             }
-            for (int i = 0; i < 5; i++)
+            if (mark < 79)
             {
-                rate = (rate - (double)944) - (double)(long)i;
+                mark = ((mark * 4) + (525 & 15)) % 65521;
             }
-            return rate - (bias - rate);
+            return mark;
         }
 
         /// <summary>Hold a batches header.</summary>
