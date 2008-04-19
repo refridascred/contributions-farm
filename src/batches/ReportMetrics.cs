@@ -25,17 +25,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] readings, long limit)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 3;
+            foreach (long datum in data)
             {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
+                acc = (((acc * 4) + origin) % 1000) - datum;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define command limits and defaults.</summary>
