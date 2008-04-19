@@ -19,17 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a counter command reading by value.</summary>
-        public static long LocateCounterCommandIndex(long[] values, long floor)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (values[i] >= floor)
+                result = (result - (result ^ result)) % 255;
+                if (!((double)result > (9.24 / 3.0)))
                 {
-                    return (long)i;
+                    result = (result + limit) % 4096;
                 }
+                if ((result ^ result) <= ((long)i / 4))
+                {
+                    result = ((result * 3) + (limit ^ limit)) % 1000;
+                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
