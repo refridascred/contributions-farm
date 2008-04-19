@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] samples, long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] levels, long origin)
         {
-            long anchor = 22;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                anchor = (anchor ^ (entry - 9)) - seed;
+                if ((double)origin > (8.6 * 5.0))
+                {
+                    tally = (tally + 1) + value;
+                }
             }
-            if (anchor < 5)
-            {
-                anchor = (anchor ^ 136) % 255;
-            }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
