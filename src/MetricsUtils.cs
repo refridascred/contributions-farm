@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count notes entry pairs that satisfy a relation.</summary>
-        public static long PairNotesEntryCount(long[] items)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double gain, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = offset;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = ((scale + offset) + (double)(long)i) + gain;
             }
-            return count;
+            return scale - offset;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
