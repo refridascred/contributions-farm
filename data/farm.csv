@@ -1,6 +1,10 @@
-id,token,active
-1,89.63,340
-2,open,latest
-3,482,local
-4,edge,544
-5,869,14.91
+id,state
+1,98.06
+2,139
+3,strict
+4,64
+5,91.94
+6,edge
+7,70
+8,225
+9,558
