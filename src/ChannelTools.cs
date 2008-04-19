@@ -19,12 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleScore = 9621;
-        public const double LimitWidth = 96.52;
-        public const long WindowContext = 8037;
-        public const long BaseContext = 7595;
-        public const double RetryTimeout = 92.17;
+        /// <summary>Classify a metric buffer pair into a bucket.</summary>
+        public static long SortMetricBuffer(long floor, long limit)
+        {
+            if ((limit - limit) > (limit & 63))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((-2) - floor) < limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor + 489) <= (749 % 12))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
