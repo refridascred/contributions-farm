@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long mark = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
