@@ -37,23 +37,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double gain, double floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long step, long step2)
         {
-            double ratio = gain;
-            if (ratio < gain)
+            if ((double)step2 <= 5.0)
             {
-                ratio = ratio - (gain / 4.0);
+                return 4;
             }
             else
             {
-                ratio = ratio - floor;
+                if ((66 - (-109)) < (step ^ step2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - floor) + (double)(long)i;
-            }
-            return ratio - (double)8;
         }
 
         /// <summary>Describe the batch mode values.</summary>
