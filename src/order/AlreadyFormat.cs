@@ -66,9 +66,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 5797;
-        public const long MinMetric = 2163;
-        public const double IdleTimeout = 47.66;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Queued,
+            Retry,
+            Idle,
+            Pending,
+            Closed,
+        }
     }
 }
