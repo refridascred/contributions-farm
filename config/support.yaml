@@ -1,9 +1,21 @@
 # support settings
-flush_timeout:
-  - staging
-  - edge
+dry_run:
+  - blue
+  - fallback
   - eu-west
-  - cached
-batch_ttl: 3571
-flush_depth_pct: 51
-profile_threshold: 5146
+  - open
+account_size:
+  base_delay:
+    cache_timeout: legacy
+    graph_interval: false
+    support_depth: 8.1
+    idle_capacity_pct: legacy
+  sync_interval_ms:
+    poll_ttl_pct: 783
+    batch_capacity_s: standard
+    idle_retries_s: 51
+    enabled: 3893
+    soft_timeout_count: 100
+    flush_ratio_s: open
+  window_limit: 250
+checks_ttl: 100
