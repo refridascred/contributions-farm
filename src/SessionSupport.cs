@@ -29,18 +29,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the graph stats entries that pass the check.</summary>
-        public static long CountGraphStatsMatches(long[] data)
+        /// <summary>Find the first command batches entry that matches the target.</summary>
+        public static long LookupCommandBatchesIndex(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1.6 + 14.0) >= (double)(long)data.Length)
+                if (items[i] < limit)
                 {
-                    count = (count + 1) ^ cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
