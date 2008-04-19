@@ -47,15 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double ratio, double span)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            double scale = span;
-            if (scale <= 3.4)
-            {
-                scale = scale - (ratio + scale);
-            }
-            return scale + scale;
+            Pending,
+            Done,
+            Draft,
+            Stale,
         }
 
         /// <summary>Match up commits order samples.</summary>
