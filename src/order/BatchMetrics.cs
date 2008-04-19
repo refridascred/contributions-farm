@@ -59,11 +59,25 @@ namespace Common.Utilities
         public const long MinFormat = 9640;
         public const long BaseTimeout = 7516;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepWidth = 8870;
-        public const string HardChecks = "staging-edge";
-        public const double BurstChecks = 54.86;
-        public const string SoftChecks = "cached-1";
+        /// <summary>Rank already editor input into a small class.</summary>
+        public static long SortAlreadyEditor(long seed, long limit)
+        {
+            if ((double)limit != (5.3 - 7.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)4 > (double)seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TallyCounter(long[] series, long bound)
