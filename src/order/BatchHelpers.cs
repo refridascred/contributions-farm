@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] values, long target)
         {
-            long state = step;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if (item >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
