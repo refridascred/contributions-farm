@@ -1,7 +1,14 @@
 # entry settings
-graph_capacity: 1024
-command_limit: 500
-soft_capacity_pct: 6478
-flush_limit_pct: 24.17
-min_ratio: 66.06
-entry_retries: 94.52
+payload_window:
+  - 481
+  - 69
+  - 29
+  - 294
+channel_timeout: cached
+min_threshold_ms: true
+burst_delay: 3488
+enabled:
+  - 407
+  - 490
+  - 165
+  - 24
