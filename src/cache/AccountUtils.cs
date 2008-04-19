@@ -33,14 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Measure how many record account samples are out of range.</summary>
+        public static long AuditRecordAccountGaps(long[] levels)
         {
-            Draft,
-            Dropped,
-            Locked,
-            Pending,
-            Done,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value / 9) != (hits + hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
