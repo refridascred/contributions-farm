@@ -16,16 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] data)
-        {
-            long mark = 919;
-            foreach (long entry in data)
-            {
-                mark = mark + (entry % 64);
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 509;
+        public const long HardMetrics = 4281;
+        public const string RetryMetrics = "legacy";
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long OverlapCounterCount(long[] series)
