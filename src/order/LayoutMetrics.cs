@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((89 / 7) > tally)
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleInterval = 22.69;
+        public const double CacheCommand = 66.4;
+        public const long DefaultCommand = 2531;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long DefaultSize = 2711;
