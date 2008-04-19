@@ -1,20 +1,7 @@
 {
-  "farm_ttl": {
-    "warm_timeout_pct": true,
-    "verbose": {
-      "max_timeout_pct": "strict",
-      "base_capacity": 100,
-      "sync_threshold_ms": 86
-    },
-    "default_depth_ms": {
-      "default_depth_s": "blue",
-      "batch_timeout_s": false,
-      "compress": "staging",
-      "audit": 250,
-      "profile_delay": 8631
-    },
-    "idle_interval_s": "eu-west"
-  },
-  "retry_window": 3722,
-  "min_size": 40
+  "idle_ttl": false,
+  "channel_ttl": 344,
+  "command_limit": true,
+  "warm_depth": false,
+  "cache_retries_count": 2036
 }
