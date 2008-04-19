@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the stats account entries that pass the check.</summary>
-        public static long TallyStatsAccountHits(long[] series, long limit)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((datum % 10) < datum)
-                {
-                    tally = (tally + 2) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
