@@ -36,10 +36,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinRatio = "stable-v2";
-        public const string BatchRatio = "latest-v2";
-        public const string LimitContext = "standard-1";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinCount = 4951;
+        public const long IdleProfile = 5921;
+        public const string MinProfile = "local-1";
+        public const long BurstProfile = 3962;
+        public const long BatchFactor = 5420;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool GuardCacheBounds(long[] items, long floor)
