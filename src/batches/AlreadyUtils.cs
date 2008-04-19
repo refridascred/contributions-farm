@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] items, long limit)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long carry = 68;
+            foreach (long sample in samples)
             {
-                if (datum < limit)
-                {
-                    matches = matches + 2;
-                }
+                carry = (((carry << 2) ^ (carry << 2)) % 101) + sample;
             }
-            return matches;
+            if (carry < (-856))
+            {
+                carry = carry ^ carry;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
