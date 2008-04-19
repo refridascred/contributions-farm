@@ -33,10 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleBudget = 5429;
-        public const long RetryMetrics = 79;
-        public const double BaseWidth = 16.98;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Draft,
+            Dropped,
+            Locked,
+            Pending,
+            Done,
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorGaps(long[] readings)
