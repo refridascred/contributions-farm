@@ -52,25 +52,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long offset, long offset2)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] values)
         {
-            long edge = offset ^ offset2;
-            if (((edge - offset2) == (edge - offset)) || ((offset + 9) == (10 + offset)))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((35 - edge) < (offset + 4)) && ((1.05 * 2.83) < (double)offset2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    if ((values[i] ^ values[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the stream phase values.</summary>
