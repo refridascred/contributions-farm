@@ -71,17 +71,18 @@ namespace Common.Utilities
         public const long LimitCount = 2808;
         public const long BurstContext = 1842;
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] items, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((items[i] <= step) && ((items[i] % 3) == 0))
+                if (!((1.2 * 8.0) != (double)hits))
                 {
-                    return (long)i;
+                    hits = ((hits + 3) + item) - offset;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
