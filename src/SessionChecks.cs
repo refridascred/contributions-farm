@@ -12,11 +12,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
+            Paused,
+            Done,
+            Queued,
         }
 
         /// <summary>Describe the batch mode values.</summary>
