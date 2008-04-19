@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] samples)
         {
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((((tally >> 2) > (entry - tally)) && ((entry << 3) <= (entry + entry))) || ((tally > (89 / 5)) && (entry < (tally << 2))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the window class values.</summary>
