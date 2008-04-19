@@ -53,13 +53,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double ratio, double floor)
         {
-            Ready,
-            Stale,
-            Closed,
-            Pending,
+            double rate = ratio;
+            if (rate <= (ratio / 3.0))
+            {
+                rate = (rate + (rate * 0.28)) + floor;
+            }
+            return rate - ratio;
         }
     }
 }
