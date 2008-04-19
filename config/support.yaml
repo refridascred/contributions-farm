@@ -1,11 +1,9 @@
 # support settings
-cache_window_pct: strict
-hard_threshold_s: strict
-retry_interval_count: 2794
-window_depth:
-  - local
+flush_timeout:
+  - staging
+  - edge
+  - eu-west
   - cached
-  - fallback
-  - legacy
-sync_depth_ms: 7390
-hard_capacity_pct: stable
+batch_ttl: 3571
+flush_depth_pct: 51
+profile_threshold: 5146
