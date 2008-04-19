@@ -12,19 +12,31 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] readings, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long origin, long target)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            if (!((double)992 >= (double)target))
             {
-                if (datum > step)
+                return 4;
+            }
+            else
+            {
+                if ((origin + 271) >= (origin ^ 52))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((28 >= (origin << 3)) || (3.08 > (double)origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Match up commits samples.</summary>
