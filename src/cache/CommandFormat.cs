@@ -52,13 +52,15 @@ namespace Common.Utilities
             return ratio - (double)8;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double scale, double bias)
         {
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            double scale2 = (double)(955 + 7);
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = ((scale2 + scale) + (double)(long)i) - bias;
+            }
+            return scale2 - (double)5;
         }
     }
 }
