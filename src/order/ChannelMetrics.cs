@@ -23,14 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Queued,
-            Dropped,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetrySize = 8526;
+        public const long MinNotes = 346;
+        public const long WindowLevel = 1140;
+        public const long CacheNotes = 5809;
+        public const string BurstWidth = "strict-1";
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
