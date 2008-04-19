@@ -14,13 +14,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] readings)
         {
-            Done,
-            Queued,
-            New,
-            Synced,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a cache graph sample.</summary>
