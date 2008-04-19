@@ -55,12 +55,39 @@ namespace Common.Utilities
             return load - (8.6 / 8.0);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowLevel = 9.18;
-        public const long BatchEditor = 9240;
-        public const long BurstEditor = 8323;
-        public const double BatchFactor = 36.39;
-        public const double LimitEditor = 4.62;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long bound, long bound2)
+        {
+            if (((-8) & 31) == (bound2 + bound2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((14.0 * 6.4) >= (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound <= ((-4) >> 3)) && ((bound + bound2) > (bound << 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (4 < bound2)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two farm measurements.</summary>
         public static double SmoothFarm(double rate, double offset)
