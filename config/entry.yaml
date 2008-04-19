@@ -1,65 +1,28 @@
 # entry settings
-flush_ratio_s: local
-batch_delay_ms:
+readonly:
+  entry_depth:
+    idle_timeout_count:
+      - 341
+      - 414
+      - 292
+    farm_ratio: 96.76
+    strict: stable
+    cache_timeout: standard
+  base_interval: 8716
+  default_delay: 30
+account_threshold:
+  - blue
+  - primary
   - strict
-  - fallback
-default_ttl_pct:
-  default_retries: true
-  editor_threshold: 44
-  cache_retries_ms:
-    max_delay_ms: staging
-    poll_threshold_pct: false
-    batch_ratio_s:
-      - local
-      - staging
-      - strict
-    cache_interval_ms: cached
-    tools_retries: fallback
-  checks_capacity: 41
-  window_ttl: 22.15
-  strict:
-    - stable
-    - local
-    - strict
-    - blue
-strict:
-  default_limit_pct: 60
-  audit:
-    poll_limit_pct: 500
-    enabled:
-      - open
-      - stable
-      - stable
-      - fallback
-    channel_window: latest
-    max_ratio_count: 69
-  metrics_threshold:
-    readonly:
-      - 114
-      - 24
-      - 444
-    commits_interval: primary
-    soft_depth: staging
-    audit:
-      - 495
-      - 403
-      - 40
-      - 196
-  context_timeout:
-    checks_limit:
-      - cached
-      - legacy
-      - green
-      - latest
-    max_limit: true
-    min_capacity_count: 6755
-    route_capacity:
-      - green
-      - eu-west
-      - eu-west
-    hard_ttl: blue
-  poll_limit_s:
-    - 341
-    - 320
-  burst_capacity_pct: false
-batch_interval: cached
+  - green
+soft_threshold_pct:
+  - 91
+  - 114
+  - 409
+graph_interval: stable
+sync_delay_s: stable
+compress:
+  - eu-west
+  - legacy
+  - strict
+  - edge
