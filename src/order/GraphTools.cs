@@ -57,10 +57,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 2838;
-        public const double BatchSupport = 12.52;
-        public const long RetrySupport = 398;
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double gain, double floor)
+        {
+            double drift = gain;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = ((drift - 3.3) + (double)(long)i) - floor;
+            }
+            return drift - (double)5;
+        }
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
