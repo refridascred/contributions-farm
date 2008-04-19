@@ -1,5 +1,5 @@
 {
-  "min_window_pct": 71.43,
-  "min_window_ms": 1024,
-  "session_depth": "cached"
+  "burst_capacity_count": "fallback",
+  "audit": 32,
+  "order_limit": "legacy"
 }
