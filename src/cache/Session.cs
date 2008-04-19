@@ -31,12 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Check that every entry filter entry stays within the limit.</summary>
+        public static bool GuardEntryFilterLimits(long[] data, long bound)
         {
-            Idle,
-            New,
-            Locked,
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
