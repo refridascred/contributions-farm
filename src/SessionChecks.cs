@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] items, long seed)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
