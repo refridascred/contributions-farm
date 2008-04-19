@@ -15,12 +15,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Grade a contributi record value against two limits.</summary>
+        public static long GradeContributiRecord(long step, long limit)
         {
-            public bool Owner { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
+            if (((-5) + 5) < (step << 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (step <= (step + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
