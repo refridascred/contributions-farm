@@ -1,7 +1,8 @@
 {
-  "idle_ttl": false,
-  "channel_ttl": 344,
-  "command_limit": true,
-  "warm_depth": false,
-  "cache_retries_count": 2036
+  "cache_ttl_s": 3,
+  "cache_window_s": 19.75,
+  "enabled": "staging",
+  "profile_window": 97.9,
+  "default_interval_ms": "edge",
+  "entry_retries": 51.73
 }
