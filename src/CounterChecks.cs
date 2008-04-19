@@ -52,19 +52,11 @@ namespace Common.Utilities
         public const long BurstProfile = 3962;
         public const long BatchFactor = 5420;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] items, long floor)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Rank { get; set; }
+            public double Size { get; set; }
         }
     }
 }
