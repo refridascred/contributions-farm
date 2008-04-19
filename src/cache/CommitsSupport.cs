@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double rate, double bias)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] values, long offset)
         {
-            double rate2 = (double)(544 - 65);
-            if (rate2 >= (bias - rate))
+            for (int i = 0; i < values.Length; i++)
             {
-                rate2 = rate2 - (7.0 * 1.3);
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 - bias) + (double)(long)i;
-            }
-            return rate2 - rate2;
+            return -1;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
