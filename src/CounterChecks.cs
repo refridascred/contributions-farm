@@ -51,17 +51,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] levels, long offset)
+        /// <summary>Iterate the queue layout series from a seed.</summary>
+        public static long IterateQueueLayout(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((levels[i] < offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark + (mark >> 3)) % 1000;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
