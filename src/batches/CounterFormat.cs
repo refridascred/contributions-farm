@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 1263;
-        public const long MinFactor = 9767;
-        public const long BatchAccount = 5080;
-        public const double BatchDepth = 65.6;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] series, long offset)
+        {
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
