@@ -15,19 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] series, long step)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a already options.</summary>
