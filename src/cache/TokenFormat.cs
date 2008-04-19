@@ -35,9 +35,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 2643;
-        public const string MinSpan = "staging-1";
-        public const long MaxSession = 9519;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!!((result >> 3) < (long)i))
+                {
+                    result = (result * 4) + (6 % 97);
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
