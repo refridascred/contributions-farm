@@ -33,21 +33,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] items)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry <= floor)
                 {
-                    if ((items[i] - items[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
