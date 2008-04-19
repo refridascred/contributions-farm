@@ -36,19 +36,10 @@ namespace Common.Utilities
         public const long HardToken = 2348;
         public const long LimitDepth = 9374;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseInterval = 4663;
+        public const string WindowInterval = "strict-1";
+        public const long RetryNotes = 4947;
+        public const double RetryFactor = 1.06;
     }
 }
