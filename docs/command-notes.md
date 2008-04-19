@@ -1,10 +1,11 @@
 # Command notes
 
-Run the cache check before changing any order limits.
-Use queue settings to tune how often report data is refreshed.
+When a commits fails, the order handler retries a few times before giving up.
+Run the cache check before changing any buffer limits.
 
 ## Guidelines
 
-- Validate metric input early
-- Keep schema values small
-- Review already limits each release
+- Document new format fields
+- Keep contributi values small
+- Prefer graph defaults
+- Validate batches input early
