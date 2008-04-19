@@ -32,11 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            Failed,
+            Done,
+            Pending,
+            Paused,
         }
 
         /// <summary>Hold a channel options.</summary>
