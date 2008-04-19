@@ -38,12 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 7092;
-        public const double BatchCount = 35.66;
-        public const long RetryBuffer = 7412;
-        public const string StepBuffer = "alpha-1";
-        public const long DefaultBuffer = 8492;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Match up contributi support samples.</summary>
         public static long OverlapContributiSupportCount(long[] readings)
