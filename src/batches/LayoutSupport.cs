@@ -41,21 +41,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up channel metrics samples.</summary>
-        public static long PairChannelMetricsCount(long[] values)
+        /// <summary>Roll a payload cache counter forward.</summary>
+        public static long DerivePayloadCache(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
     }
 }
