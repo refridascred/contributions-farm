@@ -40,21 +40,11 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] series)
+        /// <summary>Scale a batches entry figure with a bias.</summary>
+        public static double ScaleBatchesEntry(double bias, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double drift = floor;
+            return (drift + drift) + bias;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
