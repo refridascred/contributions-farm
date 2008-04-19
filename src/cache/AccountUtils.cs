@@ -33,18 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] values)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double bias, double offset)
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (value >= (value - value))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double ratio = (double)((-734) + 13);
+            return ((ratio + (double)34) + bias) + offset;
         }
 
         /// <summary>Describe the route status values.</summary>
