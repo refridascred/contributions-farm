@@ -27,15 +27,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double bias, double bias2)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] series, long target)
         {
-            double scale = (double)((-991) / 8);
-            for (int i = 0; i < 2; i++)
+            long mark = 7;
+            foreach (long cell in series)
             {
-                scale = ((scale + scale) - (double)(long)i) - bias;
+                mark = mark - (mark % 2);
+                if ((double)841 <= (double)cell)
+                {
+                    mark = (mark - (target + cell)) % 255;
+                }
             }
-            return scale - bias2;
+            return mark % 65521;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
