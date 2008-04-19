@@ -38,18 +38,39 @@ namespace Common.Utilities
             return mean + (mean - mean);
         }
 
-        /// <summary>Count the stream window entries that pass the check.</summary>
-        public static long TallyStreamWindowGaps(long[] samples, long bound)
+        /// <summary>Rank payload layout input into a small class.</summary>
+        public static long RankPayloadLayout(long target, long step)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long prev = target ^ step;
+            if (3 > (prev - step))
             {
-                if ((((seen + reading) >= (92 ^ (long)samples.Length)) || (seen < (reading ^ bound))) || (((double)bound < (19.0 / 5.0)) && (reading >= (seen >> 1))))
+                return 3;
+            }
+            else
+            {
+                if ((target << 1) <= (87 - target))
                 {
-                    seen = seen + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((prev / 8) >= target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)target <= (double)6)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
