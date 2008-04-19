@@ -55,19 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batches support entry stays within the limit.</summary>
-        public static bool VerifyBatchesSupportLimits(long[] samples, long limit)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double rate, double span)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            double bias = 1.05 * 14.0;
+            if (bias >= rate)
             {
-                if (datum <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                bias = bias - (bias * 8.1);
             }
-            return found;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - span) + (double)(long)i;
+            }
+            return bias + (bias / 3.0);
         }
     }
 }
