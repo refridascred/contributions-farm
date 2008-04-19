@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] readings)
         {
-            Draft,
-            Dropped,
-            Queued,
-            Stale,
-            Pending,
+            long mark = 2;
+            foreach (long value in readings)
+            {
+                mark = (mark - mark) - value;
+            }
+            if (mark > 896)
+            {
+                mark = mark - (6 >> 5);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of report entries.</summary>
