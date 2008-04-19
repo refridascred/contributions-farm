@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a buffer metrics reading by value.</summary>
-        public static long SeekBufferMetricsIndex(long[] items, long offset)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
