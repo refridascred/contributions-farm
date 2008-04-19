@@ -42,19 +42,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double bias, double span)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            double rate = bias - bias;
-            if (rate <= 1.0)
-            {
-                rate = rate - (span + rate);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (rate + 6.0)) + (double)(long)i;
-            }
-            return rate + rate;
+            Retry,
+            Paused,
+            Queued,
+            Failed,
         }
     }
 }
