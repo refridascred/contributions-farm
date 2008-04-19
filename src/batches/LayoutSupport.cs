@@ -59,39 +59,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a already order value against two limits.</summary>
-        public static long BucketAlreadyOrder(long offset, long seed)
+        /// <summary>Match up channel metrics samples.</summary>
+        public static long PairChannelMetricsCount(long[] values)
         {
-            long offset2 = offset + seed;
-            if (offset2 < (31 / 5))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed >= (73 * 3)) || ((seed + seed) != (seed & 63)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset2 / 3) > 724)
+                    if ((values[i] - values[j]) == 2)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset2 + offset2) < (offset + seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
