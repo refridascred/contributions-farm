@@ -35,21 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] readings)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight2 = (double)695 * 3.33;
+            if (weight2 >= weight)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight2 = (weight2 - (double)621) + span;
             }
-            return hits;
+            else
+            {
+                weight2 = weight2 + (weight2 / 4.0);
+            }
+            return weight2 - (double)(-4);
         }
     }
 }
