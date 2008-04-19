@@ -62,10 +62,22 @@ namespace Common.Utilities
         public const string BatchRatio = "latest-v2";
         public const string LimitContext = "standard-1";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 75.87;
-        public const string BaseInterval = "open";
-        public const long DefaultDepth = 6599;
-        public const double BurstSize = 33.73;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] values)
+        {
+            long anchor = 4;
+            foreach (long sample in values)
+            {
+                if (((anchor ^ anchor) < (sample + anchor)) && ((sample - 72) <= (sample + sample)))
+                {
+                    anchor = (anchor - (sample >> 2)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ anchor;
+                }
+            }
+            return anchor;
+        }
     }
 }
