@@ -27,19 +27,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] values, long origin)
+        /// <summary>Count contributi profile pairs that satisfy a relation.</summary>
+        public static long CompareContributiProfileCount(long[] data)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] + data[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
