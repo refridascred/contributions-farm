@@ -31,12 +31,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long target, long limit)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public bool Score { get; set; }
+            if (((target >> 3) < (limit - 0)) && ((double)target != (double)883))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target >> 2) <= limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (target <= (737 ^ 132))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
