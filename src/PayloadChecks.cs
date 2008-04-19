@@ -38,19 +38,18 @@ namespace Common.Utilities
         public const long SoftCount = 696;
         public const long MaxLayout = 7390;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] readings, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] samples, long floor)
         {
-            long result = 20;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                result = (((result - result) % 65521) - cell) - offset;
+                if ((matches + sample) <= (floor & 63))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (result < 1)
-            {
-                result = (result ^ (result - 28)) % 101;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a graph options.</summary>
