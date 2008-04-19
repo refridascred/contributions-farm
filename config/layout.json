@@ -1,6 +1,5 @@
 {
-  "cache_ratio_ms": 250,
-  "soft_retries": "strict",
-  "warm_timeout": 24,
-  "dry_run": 95
+  "format_capacity": [24, 168, 112],
+  "dry_run": false,
+  "base_size": 53
 }
