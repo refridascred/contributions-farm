@@ -28,13 +28,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] values, long origin)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (sample <= (hits >> 2))
+                {
+                    hits = (hits + 2) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the schema kind values.</summary>
