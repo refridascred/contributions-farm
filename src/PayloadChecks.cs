@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
             Ready,
-            New,
-            Queued,
             Locked,
-            Dropped,
+            Draft,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the commits mode values.</summary>
