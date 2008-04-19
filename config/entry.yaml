@@ -1,11 +1,26 @@
 # entry settings
-flush_retries: 86
-flush_retries_ms: local
-persist:
-  - 2
-  - 148
-  - 342
-  - 212
-graph_capacity: true
-soft_delay_s: true
-flush_size: fallback
+profile_threshold: primary
+contributi_ratio: true
+audit:
+  entry_limit: 8150
+  min_limit_ms: 100
+  idle_ttl_pct: primary
+  queue_ttl:
+    hard_interval_s: 44.03
+    readonly:
+      - green
+      - green
+    order_delay: blue
+    default_depth: true
+    flush_window: false
+    verbose: 53.01
+max_threshold_s: green
+order_delay:
+  - eu-west
+  - eu-west
+  - staging
+warm_delay:
+  - 74
+  - 338
+  - 126
+  - 278
