@@ -13,13 +13,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] items)
         {
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
