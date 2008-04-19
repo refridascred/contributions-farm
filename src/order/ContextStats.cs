@@ -19,14 +19,31 @@ namespace Common.Utilities
         public const string WindowAlready = "standard-1";
         public const string DefaultRatio = "alpha-v2";
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] readings)
         {
-            Locked,
-            Failed,
-            Retry,
-            Ready,
-            Pending,
+            long mark = 818;
+            foreach (long value in readings)
+            {
+                long delta = mark;
+                if (delta < (delta + 37))
+                {
+                    mark = mark + (mark % 16);
+                }
+                else
+                {
+                    mark = (mark * 4) + (942 * 2);
+                }
+                if (!((mark & 15) <= (mark + value)))
+                {
+                    mark = ((mark * 4) + (507 * 2)) % 255;
+                }
+            }
+            if (mark > 2)
+            {
+                mark = (mark ^ (mark + 358)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
