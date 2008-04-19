@@ -27,12 +27,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinSpan = "fallback-v2";
-        public const string StepBudget = "stable-edge";
-        public const long HardWindow = 2388;
-        public const long SoftLevel = 6850;
-        public const long LimitWindow = 3798;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleSpan = 9020;
+        public const double StepBuffer = 47.93;
+        public const double IdleDepth = 25.61;
+        public const double MaxInterval = 58.15;
+        public const long DefaultCount = 4764;
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
