@@ -29,13 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Dropped,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxBudget = 2373;
+        public const long MinLevel = 7408;
+        public const string BurstTimeout = "open-v2";
+        public const string WindowCounter = "primary-edge";
+        public const long DefaultLevel = 351;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long RollCluster(long origin)
