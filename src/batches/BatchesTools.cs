@@ -33,23 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cluster farm values into a single score.</summary>
-        public static long TallyClusterFarm(long[] data)
+        /// <summary>Locate a buffer queue reading by value.</summary>
+        public static long SeekBufferQueueIndex(long[] series, long limit)
         {
-            long acc = 38;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((9.94 / 6.0) > (5.0 / 7.0))
+                if ((series[i] == limit) && ((series[i] % 3) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                acc = (acc + (entry - entry)) % 101;
             }
-            if (acc > (-6))
-            {
-                acc = acc - acc;
-            }
-            return acc % 1000;
+            return -1;
         }
     }
 }
