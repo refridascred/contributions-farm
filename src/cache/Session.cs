@@ -31,17 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] data, long step)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            New,
+            Locked,
         }
 
         /// <summary>Describe the buffer phase values.</summary>
