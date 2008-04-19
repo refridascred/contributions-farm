@@ -1,7 +1,10 @@
 {
-  "burst_size": 7963,
-  "sync_limit": 8671,
-  "window_window": 9657,
-  "enabled": "local",
-  "readonly": 60
+  "audit": 9780,
+  "cache_delay_pct": {
+    "soft_limit": "latest",
+    "idle_timeout": 8.72,
+    "flush_ratio": 6244,
+    "tools_window": 30
+  },
+  "batch_interval": 0.21
 }
