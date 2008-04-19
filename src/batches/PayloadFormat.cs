@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many token commits samples are out of range.</summary>
-        public static long TallyTokenCommitsMatches(long[] samples, long offset)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum & 255) <= datum)
-                {
-                    hits = (hits + 2) + offset;
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public string Rank { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the token state values.</summary>
