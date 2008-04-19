@@ -41,10 +41,9 @@ namespace Common.Utilities
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
         {
-            public double Count { get; set; }
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
