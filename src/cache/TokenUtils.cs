@@ -22,15 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster tools samples are out of range.</summary>
-        public static long CountClusterToolsGaps(long[] readings)
+        /// <summary>Count the payload batches entries that pass the check.</summary>
+        public static long AuditPayloadBatchesMatches(long[] values, long floor)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            foreach (long entry in values)
             {
-                if ((hits << 2) < (entry * 3))
+                if ((entry - entry) <= (36 / 9))
                 {
-                    hits = hits + 3;
+                    hits = (hits + 2) + floor;
                 }
             }
             return hits;
