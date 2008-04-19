@@ -38,18 +38,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] items)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((double)seen > (7.0 / 5.0))
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
