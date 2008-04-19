@@ -54,19 +54,21 @@ namespace Common.Utilities
             return mean + (2.0 / 4.0);
         }
 
-        /// <summary>Iterate the notes buffer series from a seed.</summary>
-        public static long DeriveNotesBuffer(long origin)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] series)
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((total << 3) > (8 - total))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = total + (long)i;
+                    if ((series[i] ^ series[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
