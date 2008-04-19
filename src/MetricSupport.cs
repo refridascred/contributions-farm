@@ -43,10 +43,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 1062;
-        public const long LimitSize = 8001;
-        public const long BurstFormat = 4780;
-        public const long DefaultSpan = 4590;
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+        }
     }
 }
