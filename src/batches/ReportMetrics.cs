@@ -16,12 +16,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepTimeout = 5654;
-        public const long MaxFactor = 1861;
-        public const long LimitBatch = 9059;
-        public const double RetryBatch = 65.4;
-        public const long MinSpan = 1091;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((sample + matches) <= matches) && (sample > matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long SortContributi(long target, long limit)
