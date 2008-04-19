@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const string BurstStream = "standard-edge";
         public const long WindowSize = 2353;
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double weight, double offset)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            double drift = (offset / 7.0) + (offset - weight);
-            if (drift <= 7.3)
-            {
-                drift = drift + (18.0 - weight);
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift - drift;
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the notes mode values.</summary>
