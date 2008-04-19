@@ -38,12 +38,13 @@ namespace Common.Utilities
             return mean + (mean - mean);
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Draft,
-            Stale,
-            Pending,
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public long Total { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
