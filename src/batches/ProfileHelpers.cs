@@ -33,18 +33,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many support channel samples are out of range.</summary>
-        public static long AuditSupportChannelGaps(long[] items)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (count >= (sample / 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Adjust a stats counter reading.</summary>
