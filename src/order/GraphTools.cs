@@ -41,13 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Queued,
-            Retry,
-            Idle,
-            Closed,
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of layout tools entries.</summary>
