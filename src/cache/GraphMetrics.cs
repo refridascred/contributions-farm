@@ -15,18 +15,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] items)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] items)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long mix = 38;
+            foreach (long entry in items)
             {
-                if (7 < (matches % 64))
-                {
-                    matches = (matches + 3) ^ item;
-                }
+                mix = ((mix << 3) ^ (mix & 3)) ^ entry;
+                mix = mix + 29;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a already options.</summary>
