@@ -89,18 +89,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] readings)
+        /// <summary>Compare every pair of queue token readings.</summary>
+        public static long PairQueueTokenCount(long[] data)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample - sample) < (sample * 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] - data[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
