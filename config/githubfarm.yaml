@@ -1,4 +1,18 @@
 # githubfarm settings
-retry_depth: 47.66
-idle_timeout_s: eu-west
-poll_ttl_s: fallback
+checks_ttl:
+  flush_delay_ms: local
+  soft_limit: 36
+  base_delay_s: 60
+  strict: staging
+  default_threshold:
+    commits_threshold: 8686
+    poll_ratio_pct:
+      - 234
+      - 145
+      - 439
+    poll_window: 33
+    sync_capacity: false
+    flush_interval_s: false
+    base_retries_pct: open
+report_threshold: strict
+account_timeout: true
