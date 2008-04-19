@@ -1,7 +1,6 @@
 {
-  "retry_limit": 96,
-  "cache_limit_count": true,
-  "token_retries": "legacy",
-  "strict": true,
-  "command_threshold": 83.26
+  "default_retries_s": "cached",
+  "checks_window": 30,
+  "soft_capacity_s": [115, 296, 189, 59],
+  "base_retries": 8005
 }
