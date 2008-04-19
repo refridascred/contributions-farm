@@ -1,5 +1,12 @@
 {
-  "poll_capacity_pct": 4341,
-  "batch_depth": "staging",
-  "cache_interval_count": 9259
+  "min_interval_count": 98,
+  "metric_size": 2341,
+  "cache_limit": {
+    "persist": "strict",
+    "counter_timeout": true,
+    "enabled": "legacy",
+    "retry_threshold_pct": 1024
+  },
+  "flush_window_s": "latest",
+  "cache_ratio": false
 }
