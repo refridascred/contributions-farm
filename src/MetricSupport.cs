@@ -43,18 +43,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] readings, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample + bound) == (sample / 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 1062;
+        public const long LimitSize = 8001;
+        public const long BurstFormat = 4780;
+        public const long DefaultSpan = 4590;
     }
 }
