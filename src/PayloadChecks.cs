@@ -30,12 +30,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowLevel = "fallback-v2";
-        public const double MinBuffer = 7.78;
-        public const long BaseDepth = 333;
-        public const long WindowBuffer = 1213;
-        public const long RetryBuffer = 3831;
+        /// <summary>Validate metric counter readings against a bound.</summary>
+        public static bool CheckMetricCounterLimits(long[] values, long offset)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Project the next notes value.</summary>
         public static double ProjectNotes(double rate, double bias)
