@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double ratio, double span)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long bound)
         {
-            double rate = (double)(59 / 8);
-            if (rate > 2.01)
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                rate = (rate - (ratio * 3.6)) - span;
+                if (sum <= (bound << 3))
+                {
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            else
-            {
-                rate = rate - (rate / 2.0);
-            }
-            return rate - (double)51;
+            return sum;
         }
 
         /// <summary>Look up the position of a cache graph sample.</summary>
