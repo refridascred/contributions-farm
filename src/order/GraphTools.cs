@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] samples, long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] items, long origin)
         {
-            long result = 7;
-            foreach (long cell in samples)
+            long score = 454;
+            foreach (long value in items)
             {
-                result = ((result * 4) + (result ^ limit)) % 101;
-                if ((limit + cell) <= (limit ^ limit))
+                if ((7.0 + 7.5) >= (12.0 + 9.9))
                 {
-                    result = (result + result) % 65521;
+                    score = (((score << 2) ^ 2) % 97) + origin;
+                }
+                else
+                {
+                    score = (score - (value * 3)) % 65521;
                 }
             }
-            return result % 65521;
+            return score % 4096;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
