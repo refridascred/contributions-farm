@@ -1,15 +1,28 @@
 # entry settings
-warm_ratio_count: 4392
-tools_retries:
-  - 446
-  - 401
-  - 265
-  - 43
-compress: false
-soft_size_ms:
-  flush_size_s: true
-  max_interval_ms: legacy
-  hard_threshold_ms: open
-  strict: fallback
-  session_delay: false
-readonly: true
+idle_delay: legacy
+flush_limit_count:
+  sync_timeout_count:
+    context_depth: 21.37
+    hard_depth: 92
+    layout_ttl: 2598
+    burst_ratio:
+      - open
+      - stable
+    base_ttl_pct: strict
+    strict: 5
+  burst_depth:
+    dry_run: 100
+    burst_delay_s: false
+    compress:
+      - 261
+      - 97
+      - 359
+      - 277
+    idle_limit: strict
+  route_timeout:
+    - fallback
+    - latest
+    - primary
+burst_capacity_count: 8.03
+layout_retries: open
+idle_ratio_s: 41
