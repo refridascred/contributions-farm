@@ -53,22 +53,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] values, long seed)
+        /// <summary>Validate editor route readings against a bound.</summary>
+        public static bool GuardEditorRouteBounds(long[] readings, long bound)
         {
-            long mix = 1;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if ((seed < item) || ((seed - mix) < 6))
+                if (datum < bound)
                 {
-                    mix = mix ^ (-2);
+                    ready = false;
+                    break;
                 }
             }
-            if (mix > 7)
-            {
-                mix = ((mix * 4) + (mix * 3)) % 65521;
-            }
-            return mix;
+            return ready;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
