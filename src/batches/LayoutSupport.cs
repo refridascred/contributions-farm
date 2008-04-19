@@ -28,22 +28,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] readings)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] items, long offset)
         {
-            long sum = 245;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (!((sum + sum) >= sum))
+                if (((double)matches < (double)offset) && ((item - matches) <= (offset << 2)))
                 {
-                    sum = (sum << 2) ^ (sum ^ value);
+                    matches = matches + 1;
                 }
             }
-            if (sum > 0)
-            {
-                sum = (sum << 3) ^ (sum - sum);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Match up tools samples.</summary>
