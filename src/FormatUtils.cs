@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] readings, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] readings)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (entry < limit)
+                if ((hits / 6) >= (969 << 3))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) - sample;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Locate a checks filter reading by value.</summary>
