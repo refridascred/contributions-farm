@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] samples, long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long state = 9;
+            foreach (long entry in levels)
             {
-                if ((double)sample > 6.0)
+                state = ((state + state) % 101) ^ entry;
+                if ((15 * 5) == (floor & 7))
                 {
-                    seen = (seen + 1) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return state % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
