@@ -50,10 +50,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 5746;
-        public const string LimitCache = "legacy-edge";
-        public const long LimitSize = 8318;
-        public const long StepTimeout = 6625;
+        /// <summary>Audit layout checks readings against a rule.</summary>
+        public static long CountLayoutChecksMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (sample >= seen)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
