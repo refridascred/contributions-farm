@@ -16,18 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the notes metric entries that pass the check.</summary>
-        public static long MeasureNotesMetricMatches(long[] values)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (8.0 >= (double)reading)
+                if (series[i] > bound)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the channel level values.</summary>
