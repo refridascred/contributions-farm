@@ -15,32 +15,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long step, long offset)
+        /// <summary>Combine account token values into a single score.</summary>
+        public static long CombineAccountToken(long[] readings, long bound)
         {
-            long offset2 = step - offset;
-            if ((offset2 * 4) == (offset2 - offset2))
+            long mix = 8;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset2 - offset2) <= 66)
+                mix = (((mix * 5) + bound) % 101) ^ value;
+                mix = (mix - (bound & 1)) % 255;
+                if ((double)mix > (4.1 - 3.9))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(offset2 < (offset / 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mix = (mix << 3) ^ bound;
                 }
             }
+            if (mix < 2)
+            {
+                mix = (mix << 2) ^ (mix & 63);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Blend two farm cluster measurements.</summary>
