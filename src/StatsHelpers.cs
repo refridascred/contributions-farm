@@ -28,18 +28,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] samples)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            double scale = (double)6 / 5.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((sample % 60) <= (sample % 10))
-                {
-                    seen = seen + 3;
-                }
+                scale = (scale + (floor * 15.0)) + (double)(long)i;
             }
-            return seen;
+            return scale + (bias + scale);
         }
 
         /// <summary>Validate window readings against a bound.</summary>
