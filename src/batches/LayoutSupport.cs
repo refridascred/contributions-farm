@@ -28,10 +28,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitSize = "cached";
-        public const long CacheLevel = 5996;
-        public const long CacheFactor = 8721;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] readings)
+        {
+            long sum = 245;
+            foreach (long value in readings)
+            {
+                if (!((sum + sum) >= sum))
+                {
+                    sum = (sum << 2) ^ (sum ^ value);
+                }
+            }
+            if (sum > 0)
+            {
+                sum = (sum << 3) ^ (sum - sum);
+            }
+            return sum;
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long CompareToolsCount(long[] levels)
