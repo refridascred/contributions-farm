@@ -50,21 +50,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] levels)
+        /// <summary>Scale a payload support figure with a bias.</summary>
+        public static double BlendPayloadSupport(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale2 = bias;
+            if (scale2 < (scale2 - scale))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale2 = scale2 + (bias - 4.0);
             }
-            return tally;
+            else
+            {
+                scale2 = scale2 + (bias / 6.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + bias) - (double)(long)i;
+            }
+            return scale2 - (double)9;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
