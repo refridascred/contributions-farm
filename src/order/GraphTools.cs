@@ -38,11 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            Queued,
+            Pending,
+            Paused,
+            Done,
         }
 
         /// <summary>Digest a series of layout tools entries.</summary>
