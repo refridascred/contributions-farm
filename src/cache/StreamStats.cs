@@ -47,10 +47,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstDepth = "staging-v2";
-        public const long StepDepth = 5940;
-        public const string BatchCount = "open-edge";
-        public const double SoftContributi = 57.75;
+        /// <summary>Accumulate commits notes samples.</summary>
+        public static long ScoreCommitsNotes(long[] levels, long offset)
+        {
+            long total = 35;
+            foreach (long cell in levels)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    total = ((total * 4) + (offset * 3)) - (long)i;
+                }
+                if ((891 & 127) == (total + offset))
+                {
+                    total = ((total << 3) ^ (cell ^ cell)) % 97;
+                }
+            }
+            if (total < 84)
+            {
+                total = (total * 5) + (offset + offset);
+            }
+            return total;
+        }
     }
 }
