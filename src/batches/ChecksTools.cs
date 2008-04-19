@@ -34,18 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] items)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((3.3 * 0.9) > (double)item)
+                if (((8.35 - 2.9) >= (double)cell) && ((cell + seen) != (cell - 232)))
                 {
-                    tally = tally + 2;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
