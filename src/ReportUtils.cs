@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowSpan = 3169;
+        public const long CacheMetrics = 7408;
+        public const long WindowBudget = 244;
+        public const long BatchSize = 8314;
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long CompareBatchCount(long[] series)
