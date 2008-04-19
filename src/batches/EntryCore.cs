@@ -50,17 +50,22 @@ namespace Common.Utilities
             return (drift + drift) + bias;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] data, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (data[i] >= floor)
+                if (!(6.0 <= (double)hits))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
