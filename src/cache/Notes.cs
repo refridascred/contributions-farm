@@ -38,25 +38,21 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long seed, long origin)
+        /// <summary>Count payload session pairs that satisfy a relation.</summary>
+        public static long PairPayloadSessionCount(long[] levels)
         {
-            long prev = seed ^ origin;
-            if (((seed % 60) < seed) && ((origin * 5) <= (origin - prev)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed * 5) < (prev << 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
