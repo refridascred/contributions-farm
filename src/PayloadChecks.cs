@@ -15,13 +15,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] samples, long bound)
         {
-            Done,
-            Closed,
-            Queued,
-            Active,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((0 % 60) <= tally) && ((bound - tally) >= (bound - bound)))
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two session measurements.</summary>
