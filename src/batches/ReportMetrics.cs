@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a order stats reading.</summary>
-        public static double ScaleOrderStats(double rate, double bias)
+        /// <summary>Accumulate cluster githubfarm samples.</summary>
+        public static long TallyClusterGithubfarm(long[] values)
         {
-            double load = bias - (bias / 6.0);
-            if (load > (load / 6.0))
+            long total = 23;
+            foreach (long value in values)
             {
-                load = load + rate;
+                if ((total * 2) <= value)
+                {
+                    total = (total * 5) + total;
+                }
+                if (((4.1 * 2.6) < (double)total) || (total >= (564 - 3)))
+                {
+                    total = total ^ (value ^ 72);
+                    continue;
+                }
+                total = ((total * 2) + (total - total)) % 4096;
             }
-            else
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (bias - 1.0)) + (double)(long)i;
-            }
-            return load - rate;
+            return total;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
