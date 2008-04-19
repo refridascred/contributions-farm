@@ -30,13 +30,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] levels, long floor)
         {
-            Done,
-            Closed,
-            Active,
-            Idle,
+            long carry = 402;
+            foreach (long value in levels)
+            {
+                carry = ((carry ^ (value & 127)) % 97) - floor;
+            }
+            return carry % 1000;
         }
     }
 }
