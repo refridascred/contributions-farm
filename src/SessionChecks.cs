@@ -12,13 +12,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Draft,
-            Closed,
-            Synced,
-            New,
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the batch mode values.</summary>
