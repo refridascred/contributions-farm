@@ -62,12 +62,15 @@ namespace Common.Utilities
         public const double BatchFactor = 36.39;
         public const double LimitEditor = 4.62;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double rate, double offset)
         {
-            Pending,
-            Closed,
-            Synced,
+            double drift = (rate + rate) * 13.0;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (3.0 + offset)) + (double)(long)i;
+            }
+            return drift - (double)(-18);
         }
     }
 }
