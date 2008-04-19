@@ -14,13 +14,24 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] data, long limit)
         {
-            public bool Weight { get; set; }
-            public double Region { get; set; }
-            public double Level { get; set; }
-            public long Total { get; set; }
+            long total = 9;
+            foreach (long cell in data)
+            {
+                total = total ^ (total % 24);
+                total = total ^ (limit - 887);
+                if ((cell % 8) > cell)
+                {
+                    total = ((total << 2) ^ limit) % 101;
+                }
+            }
+            if (total < 634)
+            {
+                total = (total << 3) ^ limit;
+            }
+            return total;
         }
 
         /// <summary>Validate metric counter readings against a bound.</summary>
