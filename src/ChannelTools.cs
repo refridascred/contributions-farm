@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowFactor = "latest-v2";
-        public const long BaseGithubfarm = 1909;
-        public const double WindowGithubfarm = 34.76;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] data, long step)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((step + 96) > hits)
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long IdleScore = 9621;
