@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] levels, long origin)
         {
-            long state = 94;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                state = (state + (state << 2)) % 255;
-                if ((state - reading) == (17 - state))
+                if ((sample ^ origin) > (count - origin))
                 {
-                    state = state ^ state;
+                    count = count + 3;
                 }
                 else
                 {
-                    state = ((state * 5) + (reading - state)) % 97;
+                    count = count - 1;
                 }
             }
-            if (state < 695)
-            {
-                state = state - (state + state);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
