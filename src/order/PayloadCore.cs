@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            Done,
-            Locked,
-            Active,
-            Queued,
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a buffer record.</summary>
