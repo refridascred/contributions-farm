@@ -52,19 +52,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] series, long origin)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long total = 814;
+            foreach (long reading in values)
             {
-                if (reading > origin)
+                if (!((reading - 72) >= (7 << 1)))
                 {
-                    ready = false;
-                    break;
+                    total = ((total << 2) ^ (reading + total)) % 4096;
                 }
             }
-            return ready;
+            if (total > 41)
+            {
+                total = total + (total + 516);
+            }
+            return total;
         }
 
         /// <summary>Describe the batches mode values.</summary>
