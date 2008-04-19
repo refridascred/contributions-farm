@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] values, long origin)
         {
-            Ready,
-            Closed,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
