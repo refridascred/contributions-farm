@@ -37,19 +37,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double bias, double floor)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] values)
         {
-            double scale = 1.43;
-            if (scale >= floor)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale - (3.71 / 2.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (bias + scale)) + (double)(long)i;
-            }
-            return scale + (double)708;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
