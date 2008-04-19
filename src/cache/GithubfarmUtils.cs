@@ -37,31 +37,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long bound, long target)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long step, long bound)
         {
-            long cur = bound + target;
-            if (bound > (55 + 95))
+            long edge = step + bound;
+            if (!((bound + bound) >= (bound - 38)))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if ((double)target < (20.0 * 13.0))
+                if ((double)step != (6.0 + 1.9))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    if ((double)bound > (double)cur)
+                    if (!((edge / 7) == (edge * 2)))
                     {
                         return 4;
                     }
                     else
                     {
-                        if ((cur + cur) > (10 << 3))
+                        if ((bound + edge) >= step)
                         {
-                            return 0;
+                            return 8;
                         }
                         else
                         {
