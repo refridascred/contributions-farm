@@ -81,22 +81,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] levels)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (!((matches >= (32 % 2)) || ((double)matches <= (double)sample)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Closed,
+            New,
+            Done,
         }
     }
 }
