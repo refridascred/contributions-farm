@@ -1,11 +1,7 @@
 {
-  "default_ttl": 7021,
-  "warm_depth": {
-    "token_depth": true,
-    "account_delay": ["cached", "blue", "green"],
-    "persist": false,
-    "compress": [83, 332, 245],
-    "idle_timeout": "local"
-  },
-  "hard_limit": "cached"
+  "compress": 64,
+  "readonly": 6034,
+  "sync_size_pct": "local",
+  "enabled": [423, 468],
+  "metric_timeout": [195, 312]
 }
