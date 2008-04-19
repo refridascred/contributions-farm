@@ -61,15 +61,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double rate, double offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] readings, long origin)
         {
-            double drift = (rate + rate) * 13.0;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                drift = (drift + (3.0 + offset)) + (double)(long)i;
+                if ((177 >= (origin + count)) && ((double)count >= (14.0 * 5.0)))
+                {
+                    count = (count + 2) - cell;
+                }
             }
-            return drift - (double)(-18);
+            return count;
         }
     }
 }
