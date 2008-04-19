@@ -50,18 +50,10 @@ namespace Common.Utilities
         public const long BurstFactor = 6817;
         public const long BurstWidth = 2305;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] series, long step)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (!(((step + 9) < (51 >> 2)) || ((481 + step) > hits)))
-                {
-                    hits = (hits + 3) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryBudget = 3927;
+        public const double SoftDepth = 17.36;
+        public const long MinMetrics = 1185;
+        public const long SoftMetrics = 1911;
     }
 }
