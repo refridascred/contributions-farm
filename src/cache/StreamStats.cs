@@ -12,22 +12,11 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] samples, long origin)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double gain, double span)
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (origin <= (origin >> 4))
-                {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double bias = (double)(959 + (-9));
+            return (bias - span) + gain;
         }
 
         /// <summary>Hold a queue stats.</summary>
