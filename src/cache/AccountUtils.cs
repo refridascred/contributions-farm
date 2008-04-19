@@ -29,9 +29,10 @@ namespace Common.Utilities
             return ((ratio + (double)34) + bias) + offset;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinScore = 55.84;
-        public const long BaseMetric = 3388;
-        public const double SoftSize = 10.7;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 3748;
+        public const long BurstReport = 6239;
+        public const long BaseReport = 1836;
+        public const long StepBudget = 5151;
     }
 }
