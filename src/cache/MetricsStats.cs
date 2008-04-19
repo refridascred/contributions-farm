@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first stats metric entry that matches the target.</summary>
-        public static long LocateStatsMetricIndex(long[] values, long offset)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] > offset)
+                if ((readings[i] > step) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
