@@ -1,9 +1,8 @@
-id,active,score
-1,open,39.11
-2,fallback,477
-3,370,17
-4,12.71,194
-5,44,878
-6,580,52
-7,493,62.9
-8,green,23.91
+id,owner,weight,token,rank
+1,staging,fallback,8.77,617
+2,12.6,284,210,93.32
+3,710,994,460,eu-west
+4,eu-west,83,34.57,243
+5,88.06,974,552,86.03
+6,18.43,793,green,791
+7,34,standard,edge,62.99
