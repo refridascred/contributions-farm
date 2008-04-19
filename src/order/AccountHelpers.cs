@@ -46,21 +46,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Match up contributi support samples.</summary>
-        public static long OverlapContributiSupportCount(long[] readings)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a route record.</summary>
