@@ -50,12 +50,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double ratio, double span)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            double scale = span;
+            if (scale <= 3.4)
+            {
+                scale = scale - (ratio + scale);
+            }
+            return scale + scale;
         }
 
         /// <summary>Describe the channel mode values.</summary>
