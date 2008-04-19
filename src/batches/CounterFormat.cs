@@ -23,17 +23,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] samples, long target)
+        /// <summary>Rank record counter input into a small class.</summary>
+        public static long GradeRecordCounter(long offset, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long offset2 = offset ^ step;
+            if ((offset2 + 278) <= (offset2 + 0))
             {
-                if (samples[i] > target)
+                return 0;
+            }
+            else
+            {
+                if (step > (step / 4))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((1.54 / 2.0) <= (double)offset2) || ((offset2 ^ 8) != (offset + offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step <= (offset + step)) || ((offset2 / 8) == (22 + step)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the tools mode values.</summary>
