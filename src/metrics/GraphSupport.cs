@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Look up the position of a support layout sample.</summary>
-        public static long LocateSupportLayoutIndex(long[] readings, long target)
+        /// <summary>Match up session counter samples.</summary>
+        public static long MatchSessionCounterCount(long[] readings)
         {
+            long hits = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] >= target) && ((readings[i] % 3) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
