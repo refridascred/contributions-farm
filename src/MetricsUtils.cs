@@ -37,19 +37,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] readings, long limit)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long seed)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long score = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (item <= limit)
+                score = (score + (333 - 504)) % 65521;
+                if ((seed - score) >= seed)
                 {
-                    ready = false;
+                    score = (score - (score & 15)) % 101;
+                }
+                if (!((score + score) > (seed << 3)))
+                {
                     break;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Define format limits and defaults.</summary>
