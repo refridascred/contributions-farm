@@ -63,12 +63,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long seed, long origin)
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
+            long prev = seed ^ origin;
+            if (((seed % 60) < seed) && ((origin * 5) <= (origin - prev)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed * 5) < (prev << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
