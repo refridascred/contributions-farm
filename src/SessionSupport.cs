@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((seen - seen) != (datum + datum))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 4086;
+        public const string HardStream = "standard-v2";
+        public const double BurstStream = 74.86;
+        public const long DefaultStream = 7196;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double RetryContributi = 60.15;
