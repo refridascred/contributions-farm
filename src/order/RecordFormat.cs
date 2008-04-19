@@ -60,13 +60,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Fold a list of graph commits readings.</summary>
+        public static long DigestGraphCommits(long[] readings)
         {
-            Pending,
-            Stale,
-            Active,
-            New,
+            long score = 70;
+            foreach (long cell in readings)
+            {
+                if (((long)readings.Length + cell) < cell)
+                {
+                    score = (score + (cell % 100)) % 65521;
+                }
+            }
+            if (score < 7)
+            {
+                score = (score * 4) + (score >> 5);
+            }
+            return score;
         }
     }
 }
