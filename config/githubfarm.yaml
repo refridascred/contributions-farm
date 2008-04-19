@@ -1,11 +1,10 @@
 # githubfarm settings
-persist:
-  - strict
-  - standard
-  - blue
-max_timeout_pct: open
-flush_depth: 500
-window_window:
-  - 308
-  - 356
-  - 318
+token_retries: standard
+batch_delay: 33
+burst_threshold: 15.97
+filter_delay:
+  - 180
+  - 364
+  - 306
+  - 192
+sync_depth: primary
