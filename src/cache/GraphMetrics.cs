@@ -22,14 +22,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
+            Pending,
             Draft,
-            Dropped,
-            Locked,
-            Synced,
-            Stale,
+            Active,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
