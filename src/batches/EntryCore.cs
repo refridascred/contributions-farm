@@ -32,15 +32,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Paused,
-            Locked,
-            Retry,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchCache = 37.99;
+        public const string CacheFactor = "strict-1";
+        public const long LimitCache = 6816;
+        public const string BatchLevel = "stable";
+        public const double HardCache = 57.32;
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
