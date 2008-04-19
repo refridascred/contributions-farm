@@ -46,26 +46,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate payload account samples.</summary>
-        public static long FoldPayloadAccount(long[] items, long offset)
+        /// <summary>Audit record metrics readings against a rule.</summary>
+        public static long MeasureRecordMetricsGaps(long[] readings, long origin)
         {
-            long sum = -500;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((double)1 == (double)offset)
+                if ((5 * 4) != (origin / 6))
                 {
-                    sum = ((sum * 4) + (item % 16)) % 1000;
+                    count = (count + 2) - reading;
                 }
-                if ((item + sum) < (offset ^ 291))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (sum < (-2))
-            {
-                sum = ((sum * 4) + sum) % 255;
-            }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Rank farm command input into a small class.</summary>
