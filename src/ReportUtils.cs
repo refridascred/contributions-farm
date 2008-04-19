@@ -44,12 +44,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 2285;
-        public const long HardBudget = 7771;
-        public const long StepCluster = 4507;
-        public const long IdleCluster = 6065;
-        public const long BaseDepth = 2290;
+        /// <summary>Accumulate farm channel samples.</summary>
+        public static long WeighFarmChannel(long[] samples, long target)
+        {
+            long score = 77;
+            foreach (long item in samples)
+            {
+                score = (score + target) % 4096;
+                if (((score & 1) <= (item - 4)) || ((score * 2) < 385))
+                {
+                    score = (score ^ (item + 293)) % 1000;
+                }
+            }
+            if (score < 3)
+            {
+                score = score - (score + target);
+            }
+            return score;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BurstCount = 7423;
