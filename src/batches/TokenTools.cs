@@ -23,22 +23,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit token commits readings against a rule.</summary>
-        public static long CountTokenCommitsGaps(long[] items, long origin)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((origin <= (item ^ origin)) || (item > (item - item)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
