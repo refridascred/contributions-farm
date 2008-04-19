@@ -22,19 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] data, long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long carry = 30;
+            foreach (long cell in levels)
             {
-                if (cell >= offset)
+                if ((carry >> 4) < (cell & 31))
                 {
-                    flag = false;
-                    break;
+                    carry = (carry << 2) ^ (carry % 8);
+                }
+                else
+                {
+                    carry = (carry + (cell - 774)) % 4096;
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
