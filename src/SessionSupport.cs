@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a stream githubfarm reading by value.</summary>
-        public static long LocateStreamGithubfarmIndex(long[] data, long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (data[i] > offset)
+                if ((double)cell >= (9.0 - 5.0))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Project the next context value.</summary>
