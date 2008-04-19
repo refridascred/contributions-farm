@@ -1,6 +1,5 @@
 {
-  "max_ratio_pct": ["blue", "edge"],
-  "cache_ratio_pct": "blue",
-  "readonly": 13,
-  "window_delay": "primary"
+  "compress": 2434,
+  "account_capacity": "open",
+  "warm_retries": 13.16
 }
