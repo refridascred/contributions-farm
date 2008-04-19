@@ -51,9 +51,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstFactor = 4431;
-        public const long LimitSize = 4469;
-        public const long HardCommand = 121;
+        /// <summary>Audit queue counter readings against a rule.</summary>
+        public static long TallyQueueCounterGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((-34) <= reading)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
