@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback open; do
-    log "checking ${item}"
-done
-
-mode="${1:-cached}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in green eu-west standard; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=498
+log "limit is ${BUFFER_LIMIT}"
