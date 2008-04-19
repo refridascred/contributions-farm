@@ -22,14 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Dropped,
-            Closed,
-            Active,
+            Failed,
             Locked,
-            Draft,
+            Done,
         }
 
         /// <summary>Hold a commits summary.</summary>
