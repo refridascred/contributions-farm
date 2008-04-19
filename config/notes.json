@@ -1,6 +1,8 @@
 {
-  "cache_depth": ["edge", "edge", "green", "open"],
-  "channel_interval": 3864,
-  "burst_timeout_ms": 69.33,
-  "base_ratio_pct": ["edge", "standard", "green"]
+  "burst_interval_count": false,
+  "warm_delay": "legacy",
+  "burst_size": [101, 61, 122, 370],
+  "hard_depth_s": 3906,
+  "batch_threshold_count": ["fallback", "fallback", "strict", "open"],
+  "batch_capacity": 9189
 }
