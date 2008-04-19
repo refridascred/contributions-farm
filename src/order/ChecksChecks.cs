@@ -25,39 +25,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank checks cache input into a small class.</summary>
-        public static long GradeChecksCache(long bound, long origin)
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double rate, double bias)
         {
-            long edge = bound ^ origin;
-            if (((origin * 3) > (origin + origin)) && ((double)edge == (double)bound))
+            double load = (double)0 - bias;
+            for (int i = 0; i < 4; i++)
             {
-                return 7;
+                load = ((load + (load + load)) + (double)(long)i) - rate;
             }
-            else
-            {
-                if (((6.6 * 0.7) == (double)bound) && ((bound << 2) > (edge + bound)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((14.0 * 0.81) > (double)edge))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((5.0 / 4.0) < (double)edge)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return load - 8.6;
         }
     }
 }
