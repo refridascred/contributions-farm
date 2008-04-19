@@ -57,13 +57,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] levels)
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (seen >= (4 % 64))
+                {
+                    seen = (seen + 2) - item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine cluster account values into a single score.</summary>
