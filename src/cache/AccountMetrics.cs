@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Paused,
-            Done,
-            Dropped,
-            Locked,
-            Failed,
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
