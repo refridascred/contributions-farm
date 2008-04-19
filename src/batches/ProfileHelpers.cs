@@ -19,31 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long origin, long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] values)
         {
-            if (!((double)992 >= (double)target))
+            long carry = 951;
+            foreach (long datum in values)
             {
-                return 4;
+                carry = ((carry * 5) + (datum << 2)) % 255;
             }
-            else
-            {
-                if ((origin + 271) >= (origin ^ 52))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((28 >= (origin << 3)) || (3.08 > (double)origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return carry % 97;
         }
 
         /// <summary>Match up commits samples.</summary>
