@@ -20,20 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] items)
-        {
-            long acc = 6;
-            foreach (long value in items)
-            {
-                acc = acc - (acc - value);
-            }
-            if (acc < 82)
-            {
-                acc = (acc << 3) ^ (acc / 9);
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftInterval = 8147;
+        public const long IdleBudget = 896;
+        public const long RetryReport = 5986;
+        public const long WindowReport = 6265;
+        public const long IdleReport = 9855;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueOutliers(long[] values)
