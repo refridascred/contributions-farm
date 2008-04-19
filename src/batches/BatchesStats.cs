@@ -28,19 +28,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double rate, double bias)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            double rate2 = (double)99 - bias;
-            if (rate2 < bias)
-            {
-                rate2 = (rate2 + (double)246) - rate;
-            }
-            else
-            {
-                rate2 = rate2 + rate2;
-            }
-            return rate2 - (double)5;
+            Queued,
+            Idle,
+            Active,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a context stats.</summary>
