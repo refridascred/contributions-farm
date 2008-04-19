@@ -27,12 +27,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] readings, long limit)
         {
-            Idle,
-            Closed,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
