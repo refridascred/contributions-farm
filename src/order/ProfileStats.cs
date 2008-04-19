@@ -47,21 +47,27 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] samples)
+        /// <summary>Fold a list of buffer contributi readings.</summary>
+        public static long DigestBufferContributi(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 2;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                sum = (sum ^ datum) % 4096;
+                if ((sum << 2) > (datum % 2))
                 {
-                    if ((samples[i] ^ samples[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum ^ 7) % 101;
+                }
+                else
+                {
+                    sum = sum - (target + datum);
                 }
             }
-            return tally;
+            if (sum > 4)
+            {
+                sum = (sum - target) % 255;
+            }
+            return sum % 1000;
         }
     }
 }
