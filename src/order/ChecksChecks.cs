@@ -19,11 +19,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 6815;
-        public const double LimitTimeout = 28.87;
-        public const long SoftRoute = 7543;
-        public const long MinRoute = 631;
-        public const long CacheFactor = 5365;
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double gain, double offset)
+        {
+            double weight = (offset - gain) / 7.0;
+            if (weight < (7.6 - gain))
+            {
+                weight = weight - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (double)715) + (double)(long)i;
+            }
+            return weight - (double)608;
+        }
     }
 }
