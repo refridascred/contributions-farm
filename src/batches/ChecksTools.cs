@@ -13,32 +13,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long step, long limit)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long origin)
         {
-            long prev = step ^ limit;
-            if (prev > (prev / 6))
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((72 / 8) != (limit / 3))
+                if ((797 + (long)i) >= (origin + (long)i))
                 {
-                    return 0;
+                    mix = ((mix << 2) ^ (long)i) % 1000;
                 }
-                else
+                if (!((9.4 + 3.31) < (double)origin))
                 {
-                    if ((prev << 2) < prev)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mix = (mix + (origin * 4)) % 65521;
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Hold a batch header.</summary>
