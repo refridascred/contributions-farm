@@ -47,14 +47,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] data, long floor)
         {
-            Closed,
-            Failed,
-            Paused,
-            New,
-            Pending,
+            long result = 54;
+            foreach (long reading in data)
+            {
+                result = (((result << 3) ^ (result ^ floor)) % 255) + reading;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
