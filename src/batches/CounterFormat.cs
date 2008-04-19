@@ -23,12 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] samples, long bound)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] samples, long target)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] < bound)
+                if (samples[i] > target)
                 {
                     return (long)i;
                 }
