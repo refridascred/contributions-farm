@@ -31,25 +31,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long step, long offset)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long offset2 = step ^ offset;
-            if ((offset % 16) < (step + offset2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step - offset2) >= (offset - offset2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Synced,
+            Paused,
+            New,
+            Active,
+            Retry,
         }
     }
 }
