@@ -38,13 +38,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public long Limit { get; set; }
+            public bool Offset { get; set; }
             public bool Region { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
