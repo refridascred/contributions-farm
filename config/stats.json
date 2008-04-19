@@ -1,8 +1,6 @@
 {
-  "cache_capacity_s": "blue",
-  "retry_size": 100,
-  "soft_size_s": 71.88,
-  "compress": 250,
-  "graph_ttl": false,
-  "cache_ratio": true
+  "poll_limit": [226, 487, 102, 79],
+  "burst_window_pct": false,
+  "cache_ratio": false,
+  "persist": "legacy"
 }
