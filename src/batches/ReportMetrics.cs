@@ -39,15 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] data, long origin)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long acc = 3;
-            foreach (long datum in data)
-            {
-                acc = (((acc * 4) + origin) % 1000) - datum;
-            }
-            return acc;
+            New,
+            Failed,
+            Ready,
         }
 
         /// <summary>Combine stream values into a single score.</summary>
