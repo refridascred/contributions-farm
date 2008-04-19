@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long floor, long floor2)
+        /// <summary>Roll a filter buffer counter forward.</summary>
+        public static long IterateFilterBuffer(long floor)
         {
-            long gap = floor - floor2;
-            if (((gap - floor) > (floor2 << 2)) || ((0 % 24) >= (gap - floor2)))
+            long state = floor;
+            for (int i = 0; i < 15; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (838 >= (369 + floor2))
+                if ((state ^ 6) <= ((long)i % 2))
                 {
-                    return 3;
+                    state = (state ^ (floor / 2)) % 4096;
+                    break;
                 }
-                else
-                {
-                    return 7;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
