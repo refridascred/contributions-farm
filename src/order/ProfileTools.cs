@@ -63,11 +63,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two order queue measurements.</summary>
-        public static double ProjectOrderQueue(double ratio, double floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long target)
         {
-            double ratio2 = (ratio * 4.0) * 7.8;
-            return (ratio2 - ratio) + floor;
+            long mix = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((mix ^ target) > (276 + (long)i))
+                {
+                    mix = (mix + (target - target)) % 4096;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mix = (mix + (target - target)) ^ (long)i2;
+                    mix = ((mix << 3) ^ (target + mix)) % 101;
+                }
+                if (((143 % 12) < (long)i) && (target >= (long)i))
+                {
+                    break;
+                }
+                else
+                {
+                    mix = ((mix * 5) + mix) % 255;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
