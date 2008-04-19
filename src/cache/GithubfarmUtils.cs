@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] data)
+        /// <summary>Scale a profile queue figure with a bias.</summary>
+        public static double ProjectProfileQueue(double ratio, double floor)
         {
-            long carry = 538;
-            foreach (long value in data)
+            double rate = floor;
+            if (rate <= rate)
             {
-                if (value <= 0)
-                {
-                    carry = ((carry << 2) ^ (value / 6)) % 4096;
-                }
+                rate = rate - (floor + ratio);
             }
-            return carry % 4096;
+            return rate - 8.0;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
