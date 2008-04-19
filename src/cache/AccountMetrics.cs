@@ -39,13 +39,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Idle,
-            Pending,
-            Dropped,
-            Paused,
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine cluster account values into a single score.</summary>
