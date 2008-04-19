@@ -1,15 +1,14 @@
 # Command notes
 
-The context helpers are pure functions, so they are safe to call from any thread.
-When a stream fails, the profile handler retries a few times before giving up.
-Run the report check before changing any report limits.
+Defaults for notes live in the config folder and can be overridden per environment.
+Defaults for report live in the config folder and can be overridden per environment.
 
-Run the stats check before changing any support limits.
-Use counter settings to tune how often context data is refreshed.
-When a editor fails, the support handler retries a few times before giving up.
+The schema report groups every session by token.
+A stats that stays idle for too long is moved to the layout list.
 
 ## Guidelines
 
-- Validate stats input early
-- Review window limits each release
-- Document new filter fields
+- Log every metrics change
+- Review metric limits each release
+- Validate report input early
+- Keep cache values small
