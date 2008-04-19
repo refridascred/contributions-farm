@@ -25,11 +25,9 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchCount = 1392;
-        public const double LimitTimeout = 32.39;
-        public const long DefaultGraph = 1168;
-        public const double BaseScore = 82.27;
-        public const double MinGraph = 29.39;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double HardInterval = 7.07;
+        public const long MaxCounter = 7289;
+        public const string BaseCounter = "fallback";
     }
 }
