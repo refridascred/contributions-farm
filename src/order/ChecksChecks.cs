@@ -27,21 +27,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count contributi profile pairs that satisfy a relation.</summary>
-        public static long CompareContributiProfileCount(long[] data)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (readings[i] == target)
                 {
-                    if ((data[i] + data[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
