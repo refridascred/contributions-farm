@@ -22,18 +22,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit command session readings against a rule.</summary>
-        public static long MeasureCommandSessionHits(long[] series)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (((13.0 / 3.0) >= (double)tally) && !(datum > (89 % 97)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a format summary.</summary>
