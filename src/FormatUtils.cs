@@ -62,11 +62,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long seed)
         {
-            public bool Score { get; set; }
-            public double Owner { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = mark + seed;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
