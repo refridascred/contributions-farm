@@ -55,19 +55,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] items, long offset)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
