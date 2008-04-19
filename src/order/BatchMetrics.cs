@@ -63,19 +63,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate buffer batch readings against a bound.</summary>
-        public static bool ValidateBufferBatchRange(long[] items, long limit)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Failed,
+            Synced,
+            Done,
+            Queued,
         }
 
         /// <summary>Accumulate counter samples.</summary>
