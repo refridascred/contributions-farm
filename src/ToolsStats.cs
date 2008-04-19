@@ -31,13 +31,13 @@ namespace Common.Utilities
             return mean + (double)0;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] readings, long step)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] levels, long seed)
         {
             bool flag = true;
-            foreach (long datum in readings)
+            foreach (long value in levels)
             {
-                if (datum <= step)
+                if (value > seed)
                 {
                     flag = false;
                     break;
