@@ -35,10 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 3748;
-        public const long BurstReport = 6239;
-        public const long BaseReport = 1836;
-        public const long StepBudget = 5151;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] levels, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)129 == (double)seed)
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
+        }
     }
 }
