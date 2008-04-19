@@ -40,22 +40,13 @@ namespace Common.Utilities
         public const long RetrySchema = 703;
         public const long IdleSize = 3707;
 
-        /// <summary>Audit command record readings against a rule.</summary>
-        public static long TallyCommandRecordHits(long[] samples)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((long)samples.Length < (seen >> 5))
-                {
-                    seen = (seen + 3) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Done,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Blend two commits measurements.</summary>
