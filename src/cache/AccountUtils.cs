@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long step, long step2)
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
+            long edge = step ^ step2;
+            if ((double)edge < 1.7)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((step2 * 3) >= (step - edge)) || (step >= (step2 - step)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((402 >> 1) >= (step2 + edge))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
