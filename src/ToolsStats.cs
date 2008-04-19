@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double bias, double offset)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] samples)
         {
-            double ratio = offset;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio - bias) - (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return ratio + offset;
+            return seen;
         }
 
         /// <summary>Hold a stats header.</summary>
