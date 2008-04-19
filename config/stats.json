@@ -1,6 +1,10 @@
 {
-  "batch_delay_ms": "edge",
-  "enabled": "primary",
-  "burst_depth_count": 4249,
-  "min_window": "staging"
+  "base_threshold_count": 100,
+  "soft_size": {
+    "max_timeout": [313, 280],
+    "persist": ["standard", "strict", "staging", "primary"],
+    "burst_delay_pct": 98.69
+  },
+  "entry_timeout": "standard",
+  "filter_capacity": "latest"
 }
