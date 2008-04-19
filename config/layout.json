@@ -1,22 +1,15 @@
 {
-  "verbose": {
-    "notes_interval": {
-      "stream_ratio": true,
-      "tools_limit": 32.25,
-      "flush_timeout_pct": true,
-      "burst_size_s": "blue"
-    },
-    "format_ttl": {
-      "max_threshold_ms": 49.6,
-      "buffer_capacity": 66.11,
-      "retry_delay_pct": 94.6,
-      "batch_ttl_s": false,
-      "enabled": 4902
-    },
-    "retry_threshold_count": 1870,
-    "flush_window_count": 13.71,
-    "audit": 44.39
+  "stream_limit": "primary",
+  "enabled": true,
+  "report_ttl": 82.19,
+  "readonly": {
+    "flush_threshold": "blue",
+    "sync_window_ms": 40.83,
+    "max_retries": "green"
   },
-  "warm_delay_count": true,
-  "filter_limit": 355
+  "report_depth": {
+    "checks_depth": ["blue", "blue"],
+    "sync_ttl_count": "legacy",
+    "entry_depth": false
+  }
 }
