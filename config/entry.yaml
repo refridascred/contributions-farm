@@ -1,28 +1,6 @@
 # entry settings
-idle_delay: legacy
-flush_limit_count:
-  sync_timeout_count:
-    context_depth: 21.37
-    hard_depth: 92
-    layout_ttl: 2598
-    burst_ratio:
-      - open
-      - stable
-    base_ttl_pct: strict
-    strict: 5
-  burst_depth:
-    dry_run: 100
-    burst_delay_s: false
-    compress:
-      - 261
-      - 97
-      - 359
-      - 277
-    idle_limit: strict
-  route_timeout:
-    - fallback
-    - latest
-    - primary
-burst_capacity_count: 8.03
-layout_retries: open
-idle_ratio_s: 41
+verbose: 34.47
+compress: false
+idle_timeout: 65.28
+persist: cached
+poll_interval: false
