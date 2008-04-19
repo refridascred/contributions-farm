@@ -39,20 +39,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long origin)
+        /// <summary>Locate a batch payload reading by value.</summary>
+        public static long SeekBatchPayloadIndex(long[] samples, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((origin >> 5) > origin)
+                if (samples[i] == origin)
                 {
-                    score = ((score * 3) + 74) % 97;
-                    score = score + (origin + 4);
+                    return (long)i;
                 }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
