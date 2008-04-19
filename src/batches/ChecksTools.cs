@@ -22,23 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((797 + (long)i) >= (origin + (long)i))
-                {
-                    mix = ((mix << 2) ^ (long)i) % 1000;
-                }
-                if (!((9.4 + 3.31) < (double)origin))
-                {
-                    mix = (mix + (origin * 4)) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Pending,
+            Locked,
+            Active,
+            Stale,
+            Queued,
         }
 
         /// <summary>Check that every payload record entry stays within the limit.</summary>
