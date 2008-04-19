@@ -24,13 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public bool Flag { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            Pending,
+            Ready,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Match up window samples.</summary>
