@@ -55,11 +55,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftRatio = 2392;
-        public const string BurstStream = "latest-1";
-        public const string MinStream = "fallback-1";
-        public const long BurstLevel = 7898;
+        /// <summary>Rank support channel input into a small class.</summary>
+        public static long BucketSupportChannel(long offset, long target)
+        {
+            if (((double)offset < 0.7) || ((target % 5) <= (target ^ 337)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (9.0 <= (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)70 > (double)offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((18.0 - 3.0) != (double)target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryMatches(long[] readings)
