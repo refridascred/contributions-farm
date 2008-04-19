@@ -16,11 +16,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Iterate the context route series from a seed.</summary>
+        public static long SeriesContextRoute(long origin)
         {
-            public long Mode { get; set; }
-            public double Token { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a metric info.</summary>
