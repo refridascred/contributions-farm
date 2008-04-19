@@ -12,11 +12,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSize = 3617;
-        public const long RetrySession = 767;
-        public const long IdleSession = 3125;
-        public const long DefaultBudget = 51;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Retry,
+            Dropped,
+            Draft,
+            Active,
+            Paused,
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long BucketEditor(long target, long offset)
