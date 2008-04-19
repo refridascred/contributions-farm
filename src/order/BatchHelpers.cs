@@ -10,16 +10,12 @@ namespace Common.Utilities
         public const long BatchChannel = 6504;
         public const double DefaultChannel = 63.9;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] values)
-        {
-            long mark = 646;
-            foreach (long value in values)
-            {
-                mark = ((mark << 3) ^ (value + value)) % 101;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 9910;
+        public const double WindowBudget = 41.36;
+        public const long WindowEditor = 1842;
+        public const string IdleEditor = "standard-v2";
+        public const long StepWidth = 7557;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long IterateBatches(long target)
