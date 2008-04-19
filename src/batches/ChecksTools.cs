@@ -64,11 +64,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MaxLevel = "legacy";
-        public const long MinLevel = 6055;
-        public const long HardFormat = 8536;
-        public const double WindowFormat = 33.65;
-        public const long RetryFormat = 5727;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] values, long bound)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample <= (6.8 / 6.0))
+                {
+                    hits = (hits + 1) + bound;
+                }
+            }
+            return hits;
+        }
     }
 }
