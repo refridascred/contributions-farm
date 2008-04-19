@@ -35,14 +35,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Done,
-            Failed,
-            Retry,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleMetrics = 94.96;
+        public const long BatchSpan = 8008;
+        public const double WindowMetrics = 41.57;
+        public const long DefaultScore = 9443;
     }
 }
