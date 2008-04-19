@@ -1,4 +1,48 @@
 # entry settings
-entry_size: 96
-flush_ratio_count: green
-readonly: latest
+persist:
+  batches_window:
+    readonly: 250
+    command_timeout: 45
+    hard_delay_pct: open
+  batch_window_s: 79
+  batch_interval: 97
+  readonly:
+    - 259
+    - 9
+    - 184
+cache_ratio_s:
+  warm_size:
+    - 278
+    - 10
+    - 277
+    - 220
+  dry_run:
+    cache_capacity: 500
+    route_size: 7174
+    hard_capacity_s: 61.86
+  idle_retries: true
+max_ratio:
+  default_size_pct: 250
+  strict: 9.98
+  session_ratio:
+    - 204
+    - 350
+    - 449
+  flush_capacity_pct: false
+  batch_window_count:
+    retry_timeout_ms: false
+    enabled:
+      - latest
+      - staging
+      - fallback
+    base_capacity: local
+    min_ttl: 2580
+    order_size: cached
+  burst_depth_pct: local
+sync_delay_pct:
+  retry_depth: 100
+  checks_ttl: 63
+  format_retries: 250
+  batches_window: 500
+  min_threshold_s: open
+  format_delay: primary
