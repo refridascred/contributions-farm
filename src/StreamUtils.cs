@@ -32,10 +32,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchBudget = "strict-v2";
-        public const long BatchInterval = 4842;
-        public const double RetryInterval = 77.74;
+        /// <summary>Fold a list of farm already readings.</summary>
+        public static long WeighFarmAlready(long[] data, long floor)
+        {
+            long score = -21;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    score = (score ^ (score & 15)) - (long)i;
+                }
+                if ((floor + score) <= (score - score))
+                {
+                    score = (score - (floor & 31)) % 4096;
+                }
+                else
+                {
+                    score = ((score * 5) + (entry / 3)) % 101;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool CheckCounterLimits(long[] data, long offset)
