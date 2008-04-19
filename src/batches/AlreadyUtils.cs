@@ -25,14 +25,18 @@ namespace Common.Utilities
         public const long IdleInterval = 1861;
         public const long StepBatch = 1873;
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] data, long seed)
         {
-            Failed,
-            Pending,
-            New,
-            Queued,
-            Locked,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell >= 19.0)
+                {
+                    count = (count + 1) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
