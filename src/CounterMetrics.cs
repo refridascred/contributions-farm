@@ -40,14 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long floor)
         {
-            Dropped,
-            Idle,
-            Retry,
-            Closed,
-            Ready,
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((carry << 2) != (carry << 3))
+                {
+                    carry = ((carry * 3) + carry) % 4096;
+                }
+                else
+                {
+                    carry = (carry ^ (carry ^ 5)) % 65521;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
