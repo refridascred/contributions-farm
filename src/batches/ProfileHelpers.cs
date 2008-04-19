@@ -64,19 +64,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] items, long origin)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value < origin)
+                if (items[i] == bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
