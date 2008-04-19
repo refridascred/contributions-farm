@@ -46,41 +46,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long state = 39;
-            foreach (long entry in values)
-            {
-                if ((5.1 - 8.0) == (double)state)
-                {
-                    state = state + (state ^ 175);
-                    state = ((state * 4) + (entry % 12)) % 101;
-                }
-                else
-                {
-                    state = (state - (state + state)) % 4096;
-                    state = (state - (entry + entry)) % 65521;
-                }
-                if (!((state % 24) > state))
-                {
-                    state = (state - (state + entry)) % 255;
-                    state = (state << 2) ^ entry;
-                }
-                if ((double)state < (double)70)
-                {
-                    state = state - entry;
-                }
-                if ((state << 2) >= (state ^ entry))
-                {
-                    break;
-                }
-            }
-            if (state > 221)
-            {
-                state = (state * 5) + (52 << 1);
-            }
-            return state;
+            Pending,
+            Stale,
+            Active,
+            New,
         }
     }
 }
