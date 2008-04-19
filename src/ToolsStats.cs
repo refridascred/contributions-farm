@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double gain, double floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] items, long origin)
         {
-            double mean = (double)((-28) >> 4);
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                mean = ((mean + (double)(long)i) - gain) + floor;
+                if ((cell - origin) < (origin + tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mean + (double)0;
+            return tally;
         }
 
         /// <summary>Describe the metrics class values.</summary>
