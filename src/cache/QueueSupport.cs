@@ -19,15 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two layout report measurements.</summary>
-        public static double ProjectLayoutReport(double rate, double span)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            double scale = rate;
-            if (scale > span)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale + scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale - (scale + rate);
+            return hits;
         }
 
         /// <summary>Check that every command counter entry stays within the limit.</summary>
