@@ -28,18 +28,13 @@ namespace Common.Utilities
         public const long MinBuffer = 29;
         public const string BurstSpan = "strict";
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] values)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (((double)value > (5.5 * 12.0)) || !((84 << 1) <= (long)values.Length))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
