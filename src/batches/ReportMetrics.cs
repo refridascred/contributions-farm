@@ -31,18 +31,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] levels)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long mix = 558;
-            foreach (long sample in levels)
-            {
-                if (((long)levels.Length - sample) > 83)
-                {
-                    mix = mix ^ (mix + mix);
-                }
-            }
-            return mix;
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
