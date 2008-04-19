@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of schema editor readings.</summary>
-        public static long MatchSchemaEditorCount(long[] data)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long bound, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!((4.06 + 2.4) < (double)limit))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)limit == (6.0 / 4.0))
                 {
-                    if ((data[i] ^ data[j]) != 14)
+                    return 0;
+                }
+                else
+                {
+                    if (((limit + bound) <= limit) || ((460 >> 4) >= ((-182) - limit)))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit & 7) < (bound - limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Combine report values into a single score.</summary>
