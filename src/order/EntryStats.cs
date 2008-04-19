@@ -45,13 +45,10 @@ namespace Common.Utilities
             return weight + (8.0 + weight);
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryOrder = "staging-v2";
+        public const double BurstOrder = 76.85;
+        public const long BatchRatio = 8279;
 
         /// <summary>Project the next queue value.</summary>
         public static double ProjectQueue(double gain, double offset)
