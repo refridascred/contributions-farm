@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long origin, long floor)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] data, long limit)
         {
-            if (floor <= (59 >> 4))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin + 3) > (origin ^ 0))
+                if ((data[i] == limit) && ((data[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (origin < 1)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (1.0 >= (double)floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
