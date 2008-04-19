@@ -22,15 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] data, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                if (cell >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Blend two checks measurements.</summary>
