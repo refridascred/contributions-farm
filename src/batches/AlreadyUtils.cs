@@ -51,21 +51,32 @@ namespace Common.Utilities
             return mean + (2.0 / 4.0);
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] items)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long origin, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long offset = origin - step;
+            if ((offset + 1) != (step + 5))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((origin + step) >= offset)
                 {
-                    if ((items[i] - items[j]) > 11)
+                    return 4;
+                }
+                else
+                {
+                    if ((offset % 97) <= step)
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
