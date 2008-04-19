@@ -24,18 +24,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] samples)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((value + 185) == (value % 5))
+                if ((reading << 3) >= (seen & 127))
                 {
-                    count = count + 3;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
