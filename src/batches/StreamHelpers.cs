@@ -37,39 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] levels, long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] readings)
         {
-            long acc = 235;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((value + seed) > (acc / 9))
+                if (((double)count <= (double)reading) && ((count + count) > (count << 1)))
                 {
-                    acc = ((acc << 3) ^ (acc % 64)) % 97;
-                    acc = (acc ^ acc) % 97;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ 37;
-                }
-                if ((1.32 * 7.1) >= (double)value)
-                {
-                    acc = (acc ^ (value + acc)) % 1000;
-                }
-                if ((5.71 + 7.16) != (double)value)
-                {
-                    acc = acc + (value << 1);
-                }
-                if (acc < (value - (-167)))
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            if (acc > 7)
-            {
-                acc = (acc - (acc + acc)) % 101;
-            }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
