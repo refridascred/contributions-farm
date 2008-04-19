@@ -1,11 +1,13 @@
 # Command notes
 
-When a commits fails, the order handler retries a few times before giving up.
-Run the cache check before changing any buffer limits.
+Run the checks check before changing any command limits.
+Use cache settings to tune how often cache data is refreshed.
+
+When a checks fails, the session handler retries a few times before giving up.
+Run the notes check before changing any token limits.
 
 ## Guidelines
 
-- Document new format fields
-- Keep contributi values small
-- Prefer graph defaults
-- Validate batches input early
+- Validate layout input early
+- Prefer batch defaults
+- Keep account values small
