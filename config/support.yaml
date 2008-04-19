@@ -1,7 +1,9 @@
 # support settings
-order_limit: 30.05
-batch_size: 24.1
-cache_size_pct: 11.16
-sync_timeout_pct: 63.53
-hard_window_pct: standard
-poll_interval_pct: staging
+soft_window_ms: 53.02
+sync_retries:
+  - 426
+  - 119
+buffer_interval: true
+audit: 56.04
+idle_retries_count: true
+hard_ratio: 4281
