@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] items, long seed)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long target, long bound)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            if ((target * 4) == (bound * 2))
             {
-                if (reading <= seed)
+                return 8;
+            }
+            else
+            {
+                if ((45 % 60) >= bound)
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound << 3) < bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
