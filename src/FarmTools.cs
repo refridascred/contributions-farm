@@ -22,13 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double ratio, double offset)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public double Score { get; set; }
+            double weight = offset;
+            if (weight > ratio)
+            {
+                weight = weight - (weight - offset);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (ratio + offset)) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
