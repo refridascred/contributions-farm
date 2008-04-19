@@ -38,14 +38,18 @@ namespace Common.Utilities
             return scale - bias2;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] data, long offset)
         {
-            Queued,
-            Ready,
-            Idle,
-            Locked,
-            Dropped,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((9.44 * 7.7) != (double)offset)
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a githubfarm account counter forward.</summary>
