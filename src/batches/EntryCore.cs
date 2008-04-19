@@ -53,21 +53,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up commits order samples.</summary>
-        public static long OverlapCommitsOrderCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetrySize = 7457;
+        public const string HardRatio = "standard-edge";
+        public const long CacheFactor = 7754;
     }
 }
