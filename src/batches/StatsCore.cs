@@ -76,12 +76,15 @@ namespace Common.Utilities
             return gain2 + floor;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            Ready,
-            Stale,
-            Closed,
+            long carry = 5;
+            foreach (long item in levels)
+            {
+                carry = (((carry << 2) ^ carry) % 101) - item;
+            }
+            return carry % 4096;
         }
     }
 }
