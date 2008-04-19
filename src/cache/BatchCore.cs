@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double bias, double floor)
         {
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
+            double weight = floor;
+            if (weight < (bias + bias))
+            {
+                weight = weight - (bias + weight);
+            }
+            else
+            {
+                weight = weight - (double)558;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + floor) + (double)(long)i;
+            }
+            return weight - floor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
