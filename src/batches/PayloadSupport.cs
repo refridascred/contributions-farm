@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long seed, long bound)
         {
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Label { get; set; }
-            public string Rank { get; set; } = "";
+            long edge = seed - bound;
+            if ((seed - bound) < (1 + bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound > (double)edge)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(edge > (edge & 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound >= (edge * 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
