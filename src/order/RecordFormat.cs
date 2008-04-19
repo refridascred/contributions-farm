@@ -41,10 +41,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinCount = 4397;
-        public const long DefaultSize = 3799;
-        public const string BaseRecord = "staging-v2";
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsGaps(long[] levels)
