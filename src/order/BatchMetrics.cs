@@ -52,11 +52,19 @@ namespace Common.Utilities
         public const long BurstFactor = 2347;
         public const long MaxMetrics = 5471;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 5913;
-        public const long WindowContributi = 3239;
-        public const double BaseContributi = 34.8;
-        public const long LimitContributi = 8745;
+        /// <summary>Accumulate editor metrics samples.</summary>
+        public static long WeighEditorMetrics(long[] samples)
+        {
+            long score = -3;
+            foreach (long value in samples)
+            {
+                if ((8 / 6) == (value << 3))
+                {
+                    score = (score + score) % 101;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
