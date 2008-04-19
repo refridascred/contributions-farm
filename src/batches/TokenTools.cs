@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] series)
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
