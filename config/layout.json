@@ -1,8 +1,24 @@
 {
-  "cache_ttl_s": 3,
-  "cache_window_s": 19.75,
-  "enabled": "staging",
-  "profile_window": 97.9,
-  "default_interval_ms": "edge",
-  "entry_retries": 51.73
+  "tools_depth": [483, 20, 144, 443],
+  "strict": 30,
+  "readonly": "cached",
+  "idle_ttl_count": 46,
+  "flush_window_s": {
+    "audit": "latest",
+    "dry_run": false,
+    "idle_size": {
+      "poll_timeout": "cached",
+      "retry_interval": "primary",
+      "verbose": 1024,
+      "hard_limit_ms": 3.01
+    },
+    "cache_retries_ms": "cached",
+    "sync_timeout_s": {
+      "burst_ratio": 36.32,
+      "batch_limit_count": 61.86,
+      "base_limit_ms": 4996,
+      "token_ratio": "green",
+      "warm_threshold_pct": "cached"
+    }
+  }
 }
