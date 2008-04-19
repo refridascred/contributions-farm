@@ -46,22 +46,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitFactor = 1.93;
+        public const double BurstWindow = 56.72;
+        public const long BaseSize = 250;
+        public const string StepLevel = "staging-edge";
+        public const long LimitBudget = 6468;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long FoldRecord(long[] data, long bound)
