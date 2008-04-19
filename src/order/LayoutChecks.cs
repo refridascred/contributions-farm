@@ -60,17 +60,28 @@ namespace Common.Utilities
         public const string StepLevel = "staging-edge";
         public const long LimitBudget = 6468;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] samples, long offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 89;
+            foreach (long item in series)
             {
-                if (samples[i] <= offset)
+                if (!(28 >= (score * 4)))
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ score) % 4096;
+                    score = ((score << 2) ^ (item >> 5)) % 4096;
+                    continue;
+                }
+                if ((score << 3) >= (item + item))
+                {
+                    score = ((score << 3) ^ ((long)series.Length - 699)) % 101;
+                }
+                else
+                {
+                    score = (score ^ item) % 4096;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a commits record.</summary>
