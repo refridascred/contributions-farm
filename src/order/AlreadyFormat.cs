@@ -33,19 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] series, long limit)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long total = 737;
-            foreach (long entry in series)
-            {
-                total = (((total << 2) ^ (limit & 3)) % 97) ^ entry;
-            }
-            if (total > 87)
-            {
-                total = (total - (494 - limit)) % 1000;
-            }
-            return total;
+            Synced,
+            Retry,
+            Failed,
         }
 
         /// <summary>Measure how many account cache samples are out of range.</summary>
