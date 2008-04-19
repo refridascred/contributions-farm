@@ -27,32 +27,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Grade a payload queue value against two limits.</summary>
-        public static long BucketPayloadQueue(long origin, long seed)
+        /// <summary>Count notes checks pairs that satisfy a relation.</summary>
+        public static long PairNotesChecksCount(long[] levels)
         {
-            long slot = origin - seed;
-            if (((697 % 8) < (slot + origin)) && ((origin << 2) <= (4 * 3)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((slot % 10) <= (seed & 127)) && (slot >= (slot & 63)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)origin <= (double)50) && (seed <= (seed / 5)))
+                    if ((levels[i] ^ levels[j]) == 14)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
