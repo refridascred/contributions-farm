@@ -63,25 +63,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long target, long target2)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] levels)
         {
-            long edge = target + target2;
-            if (((target - target2) <= (80 + target)) && ((target + target) > (target2 ^ 23)))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((71 / 9) >= (edge + target2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
