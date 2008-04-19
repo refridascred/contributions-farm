@@ -1,10 +1,7 @@
 # githubfarm settings
-flush_depth_ms: green
-metrics_retries: 6013
-retry_size_s:
-  - 153
-  - 143
-  - 424
-  - 449
-min_window: true
-schema_delay: 7841
+min_depth: 32
+sync_window: 250
+min_timeout_s: 55
+min_ttl_pct:
+  - stable
+  - green
