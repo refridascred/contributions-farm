@@ -32,9 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseInterval = 413;
-        public const double CacheScore = 12.23;
-        public const long HardBudget = 9445;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] values, long bound)
+        {
+            long mark = 106;
+            foreach (long cell in values)
+            {
+                if (((cell & 1) == (bound + cell)) && ((mark << 1) > (cell % 12)))
+                {
+                    mark = ((mark * 3) + (mark >> 1)) % 255;
+                }
+            }
+            return mark % 97;
+        }
     }
 }
