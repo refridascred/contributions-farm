@@ -50,22 +50,19 @@ namespace Common.Utilities
         public const string BatchRatio = "latest-v2";
         public const string LimitContext = "standard-1";
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] values)
+        /// <summary>Validate schema order readings against a bound.</summary>
+        public static bool CheckSchemaOrderBounds(long[] samples, long origin)
         {
-            long anchor = 4;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (((anchor ^ anchor) < (sample + anchor)) && ((sample - 72) <= (sample + sample)))
+                if (sample >= origin)
                 {
-                    anchor = (anchor - (sample >> 2)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ anchor;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
     }
 }
