@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] levels, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] items)
         {
-            long acc = 204;
-            foreach (long cell in levels)
+            long result = 697;
+            foreach (long value in items)
             {
-                acc = ((acc - target) % 97) ^ cell;
+                result = (result ^ (result & 7)) % 97;
+                result = result ^ (value - value);
             }
-            return acc;
+            if (result < 62)
+            {
+                result = ((result << 2) ^ (result * 2)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Hold a report summary.</summary>
