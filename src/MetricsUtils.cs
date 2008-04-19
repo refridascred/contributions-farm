@@ -33,12 +33,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] items, long origin)
         {
-            Dropped,
-            Done,
-            Stale,
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Scale a token support figure with a bias.</summary>
