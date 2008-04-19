@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleWidth = "local";
-        public const long RetryInterval = 6772;
-        public const long BatchFactor = 1035;
-        public const string BurstLevel = "strict-edge";
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Locate a window route reading by value.</summary>
         public static long LookupWindowRouteIndex(long[] data, long step)
