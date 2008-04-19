@@ -36,10 +36,20 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepWidth = 83.16;
-        public const string MaxBudget = "open";
-        public const long MinRatio = 1534;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] items, long bound)
+        {
+            long total = 4;
+            foreach (long value in items)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    total = ((((total * 5) + total) % 255) + (long)i) + bound;
+                }
+                total = (total - value) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double AdjustOrder(double rate, double floor)
