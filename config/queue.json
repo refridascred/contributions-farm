@@ -1,8 +1,16 @@
 {
-  "retry_ttl": 58.38,
-  "max_size": "strict",
-  "max_window_s": 92.82,
-  "sync_depth": 26.17,
-  "contributi_capacity": "edge",
-  "soft_size_s": 66.28
+  "warm_timeout": true,
+  "max_threshold_ms": true,
+  "profile_capacity": "strict",
+  "retry_size_count": {
+    "farm_limit": 98,
+    "max_capacity": 100,
+    "max_window_ms": {
+      "soft_ttl_count": 40,
+      "cache_capacity_count": "strict",
+      "soft_timeout": ["primary", "strict"],
+      "soft_threshold_count": 7121
+    },
+    "min_delay": "blue"
+  }
 }
