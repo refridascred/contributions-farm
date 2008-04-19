@@ -32,12 +32,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public double Mode { get; set; }
-            public bool Region { get; set; }
-            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the session kind values.</summary>
