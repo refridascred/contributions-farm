@@ -1,11 +1,11 @@
 # Command notes
 
-A checks that stays idle for too long is moved to the tools list.
-Each stream is validated before it reaches the profile queue.
+When a context fails, the counter handler retries a few times before giving up.
+A tools that stays idle for too long is moved to the format list.
+Defaults for record live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate support input early
-- Keep schema values small
-- Prefer farm defaults
-- Log every notes change
+- Prefer entry defaults
+- Document new report fields
+- Review payload limits each release
