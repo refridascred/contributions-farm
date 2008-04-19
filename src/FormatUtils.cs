@@ -22,18 +22,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] values)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((double)entry > (18.0 * 14.0))
+                if ((14.0 / 2.0) < (double)reading)
                 {
-                    hits = hits + 2;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a channel options.</summary>
