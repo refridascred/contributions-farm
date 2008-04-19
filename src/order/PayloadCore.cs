@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double gain, double offset)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double bias, double span)
         {
-            double weight = (double)(5 - 95);
-            if (weight < offset)
-            {
-                weight = weight - offset;
-            }
-            else
-            {
-                weight = weight + (gain * 6.15);
-            }
-            return weight - (double)67;
+            double gain = 5.82 * 3.6;
+            return ((gain - (18.0 * 8.2)) + bias) + span;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
