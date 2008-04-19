@@ -1,12 +1,17 @@
 {
-  "min_interval_count": 98,
-  "metric_size": 2341,
-  "cache_limit": {
-    "persist": "strict",
-    "counter_timeout": true,
-    "enabled": "legacy",
-    "retry_threshold_pct": 1024
+  "default_limit_count": "standard",
+  "sync_limit": [77, 375, 358, 65],
+  "sync_timeout": [90, 388],
+  "burst_ttl": 92.11,
+  "token_retries": {
+    "context_ratio": "latest",
+    "soft_timeout_s": 34,
+    "buffer_ttl": false,
+    "readonly": [434, 339, 468, 144]
   },
-  "flush_window_s": "latest",
-  "cache_ratio": false
+  "poll_capacity_ms": {
+    "order_retries": "legacy",
+    "burst_limit_pct": 7662,
+    "default_capacity": "strict"
+  }
 }
