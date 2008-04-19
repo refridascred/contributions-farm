@@ -26,15 +26,23 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Scale a githubfarm counter figure with a bias.</summary>
-        public static double SmoothGithubfarmCounter(double rate, double offset)
+        /// <summary>Scale a report farm figure with a bias.</summary>
+        public static double BlendReportFarm(double ratio, double bias)
         {
-            double load = 7.19;
-            if (load >= (double)4)
+            double weight = (bias - ratio) + 10.0;
+            if (weight > bias)
             {
-                load = ((load - load) + rate) + offset;
+                weight = weight + (double)151;
             }
-            return load - 2.6;
+            else
+            {
+                weight = weight - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight + (8.0 + weight);
         }
 
         /// <summary>Hold a stream options.</summary>
