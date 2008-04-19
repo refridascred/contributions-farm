@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchOrder = "stable";
-        public const long MaxOrder = 7630;
-        public const long HardBudget = 5075;
-        public const string IdleOrder = "stable-1";
-        public const long BurstOrder = 3289;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdlePayload = 87.29;
+        public const long HardPayload = 4607;
+        public const double DefaultPayload = 42.42;
+        public const double CacheSpan = 15.11;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
