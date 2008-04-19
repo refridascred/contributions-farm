@@ -45,15 +45,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next token profile value.</summary>
-        public static double SmoothTokenProfile(double ratio, double offset)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] levels)
         {
-            double drift = 8.0 / 5.0;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = ((drift - (ratio + drift)) - (double)(long)i) - offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift - 9.2;
+            return hits;
         }
     }
 }
