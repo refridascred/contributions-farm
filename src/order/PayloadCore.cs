@@ -45,21 +45,12 @@ namespace Common.Utilities
         public const long BurstFarm = 1174;
         public const double BatchFarm = 27.61;
 
-        /// <summary>Compare every pair of payload graph readings.</summary>
-        public static long PairPayloadGraphCount(long[] items)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
