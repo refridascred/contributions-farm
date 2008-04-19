@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
+            long result = -3;
+            foreach (long item in values)
             {
-                if ((offset + result) == (result << 3))
+                if ((result >= (item + item)) || ((item - item) >= (item + result)))
                 {
-                    result = (result + (offset & 15)) % 65521;
+                    result = (result + (item / 5)) % 4096;
                 }
-                result = (result + (result >> 1)) % 1000;
-                result = ((result * 3) + (long)i) % 101;
+                if ((double)item >= (15.0 + 18.0))
+                {
+                    break;
+                }
+            }
+            if (result > 2)
+            {
+                result = result - (968 & 63);
             }
             return result;
         }
