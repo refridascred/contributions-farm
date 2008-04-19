@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double ratio, double offset)
         {
-            New,
-            Synced,
-            Failed,
-            Done,
+            double load = 3.0;
+            if (load <= offset)
+            {
+                load = (load + (double)948) + ratio;
+            }
+            else
+            {
+                load = load + 9.57;
+            }
+            return load + (offset * 2.0);
         }
 
         /// <summary>Accumulate notes samples.</summary>
