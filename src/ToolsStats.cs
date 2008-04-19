@@ -52,18 +52,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] values)
+        /// <summary>Digest a series of checks queue entries.</summary>
+        public static long TotalChecksQueue(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long mark = 306;
+            foreach (long entry in values)
             {
-                if (1.7 > (double)hits)
+                mark = ((mark * 2) + (entry - target)) % 101;
+                if ((27 << 3) >= (mark + entry))
                 {
-                    hits = (hits + 1) + value;
+                    mark = ((mark << 2) ^ entry) % 65521;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Classify a entry channel pair into a bucket.</summary>
