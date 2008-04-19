@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] values)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)matches == (0.44 - 17.0)) || ((item - matches) != (matches / 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] - levels[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
