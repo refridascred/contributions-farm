@@ -80,19 +80,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double bias, double floor)
-        {
-            double rate = (double)(-2) / 8.0;
-            if (rate > (bias / 5.0))
-            {
-                rate = (rate + bias) - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (double)154) + (double)(long)i;
-            }
-            return rate + (double)(-54);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 9857;
+        public const string StepInterval = "fallback-edge";
+        public const long RetryBudget = 5907;
+        public const long BatchSpan = 1321;
     }
 }
