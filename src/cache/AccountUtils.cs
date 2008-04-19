@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] series)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale2 = (double)(547 << 2);
+            if (scale2 < scale2)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale2 = (scale2 - (scale2 + scale2)) - bias;
             }
-            return tally;
+            return scale2 - (scale + 0.4);
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
