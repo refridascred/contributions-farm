@@ -50,32 +50,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long origin, long step)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long offset = origin - step;
-            if ((offset + 1) != (step + 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin + step) >= offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset % 97) <= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Closed,
+            Failed,
+            Paused,
+            New,
+            Pending,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
