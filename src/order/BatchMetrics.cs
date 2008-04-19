@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] values, long limit)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] items)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long anchor = 74;
+            foreach (long value in items)
             {
-                if ((hits / 8) < (limit << 1))
-                {
-                    hits = (hits + 2) - item;
-                }
+                anchor = ((anchor * 4) + (anchor + value)) % 1000;
             }
-            return hits;
+            return anchor % 4096;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
