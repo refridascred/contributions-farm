@@ -38,15 +38,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double gain, double offset)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] items, long seed)
         {
-            double bias = (2.85 / 4.0) / 8.0;
-            if (bias < (double)22)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = ((bias + bias) - gain) - offset;
+                if ((items[i] == seed) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias + (double)64;
+            return -1;
         }
     }
 }
