@@ -27,18 +27,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] series, long floor)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long result = 48;
-            foreach (long value in series)
-            {
-                if ((floor <= result) && ((result << 3) < (floor & 255)))
-                {
-                    result = ((result * 3) + (floor - floor)) ^ value;
-                }
-            }
-            return result;
+            Dropped,
+            New,
+            Failed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
