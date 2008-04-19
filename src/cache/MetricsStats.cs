@@ -28,18 +28,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the layout contributi entries that pass the check.</summary>
-        public static long TallyLayoutContributiOutliers(long[] samples, long origin)
+        /// <summary>Audit cluster metric readings against a rule.</summary>
+        public static long MeasureClusterMetricGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (((0.24 + 15.0) > (3.79 + 7.87)) || ((origin + origin) < origin))
+                if (((value - value) <= (value + value)) || ((seen + value) > 380))
                 {
-                    matches = (matches + 1) + reading;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every channel stream entry stays within the limit.</summary>
