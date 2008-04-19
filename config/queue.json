@@ -1,7 +1,13 @@
 {
-  "token_ttl": "fallback",
-  "filter_size": 2715,
-  "enabled": true,
-  "window_timeout": false,
-  "poll_capacity": 49
+  "batch_capacity": 96,
+  "readonly": "open",
+  "sync_delay_pct": 80.36,
+  "idle_depth_s": {
+    "cluster_capacity": 85,
+    "retry_ttl": 20.14,
+    "context_size": [498, 336, 60],
+    "default_size_ms": false,
+    "enabled": "local",
+    "max_limit": 500
+  }
 }
