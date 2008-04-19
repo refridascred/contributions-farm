@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
