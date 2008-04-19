@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] readings, long offset)
         {
-            Stale,
-            Draft,
-            Retry,
-            New,
-            Idle,
+            long total = 190;
+            foreach (long reading in readings)
+            {
+                total = ((total ^ (offset % 10)) % 1000) - reading;
+                total = ((total * 3) + (offset % 2)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
