@@ -1,6 +1,8 @@
 {
-  "buffer_size": 43.16,
-  "warm_retries": "green",
-  "dry_run": "latest",
-  "poll_delay_pct": "standard"
+  "max_depth_pct": true,
+  "poll_window_ms": 77,
+  "persist": "green",
+  "warm_limit_s": "stable",
+  "flush_ttl": 22.66,
+  "default_interval": 13.71
 }
