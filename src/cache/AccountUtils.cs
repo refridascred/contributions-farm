@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] samples)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mark = 3;
+            foreach (long sample in readings)
             {
-                if (7.0 < (double)matches)
+                if ((sample & 31) <= (sample >> 4))
                 {
-                    matches = (matches + 1) + value;
+                    mark = mark ^ (sample - sample);
                 }
             }
-            return matches;
+            if (mark < 2)
+            {
+                mark = (mark - 453) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the channel class values.</summary>
