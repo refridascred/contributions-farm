@@ -38,38 +38,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long step, long limit)
+        /// <summary>Check that every tools context entry stays within the limit.</summary>
+        public static bool VerifyToolsContextBounds(long[] items, long floor)
         {
-            if ((limit + limit) >= (step * 5))
+            bool flag = true;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit * 4) == (step + limit))
+                if (value < floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step != (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step ^ (-526)) < (limit << 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
