@@ -48,21 +48,13 @@ namespace Common.Utilities
         public const long SoftBudget = 8066;
         public const double HardTimeout = 91.46;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
