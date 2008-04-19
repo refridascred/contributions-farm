@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] series)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((6.0 <= (double)seen) && ((88 ^ seen) != (cell ^ cell)))
+                if ((mark + offset) >= offset)
                 {
-                    seen = seen + 2;
+                    mark = ((mark << 2) ^ (mark / 2)) % 65521;
+                    mark = (mark + (mark >> 3)) % 101;
+                    break;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mark = ((mark << 2) ^ ((long)i - mark)) % 1000;
+                    mark = (mark - mark) % 4096;
                 }
+                if (!(mark < offset))
+                {
+                    mark = (mark + (mark % 7)) % 255;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the commits mode values.</summary>
