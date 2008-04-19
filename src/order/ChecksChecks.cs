@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double scale, double offset)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double scale2 = 1.42;
-            return (scale2 + offset) + scale;
+            Done,
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
