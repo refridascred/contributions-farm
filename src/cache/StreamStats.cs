@@ -23,11 +23,25 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinSpan = "local-v2";
-        public const long RetryCommits = 6085;
-        public const long LimitCommits = 1045;
-        public const string StepInterval = "fallback-v2";
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long step, long floor)
+        {
+            if ((floor < (988 / 7)) || ((floor + step) == (floor * 5)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((71 + step) >= (143 & 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
