@@ -53,15 +53,21 @@ namespace Common.Utilities
         public const string StepLevel = "staging-edge";
         public const long LimitBudget = 6468;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] data, long bound)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] levels)
         {
-            long anchor = 291;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (((anchor + (anchor & 1)) % 4096) - reading) - bound;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a commits record.</summary>
