@@ -34,31 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long target, long limit)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] samples)
         {
-            if (((target >> 3) < (limit - 0)) && ((double)target != (double)883))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target >> 2) <= limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (target <= (737 ^ 132))
+                    if ((samples[i] - samples[j]) != 17)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
