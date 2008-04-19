@@ -22,20 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] levels, long target)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepContext = 56.07;
+        public const long SoftBudget = 2385;
+        public const long MaxContext = 631;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
