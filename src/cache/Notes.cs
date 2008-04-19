@@ -67,22 +67,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit layout checks readings against a rule.</summary>
-        public static long CountLayoutChecksMatches(long[] values)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (sample >= seen)
+                if ((hits * 4) <= sample)
                 {
-                    seen = seen + 3;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
