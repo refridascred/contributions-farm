@@ -43,24 +43,16 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long bound, long floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long bound)
         {
-            if ((floor / 7) != (bound % 64))
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                return 3;
+                carry = (carry ^ (bound * 4)) % 101;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((bound - 673) <= floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Locate a account reading by value.</summary>
