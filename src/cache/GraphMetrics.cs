@@ -31,11 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheInterval = 0.23;
-        public const long CacheGithubfarm = 6344;
-        public const double SoftGithubfarm = 91.99;
-        public const long StepGithubfarm = 6132;
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowSize = 3423;
