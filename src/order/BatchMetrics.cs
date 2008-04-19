@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] samples, long bound)
+        /// <summary>Match up metric format samples.</summary>
+        public static long MatchMetricFormatCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value <= bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
