@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double weight, double floor)
-        {
-            double load = (double)4 / 4.0;
-            if (load < (weight + load))
-            {
-                load = load + (load / 5.0);
-            }
-            else
-            {
-                load = load + weight;
-            }
-            return load - (floor - load);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftDepth = 1159;
+        public const long WindowSpan = 8076;
+        public const long SoftAlready = 5241;
+        public const string WindowAlready = "standard-1";
+        public const string DefaultRatio = "alpha-v2";
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
