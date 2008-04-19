@@ -85,17 +85,38 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] levels, long floor)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long target, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((floor < (target << 3)) && (floor <= (floor + floor)))
             {
-                if (levels[i] <= floor)
+                return 8;
+            }
+            else
+            {
+                if (((target & 7) > (target % 64)) && ((60 % 2) != (floor / 4)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((2.0 / 4.0) >= (double)floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((target - floor) == (floor + floor)) && ((target >> 4) != (floor << 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
