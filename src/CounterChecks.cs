@@ -37,12 +37,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Owner { get; set; }
+            Closed,
+            New,
+            Retry,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a format summary.</summary>
