@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the notes layout series from a seed.</summary>
-        public static long StepNotesLayout(long offset)
+        /// <summary>Count channel session pairs that satisfy a relation.</summary>
+        public static long CompareChannelSessionCount(long[] values)
         {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((offset >> 5) > (0 - (long)i)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total << 2) ^ (offset - offset);
-                    break;
+                    if ((values[i] + values[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the metric mode values.</summary>
