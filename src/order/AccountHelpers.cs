@@ -58,9 +58,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 6174;
-        public const string MaxChannel = "primary";
-        public const double BatchScore = 31.74;
+        /// <summary>Check that every counter graph entry stays within the limit.</summary>
+        public static bool ValidateCounterGraphRange(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
