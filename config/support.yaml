@@ -1,14 +1,7 @@
 # support settings
-metric_ttl:
-  - primary
-  - cached
-  - stable
-  - fallback
-sync_limit_s: 95.56
-base_timeout_s:
-  - 51
-  - 207
-  - 298
-enabled: strict
-burst_limit_ms: 68.48
-batches_interval: 98
+graph_delay: 31
+retry_interval_ms: 3363
+entry_size: 66
+min_size: 100
+readonly: 1219
+min_capacity_pct: 6
