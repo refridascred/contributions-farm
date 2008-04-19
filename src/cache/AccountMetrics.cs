@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double BaseCount = 12.59;
         public const long BurstTools = 3364;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public double Count { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleSpan = 4159;
+        public const long BatchFactor = 6690;
+        public const long DefaultEntry = 7993;
+        public const double CacheEntry = 49.71;
+        public const string RetryScore = "latest-edge";
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
