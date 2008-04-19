@@ -32,19 +32,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every payload record entry stays within the limit.</summary>
-        public static bool GuardPayloadRecordRange(long[] series, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (datum >= target)
+                if ((origin - tally) >= origin)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
