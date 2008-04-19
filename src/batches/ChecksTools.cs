@@ -27,19 +27,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long step, long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
+            long prev = step ^ limit;
+            if (prev > (prev / 6))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    carry = (((carry << 3) ^ (floor * 3)) % 65521) ^ (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((72 / 8) != (limit / 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((prev << 2) < prev)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batch header.</summary>
