@@ -32,18 +32,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] series, long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long carry = -90;
+            foreach (long cell in values)
             {
-                if ((origin - tally) >= origin)
+                if (2.27 < (double)cell)
                 {
-                    tally = (tally + 2) + entry;
+                    carry = ((carry << 3) ^ (carry * 3)) % 4096;
+                }
+                else
+                {
+                    carry = (carry - (origin ^ cell)) % 255;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
