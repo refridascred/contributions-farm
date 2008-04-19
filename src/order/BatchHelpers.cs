@@ -37,18 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cache stream samples.</summary>
-        public static long TotalCacheStream(long[] samples)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] values, long bound)
         {
-            long mix = 72;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (((cell >> 2) > (mix >> 2)) || ((cell + cell) <= (mix + cell)))
+                if (sample < bound)
                 {
-                    mix = (mix ^ (cell % 100)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            return mix;
+            return stale;
         }
     }
 }
