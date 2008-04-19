@@ -14,15 +14,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double scale, double span)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] readings, long floor)
         {
-            double weight = (8.1 + span) * 4.1;
-            if (weight < (8.75 - scale))
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight + weight;
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return weight + scale;
+            return -1;
         }
 
         /// <summary>Digest a series of report entries.</summary>
