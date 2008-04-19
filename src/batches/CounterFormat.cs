@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the order entry entries that pass the check.</summary>
-        public static long TallyOrderEntryMatches(long[] items, long seed)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((5 + 279) > reading)
+                if (samples[i] >= bound)
                 {
-                    matches = (matches + 3) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank record counter input into a small class.</summary>
