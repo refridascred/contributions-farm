@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long origin)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
