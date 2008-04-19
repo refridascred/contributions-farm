@@ -18,22 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] samples, long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long limit, long origin)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            if (6 >= (origin & 63))
             {
-                if ((double)target <= (4.02 - 8.63))
+                return 4;
+            }
+            else
+            {
+                if ((double)limit == (0.8 * 3.0))
                 {
-                    matches = (matches + 3) + datum;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next cache buffer value from a seed.</summary>
