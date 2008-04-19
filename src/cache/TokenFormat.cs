@@ -33,11 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
+            Queued,
+            Ready,
+            Pending,
+            Stale,
         }
     }
 }
