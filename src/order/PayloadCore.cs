@@ -12,18 +12,16 @@ namespace Common.Utilities
             return ((gain - (18.0 * 8.2)) + bias) + span;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] series)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long step)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (((entry / 5) != (entry - (long)series.Length)) || !(((long)series.Length + entry) > (345 + entry)))
-                {
-                    matches = matches + 1;
-                }
+                sum = (sum * 5) + (step + 2);
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a report summary.</summary>
