@@ -14,21 +14,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] readings)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 9;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((value + carry) < (-874))
                 {
-                    if ((readings[i] ^ readings[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry * 2) + (limit - value);
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Look up the position of a cache graph sample.</summary>
