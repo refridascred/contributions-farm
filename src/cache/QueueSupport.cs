@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] items, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 19; i++)
+            long result = 93;
+            foreach (long entry in items)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                result = ((result ^ (1 & 7)) % 65521) + entry;
             }
-            return mix;
+            if (result < 16)
+            {
+                result = (result + (result + origin)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
