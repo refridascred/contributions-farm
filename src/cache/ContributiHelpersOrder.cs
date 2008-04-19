@@ -32,18 +32,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit counter record readings against a rule.</summary>
-        public static long CountCounterRecordOutliers(long[] readings, long offset)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] data)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)value == (4.86 - 1.2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) + offset;
+                    if ((data[i] - data[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
