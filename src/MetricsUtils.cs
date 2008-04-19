@@ -41,21 +41,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Scale a token support figure with a bias.</summary>
+        public static double ProjectTokenSupport(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = scale;
+            if (ratio < (double)46)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio + floor;
             }
-            return matches;
+            return ratio - (double)114;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
