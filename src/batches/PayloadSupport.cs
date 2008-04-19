@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] items)
+        /// <summary>Find the first entry stream entry that matches the target.</summary>
+        public static long SeekEntryStreamIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (levels[i] < limit)
                 {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
