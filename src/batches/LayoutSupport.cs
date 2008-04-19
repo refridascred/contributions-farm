@@ -20,11 +20,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] values)
         {
-            public double Offset { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a order counter forward.</summary>
