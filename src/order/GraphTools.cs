@@ -61,18 +61,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] readings, long origin)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((177 >= (origin + count)) && ((double)count >= (14.0 * 5.0)))
-                {
-                    count = (count + 2) - cell;
-                }
-            }
-            return count;
+            Dropped,
+            Draft,
+            Synced,
         }
     }
 }
