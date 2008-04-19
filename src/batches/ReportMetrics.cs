@@ -16,22 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] series)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (((sample + matches) <= matches) && (sample > matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
