@@ -48,26 +48,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] values)
+        /// <summary>Locate a token buffer reading by value.</summary>
+        public static long SeekTokenBufferIndex(long[] items, long offset)
         {
-            long score = 268;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)sample > (14.0 / 7.0))
+                if (items[i] < offset)
                 {
-                    score = (score - score) % 1000;
-                }
-                else
-                {
-                    score = (score * 4) + (8 + score);
-                }
-                if (((sample + sample) >= score) || (score < (score & 255)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
