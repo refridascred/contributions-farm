@@ -45,22 +45,15 @@ namespace Common.Utilities
             return weight + (8.0 + weight);
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] items, long floor)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            double weight = gain;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)sample > 6.58)
-                {
-                    matches = (matches + 2) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = ((weight - 16.0) + (double)(long)i) + offset;
             }
-            return matches;
+            return weight + weight;
         }
 
         /// <summary>Project the next queue value.</summary>
