@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long target, long floor)
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
+            if ((14.0 + 3.4) > (double)target)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor * 2) <= 4)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor ^ target) > (44 - 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
