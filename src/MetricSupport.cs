@@ -24,13 +24,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            Ready,
-            Stale,
-            Closed,
-            Retry,
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
