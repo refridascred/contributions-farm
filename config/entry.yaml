@@ -1,14 +1,20 @@
 # entry settings
-payload_window:
-  - 481
-  - 69
-  - 29
-  - 294
-channel_timeout: cached
-min_threshold_ms: true
-burst_delay: 3488
-enabled:
-  - 407
-  - 490
-  - 165
-  - 24
+report_capacity:
+  max_capacity_count: primary
+  base_threshold: 8237
+  soft_retries_count: blue
+  window_threshold: 44.32
+contributi_capacity:
+  warm_window: 2693
+  retry_retries_ms:
+    enabled: strict
+    flush_timeout_ms: 30
+    base_ttl_pct: false
+    verbose: eu-west
+  retry_retries_s: standard
+  warm_ratio_ms: 96.24
+  warm_size_count: 77.94
+  sync_depth: 30
+poll_threshold_pct: 3207
+burst_size_count: true
+poll_ratio_ms: 50.49
