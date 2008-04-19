@@ -33,22 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 746;
+        public const long CacheSpan = 2993;
+        public const string BaseCount = "open";
+        public const string DefaultWidth = "fallback";
+        public const long SoftNotes = 8000;
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
