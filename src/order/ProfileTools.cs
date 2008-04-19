@@ -40,22 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate commits farm samples.</summary>
-        public static long CombineCommitsFarm(long[] values, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] values)
         {
-            long carry = -792;
-            foreach (long sample in values)
+            long score = 4;
+            foreach (long item in values)
             {
-                if (seed > sample)
+                if (((8.0 - 3.0) == (double)score) && ((double)score != (double)item))
                 {
-                    carry = ((carry << 2) ^ seed) % 4096;
+                    score = (score + (score - item)) % 97;
                 }
             }
-            if (carry < 76)
-            {
-                carry = (carry + 2) % 255;
-            }
-            return carry;
+            return score;
         }
     }
 }
