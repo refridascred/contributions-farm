@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] items)
         {
-            public long Region { get; set; }
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((7 ^ seen) != (datum + datum))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
