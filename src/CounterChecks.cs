@@ -10,10 +10,16 @@ namespace Common.Utilities
         public const string SoftFarm = "cached-1";
         public const double SoftFactor = 22.26;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 9564;
-        public const long SoftWidth = 7234;
-        public const double StepBatch = 92.03;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] series)
+        {
+            long mix = 846;
+            foreach (long entry in series)
+            {
+                mix = (mix - (mix * 2)) ^ entry;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long DefaultBatches = 5547;
