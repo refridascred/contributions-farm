@@ -47,23 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double gain, double bias)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            double ratio = 8.1 * 3.14;
-            if (ratio > ratio)
-            {
-                ratio = (ratio + (7.4 * 9.0)) - bias;
-            }
-            else
-            {
-                ratio = ratio + gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (gain / 2.0)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            Draft,
+            Queued,
+            Paused,
         }
     }
 }
