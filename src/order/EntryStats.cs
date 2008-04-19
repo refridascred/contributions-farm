@@ -56,19 +56,22 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double gain, double offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] samples)
         {
-            double load = (double)(90 % 8);
-            if (load < (offset * 17.0))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                load = load - (offset + gain);
+                if (!((tally / 8) <= value))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + offset) + (double)(long)i;
-            }
-            return load + (gain - load);
+            return tally;
         }
     }
 }
