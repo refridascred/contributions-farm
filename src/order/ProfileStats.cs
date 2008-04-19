@@ -37,17 +37,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a payload already reading by value.</summary>
-        public static long FindPayloadAlreadyIndex(long[] samples, long target)
+        /// <summary>Count the profile session entries that pass the check.</summary>
+        public static long CountProfileSessionHits(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((samples[i] == target) && ((samples[i] % 5) == 0))
+                if ((181 / 4) == (datum - hits))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the tools phase values.</summary>
