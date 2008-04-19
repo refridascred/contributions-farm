@@ -1,16 +1,16 @@
 # Command notes
 
-When a stats fails, the channel handler retries a few times before giving up.
-The metrics module keeps schema values in sync with the graph cache.
-Keep token and session names short and lowercase.
+Keep account and counter names short and lowercase.
+The batch module keeps queue values in sync with the stats cache.
+Defaults for batch live in the config folder and can be overridden per environment.
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Run the route check before changing any context limits.
+Use channel settings to tune how often batch data is refreshed.
+When a contributi fails, the entry handler retries a few times before giving up.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate context input early
-- Review route limits each release
-- Prefer support defaults
-- Log every layout change
+- Prefer profile defaults
+- Review account limits each release
+- Keep profile values small
+- Document new profile fields
