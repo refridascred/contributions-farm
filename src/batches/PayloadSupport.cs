@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double rate, double floor)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            double gain = floor;
-            if (gain >= (4.27 * 5.8))
-            {
-                gain = gain + (double)(-780);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (floor / 8.0)) - (double)(long)i;
-            }
-            return gain + (rate + floor);
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
