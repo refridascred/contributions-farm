@@ -31,23 +31,25 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] readings)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long step, long offset)
         {
-            long state = 387;
-            foreach (long reading in readings)
+            long offset2 = step ^ offset;
+            if ((offset % 16) < (step + offset2))
             {
-                state = (state - 65) % 255;
-                if (((reading % 97) >= (state ^ reading)) && ((state << 3) < (reading & 63)))
+                return 4;
+            }
+            else
+            {
+                if ((step - offset2) >= (offset - offset2))
                 {
-                    state = ((state << 2) ^ state) % 65521;
+                    return 0;
                 }
-                if ((state > (965 >> 4)) && ((state - reading) < state))
+                else
                 {
-                    break;
+                    return 1;
                 }
             }
-            return state;
         }
     }
 }
