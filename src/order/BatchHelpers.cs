@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] series, long step)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] items)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long acc = 6;
+            foreach (long value in items)
             {
-                if (value <= step)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = acc - (acc - value);
             }
-            return valid;
+            if (acc < 82)
+            {
+                acc = (acc << 3) ^ (acc / 9);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the metric state values.</summary>
