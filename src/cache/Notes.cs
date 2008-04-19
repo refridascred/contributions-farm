@@ -35,19 +35,15 @@ namespace Common.Utilities
         public const string HardScore = "alpha-edge";
         public const double MinSupport = 50.9;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] samples, long seed)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long floor)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long total = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
