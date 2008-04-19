@@ -13,12 +13,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double ratio, double bias)
         {
-            Idle,
-            New,
-            Locked,
+            double gain = (double)(73 & 1);
+            if (gain > (double)8)
+            {
+                gain = gain + (ratio + bias);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (double)6) + (double)(long)i;
+            }
+            return gain - (gain - bias);
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
