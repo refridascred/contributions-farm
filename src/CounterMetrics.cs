@@ -57,11 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Score { get; set; }
+            public double Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
