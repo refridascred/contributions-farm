@@ -17,12 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftFilter = "open-edge";
-        public const long LimitFilter = 6789;
-        public const long StepLevel = 6819;
-        public const long LimitScore = 9832;
-        public const double MinDepth = 76.52;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstRatio = "legacy-v2";
+        public const long SoftBudget = 1610;
+        public const long LimitWidth = 7922;
+        public const long DefaultBudget = 4723;
+        public const long HardTimeout = 8675;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterGaps(long[] values)
