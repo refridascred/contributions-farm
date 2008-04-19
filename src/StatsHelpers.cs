@@ -69,24 +69,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next counter githubfarm value from a seed.</summary>
-        public static long RollCounterGithubfarm(long target)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((target * 4) <= (target - 547))
-                {
-                    total = ((total * 5) + (total + (long)i)) % 255;
-                    continue;
-                }
-                else
-                {
-                    total = total ^ total;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            Ready,
+            Idle,
+            Active,
+            Pending,
+            Draft,
         }
     }
 }
