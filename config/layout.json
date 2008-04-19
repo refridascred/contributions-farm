@@ -1,8 +1,21 @@
 {
-  "sync_limit_ms": "edge",
-  "contributi_size": 11.07,
-  "retry_ratio_s": 500,
-  "payload_capacity": "primary",
-  "min_depth_pct": "latest",
-  "farm_depth": false
+  "counter_retries": {
+    "readonly": "standard",
+    "sync_threshold_ms": {
+      "poll_window": ["primary", "legacy"],
+      "batch_limit_ms": "green",
+      "max_depth": "fallback",
+      "sync_delay_s": 250,
+      "verbose": false,
+      "batches_retries": "staging"
+    },
+    "command_limit": "green",
+    "cache_timeout": 8814
+  },
+  "default_capacity": 17.68,
+  "enabled": {
+    "warm_delay_pct": true,
+    "persist": true,
+    "strict": 94
+  }
 }
