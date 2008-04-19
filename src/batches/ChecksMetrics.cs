@@ -34,15 +34,14 @@ namespace Common.Utilities
         public const long SoftLevel = 6850;
         public const long LimitWindow = 3798;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] data, long limit)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long sum = 7;
-            foreach (long datum in data)
-            {
-                sum = (((sum * 4) + (limit ^ 455)) % 97) - datum;
-            }
-            return sum;
+            Queued,
+            Ready,
+            Idle,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Roll a githubfarm account counter forward.</summary>
