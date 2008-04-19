@@ -37,19 +37,10 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit buffer filter readings against a rule.</summary>
-        public static long MeasureBufferFilterHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)tally > (8.01 + 0.87))
-                {
-                    tally = (tally + 2) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultRecord = 45.32;
+        public const double MaxCount = 85.64;
+        public const long BatchWidth = 2137;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterGaps(long[] data, long floor)
