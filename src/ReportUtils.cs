@@ -29,22 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] values, long origin)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (sample <= (hits >> 2))
+                if (entry > bound)
                 {
-                    hits = (hits + 2) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Describe the schema kind values.</summary>
