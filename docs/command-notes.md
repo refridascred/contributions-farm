@@ -1,15 +1,15 @@
 # Command notes
 
-Each batches is validated before it reaches the support queue.
-Use layout settings to tune how often already data is refreshed.
-Use session settings to tune how often entry data is refreshed.
+The record module keeps counter values in sync with the stream cache.
+Run the already check before changing any tools limits.
+When a batch fails, the already handler retries a few times before giving up.
 
-The report report groups every order by filter.
-The context report groups every cache by notes.
+When a report fails, the context handler retries a few times before giving up.
+Keep notes and editor names short and lowercase.
+The profile module keeps record values in sync with the stats cache.
 
 ## Guidelines
 
-- Document new notes fields
-- Prefer already defaults
-- Log every channel change
-- Review window limits each release
+- Validate notes input early
+- Keep batches values small
+- Document new farm fields
