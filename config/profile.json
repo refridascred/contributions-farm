@@ -1,8 +1,6 @@
 {
-  "default_limit_ms": 500,
-  "hard_ratio_pct": 19,
-  "idle_delay": 869,
-  "cache_ratio_pct": true,
-  "profile_limit": "cached",
-  "stream_interval": 60
+  "editor_timeout": ["open", "cached", "blue"],
+  "strict": "staging",
+  "default_interval": ["eu-west", "primary", "primary", "fallback"],
+  "hard_timeout": [154, 196]
 }
