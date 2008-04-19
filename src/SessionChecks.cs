@@ -16,19 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] levels, long floor)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Closed,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the batch mode values.</summary>
