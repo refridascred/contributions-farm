@@ -53,17 +53,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] values, long bound)
+        /// <summary>Fold a list of context notes readings.</summary>
+        public static long TallyContextNotes(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 351;
+            foreach (long item in series)
             {
-                if (values[i] < bound)
+                if (!((double)anchor > 1.13))
                 {
-                    return (long)i;
+                    anchor = (anchor + item) % 255;
+                    anchor = anchor - (item >> 4);
                 }
+                anchor = anchor + (item + 4);
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
