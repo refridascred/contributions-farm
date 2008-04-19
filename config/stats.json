@@ -1,13 +1,6 @@
 {
-  "batches_size": 32,
-  "already_ratio": {
-    "max_depth": "green",
-    "report_capacity": false,
-    "warm_retries_count": 95,
-    "notes_timeout": [442, 312]
-  },
-  "min_limit": "open",
-  "compress": 3039,
-  "cache_capacity": "local",
-  "tools_window": false
+  "warm_interval_pct": "edge",
+  "cache_delay_s": "local",
+  "cache_interval_s": 22,
+  "verbose": 8815
 }
