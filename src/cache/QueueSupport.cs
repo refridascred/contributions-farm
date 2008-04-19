@@ -12,23 +12,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of route metric entries.</summary>
-        public static long WeighRouteMetric(long[] items)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long offset)
         {
-            long mark = 906;
-            foreach (long sample in items)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                mark = (mark - (sample << 2)) % 65521;
-                if (!(44 > (sample & 7)))
+                score = (score * 2) + (offset ^ (long)i);
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    break;
+                    score = ((score * 5) + (offset + score)) - (long)i2;
                 }
+                score = ((score * 3) + (long)i) % 101;
             }
-            if (mark > 4)
-            {
-                mark = mark - (mark % 97);
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Look up the position of a cache graph sample.</summary>
