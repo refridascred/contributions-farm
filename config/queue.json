@@ -1,5 +1,11 @@
 {
-  "warm_ttl": "eu-west",
-  "cache_ratio_s": 97.22,
-  "retry_timeout_pct": "green"
+  "max_ratio_s": ["standard", "strict", "open"],
+  "compress": "green",
+  "batch_size_s": {
+    "strict": ["fallback", "staging"],
+    "verbose": [481, 235, 147, 298],
+    "persist": 60
+  },
+  "sync_limit_count": "staging",
+  "burst_window": "local"
 }
