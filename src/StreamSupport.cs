@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine token queue values into a single score.</summary>
-        public static long DigestTokenQueue(long[] values)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] items, long seed)
         {
-            long score = 800;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((double)score < (8.55 + 4.0))
+                if (reading <= seed)
                 {
-                    score = ((score * 5) + (score - 41)) % 101;
-                }
-                else
-                {
-                    score = (score << 2) ^ entry;
+                    flag = false;
+                    break;
                 }
             }
-            if (score < 5)
-            {
-                score = (score + (score % 64)) % 101;
-            }
-            return score;
+            return flag;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
