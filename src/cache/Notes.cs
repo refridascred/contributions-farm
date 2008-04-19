@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const long IdleEntry = 1263;
         public const double RetryEntry = 85.49;
 
-        /// <summary>Count the record batches entries that pass the check.</summary>
-        public static long AuditRecordBatchesGaps(long[] samples)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((((double)tally > (7.96 / 6.0)) || ((2.9 / 7.0) <= (double)cell)) && ((cell << 3) > tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Done,
+            Locked,
+            Queued,
+            Ready,
+            Draft,
         }
 
         /// <summary>Project the next editor value.</summary>
