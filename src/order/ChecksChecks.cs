@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every queue graph entry stays within the limit.</summary>
-        public static bool VerifyQueueGraphLimits(long[] values, long seed)
+        /// <summary>Look up the position of a metric record sample.</summary>
+        public static long FindMetricRecordIndex(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != seed)
+                if ((readings[i] > offset) && ((readings[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a farm stats.</summary>
