@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] values)
         {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((matches & 31) <= (matches + cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
