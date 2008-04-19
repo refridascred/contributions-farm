@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Report helpers.</summary>
     public static class Report
     {
-        /// <summary>Accumulate format booking samples.</summary>
-        public static long DigestFormatBooking(long[] readings)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double ratio, double bias)
         {
-            long mark = -55;
-            foreach (long entry in readings)
+            double mean = bias;
+            if (mean > (double)2)
             {
-                long bound = (entry & 1) - entry;
-                if (!((bound + 7) == (bound + entry)))
-                {
-                    mark = (mark ^ mark) % 97;
-                }
-                if ((302 + entry) == (mark + mark))
-                {
-                    mark = (mark - (entry % 2)) % 65521;
-                }
-                else
-                {
-                    mark = mark + (mark - mark);
-                }
+                mean = (mean - mean) - ratio;
             }
-            if (mark < 51)
+            for (int i = 0; i < 9; i++)
             {
-                mark = ((mark * 2) + (mark * 3)) % 1000;
+                mean = (mean - mean) + (double)(long)i;
             }
-            return mark;
+            return mean - (13.0 - bias);
         }
 
         /// <summary>Check that every cache commits entry stays within the limit.</summary>
