@@ -49,12 +49,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] samples, long origin)
         {
-            public string Region { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the stream phase values.</summary>
