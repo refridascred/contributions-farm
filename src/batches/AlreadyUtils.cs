@@ -33,21 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the contributi state values.</summary>
