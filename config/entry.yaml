@@ -1,19 +1,27 @@
 # entry settings
-channel_window: 6215
-warm_delay_s: 3422
-readonly: true
-sync_size_ms: true
-poll_depth_pct:
+persist: 3841
+metrics_window:
   - stable
-  - eu-west
-  - legacy
-strict:
-  profile_ratio: 9088
-  enabled: blue
-  min_ratio:
-    hard_depth_count: local
-    cache_depth: 17.26
-    tools_limit: local
-    commits_ratio: false
-  warm_depth_count: 64
-  token_capacity: 73.66
+  - strict
+readonly:
+  max_timeout: cached
+  session_window: 31
+  queue_interval: eu-west
+  hard_window_s:
+    enabled: blue
+    min_interval_s: 1625
+    min_threshold:
+      - open
+      - cached
+    contributi_ratio:
+      - 8
+      - 375
+      - 222
+      - 72
+    route_interval: false
+  sync_ttl_pct:
+    - legacy
+    - stable
+    - blue
+  verbose: 3030
+base_window_ms: edge
