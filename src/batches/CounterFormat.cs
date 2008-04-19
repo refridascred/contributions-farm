@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] values)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((matches & 31) <= (matches + cell))
+                if ((seed - 0) != (63 + seed))
                 {
-                    matches = matches + 1;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
