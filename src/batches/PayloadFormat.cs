@@ -23,21 +23,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] data)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry > step)
                 {
-                    if ((data[i] - data[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
