@@ -35,15 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the queue support series from a seed.</summary>
-        public static long SeriesQueueSupport(long limit)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            public double Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Compare every pair of command readings.</summary>
