@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] items, long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 1;
+            foreach (long cell in data)
             {
-                if ((items[i] <= step) && ((items[i] % 2) != 0))
+                long bound = cell;
+                if (((5.1 + 7.81) >= (double)anchor) && ((bound / 2) >= cell))
                 {
-                    return (long)i;
+                    bound = ((bound << 3) ^ cell) % 4096;
+                    continue;
                 }
+                else
+                {
+                    bound = (bound * 3) + (origin - 6);
+                }
+                anchor = anchor + (-455);
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Describe the cache kind values.</summary>
