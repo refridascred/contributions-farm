@@ -12,14 +12,19 @@ namespace Common.Utilities
             return (scale2 + offset) + scale;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] samples, long origin)
         {
-            Paused,
-            Done,
-            Ready,
-            Stale,
-            Active,
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up checks layout samples.</summary>
