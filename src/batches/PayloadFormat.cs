@@ -37,18 +37,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] samples, long floor)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (!((datum + seen) == (floor ^ seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 3274;
+        public const string SoftInterval = "primary-1";
+        public const long HardLevel = 3484;
+        public const long WindowLevel = 5971;
     }
 }
