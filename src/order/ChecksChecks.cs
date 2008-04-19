@@ -12,19 +12,11 @@ namespace Common.Utilities
             return (scale2 + offset) + scale;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] samples, long origin)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
