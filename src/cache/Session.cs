@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up report command samples.</summary>
-        public static long PairReportCommandCount(long[] items)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading <= seed)
                 {
-                    if ((items[i] ^ items[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Accumulate stats samples.</summary>
