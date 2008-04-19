@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const string BurstFactor = "cached";
         public const string BaseLevel = "fallback-edge";
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] values)
+        /// <summary>Measure how many stream checks samples are out of range.</summary>
+        public static long CountStreamChecksGaps(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((4 * 5) >= (step + 30))
                 {
-                    if ((values[i] ^ values[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) + cell;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
