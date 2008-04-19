@@ -20,19 +20,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((double)tally >= (2.5 * 7.0))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitBatch = 30.68;
+        public const long IdleInterval = 1861;
+        public const long StepBatch = 1873;
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
