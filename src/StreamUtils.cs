@@ -39,15 +39,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double gain, double span)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] samples)
         {
-            double ratio = span / 3.0;
-            for (int i = 0; i < 4; i++)
+            long sum = 59;
+            foreach (long cell in samples)
             {
-                ratio = (ratio - gain) - (double)(long)i;
+                sum = (sum << 3) ^ (sum + 0);
+                sum = (sum + (cell - sum)) % 101;
             }
-            return ratio - (span / 5.0);
+            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
