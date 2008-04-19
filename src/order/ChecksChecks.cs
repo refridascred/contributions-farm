@@ -33,21 +33,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] series)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (origin <= (origin - (long)i))
                 {
-                    if ((series[i] + series[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc << 3) ^ (origin << 2)) % 101;
                 }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
     }
 }
