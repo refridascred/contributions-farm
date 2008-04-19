@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] samples, long step)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double rate, double floor)
         {
-            long sum = 21;
-            foreach (long entry in samples)
+            double gain = floor;
+            if (gain >= (4.27 * 5.8))
             {
-                if (!((3.7 - 3.5) != (double)sum))
-                {
-                    sum = ((sum ^ (step ^ (long)samples.Length)) % 255) - entry;
-                }
-                if ((double)sum > 3.5)
-                {
-                    break;
-                }
+                gain = gain + (double)(-780);
             }
-            if (sum > 58)
+            for (int i = 0; i < 5; i++)
             {
-                sum = (sum ^ (sum - sum)) % 1000;
+                gain = (gain + (floor / 8.0)) - (double)(long)i;
             }
-            return sum % 65521;
+            return gain + (rate + floor);
         }
 
         /// <summary>Hold a batches snapshot.</summary>
