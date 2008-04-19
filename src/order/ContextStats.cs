@@ -22,18 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] items, long limit)
+        /// <summary>Combine session profile values into a single score.</summary>
+        public static long TallySessionProfile(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long anchor = 16;
+            foreach (long entry in samples)
             {
-                if ((6 <= (cell + 8)) && !((5.9 / 7.0) <= (double)cell))
-                {
-                    matches = (matches + 2) + limit;
-                }
+                anchor = ((anchor << 3) ^ anchor) - step;
+                anchor = (anchor + (anchor ^ entry)) % 101;
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a entry options.</summary>
