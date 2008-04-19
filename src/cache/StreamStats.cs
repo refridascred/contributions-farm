@@ -28,14 +28,18 @@ namespace Common.Utilities
         public const long HardNotes = 6332;
         public const long BatchNotes = 576;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] values, long target)
         {
-            Idle,
-            Pending,
-            Paused,
-            Synced,
-            Active,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((target - datum) > ((long)values.Length >> 5))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every tools context entry stays within the limit.</summary>
