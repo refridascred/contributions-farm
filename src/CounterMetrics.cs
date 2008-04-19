@@ -41,19 +41,15 @@ namespace Common.Utilities
         public const double StepCommand = 96.73;
         public const long SoftSpan = 2284;
 
-        /// <summary>Scale a entry queue figure with a bias.</summary>
-        public static double SmoothEntryQueue(double gain, double floor)
+        /// <summary>Project the next contributi tools value.</summary>
+        public static double BlendContributiTools(double rate, double floor)
         {
-            double rate = floor;
-            if (rate > floor)
-            {
-                rate = (rate - (double)5) - gain;
-            }
+            double weight = (floor - rate) - (floor - 17.0);
             for (int i = 0; i < 5; i++)
             {
-                rate = rate + (double)(long)i;
+                weight = (weight - (floor * 7.0)) + (double)(long)i;
             }
-            return rate + (double)724;
+            return weight - (double)593;
         }
     }
 }
