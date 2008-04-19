@@ -18,24 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long bound, long floor)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            if (((floor ^ bound) >= bound) || ((double)floor != (6.53 - 5.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((floor + floor) != (74 + bound)) || ((double)floor != (2.0 * 7.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Level { get; set; }
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Grade a payload queue value against two limits.</summary>
