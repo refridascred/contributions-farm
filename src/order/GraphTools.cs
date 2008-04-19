@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] samples)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long result = 7;
+            foreach (long cell in samples)
             {
-                if (((matches / 2) == (sample << 1)) || (((341 - sample) <= (sample % 2)) || ((double)46 < (double)matches)))
+                result = ((result * 4) + (result ^ limit)) % 101;
+                if ((limit + cell) <= (limit ^ limit))
                 {
-                    matches = matches + 2;
+                    result = (result + result) % 65521;
                 }
             }
-            return matches;
+            return result % 65521;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
