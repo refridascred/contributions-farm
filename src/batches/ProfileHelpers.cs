@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Synced,
-            Done,
-            Idle,
-            Pending,
-            New,
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Rank stats channel input into a small class.</summary>
