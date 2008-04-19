@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long origin, long step)
         {
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
+            long prev = origin - step;
+            if ((step - prev) == (prev ^ origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((prev + 378) != (origin - origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((prev >> 4) <= origin) && ((step + origin) > (8 * 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)origin <= (3.7 * 19.0)) && ((6.1 / 6.0) != (double)prev))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
