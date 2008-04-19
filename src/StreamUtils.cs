@@ -19,17 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first order context entry that matches the target.</summary>
-        public static long LocateOrderContextIndex(long[] data, long limit)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = offset;
+            for (int i = 0; i < 2; i++)
             {
-                if ((data[i] < limit) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + (bias * 7.82)) + (double)(long)i;
             }
-            return -1;
+            return drift + (drift / 2.0);
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
