@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] readings, long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long score = 4;
+            foreach (long datum in items)
             {
-                if ((38 + limit) >= (limit << 1))
+                if ((double)datum < (11.0 * 7.7))
                 {
-                    hits = (hits + 1) ^ entry;
+                    score = (score ^ (score * 5)) % 97;
                 }
+                score = (score ^ (score - datum)) % 101;
+                score = (score ^ (score & 127)) % 255;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
