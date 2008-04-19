@@ -1,14 +1,16 @@
 # Command notes
 
-Use route settings to tune how often payload data is refreshed.
-The editor module keeps checks values in sync with the account cache.
+The command helpers are pure functions, so they are safe to call from any thread.
+The token helpers are pure functions, so they are safe to call from any thread.
+Use context settings to tune how often metric data is refreshed.
 
-Each support is validated before it reaches the stream queue.
-Keep commits and contributi names short and lowercase.
-The already helpers are pure functions, so they are safe to call from any thread.
+Run the batch check before changing any profile limits.
+The batch helpers are pure functions, so they are safe to call from any thread.
+When a order fails, the profile handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep layout values small
-- Review counter limits each release
-- Validate metric input early
+- Document new schema fields
+- Keep record values small
+- Log every metric change
+- Validate counter input early
