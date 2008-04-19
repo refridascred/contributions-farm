@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double ratio, double floor)
-        {
-            double ratio2 = floor;
-            if (ratio2 < (ratio - floor))
-            {
-                ratio2 = ratio2 + ratio2;
-            }
-            else
-            {
-                ratio2 = ratio2 - (double)7;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 - (ratio2 - ratio2)) + (double)(long)i;
-            }
-            return ratio2 - (2.69 + 3.0);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftRecord = 74.58;
+        public const long IdleCount = 3477;
+        public const string MaxDepth = "strict-1";
+        public const string WindowRecord = "strict-1";
 
         /// <summary>Locate a counter command reading by value.</summary>
         public static long LocateCounterCommandIndex(long[] values, long floor)
