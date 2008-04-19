@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] readings)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits / 6) >= (969 << 3))
+                if ((data[i] > seed) && ((data[i] % 3) == 0))
                 {
-                    hits = (hits + 2) - sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
