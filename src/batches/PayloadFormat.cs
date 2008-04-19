@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] series, long seed)
+        /// <summary>Audit record payload readings against a rule.</summary>
+        public static long MeasureRecordPayloadOutliers(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((double)reading >= (double)count)
+                if ((target / 6) <= (item >> 1))
                 {
-                    count = (count + 3) + seed;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
