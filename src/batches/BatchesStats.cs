@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((double)4 > (double)origin)
-                {
-                    anchor = (anchor + (origin / 6)) % 4096;
-                }
-                if (!(origin >= (87 & 15)))
-                {
-                    anchor = ((anchor * 2) + (anchor >> 5)) % 101;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 9750;
+        public const long BaseStream = 7435;
+        public const long LimitStream = 1330;
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
