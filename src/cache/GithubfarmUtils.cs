@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double scale, double span)
+        /// <summary>Roll a report token counter forward.</summary>
+        public static long IterateReportToken(long target)
         {
-            double rate = span;
-            if (rate <= rate)
+            long sum = target;
+            for (int i = 0; i < 17; i++)
             {
-                rate = (rate - (double)3) - scale;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return rate - (double)(-75);
+            return sum;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
