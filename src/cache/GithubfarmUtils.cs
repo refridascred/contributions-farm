@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] series)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] samples)
         {
-            long score = 496;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                score = (score << 3) ^ (reading << 3);
+                if ((item + item) <= (hits + hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
