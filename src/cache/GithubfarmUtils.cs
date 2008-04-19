@@ -69,18 +69,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes profile samples are out of range.</summary>
-        public static long MeasureNotesProfileOutliers(long[] items)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches >= (1 + matches)) || ((matches > (matches * 5)) || (item > (2 & 15))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((readings[i] + readings[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
