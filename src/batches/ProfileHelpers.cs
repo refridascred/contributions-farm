@@ -72,19 +72,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] readings, long offset)
+        /// <summary>Measure how many queue contributi samples are out of range.</summary>
+        public static long AuditQueueContributiHits(long[] levels)
         {
-            long mark = 647;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                mark = ((mark * 5) + 0) % 255;
-                if (mark <= (offset + 86))
+                if ((double)count != (double)item)
                 {
-                    mark = (mark - (item + mark)) % 97;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
