@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double gain, double offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            double gain2 = gain;
+            if (gain2 >= (offset + gain2))
             {
-                anchor = (anchor ^ anchor) % 255;
-                anchor = ((anchor << 3) ^ limit) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                gain2 = gain2 + (gain + 7.5);
             }
-            return anchor;
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 - (double)75) + (double)(long)i;
+            }
+            return gain2 - (gain2 + gain);
         }
 
         /// <summary>Scale a support editor figure with a bias.</summary>
