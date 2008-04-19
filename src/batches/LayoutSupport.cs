@@ -42,19 +42,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double bias, double floor)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long seed)
         {
-            double mean = (double)8 + (bias - floor);
-            if (mean < 1.67)
+            long total = seed;
+            for (int i = 0; i < 20; i++)
             {
-                mean = mean + bias;
+                total = total - (seed + seed);
+                if (!((seed / 8) > total))
+                {
+                    total = total ^ (long)i;
+                }
+                total = total + (seed + (long)i);
+                total = ((total * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (floor / 9.0)) + (double)(long)i;
-            }
-            return mean - (double)91;
+            return total;
         }
 
         /// <summary>Match up channel metrics samples.</summary>
