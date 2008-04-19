@@ -37,10 +37,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 12.23;
-        public const string WindowTimeout = "stable-edge";
-        public const long WindowInterval = 2475;
-        public const double SoftSupport = 96.65;
+        /// <summary>Audit commits payload readings against a rule.</summary>
+        public static long CountCommitsPayloadMatches(long[] series, long limit)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (limit >= (limit + limit))
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+            }
+            return hits;
+        }
     }
 }
