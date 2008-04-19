@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheDepth = 61.18;
-        public const string WindowTools = "latest";
-        public const long BatchSpan = 2169;
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double gain, double floor)
+        {
+            double rate = gain;
+            if (rate >= (floor / 7.0))
+            {
+                rate = rate - rate;
+            }
+            else
+            {
+                rate = rate + floor;
+            }
+            return rate - rate;
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool VerifyReportRange(long[] levels, long limit)
