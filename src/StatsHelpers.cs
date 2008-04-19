@@ -51,22 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter session readings.</summary>
-        public static long TotalFilterSession(long[] values, long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] data, long seed)
         {
-            long result = 557;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (((limit & 7) <= (-76)) || ((datum * 4) >= (result / 5)))
+                if (entry < seed)
                 {
-                    result = (result ^ (72 * 3)) % 97;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (datum << 2)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Hold a contributi summary.</summary>
