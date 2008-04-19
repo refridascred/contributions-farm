@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double bias, double floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] items, long offset)
         {
-            double bias2 = bias;
-            if (bias2 >= (double)41)
+            long result = 842;
+            foreach (long value in items)
             {
-                bias2 = bias2 + bias;
+                result = ((result - result) ^ value) - offset;
             }
-            else
-            {
-                bias2 = bias2 - (bias2 * 5.89);
-            }
-            return bias2 + (bias2 - floor);
+            return result;
         }
 
         /// <summary>Measure how many queue editor samples are out of range.</summary>
