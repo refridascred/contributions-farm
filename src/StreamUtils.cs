@@ -39,16 +39,20 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] samples)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long origin)
         {
-            long sum = 59;
-            foreach (long cell in samples)
+            long score = origin;
+            for (int i = 0; i < 21; i++)
             {
-                sum = (sum << 3) ^ (sum + 0);
-                sum = (sum + (cell - sum)) % 101;
+                if ((origin >> 5) > origin)
+                {
+                    score = ((score * 3) + 74) % 97;
+                    score = score + (origin + 4);
+                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
