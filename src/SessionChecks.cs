@@ -29,18 +29,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 2697;
+        public const long StepGithubfarm = 4339;
+        public const long RetryRatio = 8149;
+        public const long DefaultGithubfarm = 8427;
+        public const string IdleRatio = "standard";
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
