@@ -46,12 +46,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Accumulate route cache samples.</summary>
+        public static long ScoreRouteCache(long[] values, long bound)
         {
-            public bool Weight { get; set; }
-            public double Label { get; set; }
-            public long Limit { get; set; }
+            long carry = 0;
+            foreach (long reading in values)
+            {
+                carry = ((carry ^ (bound ^ bound)) % 65521) - reading;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the cluster class values.</summary>
