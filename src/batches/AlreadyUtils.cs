@@ -33,11 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] levels, long step)
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)step != (2.6 + 8.71))
+                {
+                    count = (count + 1) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the contributi state values.</summary>
