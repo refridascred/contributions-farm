@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] values, long limit)
         {
-            long result = 748;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in values)
             {
-                result = result - result;
-                if ((((long)samples.Length + result) != (entry - result)) || ((entry * 4) <= (result * 3)))
+                if ((reading ^ reading) > (reading >> 4))
                 {
-                    break;
+                    count = (count + 3) - limit;
                 }
             }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Audit counter record readings against a rule.</summary>
