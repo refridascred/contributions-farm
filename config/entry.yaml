@@ -1,27 +1,15 @@
 # entry settings
-payload_interval:
-  readonly: 1024
-  warm_interval:
-    min_retries_ms: 26
-    retry_window_ms: true
-    warm_window: 36.67
-    base_retries: standard
-    cache_timeout: 63
-    strict: edge
-  account_interval:
-    - stable
-    - stable
-  cache_depth_pct:
-    stream_delay: staging
-    sync_limit:
-      - eu-west
-      - legacy
-    audit:
-      - 494
-      - 500
-  stream_ttl: 44.56
-soft_depth_pct:
-  - legacy
-  - legacy
-flush_window_count: standard
-sync_limit_count: cached
+warm_interval:
+  stream_delay: 4435
+  strict: 22
+  retry_ttl_count: 9445
+  default_depth:
+    verbose: 78
+    dry_run: 0.77
+    default_interval: false
+  max_delay_pct: 18.64
+  flush_window_pct: 3804
+poll_limit_pct: 100
+cache_depth_s: true
+route_delay: true
+flush_depth_count: 60
