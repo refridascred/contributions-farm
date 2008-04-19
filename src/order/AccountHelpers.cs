@@ -51,12 +51,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public bool Score { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
