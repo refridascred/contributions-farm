@@ -46,12 +46,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseProfile = "latest-v2";
-        public const long IdleFactor = 5773;
-        public const double MinSpan = 32.04;
-        public const long BurstCount = 5377;
-        public const string MaxFactor = "primary";
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] items)
+        {
+            long mix = 72;
+            foreach (long reading in items)
+            {
+                if ((reading % 7) >= reading)
+                {
+                    mix = mix - mix;
+                }
+                mix = mix - (reading ^ mix);
+            }
+            return mix % 97;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string StepContributi = "local-edge";
