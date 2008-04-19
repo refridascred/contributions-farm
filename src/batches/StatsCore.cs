@@ -20,10 +20,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheDepth = 74.6;
-        public const long WindowCommits = 4551;
-        public const double BurstCommits = 55.53;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] items, long bound)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (!((tally ^ bound) < (long)items.Length))
+                {
+                    tally = (tally + 3) ^ item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
