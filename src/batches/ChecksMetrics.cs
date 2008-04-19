@@ -52,11 +52,21 @@ namespace Common.Utilities
         public const long RetryCluster = 2263;
         public const string DefaultCluster = "stable";
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Compare every pair of order notes readings.</summary>
+        public static long OverlapOrderNotesCount(long[] series)
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metrics level values.</summary>
