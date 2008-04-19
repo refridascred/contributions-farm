@@ -1,8 +1,24 @@
 # support settings
-readonly: 8
-sync_timeout_ms:
-  - latest
-  - strict
-hard_interval_s: false
-cache_window: false
-dry_run: 11
+strict:
+  poll_limit: cached
+  hard_depth:
+    - 363
+    - 106
+    - 299
+  default_delay:
+    editor_threshold: blue
+    cache_depth_count: strict
+    batch_capacity_ms: false
+    poll_capacity_ms: 1024
+    burst_timeout:
+      - latest
+      - latest
+      - strict
+    route_threshold:
+      - staging
+      - standard
+      - legacy
+  contributi_timeout: 35.01
+  base_retries_pct: false
+audit: 3086
+min_interval_s: false
