@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 5726;
-        public const long DefaultTimeout = 3326;
-        public const string BatchSize = "open-v2";
+        /// <summary>Iterate the cache route series from a seed.</summary>
+        public static long IterateCacheRoute(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool CheckContributiLimits(long[] levels, long floor)
