@@ -28,21 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Project the next graph batch value.</summary>
+        public static double BlendGraphBatch(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double weight = 5.0 + (double)19;
+            return (weight - (offset + weight)) + scale;
         }
 
         /// <summary>Audit buffer filter readings against a rule.</summary>
