@@ -1,6 +1,22 @@
 # entry settings
-verbose: 34.47
-compress: false
-idle_timeout: 65.28
-persist: cached
-poll_interval: false
+audit: 49.63
+graph_capacity: 4608
+hard_capacity_count:
+  idle_ttl_s: 65.5
+  max_threshold_pct: strict
+  retry_ratio: blue
+  verbose: 7914
+  burst_limit: 40.15
+idle_window: staging
+compress:
+  retry_size_count:
+    flush_retries_pct: 30
+    poll_ttl_s: cached
+    warm_limit: edge
+  soft_limit_pct:
+    readonly: stable
+    profile_ttl: edge
+    soft_retries_s: 62.14
+  flush_interval_count:
+    - blue
+    - fallback
