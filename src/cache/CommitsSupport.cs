@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a context buffer reading.</summary>
-        public static double AdjustContextBuffer(double gain, double offset)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double rate, double bias)
         {
-            double weight = (double)(2 / 7);
-            return ((weight - weight) + gain) + offset;
+            double rate2 = (double)(544 - 65);
+            if (rate2 >= (bias - rate))
+            {
+                rate2 = rate2 - (7.0 * 1.3);
+            }
+            else
+            {
+                rate2 = rate2 + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 - bias) + (double)(long)i;
+            }
+            return rate2 - rate2;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
