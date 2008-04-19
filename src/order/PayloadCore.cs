@@ -16,28 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                score = (score + ((long)i >> 2)) % 101;
-                if (((offset & 255) >= (offset * 5)) || ((score / 8) == (long)i))
-                {
-                    score = (score ^ score) % 1000;
-                    score = (score + (long)i) % 65521;
-                    break;
-                }
-                if (4.0 <= (double)score)
-                {
-                    score = (score * 4) + (score + offset);
-                    score = (score << 2) ^ (score % 7);
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public double Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
