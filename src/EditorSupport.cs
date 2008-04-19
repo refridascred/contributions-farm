@@ -72,17 +72,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] readings, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (readings[i] > origin)
+                if ((double)limit > 9.19)
                 {
-                    return (long)i;
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
