@@ -18,22 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout buffer readings against a rule.</summary>
-        public static long MeasureLayoutBufferOutliers(long[] samples)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long origin)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (!(((matches - sample) <= 649) || ((4.0 / 9.0) >= (double)sample)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 2) + mark) % 4096;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Blend two report measurements.</summary>
