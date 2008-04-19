@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] samples, long step)
+        /// <summary>Compare every pair of account payload readings.</summary>
+        public static long MatchAccountPayloadCount(long[] values)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (matches >= step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) + value;
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
