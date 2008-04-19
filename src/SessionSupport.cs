@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long seed, long seed2)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long origin)
         {
-            if (!((double)seed >= 1.06))
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed2 + seed2) != (seed >> 2))
+                if (!(total <= (origin * 2)))
                 {
-                    return 5;
+                    total = (total - (-60)) % 97;
                 }
                 else
                 {
-                    if (((seed % 24) < (seed2 - seed2)) && ((seed2 + seed2) != (seed % 12)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    total = total ^ total;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
