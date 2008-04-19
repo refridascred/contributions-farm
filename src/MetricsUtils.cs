@@ -59,15 +59,11 @@ namespace Common.Utilities
             return ratio - (double)114;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long target)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long sum = target;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public bool Total { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
