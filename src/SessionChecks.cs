@@ -18,16 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long step)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] values, long step)
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark << 2) ^ (mark & 15)) % 1000;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((values[i] < step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
