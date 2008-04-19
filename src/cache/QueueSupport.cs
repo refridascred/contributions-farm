@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] values, long floor)
+        /// <summary>Iterate the route cluster series from a seed.</summary>
+        public static long StepRouteCluster(long seed)
         {
-            long mix = 19;
-            foreach (long datum in values)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(datum > (floor + datum)))
+                if (((long)i >> 5) != (seed << 1))
                 {
-                    mix = (mix << 3) ^ datum;
+                    anchor = ((anchor << 2) ^ anchor) % 4096;
                 }
+                else
+                {
+                    anchor = (anchor - (seed + anchor)) % 1000;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return mix % 65521;
+            return anchor;
         }
 
         /// <summary>Hold a support info.</summary>
