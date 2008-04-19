@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const string MaxTimeout = "alpha-edge";
         public const long DefaultProfile = 3214;
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double scale, double offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] values)
         {
-            double load = (scale / 7.0) - (offset / 4.0);
-            if (load >= (double)425)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                load = load + scale;
+                if ((seen & 7) != (seen * 3))
+                {
+                    seen = (seen + 1) + reading;
+                }
             }
-            return load + 11.0;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
