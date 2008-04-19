@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultToken = "alpha-v2";
+        public const double CacheBudget = 40.35;
+        public const long BaseScore = 8852;
+        public const double BaseRatio = 53.06;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
