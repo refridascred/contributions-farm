@@ -64,15 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] samples, long origin)
         {
-            long acc = 633;
-            foreach (long item in samples)
+            long total = -9;
+            foreach (long sample in samples)
             {
-                acc = ((acc << 2) ^ (acc + item)) % 65521;
+                if ((double)(long)samples.Length < 18.0)
+                {
+                    total = (((total * 3) + (total ^ origin)) % 65521) ^ sample;
+                }
             }
-            return acc;
+            return total;
         }
     }
 }
