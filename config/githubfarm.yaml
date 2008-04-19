@@ -1,14 +1,21 @@
 # githubfarm settings
-cache_size_pct: true
-sync_ratio_s: legacy
-dry_run:
-  cache_capacity: 91
-  queue_ratio: 44.94
-  retry_capacity_ms: false
-  flush_timeout:
-    hard_size_pct:
-      - local
-      - local
-    poll_threshold: false
-    batch_size: fallback
-poll_size_pct: 30
+verbose: true
+cache_window_ms:
+  compress: standard
+  warm_timeout: 962
+  enabled:
+    burst_delay: 71
+    idle_limit_count: 66
+    burst_ttl_ms: true
+    soft_window: blue
+    min_interval_pct:
+      - 376
+      - 344
+      - 408
+    cache_ttl_count:
+      - 379
+      - 223
+audit: false
+order_interval: legacy
+persist: stable
+burst_delay_s: latest
