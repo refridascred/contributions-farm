@@ -47,23 +47,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate farm channel samples.</summary>
-        public static long WeighFarmChannel(long[] samples, long target)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] levels)
         {
-            long score = 77;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score + target) % 4096;
-                if (((score & 1) <= (item - 4)) || ((score * 2) < 385))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score ^ (item + 293)) % 1000;
+                    if ((levels[i] ^ levels[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score < 3)
-            {
-                score = score - (score + target);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
