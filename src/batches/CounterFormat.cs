@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count graph counter pairs that satisfy a relation.</summary>
-        public static long CompareGraphCounterCount(long[] values)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
