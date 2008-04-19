@@ -21,24 +21,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((offset + anchor) > (offset * 4))
-                {
-                    anchor = anchor - (anchor - (long)i);
-                }
-                if (offset >= (anchor & 7))
-                {
-                    anchor = ((anchor << 3) ^ offset) % 255;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultScore = 6338;
+        public const long StepBuffer = 3960;
+        public const long MinSize = 9037;
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
