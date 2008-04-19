@@ -74,12 +74,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double scale, double bias)
         {
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
+            double load = (double)(28 - 8);
+            if (load >= (bias * 4.0))
+            {
+                load = load + 8.0;
+            }
+            else
+            {
+                load = load + (scale - load);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (load - bias)) + (double)(long)i;
+            }
+            return load + (scale * 6.0);
         }
     }
 }
