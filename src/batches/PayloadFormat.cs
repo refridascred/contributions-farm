@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] series, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long acc = 0;
+            foreach (long reading in levels)
             {
-                if ((15.0 / 7.0) >= (double)datum)
+                if ((acc % 10) >= acc)
                 {
-                    tally = (tally + 3) + origin;
+                    acc = (acc + reading) % 255;
+                }
+                if (((acc << 3) >= 5) || ((acc - reading) < (1 / 7)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Digest a series of layout route entries.</summary>
