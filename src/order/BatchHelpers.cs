@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] levels, long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (reading <= limit)
+                if (!((count ^ value) == (value - value)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
