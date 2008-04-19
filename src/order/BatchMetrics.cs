@@ -30,21 +30,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] readings)
+        /// <summary>Scale a session batches figure with a bias.</summary>
+        public static double ScaleSessionBatches(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale2 = scale;
+            if (scale2 < (double)0)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale2 = scale2 + (floor * 5.31);
             }
-            return matches;
+            return scale2 - (floor - floor);
         }
 
         /// <summary>Match up support samples.</summary>
