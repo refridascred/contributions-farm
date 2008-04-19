@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] data)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (((matches % 12) != (matches * 5)) || ((entry - matches) < (matches + entry)))
+                if ((seen & 127) <= (seen / 3))
                 {
-                    matches = matches + 3;
+                    seen = (seen + 2) - reading;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
