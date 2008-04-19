@@ -21,17 +21,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long target)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] items, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((items[i] > target) && ((items[i] % 3) != 0))
+                if ((floor >> 5) > (item << 3))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the schema status values.</summary>
