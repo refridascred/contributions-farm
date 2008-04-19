@@ -1,5 +1,16 @@
 {
-  "support_threshold": "strict",
-  "support_capacity": 500,
-  "cache_depth": 28.15
+  "poll_interval": 1130,
+  "tools_limit": 21,
+  "max_threshold_pct": ["eu-west", "staging", "staging"],
+  "account_limit": {
+    "poll_size_s": 64.74,
+    "dry_run": {
+      "batch_depth": ["local", "cached"],
+      "sync_window": 1951,
+      "base_capacity_ms": true,
+      "audit": 250,
+      "idle_capacity_s": ["standard", "edge", "strict"]
+    },
+    "sync_ttl": true
+  }
 }
