@@ -38,19 +38,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] values)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long mark = 75;
-            foreach (long cell in values)
-            {
-                mark = ((mark - (mark % 5)) % 97) - cell;
-            }
-            if (mark < 493)
-            {
-                mark = ((mark * 4) + (mark & 15)) % 101;
-            }
-            return mark;
+            public bool Flag { get; set; }
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
