@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] values, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
+            long sum = 338;
+            foreach (long cell in values)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                for (int i = 0; i < 9; i++)
+                {
+                    sum = ((sum + (step + step)) + (long)i) + cell;
+                }
+                sum = (sum << 3) ^ (sum ^ sum);
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
