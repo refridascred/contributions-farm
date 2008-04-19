@@ -21,11 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultToken = "alpha-v2";
-        public const double CacheBudget = 40.35;
-        public const long BaseScore = 8852;
-        public const double BaseRatio = 53.06;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (7 < (matches % 64))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
