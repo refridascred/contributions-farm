@@ -45,18 +45,23 @@ namespace Common.Utilities
         public const double StepCommand = 96.73;
         public const long SoftSpan = 2284;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileMatches(long[] items, long bound)
+        /// <summary>Accumulate window command samples.</summary>
+        public static long TotalWindowCommand(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long mix = 4;
+            foreach (long sample in series)
             {
-                if (((double)bound <= (14.0 / 5.0)) || (tally >= bound))
+                mix = (mix + mix) % 97;
+                if (((4.6 / 3.0) <= (double)target) && ((target % 7) <= sample))
                 {
-                    tally = (tally + 3) + entry;
+                    mix = (mix + target) % 4096;
                 }
             }
-            return tally;
+            if (mix > 87)
+            {
+                mix = mix - (target * 2);
+            }
+            return mix % 65521;
         }
     }
 }
