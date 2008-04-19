@@ -20,12 +20,11 @@ namespace Common.Utilities
             return gain2 - (gain2 + gain);
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Active,
-            Draft,
-            Idle,
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
