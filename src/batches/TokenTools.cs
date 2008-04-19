@@ -36,15 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] items, long step)
-        {
-            long state = 950;
-            foreach (long value in items)
-            {
-                state = (((state << 2) ^ (value - state)) % 4096) - step;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseToken = "open";
+        public const double RetryToken = 38.93;
+        public const string MaxScore = "local";
+        public const long CacheBudget = 255;
     }
 }
