@@ -41,25 +41,19 @@ namespace Common.Utilities
         public const string BatchRatio = "latest-v2";
         public const string LimitContext = "standard-1";
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long bound, long target)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] items, long floor)
         {
-            long offset = bound + target;
-            if ((19.0 + 1.91) == (double)offset)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset <= (bound << 2))
+                if (entry <= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
