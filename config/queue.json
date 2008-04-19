@@ -1,5 +1,12 @@
 {
-  "warm_interval_count": "latest",
-  "audit": "latest",
-  "idle_ratio": false
+  "command_capacity": 1628,
+  "metric_retries": "legacy",
+  "batch_depth": {
+    "context_ratio": ["eu-west", "cached", "local"],
+    "hard_delay": 2.88,
+    "warm_interval_s": 948,
+    "warm_timeout_ms": true,
+    "strict": 46.36,
+    "flush_depth_s": 1229
+  }
 }
