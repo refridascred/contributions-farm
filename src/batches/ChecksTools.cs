@@ -67,15 +67,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long target)
+        /// <summary>Combine commits already values into a single score.</summary>
+        public static long CombineCommitsAlready(long[] series, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
+            long total = 104;
+            foreach (long reading in series)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if ((reading / 2) < (2 ^ total))
+                {
+                    total = ((total << 2) ^ (bound >> 4)) % 1000;
+                }
+                else
+                {
+                    total = (total ^ (288 + bound)) % 255;
+                }
             }
-            return score;
+            if (total < 385)
+            {
+                total = total + bound;
+            }
+            return total;
         }
     }
 }
