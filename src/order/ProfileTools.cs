@@ -38,12 +38,13 @@ namespace Common.Utilities
             return mean + (mean - mean);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleRoute = 10.91;
-        public const long DefaultWidth = 7018;
-        public const long RetryRoute = 7206;
-        public const long CacheRoute = 5317;
-        public const string StepRoute = "cached-1";
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Draft,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool CheckClusterRange(long[] items, long offset)
