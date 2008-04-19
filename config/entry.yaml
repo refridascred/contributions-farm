@@ -1,27 +1,7 @@
 # entry settings
-persist: 3841
-metrics_window:
-  - stable
-  - strict
-readonly:
-  max_timeout: cached
-  session_window: 31
-  queue_interval: eu-west
-  hard_window_s:
-    enabled: blue
-    min_interval_s: 1625
-    min_threshold:
-      - open
-      - cached
-    contributi_ratio:
-      - 8
-      - 375
-      - 222
-      - 72
-    route_interval: false
-  sync_ttl_pct:
-    - legacy
-    - stable
-    - blue
-  verbose: 3030
-base_window_ms: edge
+graph_capacity: 1024
+command_limit: 500
+soft_capacity_pct: 6478
+flush_limit_pct: 24.17
+min_ratio: 66.06
+entry_retries: 94.52
