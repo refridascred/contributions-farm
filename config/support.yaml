@@ -1,9 +1,29 @@
 # support settings
-compress: strict
-metric_depth: true
-base_ratio: staging
-enabled:
-  idle_interval_ms: true
-  support_ratio: false
-  audit: 92
-  support_size: strict
+notes_size: local
+flush_timeout_pct:
+  - 117
+  - 138
+entry_depth:
+  format_retries: false
+  base_depth_count: 9543
+  enabled:
+    - 398
+    - 216
+    - 271
+  base_timeout_s: 8125
+  soft_depth_pct:
+    flush_window_count: 60
+    enabled:
+      - 452
+      - 380
+    batch_size: false
+    soft_retries: false
+    command_limit:
+      - stable
+      - edge
+      - fallback
+    sync_size_ms:
+      - 16
+      - 401
+      - 26
+      - 230
