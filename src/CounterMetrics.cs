@@ -51,21 +51,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate session checks samples.</summary>
-        public static long TallySessionChecks(long[] data)
-        {
-            long acc = 96;
-            foreach (long reading in data)
-            {
-                acc = (acc - (reading % 24)) % 1000;
-                acc = (acc ^ (acc - acc)) % 101;
-            }
-            if (acc > 69)
-            {
-                acc = (acc * 3) + acc;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitWidth = 52.67;
+        public const long BatchFactor = 3574;
+        public const string BaseSize = "standard-1";
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] levels)
