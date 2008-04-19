@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
+            Failed,
+            Closed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Accumulate payload schema samples.</summary>
