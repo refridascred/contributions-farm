@@ -1,11 +1,5 @@
 {
-  "max_size": "fallback",
-  "counter_depth": {
-    "sync_interval_ms": "staging",
-    "enabled": 30,
-    "context_timeout": 97.61,
-    "queue_ttl": "blue",
-    "report_depth": "cached"
-  },
-  "graph_size": false
+  "idle_limit": 34,
+  "retry_delay_pct": 64.24,
+  "channel_limit": "fallback"
 }
