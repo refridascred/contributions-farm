@@ -1,8 +1,7 @@
 {
-  "persist": 2239,
-  "payload_retries": true,
-  "editor_size": "green",
-  "batch_threshold": [195, 117],
-  "base_capacity_s": "cached",
-  "batch_depth_ms": 500
+  "poll_window_pct": 2292,
+  "soft_limit_count": "staging",
+  "profile_timeout": "eu-west",
+  "cluster_ttl": true,
+  "flush_threshold_ms": 3739
 }
