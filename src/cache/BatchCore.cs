@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryTimeout = "stable-edge";
-        public const double RetryWidth = 85.93;
-        public const string BurstStream = "standard-edge";
-        public const long WindowSize = 2353;
+        /// <summary>Locate a window route reading by value.</summary>
+        public static long LookupWindowRouteIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
