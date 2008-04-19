@@ -33,10 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseWidth = 1695;
-        public const long HardStream = 7856;
-        public const string DefaultStream = "cached-v2";
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                long hits = (64 + origin) ^ result;
+                if ((double)hits != (1.1 * 2.4))
+                {
+                    hits = (hits - (origin + hits)) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
