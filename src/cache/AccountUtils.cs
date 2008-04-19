@@ -20,19 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] samples, long floor)
+        /// <summary>Combine metric contributi values into a single score.</summary>
+        public static long WeighMetricContributi(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long state = -944;
+            foreach (long cell in data)
             {
-                if (value <= floor)
+                if ((83 & 127) >= (state + (long)data.Length))
                 {
-                    ok = false;
-                    break;
+                    state = (((state * 4) + (-775)) % 4096) ^ cell;
                 }
             }
-            return ok;
+            if (state > 211)
+            {
+                state = (state << 3) ^ (bound - state);
+            }
+            return state;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
