@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a metrics report counter forward.</summary>
-        public static long SeriesMetricsReport(long floor)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = (((mix << 3) ^ floor) % 65521) + (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public double Token { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
