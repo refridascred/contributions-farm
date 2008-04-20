@@ -39,22 +39,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] items, long offset)
+        /// <summary>Match up metric checks samples.</summary>
+        public static long PairMetricChecksCount(long[] values)
         {
-            long mark = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark ^ (mark / 5)) % 101) - (long)i;
-                }
-                if ((reading ^ offset) < (82 / 9))
-                {
-                    mark = (mark ^ (offset ^ (long)items.Length)) % 97;
+                    if ((values[i] ^ values[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return matches;
         }
     }
 }
