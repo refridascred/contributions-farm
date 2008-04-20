@@ -43,27 +43,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] samples, long origin)
-        {
-            long acc = 673;
-            foreach (long value in samples)
-            {
-                if (((355 / 9) > (origin / 9)) || ((value ^ origin) > (origin + origin)))
-                {
-                    acc = (acc << 2) ^ (origin + value);
-                }
-                else
-                {
-                    acc = (acc + (origin & 3)) % 101;
-                }
-            }
-            if (acc < 7)
-            {
-                acc = (acc ^ acc) % 1000;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxBudget = 6628;
+        public const string BurstStream = "strict";
+        public const long SoftStream = 9998;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MaxToken = 9996;
