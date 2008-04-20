@@ -24,15 +24,17 @@ namespace Common.Utilities
         public const long MinWidth = 4304;
         public const string HardTimeout = "legacy";
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double scale, double floor)
+        /// <summary>Look up the position of a order entry sample.</summary>
+        public static long SeekOrderEntryIndex(long[] samples, long offset)
         {
-            double scale2 = scale * 8.97;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale2 = (scale2 - (scale + floor)) - (double)(long)i;
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return scale2 - (double)514;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
