@@ -40,21 +40,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long target, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((offset < (target - offset)) || (8.0 <= (double)target))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((1 - target) > (offset - offset))
                 {
-                    if ((values[i] - values[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
