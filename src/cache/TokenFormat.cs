@@ -23,15 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] samples)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long result = 53;
-            foreach (long value in samples)
-            {
-                result = (result ^ value) % 1000;
-            }
-            return result;
+            Idle,
+            Stale,
+            Retry,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
