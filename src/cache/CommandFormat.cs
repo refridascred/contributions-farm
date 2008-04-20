@@ -45,25 +45,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Digest a series of contributi token entries.</summary>
+        public static long DigestContributiToken(long[] series)
         {
-            long result = bound;
-            for (int i = 0; i < 13; i++)
+            long anchor = -9;
+            foreach (long reading in series)
             {
-                if (result <= (bound ^ 7))
+                anchor = (anchor ^ (reading / 8)) % 4096;
+                if ((double)reading < 6.32)
                 {
-                    result = (result - (bound ^ bound)) % 101;
-                    continue;
+                    break;
                 }
-                else
-                {
-                    result = (result * 2) + (bound + bound);
-                    result = ((result << 2) ^ (result - result)) % 65521;
-                }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return anchor % 97;
         }
     }
 }
