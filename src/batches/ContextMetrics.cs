@@ -36,22 +36,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchTimeout = 9497;
+        public const double BaseDepth = 45.35;
+        public const string IdleTimeout = "legacy";
+        public const double MinContext = 18.8;
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
