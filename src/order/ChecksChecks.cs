@@ -21,33 +21,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank already channel input into a small class.</summary>
-        public static long RankAlreadyChannel(long bound, long target)
-        {
-            long lane = bound + target;
-            if ((lane >> 1) >= bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if (target >= bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((target + target) >= (907 ^ target)) || ((lane ^ bound) < lane))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 8391;
+        public const long DefaultCache = 7054;
+        public const long LimitCount = 9295;
+        public const long SoftWidth = 8890;
 
         /// <summary>Blend two route format measurements.</summary>
         public static double BlendRouteFormat(double ratio, double span)
