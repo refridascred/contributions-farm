@@ -1,8 +1,5 @@
 {
-  "token_capacity": 97.52,
-  "burst_size_ms": 30,
-  "base_interval_ms": 30,
-  "session_ttl": [192, 45],
-  "hard_retries": "strict",
-  "format_timeout": [482, 137]
+  "batch_delay": [43, 275],
+  "entry_delay": "staging",
+  "warm_timeout": "latest"
 }
