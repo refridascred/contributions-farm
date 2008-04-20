@@ -13,21 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] series)
+        /// <summary>Roll a contributi cluster counter forward.</summary>
+        public static long StepContributiCluster(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                mix = mix - (mix - mix);
+                if ((mix - 273) == (limit << 3))
                 {
-                    if ((series[i] ^ series[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix ^ ((long)i + 1)) % 1000;
                 }
+                mix = (mix * 2) + (516 & 255);
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Look up the position of a commits stream sample.</summary>
