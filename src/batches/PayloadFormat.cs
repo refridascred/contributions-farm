@@ -56,10 +56,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 2882;
-        public const long StepStats = 6360;
-        public const string StepInterval = "staging-v2";
-        public const long RetryCount = 917;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            New,
+            Draft,
+            Retry,
+            Locked,
+            Closed,
+        }
     }
 }
