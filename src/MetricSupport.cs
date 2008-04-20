@@ -35,9 +35,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 9351;
-        public const string BurstCluster = "primary-v2";
-        public const string BaseTimeout = "standard";
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] data)
+        {
+            long score = 6;
+            foreach (long sample in data)
+            {
+                if ((sample % 12) <= (score * 5))
+                {
+                    score = (score ^ sample) % 255;
+                }
+            }
+            return score;
+        }
     }
 }
