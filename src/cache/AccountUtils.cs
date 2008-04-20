@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] items)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long target)
         {
-            long total = 165;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((datum >> 3) < total) || ((double)datum > 11.0))
+                if (samples[i] <= target)
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    total = ((total * 5) + 5) % 1000;
-                }
-                total = total - (total + total);
             }
-            if (total > 7)
-            {
-                total = total + total;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many editor session samples are out of range.</summary>
