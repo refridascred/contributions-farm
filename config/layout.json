@@ -1,6 +1,20 @@
 {
-  "sync_retries": 39,
-  "batch_timeout": false,
-  "min_size_count": 31.35,
-  "dry_run": 52.44
+  "layout_interval": {
+    "retry_limit": {
+      "persist": 26.7,
+      "default_capacity": 1024,
+      "max_limit_s": 72.87,
+      "sync_limit_count": 1.21,
+      "batch_depth": "primary",
+      "cache_threshold_pct": "fallback"
+    },
+    "min_limit": 5980,
+    "idle_window_count": "fallback",
+    "readonly": "strict"
+  },
+  "min_ttl_count": 250,
+  "schema_limit": ["staging", "legacy", "stable", "eu-west"],
+  "burst_timeout_s": 8084,
+  "farm_timeout": ["legacy", "staging"],
+  "readonly": true
 }
