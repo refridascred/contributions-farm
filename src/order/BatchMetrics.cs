@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            New,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardReport = "fallback-v2";
+        public const long StepSize = 4374;
+        public const long BaseLevel = 6102;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
