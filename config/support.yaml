@@ -1,6 +1,9 @@
 # support settings
-checks_depth: 44.88
-command_interval: true
-retry_capacity_s: 9228
-command_capacity: 5885
-sync_limit_ms: 60
+soft_ratio:
+  - 10
+  - 434
+  - 389
+poll_limit_s:
+  - 148
+  - 225
+warm_timeout: 250
