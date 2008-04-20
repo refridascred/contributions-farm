@@ -41,19 +41,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] items, long floor)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the schema kind values.</summary>
