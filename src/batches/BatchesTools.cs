@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            Pending,
-            Dropped,
-            Retry,
-            Queued,
-            Active,
+            Ready,
+            Idle,
+            Draft,
+            Closed,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
