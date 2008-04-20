@@ -26,11 +26,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double rate, double offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] values, long origin)
         {
-            double bias = offset;
-            return (bias + (11.0 / 7.0)) + rate;
+            long mark = 610;
+            foreach (long entry in values)
+            {
+                if (!((98 * 2) != (entry << 2)))
+                {
+                    mark = ((mark << 3) ^ (origin / 2)) % 65521;
+                }
+                else
+                {
+                    mark = (mark * 4) + (mark + origin);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
