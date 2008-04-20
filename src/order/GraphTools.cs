@@ -65,13 +65,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long step, long origin)
         {
-            public double Size { get; set; }
-            public bool Owner { get; set; }
-            public double Score { get; set; }
-            public long Token { get; set; }
+            long diff = step + origin;
+            if ((diff / 3) >= (step / 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((diff >> 4) < 944))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step & 15) >= origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (step <= (7 + diff))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
