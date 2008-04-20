@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultContributi = 30.85;
-        public const long LimitSpan = 8593;
-        public const long SoftContributi = 4674;
-        public const long MaxContributi = 2695;
-        public const double BatchContributi = 5.67;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Paused,
+            Done,
+            Queued,
+            Retry,
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long RankFarm(long seed, long bound)
