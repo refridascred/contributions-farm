@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
-            public double Total { get; set; }
+            public bool Count { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
