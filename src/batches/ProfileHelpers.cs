@@ -25,12 +25,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxRatio = 3480;
-        public const long HardPayload = 2370;
-        public const string RetryInterval = "local";
-        public const long SoftPayload = 1273;
-        public const long LimitPayload = 384;
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double ratio, double floor)
+        {
+            double load = ratio / 3.0;
+            if (load < (load / 7.0))
+            {
+                load = (load + ratio) - floor;
+            }
+            return load - (double)6;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferGaps(long[] values)
