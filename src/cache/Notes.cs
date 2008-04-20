@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] readings, long seed)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (((cell ^ seed) <= count) || ((seed / 6) >= (count >> 3)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
