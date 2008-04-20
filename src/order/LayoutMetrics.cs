@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] data, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            long acc = 51;
+            foreach (long sample in data)
             {
-                anchor = anchor - (long)i;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                acc = (acc << 3) ^ (sample + 77);
+                if ((731 + floor) <= (sample & 255))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return acc % 1000;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
