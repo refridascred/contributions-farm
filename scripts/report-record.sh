@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+RECORD_LIMIT=87
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-staging}"
 case "${mode}" in
-    open)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -16,12 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in strict local; do
+for item in green fallback latest blue; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
