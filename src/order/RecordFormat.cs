@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank order githubfarm input into a small class.</summary>
-        public static long RankOrderGithubfarm(long target, long target2)
+        /// <summary>Combine already batch values into a single score.</summary>
+        public static long ScoreAlreadyBatch(long[] items)
         {
-            long slot = target - target2;
-            if ((slot - (-7)) <= (slot - target2))
+            long total = 6;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)slot >= (double)target2) && ((target2 + target2) > slot))
+                for (int i = 0; i < 9; i++)
                 {
-                    return 4;
+                    total = ((total + (9 & 15)) % 255) ^ (long)i;
                 }
-                else
+                if (((long)items.Length & 15) < (total ^ 687))
                 {
-                    if ((double)target <= (double)slot)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    total = (total ^ (value ^ total)) % 255;
                 }
             }
+            return total % 1000;
         }
 
         /// <summary>Validate metrics cluster readings against a bound.</summary>
