@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinStats = "fallback-1";
-        public const long CacheSpan = 1657;
-        public const double IdleStats = 32.15;
-        public const string BatchInterval = "stable-1";
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (4.12 < (double)value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleCache = 8391;
