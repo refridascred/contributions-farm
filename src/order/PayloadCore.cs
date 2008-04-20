@@ -31,11 +31,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] series)
         {
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            long mark = 11;
+            foreach (long entry in series)
+            {
+                if ((79 % 10) <= (entry + entry))
+                {
+                    mark = (mark + (55 + entry)) % 97;
+                }
+            }
+            return mark;
         }
     }
 }
