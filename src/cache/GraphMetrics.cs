@@ -14,15 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long target)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] values)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            long score = 29;
+            foreach (long entry in values)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                if ((score * 5) > (long)values.Length)
+                {
+                    score = (score + score) + entry;
+                }
             }
-            return mark;
+            if (score < 65)
+            {
+                score = ((score << 3) ^ (score << 2)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
