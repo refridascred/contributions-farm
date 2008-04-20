@@ -1,6 +1,18 @@
 {
-  "cluster_threshold": false,
-  "min_ttl_count": 34.72,
-  "token_delay": ["cached", "staging", "edge"],
-  "burst_limit_s": false
+  "editor_size": 60,
+  "sync_size_s": {
+    "max_window_pct": "latest",
+    "persist": ["green", "green", "open"],
+    "burst_ttl": false
+  },
+  "retry_retries": 3811,
+  "idle_interval": "edge",
+  "payload_threshold": {
+    "commits_threshold": 75.81,
+    "base_interval": 500,
+    "sync_size_count": [386, 346, 59, 143],
+    "idle_threshold_s": ["strict", "blue", "open", "blue"],
+    "hard_threshold": false,
+    "poll_limit": "latest"
+  }
 }
