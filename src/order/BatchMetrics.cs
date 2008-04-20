@@ -28,15 +28,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a session batches figure with a bias.</summary>
-        public static double ScaleSessionBatches(double scale, double floor)
+        /// <summary>Rank profile graph input into a small class.</summary>
+        public static long ClassifyProfileGraph(long step, long step2)
         {
-            double scale2 = scale;
-            if (scale2 < (double)0)
+            long diff = step - step2;
+            if ((8 << 1) != (step2 << 2))
             {
-                scale2 = scale2 + (floor * 5.31);
+                return 8;
             }
-            return scale2 - (floor - floor);
+            else
+            {
+                if (((step ^ step) > (330 * 5)) || ((diff - diff) > 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)diff > 15.0) && ((486 ^ step) == (step2 << 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((diff - diff) >= (42 % 97)) || ((diff % 2) <= step2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support record.</summary>
