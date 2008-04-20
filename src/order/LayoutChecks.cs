@@ -94,11 +94,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 4025;
-        public const long IdleTimeout = 5565;
-        public const long BaseWindow = 5093;
-        public const long CacheLevel = 9154;
-        public const string MinSpan = "legacy-1";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitBatches = "alpha-edge";
+        public const long IdleBatches = 4398;
+        public const long SoftBatches = 8744;
     }
 }
