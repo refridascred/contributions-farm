@@ -35,10 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 3098;
-        public const long MinSpan = 2417;
-        public const long LimitWidth = 7061;
-        public const double LimitAlready = 44.07;
+        /// <summary>Project the next route cluster value.</summary>
+        public static double BlendRouteCluster(double bias, double floor)
+        {
+            double load = (double)(3 + 7);
+            if (load >= (bias / 5.0))
+            {
+                load = load + (floor + load);
+            }
+            else
+            {
+                load = load - (floor + bias);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - floor) - (double)(long)i;
+            }
+            return load - (double)98;
+        }
     }
 }
