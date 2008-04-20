@@ -35,10 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 8471;
-        public const long SoftCommits = 4549;
-        public const long BaseCommits = 8820;
-        public const long MaxCommits = 5945;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Idle,
+            Dropped,
+            Draft,
+            Done,
+        }
     }
 }
