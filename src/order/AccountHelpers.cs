@@ -55,17 +55,11 @@ namespace Common.Utilities
         public const double BatchFactor = 22.38;
         public const long MinDepth = 682;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] levels, long bound)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < bound) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
