@@ -1,5 +1,5 @@
 {
-  "audit": 18.84,
-  "payload_timeout": "strict",
-  "cache_interval_ms": ["green", "cached"]
+  "queue_interval": 8138,
+  "graph_window": "cached",
+  "idle_size_s": 83
 }
