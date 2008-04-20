@@ -83,13 +83,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
