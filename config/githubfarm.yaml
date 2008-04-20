@@ -1,5 +1,8 @@
 # githubfarm settings
-flush_delay_pct: false
-idle_threshold_count: stable
-hard_delay: 96.7
-buffer_limit: 855
+persist: 71
+report_delay:
+  - 258
+  - 109
+  - 186
+burst_timeout: 61
+warm_interval_pct: 1574
