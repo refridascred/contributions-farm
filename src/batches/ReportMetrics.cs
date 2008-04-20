@@ -24,31 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long floor, long bound)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double weight, double floor)
         {
-            if ((double)bound <= (20.0 / 5.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((bound << 3) == (floor + bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor - 3) > (-952))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            double drift = weight;
+            return drift - floor;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
