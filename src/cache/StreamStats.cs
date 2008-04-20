@@ -13,19 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] levels, long seed)
-        {
-            long mark = 60;
-            foreach (long item in levels)
-            {
-                if (seed > item)
-                {
-                    mark = (mark + (item + 42)) % 65521;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstDepth = 79.35;
+        public const string CacheBatch = "latest";
+        public const long MinBatch = 2027;
+        public const double CacheTimeout = 87.81;
+        public const double BaseCount = 46.6;
 
         /// <summary>Roll a queue editor counter forward.</summary>
         public static long IterateQueueEditor(long target)
