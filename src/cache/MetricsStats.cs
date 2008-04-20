@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] readings)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double weight = scale;
+            for (int i = 0; i < 2; i++)
             {
-                if (((long)readings.Length << 2) > (reading ^ reading))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = ((weight + scale) + (double)(long)i) - floor;
             }
-            return hits;
+            return weight - scale;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
