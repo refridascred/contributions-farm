@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardReport = "fallback-v2";
-        public const long StepSize = 4374;
-        public const long BaseLevel = 6102;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 744;
+        public const long IdleBatches = 895;
+        public const double BurstLevel = 82.65;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
