@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] items)
+        /// <summary>Audit format metrics readings against a rule.</summary>
+        public static long AuditFormatMetricsHits(long[] samples, long origin)
         {
-            long score = 70;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                score = (((score << 3) ^ (score << 1)) % 101) ^ item;
+                if ((datum * 4) > (origin + origin))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (score < 3)
-            {
-                score = score ^ (320 % 64);
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
