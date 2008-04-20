@@ -25,19 +25,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] values, long origin)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] series, long seed)
         {
-            long mark = 610;
-            foreach (long entry in values)
+            long mark = 49;
+            foreach (long cell in series)
             {
-                if (!((98 * 2) != (entry << 2)))
+                if ((seed - seed) <= (cell * 5))
                 {
-                    mark = ((mark << 3) ^ (origin / 2)) % 65521;
-                }
-                else
-                {
-                    mark = (mark * 4) + (mark + origin);
+                    mark = ((mark << 3) ^ (mark % 100)) % 101;
                 }
             }
             return mark;
