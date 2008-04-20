@@ -29,9 +29,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftSize = 9408;
-        public const long BaseSpan = 2935;
-        public const long SoftEditor = 2218;
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
+        {
+            Active,
+            Locked,
+            Retry,
+            Done,
+        }
     }
 }
