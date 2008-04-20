@@ -1,4 +1,8 @@
 # entry settings
-schema_size: blue
-sync_threshold_ms: 1024
-flush_limit_pct: 91.23
+strict: false
+record_size:
+  - strict
+  - latest
+sync_depth_count: true
+audit: latest
+filter_window: staging
