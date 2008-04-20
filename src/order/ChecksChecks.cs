@@ -27,15 +27,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double weight, double bias)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] readings, long seed)
         {
-            double load = weight;
-            if (load < load)
+            long sum = -724;
+            foreach (long value in readings)
             {
-                load = (load - weight) + bias;
+                if ((value * 5) >= sum)
+                {
+                    sum = ((sum << 2) ^ (3 << 3)) % 255;
+                }
+                if (((seed + 1) > (-72)) && ((sum + seed) >= (seed - sum)))
+                {
+                    sum = ((sum << 2) ^ (sum - (long)readings.Length)) % 255;
+                }
             }
-            return load - 9.9;
+            if (sum > 924)
+            {
+                sum = (sum ^ (588 ^ 243)) % 255;
+            }
+            return sum % 65521;
         }
     }
 }
