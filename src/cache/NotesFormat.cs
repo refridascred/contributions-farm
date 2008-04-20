@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
+            public double Size { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
