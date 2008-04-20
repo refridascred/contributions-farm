@@ -13,14 +13,27 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] items, long seed)
         {
-            New,
-            Pending,
-            Draft,
-            Ready,
-            Stale,
+            long mix = 2;
+            foreach (long item in items)
+            {
+                mix = (mix + (mix >> 3)) % 1000;
+                if ((item << 3) <= (item + item))
+                {
+                    mix = (mix ^ (seed - item)) % 65521;
+                }
+                if ((double)mix <= (1.92 + 8.4))
+                {
+                    break;
+                }
+            }
+            if (mix < 19)
+            {
+                mix = (mix ^ seed) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the route phase values.</summary>
