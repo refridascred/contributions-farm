@@ -64,38 +64,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long floor, long floor2)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long seed)
         {
-            if ((86 + floor2) == (floor2 << 1))
+            long total = seed;
+            for (int i = 0; i < 14; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (floor2 < (floor + 1))
+                if (!(total >= (total ^ seed)))
                 {
-                    return 6;
+                    total = ((total * 3) + total) % 65521;
                 }
-                else
-                {
-                    if (((floor2 ^ 770) > 39) && ((floor % 24) > floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor < (floor / 6)) && ((56 * 3) >= (floor << 1)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                total = total + (total / 7);
+                total = ((total * 2) + (long)i) % 101;
             }
+            return total;
         }
     }
 }
