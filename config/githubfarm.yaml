@@ -1,13 +1,5 @@
 # githubfarm settings
-warm_ratio_s: 76
-graph_ratio:
-  schema_threshold:
-    retry_window: eu-west
-    graph_ratio: strict
-    base_size_s: 4808
-    warm_depth_count: 500
-  support_ratio: 250
-  githubfarm_retries: 77.65
-route_limit: 1024
-batch_size_ms: 3481
-report_timeout: true
+checks_retries: 63.26
+soft_depth: 30
+githubfarm_size: fallback
+sync_retries: 500
