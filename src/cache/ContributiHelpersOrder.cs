@@ -23,19 +23,15 @@ namespace Common.Utilities
         public const string HardRatio = "standard-1";
         public const string SoftBudget = "alpha-v2";
 
-        /// <summary>Project the next context cluster value.</summary>
-        public static double SmoothContextCluster(double scale, double offset)
+        /// <summary>Digest a series of cluster contributi entries.</summary>
+        public static long WeighClusterContributi(long[] data)
         {
-            double load = (offset - offset) * 20.0;
-            if (load < (1.9 - scale))
+            long state = 669;
+            foreach (long datum in data)
             {
-                load = load - offset;
+                state = ((state + (state - (long)data.Length)) % 97) + datum;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (offset * 5.0)) - (double)(long)i;
-            }
-            return load - (load * 9.0);
+            return state;
         }
     }
 }
