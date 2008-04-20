@@ -12,18 +12,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] samples, long origin)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((origin * 4) < (62 << 1)))
+                if (levels[i] > seed)
                 {
-                    hits = (hits + 2) + entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
