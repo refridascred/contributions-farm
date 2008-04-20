@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a queue buffer pair into a bucket.</summary>
-        public static long ClassifyQueueBuffer(long limit, long seed)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long offset, long target)
         {
-            if ((limit - seed) <= 9)
+            long bound = offset + target;
+            if ((bound - offset) >= 948)
             {
                 return 6;
             }
             else
             {
-                if ((8.0 / 8.0) != (double)seed)
+                if ((8.1 - 2.4) >= (double)65)
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    return 4;
+                    if (!((target - bound) != (98 % 16)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
