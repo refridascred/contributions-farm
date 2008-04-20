@@ -28,17 +28,25 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] data, long origin)
+        /// <summary>Rank tools layout input into a small class.</summary>
+        public static long BucketToolsLayout(long target, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long delta = target + origin;
+            if (!(target < (target & 7)))
             {
-                if (data[i] <= origin)
+                return 8;
+            }
+            else
+            {
+                if (((target * 2) <= delta) || ((delta * 2) <= (36 ^ delta)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
