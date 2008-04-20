@@ -1,12 +1,16 @@
 # support settings
-channel_size:
-  - eu-west
-  - fallback
-strict:
-  account_timeout: 12.15
-  retry_delay_ms: 73
-  audit: 60
-  graph_capacity: true
-  retry_depth: 73.58
-soft_retries_s: 28
-batch_delay_pct: true
+filter_threshold:
+  - 291
+  - 199
+  - 212
+compress: staging
+default_window:
+  min_limit_pct: edge
+  hard_retries_count: 10
+  batch_ratio_ms:
+    - 418
+    - 364
+    - 27
+    - 45
+  poll_threshold_s: 68
+  window_ratio: standard
