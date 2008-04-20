@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinRecord = "stable-1";
-        public const long BatchDepth = 9076;
-        public const double MaxTimeout = 33.49;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] readings, long seed)
+        {
+            long mix = 92;
+            foreach (long cell in readings)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    mix = (((mix - (cell >> 4)) % 101) ^ (long)i) - seed;
+                    mix = mix - (cell % 5);
+                }
+                mix = (mix - ((-6) & 1)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool ValidateContributiBounds(long[] items, long floor)
