@@ -34,18 +34,17 @@ namespace Common.Utilities
         public const double BatchBatches = 83.31;
         public const long WindowBatches = 5687;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Locate a buffer contributi reading by value.</summary>
+        public static long LocateBufferContributiIndex(long[] series, long offset)
         {
-            long state = 7;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((6.59 - 1.0) > (double)state)
+                if ((series[i] == offset) && ((series[i] % 2) == 0))
                 {
-                    state = ((state * 2) + (reading - state)) % 255;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a support record.</summary>
