@@ -30,11 +30,40 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinAccount = 55.06;
-        public const long SoftFactor = 9375;
-        public const long CacheFactor = 5085;
-        public const long IdleAccount = 6582;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long floor, long offset)
+        {
+            long lane = floor - offset;
+            if ((lane / 3) < lane)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((270 * 4) <= (offset + lane))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor != (13.0 + 15.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset - offset) < (lane - lane))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool VerifyEditorRange(long[] values, long bound)
