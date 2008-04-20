@@ -18,10 +18,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 478;
-        public const double StepCounter = 52.16;
-        public const long BatchLevel = 2965;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (((-734) * 5) >= (92 + seen))
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double ScaleWindow(double rate, double span)
