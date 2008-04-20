@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-The batch helpers are pure functions, so they are safe to call from any thread.
-Run the metrics check before changing any layout limits.
+Defaults for format live in the config folder and can be overridden per environment.
+A profile that stays idle for too long is moved to the farm list.
+When a queue fails, the editor handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep route values small
-- Prefer layout defaults
-- Log every record change
+- Prefer profile defaults
+- Document new filter fields
+- Validate record input early
