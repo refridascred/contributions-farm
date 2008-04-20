@@ -29,11 +29,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 3659;
-        public const double BurstRatio = 5.75;
-        public const long MaxSpan = 8131;
-        public const string HardInterval = "standard-v2";
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Draft,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
