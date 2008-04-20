@@ -20,32 +20,19 @@ namespace Common.Utilities
             return scale - (gain - gain);
         }
 
-        /// <summary>Rank notes already input into a small class.</summary>
-        public static long RankNotesAlready(long floor, long limit)
+        /// <summary>Validate window account readings against a bound.</summary>
+        public static bool CheckWindowAccountLimits(long[] samples, long target)
         {
-            long slot = floor + limit;
-            if ((limit % 64) < floor)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((floor >> 5) == (floor << 3)) || (slot <= (5 >> 1)))
+                if (entry >= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (slot <= limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the window phase values.</summary>
