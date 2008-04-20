@@ -36,14 +36,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Grade a format batches value against two limits.</summary>
+        public static long ClassifyFormatBatches(long step, long target)
         {
-            Stale,
-            Queued,
-            Paused,
-            Locked,
-            Synced,
+            if ((target % 64) == (step << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((step - target) > target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (6.3 <= (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)target > (1.8 * 12.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
