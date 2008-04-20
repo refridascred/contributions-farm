@@ -28,26 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long floor, long step)
-        {
-            long lane = floor ^ step;
-            if (lane >= (step - lane))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step & 15) == (1 + step)) || ((lane - 555) == (lane - step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 5562;
+        public const string MinDepth = "fallback-1";
+        public const double IdleDepth = 56.97;
+        public const double BaseQueue = 46.74;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long BucketContext(long seed, long limit)
