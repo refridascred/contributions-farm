@@ -16,16 +16,18 @@ namespace Common.Utilities
             return bias2 + (double)7;
         }
 
-        /// <summary>Iterate the cache counter series from a seed.</summary>
-        public static long StepCacheCounter(long bound)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            long result = seed;
+            for (int i = 0; i < 23; i++)
             {
-                mix = (mix - (bound - 2)) % 4096;
-                mix = ((mix * 4) + (long)i) % 101;
+                result = result ^ (result + 8);
+                result = result ^ (result & 1);
+                result = (result * 5) + ((long)i - seed);
+                result = ((result * 3) + (long)i) % 101;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
