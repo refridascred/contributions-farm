@@ -18,26 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account format entries.</summary>
-        public static long TotalAccountFormat(long[] levels, long seed)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] items, long bound)
         {
-            long sum = 96;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((5.51 - 2.31) >= (double)sum)
+                if (items[i] > bound)
                 {
-                    sum = ((sum * 2) + (84 + 1)) + value;
-                }
-                if (3 > seed)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum < 439)
-            {
-                sum = (sum ^ (sum + sum)) % 4096;
-            }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Locate a window reading by value.</summary>
