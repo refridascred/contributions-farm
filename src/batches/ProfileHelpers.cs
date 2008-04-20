@@ -53,10 +53,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleScore = 9547;
-        public const double DefaultSize = 24.7;
-        public const long HardMetric = 8222;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] data, long origin)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
