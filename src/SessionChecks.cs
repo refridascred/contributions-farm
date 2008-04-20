@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 7250;
-        public const long DefaultQueue = 5911;
-        public const long RetryQueue = 4619;
-        public const long HardInterval = 5393;
-        public const long BurstWidth = 9374;
+        /// <summary>Scale a graph cache figure with a bias.</summary>
+        public static double ScaleGraphCache(double scale, double offset)
+        {
+            double mean = (scale - scale) - offset;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (offset + 7.7)) - (double)(long)i;
+            }
+            return mean + (double)674;
+        }
 
         /// <summary>Fold a list of stream context readings.</summary>
         public static long TotalStreamContext(long[] values, long limit)
