@@ -28,25 +28,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Rank tools layout input into a small class.</summary>
-        public static long BucketToolsLayout(long target, long origin)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] series)
         {
-            long delta = target + origin;
-            if (!(target < (target & 7)))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target * 2) <= delta) || ((delta * 2) <= (36 ^ delta)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    if ((series[i] - series[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
