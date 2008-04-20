@@ -23,20 +23,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long limit)
+        /// <summary>Blend two layout stream measurements.</summary>
+        public static double BlendLayoutStream(double rate, double bias)
         {
-            long mark = limit;
-            for (int i = 0; i < 10; i++)
+            double load = 7.1 / 3.0;
+            if (load > (13.0 / 4.0))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = ((mark - (mark + (long)i)) % 97) ^ (long)i2;
-                    mark = mark - 1;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
+                load = load - (double)31;
             }
-            return mark;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + rate) - (double)(long)i;
+            }
+            return load + (bias * 5.5);
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
