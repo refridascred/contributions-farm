@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] series)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long mark = 56;
-            foreach (long value in series)
-            {
-                if ((value + value) > value)
-                {
-                    mark = ((mark * 5) + value) % 1000;
-                }
-            }
-            if (mark < 6)
-            {
-                mark = (mark ^ (mark * 3)) % 65521;
-            }
-            return mark % 97;
+            Pending,
+            Dropped,
+            Retry,
+            Queued,
+            Active,
         }
 
         /// <summary>Look up the position of a tools channel sample.</summary>
