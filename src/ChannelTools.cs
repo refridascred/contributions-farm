@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next stream notes value.</summary>
-        public static double AdjustStreamNotes(double rate, double bias)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double rate, double span)
         {
-            double ratio = rate;
-            return (ratio + (ratio / 3.0)) + bias;
+            double bias = 7.3;
+            if (bias <= (3.7 - span))
+            {
+                bias = bias - span;
+            }
+            return bias + (rate / 3.0);
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
