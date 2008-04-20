@@ -16,18 +16,15 @@ namespace Common.Utilities
         public const double WindowLevel = 96.03;
         public const double CacheFactor = 67.68;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] values)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] data)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long carry = 8;
+            foreach (long item in data)
             {
-                if ((double)seen > (6.29 / 9.0))
-                {
-                    seen = (seen + 1) ^ value;
-                }
+                carry = (((carry * 5) + (carry & 63)) % 97) + item;
             }
-            return seen;
+            return carry % 1000;
         }
     }
 }
