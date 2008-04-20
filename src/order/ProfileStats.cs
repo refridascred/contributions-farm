@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] data)
-        {
-            long state = 6;
-            foreach (long cell in data)
-            {
-                state = ((state << 2) ^ state) ^ cell;
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultDepth = "latest-edge";
+        public const long DefaultWidth = 4220;
+        public const long SoftLevel = 7837;
+        public const string SoftStats = "cached-v2";
+        public const long RetryInterval = 5498;
 
         /// <summary>Derive the next window metrics value from a seed.</summary>
         public static long IterateWindowMetrics(long offset)
