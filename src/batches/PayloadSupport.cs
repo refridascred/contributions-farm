@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitMetric = "standard";
-        public const long RetryRatio = 2345;
-        public const string BaseDepth = "staging-1";
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string BatchFilter = "legacy-edge";
