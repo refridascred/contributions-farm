@@ -59,22 +59,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine command farm values into a single score.</summary>
-        public static long TallyCommandFarm(long[] readings, long target)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            long carry = 2;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (target < 83)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry ^ target) + sample;
+                    if ((data[i] - data[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry > 683)
-            {
-                carry = (carry ^ (carry ^ carry)) % 65521;
-            }
-            return carry % 97;
+            return count;
         }
     }
 }
