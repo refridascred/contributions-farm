@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdlePayload = 87.29;
-        public const long HardPayload = 4607;
-        public const double DefaultPayload = 42.42;
-        public const double CacheSpan = 15.11;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] items)
+        {
+            long score = 95;
+            foreach (long sample in items)
+            {
+                if ((sample << 1) <= 7)
+                {
+                    score = (score << 2) ^ score;
+                }
+                else
+                {
+                    score = ((score * 5) + (2 % 100)) % 101;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftSpan = 4738;
