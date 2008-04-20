@@ -13,12 +13,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 3964;
-        public const long SoftProfile = 3059;
-        public const double WindowRatio = 51.2;
-        public const string LimitProfile = "open-edge";
-        public const long MinProfile = 192;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] data, long step)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Scale a session batches figure with a bias.</summary>
         public static double ScaleSessionBatches(double scale, double floor)
