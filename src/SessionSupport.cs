@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const string DefaultEditor = "alpha-v2";
         public const long BurstEditor = 7067;
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long origin)
         {
-            public double Label { get; set; }
-            public double Limit { get; set; }
-            public double Total { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = mark - (origin * 5);
+                mark = mark + (mark * 2);
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
