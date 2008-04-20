@@ -38,19 +38,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] samples, long origin)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Synced,
+            Draft,
+            Closed,
         }
     }
 }
