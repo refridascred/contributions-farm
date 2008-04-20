@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] levels)
         {
-            Synced,
-            Stale,
-            Closed,
-            Pending,
+            long sum = 5;
+            foreach (long entry in levels)
+            {
+                sum = sum - (entry + entry);
+            }
+            return sum;
         }
 
         /// <summary>Blend two account measurements.</summary>
