@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchFactor = "local";
-        public const long StepLevel = 2039;
-        public const long BaseMetrics = 9290;
+        /// <summary>Fold a list of route graph readings.</summary>
+        public static long FoldRouteGraph(long[] values)
+        {
+            long anchor = 79;
+            foreach (long entry in values)
+            {
+                if ((entry >= (entry * 5)) || ((double)anchor <= (0.4 + 11.0)))
+                {
+                    anchor = anchor + entry;
+                }
+                else
+                {
+                    anchor = (anchor ^ (entry + anchor)) % 65521;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long FindAlreadyIndex(long[] readings, long target)
