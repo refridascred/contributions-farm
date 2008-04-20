@@ -48,26 +48,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] readings, long origin)
+        /// <summary>Fold a list of stream contributi readings.</summary>
+        public static long TallyStreamContributi(long[] readings)
         {
-            long acc = 9;
-            foreach (long datum in readings)
+            long total = 402;
+            foreach (long reading in readings)
             {
-                if ((593 & 31) > (origin - datum))
+                if (((double)reading < (double)(-406)) || (total < (reading << 1)))
                 {
-                    acc = (acc * 3) + origin;
+                    total = ((total << 2) ^ (reading + total)) % 65521;
                 }
-                if ((double)origin == (9.41 * 7.0))
+                if ((reading ^ total) > (4 - 77))
                 {
-                    acc = ((acc * 3) + acc) % 65521;
+                    break;
                 }
             }
-            if (acc < 1)
+            if (total > 8)
             {
-                acc = acc + (acc ^ acc);
+                total = (total + total) % 101;
             }
-            return acc % 4096;
+            return total;
         }
 
         /// <summary>Hold a contributi entry.</summary>
