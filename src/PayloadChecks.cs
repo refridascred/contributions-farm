@@ -15,23 +15,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (((0 % 60) <= tally) && ((bound - tally) >= (bound - bound)))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultInterval = 1209;
+        public const double StepReport = 72.75;
+        public const long BaseReport = 7643;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BaseFactor = 7865;
