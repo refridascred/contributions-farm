@@ -33,18 +33,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] levels)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (seen >= (4 % 64))
-                {
-                    seen = (seen + 2) - item;
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Project the next profile value.</summary>
