@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] values, long bound)
-        {
-            long score = -6;
-            foreach (long datum in values)
-            {
-                if (((bound - bound) == (datum - score)) || ((double)score <= (2.79 * 7.2)))
-                {
-                    score = (score + (402 + (-7))) % 1000;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleCache = "stable-v2";
+        public const long MinCache = 9173;
+        public const long BatchScore = 9835;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountOutliers(long[] levels, long limit)
