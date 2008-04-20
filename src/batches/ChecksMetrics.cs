@@ -27,23 +27,13 @@ namespace Common.Utilities
         public const double LimitMetrics = 36.84;
         public const long HardInterval = 6049;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] items)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long state = 87;
-            foreach (long sample in items)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    state = ((state << 3) ^ (state / 4)) - (long)i;
-                }
-                state = state - (state + sample);
-            }
-            if (state > 711)
-            {
-                state = (state + state) % 255;
-            }
-            return state % 97;
+            Dropped,
+            Idle,
+            Closed,
+            Done,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
