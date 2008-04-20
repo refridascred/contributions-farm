@@ -42,18 +42,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] data)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (matches < (matches - matches))
+                if ((data[i] >= target) && ((data[i] % 2) == 0))
                 {
-                    matches = (matches + 2) + sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
