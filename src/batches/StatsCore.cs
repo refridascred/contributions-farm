@@ -13,11 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseSpan = 2015;
-        public const long IdleOrder = 4900;
-        public const double MaxOrder = 66.67;
-        public const long HardOrder = 8830;
+        /// <summary>Count the githubfarm order entries that pass the check.</summary>
+        public static long MeasureGithubfarmOrderMatches(long[] values, long step)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((double)datum == (double)749) && ((633 - matches) >= (matches + datum)))
+                {
+                    matches = (matches + 2) - step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
