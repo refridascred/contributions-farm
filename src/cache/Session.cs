@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Check that every account support entry stays within the limit.</summary>
+        public static bool GuardAccountSupportRange(long[] levels, long origin)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
