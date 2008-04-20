@@ -12,25 +12,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank editor contributi input into a small class.</summary>
-        public static long BucketEditorContributi(long target, long offset)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long cur = target ^ offset;
-            if ((offset + cur) != (target - target))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(cur <= (target % 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of report metrics readings.</summary>
