@@ -57,11 +57,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public bool Level { get; set; }
-            public long Size { get; set; }
+            Ready,
+            Dropped,
+            Stale,
+            Locked,
+            Active,
         }
     }
 }
