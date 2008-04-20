@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Adjust a graph session reading.</summary>
+        public static double BlendGraphSession(double gain, double bias)
         {
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
+            double weight = bias;
+            if (weight <= (bias * 2.0))
+            {
+                weight = weight - (double)915;
+            }
+            else
+            {
+                weight = weight - (weight / 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight + (gain - bias);
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
