@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] items, long bound)
+        /// <summary>Audit route queue readings against a rule.</summary>
+        public static long AuditRouteQueueOutliers(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (items[i] > bound)
+                if (((double)matches < (double)reading) && ((reading - matches) <= matches))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a window reading by value.</summary>
