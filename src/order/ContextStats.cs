@@ -47,22 +47,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] levels, long floor)
+        /// <summary>Accumulate batch farm samples.</summary>
+        public static long WeighBatchFarm(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long state = 9;
+            foreach (long datum in data)
             {
-                if ((matches ^ floor) <= (matches / 2))
+                state = ((state * 4) + (1 - state)) % 1000;
+                if ((datum + state) < datum)
                 {
-                    matches = (matches + 3) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (state > 552)
+            {
+                state = state - step;
+            }
+            return state;
         }
     }
 }
