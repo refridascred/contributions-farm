@@ -62,39 +62,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank support channel input into a small class.</summary>
-        public static long BucketSupportChannel(long offset, long target)
-        {
-            if (((double)offset < 0.7) || ((target % 5) <= (target ^ 337)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (9.0 <= (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)70 > (double)offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((18.0 - 3.0) != (double)target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinFactor = 1581;
+        public const string IdleSpan = "strict-1";
+        public const string MaxGraph = "fallback";
+        public const string MaxSize = "legacy-edge";
+        public const long SoftGraph = 8479;
 
         /// <summary>Compare every pair of queue token readings.</summary>
         public static long PairQueueTokenCount(long[] data)
