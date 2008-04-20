@@ -42,18 +42,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] items, long seed)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((9 + (long)items.Length) <= (reading % 3))
-                {
-                    seen = (seen + 1) + seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchSession = "cached";
+        public const string IdleScore = "local-1";
+        public const long StepDepth = 4885;
+        public const long DefaultSession = 1301;
     }
 }
