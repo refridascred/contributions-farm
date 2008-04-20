@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
             public double Flag { get; set; }
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
         }
 
         /// <summary>Hold a route record.</summary>
