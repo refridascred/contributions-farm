@@ -1,18 +1,7 @@
 # githubfarm settings
-enabled: false
-audit: true
-poll_depth_s: stable
-readonly:
-  persist:
-    - 191
-    - 249
-    - 128
-  cache_ttl_ms:
-    persist: strict
-    max_delay:
-      - 91
-      - 247
-      - 161
-    strict: blue
-    flush_threshold_s: false
-  githubfarm_threshold: 4
+default_depth_pct: 14.32
+flush_threshold_count: 94.64
+window_threshold: false
+poll_delay_count: strict
+warm_interval: standard
+cache_threshold: 92.1
