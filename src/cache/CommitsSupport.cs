@@ -70,12 +70,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MinWidth = "staging-edge";
-        public const long DefaultWidth = 9259;
-        public const long MinRatio = 2232;
-        public const double StepDepth = 28.48;
-        public const string WindowToken = "primary-1";
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long SeekAlreadyIndex(long[] readings, long seed)
