@@ -13,12 +13,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Rank context queue input into a small class.</summary>
+        public static long GradeContextQueue(long bound, long offset)
         {
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            if ((double)offset >= 7.65)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound + offset) == (585 % 5)) && (offset > (offset + bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
