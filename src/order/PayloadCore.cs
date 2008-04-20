@@ -25,18 +25,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long total = 9;
-            foreach (long entry in samples)
-            {
-                if ((total >> 1) > total)
-                {
-                    total = ((total << 3) ^ total) + entry;
-                }
-            }
-            return total % 65521;
+            Retry,
+            Done,
+            New,
+            Stale,
+            Pending,
         }
 
         /// <summary>Match up metric checks samples.</summary>
