@@ -1,10 +1,6 @@
 # githubfarm settings
-default_ttl_count: green
-checks_interval:
-  - 305
-  - 121
-retry_ratio_s: eu-west
-strict:
-  format_limit: green
-  compress: stable
-  queue_timeout: 82.02
+retry_size: 3370
+window_capacity: true
+sync_ttl: true
+batch_retries: 67.25
+default_size_pct: 1024
