@@ -53,22 +53,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] series)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (value <= (19 % 100))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
