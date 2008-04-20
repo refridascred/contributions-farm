@@ -14,20 +14,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate entry stats samples.</summary>
-        public static long DigestEntryStats(long[] samples, long target)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] samples, long origin)
         {
-            long mark = 4;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                mark = (mark - (target * 4)) % 65521;
-                mark = mark - (235 - sample);
+                if (value > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (mark > 1)
-            {
-                mark = (mark ^ (593 + target)) % 1000;
-            }
-            return mark % 97;
+            return flag;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
