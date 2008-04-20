@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] items, long seed)
+        /// <summary>Digest a series of entry record entries.</summary>
+        public static long DigestEntryRecord(long[] values, long limit)
         {
-            long sum = 557;
-            foreach (long value in items)
+            long score = 65;
+            foreach (long sample in values)
             {
-                sum = (((sum - (sum + sum)) % 1000) - value) - seed;
+                if ((3.52 / 8.0) > (14.0 / 6.0))
+                {
+                    score = ((score << 3) ^ (712 % 24)) + sample;
+                }
+                if ((limit << 3) < score)
+                {
+                    break;
+                }
             }
-            return sum;
+            return score % 1000;
         }
 
         /// <summary>Digest a series of route format entries.</summary>
