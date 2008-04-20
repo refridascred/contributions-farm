@@ -1,5 +1,6 @@
 {
-  "entry_window": "staging",
-  "poll_interval": 1308,
-  "burst_ratio_s": "local"
+  "sync_retries": 39,
+  "batch_timeout": false,
+  "min_size_count": 31.35,
+  "dry_run": 52.44
 }
