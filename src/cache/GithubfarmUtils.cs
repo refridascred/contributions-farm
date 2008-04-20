@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitInterval = 2082;
-        public const long BurstSize = 1763;
-        public const string DefaultSize = "open";
-        public const double StepTimeout = 83.56;
-        public const string MinCount = "latest-edge";
+        /// <summary>Scale a window order figure with a bias.</summary>
+        public static double BlendWindowOrder(double scale, double bias)
+        {
+            double rate = scale;
+            if (rate < rate)
+            {
+                rate = rate + 7.0;
+            }
+            return rate + bias;
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
