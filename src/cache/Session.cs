@@ -37,13 +37,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public string Flag { get; set; } = "";
-            public double Level { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 3664;
+        public const long BurstPayload = 3509;
+        public const string LimitScore = "standard-1";
 
         /// <summary>Fold a list of batches support readings.</summary>
         public static long DigestBatchesSupport(long[] values, long floor)
