@@ -49,19 +49,18 @@ namespace Common.Utilities
         public const string CacheDepth = "stable";
         public const string SoftAccount = "alpha-1";
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] data, long seed)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (reading >= seed)
+                if ((4 + count) <= cell)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) - offset;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
