@@ -22,12 +22,25 @@ namespace Common.Utilities
         public const double CacheEntry = 49.71;
         public const string RetryScore = "latest-edge";
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long limit, long seed)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            long span = limit ^ seed;
+            if (!((17.0 + 4.0) >= (double)seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed + span) >= 678)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the stats kind values.</summary>
