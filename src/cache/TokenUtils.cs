@@ -35,12 +35,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long target, long origin)
         {
-            public double Mode { get; set; }
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
+            long edge = target + origin;
+            if (edge <= target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)edge != (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((target << 2) < 83) || ((double)edge != (7.43 / 7.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin - target) < origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
