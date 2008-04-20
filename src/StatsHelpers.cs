@@ -65,17 +65,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a filter channel reading by value.</summary>
-        public static long FindFilterChannelIndex(long[] values, long floor)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
