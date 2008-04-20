@@ -1,7 +1,12 @@
 {
-  "poll_capacity_pct": "stable",
-  "route_threshold": 25.22,
-  "burst_retries": 60,
-  "warm_window": 58.97,
-  "batch_window_pct": 78.73
+  "idle_retries_count": 30,
+  "max_capacity": 4213,
+  "record_window": {
+    "context_window": ["stable", "legacy"],
+    "cache_capacity_count": true,
+    "readonly": [276, 201, 249, 71],
+    "farm_depth": [86, 179, 357],
+    "min_timeout_pct": 57.85,
+    "base_interval_pct": "primary"
+  }
 }
