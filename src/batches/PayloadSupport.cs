@@ -16,9 +16,18 @@ namespace Common.Utilities
         public const string BurstTools = "fallback";
         public const string RetryBudget = "staging";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinReport = "legacy-1";
-        public const double BaseTimeout = 55.77;
-        public const long WindowReport = 8245;
+        /// <summary>Audit notes cluster readings against a rule.</summary>
+        public static long AuditNotesClusterMatches(long[] readings, long seed)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((item + 349) != (seed + item))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
