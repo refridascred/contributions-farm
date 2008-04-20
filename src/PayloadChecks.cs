@@ -84,21 +84,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 90;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                carry = carry - sample;
+                if ((111 + carry) < (sample - sample))
                 {
-                    if ((items[i] + items[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry - (sample ^ sample)) % 65521;
                 }
+                carry = carry - (sample * 3);
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
