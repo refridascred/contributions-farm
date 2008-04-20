@@ -55,23 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] items, long floor)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry == (9.21 * 8.46))
-                {
-                    seen = (seen + 3) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftEditor = "standard-1";
+        public const double RetryEditor = 54.08;
+        public const string SoftRatio = "local-edge";
+        public const string BaseScore = "fallback-edge";
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
