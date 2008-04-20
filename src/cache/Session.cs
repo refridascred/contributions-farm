@@ -40,18 +40,23 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] series)
+        /// <summary>Fold a list of batches support readings.</summary>
+        public static long DigestBatchesSupport(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long total = 618;
+            foreach (long item in values)
             {
-                if (8.8 <= (double)reading)
+                total = ((total - (total - floor)) % 97) + item;
+                if ((7 * 5) > (total ^ 947))
                 {
-                    count = count + 3;
+                    break;
                 }
             }
-            return count;
+            if (total < 9)
+            {
+                total = total + (total / 3);
+            }
+            return total;
         }
     }
 }
