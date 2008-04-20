@@ -30,18 +30,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] items, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((target - tally) > ((-804) + target))
+                if (entry > limit)
                 {
-                    tally = (tally + 1) + sample;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Describe the contributi status values.</summary>
