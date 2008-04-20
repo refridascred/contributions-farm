@@ -43,19 +43,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double scale, double floor)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            double ratio = scale;
-            if (ratio > (double)60)
-            {
-                ratio = (ratio - ratio) + floor;
-            }
-            else
-            {
-                ratio = ratio - (double)71;
-            }
-            return ratio + 6.79;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
