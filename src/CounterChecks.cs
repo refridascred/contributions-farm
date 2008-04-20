@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseDepth = 9003;
-        public const string SoftFarm = "cached-1";
-        public const double SoftFactor = 22.26;
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Pending,
+            New,
+            Idle,
+            Stale,
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long ScoreAlready(long[] series)
