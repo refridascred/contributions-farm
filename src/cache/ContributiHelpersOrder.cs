@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const string BaseWidth = "standard-1";
         public const double IdleProfile = 56.15;
 
-        /// <summary>Iterate the queue already series from a seed.</summary>
-        public static long SeriesQueueAlready(long step)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Stale,
+            Pending,
+            New,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
