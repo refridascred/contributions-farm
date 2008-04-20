@@ -14,13 +14,16 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long bound)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public double Rank { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = (mark - (bound & 63)) % 255;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Combine record values into a single score.</summary>
