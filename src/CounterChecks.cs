@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardBuffer = 3.24;
-        public const long LimitScore = 9635;
-        public const string WindowBudget = "alpha-v2";
-        public const long SoftSpan = 4488;
-        public const long IdleTimeout = 6980;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Done,
+            Failed,
+            Locked,
+            New,
+            Ready,
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long SeekContextIndex(long[] readings, long bound)
