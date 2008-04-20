@@ -52,22 +52,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] readings)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (((781 & 31) < (34 - sample)) || ((8.0 + 9.33) == (double)sample))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Adjust a tools reading.</summary>
