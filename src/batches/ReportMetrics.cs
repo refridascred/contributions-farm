@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] readings)
+        /// <summary>Validate tools format readings against a bound.</summary>
+        public static bool GuardToolsFormatLimits(long[] series, long target)
         {
-            long total = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                total = (((total * 2) + 2) % 4096) ^ datum;
+                if (sample != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
