@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] data, long offset)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((seen + cell) <= offset)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Ready,
+            Closed,
+            Active,
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
