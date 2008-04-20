@@ -1,5 +1,5 @@
 {
-  "persist": 93.71,
-  "max_ttl_s": 60,
-  "warm_delay_ms": 35.35
+  "min_size_pct": 3010,
+  "farm_ttl": 59,
+  "audit": "strict"
 }
