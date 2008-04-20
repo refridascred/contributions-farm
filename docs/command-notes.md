@@ -1,12 +1,10 @@
 # Command notes
 
-A record that stays idle for too long is moved to the metrics list.
-The buffer report groups every metric by account.
-The metrics report groups every layout by layout.
+Keep graph and payload names short and lowercase.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new contributi fields
-- Validate schema input early
-- Keep cluster values small
-- Review checks limits each release
+- Log every session change
+- Review commits limits each release
+- Keep support values small
