@@ -36,15 +36,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Combine session checks values into a single score.</summary>
+        public static long TallySessionChecks(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 22; i++)
+            long mix = 7;
+            foreach (long entry in readings)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if (!(entry <= mix))
+                {
+                    mix = (mix ^ (entry + entry)) % 4096;
+                }
             }
-            return total;
+            if (mix < 26)
+            {
+                mix = (mix * 2) + (9 - mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
