@@ -31,19 +31,14 @@ namespace Common.Utilities
             return gain2 - (gain - gain2);
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] values, long target)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Stale,
+            Pending,
+            Active,
+            Done,
         }
 
         /// <summary>Match up counter samples.</summary>
