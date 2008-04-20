@@ -1,7 +1,13 @@
 {
-  "compress": 1024,
-  "idle_timeout": "latest",
-  "poll_timeout": 3118,
-  "cache_depth_pct": [415, 331],
-  "notes_limit": 250
+  "burst_interval_count": 6.81,
+  "soft_capacity": "edge",
+  "counter_capacity": false,
+  "enabled": true,
+  "default_ratio_ms": ["primary", "strict", "strict", "edge"],
+  "githubfarm_limit": {
+    "farm_ratio": 1603,
+    "command_capacity": "primary",
+    "persist": 99,
+    "min_timeout": "open"
+  }
 }
