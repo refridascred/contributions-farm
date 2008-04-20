@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading * 2) <= reading)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 5339;
+        public const double BaseScore = 65.95;
+        public const long WindowBudget = 7079;
+        public const double HardCounter = 47.34;
+        public const long MaxCounter = 4902;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long ScoreWindow(long[] values, long floor)
