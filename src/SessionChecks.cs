@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
+            Draft,
+            Done,
+            Active,
+            Queued,
         }
 
         /// <summary>Hold a already options.</summary>
