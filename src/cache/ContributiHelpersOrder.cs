@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
-        {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseProfile = "legacy-edge";
+        public const string BaseWidth = "standard-1";
+        public const double IdleProfile = 56.15;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long FoldEditor(long[] items, long seed)
