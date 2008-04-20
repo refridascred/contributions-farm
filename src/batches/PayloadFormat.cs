@@ -28,18 +28,11 @@ namespace Common.Utilities
             return drift - (bias * 5.83);
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] items)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell > (double)seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the format level values.</summary>
