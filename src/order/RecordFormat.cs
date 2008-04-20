@@ -46,18 +46,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] levels, long target)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long result = 330;
-            foreach (long datum in levels)
-            {
-                if (!((result - 4) > (datum ^ result)))
-                {
-                    result = result + (target >> 2);
-                }
-            }
-            return result;
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
