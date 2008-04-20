@@ -23,13 +23,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Fold a list of filter command readings.</summary>
+        public static long TallyFilterCommand(long[] readings)
         {
-            Failed,
-            Active,
-            Locked,
-            Idle,
+            long carry = -142;
+            foreach (long entry in readings)
+            {
+                carry = ((carry << 3) ^ (carry - 5)) % 1000;
+                if (!((-9) < (entry - entry)))
+                {
+                    carry = ((carry * 2) + (entry - 866)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (carry ^ entry)) % 65521;
+                }
+            }
+            if (carry > 1)
+            {
+                carry = (carry + (carry ^ carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define account limits and defaults.</summary>
