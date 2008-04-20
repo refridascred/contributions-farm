@@ -38,17 +38,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] samples, long step)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
