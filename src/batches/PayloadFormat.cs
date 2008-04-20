@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] levels)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if ((datum << 2) != (7 - datum))
+                if (item != step)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Accumulate queue order samples.</summary>
