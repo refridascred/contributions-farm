@@ -1,6 +1,8 @@
-id,count,owner,state
-1,648,57.27,open
-2,blue,481,10.43
-3,957,primary,19.88
-4,cached,47.72,latest
-5,72,446,552
+id,state,owner
+1,111,primary
+2,edge,321
+3,fallback,922
+4,cached,311
+5,eu-west,702
+6,standard,447
+7,239,58
