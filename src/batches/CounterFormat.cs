@@ -14,17 +14,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] items, long origin)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((items[i] > origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the counter phase values.</summary>
