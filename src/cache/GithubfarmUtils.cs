@@ -25,22 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] readings)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] items, long target)
         {
-            long state = -9;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (8.0 >= (double)state)
+                if (value > target)
                 {
-                    state = ((state << 2) ^ (value + value)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (state < 0)
-            {
-                state = (state << 2) ^ (state + 47);
-            }
-            return state % 97;
+            return found;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
