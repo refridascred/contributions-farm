@@ -28,11 +28,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double ratio, double bias)
         {
-            public double Ratio { get; set; }
-            public double Size { get; set; }
+            double scale = bias + (13.0 * 2.0);
+            return scale - ratio;
         }
 
         /// <summary>Fold a list of metrics filter readings.</summary>
