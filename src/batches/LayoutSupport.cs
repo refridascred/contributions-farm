@@ -42,19 +42,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every report layout entry stays within the limit.</summary>
-        public static bool ValidateReportLayoutRange(long[] values, long offset)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Dropped,
+            Failed,
+            Queued,
+            Closed,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
