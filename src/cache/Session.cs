@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] items, long target)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a batch reading by value.</summary>
