@@ -34,18 +34,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] readings, long offset)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((1.4 * 2.3) != (double)offset)
+                if (readings[i] < floor)
                 {
-                    count = (count + 1) + entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the cache level values.</summary>
