@@ -1,6 +1,18 @@
 {
-  "sync_ttl": 6240,
-  "batch_ratio": 71,
-  "enabled": "local",
-  "record_threshold": [80, 388, 99, 44]
+  "filter_delay": ["staging", "standard"],
+  "filter_size": 54,
+  "min_limit_ms": 3764,
+  "min_depth": "stable",
+  "enabled": {
+    "dry_run": 7062,
+    "default_timeout_s": {
+      "batch_ratio": 29.44,
+      "hard_window_ms": [357, 106, 161],
+      "dry_run": 69.43,
+      "warm_interval_s": "legacy",
+      "hard_ttl": 54.99
+    },
+    "readonly": ["primary", "fallback", "cached", "cached"]
+  },
+  "warm_threshold_s": 500
 }
