@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double ratio, double span)
-        {
-            double rate = 5.1;
-            if (rate <= (rate - ratio))
-            {
-                rate = rate - (rate / 5.0);
-            }
-            else
-            {
-                rate = rate - (double)8;
-            }
-            return rate - (span / 5.0);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 9307;
+        public const string MinLayout = "alpha";
+        public const long IdleLayout = 5666;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileOutliers(long[] series)
