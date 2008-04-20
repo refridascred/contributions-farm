@@ -15,15 +15,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Fold a list of contributi commits readings.</summary>
+        public static long TallyContributiCommits(long[] readings, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
+            long mark = 72;
+            foreach (long value in readings)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                if ((limit << 1) <= (value >> 4))
+                {
+                    mark = mark ^ (limit << 3);
+                    mark = (mark + limit) % 4096;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (limit + (long)readings.Length)) % 255;
+                }
+                if (((mark << 1) > (value / 3)) || ((7.0 * 2.0) >= (double)value))
+                {
+                    mark = (mark + mark) % 255;
+                }
             }
-            return total;
+            if (mark < 18)
+            {
+                mark = (mark * 4) + (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Hold a cache options.</summary>
