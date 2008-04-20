@@ -37,16 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] readings)
-        {
-            long total = 967;
-            foreach (long sample in readings)
-            {
-                total = ((total + (34 + total)) % 4096) - sample;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 1869;
+        public const long StepFactor = 3649;
+        public const long BatchCount = 3266;
+        public const long BatchGraph = 8742;
+        public const long LimitGraph = 1934;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long TallySessionHits(long[] items, long step)
