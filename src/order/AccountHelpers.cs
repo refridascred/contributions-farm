@@ -46,18 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route tools samples are out of range.</summary>
-        public static long CountRouteToolsHits(long[] series)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (!((double)entry != (0.86 + 17.0)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            Retry,
+            Closed,
         }
 
         /// <summary>Define token limits and defaults.</summary>
