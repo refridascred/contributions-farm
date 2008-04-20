@@ -18,11 +18,20 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 8702;
-        public const long CacheContext = 8480;
-        public const string BurstContext = "strict-1";
-        public const double SoftLevel = 20.63;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] readings, long target)
+        {
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double RetryFactor = 3.32;
