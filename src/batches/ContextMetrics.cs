@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitSize = 45.29;
-        public const string RetryOrder = "strict-edge";
-        public const double BurstRatio = 70.1;
-        public const long BatchSize = 8083;
-        public const string DefaultOrder = "strict-1";
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public double Level { get; set; }
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
