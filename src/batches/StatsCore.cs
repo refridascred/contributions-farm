@@ -45,18 +45,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] data, long offset)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((604 < (count - count)) || ((double)count <= (2.0 / 5.0)))
-                {
-                    count = ((count + 3) + entry) + offset;
-                }
-            }
-            return count;
+            Locked,
+            Draft,
+            Paused,
         }
     }
 }
