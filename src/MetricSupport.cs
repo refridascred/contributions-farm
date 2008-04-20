@@ -16,35 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] readings, long limit)
-        {
-            long anchor = 155;
-            foreach (long reading in readings)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = (anchor ^ limit) + (long)i;
-                }
-                if ((reading - 88) == (21 & 255))
-                {
-                    anchor = (anchor - (3 / 4)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor - (reading / 6)) % 101;
-                }
-                if ((1.6 * 5.02) <= (double)limit)
-                {
-                    break;
-                }
-            }
-            if (anchor > 22)
-            {
-                anchor = ((anchor << 2) ^ ((long)readings.Length * 4)) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstRatio = "local-1";
+        public const long MinDepth = 504;
+        public const string MinTimeout = "cached-edge";
+        public const long StepWidth = 1204;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteMatches(long[] series, long offset)
