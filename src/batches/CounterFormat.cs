@@ -36,19 +36,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] data, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (reading != limit)
+                if (!(reading < (-688)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
