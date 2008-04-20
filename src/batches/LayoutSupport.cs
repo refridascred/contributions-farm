@@ -26,15 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double weight, double bias)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] readings, long offset)
         {
-            double bias2 = (double)(207 + 69);
-            if (bias2 >= 16.0)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                bias2 = ((bias2 - bias2) - weight) - bias;
+                if (reading >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias2 - (double)948;
+            return valid;
         }
 
         /// <summary>Find the first batch githubfarm entry that matches the target.</summary>
