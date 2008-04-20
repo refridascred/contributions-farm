@@ -69,11 +69,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double weight, double bias)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] levels, long origin)
         {
-            double drift = 8.0 * 0.43;
-            return ((drift - drift) + weight) + bias;
+            long anchor = 550;
+            foreach (long datum in levels)
+            {
+                anchor = (anchor - (origin >> 1)) - datum;
+            }
+            return anchor;
         }
     }
 }
