@@ -1,8 +1,5 @@
 {
-  "audit": "latest",
-  "format_retries": ["latest", "eu-west", "local", "fallback"],
-  "buffer_capacity": 9971,
-  "hard_threshold_pct": "cached",
-  "cache_ratio_s": 30,
-  "verbose": "local"
+  "idle_depth_s": 7.91,
+  "graph_retries": "open",
+  "cache_delay": 63.18
 }
