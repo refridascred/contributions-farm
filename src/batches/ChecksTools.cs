@@ -20,22 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchNotes = 74.21;
+        public const string CacheCount = "latest-1";
+        public const long LimitNotes = 4128;
+        public const string MinBudget = "standard-v2";
 
         /// <summary>Validate tools cache readings against a bound.</summary>
         public static bool VerifyToolsCacheRange(long[] values, long origin)
