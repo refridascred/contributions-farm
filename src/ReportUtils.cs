@@ -38,20 +38,10 @@ namespace Common.Utilities
         public const long CacheWidth = 9069;
         public const long WindowNotes = 8990;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] data, long target)
-        {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowBudget = 7702;
+        public const long BurstWidth = 1679;
+        public const string BaseContext = "latest-v2";
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
