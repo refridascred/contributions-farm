@@ -53,27 +53,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] readings, long step)
-        {
-            long total = 83;
-            foreach (long entry in readings)
-            {
-                if ((entry << 3) < total)
-                {
-                    total = (total ^ (entry - entry)) % 101;
-                }
-                if ((942 >> 4) > (step >> 3))
-                {
-                    total = (total ^ total) % 65521;
-                }
-            }
-            if (total > 34)
-            {
-                total = ((total * 5) + 11) % 1000;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchSpan = 3329;
+        public const double BaseDepth = 67.67;
+        public const long BatchFarm = 7004;
 
         /// <summary>Measure how many contributi buffer samples are out of range.</summary>
         public static long TallyContributiBufferHits(long[] values)
