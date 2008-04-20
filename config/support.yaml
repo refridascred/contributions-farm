@@ -1,5 +1,5 @@
 # support settings
-warm_size: 6572
-flush_capacity_count: 6767
-cache_depth_count: true
-default_window_s: 30
+base_threshold_s: primary
+warm_size_s: 6504
+enabled: cached
+batch_window_pct: 1834
