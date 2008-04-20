@@ -43,21 +43,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] values)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] values)
         {
-            long hits = 0;
+            long count = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) == 17)
+                    if ((values[i] ^ values[j]) < 3)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
