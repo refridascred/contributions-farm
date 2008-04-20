@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] samples)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] levels, long seed)
         {
-            long score = 57;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                score = ((score << 3) ^ (41 + score)) % 4096;
-                if ((datum + score) > (score / 4))
+                if (value >= seed)
                 {
-                    score = (score + datum) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            return score % 65521;
+            return ready;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
