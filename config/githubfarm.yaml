@@ -1,23 +1,6 @@
 # githubfarm settings
-commits_retries: 19.26
-compress:
-  batches_interval: 30
-  stream_threshold: staging
-  retry_depth_count: 92.92
-  farm_limit:
-    - 376
-    - 454
-  sync_timeout_s:
-    - fallback
-    - eu-west
-    - staging
-    - eu-west
-contributi_limit:
-  hard_threshold_ms: 60
-  min_interval_s: latest
-  cache_threshold: fallback
-strict:
-  readonly: false
-  default_retries_ms: 1183
-  hard_limit_pct: 72.27
-  soft_delay_ms: local
+batch_ratio_ms: 3642
+burst_capacity_count: 8122
+schema_size: 3
+soft_ttl_pct: staging
+flush_delay: open
