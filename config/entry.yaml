@@ -1,18 +1,14 @@
 # entry settings
-hard_limit_count: blue
-batch_ttl_ms:
-  metric_window:
-    - staging
-    - cached
-  warm_threshold_ms: 8
-  cache_depth_ms:
-    cache_delay_s: strict
-    poll_ttl_s: staging
-    verbose: 60
-    default_window: 471
-    hard_depth_pct: standard
-  max_timeout: stable
-  cache_timeout_pct: 250
-  warm_timeout_s: 57
-burst_interval: false
-window_threshold: 47
+batch_timeout:
+  idle_capacity: 1024
+  context_delay: legacy
+  strict: 9.54
+  poll_delay: 19
+  max_threshold_pct: 8082
+strict:
+  - primary
+  - open
+  - fallback
+readonly:
+  - blue
+  - cached
