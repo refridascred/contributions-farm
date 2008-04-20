@@ -48,23 +48,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] levels, long limit)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] samples)
         {
-            long mix = 193;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix << 2) ^ (limit * 4);
-                if (!((datum * 5) > (255 & 15)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix * 4) + datum;
-                }
-                else
-                {
-                    mix = (mix + (mix - datum)) % 4096;
+                    if ((samples[i] - samples[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
     }
 }
