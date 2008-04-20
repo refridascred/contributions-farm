@@ -52,19 +52,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] data, long limit)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (value < limit)
+                if ((2.0 / 7.0) >= (double)value)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) - bound;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Accumulate channel samples.</summary>
