@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] samples, long offset)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample > offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] - values[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a format options.</summary>
