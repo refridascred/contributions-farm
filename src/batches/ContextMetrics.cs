@@ -43,12 +43,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long origin, long target)
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public bool Owner { get; set; }
+            long step = origin - target;
+            if ((step > (target + target)) && ((step ^ target) >= (step / 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step ^ 9) <= origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
