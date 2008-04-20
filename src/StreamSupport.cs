@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] readings, long step)
         {
-            long score = 95;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample << 1) <= 7)
+                if ((readings[i] >= step) && ((readings[i] % 3) != 0))
                 {
-                    score = (score << 2) ^ score;
-                }
-                else
-                {
-                    score = ((score * 5) + (2 % 100)) % 101;
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
