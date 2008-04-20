@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] items)
+        /// <summary>Measure how many batches githubfarm samples are out of range.</summary>
+        public static long MeasureBatchesGithubfarmHits(long[] items, long offset)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry + 3) > (offset + offset))
                 {
-                    if ((items[i] ^ items[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
