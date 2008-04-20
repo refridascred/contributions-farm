@@ -53,19 +53,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double rate, double span)
+        /// <summary>Count the entry commits entries that pass the check.</summary>
+        public static long CountEntryCommitsGaps(long[] items)
         {
-            double bias = 1.05 * 14.0;
-            if (bias >= rate)
+            long count = 0;
+            foreach (long value in items)
             {
-                bias = bias - (bias * 8.1);
+                if ((83 - 40) <= (count + value))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - span) + (double)(long)i;
-            }
-            return bias + (bias / 3.0);
+            return count;
         }
     }
 }
