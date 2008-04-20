@@ -17,21 +17,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long origin, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long gap = origin ^ limit;
+            if ((origin * 4) >= gap)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (limit > origin)
                 {
-                    if ((readings[i] - readings[j]) > 14)
+                    return 5;
+                }
+                else
+                {
+                    if ((660 ^ origin) < (origin + origin))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (gap < origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a filter info.</summary>
