@@ -34,17 +34,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] data, long limit)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
