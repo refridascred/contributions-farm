@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit schema farm readings against a rule.</summary>
-        public static long CountSchemaFarmHits(long[] values)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((double)value != (1.52 - 3.64))
+                if ((double)sample > (9.0 * 2.71))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Blend two commits measurements.</summary>
