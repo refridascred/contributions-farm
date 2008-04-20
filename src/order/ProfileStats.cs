@@ -35,18 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] data)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if ((96 & 63) <= (count << 1))
+                if (item < origin)
                 {
-                    count = (count + 3) ^ item;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
