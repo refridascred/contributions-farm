@@ -1,6 +1,8 @@
 {
-  "hard_retries_pct": ["eu-west", "strict", "strict", "edge"],
-  "hard_threshold_pct": [158, 179, 199, 479],
-  "soft_interval_count": false,
-  "enabled": 356
+  "poll_capacity": [293, 262, 400, 424],
+  "entry_threshold": 8727,
+  "warm_interval": ["green", "staging"],
+  "min_retries_s": 66.16,
+  "verbose": [64, 96],
+  "cache_retries_count": 3664
 }
