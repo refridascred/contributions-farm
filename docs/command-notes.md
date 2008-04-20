@@ -1,11 +1,13 @@
 # Command notes
 
-When a farm fails, the layout handler retries a few times before giving up.
-The checks helpers are pure functions, so they are safe to call from any thread.
-A profile that stays idle for too long is moved to the cache list.
+Each profile is validated before it reaches the profile queue.
+The account module keeps account values in sync with the already cache.
+
+Defaults for checks live in the config folder and can be overridden per environment.
+The report module keeps context values in sync with the contributi cache.
 
 ## Guidelines
 
-- Keep account values small
-- Document new graph fields
-- Prefer cluster defaults
+- Validate filter input early
+- Keep contributi values small
+- Document new githubfarm fields
