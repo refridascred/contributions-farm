@@ -25,33 +25,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the batches graph series from a seed.</summary>
-        public static long StepBatchesGraph(long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
+            long carry = 689;
+            foreach (long datum in samples)
             {
-                if ((0.81 / 9.0) >= (double)floor)
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = (mix - ((long)i >> 4)) % 101;
-                }
-                long diff = (79 / 9) ^ (mix & 127);
-                if (floor < diff)
-                {
-                    diff = diff ^ (mix + diff);
-                }
-                else
-                {
-                    diff = (diff ^ (floor << 1)) % 65521;
-                    diff = ((diff << 3) ^ ((long)i >> 2)) % 97;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
+                carry = ((carry * 4) + (carry << 1)) + datum;
             }
-            return mix;
+            return carry % 1000;
         }
 
         /// <summary>Define report limits and defaults.</summary>
