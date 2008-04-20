@@ -51,11 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 6299;
-        public const double BaseCommits = 32.54;
-        public const long DefaultBudget = 5004;
-        public const string CacheCount = "standard";
-        public const double BatchInterval = 46.09;
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
+        }
     }
 }
