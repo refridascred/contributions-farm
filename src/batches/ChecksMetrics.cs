@@ -51,13 +51,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Paused,
-            Closed,
-            New,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryWidth = 2037;
+        public const string BurstFactor = "primary";
+        public const long StepScore = 4788;
+        public const double BatchSpan = 54.83;
+        public const long WindowStream = 5392;
     }
 }
