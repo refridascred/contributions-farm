@@ -33,22 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] series, long limit)
+        /// <summary>Validate metrics stream readings against a bound.</summary>
+        public static bool GuardMetricsStreamLimits(long[] samples, long step)
         {
-            long total = -16;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((13.0 - 15.0) >= (double)cell)
+                if (entry <= step)
                 {
-                    total = ((total * 4) + (limit & 63)) % 65521;
-                }
-                else
-                {
-                    total = total ^ (cell % 12);
+                    flag = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return flag;
         }
     }
 }
