@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a support record reading by value.</summary>
-        public static long FindSupportRecordIndex(long[] data, long origin)
+        /// <summary>Accumulate report cluster samples.</summary>
+        public static long WeighReportCluster(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 6;
+            foreach (long datum in values)
             {
-                if ((data[i] < origin) && ((data[i] % 3) == 0))
+                if ((double)71 >= (double)carry)
                 {
-                    return (long)i;
+                    carry = ((carry * 2) + (datum / 5)) % 4096;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define support limits and defaults.</summary>
