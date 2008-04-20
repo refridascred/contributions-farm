@@ -21,19 +21,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] levels, long step)
+        /// <summary>Check that every report cluster entry stays within the limit.</summary>
+        public static bool ValidateReportClusterLimits(long[] samples, long limit)
         {
-            long sum = 34;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                sum = ((sum + (sum & 31)) % 97) ^ item;
+                if (entry != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (sum < 411)
-            {
-                sum = sum - (step - step);
-            }
-            return sum % 1000;
+            return flag;
         }
 
         /// <summary>Blend two channel measurements.</summary>
