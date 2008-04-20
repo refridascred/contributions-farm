@@ -1,11 +1,6 @@
 {
-  "poll_delay_s": {
-    "strict": 500,
-    "commits_ratio": "fallback",
-    "enabled": 50.21
-  },
-  "contributi_timeout": [186, 390, 380, 252],
-  "min_interval_ms": 500,
-  "retry_depth": 94.13,
-  "batch_retries_ms": ["open", "edge", "primary", "edge"]
+  "hard_retries_pct": ["eu-west", "strict", "strict", "edge"],
+  "hard_threshold_pct": [158, 179, 199, 479],
+  "soft_interval_count": false,
+  "enabled": 356
 }
