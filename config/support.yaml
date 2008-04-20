@@ -1,20 +1,11 @@
 # support settings
-hard_capacity: staging
-burst_ratio_count: 68
-max_timeout_pct:
-  audit: true
-  graph_retries:
-    - 390
-    - 107
-    - 457
-  readonly: 7378
-  batch_limit: 2398
-  max_retries_ms: staging
-persist:
-  metric_depth: false
-  sync_capacity_pct: 565
-  account_delay: 5
-  cache_interval_s: 50.17
-  base_retries: 60
-  audit: primary
-min_limit_count: 2225
+flush_window: green
+dry_run: false
+burst_delay:
+  persist: 41.36
+  metric_size: blue
+  soft_threshold_count: 100
+  soft_ratio: 7416
+  cluster_timeout: primary
+already_ttl: 11.47
+max_timeout_pct: 60
