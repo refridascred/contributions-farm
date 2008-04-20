@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 8642;
-        public const string BaseCount = "open-edge";
-        public const long StepSize = 6122;
-        public const long WindowBatches = 1301;
-        public const long BatchBatches = 1928;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public bool Mode { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long OverlapTokenCount(long[] samples)
