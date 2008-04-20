@@ -16,19 +16,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit editor notes readings against a rule.</summary>
-        public static long CountEditorNotesMatches(long[] values, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((((origin % 97) <= (entry << 3)) && ((hits & 255) == (hits ^ 60))) && ((double)origin != (double)8))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 2688;
+        public const string CacheTools = "legacy";
+        public const string SoftSize = "open-v2";
 
         /// <summary>Accumulate layout batches samples.</summary>
         public static long CombineLayoutBatches(long[] levels)
