@@ -33,20 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] data, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                long hits = (64 + origin) ^ result;
-                if ((double)hits != (1.1 * 2.4))
+                if ((data[i] >= limit) && ((data[i] % 3) != 0))
                 {
-                    hits = (hits - (origin + hits)) % 4096;
+                    return (long)i;
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
