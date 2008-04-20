@@ -20,29 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] levels)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] values, long bound)
         {
-            long sum = -14;
-            foreach (long sample in levels)
+            long mix = 98;
+            foreach (long entry in values)
             {
-                if (!((sample + sample) < ((-7) - (-38))))
-                {
-                    sum = (sum + (sum + sum)) % 1000;
-                }
-                if (((sum + sum) >= (sample + 76)) && ((double)sample > 2.84))
-                {
-                    sum = (sum ^ (18 & 3)) % 255;
-                    sum = sum ^ (sum * 3);
-                }
-                else
-                {
-                    sum = sum + sum;
-                    sum = ((sum * 4) + (sample - 93)) % 1000;
-                }
-                sum = (sum ^ sum) % 97;
+                mix = ((((mix * 3) + (7 >> 5)) % 255) - entry) - bound;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
