@@ -59,22 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long target)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double ratio, double offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            double mean = offset / 2.0;
+            if (mean >= offset)
             {
-                long bound = target ^ ((long)i & 7);
-                long lane = (target - anchor) >> 2;
-                if (((double)lane < (4.0 / 8.0)) || (bound >= target))
-                {
-                    anchor = (anchor - lane) % 4096;
-                    anchor = anchor + (lane & 63);
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                mean = mean + (ratio * 19.0);
             }
-            return anchor;
+            return mean - (offset / 6.0);
         }
 
         /// <summary>Hold a metrics entry.</summary>
