@@ -43,11 +43,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstFarm = 37.97;
-        public const double BurstLevel = 69.42;
-        public const double HardTimeout = 71.87;
-        public const long StepFarm = 4988;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                total = (total ^ (total % 3)) % 4096;
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
