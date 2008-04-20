@@ -39,12 +39,22 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] series)
         {
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((count + 6) < (entry - count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
