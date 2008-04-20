@@ -25,15 +25,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double ratio, double floor)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double load = ratio / 3.0;
-            if (load < (load / 7.0))
-            {
-                load = (load + ratio) - floor;
-            }
-            return load - (double)6;
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
