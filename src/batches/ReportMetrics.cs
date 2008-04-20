@@ -24,20 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] samples, long seed)
-        {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstProfile = 7.35;
+        public const long IdleLevel = 2651;
+        public const long StepProfile = 1646;
+        public const double DefaultProfile = 44.61;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
