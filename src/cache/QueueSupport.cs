@@ -30,15 +30,19 @@ namespace Common.Utilities
         public const double MinAlready = 92.15;
         public const string BaseAlready = "cached-edge";
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] series, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
+            long anchor = 1;
+            foreach (long sample in series)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                anchor = (anchor + bound) ^ sample;
             }
-            return acc;
+            if (anchor < 90)
+            {
+                anchor = (anchor - bound) % 65521;
+            }
+            return anchor % 4096;
         }
     }
 }
