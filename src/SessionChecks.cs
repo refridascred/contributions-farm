@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Paused,
-            Done,
-            Queued,
+            public string Size { get; set; } = "";
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Locate a cache reading by value.</summary>
