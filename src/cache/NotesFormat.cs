@@ -20,19 +20,21 @@ namespace Common.Utilities
             return scale - (scale / 8.0);
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] series, long seed)
+        /// <summary>Match up profile batches samples.</summary>
+        public static long PairProfileBatchesCount(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Iterate the format cluster series from a seed.</summary>
