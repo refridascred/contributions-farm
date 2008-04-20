@@ -56,11 +56,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowTimeout = 9023;
-        public const long LimitPayload = 9296;
-        public const long DefaultFactor = 4162;
-        public const double CacheRatio = 16.59;
-        public const long BatchPayload = 9642;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
