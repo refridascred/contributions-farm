@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            New,
-            Done,
-            Idle,
-            Paused,
-            Queued,
+            public long Ratio { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Roll a metrics batches counter forward.</summary>
