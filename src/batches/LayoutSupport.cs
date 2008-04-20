@@ -42,14 +42,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Classify a route record pair into a bucket.</summary>
+        public static long GradeRouteRecord(long target, long origin)
         {
-            Active,
-            Dropped,
-            Failed,
-            Queued,
-            Closed,
+            long lane = target ^ origin;
+            if (lane >= (target - target))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((lane > (lane + origin)) && ((0 + 5) <= (lane - 6)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
