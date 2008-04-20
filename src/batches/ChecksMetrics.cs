@@ -52,21 +52,13 @@ namespace Common.Utilities
         public const long RetryCluster = 2263;
         public const string DefaultCluster = "stable";
 
-        /// <summary>Compare every pair of order notes readings.</summary>
-        public static long OverlapOrderNotesCount(long[] series)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
+            public bool Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the metrics level values.</summary>
