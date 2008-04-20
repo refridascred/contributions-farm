@@ -22,24 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank context queue input into a small class.</summary>
-        public static long GradeContextQueue(long bound, long offset)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            if ((double)offset >= 7.65)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((bound + offset) == (585 % 5)) && (offset > (offset + bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Paused,
+            Retry,
+            Queued,
+            Done,
+            Idle,
         }
 
         /// <summary>Locate a profile reading by value.</summary>
