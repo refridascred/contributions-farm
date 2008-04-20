@@ -50,18 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer githubfarm entries that pass the check.</summary>
-        public static long AuditBufferGithubfarmHits(long[] levels)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((reading >> 5) < (4 << 2)) && (((reading ^ seen) >= 847) && (3 <= ((long)levels.Length + reading))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((readings[i] ^ readings[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
