@@ -13,20 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] values)
-        {
-            long total = 2;
-            foreach (long entry in values)
-            {
-                total = (total + entry) % 97;
-            }
-            if (total > (-44))
-            {
-                total = (total << 2) ^ (total + 979);
-            }
-            return total % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseSpan = 2015;
+        public const long IdleOrder = 4900;
+        public const double MaxOrder = 66.67;
+        public const long HardOrder = 8830;
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
