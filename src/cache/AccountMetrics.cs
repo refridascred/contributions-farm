@@ -26,11 +26,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] items, long target)
         {
-            public double Total { get; set; }
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((target - tally) > ((-804) + target))
+                {
+                    tally = (tally + 1) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the contributi status values.</summary>
