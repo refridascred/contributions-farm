@@ -31,9 +31,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleRatio = "cached-1";
-        public const long LimitWindow = 4321;
-        public const long CacheCount = 6006;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowSpan = 1760;
+        public const long MaxTimeout = 2573;
+        public const long MinRatio = 1843;
     }
 }
