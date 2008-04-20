@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of entry record entries.</summary>
-        public static long DigestEntryRecord(long[] values, long limit)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long bound)
         {
-            long score = 65;
-            foreach (long sample in values)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((3.52 / 8.0) > (14.0 / 6.0))
+                anchor = (anchor + (bound + bound)) % 1000;
+                if ((bound + anchor) > (bound - anchor))
                 {
-                    score = ((score << 3) ^ (712 % 24)) + sample;
+                    anchor = ((anchor * 3) + (bound % 8)) % 4096;
                 }
-                if ((limit << 3) < score)
-                {
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return score % 1000;
+            return anchor;
         }
 
         /// <summary>Digest a series of route format entries.</summary>
