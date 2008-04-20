@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseBudget = "strict-edge";
-        public const string HardBatch = "open-v2";
-        public const long WindowDepth = 3511;
-        public const long MinBatch = 2105;
-        public const long IdleFactor = 1555;
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == origin) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long DeriveBuffer(long target)
