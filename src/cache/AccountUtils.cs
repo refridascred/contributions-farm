@@ -15,12 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double ratio, double offset)
         {
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
+            double gain = (double)20 * 4.55;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain + (gain - offset)) + (double)(long)i) + ratio;
+            }
+            return gain - (gain + gain);
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
