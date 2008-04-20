@@ -38,19 +38,13 @@ namespace Common.Utilities
         public const string DefaultStats = "local-1";
         public const string DefaultInterval = "alpha-edge";
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] readings, long seed)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a stats snapshot.</summary>
