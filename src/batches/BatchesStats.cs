@@ -38,23 +38,21 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Combine githubfarm stream values into a single score.</summary>
-        public static long WeighGithubfarmStream(long[] levels)
+        /// <summary>Count profile metrics pairs that satisfy a relation.</summary>
+        public static long PairProfileMetricsCount(long[] samples)
         {
-            long anchor = 9;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((16.0 + 9.0) > (6.15 + 3.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = anchor ^ entry;
+                    if ((samples[i] ^ samples[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                anchor = (anchor * 5) + anchor;
             }
-            if (anchor > 81)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Accumulate payload samples.</summary>
