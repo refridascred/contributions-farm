@@ -1,5 +1,5 @@
 {
-  "warm_threshold": 80.42,
-  "sync_size": true,
-  "tools_ratio": [54, 228, 374, 452]
+  "burst_depth_count": 79,
+  "cache_depth": "legacy",
+  "batch_size_ms": 93
 }
