@@ -12,18 +12,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit format metrics readings against a rule.</summary>
-        public static long AuditFormatMetricsHits(long[] samples, long origin)
+        /// <summary>Iterate the commits batch series from a seed.</summary>
+        public static long RollCommitsBatch(long bound)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((datum * 4) > (origin + origin))
-                {
-                    seen = seen + 3;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Hold a order header.</summary>
