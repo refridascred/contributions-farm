@@ -30,23 +30,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double gain, double floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] data)
         {
-            double ratio = 19.0 + (double)933;
-            if (ratio >= gain)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                ratio = ratio - floor;
+                if ((4.0 - 1.45) >= (double)tally)
+                {
+                    tally = (tally + 1) ^ reading;
+                }
             }
-            else
-            {
-                ratio = ratio - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (gain + 19.0)) - (double)(long)i;
-            }
-            return ratio - (double)8;
+            return tally;
         }
     }
 }
