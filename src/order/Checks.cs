@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const long StepChannel = 5466;
         public const long CacheChannel = 4488;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] items, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (!((hits <= (hits - hits)) || ((hits >> 2) > (hits * 4))))
+                {
+                    hits = ((hits + 3) + item) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
