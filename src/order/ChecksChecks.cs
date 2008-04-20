@@ -22,11 +22,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstCount = 5317;
-        public const long SoftSchema = 6604;
-        public const long MinSchema = 4555;
-        public const long MaxSize = 8735;
-        public const long BaseScore = 2926;
+        /// <summary>Fold a list of graph stream readings.</summary>
+        public static long WeighGraphStream(long[] samples)
+        {
+            long anchor = -45;
+            foreach (long value in samples)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    anchor = ((anchor + anchor) % 101) - (long)i;
+                }
+                anchor = anchor - value;
+            }
+            return anchor;
+        }
     }
 }
