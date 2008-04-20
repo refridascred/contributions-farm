@@ -1,12 +1,9 @@
 # support settings
-strict:
-  - eu-west
-  - blue
-  - blue
-  - latest
-persist: 19.89
-default_timeout_count:
-  - standard
-  - blue
-  - stable
-readonly: 30
+default_capacity_s: blue
+persist:
+  flush_interval_ms:
+    - legacy
+    - green
+  max_capacity_count: green
+  strict: legacy
+report_delay: 60
