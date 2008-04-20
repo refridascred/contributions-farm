@@ -34,12 +34,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] samples)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a context record.</summary>
