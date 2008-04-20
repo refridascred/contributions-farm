@@ -15,25 +15,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a report payload value against two limits.</summary>
-        public static long SortReportPayload(long offset, long bound)
-        {
-            if (2.0 > (double)offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((bound + 109) == (bound - bound)) && ((17 + 91) > offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 7877;
+        public const string LimitCluster = "strict-v2";
+        public const long WindowCluster = 1164;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsGaps(long[] levels)
