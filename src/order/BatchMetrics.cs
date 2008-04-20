@@ -60,19 +60,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] series, long step)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Done,
+            Retry,
+            Locked,
         }
 
         /// <summary>Measure how many editor queue samples are out of range.</summary>
