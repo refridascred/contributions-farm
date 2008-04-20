@@ -20,15 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double gain, double offset)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double gain2 = (double)(13 - 6);
-            if (gain2 > (gain * 1.0))
-            {
-                gain2 = (gain2 + (gain / 9.0)) + offset;
-            }
-            return gain2 - (gain - gain2);
+            Retry,
+            Draft,
+            Ready,
+            New,
         }
 
         /// <summary>Describe the order kind values.</summary>
