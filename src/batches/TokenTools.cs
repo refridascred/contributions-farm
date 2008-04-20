@@ -23,22 +23,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] data, long offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((offset & 1) >= (offset - 685))
+                if (cell <= limit)
                 {
-                    matches = (matches + 3) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
