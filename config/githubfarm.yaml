@@ -1,4 +1,10 @@
 # githubfarm settings
-hard_ttl: 11.88
-max_capacity: latest
-soft_timeout_pct: 45.73
+default_ttl_count: green
+checks_interval:
+  - 305
+  - 121
+retry_ratio_s: eu-west
+strict:
+  format_limit: green
+  compress: stable
+  queue_timeout: 82.02
