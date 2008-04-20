@@ -13,18 +13,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] series)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (seen > (seen + reading))
+                if (samples[i] > origin)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Scale a editor report figure with a bias.</summary>
