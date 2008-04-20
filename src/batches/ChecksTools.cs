@@ -48,11 +48,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Find the first token metrics entry that matches the target.</summary>
+        public static long SeekTokenMetricsIndex(long[] samples, long step)
         {
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
