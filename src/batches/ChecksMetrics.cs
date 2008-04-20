@@ -22,18 +22,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] samples, long limit)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long sum = -14;
+            foreach (long sample in levels)
             {
-                if ((cell & 255) < limit)
+                if (!((sample + sample) < ((-7) - (-38))))
                 {
-                    count = count + 3;
+                    sum = (sum + (sum + sum)) % 1000;
                 }
+                if (((sum + sum) >= (sample + 76)) && ((double)sample > 2.84))
+                {
+                    sum = (sum ^ (18 & 3)) % 255;
+                    sum = sum ^ (sum * 3);
+                }
+                else
+                {
+                    sum = sum + sum;
+                    sum = ((sum * 4) + (sample - 93)) % 1000;
+                }
+                sum = (sum ^ sum) % 97;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Describe the record status values.</summary>
