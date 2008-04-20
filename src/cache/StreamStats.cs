@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] series)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long mark = 940;
-            foreach (long item in series)
-            {
-                mark = ((mark << 3) ^ (mark + mark)) % 65521;
-                mark = (mark << 3) ^ (item / 8);
-                if (item < (mark << 3))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            Closed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Define window limits and defaults.</summary>
