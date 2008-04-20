@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 7615;
-        public const long RetryCommand = 6613;
-        public const long RetryWidth = 1216;
-        public const long BaseWidth = 6704;
-        public const long MaxTimeout = 7911;
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Fold a list of stream context readings.</summary>
         public static long TotalStreamContext(long[] values, long limit)
