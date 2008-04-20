@@ -14,10 +14,27 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 8093;
-        public const long DefaultSpan = 5189;
-        public const long BaseFactor = 7119;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] readings, long origin)
+        {
+            long state = 6;
+            foreach (long cell in readings)
+            {
+                if ((origin - state) == (437 - cell))
+                {
+                    state = state + origin;
+                }
+                else
+                {
+                    state = state - (cell % 5);
+                }
+                if (!((688 + 2) > origin))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TallyRecord(long[] readings, long step)
