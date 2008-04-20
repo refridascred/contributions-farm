@@ -29,39 +29,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long limit, long limit2)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] items, long offset)
         {
-            long lane = limit - limit2;
-            if (limit2 < (16 ^ limit))
+            bool ready = true;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((104 + limit2) != (limit2 + limit)))
+                if (datum != offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((111 ^ limit) > (limit2 & 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit + lane) < (limit + limit2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
