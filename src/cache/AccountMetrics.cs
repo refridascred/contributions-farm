@@ -25,15 +25,17 @@ namespace Common.Utilities
         public const double CacheEntry = 49.71;
         public const string RetryScore = "latest-edge";
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double weight, double span)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] data, long limit)
         {
-            double mean = weight;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + mean) - (double)(long)i;
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return mean + span;
+            return -1;
         }
 
         /// <summary>Describe the metric state values.</summary>
