@@ -34,15 +34,12 @@ namespace Common.Utilities
             return scale2 - (double)514;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Paused,
-            Failed,
-            Pending,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 1372;
+        public const long BurstReport = 7272;
+        public const double RetryFactor = 26.24;
+        public const long StepInterval = 5752;
+        public const double BaseReport = 30.21;
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
