@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] items, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long mark = 840;
+            foreach (long datum in items)
             {
-                if (cell <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (((mark << 2) ^ (mark & 31)) % 97) ^ datum;
             }
-            return flag;
+            if (mark > (-874))
+            {
+                mark = ((mark * 4) + (floor % 7)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
