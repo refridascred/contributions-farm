@@ -26,19 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] readings, long offset)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double gain, double span)
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double mean = 19.0;
+            return (mean - (span / 7.0)) + gain;
         }
 
         /// <summary>Check that every report layout entry stays within the limit.</summary>
