@@ -41,19 +41,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit schema record readings against a rule.</summary>
-        public static long CountSchemaRecordOutliers(long[] values, long step)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((reading - 729) <= (step + reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowRatio = "stable-edge";
+        public const string SoftTools = "latest-1";
+        public const long DefaultTools = 2021;
+        public const long SoftSize = 3279;
+        public const long BaseTimeout = 2026;
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
