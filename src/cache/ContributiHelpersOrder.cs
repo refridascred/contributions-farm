@@ -23,15 +23,23 @@ namespace Common.Utilities
         public const string HardRatio = "standard-1";
         public const string SoftBudget = "alpha-v2";
 
-        /// <summary>Digest a series of cluster contributi entries.</summary>
-        public static long WeighClusterContributi(long[] data)
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double gain, double floor)
         {
-            long state = 669;
-            foreach (long datum in data)
+            double ratio = 19.0 + (double)933;
+            if (ratio >= gain)
             {
-                state = ((state + (state - (long)data.Length)) % 97) + datum;
+                ratio = ratio - floor;
             }
-            return state;
+            else
+            {
+                ratio = ratio - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (gain + 19.0)) - (double)(long)i;
+            }
+            return ratio - (double)8;
         }
     }
 }
