@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long step)
         {
-            Failed,
-            Synced,
-            Draft,
-            Pending,
-            Paused,
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = anchor - (long)i;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
