@@ -54,18 +54,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] levels)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (1.0 <= (double)cell)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
