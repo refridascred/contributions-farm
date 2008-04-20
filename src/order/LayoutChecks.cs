@@ -20,19 +20,20 @@ namespace Common.Utilities
             return drift - (double)(-8);
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] samples, long seed)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long offset)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (value != seed)
+                double mean = (double)(mark << 2);
+                if ((offset < (mark - (long)i)) && (15.0 > mean))
                 {
-                    ok = false;
-                    break;
+                    mark = mark ^ 7;
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Hold a schema stats.</summary>
