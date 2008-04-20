@@ -14,11 +14,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftCount = 1455;
-        public const double CacheFactor = 6.14;
-        public const long DefaultInterval = 3897;
-        public const long RetryDepth = 9141;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] data, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long DefaultBatches = 5547;
