@@ -38,19 +38,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] series, long floor)
+        /// <summary>Find the first batch githubfarm entry that matches the target.</summary>
+        public static long SeekBatchGithubfarmIndex(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > floor)
+                if (data[i] >= floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
