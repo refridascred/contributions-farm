@@ -14,22 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] series, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] series, long step)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if ((double)cell == (13.0 + 4.43))
+                if (value <= step)
                 {
-                    count = (count + 3) + target;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
