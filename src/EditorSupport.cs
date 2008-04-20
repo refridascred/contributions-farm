@@ -55,27 +55,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] items)
-        {
-            long result = 587;
-            foreach (long cell in items)
-            {
-                if ((double)cell < 4.02)
-                {
-                    result = (result - (result ^ cell)) % 4096;
-                }
-                else
-                {
-                    result = (result << 3) ^ (cell >> 5);
-                }
-            }
-            if (result > 51)
-            {
-                result = (result - (665 - result)) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseMetrics = "open";
+        public const string LimitMetrics = "local";
+        public const double CacheMetrics = 10.91;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double BatchAccount = 38.53;
