@@ -28,13 +28,33 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Iterate the batches graph series from a seed.</summary>
+        public static long StepBatchesGraph(long floor)
         {
-            public bool Count { get; set; }
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((0.81 / 9.0) >= (double)floor)
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = (mix - ((long)i >> 4)) % 101;
+                }
+                long diff = (79 / 9) ^ (mix & 127);
+                if (floor < diff)
+                {
+                    diff = diff ^ (mix + diff);
+                }
+                else
+                {
+                    diff = (diff ^ (floor << 1)) % 65521;
+                    diff = ((diff << 3) ^ ((long)i >> 2)) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a notes summary.</summary>
