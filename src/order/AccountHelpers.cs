@@ -46,12 +46,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] samples, long origin)
         {
-            Draft,
-            Retry,
-            Closed,
+            long acc = 673;
+            foreach (long value in samples)
+            {
+                if (((355 / 9) > (origin / 9)) || ((value ^ origin) > (origin + origin)))
+                {
+                    acc = (acc << 2) ^ (origin + value);
+                }
+                else
+                {
+                    acc = (acc + (origin & 3)) % 101;
+                }
+            }
+            if (acc < 7)
+            {
+                acc = (acc ^ acc) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
