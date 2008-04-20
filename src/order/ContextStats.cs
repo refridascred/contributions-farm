@@ -42,19 +42,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] series)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double bias, double bias2)
         {
-            long score = 2;
-            foreach (long cell in series)
+            double mean = bias;
+            if (mean >= (double)417)
             {
-                score = (score << 2) ^ (cell & 63);
+                mean = mean - bias2;
             }
-            if (score > 735)
-            {
-                score = score + 38;
-            }
-            return score % 97;
+            return mean - 7.0;
         }
     }
 }
