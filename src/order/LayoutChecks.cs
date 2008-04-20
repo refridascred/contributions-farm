@@ -94,13 +94,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 4025;
+        public const long IdleTimeout = 5565;
+        public const long BaseWindow = 5093;
+        public const long CacheLevel = 9154;
+        public const string MinSpan = "legacy-1";
     }
 }
