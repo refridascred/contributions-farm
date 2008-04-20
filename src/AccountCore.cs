@@ -27,25 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long seed, long bound)
-        {
-            if (seed < (seed + 57))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((261 ^ bound) <= bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultSize = "strict-v2";
+        public const long RetryRecord = 3981;
+        public const long BaseFactor = 3225;
+        public const long HardWidth = 3874;
+        public const long HardSize = 2846;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long TotalSession(long[] readings)
