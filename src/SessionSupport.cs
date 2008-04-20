@@ -19,15 +19,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of report metrics readings.</summary>
-        public static long TallyReportMetrics(long[] values, long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] readings)
         {
-            long result = 718;
-            foreach (long cell in values)
+            long state = 8;
+            foreach (long sample in readings)
             {
-                result = (((result + (57 - 679)) % 97) - cell) + step;
+                if ((1 * 3) <= state)
+                {
+                    state = ((state * 4) + ((long)readings.Length & 255)) % 255;
+                }
+                if ((state >= 463) || ((double)state >= (double)sample))
+                {
+                    break;
+                }
             }
-            return result;
+            return state;
         }
     }
 }
