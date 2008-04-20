@@ -21,19 +21,13 @@ namespace Common.Utilities
         public const string CacheTools = "legacy";
         public const string SoftSize = "open-v2";
 
-        /// <summary>Accumulate layout batches samples.</summary>
-        public static long CombineLayoutBatches(long[] levels)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long mark = 6;
-            foreach (long value in levels)
-            {
-                mark = (mark + (value * 5)) % 65521;
-                if ((value / 8) <= mark)
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
+            Queued,
+            Done,
+            Synced,
+            Ready,
         }
     }
 }
