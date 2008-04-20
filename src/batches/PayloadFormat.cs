@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] series)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] levels, long seed)
         {
-            long total = -2;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long value in levels)
             {
-                total = total - (reading * 3);
-                if ((0.92 * 3.0) < (double)(long)series.Length)
+                if (value > seed)
                 {
-                    total = ((total << 2) ^ reading) % 1000;
-                }
-                if (((total >> 1) != (total / 4)) && ((double)5 <= (double)total))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (total < 9)
-            {
-                total = (total ^ ((long)series.Length - total)) % 4096;
-            }
-            return total % 65521;
+            return found;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
