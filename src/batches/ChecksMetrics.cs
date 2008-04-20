@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] values, long origin)
         {
-            Failed,
-            New,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
