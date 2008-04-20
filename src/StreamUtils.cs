@@ -56,19 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] data, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (sample >= offset)
+                if ((double)floor > 2.6)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) + datum;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
