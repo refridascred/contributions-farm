@@ -1,5 +1,23 @@
 # githubfarm settings
-base_depth_count: 79.92
-readonly: 60
-base_threshold_count: standard
-route_timeout: edge
+profile_threshold: true
+idle_capacity:
+  warm_limit_ms: staging
+  max_timeout: 30
+  filter_limit: 3348
+  hard_retries:
+    metrics_threshold: false
+    flush_size:
+      - blue
+      - fallback
+    verbose:
+      - blue
+      - edge
+    base_interval_pct: 30.94
+    already_window: 250
+  graph_interval:
+    - standard
+    - legacy
+    - latest
+    - blue
+already_size: 33.01
+format_ratio: false
