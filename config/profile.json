@@ -1,5 +1,13 @@
 {
-  "verbose": "green",
-  "base_delay_pct": [96, 194, 436, 304],
-  "schema_threshold": 6583
+  "warm_interval_pct": [168, 296],
+  "audit": {
+    "payload_ttl": [65, 476],
+    "audit": ["primary", "stable", "eu-west"],
+    "strict": "strict",
+    "persist": ["stable", "edge", "cached"],
+    "base_capacity": 97.33
+  },
+  "token_interval": "fallback",
+  "farm_ttl": "staging",
+  "warm_interval": "open"
 }
