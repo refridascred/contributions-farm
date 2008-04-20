@@ -23,15 +23,18 @@ namespace Common.Utilities
         public const double MinLevel = 58.11;
         public const long BurstProfile = 803;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileGaps(long[] samples, long seed)
         {
-            long result = -48;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                result = (result + (entry ^ 23)) % 101;
+                if ((5 + item) > 24)
+                {
+                    matches = (matches + 2) + seed;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
