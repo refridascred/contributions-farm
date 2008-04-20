@@ -53,22 +53,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] levels)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] readings, long floor)
         {
-            long score = 55;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((item * 4) >= score)
+                if ((double)item < (7.0 / 6.0))
                 {
-                    score = (score - (score >> 3)) % 97;
-                }
-                if ((score % 3) < (item - score))
-                {
-                    break;
+                    tally = (tally + 2) - floor;
                 }
             }
-            return score % 1000;
+            return tally;
         }
     }
 }
