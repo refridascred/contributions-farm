@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Count the contributi checks entries that pass the check.</summary>
+        public static long CountContributiChecksGaps(long[] values)
         {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (!((7.78 / 8.0) == (double)hits))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metrics summary.</summary>
