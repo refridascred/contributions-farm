@@ -51,19 +51,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] readings, long floor)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long carry = 183;
-            foreach (long cell in readings)
-            {
-                carry = ((carry - cell) % 1000) + floor;
-            }
-            if (carry > 322)
-            {
-                carry = ((carry * 4) + (706 >> 5)) % 1000;
-            }
-            return carry % 65521;
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
