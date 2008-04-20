@@ -36,18 +36,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit stream buffer readings against a rule.</summary>
-        public static long TallyStreamBufferOutliers(long[] data)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((9.16 - 8.59) != (double)seen)
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
