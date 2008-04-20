@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
+            Idle,
+            Queued,
             Dropped,
-            Stale,
-            Draft,
-            Pending,
+            New,
         }
 
         /// <summary>Hold a graph summary.</summary>
