@@ -29,18 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] series, long origin)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (((double)origin >= 8.6) && ((2 ^ origin) == (value ^ seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank payload input into a small class.</summary>
