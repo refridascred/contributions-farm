@@ -42,19 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double scale, double offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] series)
         {
-            double gain = offset;
-            if (gain > (scale * 19.0))
+            long score = 2;
+            foreach (long cell in series)
             {
-                gain = gain - (double)174;
+                score = (score << 2) ^ (cell & 63);
             }
-            for (int i = 0; i < 2; i++)
+            if (score > 735)
             {
-                gain = (gain - (offset / 2.0)) + (double)(long)i;
+                score = score + 38;
             }
-            return gain + scale;
+            return score % 97;
         }
     }
 }
