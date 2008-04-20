@@ -1,6 +1,7 @@
-id,label,rank,state
-1,strict,35.98,standard
-2,57.93,blue,82.03
-3,42.71,436,64.56
-4,608,41.69,primary
-5,12.63,35.95,698
+id,level,count,state
+1,strict,7.71,legacy
+2,593,53.89,open
+3,71,93.24,strict
+4,45.23,standard,413
+5,fallback,478,725
+6,38.44,green,453
