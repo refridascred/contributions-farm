@@ -41,9 +41,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSpan = 411;
-        public const long CacheCount = 1936;
-        public const long IdleSchema = 4011;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "alpha-edge";
+        public const long BaseScore = 9228;
+        public const double StepBatches = 76.35;
+        public const string DefaultLevel = "strict-edge";
+        public const long DefaultBudget = 4349;
     }
 }
