@@ -83,18 +83,19 @@ namespace Common.Utilities
         public const string CacheDepth = "stable";
         public const string SoftAccount = "alpha-1";
 
-        /// <summary>Measure how many stream record samples are out of range.</summary>
-        public static long AuditStreamRecordGaps(long[] values, long floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if (!(49 >= (count + (-683))))
+                if (reading >= seed)
                 {
-                    count = ((count + 1) + item) + floor;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
