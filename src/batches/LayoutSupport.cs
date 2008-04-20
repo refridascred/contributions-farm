@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Closed,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchRoute = "fallback-v2";
+        public const double HardRoute = 3.68;
+        public const double CacheDepth = 76.33;
+        public const long DefaultRoute = 1601;
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long FindAlreadyIndex(long[] readings, long target)
