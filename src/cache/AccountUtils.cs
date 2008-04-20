@@ -36,22 +36,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine editor account values into a single score.</summary>
-        public static long DigestEditorAccount(long[] items)
-        {
-            long mix = 1;
-            foreach (long sample in items)
-            {
-                if ((0.61 * 4.0) > (double)mix)
-                {
-                    mix = (((mix << 2) ^ (long)items.Length) % 65521) + sample;
-                }
-            }
-            if (mix < (-6))
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetryFactor = 3.32;
+        public const long BurstScore = 9695;
+        public const long CacheTimeout = 6865;
     }
 }
