@@ -40,23 +40,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long floor)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] items, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 19; i++)
+            long mark = 11;
+            foreach (long item in items)
             {
-                if (!((acc >> 5) <= ((long)i + 895)))
-                {
-                    acc = ((acc * 5) + (6 ^ floor)) % 101;
-                }
-                else
-                {
-                    acc = acc - (floor + floor);
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
+                mark = ((((mark * 2) + (mark ^ mark)) % 255) + item) + seed;
             }
-            return acc;
+            return mark;
         }
     }
 }
