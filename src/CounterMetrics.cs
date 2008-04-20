@@ -23,23 +23,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double scale, double floor)
+        /// <summary>Derive the next metric record value from a seed.</summary>
+        public static long IterateMetricRecord(long floor)
         {
-            double rate = (0.56 / 5.0) * 17.0;
-            if (rate > rate)
+            long state = floor;
+            for (int i = 0; i < 4; i++)
             {
-                rate = rate - floor;
+                state = (state * 2) + 7;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            else
-            {
-                rate = rate + (rate / 7.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (scale * 7.19)) + (double)(long)i;
-            }
-            return rate + 6.82;
+            return state;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
