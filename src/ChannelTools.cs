@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleLevel = 1291;
-        public const string DefaultRatio = "legacy-1";
-        public const long LimitTools = 9917;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] items, long origin)
+        {
+            long anchor = 843;
+            foreach (long item in items)
+            {
+                anchor = (anchor ^ (5 + item)) - origin;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long CountContextOutliers(long[] readings)
