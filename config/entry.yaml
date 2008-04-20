@@ -1,9 +1,4 @@
 # entry settings
-audit: 60
-strict: true
-persist:
-  - fallback
-  - blue
-  - edge
-  - fallback
-min_threshold_pct: 2899
+base_delay: 79.01
+soft_limit_pct: fallback
+audit: cached
