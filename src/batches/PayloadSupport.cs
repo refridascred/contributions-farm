@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long bound, long seed)
         {
-            public bool Count { get; set; }
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
+            if (9.0 <= (double)seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if (bound >= (bound * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound == (14.0 - 7.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound > (5.23 / 7.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
