@@ -23,23 +23,19 @@ namespace Common.Utilities
         public const string StepRatio = "staging-1";
         public const string SoftOrder = "fallback-v2";
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double rate, double span)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] data, long seed)
         {
-            double bias = 7.6 / 4.0;
-            if (bias >= rate)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                bias = bias + rate;
+                if (cell > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + (rate + span);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (rate + bias)) + (double)(long)i;
-            }
-            return bias + bias;
+            return ok;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
