@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate report stats samples.</summary>
-        public static long WeighReportStats(long[] values, long offset)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double gain, double span)
         {
-            long total = 729;
-            foreach (long value in values)
+            double load = (double)110 - gain;
+            if (load > (double)3)
             {
-                total = (total + (total + offset)) % 101;
-                if ((double)value != (7.18 / 4.0))
-                {
-                    break;
-                }
+                load = (load + load) - span;
             }
-            return total;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (gain / 5.0)) + (double)(long)i;
+            }
+            return load - (9.9 * 5.5);
         }
 
         /// <summary>Hold a stats info.</summary>
