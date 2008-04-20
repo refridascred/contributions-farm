@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultStats = "open-1";
-        public const long StepStats = 3549;
-        public const long BatchStats = 3676;
-        public const double CacheScore = 13.14;
-        public const double MaxScore = 77.84;
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long seed, long seed2)
+        {
+            if ((7.0 * 4.2) > (7.2 - 12.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed & 127) < (seed ^ seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((5.92 * 1.2) > (double)seed2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed2 >= (seed2 + 876))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string BaseSize = "alpha";
