@@ -1,9 +1,8 @@
-id,score,ratio,token,rank
-1,387,885,474,edge
-2,open,460,79.91,10.81
-3,87,413,stable,latest
-4,668,66.58,3.37,staging
-5,39.86,primary,fallback,54.65
-6,primary,60.79,422,fallback
-7,open,235,533,94.9
-8,fallback,fallback,570,22.83
+id,active,label,rank
+1,26,open,576
+2,457,staging,49.24
+3,local,61.06,23.46
+4,652,green,cached
+5,587,33.85,696
+6,primary,68.24,902
+7,staging,496,standard
