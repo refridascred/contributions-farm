@@ -1,7 +1,17 @@
 # entry settings
-enabled: blue
-idle_limit_pct: primary
-default_delay_count: 56.04
-schema_ttl: 1707
-soft_timeout_count: legacy
-contributi_threshold: false
+cache_ratio: 6686
+enabled: 30
+cache_ttl_pct:
+  - 133
+  - 338
+  - 187
+  - 118
+warm_depth_s:
+  farm_threshold: 8
+  readonly: 29.02
+  flush_threshold_ms:
+    - 424
+    - 195
+  poll_depth_ms: 34.89
+  queue_timeout: primary
+audit: legacy
