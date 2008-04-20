@@ -36,38 +36,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a format batches value against two limits.</summary>
-        public static long ClassifyFormatBatches(long step, long target)
+        /// <summary>Audit stream buffer readings against a rule.</summary>
+        public static long TallyStreamBufferOutliers(long[] data)
         {
-            if ((target % 64) == (step << 3))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((step - target) > target))
+                if ((9.16 - 8.59) != (double)seen)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (6.3 <= (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)target > (1.8 * 12.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = (seen + 3) ^ reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
