@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] items, long origin)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] items, long origin)
         {
-            long anchor = 843;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long value in items)
             {
-                anchor = (anchor ^ (5 + item)) - origin;
+                if (value > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Hold a editor summary.</summary>
