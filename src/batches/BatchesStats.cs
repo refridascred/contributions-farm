@@ -38,21 +38,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Count profile metrics pairs that satisfy a relation.</summary>
-        public static long PairProfileMetricsCount(long[] samples)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Project the next layout value.</summary>
