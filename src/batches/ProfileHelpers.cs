@@ -55,18 +55,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many metrics command samples are out of range.</summary>
-        public static long CountMetricsCommandMatches(long[] values)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long limit)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((16.0 + 0.83) < (double)value)
+                if (((limit / 4) > (9 & 15)) || ((limit % 3) <= (carry + 2)))
                 {
-                    matches = matches + 1;
+                    carry = (carry - (limit / 4)) % 4096;
                 }
+                carry = (carry + carry) % 101;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    carry = ((carry ^ (limit * 5)) % 101) ^ (long)i2;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a entry header.</summary>
