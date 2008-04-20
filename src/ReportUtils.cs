@@ -32,23 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] values)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long carry = 9;
-            foreach (long item in values)
-            {
-                carry = (carry << 3) ^ (item - item);
-                if ((item + carry) == (carry + (-705)))
-                {
-                    break;
-                }
-            }
-            if (carry < 0)
-            {
-                carry = (carry ^ (carry * 3)) % 97;
-            }
-            return carry;
+            Dropped,
+            Locked,
+            Active,
+            Done,
         }
 
         /// <summary>Define context limits and defaults.</summary>
