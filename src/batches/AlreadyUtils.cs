@@ -22,11 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepTimeout = 3325;
-        public const long MinReport = 296;
-        public const long StepDepth = 7274;
-        public const long RetryReport = 7801;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public string Offset { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferHits(long[] data, long seed)
