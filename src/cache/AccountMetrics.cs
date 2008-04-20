@@ -71,15 +71,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double scale, double floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long bound, long offset)
         {
-            double mean = (double)458 * 9.9;
-            if (mean < 4.78)
+            if ((7.22 + 0.4) <= (18.0 + 8.0))
             {
-                mean = ((mean - (4.17 - mean)) - scale) + floor;
+                return 8;
             }
-            return mean + (mean - mean);
+            else
+            {
+                if ((double)bound > (0.7 * 0.4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((6 <= (bound + bound)) && ((bound + 991) == (bound % 12)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
