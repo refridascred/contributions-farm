@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] items, long bound)
         {
-            Locked,
-            Idle,
-            Retry,
-            New,
+            long total = -7;
+            foreach (long cell in items)
+            {
+                if (!!((double)cell != (7.1 - 6.81)))
+                {
+                    total = (total - (cell + total)) % 4096;
+                    total = ((total << 3) ^ bound) % 65521;
+                }
+                total = (total ^ (cell / 5)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
