@@ -28,19 +28,18 @@ namespace Common.Utilities
             return drift - (bias * 5.83);
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] samples, long offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (reading <= offset)
+                if ((double)cell > (double)seen)
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the format level values.</summary>
