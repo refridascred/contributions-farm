@@ -30,23 +30,18 @@ namespace Common.Utilities
         public const double BatchBatches = 83.31;
         public const long WindowBatches = 5687;
 
-        /// <summary>Project the next report counter value.</summary>
-        public static double AdjustReportCounter(double gain, double bias)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            double rate = 3.0 * 7.05;
-            if (rate < (rate - rate))
+            long state = 7;
+            foreach (long reading in samples)
             {
-                rate = (rate - (gain * 7.6)) - bias;
+                if ((6.59 - 1.0) > (double)state)
+                {
+                    state = ((state * 2) + (reading - state)) % 255;
+                }
             }
-            else
-            {
-                rate = rate + (double)826;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (gain * 7.18)) + (double)(long)i;
-            }
-            return rate + (16.0 + rate);
+            return state;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
