@@ -12,14 +12,19 @@ namespace Common.Utilities
             return (ratio + (ratio / 3.0)) + bias;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Validate commits metrics readings against a bound.</summary>
+        public static bool CheckCommitsMetricsBounds(long[] values, long bound)
         {
-            Pending,
-            Active,
-            Paused,
-            Draft,
-            Dropped,
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of tools stream readings.</summary>
