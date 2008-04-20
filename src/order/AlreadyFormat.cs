@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleBudget = 1096;
-        public const string StepContext = "cached-1";
-        public const long MinContext = 8787;
-        public const double StepSpan = 58.46;
-        public const long DefaultRatio = 3692;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double weight, double bias)
+        {
+            double drift = bias + (bias - bias);
+            if (drift > drift)
+            {
+                drift = (drift + (drift * 3.0)) + weight;
+            }
+            return drift - (bias + drift);
+        }
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
