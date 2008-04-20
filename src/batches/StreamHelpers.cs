@@ -51,11 +51,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinLevel = "cached-v2";
-        public const long BatchScore = 5218;
-        public const string BatchGraph = "legacy";
-        public const long BaseSpan = 7841;
+        /// <summary>Match up entry checks samples.</summary>
+        public static long PairEntryChecksCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next token value.</summary>
         public static double SmoothToken(double bias, double span)
