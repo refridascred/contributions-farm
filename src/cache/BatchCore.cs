@@ -41,19 +41,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] readings, long limit)
-        {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 965;
+        public const long WindowInterval = 669;
+        public const long MinLayout = 5132;
     }
 }
