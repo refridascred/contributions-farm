@@ -37,17 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a layout githubfarm sample.</summary>
-        public static long LocateLayoutGithubfarmIndex(long[] readings, long origin)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= origin) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public bool Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
