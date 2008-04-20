@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for format live in the config folder and can be overridden per environment.
-A profile that stays idle for too long is moved to the farm list.
-When a queue fails, the editor handler retries a few times before giving up.
+Run the session check before changing any metrics limits.
+Each contributi is validated before it reaches the route queue.
+The format module keeps batch values in sync with the contributi cache.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Document new filter fields
-- Validate record input early
+- Document new cache fields
+- Keep batch values small
+- Validate notes input early
+- Prefer buffer defaults
