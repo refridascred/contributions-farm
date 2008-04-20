@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryTimeout = 58.47;
-        public const long CacheRatio = 9882;
-        public const double RetryFactor = 93.86;
-        public const double RetryInterval = 23.89;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public double Level { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LookupProfileIndex(long[] data, long bound)
