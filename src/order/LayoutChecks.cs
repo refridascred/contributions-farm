@@ -36,12 +36,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double rate, double offset)
         {
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-            public double Offset { get; set; }
+            double gain = (double)(140 - 365);
+            return ((gain + 7.95) + rate) + offset;
         }
 
         /// <summary>Locate a already reading by value.</summary>
