@@ -13,22 +13,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] readings)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] data)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long total = 561;
+            foreach (long cell in data)
             {
-                if ((item + 678) == (count + item))
+                if ((cell >= (total & 1)) || ((total % 2) < (total >> 3)))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    total = total + (cell + 605);
                 }
             }
-            return count;
+            if (total > 7)
+            {
+                total = (total << 3) ^ (total % 24);
+            }
+            return total % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
