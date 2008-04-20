@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long target, long floor)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            if ((14.0 + 3.4) > (double)target)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor * 2) <= 4)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor ^ target) > (44 - 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
