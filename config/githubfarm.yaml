@@ -1,5 +1,21 @@
 # githubfarm settings
-burst_window_count: false
-poll_capacity: 8435
-batch_depth: 62.52
-cache_capacity_count: open
+sync_depth_pct:
+  - eu-west
+  - strict
+stream_ratio: edge
+format_ratio: true
+dry_run:
+  soft_capacity: 5.39
+  min_capacity: false
+  min_delay: 5
+  context_size: 3457
+  verbose: staging
+  max_capacity:
+    warm_delay_count: standard
+    enabled: false
+    retry_retries_count: 68.7
+    strict:
+      - 208
+      - 225
+      - 377
+      - 380
