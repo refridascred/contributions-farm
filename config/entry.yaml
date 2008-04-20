@@ -1,4 +1,26 @@
 # entry settings
-base_limit_ms: false
-githubfarm_capacity: 76
-metrics_ratio: false
+counter_size: 4963
+route_capacity:
+  - 189
+  - 73
+  - 37
+  - 313
+strict:
+  cache_capacity_pct: true
+  default_depth_ms:
+    hard_delay: edge
+    readonly: latest
+    poll_window_s: 250
+    default_limit: 4959
+    idle_ratio_pct: 58.07
+  command_capacity: true
+  entry_timeout:
+    tools_delay: false
+    flush_capacity_s: 57.3
+    retry_threshold_ms: 31
+    route_size:
+      - 350
+      - 385
+    already_capacity: false
+verbose: true
+githubfarm_retries: true
