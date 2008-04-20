@@ -73,11 +73,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            Ready,
+            Locked,
+            Pending,
         }
     }
 }
