@@ -48,12 +48,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseSpan = 34.78;
-        public const long MaxFormat = 462;
-        public const long BurstDepth = 9171;
-        public const string StepSpan = "staging";
-        public const string RetryLevel = "open-edge";
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long BucketCommits(long step, long origin)
