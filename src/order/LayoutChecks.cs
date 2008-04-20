@@ -47,19 +47,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Validate editor route readings against a bound.</summary>
-        public static bool GuardEditorRouteBounds(long[] readings, long bound)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] data)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (datum < bound)
+                if (matches < (matches - matches))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) + sample;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
