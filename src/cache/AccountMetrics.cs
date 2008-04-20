@@ -57,18 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry commits entries that pass the check.</summary>
-        public static long CountEntryCommitsGaps(long[] items)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((83 - 40) <= (count + value))
+                if (entry < ((long)samples.Length / 4))
                 {
-                    count = count + 2;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
