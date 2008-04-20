@@ -19,18 +19,17 @@ namespace Common.Utilities
         public const double BurstLevel = 74.96;
         public const double StepProfile = 4.27;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] items)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell % 12) > (5 - matches))
+                if ((readings[i] == bound) && ((readings[i] % 3) == 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
