@@ -28,12 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowCommand = "latest-v2";
-        public const long RetrySize = 9576;
-        public const string MinWidth = "local-v2";
-        public const long BaseCommand = 5217;
-        public const string DefaultSize = "latest-v2";
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Paused,
+            Dropped,
+            Retry,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
