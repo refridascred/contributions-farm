@@ -24,11 +24,31 @@ namespace Common.Utilities
             return load - (9.9 * 5.5);
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long bound, long bound2)
         {
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            if (((bound2 * 3) < (7 + bound2)) || ((7.0 * 7.0) != (double)bound2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound * 4) > (bound2 & 15))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound2 << 1) >= (bound - bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
