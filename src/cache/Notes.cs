@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the cache stream entries that pass the check.</summary>
-        public static long MeasureCacheStreamGaps(long[] levels, long origin)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample % 7) >= (origin / 8))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two tools measurements.</summary>
