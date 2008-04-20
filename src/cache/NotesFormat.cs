@@ -14,31 +14,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long step, long floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] readings, long bound)
         {
-            if ((step << 3) > floor)
+            long anchor = 896;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step + step) < (step + floor))
+                if (!(anchor < (533 ^ (long)readings.Length)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((3.8 * 9.0) >= (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    anchor = (((anchor * 4) + bound) % 1000) - reading;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
