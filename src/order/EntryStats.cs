@@ -57,14 +57,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Stale,
-            Pending,
-            Ready,
-            Closed,
-            New,
+            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
