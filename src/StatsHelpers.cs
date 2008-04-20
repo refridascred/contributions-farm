@@ -22,17 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] items, long limit)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long floor, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((floor - target) > (floor ^ floor))
             {
-                if ((items[i] <= limit) && ((items[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((double)target != (8.1 + 1.85))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (977 <= (floor ^ floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor >> 3) > (target ^ floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
