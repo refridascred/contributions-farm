@@ -65,22 +65,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 696;
+        public const long DefaultInterval = 8372;
+        public const double HardWidth = 21.79;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long RankMetric(long bound, long floor)
