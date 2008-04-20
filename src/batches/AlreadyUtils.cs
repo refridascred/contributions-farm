@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] data, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((data[i] == target) && ((data[i] % 5) != 0))
+                if ((value + value) < (count - 7))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
