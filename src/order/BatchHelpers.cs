@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next context layout value from a seed.</summary>
-        public static long DeriveContextLayout(long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] data)
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((score + 61) != (origin - score))
+                if (!((entry + matches) >= (11 * 5)) && ((double)matches >= 11.0))
                 {
-                    score = score ^ (score - score);
-                    score = (score ^ 92) % 65521;
-                    continue;
+                    matches = matches + 1;
                 }
-                score = score + (origin % 7);
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
