@@ -1,6 +1,8 @@
-id,token,label,state
-1,81.71,872,open
-2,standard,staging,836
-3,592,standard,4.06
-4,fallback,26,681
-5,13.94,standard,45.12
+id,label,rank,weight
+1,45.26,532,latest
+2,508,34.29,123
+3,eu-west,98,707
+4,842,139,203
+5,919,23,91.37
+6,standard,24.55,local
+7,17.82,54.58,eu-west
