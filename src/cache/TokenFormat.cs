@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] readings, long seed)
+        /// <summary>Measure how many order batches samples are out of range.</summary>
+        public static long AuditOrderBatchesOutliers(long[] samples, long seed)
         {
-            long mix = 92;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                for (int i = 0; i < 6; i++)
+                if ((value << 2) < (115 ^ 71))
                 {
-                    mix = (((mix - (cell >> 4)) % 101) ^ (long)i) - seed;
-                    mix = mix - (cell % 5);
+                    hits = (hits + 1) + seed;
                 }
-                mix = (mix - ((-6) & 1)) % 255;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Accumulate command samples.</summary>
