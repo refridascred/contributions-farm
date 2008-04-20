@@ -1,12 +1,18 @@
 # githubfarm settings
-burst_ratio_s: strict
-session_interval:
-  - 354
-  - 370
-  - 437
-  - 478
-default_timeout_pct: 8712
-hard_interval_pct:
-  - latest
-  - edge
-  - eu-west
+enabled: false
+audit: true
+poll_depth_s: stable
+readonly:
+  persist:
+    - 191
+    - 249
+    - 128
+  cache_ttl_ms:
+    persist: strict
+    max_delay:
+      - 91
+      - 247
+      - 161
+    strict: blue
+    flush_threshold_s: false
+  githubfarm_threshold: 4
