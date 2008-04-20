@@ -1,7 +1,7 @@
-id,active,weight
-1,green,48.29
-2,latest,612
-3,78.72,15.84
-4,12.0,legacy
-5,latest,918
-6,34,397
+id,ratio,label,score
+1,blue,74.99,primary
+2,504,26.22,primary
+3,737,646,380
+4,476,687,72.54
+5,blue,local,1.2
+6,46.23,794,71.87
