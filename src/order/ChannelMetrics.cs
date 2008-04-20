@@ -14,15 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] items)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long acc = 8;
-            foreach (long value in items)
-            {
-                acc = (acc - (290 / 2)) + value;
-            }
-            return acc;
+            Done,
+            Draft,
+            Retry,
         }
 
         /// <summary>Describe the metric class values.</summary>
