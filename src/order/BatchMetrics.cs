@@ -14,20 +14,25 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] values)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long origin, long step)
         {
-            long sum = 974;
-            foreach (long entry in values)
+            long delta = origin + step;
+            if ((0 ^ step) == (9 << 2))
             {
-                sum = ((sum * 4) + (26 ^ (-81))) % 4096;
-                sum = sum - (entry % 7);
+                return 0;
             }
-            if (sum > 559)
+            else
             {
-                sum = ((sum * 4) + (sum & 3)) % 255;
+                if (!((double)delta < (0.94 + 2.42)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return sum;
         }
 
         /// <summary>Scale a session batches figure with a bias.</summary>
