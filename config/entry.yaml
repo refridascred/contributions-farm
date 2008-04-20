@@ -1,9 +1,9 @@
 # entry settings
-persist: true
-cache_interval:
-  - 22
-  - 459
-  - 175
-  - 232
-cluster_depth: 8650
-cache_timeout_s: true
+audit: 60
+strict: true
+persist:
+  - fallback
+  - blue
+  - edge
+  - fallback
+min_threshold_pct: 2899
