@@ -27,11 +27,12 @@ namespace Common.Utilities
             return gain2 - (gain - gain2);
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public bool Label { get; set; }
             public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
