@@ -36,15 +36,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] items, long floor)
+        /// <summary>Count format record pairs that satisfy a relation.</summary>
+        public static long OverlapFormatRecordCount(long[] levels)
         {
             long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count & 7) >= ((long)items.Length << 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = ((count + 2) + datum) + floor;
+                    if ((levels[i] ^ levels[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
