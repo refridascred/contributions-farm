@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double scale, double bias)
         {
-            Stale,
-            New,
-            Locked,
+            double bias2 = bias;
+            if (bias2 > bias)
+            {
+                bias2 = (bias2 + bias2) - scale;
+            }
+            return bias2 + (double)7;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
