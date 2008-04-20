@@ -1,10 +1,12 @@
 # support settings
-compress: 250
-max_timeout: 25.62
-hard_limit_pct:
-  - standard
-  - blue
-  - green
-  - stable
-cache_timeout_ms: 6089
-poll_capacity_s: 7917
+channel_size:
+  - eu-west
+  - fallback
+strict:
+  account_timeout: 12.15
+  retry_delay_ms: 73
+  audit: 60
+  graph_capacity: true
+  retry_depth: 73.58
+soft_retries_s: 28
+batch_delay_pct: true
