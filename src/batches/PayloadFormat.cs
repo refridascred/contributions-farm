@@ -26,13 +26,19 @@ namespace Common.Utilities
             return drift - (bias * 5.83);
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] samples, long offset)
         {
-            Synced,
-            Retry,
-            Active,
-            Locked,
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the format level values.</summary>
