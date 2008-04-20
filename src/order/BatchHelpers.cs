@@ -23,23 +23,25 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double rate, double span)
+        /// <summary>Rank stream window input into a small class.</summary>
+        public static long RankStreamWindow(long floor, long seed)
         {
-            double mean = span;
-            if (mean <= span)
+            long edge = floor + seed;
+            if ((double)edge != (17.0 / 7.0))
             {
-                mean = (mean - mean) + rate;
+                return 7;
             }
             else
             {
-                mean = mean + (mean + span);
+                if (((12.0 + 3.2) >= (double)edge) && ((edge - seed) >= edge))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + span) + (double)(long)i;
-            }
-            return mean - span;
         }
     }
 }
