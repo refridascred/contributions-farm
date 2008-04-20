@@ -51,19 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metrics stream readings against a bound.</summary>
-        public static bool GuardMetricsStreamLimits(long[] samples, long step)
+        /// <summary>Measure how many support stream samples are out of range.</summary>
+        public static long MeasureSupportStreamOutliers(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (entry <= step)
+                if ((offset + datum) > (offset - datum))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
