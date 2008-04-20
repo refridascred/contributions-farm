@@ -34,21 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] samples)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = (double)(-1);
+            if (bias >= (bias + bias))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = ((bias + (bias / 3.0)) + weight) - floor;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + 20.0) + (double)(long)i;
+            }
+            return bias + 8.0;
         }
 
         /// <summary>Hold a context record.</summary>
