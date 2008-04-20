@@ -63,15 +63,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a report profile counter forward.</summary>
-        public static long DeriveReportProfile(long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] data)
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
+            long acc = 5;
+            foreach (long value in data)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                if (((long)data.Length + value) <= (acc % 5))
+                {
+                    acc = (acc * 5) + (value << 1);
+                }
             }
-            return carry;
+            return acc;
         }
     }
 }
