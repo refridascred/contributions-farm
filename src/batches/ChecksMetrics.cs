@@ -65,20 +65,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] readings, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                state = ((state * 4) + (state - state)) % 255;
-                if (!!((long)i < state))
+                if (sample != limit)
                 {
-                    state = (state * 2) + (long)i;
+                    valid = false;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
