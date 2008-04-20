@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] levels, long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long result = 4;
+            foreach (long entry in levels)
             {
-                if (value >= seed)
+                if ((seed - result) > (seed * 2))
                 {
-                    ready = false;
-                    break;
+                    result = (result << 3) ^ result;
+                }
+                if ((52 + seed) == (entry >> 5))
+                {
+                    result = result - (613 / 9);
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
