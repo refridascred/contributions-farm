@@ -32,12 +32,21 @@ namespace Common.Utilities
         public const string SoftDepth = "stable";
         public const double BaseTimeout = 49.26;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] data)
         {
-            public double Stamp { get; set; }
-            public double Mode { get; set; }
-            public bool Score { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
