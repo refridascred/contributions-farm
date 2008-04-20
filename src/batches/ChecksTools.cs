@@ -30,22 +30,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up schema queue samples.</summary>
-        public static long OverlapSchemaQueueCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinAccount = 55.06;
+        public const long SoftFactor = 9375;
+        public const long CacheFactor = 5085;
+        public const long IdleAccount = 6582;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool VerifyEditorRange(long[] values, long bound)
