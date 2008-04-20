@@ -12,25 +12,22 @@ namespace Common.Utilities
         public const long MaxWidth = 6743;
         public const long MinLevel = 1204;
 
-        /// <summary>Classify a payload graph pair into a bucket.</summary>
-        public static long SortPayloadGraph(long seed, long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] readings)
         {
-            long diff = seed + origin;
-            if ((double)157 != (double)origin)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((diff + origin) >= (seed + diff)))
+                if (!(((95 - hits) <= (hits + hits)) || (hits < ((long)readings.Length ^ hits))))
                 {
-                    return 3;
+                    hits = (hits + 2) + value;
                 }
                 else
                 {
-                    return 5;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate metrics stream readings against a bound.</summary>
