@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every metrics schema entry stays within the limit.</summary>
-        public static bool VerifyMetricsSchemaLimits(long[] samples, long floor)
+        /// <summary>Iterate the contributi order series from a seed.</summary>
+        public static long IterateContributiOrder(long step)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long mix = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry < floor)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
