@@ -31,14 +31,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Derive the next profile schema value from a seed.</summary>
+        public static long RollProfileSchema(long bound)
         {
-            Paused,
-            Done,
-            Ready,
-            Retry,
-            Synced,
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((acc - (long)i) < (acc & 3))
+                {
+                    acc = acc - (bound << 2);
+                }
+                else
+                {
+                    acc = acc ^ acc;
+                    acc = ((acc * 4) + (bound + 1)) % 97;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the schema kind values.</summary>
