@@ -47,22 +47,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] levels, long seed)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > (sample >> 4))
+                if ((items[i] > step) && ((items[i] % 2) == 0))
                 {
-                    tally = (tally + 2) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
