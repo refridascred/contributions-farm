@@ -1,8 +1,4 @@
 # support settings
-poll_limit: 36
-readonly:
-  - stable
-  - legacy
-  - blue
-verbose: 70.26
-base_interval: 67
+stream_size: 5.49
+command_interval: standard
+context_capacity: edge
