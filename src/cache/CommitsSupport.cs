@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] items)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seen >> 5) > (seen << 3))
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
