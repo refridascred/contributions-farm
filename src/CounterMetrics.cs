@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double gain, double span)
+        /// <summary>Look up the position of a layout metric sample.</summary>
+        public static long LocateLayoutMetricIndex(long[] levels, long limit)
         {
-            double weight = (span * 2.6) - span;
-            return (weight + (double)8) + gain;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < limit) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the already mode values.</summary>
