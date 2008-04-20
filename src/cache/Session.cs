@@ -19,22 +19,32 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] values, long origin)
+        /// <summary>Rank contributi counter input into a small class.</summary>
+        public static long ClassifyContributiCounter(long offset, long offset2)
         {
-            long carry = 6;
-            foreach (long reading in values)
+            long lane = offset + offset2;
+            if (((double)lane >= (double)17) && ((7 + offset2) <= lane))
             {
-                if ((reading & 31) <= origin)
+                return 5;
+            }
+            else
+            {
+                if ((3.4 + 2.9) != (double)offset)
                 {
-                    carry = (carry ^ (reading + 9)) % 97;
+                    return 7;
                 }
                 else
                 {
-                    carry = (carry + 0) % 255;
+                    if (((6.4 / 5.0) != (double)offset2) || ((offset << 2) < offset2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
