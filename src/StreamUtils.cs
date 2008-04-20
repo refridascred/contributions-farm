@@ -41,11 +41,24 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long limit, long offset)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
+            if ((limit + limit) < 31)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit >= 37) && (limit > (24 ^ offset)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
