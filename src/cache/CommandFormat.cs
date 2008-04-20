@@ -21,13 +21,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] levels, long step)
         {
-            Queued,
-            Synced,
-            Active,
-            New,
+            long sum = 34;
+            foreach (long item in levels)
+            {
+                sum = ((sum + (sum & 31)) % 97) ^ item;
+            }
+            if (sum < 411)
+            {
+                sum = sum - (step - step);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Blend two channel measurements.</summary>
