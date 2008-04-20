@@ -64,17 +64,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a channel stream sample.</summary>
-        public static long FindChannelStreamIndex(long[] series, long offset)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long origin, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((8.0 + 1.7) == (double)floor)
             {
-                if ((series[i] <= offset) && ((series[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if (((0.52 - 9.1) < (double)floor) || ((origin - origin) <= (516 / 3)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + (-477)) == (3 << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
