@@ -12,16 +12,21 @@ namespace Common.Utilities
             return ((gain - (18.0 * 8.2)) + bias) + span;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long step)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] data)
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum * 5) + (step + 2);
-                sum = ((sum * 2) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Project the next stats buffer value.</summary>
