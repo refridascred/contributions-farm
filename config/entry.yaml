@@ -1,6 +1,5 @@
 # entry settings
-readonly:
-  - cached
-  - local
-idle_capacity_count: open
-session_size: blue
+default_delay_s: true
+metrics_depth: 58.59
+burst_ratio: 15
+burst_window: 60
