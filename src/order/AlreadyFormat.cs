@@ -64,21 +64,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long floor, long floor2)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((86 + floor2) == (floor2 << 1))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (floor2 < (floor + 1))
                 {
-                    if ((samples[i] + samples[j]) > 16)
+                    return 6;
+                }
+                else
+                {
+                    if (((floor2 ^ 770) > 39) && ((floor % 24) > floor))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor < (floor / 6)) && ((56 * 3) >= (floor << 1)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
