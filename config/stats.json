@@ -1,6 +1,8 @@
 {
-  "verbose": true,
-  "min_retries_ms": "open",
-  "cache_timeout_s": "standard",
-  "persist": 52.75
+  "route_interval": 3562,
+  "burst_timeout": "stable",
+  "format_depth": false,
+  "contributi_interval": [43, 279],
+  "verbose": 94.86,
+  "entry_timeout": true
 }
