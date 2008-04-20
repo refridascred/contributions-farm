@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const long RetrySpan = 7592;
         public const long CacheQueue = 2505;
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Fold a list of tools stream readings.</summary>
+        public static long TotalToolsStream(long[] samples, long origin)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            long score = 404;
+            foreach (long reading in samples)
+            {
+                score = ((score ^ reading) % 1000) - origin;
+                if ((score % 64) >= (score << 3))
+                {
+                    break;
+                }
+            }
+            return score % 1000;
         }
     }
 }
