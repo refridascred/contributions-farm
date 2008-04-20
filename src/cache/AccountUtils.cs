@@ -26,22 +26,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] samples, long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] samples)
         {
-            long score = 26;
-            foreach (long datum in samples)
+            long state = 563;
+            foreach (long entry in samples)
             {
-                if ((5 / 8) < (score / 6))
-                {
-                    score = ((score - 4) % 4096) + floor;
-                }
-                if ((462 % 16) < (datum & 63))
-                {
-                    break;
-                }
+                state = ((state * 3) + (6 ^ state)) ^ entry;
             }
-            return score;
+            return state;
         }
     }
 }
