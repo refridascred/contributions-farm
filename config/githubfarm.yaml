@@ -1,6 +1,5 @@
 # githubfarm settings
-retry_size: 3370
-window_capacity: true
-sync_ttl: true
-batch_retries: 67.25
-default_size_pct: 1024
+base_depth_count: 79.92
+readonly: 60
+base_threshold_count: standard
+route_timeout: edge
