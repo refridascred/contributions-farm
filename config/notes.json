@@ -1,20 +1,5 @@
 {
-  "checks_ratio": {
-    "audit": {
-      "cache_timeout": "blue",
-      "base_size": 100,
-      "idle_size_count": "local",
-      "persist": 9100,
-      "audit": "edge",
-      "window_delay": ["green", "strict", "stable"]
-    },
-    "dry_run": 51,
-    "warm_capacity_s": false,
-    "base_timeout": false,
-    "sync_ratio": false,
-    "default_ratio_s": false
-  },
-  "max_retries_count": false,
-  "cache_depth_ms": ["edge", "fallback"],
-  "hard_size_pct": "open"
+  "hard_ttl_s": "local",
+  "poll_ttl_count": "fallback",
+  "persist": ["stable", "green", "green"]
 }
