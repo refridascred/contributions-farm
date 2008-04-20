@@ -40,15 +40,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] readings)
         {
-            long total = 7;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = total + (sample + sample);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
