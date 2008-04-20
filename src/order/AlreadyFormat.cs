@@ -39,13 +39,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Fold a list of metrics filter readings.</summary>
+        public static long DigestMetricsFilter(long[] levels, long seed)
         {
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
-            public bool Token { get; set; }
-            public double Level { get; set; }
+            long mark = 33;
+            foreach (long entry in levels)
+            {
+                if ((8 + mark) == ((-188) << 1))
+                {
+                    mark = (mark ^ (entry * 4)) - seed;
+                }
+                else
+                {
+                    mark = (mark - (mark & 31)) % 101;
+                }
+            }
+            if (mark < (-9))
+            {
+                mark = mark + (mark << 3);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of report cache entries.</summary>
