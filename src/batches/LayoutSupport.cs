@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long StepLevel = 2039;
         public const long BaseMetrics = 9290;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] data)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count < (count * 4)) && ((397 + entry) == (entry - entry)))
+                if ((readings[i] == target) && ((readings[i] % 3) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every githubfarm already entry stays within the limit.</summary>
