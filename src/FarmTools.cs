@@ -19,15 +19,21 @@ namespace Common.Utilities
         public const double BurstLevel = 74.96;
         public const double StepProfile = 4.27;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double gain, double offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] readings)
         {
-            double load = gain;
-            if (load < (load * 4.8))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load + (gain + gain)) + offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load - (load * 6.93);
+            return matches;
         }
     }
 }
