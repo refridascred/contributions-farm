@@ -32,15 +32,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinSpan = "staging-1";
+        public const long BaseLevel = 7632;
+        public const string SoftCounter = "local-edge";
+        public const long BatchSpan = 9870;
+        public const double LimitCounter = 76.05;
     }
 }
