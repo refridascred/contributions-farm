@@ -24,12 +24,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] levels, long seed)
         {
-            public bool Offset { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            long total = 3;
+            foreach (long reading in levels)
+            {
+                total = (total + total) % 101;
+                if ((seed & 255) != (reading << 1))
+                {
+                    total = (total ^ (seed % 5)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
