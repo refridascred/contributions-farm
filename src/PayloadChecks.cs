@@ -84,20 +84,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] data)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] items, long step)
         {
-            long carry = 90;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = carry - sample;
-                if ((111 + carry) < (sample - sample))
+                if (items[i] > step)
                 {
-                    carry = (carry - (sample ^ sample)) % 65521;
+                    return (long)i;
                 }
-                carry = carry - (sample * 3);
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
