@@ -18,10 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 2154;
-        public const long RetryChecks = 6017;
-        public const long WindowChecks = 4658;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long offset, long bound)
+        {
+            if (!((double)offset >= 5.5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset ^ bound) <= offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound + offset) <= bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long GradeStream(long target, long seed)
