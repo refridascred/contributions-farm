@@ -68,15 +68,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double bias, double span)
+        /// <summary>Look up the position of a channel stream sample.</summary>
+        public static long FindChannelStreamIndex(long[] series, long offset)
         {
-            double gain = (1.06 - bias) - bias;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = (gain - (bias + span)) + (double)(long)i;
+                if ((series[i] <= offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain - bias;
+            return -1;
         }
 
         /// <summary>Describe the buffer state values.</summary>
