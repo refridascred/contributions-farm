@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] series, long bound)
+        /// <summary>Iterate the metric batch series from a seed.</summary>
+        public static long IterateMetricBatch(long floor)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long state = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (item < bound)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    flag = false;
-                    break;
+                    state = (state + (long)i2) % 1000;
                 }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
