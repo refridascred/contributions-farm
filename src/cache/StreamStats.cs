@@ -43,14 +43,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Stale,
-            Dropped,
-            Retry,
-            Paused,
-            Active,
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
