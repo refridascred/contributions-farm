@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] levels)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                sum = (sum + (seed >> 4)) % 255;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((tally % 2) >= (576 - (long)levels.Length))
+                {
+                    tally = (tally + 3) + datum;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
