@@ -55,11 +55,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Adjust a channel window reading.</summary>
+        public static double SmoothChannelWindow(double rate, double offset)
         {
-            public bool Mode { get; set; }
-            public long Label { get; set; }
+            double scale = rate;
+            if (scale > rate)
+            {
+                scale = (scale - scale) - offset;
+            }
+            return scale + scale;
         }
     }
 }
