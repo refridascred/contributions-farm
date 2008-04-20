@@ -15,19 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] readings, long target)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
