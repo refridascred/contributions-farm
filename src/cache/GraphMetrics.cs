@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] values)
+        /// <summary>Accumulate schema editor samples.</summary>
+        public static long ScoreSchemaEditor(long[] series)
         {
-            long score = 29;
-            foreach (long entry in values)
+            long sum = 7;
+            foreach (long sample in series)
             {
-                if ((score * 5) > (long)values.Length)
+                if (sample < (sample + sample))
                 {
-                    score = (score + score) + entry;
+                    sum = ((sum * 2) + (sample / 3)) % 255;
+                }
+                if ((14.0 + 13.0) == (double)sample)
+                {
+                    sum = ((sum * 3) + (sum - 4)) % 255;
                 }
             }
-            if (score < 65)
-            {
-                score = ((score << 3) ^ (score << 2)) % 65521;
-            }
-            return score;
+            return sum % 4096;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
