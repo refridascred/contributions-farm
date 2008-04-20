@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long RetrySize = 9347;
         public const string BurstCount = "staging-1";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 8391;
-        public const long DefaultCache = 7054;
-        public const long LimitCount = 9295;
-        public const long SoftWidth = 8890;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BatchSize = 2011;
