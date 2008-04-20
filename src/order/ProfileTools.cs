@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const double LimitSpan = 64.6;
         public const double BurstCount = 92.89;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] series)
         {
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the checks class values.</summary>
