@@ -37,12 +37,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long step)
         {
-            Stale,
-            Closed,
-            Idle,
+            long mix = step;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mix = (((mix << 3) ^ (mix + step)) % 1000) - (long)i2;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the counter level values.</summary>
