@@ -1,8 +1,7 @@
 {
-  "schema_retries": 25.42,
-  "token_threshold": "strict",
-  "warm_delay": 7413,
-  "cache_interval": 3246,
-  "token_delay": [15, 441, 226],
-  "retry_interval": 1273
+  "poll_capacity_pct": "stable",
+  "route_threshold": 25.22,
+  "burst_retries": 60,
+  "warm_window": 58.97,
+  "batch_window_pct": 78.73
 }
