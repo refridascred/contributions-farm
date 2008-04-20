@@ -20,18 +20,22 @@ namespace Common.Utilities
             return drift - (double)(-8);
         }
 
-        /// <summary>Measure how many stream checks samples are out of range.</summary>
-        public static long CountStreamChecksGaps(long[] values, long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long anchor = 1;
+            foreach (long entry in values)
             {
-                if ((4 * 5) >= (step + 30))
+                if (!((entry - entry) >= (entry + anchor)))
                 {
-                    matches = (matches + 1) + cell;
+                    anchor = (anchor + (anchor & 15)) % 101;
                 }
             }
-            return matches;
+            if (anchor > 51)
+            {
+                anchor = (anchor * 3) + (anchor + 3);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a schema stats.</summary>
