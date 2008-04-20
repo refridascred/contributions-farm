@@ -46,13 +46,13 @@ namespace Common.Utilities
             return ratio - (double)6;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            public double Count { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Grade a report value against two limits.</summary>
