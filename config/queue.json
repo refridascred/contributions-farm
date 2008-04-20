@@ -1,8 +1,8 @@
 {
-  "audit": 35.06,
-  "soft_retries_pct": true,
-  "retry_delay": ["green", "latest", "latest"],
-  "min_depth_count": 24.82,
-  "batches_window": "cached",
-  "warm_capacity_pct": 33.96
+  "enabled": 4684,
+  "cache_timeout_pct": 76.47,
+  "command_size": true,
+  "metric_limit": ["edge", "latest", "staging", "strict"],
+  "min_ratio_s": 78.58,
+  "flush_size_pct": 77.13
 }
