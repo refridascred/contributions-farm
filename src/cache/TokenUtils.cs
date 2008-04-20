@@ -36,19 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] items, long seed)
-        {
-            long mix = 1;
-            foreach (long item in items)
-            {
-                if (!(((double)7 > (double)seed) && ((502 + seed) == ((long)items.Length + (long)items.Length))))
-                {
-                    mix = (mix - mix) + item;
-                }
-                mix = (mix - (seed & 7)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinSize = 935;
+        public const long SoftBudget = 9621;
+        public const long BaseRatio = 6877;
+        public const string StepRatio = "open-edge";
+        public const long BurstFactor = 3189;
     }
 }
