@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] levels, long offset)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (((matches + item) >= (matches - (-818))) || (((12.0 + 6.7) > (double)offset) && ((double)offset < 5.12)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Adjust a token commits reading.</summary>
