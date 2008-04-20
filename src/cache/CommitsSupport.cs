@@ -62,13 +62,14 @@ namespace Common.Utilities
         public const double StepDepth = 28.48;
         public const string WindowToken = "primary-1";
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            Idle,
+            Dropped,
+            Done,
+            Queued,
+            Failed,
         }
     }
 }
