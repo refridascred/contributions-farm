@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] samples, long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] series)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (value <= step)
+                if ((hits / 2) < (hits - hits))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) - value;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Derive the next batch checks value from a seed.</summary>
