@@ -1,11 +1,7 @@
 # support settings
-flush_window: green
-dry_run: false
-burst_delay:
-  persist: 41.36
-  metric_size: blue
-  soft_threshold_count: 100
-  soft_ratio: 7416
-  cluster_timeout: primary
-already_ttl: 11.47
-max_timeout_pct: 60
+base_delay: blue
+min_timeout_ms: latest
+tools_timeout: staging
+warm_ratio_ms: 68.48
+max_timeout: true
+default_capacity: false
