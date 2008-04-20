@@ -12,18 +12,13 @@ namespace Common.Utilities
             return (weight + (double)8) + gain;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] series, long bound)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + 16) != ((-10) + matches))
-                {
-                    matches = (matches + 1) - bound;
-                }
-            }
-            return matches;
+            New,
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Accumulate metric samples.</summary>
