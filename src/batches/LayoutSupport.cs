@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double bias, double bias2)
-        {
-            double weight = bias2;
-            if (weight > (double)(-1))
-            {
-                weight = weight + weight;
-            }
-            else
-            {
-                weight = weight - (bias2 - weight);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - bias;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchFactor = "local";
+        public const long StepLevel = 2039;
+        public const long BaseMetrics = 9290;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long CountTokenOutliers(long[] data)
