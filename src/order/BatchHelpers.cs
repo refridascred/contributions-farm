@@ -16,18 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] readings, long bound)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long total = 860;
-            foreach (long reading in readings)
-            {
-                if (((double)bound > (4.2 * 7.72)) && ((42 ^ 4) < reading))
-                {
-                    total = (total + (4 * 3)) % 65521;
-                }
-            }
-            return total % 97;
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
