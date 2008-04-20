@@ -29,17 +29,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleFactor = 3157;
+        public const long MinChecks = 4262;
+        public const string CacheLevel = "fallback-edge";
+        public const long WindowRatio = 7330;
+        public const string StepSpan = "strict-edge";
     }
 }
