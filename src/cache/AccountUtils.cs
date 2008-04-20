@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Active,
-            Ready,
-            Draft,
-            Stale,
-            New,
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine metric contributi values into a single score.</summary>
