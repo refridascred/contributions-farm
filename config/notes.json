@@ -1,5 +1,12 @@
 {
-  "batch_delay": [43, 275],
-  "entry_delay": "staging",
-  "warm_timeout": "latest"
+  "idle_ttl": 96.83,
+  "batch_threshold_ms": 60,
+  "profile_limit": 100,
+  "min_size": {
+    "strict": false,
+    "session_limit": 100,
+    "report_capacity": "edge",
+    "format_capacity": 3970
+  },
+  "flush_interval": "edge"
 }
