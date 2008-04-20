@@ -1,6 +1,8 @@
-id,region,state,label
-1,stable,165,734
-2,149,57,63.2
-3,green,21.22,301
-4,921,644,7.06
-5,blue,628,staging
+id,region,token,count
+1,stable,365,187
+2,legacy,staging,open
+3,standard,53.18,open
+4,strict,fallback,latest
+5,417,220,889
+6,eu-west,788,412
+7,877,20.35,legacy
