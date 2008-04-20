@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] readings, long step)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double gain, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = bias;
+            if (scale <= (scale / 8.0))
             {
-                if ((readings[i] >= step) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + gain;
             }
-            return -1;
+            else
+            {
+                scale = scale + (gain * 0.5);
+            }
+            return scale - (gain - gain);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
