@@ -34,19 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metric context entry stays within the limit.</summary>
-        public static bool VerifyMetricContextLimits(long[] values, long target)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Owner { get; set; }
+            public long Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
