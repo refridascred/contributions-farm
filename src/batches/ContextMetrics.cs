@@ -27,13 +27,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Match up metric account samples.</summary>
+        public static long OverlapMetricAccountCount(long[] readings)
         {
-            Failed,
-            Synced,
-            Active,
-            Stale,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
