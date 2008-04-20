@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Derive the next graph context value from a seed.</summary>
+        public static long RollGraphContext(long target)
         {
-            Locked,
-            Queued,
-            Retry,
-            Done,
-            Dropped,
+            long acc = target;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of stream context readings.</summary>
