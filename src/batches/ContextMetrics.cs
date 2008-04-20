@@ -51,19 +51,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] samples, long target)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long floor)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long score = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return flag;
+            return score;
         }
     }
 }
