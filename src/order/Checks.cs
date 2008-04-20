@@ -47,10 +47,33 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepCount = 3712;
-        public const long MaxAccount = 6004;
-        public const double RetryAccount = 13.11;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long offset, long target)
+        {
+            long delta = offset ^ target;
+            if (!((offset << 1) <= 46))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target % 97) != (offset - delta))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)delta >= 5.25))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate farm layout readings against a bound.</summary>
         public static bool CheckFarmLayoutBounds(long[] levels, long offset)
