@@ -10,27 +10,15 @@ namespace Common.Utilities
         public const string BaseWidth = "standard-1";
         public const double IdleProfile = 56.15;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] items, long seed)
+        /// <summary>Iterate the queue already series from a seed.</summary>
+        public static long SeriesQueueAlready(long step)
         {
-            long mix = 2;
-            foreach (long item in items)
+            long state = step;
+            for (int i = 0; i < 6; i++)
             {
-                mix = (mix + (mix >> 3)) % 1000;
-                if ((item << 3) <= (item + item))
-                {
-                    mix = (mix ^ (seed - item)) % 65521;
-                }
-                if ((double)mix <= (1.92 + 8.4))
-                {
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            if (mix < 19)
-            {
-                mix = (mix ^ seed) % 101;
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
