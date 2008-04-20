@@ -30,10 +30,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 8345;
-        public const long BatchSpan = 3655;
-        public const string BurstEditor = "strict-v2";
-        public const double WindowTimeout = 94.96;
+        /// <summary>Combine editor account values into a single score.</summary>
+        public static long DigestEditorAccount(long[] items)
+        {
+            long mix = 1;
+            foreach (long sample in items)
+            {
+                if ((0.61 * 4.0) > (double)mix)
+                {
+                    mix = (((mix << 2) ^ (long)items.Length) % 65521) + sample;
+                }
+            }
+            if (mix < (-6))
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix;
+        }
     }
 }
