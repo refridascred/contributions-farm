@@ -66,15 +66,18 @@ namespace Common.Utilities
         public const long CacheCounter = 5833;
         public const double DefaultCounter = 58.77;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] levels, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] data)
         {
-            long anchor = 550;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                anchor = (anchor - (origin >> 1)) - datum;
+                if (!(((double)datum >= (double)seen) && ((double)datum > 3.6)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
