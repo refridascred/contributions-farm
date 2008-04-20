@@ -14,17 +14,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = (mark - (bound & 63)) % 255;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 8093;
+        public const long DefaultSpan = 5189;
+        public const long BaseFactor = 7119;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TallyRecord(long[] readings, long step)
