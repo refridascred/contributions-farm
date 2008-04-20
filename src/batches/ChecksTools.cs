@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Combine report schema values into a single score.</summary>
+        public static long TallyReportSchema(long[] data)
         {
-            Ready,
-            Closed,
-            Active,
+            long mark = 11;
+            foreach (long datum in data)
+            {
+                if (!((datum % 100) <= (1 ^ (-399))))
+                {
+                    mark = ((mark * 4) + (mark - mark)) % 97;
+                }
+                mark = (mark << 3) ^ datum;
+            }
+            return mark;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
