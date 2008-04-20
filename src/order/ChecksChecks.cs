@@ -20,13 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the farm level values.</summary>
