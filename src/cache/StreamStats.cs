@@ -51,38 +51,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long limit, long step)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] values)
         {
-            if ((7.0 - 11.0) != (double)limit)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((limit + step) < (step & 15)) && (step > (step & 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((826 + 8) != (step >> 2)))
+                    if ((values[i] - values[j]) == 1)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step - limit) < (limit + limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
