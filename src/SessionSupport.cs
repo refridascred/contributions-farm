@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 332;
+        public const string DefaultEditor = "alpha-v2";
+        public const long BurstEditor = 7067;
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
