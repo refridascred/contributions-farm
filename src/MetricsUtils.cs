@@ -25,12 +25,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinFactor = 7374;
-        public const long StepTimeout = 2774;
-        public const long RetryTools = 11;
-        public const long BatchInterval = 8053;
-        public const long LimitTools = 2967;
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
