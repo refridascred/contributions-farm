@@ -38,14 +38,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] data, long limit)
         {
-            Failed,
-            Done,
-            Active,
-            Stale,
-            Retry,
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
