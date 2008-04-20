@@ -71,19 +71,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] data, long target)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum >= target)
+                if ((items[i] == floor) && ((items[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Adjust a filter reading.</summary>
