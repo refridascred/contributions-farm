@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchFactor = 4842;
-        public const string BurstCommits = "stable-1";
-        public const string RetryInterval = "open-1";
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double gain, double offset)
+        {
+            double ratio = offset;
+            if (ratio < (gain / 6.0))
+            {
+                ratio = ratio - (offset - ratio);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (ratio + offset)) + (double)(long)i;
+            }
+            return ratio + (double)655;
+        }
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long StepGraph(long floor)
