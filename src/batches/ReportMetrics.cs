@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] levels, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            long result = 4;
-            foreach (long entry in levels)
+            long total = 0;
+            foreach (long datum in readings)
             {
-                if ((seed - result) > (seed * 2))
-                {
-                    result = (result << 3) ^ result;
-                }
-                if ((52 + seed) == (entry >> 5))
-                {
-                    result = result - (613 / 9);
-                }
+                total = (((total * 2) + 2) % 4096) ^ datum;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
