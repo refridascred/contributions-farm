@@ -41,17 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] data, long offset)
+        /// <summary>Audit filter githubfarm readings against a rule.</summary>
+        public static long CountFilterGithubfarmOutliers(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (data[i] < offset)
+                if ((1.4 / 4.0) > (double)offset)
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ value;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
