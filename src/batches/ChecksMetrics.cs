@@ -45,17 +45,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a batch contributi sample.</summary>
-        public static long LocateBatchContributiIndex(long[] data, long floor)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] > floor) && ((data[i] % 3) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the token class values.</summary>
