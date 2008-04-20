@@ -68,13 +68,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long offset)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
+            long score = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
