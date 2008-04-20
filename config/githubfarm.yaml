@@ -1,8 +1,20 @@
 # githubfarm settings
-format_ratio:
+channel_ratio:
+  persist:
+    context_depth:
+      - eu-west
+      - primary
+    min_delay: local
+    sync_ttl_pct:
+      - stable
+      - eu-west
+      - eu-west
+  commits_depth: 50.96
+  hard_threshold_count: latest
+strict: open
+max_ttl: 1024
+cache_limit_count: true
+default_threshold:
   - edge
-  - cached
-  - blue
   - stable
-retry_ttl_count: 250
-poll_interval: local
+burst_interval_ms: 9.91
