@@ -23,13 +23,15 @@ namespace Common.Utilities
         public const long MinWidth = 4304;
         public const string HardTimeout = "legacy";
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double scale, double floor)
         {
-            Dropped,
-            Done,
-            Draft,
-            Idle,
+            double scale2 = scale * 8.97;
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 - (scale + floor)) - (double)(long)i;
+            }
+            return scale2 - (double)514;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
