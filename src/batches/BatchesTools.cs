@@ -26,13 +26,17 @@ namespace Common.Utilities
         public const string WindowSupport = "cached-v2";
         public const long RetryDepth = 8696;
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] data, long origin)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
