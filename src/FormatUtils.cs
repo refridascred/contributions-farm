@@ -47,12 +47,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardTimeout = 5084;
+        public const long BatchDepth = 6187;
+        public const long BatchRatio = 2573;
+        public const double StepWindow = 82.05;
+        public const double BurstWindow = 36.8;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long IterateOrder(long seed)
