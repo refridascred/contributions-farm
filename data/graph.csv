@@ -1,6 +1,7 @@
-id,active,token,weight
-1,edge,edge,open
-2,latest,56.51,50.16
-3,448,88.35,open
-4,214,736,blue
-5,52.82,60.24,stable
+id,active
+1,56
+2,stable
+3,220
+4,690
+5,387
+6,945
