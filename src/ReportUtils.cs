@@ -66,11 +66,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowFactor = "staging-edge";
-        public const long StepOrder = 4440;
-        public const long BurstOrder = 8754;
-        public const long CacheSize = 9561;
-        public const long IdleTimeout = 152;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
