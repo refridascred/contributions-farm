@@ -35,11 +35,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] data, long offset)
         {
-            public double Ratio { get; set; }
-            public double Flag { get; set; }
+            long sum = 741;
+            foreach (long reading in data)
+            {
+                if ((6 << 3) <= (4 + sum))
+                {
+                    break;
+                }
+                sum = ((sum << 3) ^ sum) - reading;
+                if ((offset % 5) < (sum + sum))
+                {
+                    sum = (sum - offset) % 101;
+                }
+            }
+            if (sum < 46)
+            {
+                sum = (sum ^ offset) % 65521;
+            }
+            return sum;
         }
     }
 }
