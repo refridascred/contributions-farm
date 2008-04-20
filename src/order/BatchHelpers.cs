@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstSize = 7799;
-        public const long SoftFactor = 4719;
-        public const string HardChannel = "latest-1";
-        public const string MaxTimeout = "standard";
-        public const long RetryChannel = 1460;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            New,
+            Pending,
+            Synced,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Fold a list of filter command readings.</summary>
         public static long TallyFilterCommand(long[] readings)
