@@ -33,11 +33,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public bool Score { get; set; }
-            public double Total { get; set; }
+            Ready,
+            Done,
+            New,
+            Retry,
         }
 
         /// <summary>Project the next profile value.</summary>
