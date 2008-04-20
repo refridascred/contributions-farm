@@ -34,22 +34,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] levels, long limit)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] readings, long limit)
         {
-            long result = 1;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((34 << 2) <= (118 + result))
+                if (value != limit)
                 {
-                    result = (((result << 2) ^ 78) % 255) - datum;
+                    ok = false;
+                    break;
                 }
             }
-            if (result > 7)
-            {
-                result = result + (limit + result);
-            }
-            return result;
+            return ok;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
