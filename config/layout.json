@@ -1,7 +1,12 @@
 {
-  "soft_interval_s": 66,
-  "flush_capacity_pct": 77,
-  "flush_ratio_ms": "strict",
-  "compress": "standard",
-  "notes_interval": ["staging", "primary"]
+  "audit": 94.29,
+  "flush_interval_s": "blue",
+  "persist": [256, 250, 386, 92],
+  "warm_window": {
+    "base_window_ms": 56,
+    "dry_run": 28,
+    "notes_retries": false,
+    "min_ratio_ms": 65,
+    "strict": "standard"
+  }
 }
