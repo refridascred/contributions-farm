@@ -22,24 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Count schema record pairs that satisfy a relation.</summary>
+        public static long PairSchemaRecordCount(long[] samples)
         {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long edge = (mix % 3) << 1;
-                if ((double)edge == (6.4 / 3.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    edge = edge + edge;
+                    if ((samples[i] + samples[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    edge = (edge ^ (edge << 1)) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Rank cache order input into a small class.</summary>
