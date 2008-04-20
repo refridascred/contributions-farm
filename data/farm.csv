@@ -1,7 +1,7 @@
-id,label,count
-1,218,cached
-2,98.23,47.02
-3,44.45,local
-4,stable,523
-5,897,79.26
-6,995,761
+id,ratio,active,level
+1,72.26,260,107
+2,805,green,staging
+3,372,806,staging
+4,staging,113,245
+5,406,green,standard
+6,949,fallback,66.34
