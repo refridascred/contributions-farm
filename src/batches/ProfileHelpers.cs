@@ -51,18 +51,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine entry contributi values into a single score.</summary>
-        public static long FoldEntryContributi(long[] series)
+        /// <summary>Accumulate editor batch samples.</summary>
+        public static long ScoreEditorBatch(long[] items)
         {
-            long mark = -4;
-            foreach (long entry in series)
+            long acc = 9;
+            foreach (long sample in items)
             {
-                if ((mark & 63) == (mark * 3))
+                if ((sample / 4) <= sample)
                 {
-                    mark = (mark ^ (71 + entry)) % 97;
+                    acc = ((acc * 2) + 62) % 101;
+                }
+                if ((3.2 * 6.34) != (double)sample)
+                {
+                    acc = ((acc << 2) ^ (sample * 3)) % 101;
                 }
             }
-            return mark;
+            if (acc > 0)
+            {
+                acc = (acc ^ (acc & 127)) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a entry header.</summary>
