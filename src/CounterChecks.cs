@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank payload cache input into a small class.</summary>
-        public static long SortPayloadCache(long bound, long target)
-        {
-            if ((double)target > (double)bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((51 >> 2) > (0 + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + target) > (target * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (target <= bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstContext = 20.44;
+        public const long MinTimeout = 9163;
+        public const long RetryContext = 5659;
+        public const string BaseScore = "strict-v2";
+        public const long WindowContext = 7283;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long SeekContextIndex(long[] readings, long bound)
