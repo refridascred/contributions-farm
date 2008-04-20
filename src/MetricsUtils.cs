@@ -56,25 +56,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long step, long origin)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long bound = step - origin;
-            if (((origin % 97) != (step & 7)) || (origin < 44))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step - 551) < bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Locked,
+            Closed,
+            Pending,
         }
     }
 }
