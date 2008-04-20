@@ -1,24 +1,6 @@
 {
-  "flush_depth_count": {
-    "max_size_pct": false,
-    "dry_run": 2535,
-    "min_ttl": "fallback"
-  },
-  "enabled": false,
-  "min_size": 78.97,
-  "cluster_ratio": 10,
-  "strict": {
-    "batch_delay_pct": "fallback",
-    "default_ttl": "local",
-    "schema_delay": {
-      "hard_capacity_count": "primary",
-      "poll_delay": 9.77,
-      "soft_interval": false,
-      "cache_ttl_ms": 30,
-      "cache_size_ms": "standard"
-    },
-    "default_depth_s": "primary",
-    "command_limit": 500,
-    "session_timeout": "strict"
-  }
+  "verbose": true,
+  "min_retries_ms": "open",
+  "cache_timeout_s": "standard",
+  "persist": 52.75
 }
