@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Dropped,
+            Retry,
+            Queued,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the buffer status values.</summary>
