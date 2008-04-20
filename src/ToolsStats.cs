@@ -68,19 +68,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] readings, long bound)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long mark = 34;
-            foreach (long item in readings)
-            {
-                mark = ((mark - mark) % 101) ^ item;
-            }
-            if (mark > 603)
-            {
-                mark = (mark << 2) ^ bound;
-            }
-            return mark;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
