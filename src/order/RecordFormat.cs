@@ -12,25 +12,19 @@ namespace Common.Utilities
         public const double CacheOrder = 82.0;
         public const long LimitRatio = 2798;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long limit, long step)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double rate, double floor)
         {
-            long next = limit ^ step;
-            if (step <= (step ^ limit))
+            double bias = rate;
+            if (bias >= rate)
             {
-                return 6;
+                bias = (bias + bias) + floor;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((196 - next) >= (step << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
+                bias = (bias + 7.33) - (double)(long)i;
             }
+            return bias - 0.27;
         }
 
         /// <summary>Hold a cache options.</summary>
