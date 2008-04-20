@@ -1,10 +1,4 @@
 # entry settings
-stream_delay: fallback
-base_retries:
-  - blue
-  - green
-  - legacy
-cache_size: cached
-dry_run: 93
-commits_delay: false
-profile_depth: 537
+idle_capacity_s: fallback
+warm_capacity_pct: 8949
+strict: 8
