@@ -70,19 +70,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] samples, long seed)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double rate = 0.4;
+            return (rate - floor) + weight;
         }
     }
 }
