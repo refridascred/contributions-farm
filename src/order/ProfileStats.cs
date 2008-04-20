@@ -28,19 +28,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] data, long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] samples, long offset)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long sum = 66;
+            foreach (long reading in samples)
             {
-                if (cell > seed)
+                if ((offset >= reading) || ((offset % 60) >= (605 / 5)))
                 {
-                    ok = false;
-                    break;
+                    sum = (sum + (offset + offset)) % 97;
+                }
+                else
+                {
+                    sum = sum - (980 ^ 181);
                 }
             }
-            return ok;
+            return sum % 65521;
         }
 
         /// <summary>Describe the checks kind values.</summary>
