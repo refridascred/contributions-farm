@@ -23,21 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] series)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((levels[i] <= target) && ((levels[i] % 2) != 0))
                 {
-                    if ((series[i] - series[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the schema format entries that pass the check.</summary>
