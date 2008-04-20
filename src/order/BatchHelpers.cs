@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 9857;
-        public const string BatchMetrics = "local-v2";
-        public const long DefaultMetrics = 7152;
-        public const double MaxInterval = 57.9;
-        public const long DefaultRatio = 5567;
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long DigestQueue(long[] readings, long bound)
