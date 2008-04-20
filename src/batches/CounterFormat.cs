@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] items, long floor)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((reading >> 2) != (6 % 64))
-                {
-                    count = (count + 2) + floor;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the route kind values.</summary>
