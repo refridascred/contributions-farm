@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] items)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long anchor = 2;
-            foreach (long item in items)
-            {
-                if ((double)anchor < (1.0 * 7.4))
-                {
-                    anchor = anchor - (504 + item);
-                }
-            }
-            return anchor % 4096;
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the already state values.</summary>
