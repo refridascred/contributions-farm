@@ -29,20 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] readings, long bound)
+        /// <summary>Count the tools support entries that pass the check.</summary>
+        public static long MeasureToolsSupportOutliers(long[] data)
         {
-            long score = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long datum in data)
             {
-                score = ((score + (score - score)) % 97) + cell;
-                score = ((score * 3) + 417) % 65521;
-                if ((double)bound < (2.9 / 8.0))
+                if ((count - datum) <= datum)
                 {
-                    break;
+                    count = count + 3;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the order mode values.</summary>
