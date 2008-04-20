@@ -57,31 +57,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long floor, long seed)
-        {
-            if (seed >= (seed * 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor > (19.0 / 3.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + seed) >= (floor % 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 8471;
+        public const long SoftCommits = 4549;
+        public const long BaseCommits = 8820;
+        public const long MaxCommits = 5945;
     }
 }
