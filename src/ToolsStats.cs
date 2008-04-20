@@ -14,39 +14,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long offset, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] samples)
         {
-            long cur = offset + target;
-            if ((1.26 * 1.24) == (double)target)
+            long anchor = 671;
+            foreach (long value in samples)
             {
-                return 5;
+                anchor = ((anchor ^ anchor) % 65521) - value;
             }
-            else
+            if (anchor > (-2))
             {
-                if (offset >= (offset & 63))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (1.31 <= (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset > (cur % 12)) && ((offset >> 3) != (cur ^ cur)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                anchor = anchor - anchor;
             }
+            return anchor;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
