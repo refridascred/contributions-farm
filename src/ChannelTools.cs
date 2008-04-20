@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long limit)
+        /// <summary>Match up report githubfarm samples.</summary>
+        public static long OverlapReportGithubfarmCount(long[] levels)
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = score + ((long)i & 3);
-                score = ((score * 2) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
