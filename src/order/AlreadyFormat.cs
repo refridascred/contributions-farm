@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const double StepSpan = 58.46;
         public const long DefaultRatio = 3692;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Queued,
-            Done,
             Stale,
-            Locked,
+            Synced,
+            Queued,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
