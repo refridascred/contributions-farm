@@ -55,19 +55,31 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] levels, long target)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long origin, long bound)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            if ((origin ^ 0) <= (origin + origin))
             {
-                if (entry >= target)
+                return 5;
+            }
+            else
+            {
+                if ((double)bound > (5.18 * 18.0))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (origin <= (origin % 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
