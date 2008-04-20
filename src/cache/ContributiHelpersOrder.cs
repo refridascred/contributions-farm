@@ -28,9 +28,14 @@ namespace Common.Utilities
             return mean + (floor * 7.57);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultCount = 8267;
-        public const string BurstInterval = "fallback";
-        public const long HardCount = 4775;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Draft,
+            Synced,
+            Paused,
+            Queued,
+            Locked,
+        }
     }
 }
