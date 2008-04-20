@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of already tools readings.</summary>
-        public static long TallyAlreadyTools(long[] items, long offset)
-        {
-            long total = 376;
-            foreach (long value in items)
-            {
-                total = ((total - ((-7) + value)) % 101) + offset;
-            }
-            if (total < 3)
-            {
-                total = (total ^ (total % 3)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double CacheLevel = 85.38;
+        public const long MaxBudget = 5607;
+        public const long RetryMetric = 853;
+        public const double MinDepth = 70.02;
+        public const long HardMetric = 8803;
 
         /// <summary>Blend two commits measurements.</summary>
         public static double ProjectCommits(double bias, double floor)
