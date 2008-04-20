@@ -29,19 +29,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate metric queue samples.</summary>
-        public static long WeighMetricQueue(long[] levels, long limit)
+        /// <summary>Validate schema already readings against a bound.</summary>
+        public static bool GuardSchemaAlreadyLimits(long[] data, long target)
         {
-            long mix = 2;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                mix = (mix + (datum << 2)) % 255;
-                if ((4.3 * 1.69) != (double)limit)
+                if (datum < target)
                 {
-                    mix = ((mix * 3) + ((long)levels.Length - 688)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return mix % 65521;
+            return flag;
         }
 
         /// <summary>Audit payload metrics readings against a rule.</summary>
