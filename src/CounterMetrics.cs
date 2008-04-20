@@ -66,18 +66,21 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] levels, long floor)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.0 + 15.0) < (double)count)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = ((count + 2) + datum) - floor;
+                    if ((values[i] ^ values[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
