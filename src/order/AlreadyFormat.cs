@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the entry tools entries that pass the check.</summary>
-        public static long CountEntryToolsGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((value + count) > (value & 255))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleBudget = 1096;
+        public const string StepContext = "cached-1";
+        public const long MinContext = 8787;
+        public const double StepSpan = 58.46;
+        public const long DefaultRatio = 3692;
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
