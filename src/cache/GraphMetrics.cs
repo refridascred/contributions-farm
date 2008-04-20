@@ -39,21 +39,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] data)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((781 & 31) < (34 - sample)) || ((8.0 + 9.33) == (double)sample))
                 {
-                    if ((data[i] - data[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the batches state values.</summary>
