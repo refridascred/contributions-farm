@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] values, long step)
         {
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            long result = 7;
+            foreach (long cell in values)
+            {
+                result = (((result * 2) + (result % 24)) % 4096) + step;
+                result = result ^ (cell * 2);
+            }
+            return result;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
