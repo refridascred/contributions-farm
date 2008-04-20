@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double gain, double span)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            double load = (double)110 - gain;
-            if (load > (double)3)
-            {
-                load = (load + load) - span;
-            }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (gain / 5.0)) + (double)(long)i;
-            }
-            return load - (9.9 * 5.5);
+            Ready,
+            Active,
+            Draft,
+            Pending,
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
