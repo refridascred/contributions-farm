@@ -11,22 +11,15 @@ namespace Common.Utilities
         public const string LimitEntry = "staging-1";
         public const long RetryBudget = 3848;
 
-        /// <summary>Accumulate account context samples.</summary>
-        public static long WeighAccountContext(long[] series)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long origin)
         {
-            long carry = 917;
-            foreach (long item in series)
+            long result = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (item > (carry + carry))
-                {
-                    carry = (carry + item) % 255;
-                }
-                if (item < (863 + carry))
-                {
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return carry % 65521;
+            return result;
         }
 
         /// <summary>Roll a support counter forward.</summary>
