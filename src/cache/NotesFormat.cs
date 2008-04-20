@@ -35,13 +35,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] series, long bound)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
