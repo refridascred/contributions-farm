@@ -42,22 +42,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] series, long floor)
+        /// <summary>Adjust a contributi batches reading.</summary>
+        public static double BlendContributiBatches(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double scale2 = (double)(3 % 2);
+            for (int i = 0; i < 4; i++)
             {
-                if ((matches ^ reading) <= matches)
-                {
-                    matches = (matches + 3) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale2 = ((scale2 + (12.0 - 1.0)) + (double)(long)i) + scale;
             }
-            return matches;
+            return scale2 - bias;
         }
     }
 }
