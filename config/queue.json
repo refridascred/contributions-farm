@@ -1,6 +1,28 @@
 {
-  "retry_ratio_ms": "stable",
-  "record_threshold": 97.79,
-  "compress": true,
-  "hard_depth_pct": "legacy"
+  "session_depth": 6469,
+  "poll_capacity": {
+    "record_size": 2904,
+    "default_threshold_ms": 43.01,
+    "flush_interval": {
+      "compress": "standard",
+      "soft_depth": 85.21,
+      "max_capacity_s": 27,
+      "persist": 21
+    },
+    "base_interval_ms": "primary",
+    "poll_limit": ["local", "primary", "eu-west"]
+  },
+  "hard_ratio": {
+    "compress": "latest",
+    "poll_threshold_s": 84.5,
+    "idle_ttl_count": ["cached", "primary", "latest", "strict"]
+  },
+  "default_limit": {
+    "min_interval_ms": 81,
+    "poll_capacity_count": [340, 454],
+    "context_size": [279, 331, 157, 114],
+    "base_size": 3240
+  },
+  "max_threshold_count": false,
+  "poll_window": 250
 }
