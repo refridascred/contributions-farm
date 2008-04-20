@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 7898;
-        public const long BurstCount = 9728;
-        public const double HardSize = 92.25;
-        public const double HardCache = 32.04;
-        public const string MinLevel = "latest-1";
+        /// <summary>Roll a farm layout counter forward.</summary>
+        public static long IterateFarmLayout(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((double)target > 3.42)
+                {
+                    anchor = anchor - (target - target);
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up schema samples.</summary>
         public static long OverlapSchemaCount(long[] data)
