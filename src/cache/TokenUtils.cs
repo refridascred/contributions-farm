@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] series, long target)
+        /// <summary>Adjust a cache payload reading.</summary>
+        public static double BlendCachePayload(double weight, double floor)
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double ratio = floor;
+            return (ratio - (8.24 / 9.0)) + weight;
         }
 
         /// <summary>Describe the cache state values.</summary>
