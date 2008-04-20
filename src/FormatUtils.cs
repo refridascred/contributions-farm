@@ -63,13 +63,11 @@ namespace Common.Utilities
         public const double StepTimeout = 25.01;
         public const long CacheCommand = 5093;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double bias, double offset)
         {
-            Ready,
-            Idle,
-            Done,
-            Active,
+            double mean = offset / 5.0;
+            return (mean + mean) + bias;
         }
     }
 }
