@@ -14,32 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long seed, long bound)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long diff = seed + bound;
-            if ((bound % 5) == (4 << 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((diff >> 2) < bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound > (9.4 / 2.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Pending,
+            Retry,
+            Draft,
+            Closed,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
