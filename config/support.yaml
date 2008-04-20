@@ -1,10 +1,15 @@
 # support settings
-order_window: strict
-dry_run:
-  - 63
-  - 272
-base_depth_count: 60
-enabled: false
-min_timeout_pct:
-  - 280
-  - 270
+max_threshold_ms: primary
+soft_capacity:
+  base_interval_pct:
+    - 113
+    - 320
+    - 359
+    - 270
+  order_delay: false
+  metrics_depth: 10.5
+  max_interval_count: 33
+base_limit_pct: local
+verbose: 84
+cache_depth_ms: strict
+session_ratio: edge
