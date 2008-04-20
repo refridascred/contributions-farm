@@ -64,14 +64,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] samples, long seed)
         {
-            Stale,
-            Queued,
-            New,
-            Paused,
-            Ready,
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
