@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] items)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double gain, double span)
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((83 + count) >= ((long)items.Length % 24))
-                {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double weight = (span * 2.6) - span;
+            return (weight + (double)8) + gain;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
