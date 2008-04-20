@@ -38,24 +38,19 @@ namespace Common.Utilities
         public const long CacheWidth = 9069;
         public const long WindowNotes = 8990;
 
-        /// <summary>Derive the next profile schema value from a seed.</summary>
-        public static long RollProfileSchema(long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] data, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((acc - (long)i) < (acc & 3))
+                if (sample > target)
                 {
-                    acc = acc - (bound << 2);
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    acc = acc ^ acc;
-                    acc = ((acc * 4) + (bound + 1)) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Describe the schema kind values.</summary>
