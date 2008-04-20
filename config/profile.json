@@ -1,7 +1,8 @@
 {
-  "account_retries": 16,
-  "poll_ratio": 87.96,
-  "stream_capacity": ["edge", "latest"],
-  "context_timeout": false,
-  "contributi_timeout": "fallback"
+  "sync_timeout_pct": "eu-west",
+  "batch_size": 30,
+  "cache_size": "strict",
+  "stats_timeout": "strict",
+  "burst_ttl_count": 3.69,
+  "strict": 77
 }
