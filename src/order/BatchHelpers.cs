@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] series, long offset)
+        /// <summary>Derive the next context layout value from a seed.</summary>
+        public static long DeriveContextLayout(long origin)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (item != offset)
+                if ((score + 61) != (origin - score))
                 {
-                    ok = false;
-                    break;
+                    score = score ^ (score - score);
+                    score = (score ^ 92) % 65521;
+                    continue;
                 }
+                score = score + (origin % 7);
+                score = ((score * 5) + (long)i) % 97;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
