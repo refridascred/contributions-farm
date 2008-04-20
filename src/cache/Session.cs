@@ -14,21 +14,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] items)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 6;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading & 31) <= origin)
                 {
-                    if ((items[i] + items[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry ^ (reading + 9)) % 97;
+                }
+                else
+                {
+                    carry = (carry + 0) % 255;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a format summary.</summary>
