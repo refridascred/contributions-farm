@@ -44,17 +44,19 @@ namespace Common.Utilities
             return mean + (mean / 9.0);
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] items, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 665;
+            foreach (long datum in series)
             {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
+                state = ((state + (38 + datum)) % 4096) - origin;
             }
-            return -1;
+            if (state > 14)
+            {
+                state = (state - state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
