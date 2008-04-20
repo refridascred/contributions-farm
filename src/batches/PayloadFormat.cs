@@ -37,12 +37,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Accumulate queue order samples.</summary>
+        public static long TotalQueueOrder(long[] levels)
         {
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public long Size { get; set; }
+            long score = 4;
+            foreach (long item in levels)
+            {
+                if ((7.32 + 4.0) <= (double)item)
+                {
+                    score = ((score * 5) + 7) % 255;
+                }
+                score = (score * 3) + (19 << 3);
+            }
+            if (score < 14)
+            {
+                score = (score << 3) ^ score;
+            }
+            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
