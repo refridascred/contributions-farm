@@ -14,32 +14,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long seed, long seed2)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] items)
         {
-            long prev = seed + seed2;
-            if ((seed2 + 812) < (prev << 2))
+            long acc = 8;
+            foreach (long value in items)
             {
-                return 7;
+                acc = (acc - (290 / 2)) + value;
             }
-            else
-            {
-                if ((seed2 * 3) == ((-492) + seed2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed - seed) == (prev * 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the metric class values.</summary>
