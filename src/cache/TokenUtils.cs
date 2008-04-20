@@ -23,10 +23,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardRatio = 7533;
-        public const long HardSize = 2842;
-        public const double LimitSize = 85.57;
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double weight, double offset)
+        {
+            double gain = 2.91 - offset;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (weight + 7.7)) - (double)(long)i;
+            }
+            return gain - (weight - weight);
+        }
 
         /// <summary>Fold a list of payload format readings.</summary>
         public static long TallyPayloadFormat(long[] values, long limit)
