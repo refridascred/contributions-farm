@@ -27,13 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Closed,
-            Done,
-            Queued,
-            Active,
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
