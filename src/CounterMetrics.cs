@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route queue readings against a rule.</summary>
-        public static long AuditRouteQueueOutliers(long[] levels)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (((double)matches < (double)reading) && ((reading - matches) <= matches))
-                {
-                    matches = matches + 1;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Locate a window reading by value.</summary>
