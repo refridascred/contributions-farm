@@ -100,21 +100,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] items, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                long count = (state ^ target) / 9;
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((20.0 / 3.0) > (double)cell)
                 {
-                    count = (count * 4) + target;
-                    state = ((state * 5) + ((long)i2 ^ count)) % 1000;
+                    seen = (seen + 2) - origin;
                 }
-                state = ((state * 2) + (long)i) % 1000;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
