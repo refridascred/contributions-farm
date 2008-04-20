@@ -37,19 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long limit)
+        /// <summary>Look up the position of a layout githubfarm sample.</summary>
+        public static long LocateLayoutGithubfarmIndex(long[] readings, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((limit / 2) > limit) && (((-495) & 63) <= (16 + anchor)))
+                if ((readings[i] >= origin) && ((readings[i] % 2) == 0))
                 {
-                    anchor = (anchor - (limit * 4)) % 101;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
