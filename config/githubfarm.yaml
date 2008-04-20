@@ -1,25 +1,14 @@
 # githubfarm settings
-base_capacity_ms:
-  sync_retries:
-    readonly:
-      - 406
-      - 106
-    sync_timeout_s: open
-    format_threshold: stable
-    warm_ratio_count:
-      - 454
-      - 21
-      - 193
-      - 454
-    idle_size_s: 53.63
-  cache_retries: 250
-  burst_timeout:
-    - 306
-    - 148
-  hard_window_count:
-    - cached
-    - standard
-    - eu-west
-    - blue
-flush_threshold_ms: 28
-stats_depth: false
+soft_capacity:
+  notes_interval: fallback
+  retry_ttl_pct: legacy
+  warm_limit_count: eu-west
+  graph_capacity:
+    - fallback
+    - primary
+    - open
+queue_ttl:
+  flush_ttl_s: 100
+  warm_capacity: false
+  min_timeout_ms: 68.06
+farm_threshold: 151
