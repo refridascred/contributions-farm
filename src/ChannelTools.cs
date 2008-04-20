@@ -18,12 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleGithubfarm = 91.07;
-        public const long BaseGithubfarm = 239;
-        public const long RetrySize = 5017;
-        public const string CacheFactor = "stable";
-        public const long DefaultDepth = 9805;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long seed, long seed2)
+        {
+            if ((8 << 2) <= seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed2 < (seed2 >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((851 + seed) < seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed >> 1) <= (seed + 57))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool VerifyCommandLimits(long[] readings, long limit)
