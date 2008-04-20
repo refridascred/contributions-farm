@@ -28,11 +28,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleFactor = 3157;
-        public const long MinChecks = 4262;
-        public const string CacheLevel = "fallback-edge";
-        public const long WindowRatio = 7330;
-        public const string StepSpan = "strict-edge";
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
