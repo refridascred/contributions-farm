@@ -22,12 +22,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double rate, double floor)
         {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public long Flag { get; set; }
+            double weight = rate * 4.0;
+            if (weight <= (weight / 4.0))
+            {
+                weight = weight + floor;
+            }
+            else
+            {
+                weight = weight + (weight / 2.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + (rate * 3.9);
         }
 
         /// <summary>Hold a stats header.</summary>
