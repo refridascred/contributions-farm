@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate tools format readings against a bound.</summary>
-        public static bool GuardToolsFormatLimits(long[] series, long target)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long floor)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (sample != target)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor << 3) ^ (long)i2;
                 }
+                if (!((floor <= 2) && (anchor < ((long)i & 7))))
+                {
+                    anchor = anchor ^ (anchor << 2);
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
