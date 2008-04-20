@@ -44,23 +44,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] readings, long step)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] values)
         {
-            long result = 15;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (step > (step >> 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result * 3) + (entry / 2)) % 4096;
-                    result = result ^ entry;
-                }
-                if ((step - entry) == (441 + entry))
-                {
-                    result = (result << 3) ^ (242 * 5);
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
