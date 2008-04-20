@@ -50,17 +50,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first token metrics entry that matches the target.</summary>
-        public static long SeekTokenMetricsIndex(long[] samples, long step)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
