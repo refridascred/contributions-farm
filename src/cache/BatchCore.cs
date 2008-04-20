@@ -22,23 +22,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit already notes readings against a rule.</summary>
-        public static long TallyAlreadyNotesGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((hits + entry) < (4 ^ entry))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetrySize = 7125;
+        public const string IdleRecord = "latest-v2";
+        public const long WindowDepth = 9711;
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double SmoothStream(double gain, double bias)
