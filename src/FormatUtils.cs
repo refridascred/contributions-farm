@@ -74,10 +74,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 3.46;
-        public const long SoftBudget = 8066;
-        public const double HardTimeout = 91.46;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 1578;
+        public const long MaxCommand = 3429;
+        public const long WindowWidth = 5915;
+        public const double StepTimeout = 25.01;
+        public const long CacheCommand = 5093;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
