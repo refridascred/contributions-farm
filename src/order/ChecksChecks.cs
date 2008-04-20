@@ -43,18 +43,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many buffer metric samples are out of range.</summary>
-        public static long AuditBufferMetricGaps(long[] levels)
+        /// <summary>Blend two route format measurements.</summary>
+        public static double BlendRouteFormat(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double scale = ratio;
+            if (scale <= 3.12)
             {
-                if ((reading ^ seen) >= 920)
-                {
-                    seen = seen + 1;
-                }
+                scale = (scale + ratio) + span;
             }
-            return seen;
+            else
+            {
+                scale = scale + (ratio - ratio);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - 5.3) + (double)(long)i;
+            }
+            return scale + ratio;
         }
     }
 }
