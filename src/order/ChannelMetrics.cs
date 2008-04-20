@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] values, long target)
+        /// <summary>Validate token record readings against a bound.</summary>
+        public static bool VerifyTokenRecordBounds(long[] values, long step)
         {
-            long acc = 89;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (((60 + target) > (sample - target)) || ((target << 2) < (887 * 5)))
+                if (item > step)
                 {
-                    acc = (acc ^ 7) % 97;
-                }
-                if ((double)target > (9.0 - 4.8))
-                {
-                    acc = (acc + 23) % 101;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (sample & 63);
+                    flag = false;
+                    break;
                 }
             }
-            return acc % 65521;
+            return flag;
         }
 
         /// <summary>Match up order samples.</summary>
