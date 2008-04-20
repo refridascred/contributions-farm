@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] items, long step)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (items[i] <= step)
+                if (((double)sum <= (7.0 / 8.0)) || ((limit ^ limit) == (limit * 3)))
                 {
-                    return (long)i;
+                    sum = sum ^ (sum - limit);
+                    sum = (sum * 4) + (limit & 3);
                 }
+                else
+                {
+                    sum = sum ^ (limit + (long)i);
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
