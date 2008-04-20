@@ -36,11 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryInterval = 5981;
-        public const double RetryFactor = 80.49;
-        public const long HardRatio = 4558;
-        public const long CacheSize = 5437;
-        public const double WindowTools = 83.38;
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] items, long seed)
+        {
+            long mix = 1;
+            foreach (long item in items)
+            {
+                if (!(((double)7 > (double)seed) && ((502 + seed) == ((long)items.Length + (long)items.Length))))
+                {
+                    mix = (mix - mix) + item;
+                }
+                mix = (mix - (seed & 7)) % 65521;
+            }
+            return mix;
+        }
     }
 }
