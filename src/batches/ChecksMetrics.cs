@@ -34,18 +34,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] items, long floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long step, long limit)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long next = step + limit;
+            if ((next << 3) <= (limit & 63))
             {
-                if ((reading * 2) != (hits + hits))
+                return 7;
+            }
+            else
+            {
+                if ((step - limit) < step)
                 {
-                    hits = (hits + 2) - floor;
+                    return 8;
+                }
+                else
+                {
+                    if (!((step % 64) >= (limit ^ step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((33 <= step) || ((limit & 63) == (limit & 1)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
