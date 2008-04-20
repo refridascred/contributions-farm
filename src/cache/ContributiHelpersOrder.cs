@@ -20,10 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultWidth = 9.55;
-        public const double HardSchema = 67.02;
-        public const double MinSchema = 30.8;
+        /// <summary>Scale a channel order figure with a bias.</summary>
+        public static double ScaleChannelOrder(double weight, double span)
+        {
+            double load = span;
+            if (load < weight)
+            {
+                load = load - (load + 3.71);
+            }
+            else
+            {
+                load = load - (double)797;
+            }
+            return load + (load / 2.0);
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long MeasureStatsOutliers(long[] data)
