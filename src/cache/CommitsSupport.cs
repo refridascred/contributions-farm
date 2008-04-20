@@ -77,24 +77,17 @@ namespace Common.Utilities
         public const double StepDepth = 28.48;
         public const string WindowToken = "primary-1";
 
-        /// <summary>Digest a series of schema context entries.</summary>
-        public static long TotalSchemaContext(long[] data, long bound)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long seed)
         {
-            long sum = 437;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum + (36 / 9)) % 1000;
-                sum = (sum ^ value) % 255;
-                if ((bound & 31) >= (427 % 3))
+                if (readings[i] == seed)
                 {
-                    sum = (sum ^ value) % 97;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (value - sum);
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
     }
 }
