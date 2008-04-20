@@ -19,10 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetrySize = 7125;
-        public const string IdleRecord = "latest-v2";
-        public const long WindowDepth = 9711;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] readings, long target)
+        {
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long SeekBufferIndex(long[] data, long limit)
