@@ -18,38 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long seed, long seed2)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] readings)
         {
-            if ((8 << 2) <= seed)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed2 < (seed2 >> 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((851 + seed) < seed)
+                    if ((readings[i] - readings[j]) > 14)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed >> 1) <= (seed + 57))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a filter info.</summary>
