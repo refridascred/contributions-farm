@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long target, long target2)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] data)
         {
-            if ((target + target2) < (target2 & 31))
+            long sum = 4;
+            foreach (long cell in data)
             {
-                return 6;
+                sum = (((sum << 3) ^ (1 + 760)) % 97) ^ cell;
             }
-            else
-            {
-                if (121 < target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Count the graph format entries that pass the check.</summary>
