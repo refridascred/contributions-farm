@@ -48,19 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] levels, long limit)
+        /// <summary>Match up route schema samples.</summary>
+        public static long CompareRouteSchemaCount(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum <= limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
