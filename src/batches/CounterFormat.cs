@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinWindow = 92.84;
+        public const long WindowInterval = 1376;
+        public const double HardCount = 38.99;
+        public const long StepTimeout = 4605;
+        public const long MaxWindow = 5231;
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long SeriesMetric(long bound)
