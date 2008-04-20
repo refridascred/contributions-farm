@@ -20,13 +20,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long seed, long seed2)
         {
-            Locked,
-            Dropped,
-            New,
-            Queued,
+            if ((seed2 - seed) > seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if (seed2 < (782 >> 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the report kind values.</summary>
