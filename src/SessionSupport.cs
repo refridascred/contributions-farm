@@ -24,10 +24,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string StepDepth = "local";
-        public const long StepInterval = 3721;
-        public const string MinDepth = "primary-1";
-        public const long CacheContext = 4667;
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
