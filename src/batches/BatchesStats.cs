@@ -34,19 +34,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a filter format counter forward.</summary>
-        public static long IterateFilterFormat(long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] samples)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((double)sum == (3.0 * 9.5))
+                if (9 <= (tally << 3))
                 {
-                    sum = ((sum << 3) ^ sum) % 4096;
+                    tally = (tally + 2) ^ item;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return tally;
         }
     }
 }
