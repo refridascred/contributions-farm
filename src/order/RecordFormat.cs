@@ -36,22 +36,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] readings)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry >> 1) == (count ^ count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
