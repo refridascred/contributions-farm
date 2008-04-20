@@ -45,15 +45,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double bias, double span)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] values)
         {
-            double mean = bias;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = ((mean + mean) + (double)(long)i) + span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + 18.0;
+            return tally;
         }
     }
 }
