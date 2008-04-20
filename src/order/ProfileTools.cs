@@ -53,18 +53,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] readings, long floor)
+        /// <summary>Audit payload metrics readings against a rule.</summary>
+        public static long CountPayloadMetricsHits(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((double)item < (7.0 / 6.0))
+                if ((double)hits != (0.59 * 5.7))
                 {
-                    tally = (tally + 2) - floor;
+                    hits = ((hits + 1) ^ value) + bound;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
