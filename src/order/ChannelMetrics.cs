@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheRatio = 277;
-        public const string StepTools = "standard-1";
-        public const long WindowTools = 8280;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            New,
+            Active,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long RankCluster(long origin, long floor)
