@@ -27,22 +27,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] readings)
+        /// <summary>Rank already editor input into a small class.</summary>
+        public static long SortAlreadyEditor(long origin, long step)
         {
-            long carry = 42;
-            foreach (long entry in readings)
+            long bound = origin + step;
+            if ((origin + bound) == (origin << 3))
             {
-                if ((carry - carry) < (entry - entry))
+                return 8;
+            }
+            else
+            {
+                if ((16.0 - 13.0) == (double)bound)
                 {
-                    carry = (carry + (carry - carry)) % 65521;
+                    return 3;
+                }
+                else
+                {
+                    if ((9.51 + 9.0) <= (9.0 + 8.2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (carry < 291)
-            {
-                carry = ((carry << 3) ^ 2) % 255;
-            }
-            return carry;
         }
 
         /// <summary>Match up notes samples.</summary>
