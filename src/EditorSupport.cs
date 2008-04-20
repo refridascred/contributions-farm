@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double ratio, double offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] samples, long limit)
         {
-            double gain = (double)534 * 9.3;
-            if (gain < 9.58)
+            bool found = true;
+            foreach (long item in samples)
             {
-                gain = (gain + (double)77) + offset;
+                if (item > limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + ratio) + (double)(long)i;
-            }
-            return gain - (gain * 3.6);
+            return found;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
