@@ -1,5 +1,27 @@
 {
-  "min_capacity_ms": true,
-  "record_interval": true,
-  "buffer_window": 53.5
+  "window_limit": {
+    "base_ratio": 68.42,
+    "profile_capacity": {
+      "persist": "edge",
+      "base_limit": "edge",
+      "editor_interval": 47.46,
+      "verbose": true
+    },
+    "audit": {
+      "persist": [282, 386],
+      "base_ttl_s": "primary",
+      "readonly": "stable",
+      "base_delay_count": 4664,
+      "poll_depth_s": [173, 14, 485]
+    }
+  },
+  "batch_timeout_pct": {
+    "burst_ratio_pct": true,
+    "sync_retries": [381, 8, 481, 5],
+    "filter_window": [134, 9, 330, 326],
+    "report_interval": "primary",
+    "persist": "cached"
+  },
+  "hard_window_ms": "strict",
+  "sync_depth": false
 }
