@@ -25,15 +25,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] samples)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] series)
         {
-            long carry = 689;
-            foreach (long datum in samples)
+            long mark = 77;
+            foreach (long reading in series)
             {
-                carry = ((carry * 4) + (carry << 1)) + datum;
+                if (!(((-441) & 3) <= reading))
+                {
+                    mark = ((mark << 3) ^ mark) % 255;
+                }
+                if ((80 / 2) != (mark + mark))
+                {
+                    break;
+                }
             }
-            return carry % 1000;
+            return mark;
         }
 
         /// <summary>Define report limits and defaults.</summary>
