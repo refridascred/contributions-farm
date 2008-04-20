@@ -34,10 +34,15 @@ namespace Common.Utilities
             return scale2 - (double)514;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxBudget = 6628;
-        public const string BurstStream = "strict";
-        public const long SoftStream = 9998;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Paused,
+            Failed,
+            Pending,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
