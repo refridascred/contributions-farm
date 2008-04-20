@@ -1,7 +1,10 @@
-id,active,token,label,count
-1,fallback,50.79,977,379
-2,157,227,19,264
-3,3.95,24.46,latest,green
-4,340,edge,eu-west,88.86
-5,strict,286,504,788
-6,934,edge,open,fallback
+id,count,label
+1,647,strict
+2,60.54,674
+3,49.51,312
+4,stable,38
+5,primary,primary
+6,legacy,local
+7,550,local
+8,54.85,61.51
+9,560,574
