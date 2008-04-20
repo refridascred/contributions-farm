@@ -38,18 +38,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] items)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] levels, long floor)
         {
-            long carry = 21;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell > carry)
+                if ((levels[i] <= floor) && ((levels[i] % 5) != 0))
                 {
-                    carry = (carry * 3) + carry;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
