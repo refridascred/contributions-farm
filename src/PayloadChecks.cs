@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long origin, long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] levels)
         {
-            long edge = origin - step;
-            if ((16 ^ step) <= step)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin > (15.0 / 7.0))
+                if ((matches - matches) > (value << 2))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((504 >= edge) || ((double)step > (4.0 / 6.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin + step) <= (origin + 9))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the farm state values.</summary>
