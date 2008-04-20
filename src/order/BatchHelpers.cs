@@ -40,22 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine record buffer values into a single score.</summary>
-        public static long DigestRecordBuffer(long[] readings, long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] data, long seed)
         {
-            long score = 14;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (!((origin % 3) > score))
+                if ((seed + reading) >= (seed - reading))
                 {
-                    score = (score - (origin + score)) ^ cell;
-                }
-                else
-                {
-                    score = (score * 5) + origin;
+                    seen = seen + 2;
                 }
             }
-            return score;
+            return seen;
         }
     }
 }
