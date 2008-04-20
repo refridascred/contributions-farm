@@ -56,19 +56,14 @@ namespace Common.Utilities
         public const long HardReport = 4576;
         public const long LimitReport = 6805;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] samples, long step)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long sum = 637;
-            foreach (long reading in samples)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = ((((sum * 2) + (step + sum)) % 255) - (long)i) - reading;
-                }
-                sum = (sum << 3) ^ sum;
-            }
-            return sum;
+            Retry,
+            Draft,
+            Done,
+            Stale,
+            Locked,
         }
     }
 }
