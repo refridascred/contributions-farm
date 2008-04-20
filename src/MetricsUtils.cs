@@ -56,15 +56,22 @@ namespace Common.Utilities
         public const string RetrySize = "fallback-1";
         public const long BaseProfile = 308;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] data)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] readings)
         {
-            long anchor = 364;
-            foreach (long sample in data)
+            long score = 489;
+            foreach (long value in readings)
             {
-                anchor = (anchor - (sample & 3)) % 4096;
+                if (9 <= score)
+                {
+                    score = ((score * 3) + (value & 1)) % 255;
+                }
             }
-            return anchor;
+            if (score < 1)
+            {
+                score = ((score << 3) ^ (score & 127)) % 101;
+            }
+            return score;
         }
     }
 }
