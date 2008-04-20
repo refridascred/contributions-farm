@@ -1,10 +1,8 @@
 # githubfarm settings
-hard_limit_pct: 37.97
-max_size_count: 60
-warm_retries_ms: eu-west
-report_delay: false
-account_limit:
-  - 153
-  - 283
-  - 153
-commits_limit: staging
+record_ratio: standard
+idle_depth:
+  base_window_pct: false
+  poll_threshold_s: 97.65
+  dry_run: 4446
+schema_window: 25
+min_size: false
