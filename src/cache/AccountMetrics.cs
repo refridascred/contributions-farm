@@ -45,21 +45,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)hits > (9.8 - 6.0))
                 {
-                    if ((samples[i] + samples[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) + item;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the entry commits entries that pass the check.</summary>
