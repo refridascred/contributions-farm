@@ -21,19 +21,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] readings, long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long result = 53;
+            foreach (long value in samples)
             {
-                if (value >= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                result = (result ^ value) % 1000;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
