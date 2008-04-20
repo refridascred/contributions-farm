@@ -1,7 +1,7 @@
 {
-  "persist": 1909,
-  "strict": 2148,
-  "max_capacity_pct": 27.76,
-  "warm_threshold_pct": 90,
-  "compress": true
+  "persist": 1.48,
+  "sync_delay_s": 7.79,
+  "burst_ttl_ms": "edge",
+  "burst_timeout": "green",
+  "retry_retries_count": "stable"
 }
