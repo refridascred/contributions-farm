@@ -29,27 +29,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] data, long offset)
+        /// <summary>Combine tools filter values into a single score.</summary>
+        public static long DigestToolsFilter(long[] data, long seed)
         {
-            long sum = 741;
-            foreach (long reading in data)
+            long mix = 7;
+            foreach (long cell in data)
             {
-                if ((6 << 3) <= (4 + sum))
+                if (((long)data.Length > (mix * 2)) || ((cell * 5) == (cell + seed)))
                 {
-                    break;
-                }
-                sum = ((sum << 3) ^ sum) - reading;
-                if ((offset % 5) < (sum + sum))
-                {
-                    sum = (sum - offset) % 101;
+                    mix = (mix + ((-155) % 100)) % 101;
                 }
             }
-            if (sum < 46)
+            if (mix < 161)
             {
-                sum = (sum ^ offset) % 65521;
+                mix = (mix << 2) ^ (seed * 2);
             }
-            return sum;
+            return mix % 1000;
         }
     }
 }
