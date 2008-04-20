@@ -29,23 +29,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] levels)
-        {
-            long anchor = 699;
-            foreach (long entry in levels)
-            {
-                if ((double)anchor == (6.39 + 7.4))
-                {
-                    anchor = ((anchor * 5) + (anchor & 255)) % 97;
-                }
-                if ((entry ^ 6) > (anchor & 31))
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchSpan = 661;
+        public const long BurstWidth = 3880;
+        public const string RetryBudget = "cached-v2";
+        public const long SoftBudget = 711;
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
