@@ -45,32 +45,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long origin, long bound)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long step = origin + bound;
-            if ((8 % 12) <= (step - origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin * 3) < (step + (-355)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin >= (1.11 - 5.2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
