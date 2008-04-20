@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up commits record samples.</summary>
-        public static long CompareCommitsRecordCount(long[] series)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Done,
+            Idle,
+            Paused,
+            Queued,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
