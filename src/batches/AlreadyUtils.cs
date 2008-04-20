@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Measure how many stream notes samples are out of range.</summary>
+        public static long TallyStreamNotesMatches(long[] items, long limit)
         {
-            Active,
-            Draft,
-            Done,
-            Stale,
-            Queued,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (((limit * 3) >= (limit - entry)) && (((entry - count) == (273 << 3)) || ((double)limit <= (double)entry)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
