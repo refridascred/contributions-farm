@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] readings, long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((limit >= (7 % 16)) && (7.7 > (double)(long)readings.Length))
+                if (sample > step)
                 {
-                    tally = (tally + 1) ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Adjust a farm reading.</summary>
