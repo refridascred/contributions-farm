@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up batch stats samples.</summary>
-        public static long OverlapBatchStatsCount(long[] readings)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long bound, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long gap = bound + limit;
+            if (((gap + limit) >= (gap + gap)) || (bound < (gap + limit)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (gap > (gap + gap))
                 {
-                    if ((readings[i] ^ readings[j]) > 7)
+                    return 3;
+                }
+                else
+                {
+                    if ((bound ^ gap) <= limit)
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Locate a batches token reading by value.</summary>
