@@ -1,5 +1,13 @@
 {
-  "retry_threshold_count": "fallback",
-  "max_retries_s": 73,
-  "persist": 68.48
+  "account_capacity": "strict",
+  "idle_size_ms": {
+    "retry_threshold_pct": 23.85,
+    "order_ttl": "fallback",
+    "verbose": ["latest", "fallback", "standard", "stable"],
+    "token_capacity": 16.29
+  },
+  "command_window": true,
+  "hard_timeout_ms": "primary",
+  "poll_capacity": 8701,
+  "base_depth_pct": "eu-west"
 }
