@@ -41,39 +41,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a contributi tools value against two limits.</summary>
-        public static long BucketContributiTools(long step, long bound)
+        /// <summary>Check that every report layout entry stays within the limit.</summary>
+        public static bool ValidateReportLayoutRange(long[] values, long offset)
         {
-            long next = step ^ bound;
-            if (!((bound - step) > (next - step)))
+            bool ok = true;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)523 > (double)bound))
+                if (entry <= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((8 + 750) < bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((next / 4) >= (bound * 4)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
