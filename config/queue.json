@@ -1,17 +1,5 @@
 {
-  "warm_window": {
-    "poll_ttl_count": [497, 55],
-    "persist": 1024,
-    "sync_limit_ms": ["strict", "green"],
-    "default_ttl_s": 13.4,
-    "checks_depth": 8206,
-    "entry_timeout": "primary"
-  },
-  "readonly": false,
-  "warm_ttl": {
-    "context_timeout": "open",
-    "min_delay_count": false,
-    "compress": 60
-  },
-  "enabled": 56
+  "sync_size": ["primary", "edge", "staging", "eu-west"],
+  "base_ratio_ms": true,
+  "warm_size_count": "cached"
 }
