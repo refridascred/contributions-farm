@@ -36,22 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] series, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] levels, long target)
         {
-            long carry = 946;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((entry * 2) != (entry << 1))
+                if (cell > target)
                 {
-                    carry = ((carry * 2) + (step << 2)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            if (carry > 6)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            return ok;
         }
     }
 }
