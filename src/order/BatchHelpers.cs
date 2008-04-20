@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] data)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (!((entry + matches) >= (11 * 5)) && ((double)matches >= 11.0))
+                if ((double)tally == (19.0 + 10.0))
                 {
-                    matches = matches + 1;
+                    tally = (tally + 1) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
