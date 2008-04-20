@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftSpan = 2669;
-        public const double MaxWidth = 90.67;
-        public const long BurstGithubfarm = 7714;
-        public const double MinGithubfarm = 48.43;
-        public const double MaxSize = 43.07;
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
