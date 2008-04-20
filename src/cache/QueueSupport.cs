@@ -14,12 +14,33 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 3204;
-        public const long LimitInterval = 6750;
-        public const long BurstAlready = 3099;
-        public const double MinAlready = 92.15;
-        public const string BaseAlready = "cached-edge";
+        /// <summary>Rank account commits input into a small class.</summary>
+        public static long SortAccountCommits(long floor, long seed)
+        {
+            long step = floor + seed;
+            if ((floor + floor) == (seed << 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if (floor > (266 - floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed & 3) < step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool GuardCommitsBounds(long[] levels, long limit)
