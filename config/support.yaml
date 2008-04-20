@@ -1,7 +1,14 @@
 # support settings
-base_delay: blue
-min_timeout_ms: latest
-tools_timeout: staging
-warm_ratio_ms: 68.48
-max_timeout: true
-default_capacity: false
+base_ratio_count:
+  idle_delay_pct:
+    - 295
+    - 463
+  persist:
+    hard_delay_pct: 11.22
+    persist: cached
+    sync_threshold_count: 76.11
+  flush_delay_count: 60
+  idle_size: 27.19
+buffer_ratio: 96.16
+sync_limit_count: 83.32
+cache_ratio: true
