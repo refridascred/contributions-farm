@@ -48,12 +48,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long target)
         {
-            public string Region { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
+            long carry = target;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a graph info.</summary>
