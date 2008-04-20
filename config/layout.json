@@ -1,5 +1,12 @@
 {
-  "min_ratio": 17.25,
-  "soft_depth_count": 75,
-  "sync_size_ms": "staging"
+  "dry_run": [181, 312],
+  "verbose": 60,
+  "burst_limit_pct": {
+    "sync_window": false,
+    "strict": 1024,
+    "verbose": "staging",
+    "retry_timeout_s": "green"
+  },
+  "max_delay": true,
+  "format_window": 22
 }
