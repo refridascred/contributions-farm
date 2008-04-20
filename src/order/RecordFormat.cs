@@ -23,19 +23,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((((long)series.Length - cell) > cell) && ((double)cell == (19.0 * 4.78)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryBudget = 2198;
+        public const double RetryTools = 11.13;
+        public const long CacheTools = 2321;
+        public const string WindowTools = "legacy";
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long DeriveMetric(long target)
