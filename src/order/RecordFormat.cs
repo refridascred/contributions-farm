@@ -60,18 +60,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] data)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long acc = 5;
-            foreach (long value in data)
-            {
-                if (((long)data.Length + value) <= (acc % 5))
-                {
-                    acc = (acc * 5) + (value << 1);
-                }
-            }
-            return acc;
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
