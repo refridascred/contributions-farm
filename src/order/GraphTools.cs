@@ -36,23 +36,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] readings, long step)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long target)
         {
-            long acc = -3;
-            foreach (long reading in readings)
+            long total = target;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = ((acc + reading) - (long)i) - step;
-                }
-                acc = (acc << 2) ^ (reading % 100);
-                if ((acc < (reading << 3)) || ((8.0 / 5.0) < (double)reading))
-                {
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return acc % 65521;
+            return total;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
