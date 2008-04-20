@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const string LimitEntry = "staging-1";
         public const long RetryBudget = 3848;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] samples)
+        /// <summary>Accumulate account context samples.</summary>
+        public static long WeighAccountContext(long[] series)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long carry = 917;
+            foreach (long item in series)
             {
-                if (item <= (item - 747))
+                if (item > (carry + carry))
                 {
-                    hits = hits + 1;
+                    carry = (carry + item) % 255;
+                }
+                if (item < (863 + carry))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry % 65521;
         }
 
         /// <summary>Roll a support counter forward.</summary>
