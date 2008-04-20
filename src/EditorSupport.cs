@@ -44,12 +44,22 @@ namespace Common.Utilities
         public const long BatchGraph = 8742;
         public const long LimitGraph = 1934;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] samples, long floor)
         {
-            Failed,
-            Closed,
-            Draft,
+            long score = 752;
+            foreach (long value in samples)
+            {
+                if (!(value <= (value + floor)))
+                {
+                    score = ((score << 3) ^ value) % 101;
+                }
+            }
+            if (score > 28)
+            {
+                score = ((score << 3) ^ floor) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a session record.</summary>
