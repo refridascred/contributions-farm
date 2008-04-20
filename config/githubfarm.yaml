@@ -1,28 +1,20 @@
 # githubfarm settings
-base_capacity_pct: standard
-metrics_depth:
-  cache_limit_pct:
-    cache_limit_s:
-      - strict
-      - blue
-    verbose: edge
-    min_limit_ms: standard
-    cache_timeout: open
-    farm_capacity: 34
-  poll_window_pct:
-    context_capacity: fallback
-    notes_delay: 8570
-    stream_capacity: true
-    stats_limit: 382
-  poll_limit_ms:
-    - 494
-    - 26
-    - 167
-    - 97
-idle_limit: false
-base_window: false
-support_retries:
-  - latest
-  - cached
-  - eu-west
-  - eu-west
+enabled:
+  audit: latest
+  account_ratio:
+    verbose: blue
+    burst_retries_ms: 1612
+    readonly: 60
+    cluster_timeout: 86.48
+    order_threshold: 17.51
+  min_delay: 27.57
+  default_depth: fallback
+  readonly: stable
+burst_delay:
+  - 146
+  - 28
+  - 303
+  - 339
+readonly:
+  - open
+  - blue
