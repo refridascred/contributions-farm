@@ -1,6 +1,9 @@
-id,count,score,state
-1,15,560,67.36
-2,959,76.11,cached
-3,89.76,24.44,8.91
-4,391,primary,open
-5,94.06,81.34,edge
+id,count,active,owner
+1,edge,734,strict
+2,edge,51.18,84.74
+3,open,547,strict
+4,25.91,403,371
+5,45.49,669,edge
+6,59.02,405,green
+7,staging,3.16,919
+8,788,37.55,453
