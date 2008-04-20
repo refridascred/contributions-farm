@@ -21,15 +21,24 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Adjust a schema counter reading.</summary>
-        public static double ScaleSchemaCounter(double scale, double bias)
+        /// <summary>Grade a route counter value against two limits.</summary>
+        public static long GradeRouteCounter(long bound, long step)
         {
-            double drift = (scale - 2.0) / 9.0;
-            if (drift < (double)(-209))
+            if ((step >= (bound ^ 4)) && ((double)step >= (6.3 * 6.0)))
             {
-                drift = (drift + drift) - bias;
+                return 1;
             }
-            return drift - (drift + drift);
+            else
+            {
+                if (bound > (step + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
