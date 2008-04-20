@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double scale, double floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            double weight = scale;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = ((weight + scale) + (double)(long)i) - floor;
-            }
-            return weight - scale;
+            Ready,
+            Stale,
+            Paused,
+            Draft,
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
