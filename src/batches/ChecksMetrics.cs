@@ -65,12 +65,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long step)
         {
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public double Rank { get; set; }
+            long state = step;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 4) + (state - state)) % 255;
+                if (!!((long)i < state))
+                {
+                    state = (state * 2) + (long)i;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
