@@ -1,8 +1,6 @@
 # entry settings
-idle_depth_count: 500
-audit: stable
-idle_threshold_count:
-  - stable
-  - primary
-  - stable
-  - cached
+githubfarm_retries: 250
+batch_ratio_s: strict
+idle_delay_s: 98.32
+strict: 1024
+audit: cached
