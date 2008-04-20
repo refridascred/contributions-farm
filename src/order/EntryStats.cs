@@ -23,23 +23,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Scale a report farm figure with a bias.</summary>
-        public static double BlendReportFarm(double ratio, double bias)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] items)
         {
-            double weight = (bias - ratio) + 10.0;
-            if (weight > bias)
+            long seen = 0;
+            foreach (long value in items)
             {
-                weight = weight + (double)151;
+                if ((((-96) - seen) >= (value << 3)) && ((value >> 5) < seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                weight = weight - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + weight) - (double)(long)i;
-            }
-            return weight + (8.0 + weight);
+            return seen;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
