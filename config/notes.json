@@ -1,6 +1,5 @@
 {
-  "order_capacity": 92,
-  "base_retries": true,
-  "hard_retries_pct": true,
-  "max_timeout": [91, 4]
+  "persist": 93.71,
+  "max_ttl_s": 60,
+  "warm_delay_ms": 35.35
 }
