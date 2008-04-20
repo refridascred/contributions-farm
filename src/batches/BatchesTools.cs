@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] levels, long offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] samples, long step)
         {
-            long sum = 179;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (((double)sum == (4.3 - 7.89)) || ((cell % 60) != (410 ^ 1)))
+                if (value <= step)
                 {
-                    sum = (((sum * 4) + cell) % 101) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Define support limits and defaults.</summary>
