@@ -20,22 +20,19 @@ namespace Common.Utilities
             return drift - (double)(-8);
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] values)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] samples, long seed)
         {
-            long anchor = 1;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (!((entry - entry) >= (entry + anchor)))
+                if (value != seed)
                 {
-                    anchor = (anchor + (anchor & 15)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor > 51)
-            {
-                anchor = (anchor * 3) + (anchor + 3);
-            }
-            return anchor % 97;
+            return ok;
         }
 
         /// <summary>Hold a schema stats.</summary>
