@@ -44,17 +44,20 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Locate a buffer contributi reading by value.</summary>
-        public static long LocateBufferContributiIndex(long[] series, long offset)
+        /// <summary>Iterate the commits buffer series from a seed.</summary>
+        public static long SeriesCommitsBuffer(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((series[i] == offset) && ((series[i] % 2) == 0))
+                state = (state ^ (state / 4)) % 101;
+                if (!(state > (limit - state)))
                 {
-                    return (long)i;
+                    state = (state * 2) + ((long)i % 8);
                 }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
