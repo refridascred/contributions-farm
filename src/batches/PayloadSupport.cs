@@ -16,12 +16,40 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BatchFilter = "legacy-edge";
-        public const long DefaultFilter = 1544;
-        public const double BaseFilter = 48.21;
-        public const long BurstRatio = 8257;
-        public const long MinLevel = 4265;
+        /// <summary>Rank filter batches input into a small class.</summary>
+        public static long SortFilterBatches(long seed, long seed2)
+        {
+            long lane = seed - seed2;
+            if ((0.13 < (double)seed2) && (lane > (lane << 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((1 >= (seed ^ lane)) || ((double)seed2 <= 5.78))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((lane + seed2) <= lane) || (9 <= (seed - seed2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((seed + seed2) < (seed2 - seed2)) && ((seed - (-13)) >= (lane * 5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long HardCommits = 6299;
