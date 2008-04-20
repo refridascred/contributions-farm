@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const double HardCounter = 47.34;
         public const long MaxCounter = 4902;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] values, long floor)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long result = 503;
-            foreach (long entry in values)
-            {
-                if (entry <= (entry + 57))
-                {
-                    result = ((result << 2) ^ entry) % 101;
-                }
-                if (floor >= (28 / 7))
-                {
-                    result = result ^ ((long)values.Length + (-69));
-                }
-            }
-            return result;
+            Queued,
+            Synced,
+            Active,
+            New,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
