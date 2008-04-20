@@ -24,11 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double weight, double floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] samples, long seed)
         {
-            double drift = weight;
-            return drift - floor;
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
