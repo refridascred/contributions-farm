@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            Paused,
             Idle,
             Locked,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define already limits and defaults.</summary>
