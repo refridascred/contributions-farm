@@ -37,18 +37,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] data)
         {
-            long carry = 7;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((5.0 / 2.0) < (double)item)
+                if ((96 & 63) <= (count << 1))
                 {
-                    carry = (carry ^ (item % 24)) % 4096;
+                    count = (count + 3) ^ item;
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
