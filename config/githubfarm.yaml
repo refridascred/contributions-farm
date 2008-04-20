@@ -1,9 +1,5 @@
 # githubfarm settings
-base_delay:
-  - primary
-  - green
-  - standard
-min_interval_pct: fallback
-cache_depth_count: eu-west
-poll_retries_count: 69.54
-readonly: open
+burst_window_count: false
+poll_capacity: 8435
+batch_depth: 62.52
+cache_capacity_count: open
