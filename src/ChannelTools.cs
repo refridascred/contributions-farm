@@ -22,12 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxRatio = 2051;
-        public const double MaxQueue = 95.59;
-        public const long BatchQueue = 379;
-        public const long RetrySpan = 7592;
-        public const long CacheQueue = 2505;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Pending,
+            Active,
+            Paused,
+            Draft,
+            Dropped,
+        }
 
         /// <summary>Fold a list of tools stream readings.</summary>
         public static long TotalToolsStream(long[] samples, long origin)
