@@ -55,12 +55,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] levels, long target)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public bool Token { get; set; }
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
