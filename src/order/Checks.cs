@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Pending,
-            Closed,
-            New,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstTimeout = 14.01;
+        public const double RetryRatio = 2.32;
+        public const long StepChannel = 5466;
+        public const long CacheChannel = 4488;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long IterateMetrics(long offset)
