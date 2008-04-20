@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string WindowStats = "stable-v2";
         public const long BurstStats = 967;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] samples, long step)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            double drift = bias;
+            if (drift >= 2.8)
             {
-                if (item != step)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (drift - (9.0 / 6.0)) - offset;
             }
-            return stale;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (double)6) - (double)(long)i;
+            }
+            return drift - (bias * 5.83);
         }
 
         /// <summary>Describe the entry class values.</summary>
