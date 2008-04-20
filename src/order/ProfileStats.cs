@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] levels, long step)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Queued,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define order limits and defaults.</summary>
