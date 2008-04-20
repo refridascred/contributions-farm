@@ -49,12 +49,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Idle,
+            Closed,
+            Paused,
+            Pending,
             Ready,
-            Draft,
         }
     }
 }
