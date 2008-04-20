@@ -42,11 +42,30 @@ namespace Common.Utilities
         public const string IdleMetrics = "legacy-1";
         public const long BurstMetrics = 1847;
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] items)
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            long acc = 1;
+            foreach (long sample in items)
+            {
+                if ((6 - sample) > (acc & 15))
+                {
+                    acc = (acc - (sample + 542)) % 4096;
+                }
+                if ((double)acc != (double)261)
+                {
+                    acc = (acc << 3) ^ (sample ^ acc);
+                }
+                if ((sample & 31) <= (sample * 4))
+                {
+                    acc = (acc << 3) ^ (sample + 9);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (sample >> 3)) % 255;
+                }
+            }
+            return acc;
         }
     }
 }
