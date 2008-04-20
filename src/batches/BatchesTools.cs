@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] data)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((sample % 3) > tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Derive the next batch checks value from a seed.</summary>
