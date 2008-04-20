@@ -14,40 +14,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long offset, long limit)
-        {
-            long step = offset + limit;
-            if (!((limit * 5) < (step + step)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)582 < (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((offset & 7) > offset) && (step > (limit >> 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((13.0 * 2.03) >= (double)offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowOrder = 33.68;
+        public const string StepRatio = "staging-1";
+        public const string SoftOrder = "fallback-v2";
 
         /// <summary>Accumulate checks samples.</summary>
         public static long WeighChecks(long[] values)
