@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            public bool Region { get; set; }
             public long Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a metrics summary.</summary>
