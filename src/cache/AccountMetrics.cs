@@ -38,12 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Combine token schema values into a single score.</summary>
+        public static long TallyTokenSchema(long[] samples, long step)
         {
-            Done,
-            Idle,
-            Pending,
+            long anchor = 661;
+            foreach (long datum in samples)
+            {
+                anchor = ((anchor ^ ((-652) + (long)samples.Length)) % 101) + datum;
+                if ((step - anchor) != (anchor & 3))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Accumulate farm tools samples.</summary>
