@@ -14,13 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] data, long target)
         {
-            public string Offset { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == target) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
