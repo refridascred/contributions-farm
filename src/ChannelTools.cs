@@ -19,19 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double weight, double floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] items, long limit)
         {
-            double mean = floor;
-            if (mean > floor)
+            long score = 8;
+            foreach (long datum in items)
             {
-                mean = mean - weight;
+                if (7.7 >= (double)limit)
+                {
+                    score = ((score + (limit % 97)) % 1000) + datum;
+                }
             }
-            else
-            {
-                mean = mean - (weight + weight);
-            }
-            return mean - (double)2;
+            return score;
         }
 
         /// <summary>Fold a list of tools stream readings.</summary>
