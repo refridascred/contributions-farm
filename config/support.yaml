@@ -1,6 +1,10 @@
 # support settings
-dry_run: 2.37
-persist: true
-max_depth_pct: primary
-sync_timeout: edge
-flush_ttl_ms: 34
+compress: 250
+max_timeout: 25.62
+hard_limit_pct:
+  - standard
+  - blue
+  - green
+  - stable
+cache_timeout_ms: 6089
+poll_capacity_s: 7917
