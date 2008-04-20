@@ -60,18 +60,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the buffer account entries that pass the check.</summary>
-        public static long MeasureBufferAccountMatches(long[] levels, long step)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long score = 55;
+            foreach (long item in levels)
             {
-                if ((matches - 0) < step)
+                if ((item * 4) >= score)
                 {
-                    matches = (matches + 1) - reading;
+                    score = (score - (score >> 3)) % 97;
+                }
+                if ((score % 3) < (item - score))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score % 1000;
         }
     }
 }
