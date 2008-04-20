@@ -1,10 +1,4 @@
 # githubfarm settings
-default_threshold_count: 64.39
-poll_capacity_ms:
-  - open
-  - staging
-  - local
-retry_ttl_s: true
-layout_depth: 182
-sync_retries_pct: open
-stream_timeout: 6616
+hard_ttl: 11.88
+max_capacity: latest
+soft_timeout_pct: 45.73
