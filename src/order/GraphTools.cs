@@ -68,39 +68,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long step, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] values, long limit)
         {
-            long diff = step + origin;
-            if ((diff / 3) >= (step / 7))
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((diff >> 4) < 944))
+                if ((double)limit >= (double)value)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step & 15) >= origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (step <= (7 + diff))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
