@@ -1,6 +1,7 @@
 {
-  "max_ratio": 100,
-  "cache_ttl_count": 55,
-  "batch_ttl_count": "primary",
-  "warm_limit": 63.42
+  "burst_delay_count": ["strict", "open", "local"],
+  "warm_capacity_ms": true,
+  "verbose": "strict",
+  "readonly": "legacy",
+  "idle_window_count": 31.5
 }
