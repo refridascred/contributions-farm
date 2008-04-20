@@ -42,9 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinRecord = 32.01;
-        public const double WindowRecord = 6.07;
-        public const string LimitDepth = "fallback-v2";
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double gain, double span)
+        {
+            double weight = (double)(9 - 315);
+            if (weight < (gain * 6.0))
+            {
+                weight = (weight - (weight * 8.17)) + span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + gain) + (double)(long)i;
+            }
+            return weight - (weight - gain);
+        }
     }
 }
