@@ -71,11 +71,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
