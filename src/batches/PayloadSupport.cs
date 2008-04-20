@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of entry payload readings.</summary>
-        public static long TotalEntryPayload(long[] readings, long step)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long total = 98;
-            foreach (long datum in readings)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    total = (total - (total + total)) + (long)i;
-                }
-                total = (total * 3) + ((-1) + total);
-                if ((datum + (long)readings.Length) == (step * 5))
-                {
-                    total = (total - (2 << 1)) % 65521;
-                }
-            }
-            return total % 4096;
+            Closed,
+            Ready,
+            Dropped,
+            Queued,
+            Synced,
         }
 
         /// <summary>Adjust a farm reading.</summary>
