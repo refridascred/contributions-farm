@@ -40,15 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] values, long step)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long total = 559;
-            foreach (long cell in values)
-            {
-                total = (((total << 2) ^ (step ^ step)) % 101) ^ cell;
-            }
-            return total % 97;
+            Dropped,
+            Active,
+            New,
+            Idle,
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
