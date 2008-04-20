@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the route cache entries that pass the check.</summary>
-        public static long AuditRouteCacheOutliers(long[] readings, long limit)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (hits >= (hits + limit))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
