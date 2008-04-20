@@ -1,20 +1,32 @@
 # githubfarm settings
-channel_ratio:
-  persist:
-    context_depth:
-      - eu-west
-      - primary
-    min_delay: local
-    sync_ttl_pct:
-      - stable
-      - eu-west
-      - eu-west
-  commits_depth: 50.96
-  hard_threshold_count: latest
-strict: open
-max_ttl: 1024
-cache_limit_count: true
-default_threshold:
-  - edge
-  - stable
-burst_interval_ms: 9.91
+burst_retries_count: 100
+cache_threshold_s: false
+hard_interval_pct: 38.6
+min_limit:
+  - legacy
+  - eu-west
+soft_threshold:
+  readonly:
+    layout_size: 2269
+    soft_size_ms: true
+    burst_ratio:
+      - 151
+      - 61
+    soft_ratio_count: primary
+    soft_depth_pct: staging
+  burst_size:
+    - strict
+    - staging
+  commits_interval: fallback
+  cluster_ttl: 5910
+  dry_run: latest
+  retry_ratio:
+    already_ttl: standard
+    burst_retries: 81
+    buffer_delay: 40.2
+    max_ratio_count: 19.55
+    hard_capacity_pct: true
+    strict:
+      - legacy
+      - legacy
+enabled: 30
