@@ -37,12 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] data, long seed)
         {
-            public string Count { get; set; } = "";
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((entry % 64) > (9 + seed))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
