@@ -54,13 +54,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] samples, long target)
         {
-            public string Owner { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < target) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate channel samples.</summary>
