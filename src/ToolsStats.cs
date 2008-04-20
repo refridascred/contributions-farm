@@ -35,17 +35,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] values, long target)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long origin, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (target > (origin - origin))
             {
-                if ((values[i] == target) && ((values[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((target + origin) < (origin ^ 550))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
