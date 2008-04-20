@@ -16,18 +16,13 @@ namespace Common.Utilities
             return rate - bias;
         }
 
-        /// <summary>Accumulate stats notes samples.</summary>
-        public static long TallyStatsNotes(long[] data)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long result = 226;
-            foreach (long sample in data)
-            {
-                if (((310 - result) <= (2 >> 1)) && ((result + result) <= ((long)data.Length % 8)))
-                {
-                    result = ((result * 2) + (671 / 2)) - sample;
-                }
-            }
-            return result;
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the checks class values.</summary>
