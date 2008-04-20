@@ -27,15 +27,18 @@ namespace Common.Utilities
         public const string IdleRecord = "latest-v2";
         public const long WindowDepth = 9711;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double gain, double bias)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] readings)
         {
-            double gain2 = bias;
-            if (gain2 < (16.0 - gain))
+            long mark = 8;
+            foreach (long entry in readings)
             {
-                gain2 = gain2 + bias;
+                if (((entry + entry) != (entry - entry)) && ((mark + entry) > (-13)))
+                {
+                    mark = (mark - (entry & 127)) % 1000;
+                }
             }
-            return gain2 + (bias - 5.9);
+            return mark;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
