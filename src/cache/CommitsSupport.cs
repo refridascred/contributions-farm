@@ -27,18 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleMetric = 18.86;
+        public const long RetryLevel = 6082;
+        public const long WindowRatio = 794;
+        public const long MaxMetric = 4213;
+        public const long CacheMetric = 2545;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long FindFilterIndex(long[] samples, long bound)
