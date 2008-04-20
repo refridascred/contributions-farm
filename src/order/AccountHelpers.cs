@@ -33,21 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] readings)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((data[i] > bound) && ((data[i] % 3) != 0))
                 {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many route tools samples are out of range.</summary>
