@@ -27,18 +27,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] samples)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] readings, long floor)
         {
-            long score = 56;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)0 < (double)score))
+                if (readings[i] == floor)
                 {
-                    score = ((score + (269 * 2)) % 65521) ^ sample;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
     }
 }
