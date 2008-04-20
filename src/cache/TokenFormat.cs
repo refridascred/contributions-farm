@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many order batches samples are out of range.</summary>
-        public static long AuditOrderBatchesOutliers(long[] samples, long seed)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((value << 2) < (115 ^ 71))
-                {
-                    hits = (hits + 1) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the entry status values.</summary>
