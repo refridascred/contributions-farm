@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const string MinProfile = "primary";
         public const double HardDepth = 55.99;
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Active,
-            Ready,
-            Stale,
+            public double Token { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
