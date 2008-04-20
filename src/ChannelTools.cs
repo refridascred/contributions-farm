@@ -16,18 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] series)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long mix = 2;
-            foreach (long datum in series)
-            {
-                if (mix > (datum / 6))
-                {
-                    mix = ((mix << 3) ^ (datum % 8)) % 1000;
-                }
-            }
-            return mix % 1000;
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a account reading by value.</summary>
