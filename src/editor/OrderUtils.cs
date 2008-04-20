@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Order utils helpers.</summary>
     public static class OrderUtils
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] data, long offset)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long result = 2;
-            foreach (long cell in data)
-            {
-                result = (result + cell) + offset;
-            }
-            if (result < 221)
-            {
-                result = result ^ 411;
-            }
-            return result;
+            public long Rank { get; set; }
+            public double Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a counter reading.</summary>
