@@ -79,21 +79,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the editor cache series from a seed.</summary>
-        public static long RollEditorCache(long floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((mark ^ mark) != (floor - floor))
-                {
-                    mark = (mark ^ floor) % 101;
-                    mark = mark + mark;
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return mark;
+            return sum;
         }
     }
 }
