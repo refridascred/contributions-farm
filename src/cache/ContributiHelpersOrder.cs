@@ -18,10 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 5935;
-        public const string HardRatio = "standard-1";
-        public const string SoftBudget = "alpha-v2";
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total << 2) ^ (bound / 4)) % 255;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Adjust a support reading.</summary>
         public static double BlendSupport(double gain, double floor)
