@@ -21,10 +21,14 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 1.95;
-        public const double BaseEntry = 71.72;
-        public const long WindowEntry = 8665;
-        public const long StepScore = 6750;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Locked,
+            Ready,
+            Active,
+            Synced,
+            Queued,
+        }
     }
 }
