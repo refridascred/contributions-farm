@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a metric entry sample.</summary>
-        public static long LocateMetricEntryIndex(long[] levels, long seed)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] levels, long offset)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] > seed) && ((levels[i] % 3) != 0))
+                if (levels[i] > offset)
                 {
                     return (long)i;
                 }
