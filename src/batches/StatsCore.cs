@@ -35,19 +35,14 @@ namespace Common.Utilities
         public const long BaseCommand = 5217;
         public const string DefaultSize = "latest-v2";
 
-        /// <summary>Check that every token schema entry stays within the limit.</summary>
-        public static bool ValidateTokenSchemaBounds(long[] levels, long bound)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Queued,
+            Paused,
+            Locked,
+            Synced,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
