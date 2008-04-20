@@ -13,32 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long step, long offset)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long floor)
         {
-            long step2 = step ^ offset;
-            if (((offset * 3) <= (step2 * 4)) && (9.9 >= (double)offset))
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step2 - 29) <= step)
+                if ((double)floor <= (7.54 - 2.33))
                 {
-                    return 0;
+                    acc = acc ^ (floor & 15);
                 }
-                else
-                {
-                    if (((98 / 3) > (step2 - offset)) && ((step ^ step2) <= offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
+            return acc;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
