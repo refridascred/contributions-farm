@@ -18,19 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double bias, double floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long step, long seed)
         {
-            double gain = (double)(6 - 85);
-            if (gain <= floor)
+            if (((double)step <= (13.0 + 0.99)) || (54 < seed))
             {
-                gain = (gain + 9.4) - bias;
+                return 6;
             }
             else
             {
-                gain = gain - (double)7;
+                if ((step + 36) <= (step + step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((32 * 5) >= (step << 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return gain + gain;
         }
 
         /// <summary>Hold a order stats.</summary>
