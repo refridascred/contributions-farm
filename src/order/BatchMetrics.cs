@@ -29,38 +29,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long floor, long bound)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            if ((double)floor != (4.0 - 4.7))
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound <= floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound ^ bound) < (830 + bound)) || ((double)floor == (6.97 * 7.1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor > (floor - 215)) || ((double)bound <= 6.7))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Done,
+            Dropped,
+            Draft,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a support record.</summary>
