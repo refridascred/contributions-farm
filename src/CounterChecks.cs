@@ -61,11 +61,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Audit notes stream readings against a rule.</summary>
+        public static long MeasureNotesStreamGaps(long[] values)
         {
-            public long Rank { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (((tally >> 1) >= 51) || (tally < (value + tally)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
