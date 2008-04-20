@@ -32,15 +32,18 @@ namespace Common.Utilities
         public const long LimitAlready = 5643;
         public const long RetryTimeout = 7567;
 
-        /// <summary>Combine token batch values into a single score.</summary>
-        public static long TotalTokenBatch(long[] items, long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] readings)
         {
-            long carry = 81;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                carry = (((carry << 2) ^ (carry + carry)) ^ sample) + floor;
+                if ((9.7 - 7.0) <= (double)sample)
+                {
+                    count = count + 2;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the route class values.</summary>
