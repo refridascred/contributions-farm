@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double rate, double bias)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] series)
         {
-            double scale = bias;
-            if (scale < (double)9)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                scale = scale - rate;
+                if (seen > (seen + reading))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + rate) + (double)(long)i;
-            }
-            return scale - (7.6 * 7.44);
+            return seen;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
