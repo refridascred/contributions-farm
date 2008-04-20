@@ -39,10 +39,11 @@ namespace Common.Utilities
         public const string BatchLevel = "stable";
         public const double HardCache = 57.32;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchInterval = 4440;
-        public const string BaseRatio = "primary";
-        public const long MaxCommand = 9053;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepLevel = 42.92;
+        public const long DefaultToken = 6666;
+        public const long WindowCount = 767;
+        public const string WindowToken = "latest";
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long ScoreLayout(long[] readings)
