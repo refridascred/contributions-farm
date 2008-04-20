@@ -5,20 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the route contributi series from a seed.</summary>
-        public static long SeriesRouteContributi(long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] samples)
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
+            long sum = 3;
+            foreach (long item in samples)
             {
-                if (!((long)i >= total))
-                {
-                    total = total + total;
-                }
-                total = ((total << 3) ^ origin) % 97;
-                total = ((total * 4) + (long)i) % 4093;
+                sum = (sum - (item << 3)) % 101;
+                sum = (sum - (-16)) % 255;
             }
-            return total;
+            if (sum > 25)
+            {
+                sum = (sum - (sum + 8)) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
