@@ -35,24 +35,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long origin, long target)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            if (target > (origin - origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target + origin) < (origin ^ 550))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
