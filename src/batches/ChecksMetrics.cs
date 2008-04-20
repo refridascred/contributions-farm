@@ -83,14 +83,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Synced,
-            New,
-            Failed,
-            Draft,
-            Retry,
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
