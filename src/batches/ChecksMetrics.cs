@@ -92,11 +92,39 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryWidth = 2037;
-        public const string BurstFactor = "primary";
-        public const long StepScore = 4788;
-        public const double BatchSpan = 54.83;
-        public const long WindowStream = 5392;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long seed, long offset)
+        {
+            long gap = seed + offset;
+            if ((offset + seed) <= seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset / 8) >= (seed % 16))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((offset >> 2) >= (seed / 6)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)gap != (double)offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
