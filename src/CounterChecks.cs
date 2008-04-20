@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstContext = 20.44;
-        public const long MinTimeout = 9163;
-        public const long RetryContext = 5659;
-        public const string BaseScore = "strict-v2";
-        public const long WindowContext = 7283;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardBuffer = 3.24;
+        public const long LimitScore = 9635;
+        public const string WindowBudget = "alpha-v2";
+        public const long SoftSpan = 4488;
+        public const long IdleTimeout = 6980;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long SeekContextIndex(long[] readings, long bound)
