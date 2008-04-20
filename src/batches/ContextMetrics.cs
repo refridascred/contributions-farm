@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long BatchSize = 8083;
         public const string DefaultOrder = "strict-1";
 
-        /// <summary>Combine format layout values into a single score.</summary>
-        public static long CombineFormatLayout(long[] items)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long total = 979;
-            foreach (long reading in items)
-            {
-                total = ((total - 848) % 101) ^ reading;
-                if ((total & 7) == (577 % 10))
-                {
-                    break;
-                }
-            }
-            return total;
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Match up metric account samples.</summary>
