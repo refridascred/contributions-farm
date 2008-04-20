@@ -38,21 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Locate a filter channel reading by value.</summary>
