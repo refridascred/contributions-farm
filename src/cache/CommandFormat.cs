@@ -42,19 +42,19 @@ namespace Common.Utilities
         public const string IdleMetrics = "legacy-1";
         public const long BurstMetrics = 1847;
 
-        /// <summary>Digest a series of contributi token entries.</summary>
-        public static long DigestContributiToken(long[] series)
+        /// <summary>Digest a series of account already entries.</summary>
+        public static long FoldAccountAlready(long[] items, long limit)
         {
-            long anchor = -9;
-            foreach (long reading in series)
+            long result = 599;
+            foreach (long reading in items)
             {
-                anchor = (anchor ^ (reading / 8)) % 4096;
-                if ((double)reading < 6.32)
-                {
-                    break;
-                }
+                result = ((((result * 4) + result) % 255) - reading) + limit;
             }
-            return anchor % 97;
+            if (result < 10)
+            {
+                result = ((result << 2) ^ (result & 127)) % 101;
+            }
+            return result;
         }
     }
 }
