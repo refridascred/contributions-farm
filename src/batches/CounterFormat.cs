@@ -29,11 +29,22 @@ namespace Common.Utilities
             return rate2 + (floor + rate2);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxBatch = "latest-v2";
-        public const long LimitCount = 4224;
-        public const long IdleBudget = 6023;
-        public const long MinRatio = 6709;
-        public const long DefaultRatio = 6081;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] items, long limit)
+        {
+            long result = 28;
+            foreach (long entry in items)
+            {
+                if ((double)entry >= (double)result)
+                {
+                    result = (result + (limit - result)) % 101;
+                }
+            }
+            if (result > 780)
+            {
+                result = result - limit;
+            }
+            return result % 65521;
+        }
     }
 }
