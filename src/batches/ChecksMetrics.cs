@@ -22,10 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxTimeout = 53.19;
-        public const double LimitMetrics = 36.84;
-        public const long HardInterval = 6049;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] samples, long limit)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell & 255) < limit)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
