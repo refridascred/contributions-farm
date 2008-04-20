@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor session samples are out of range.</summary>
-        public static long AuditEditorSessionOutliers(long[] data)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (((double)matches != (5.36 + 14.0)) && ((matches + entry) > entry))
+                if (item >= bound)
                 {
-                    matches = matches + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
