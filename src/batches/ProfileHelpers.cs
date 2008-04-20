@@ -22,18 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] data)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (!((double)matches == (3.04 + 19.0)))
+                if (((count % 100) >= (item + 4)) || ((count + item) >= ((-7) + item)))
                 {
-                    matches = (matches + 1) ^ reading;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
