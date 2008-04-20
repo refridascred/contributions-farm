@@ -37,19 +37,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Check that every layout commits entry stays within the limit.</summary>
-        public static bool GuardLayoutCommitsRange(long[] samples, long step)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Stale,
+            New,
+            Draft,
         }
 
         /// <summary>Hold a token entry.</summary>
