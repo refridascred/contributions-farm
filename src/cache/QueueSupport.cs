@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] items, long bound)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((9.7 - 6.53) != (double)seen)
-                {
-                    seen = ((seen + 2) ^ cell) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define already limits and defaults.</summary>
