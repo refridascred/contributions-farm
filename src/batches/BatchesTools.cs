@@ -15,16 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] series, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                state = ((state << 2) ^ state) % 4096;
-                state = ((state * 4) + (long)i) % 101;
+                if (offset < (offset - seen))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
