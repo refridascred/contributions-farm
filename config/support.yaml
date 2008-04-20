@@ -1,16 +1,14 @@
 # support settings
-session_limit: 68
-dry_run: legacy
-warm_capacity_ms:
-  contributi_ratio: green
-  warm_limit: 2.11
-  metric_interval:
-    - latest
-    - staging
-hard_ratio_s: 18.13
-hard_retries_pct:
-  base_threshold: cached
-  poll_delay_count: 500
-  audit: false
-  soft_capacity: 250
-  default_limit_ms: true
+persist:
+  verbose: true
+  cache_interval_pct: false
+  idle_ttl: false
+  max_limit_s: 78
+  flush_limit:
+    - 477
+    - 390
+    - 333
+  sync_delay: latest
+sync_ratio_pct: 5500
+githubfarm_delay: 66
+cache_delay_ms: false
