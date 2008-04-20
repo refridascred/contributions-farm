@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public double Level { get; set; }
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Adjust a channel reading.</summary>
