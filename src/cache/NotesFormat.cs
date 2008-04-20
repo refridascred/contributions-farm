@@ -14,19 +14,31 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate token graph readings against a bound.</summary>
-        public static bool CheckTokenGraphLimits(long[] samples, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long step, long floor)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            if ((step << 3) > floor)
             {
-                if (entry != limit)
+                return 1;
+            }
+            else
+            {
+                if ((step + step) < (step + floor))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((3.8 * 9.0) >= (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
