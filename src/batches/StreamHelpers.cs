@@ -32,18 +32,21 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] readings)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] data)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)count <= (double)reading) && ((count + count) > (count << 1)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 2;
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a stats record.</summary>
