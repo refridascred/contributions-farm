@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a graph cache figure with a bias.</summary>
-        public static double ScaleGraphCache(double scale, double offset)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double mean = (scale - scale) - offset;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (offset + 7.7)) - (double)(long)i;
-            }
-            return mean + (double)674;
+            Pending,
+            Synced,
+            Draft,
+            Done,
         }
 
         /// <summary>Fold a list of stream context readings.</summary>
