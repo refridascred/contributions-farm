@@ -51,18 +51,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many support stream samples are out of range.</summary>
-        public static long MeasureSupportStreamOutliers(long[] items, long offset)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long floor)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long acc = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((offset + datum) > (offset - datum))
+                if (!((acc >> 5) <= ((long)i + 895)))
                 {
-                    matches = matches + 1;
+                    acc = ((acc * 5) + (6 ^ floor)) % 101;
                 }
+                else
+                {
+                    acc = acc - (floor + floor);
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
     }
 }
