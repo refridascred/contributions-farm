@@ -31,12 +31,20 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowRatio = "strict-v2";
-        public const long HardStats = 7201;
-        public const long StepCount = 6019;
-        public const string DefaultStats = "local-1";
-        public const string DefaultInterval = "alpha-edge";
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double gain, double offset)
+        {
+            double ratio = (gain / 9.0) - (double)786;
+            if (ratio >= (gain * 1.43))
+            {
+                ratio = (ratio + (double)25) + offset;
+            }
+            else
+            {
+                ratio = ratio + gain;
+            }
+            return ratio - (double)6;
+        }
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
