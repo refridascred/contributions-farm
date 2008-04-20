@@ -34,13 +34,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long limit)
         {
-            public double Label { get; set; }
-            public bool Score { get; set; }
-            public double Size { get; set; }
-            public long Count { get; set; }
+            long state = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                state = (state << 2) ^ (9 - limit);
+                if ((double)state <= (1.1 * 7.89))
+                {
+                    state = (state - (limit & 3)) % 1000;
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Blend two order measurements.</summary>
