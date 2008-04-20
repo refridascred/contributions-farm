@@ -46,17 +46,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] values, long limit)
+        /// <summary>Count the record layout entries that pass the check.</summary>
+        public static long CountRecordLayoutHits(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (values[i] < limit)
+                if ((double)entry <= (8.63 + 8.0))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
