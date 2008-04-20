@@ -16,39 +16,11 @@ namespace Common.Utilities
             return bias2 + (double)7;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long seed, long offset)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long next = seed ^ offset;
-            if ((993 + 44) < offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)seed >= (14.0 * 7.0)) || ((next / 3) == (seed << 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed >> 3) > next) || (offset > (6 + seed)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset & 15) < (50 - seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
