@@ -18,31 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long step, long seed)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] items, long limit)
         {
-            if (((double)step <= (13.0 + 0.99)) || (54 < seed))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + 36) <= (step + step))
+                if ((items[i] > limit) && ((items[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((32 * 5) >= (step << 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a order stats.</summary>
