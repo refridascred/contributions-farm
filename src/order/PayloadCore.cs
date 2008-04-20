@@ -29,22 +29,21 @@ namespace Common.Utilities
             return bias - (gain + floor);
         }
 
-        /// <summary>Audit format account readings against a rule.</summary>
-        public static long AuditFormatAccountGaps(long[] values, long floor)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally >> 5) == (cell + tally))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] ^ series[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
