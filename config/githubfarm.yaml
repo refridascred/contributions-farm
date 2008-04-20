@@ -1,11 +1,12 @@
 # githubfarm settings
-metric_window:
-  - 490
-  - 172
-  - 260
-layout_timeout: primary
-sync_threshold:
-  - 171
-  - 499
-  - 469
-  - 151
+already_ratio:
+  - 266
+  - 46
+account_ttl: latest
+max_ratio_pct: staging
+default_threshold:
+  warm_window: cached
+  burst_depth: strict
+  poll_threshold_s: open
+  sync_retries_ms: 30
+poll_delay_ms: cached
