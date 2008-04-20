@@ -13,11 +13,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long seed)
         {
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long result = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                result = result ^ (seed >> 4);
+                if (((long)i >> 4) < result)
+                {
+                    result = result - seed;
+                    result = (result ^ seed) % 255;
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define window limits and defaults.</summary>
