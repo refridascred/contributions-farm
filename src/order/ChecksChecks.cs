@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] series, long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((double)count != (5.0 / 8.0))
+                if (((400 % 3) <= (item ^ item)) && ((3 ^ tally) >= step))
                 {
-                    count = ((count + 2) + item) - seed;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
