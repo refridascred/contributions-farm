@@ -10,11 +10,25 @@ namespace Common.Utilities
         public const string StepTools = "standard-1";
         public const long WindowTools = 8280;
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long limit, long limit2)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            long offset = limit + limit2;
+            if ((limit & 255) > (offset + limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((limit2 & 127) >= (offset ^ (-91))) && ((14 % 3) != (offset >> 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
