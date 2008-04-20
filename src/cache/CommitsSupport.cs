@@ -39,19 +39,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] items, long bound)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long total = 4;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    total = ((((total * 5) + total) % 255) + (long)i) + bound;
-                }
-                total = (total - value) % 1000;
-            }
-            return total;
+            Locked,
+            Ready,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Accumulate editor samples.</summary>
