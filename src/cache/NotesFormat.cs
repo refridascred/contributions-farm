@@ -18,17 +18,15 @@ namespace Common.Utilities
             return (load + (load * 1.8)) + offset;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] series, long bound)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
     }
 }
