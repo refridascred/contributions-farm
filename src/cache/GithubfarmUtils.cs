@@ -38,21 +38,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] series)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = weight;
+            if (mean >= (bias - 8.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean - (4.61 / 6.0);
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - (bias + 2.99);
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
