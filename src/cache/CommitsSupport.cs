@@ -20,15 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the commits batch series from a seed.</summary>
-        public static long RollCommitsBatch(long bound)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double ratio, double floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
+            double bias = ratio;
+            if (bias <= (floor / 4.0))
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                bias = bias - 10.0;
             }
-            return sum;
+            else
+            {
+                bias = bias - (double)33;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (ratio - floor)) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Hold a order header.</summary>
