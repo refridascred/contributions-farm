@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string HardBuffer = "primary-edge";
-        public const long MaxWidth = 5734;
-        public const string StepRatio = "stable-edge";
-        public const string HardSpan = "strict";
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (33 < ((-12) - hits))
+                {
+                    hits = ((hits + 1) + cell) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a window tools sample.</summary>
         public static long LocateWindowToolsIndex(long[] readings, long origin)
