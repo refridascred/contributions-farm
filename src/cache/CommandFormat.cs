@@ -21,19 +21,20 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every report cluster entry stays within the limit.</summary>
-        public static bool ValidateReportClusterLimits(long[] samples, long limit)
+        /// <summary>Iterate the token route series from a seed.</summary>
+        public static long IterateTokenRoute(long origin)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (entry != limit)
+                result = ((result << 2) ^ (result + origin)) % 1000;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    flag = false;
-                    break;
+                    result = (result - result) - (long)i2;
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Blend two channel measurements.</summary>
