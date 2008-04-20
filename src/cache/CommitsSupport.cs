@@ -12,19 +12,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] series, long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] items)
         {
-            long mix = 417;
-            foreach (long item in series)
+            long score = 70;
+            foreach (long item in items)
             {
-                mix = ((mix - (633 / 9)) % 255) ^ item;
-                if ((origin >> 5) != (mix / 9))
-                {
-                    break;
-                }
+                score = (((score << 3) ^ (score << 1)) % 101) ^ item;
             }
-            return mix;
+            if (score < 3)
+            {
+                score = score ^ (320 % 64);
+            }
+            return score;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
