@@ -37,12 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Dropped,
-            Retry,
-            Idle,
+            public string Count { get; set; } = "";
+            public double Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
