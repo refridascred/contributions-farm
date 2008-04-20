@@ -14,19 +14,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double gain, double floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] levels)
         {
-            double bias = gain;
-            if (bias > (floor - gain))
+            long mark = 3;
+            foreach (long reading in levels)
             {
-                bias = bias - 19.0;
+                mark = (mark ^ reading) % 255;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - (gain + floor);
+            return mark % 1000;
         }
 
         /// <summary>Accumulate metric samples.</summary>
