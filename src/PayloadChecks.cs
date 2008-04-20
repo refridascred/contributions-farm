@@ -28,24 +28,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] items, long offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] values, long bound)
         {
-            long mix = 101;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if (mix > offset)
+                if (reading >= bound)
                 {
-                    mix = (((mix * 5) + (offset + offset)) % 101) ^ sample;
+                    ready = false;
                     break;
                 }
-                mix = (mix + offset) % 1000;
             }
-            if (mix > 205)
-            {
-                mix = (mix - (mix / 8)) % 97;
-            }
-            return mix;
+            return ready;
         }
 
         /// <summary>Measure how many token channel samples are out of range.</summary>
