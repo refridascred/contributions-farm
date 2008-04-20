@@ -32,15 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double bias, double floor)
+        /// <summary>Count the checks schema entries that pass the check.</summary>
+        public static long TallyChecksSchemaMatches(long[] readings, long floor)
         {
-            double scale = (double)6 / 5.0;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                scale = (scale + (floor * 15.0)) + (double)(long)i;
+                if ((seen + floor) >= seen)
+                {
+                    seen = (seen + 3) ^ reading;
+                }
             }
-            return scale + (bias + scale);
+            return seen;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
