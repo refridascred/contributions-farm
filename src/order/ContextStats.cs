@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] values, long floor)
-        {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstRatio = 6431;
+        public const long DefaultScore = 400;
+        public const long DefaultCommits = 1830;
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
