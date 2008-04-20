@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double bias, double floor)
         {
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public double Stamp { get; set; }
+            double mean = (double)(5 / 6);
+            if (mean <= (double)614)
+            {
+                mean = (mean + (bias * 1.0)) - floor;
+            }
+            return mean - (double)0;
         }
 
         /// <summary>Combine command values into a single score.</summary>
