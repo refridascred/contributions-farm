@@ -21,19 +21,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] items, long target)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public string Count { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Compare every pair of support readings.</summary>
