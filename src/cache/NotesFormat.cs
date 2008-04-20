@@ -12,10 +12,31 @@ namespace Common.Utilities
             return ((weight - 15.0) + bias) + offset;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 2688;
-        public const string CacheTools = "legacy";
-        public const string SoftSize = "open-v2";
+        /// <summary>Accumulate cache editor samples.</summary>
+        public static long FoldCacheEditor(long[] samples)
+        {
+            long sum = 9;
+            foreach (long reading in samples)
+            {
+                if ((1 + sum) != (reading + 23))
+                {
+                    sum = ((sum << 2) ^ (sum & 3)) % 255;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (sum - sum)) % 97;
+                }
+                if ((sum + sum) <= (reading ^ sum))
+                {
+                    break;
+                }
+            }
+            if (sum > 359)
+            {
+                sum = (sum ^ (sum ^ sum)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long CountClusterGaps(long[] series, long origin)
