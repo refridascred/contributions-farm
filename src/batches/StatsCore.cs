@@ -20,18 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the githubfarm order entries that pass the check.</summary>
-        public static long MeasureGithubfarmOrderMatches(long[] values, long step)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (((double)datum == (double)749) && ((633 - matches) >= (matches + datum)))
-                {
-                    matches = (matches + 2) - step;
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
+            public double Token { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the checks phase values.</summary>
