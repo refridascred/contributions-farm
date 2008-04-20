@@ -27,9 +27,19 @@ namespace Common.Utilities
         public const long HardSize = 2842;
         public const double LimitSize = 85.57;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultSupport = 22.08;
-        public const long WindowSupport = 976;
-        public const string MinSpan = "strict-v2";
+        /// <summary>Fold a list of payload format readings.</summary>
+        public static long TallyPayloadFormat(long[] values, long limit)
+        {
+            long acc = 43;
+            foreach (long item in values)
+            {
+                acc = ((acc * 2) + (acc - item)) - limit;
+            }
+            if (acc < 42)
+            {
+                acc = (acc - (acc % 24)) % 1000;
+            }
+            return acc % 4096;
+        }
     }
 }
