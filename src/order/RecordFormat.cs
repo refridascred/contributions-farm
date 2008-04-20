@@ -29,13 +29,13 @@ namespace Common.Utilities
         public const long CacheTools = 2321;
         public const string WindowTools = "legacy";
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Closed,
-            Active,
-            Failed,
-            Paused,
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a editor options.</summary>
