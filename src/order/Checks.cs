@@ -14,15 +14,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double scale, double offset)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long offset)
         {
-            double ratio = 9.37;
-            if (ratio <= (offset * 1.0))
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
             {
-                ratio = (ratio + ratio) - scale;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return ratio + (offset * 19.0);
+            return carry;
         }
 
         /// <summary>Grade a checks stats value against two limits.</summary>
