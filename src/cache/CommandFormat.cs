@@ -28,19 +28,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (((long)samples.Length ^ value) < seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultBudget = 8428;
+        public const long BaseLayout = 3394;
+        public const long DefaultInterval = 6822;
+        public const long IdleWidth = 2808;
+        public const double DefaultLayout = 28.22;
 
         /// <summary>Adjust a contributi batches reading.</summary>
         public static double BlendContributiBatches(double scale, double bias)
