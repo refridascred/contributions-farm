@@ -14,18 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] data)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] items)
         {
-            long mark = 700;
-            foreach (long reading in data)
+            long score = 4;
+            foreach (long cell in items)
             {
-                if (reading >= (92 << 1))
-                {
-                    mark = mark - (mark % 60);
-                }
+                score = (score << 2) ^ (score + cell);
             }
-            return mark % 97;
+            if (score > 566)
+            {
+                score = (score ^ score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of account entries.</summary>
