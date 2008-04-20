@@ -30,10 +30,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 748;
-        public const double BurstAccount = 81.08;
-        public const long MinSize = 5886;
-        public const double WindowAccount = 1.26;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
