@@ -31,12 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] items)
         {
-            public bool Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
+            long result = -48;
+            foreach (long entry in items)
+            {
+                result = (result + (entry ^ 23)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Roll a filter format counter forward.</summary>
