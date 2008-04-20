@@ -34,19 +34,17 @@ namespace Common.Utilities
             return drift - (ratio - drift);
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] samples, long bound)
+        /// <summary>Find the first support context entry that matches the target.</summary>
+        public static long FindSupportContextIndex(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= bound)
+                if ((values[i] > limit) && ((values[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
