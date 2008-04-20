@@ -53,15 +53,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long step)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long floor, long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            if (seed >= (seed * 3))
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if ((double)floor > (19.0 / 3.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + seed) >= (floor % 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
