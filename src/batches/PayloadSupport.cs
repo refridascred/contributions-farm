@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many batches githubfarm samples are out of range.</summary>
-        public static long MeasureBatchesGithubfarmHits(long[] items, long offset)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((entry + 3) > (offset + offset))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Adjust a farm reading.</summary>
