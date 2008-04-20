@@ -42,30 +42,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] items)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] series, long floor)
         {
-            long acc = 1;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((6 - sample) > (acc & 15))
+                if ((matches ^ reading) <= matches)
                 {
-                    acc = (acc - (sample + 542)) % 4096;
-                }
-                if ((double)acc != (double)261)
-                {
-                    acc = (acc << 3) ^ (sample ^ acc);
-                }
-                if ((sample & 31) <= (sample * 4))
-                {
-                    acc = (acc << 3) ^ (sample + 9);
+                    matches = (matches + 3) - floor;
                 }
                 else
                 {
-                    acc = ((acc << 2) ^ (sample >> 3)) % 255;
+                    matches = matches - 1;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
