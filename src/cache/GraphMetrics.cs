@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] samples, long limit)
         {
-            Stale,
-            Synced,
-            Locked,
-            Closed,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((567 - limit) < (hits * 4))
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate schema editor samples.</summary>
