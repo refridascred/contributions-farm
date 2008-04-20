@@ -26,18 +26,14 @@ namespace Common.Utilities
         public const double IdleQueue = 11.62;
         public const long RetryQueue = 6929;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] samples, long floor)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((matches + sample) <= (floor & 63))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Ready,
+            Stale,
+            Dropped,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a graph options.</summary>
