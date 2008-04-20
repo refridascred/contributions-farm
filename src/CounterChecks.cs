@@ -59,12 +59,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] readings, long seed)
         {
-            public bool Size { get; set; }
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
