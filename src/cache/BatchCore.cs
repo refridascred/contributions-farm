@@ -22,14 +22,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Done,
-            Active,
-            Idle,
-            Pending,
-            Locked,
+            public bool Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
