@@ -28,31 +28,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long limit, long limit2)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] data, long bound)
         {
-            if (((limit * 4) <= (48 % 8)) && (limit >= (limit + limit)))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit2 << 3) != (limit % 7))
+                if ((sample + bound) >= matches)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit + 907) >= (42 + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
