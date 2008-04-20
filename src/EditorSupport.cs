@@ -28,12 +28,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxReport = "fallback";
-        public const string CacheRatio = "local-v2";
-        public const string SoftReport = "legacy-v2";
-        public const long MaxRatio = 6346;
-        public const long BaseSpan = 8603;
+        /// <summary>Accumulate graph order samples.</summary>
+        public static long CombineGraphOrder(long[] levels, long step)
+        {
+            long anchor = 4;
+            foreach (long sample in levels)
+            {
+                if (((anchor ^ sample) <= (sample >> 4)) || ((anchor - anchor) <= anchor))
+                {
+                    anchor = ((anchor - (815 >> 2)) % 4096) + step;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (sample >> 4);
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
