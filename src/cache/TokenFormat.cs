@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] items, long target)
-        {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRecord = "stable-1";
+        public const long BatchDepth = 9076;
+        public const double MaxTimeout = 33.49;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long ScoreAlready(long[] readings, long target)
