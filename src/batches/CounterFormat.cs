@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] series, long offset)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a buffer entry.</summary>
