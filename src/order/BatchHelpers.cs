@@ -34,21 +34,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] samples)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double rate, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = span;
+            if (mean <= span)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean - mean) + rate;
             }
-            return tally;
+            else
+            {
+                mean = mean + (mean + span);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean - span;
         }
     }
 }
