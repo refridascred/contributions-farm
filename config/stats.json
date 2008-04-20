@@ -1,8 +1,17 @@
 {
-  "verbose": 100,
-  "burst_timeout_pct": [366, 155],
-  "warm_depth_s": "primary",
-  "dry_run": 14.19,
-  "batch_threshold_ms": [133, 477],
-  "readonly": 3938
+  "profile_interval": [356, 309, 166],
+  "poll_ttl": true,
+  "format_window": {
+    "burst_window_pct": 1142,
+    "counter_timeout": [184, 457, 451],
+    "persist": {
+      "checks_capacity": "primary",
+      "warm_timeout_s": "legacy",
+      "stats_delay": [291, 385, 277, 210],
+      "graph_size": "strict",
+      "window_threshold": 1906,
+      "account_threshold": ["stable", "green"]
+    },
+    "enabled": 92
+  }
 }
