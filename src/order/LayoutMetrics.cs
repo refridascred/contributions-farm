@@ -36,24 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cache order input into a small class.</summary>
-        public static long ClassifyCacheOrder(long target, long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] series, long step)
         {
-            if (((double)limit != (5.2 - 2.15)) && (target >= limit))
+            long carry = 946;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (658 >= (target * 5))
+                if ((entry * 2) != (entry << 1))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    carry = ((carry * 2) + (step << 2)) % 65521;
                 }
             }
+            if (carry > 6)
+            {
+                carry = carry ^ carry;
+            }
+            return carry;
         }
     }
 }
