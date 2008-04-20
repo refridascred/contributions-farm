@@ -1,8 +1,8 @@
 {
-  "command_threshold": 56.4,
-  "strict": 90,
-  "format_ratio": "eu-west",
-  "cluster_ratio": [278, 318, 337, 363],
-  "dry_run": "latest",
-  "cache_capacity": true
+  "audit": 35.06,
+  "soft_retries_pct": true,
+  "retry_delay": ["green", "latest", "latest"],
+  "min_depth_count": 24.82,
+  "batches_window": "cached",
+  "warm_capacity_pct": 33.96
 }
