@@ -12,21 +12,21 @@ namespace Common.Utilities
             return ((gain - (18.0 * 8.2)) + bias) + span;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] data)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((data[i] - data[j]) < 12)
+                    if ((series[i] + series[j]) < 9)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Project the next stats buffer value.</summary>
