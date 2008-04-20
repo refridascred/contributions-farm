@@ -33,19 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer window measurements.</summary>
-        public static double AdjustBufferWindow(double scale, double span)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] readings)
         {
-            double load = (double)51 - span;
-            if (load <= scale)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - (load * 18.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + span;
+            return seen;
         }
 
         /// <summary>Measure how many route tools samples are out of range.</summary>
