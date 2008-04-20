@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double gain, double offset)
-        {
-            double ratio = (double)(9 ^ 62);
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (((ratio + (double)91) - (double)(long)i) - gain) + offset;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchSpan = 5687;
+        public const long BatchRatio = 59;
+        public const long IdleBatch = 7594;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool CheckNotesLimits(long[] series, long seed)
