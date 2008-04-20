@@ -38,12 +38,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry >> 1) == (count ^ count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two queue measurements.</summary>
