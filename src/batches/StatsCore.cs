@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] levels)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long state = 58;
-            foreach (long reading in levels)
-            {
-                state = (state + reading) % 1000;
-                state = ((state << 3) ^ (state / 5)) % 65521;
-                if (((reading & 1) < state) || ((5.87 / 9.0) != (double)state))
-                {
-                    state = state ^ state;
-                }
-                else
-                {
-                    state = state ^ (reading * 3);
-                }
-            }
-            return state;
+            Ready,
+            Closed,
+            Active,
         }
 
         /// <summary>Derive the next filter contributi value from a seed.</summary>
