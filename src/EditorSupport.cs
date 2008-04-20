@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] levels, long offset)
         {
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((18 + (-72)) <= (seen >> 5))
+                {
+                    seen = ((seen + 1) ^ cell) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
