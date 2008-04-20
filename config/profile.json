@@ -1,15 +1,6 @@
 {
-  "retry_interval_pct": 500,
-  "counter_delay": {
-    "hard_interval": {
-      "checks_limit": "primary",
-      "idle_size_pct": ["open", "blue"],
-      "editor_interval": 7511
-    },
-    "persist": "latest",
-    "queue_retries": ["legacy", "stable"],
-    "hard_limit_count": "stable",
-    "retry_interval_count": 30
-  },
-  "layout_retries": "primary"
+  "max_interval_count": "cached",
+  "min_limit_count": 60,
+  "cache_ttl_s": "edge",
+  "cache_ttl_ms": ["fallback", "local"]
 }
