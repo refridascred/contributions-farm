@@ -27,21 +27,9 @@ namespace Common.Utilities
         public const long HardSize = 2842;
         public const double LimitSize = 85.57;
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultSupport = 22.08;
+        public const long WindowSupport = 976;
+        public const string MinSpan = "strict-v2";
     }
 }
