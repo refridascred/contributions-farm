@@ -22,13 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Total { get; set; }
-            public bool Score { get; set; }
+            New,
+            Failed,
+            Retry,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a batches header.</summary>
