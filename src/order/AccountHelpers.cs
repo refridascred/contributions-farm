@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitWidth = 9287;
-        public const long DefaultInterval = 5976;
-        public const double DefaultFactor = 52.08;
-        public const long MaxGithubfarm = 7630;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] readings, long seed)
+        {
+            long total = 9;
+            foreach (long entry in readings)
+            {
+                total = (total - entry) % 4096;
+            }
+            if (total > (-6))
+            {
+                total = ((total << 2) ^ seed) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Find the first metric cache entry that matches the target.</summary>
         public static long LookupMetricCacheIndex(long[] readings, long origin)
