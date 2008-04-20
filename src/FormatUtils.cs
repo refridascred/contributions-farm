@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((3 + tally) <= entry)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardPayload = "local-v2";
+        public const long CacheBudget = 2794;
+        public const long WindowInterval = 936;
+        public const long MaxPayload = 79;
 
         /// <summary>Count the format counter entries that pass the check.</summary>
         public static long TallyFormatCounterHits(long[] items, long floor)
