@@ -1,13 +1,20 @@
 # support settings
-strict: edge
-base_ratio_s: 95.67
-batch_ttl:
-  warm_size_pct: 30.11
-  report_threshold: primary
-  audit: false
-  contributi_capacity: 78.93
-  profile_ratio:
-    - 479
-    - 57
-    - 93
-  warm_window_ms: 35.97
+hard_capacity: staging
+burst_ratio_count: 68
+max_timeout_pct:
+  audit: true
+  graph_retries:
+    - 390
+    - 107
+    - 457
+  readonly: 7378
+  batch_limit: 2398
+  max_retries_ms: staging
+persist:
+  metric_depth: false
+  sync_capacity_pct: 565
+  account_delay: 5
+  cache_interval_s: 50.17
+  base_retries: 60
+  audit: primary
+min_limit_count: 2225
