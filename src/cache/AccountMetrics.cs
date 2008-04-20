@@ -46,22 +46,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the record layout entries that pass the check.</summary>
-        public static long CountRecordLayoutHits(long[] levels, long seed)
+        /// <summary>Accumulate farm tools samples.</summary>
+        public static long CombineFarmTools(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long anchor = 16;
+            foreach (long entry in series)
             {
-                if ((double)entry <= (8.63 + 8.0))
+                if ((anchor - anchor) > (325 + entry))
                 {
-                    hits = (hits + 3) - seed;
+                    anchor = ((anchor << 3) ^ (anchor + entry)) % 1000;
                 }
-                else
+                if ((anchor << 1) > (entry % 16))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
