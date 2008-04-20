@@ -71,23 +71,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] series, long target)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long target)
         {
-            long sum = 0;
-            foreach (long sample in series)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum - sum) % 255) ^ sample;
-                if ((target - sum) < (sum % 16))
-                {
-                    sum = (sum - sum) % 101;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (sum > 7)
-            {
-                sum = ((sum * 5) + sum) % 65521;
-            }
-            return sum % 4096;
+            return total;
         }
     }
 }
