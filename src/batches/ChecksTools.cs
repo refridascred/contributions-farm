@@ -37,23 +37,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((long)levels.Length >> 2) <= (count << 1))
-                {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 5188;
+        public const long BurstSchema = 7347;
+        public const double DefaultScore = 80.5;
+        public const string RetryInterval = "legacy-1";
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
