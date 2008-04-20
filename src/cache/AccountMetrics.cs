@@ -22,25 +22,19 @@ namespace Common.Utilities
         public const double CacheEntry = 49.71;
         public const string RetryScore = "latest-edge";
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long limit, long seed)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] series, long target)
         {
-            long span = limit ^ seed;
-            if (!((17.0 + 4.0) >= (double)seed))
+            bool ready = true;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed + span) >= 678)
+                if (sample < target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the stats kind values.</summary>
