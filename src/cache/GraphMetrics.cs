@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] samples, long step)
         {
-            Ready,
-            Active,
-            Draft,
-            Pending,
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
