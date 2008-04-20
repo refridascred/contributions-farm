@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] readings, long offset)
+        /// <summary>Roll a cluster format counter forward.</summary>
+        public static long DeriveClusterFormat(long seed)
         {
-            long total = 190;
-            foreach (long reading in readings)
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                total = ((total ^ (offset % 10)) % 1000) - reading;
-                total = ((total * 3) + (offset % 2)) % 65521;
+                if ((seed - seed) < (seed + (-6)))
+                {
+                    result = (result - result) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Check that every batches payload entry stays within the limit.</summary>
