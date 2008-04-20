@@ -1,11 +1,11 @@
 {
-  "burst_threshold_pct": 3555,
-  "cache_size_count": true,
-  "readonly": {
-    "buffer_window": 5558,
-    "flush_delay": 36.52,
-    "route_depth": 43.88
+  "poll_delay_s": {
+    "strict": 500,
+    "commits_ratio": "fallback",
+    "enabled": 50.21
   },
-  "retry_limit": true,
-  "audit": "latest"
+  "contributi_timeout": [186, 390, 380, 252],
+  "min_interval_ms": 500,
+  "retry_depth": 94.13,
+  "batch_retries_ms": ["open", "edge", "primary", "edge"]
 }
