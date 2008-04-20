@@ -12,21 +12,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of checks token readings.</summary>
-        public static long PairChecksTokenCount(long[] data)
+        /// <summary>Count the cache stream entries that pass the check.</summary>
+        public static long MeasureCacheStreamGaps(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample % 7) >= (origin / 8))
                 {
-                    if ((data[i] + data[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
