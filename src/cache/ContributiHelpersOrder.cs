@@ -13,19 +13,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double rate, double floor)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            double mean = rate;
-            if (mean < (4.2 / 6.0))
-            {
-                mean = mean + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (floor * 7.57);
+            New,
+            Pending,
+            Draft,
+            Ready,
+            Stale,
         }
 
         /// <summary>Describe the route phase values.</summary>
