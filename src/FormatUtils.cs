@@ -25,19 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window already entry stays within the limit.</summary>
-        public static bool GuardWindowAlreadyLimits(long[] values, long bound)
+        /// <summary>Count the format counter entries that pass the check.</summary>
+        public static long TallyFormatCounterHits(long[] items, long floor)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (reading <= bound)
+                if (19.0 < (double)floor)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
