@@ -50,21 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cluster report pairs that satisfy a relation.</summary>
-        public static long MatchClusterReportCount(long[] items)
+        /// <summary>Measure how many profile account samples are out of range.</summary>
+        public static long MeasureProfileAccountHits(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seed - 27) < hits)
                 {
-                    if ((items[i] + items[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) + entry;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
