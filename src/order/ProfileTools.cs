@@ -37,19 +37,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate schema already readings against a bound.</summary>
-        public static bool GuardSchemaAlreadyLimits(long[] data, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (datum < target)
+                if ((step - step) <= (long)levels.Length)
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) + entry;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Audit payload metrics readings against a rule.</summary>
