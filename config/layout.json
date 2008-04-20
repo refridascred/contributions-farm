@@ -1,7 +1,7 @@
 {
-  "base_depth": "stable",
-  "burst_depth_count": true,
-  "audit": 46,
-  "checks_ttl": "staging",
-  "batch_size_count": 9214
+  "soft_interval_s": 66,
+  "flush_capacity_pct": 77,
+  "flush_ratio_ms": "strict",
+  "compress": "standard",
+  "notes_interval": ["staging", "primary"]
 }
