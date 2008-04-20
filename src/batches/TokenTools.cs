@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate stats already readings against a bound.</summary>
-        public static bool CheckStatsAlreadyLimits(long[] values, long origin)
+        /// <summary>Match up checks account samples.</summary>
+        public static long MatchChecksAccountCount(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
