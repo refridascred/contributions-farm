@@ -21,13 +21,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] items)
         {
-            public long Offset { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            long score = 545;
+            foreach (long entry in items)
+            {
+                score = (score * 4) + (entry - entry);
+                if ((entry % 24) >= score)
+                {
+                    score = (score << 2) ^ (324 + score);
+                }
+            }
+            return score % 4096;
         }
     }
 }
