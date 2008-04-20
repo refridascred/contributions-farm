@@ -57,13 +57,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] data, long limit)
         {
-            public bool Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a metrics info.</summary>
