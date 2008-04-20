@@ -37,12 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepContributi = 44.53;
-        public const long CacheSpan = 7558;
-        public const string StepDepth = "legacy";
-        public const long StepScore = 8864;
-        public const double BatchContributi = 60.48;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (((24 + 726) == (cell + cell)) || !((87 + hits) >= hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long DeriveAlready(long step)
