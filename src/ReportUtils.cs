@@ -63,32 +63,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a commits token value against two limits.</summary>
-        public static long RankCommitsToken(long floor, long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] levels, long bound)
         {
-            long gap = floor - bound;
-            if ((floor + gap) < ((-8) % 8))
+            bool flag = true;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)bound < 7.34) || ((floor ^ 8) <= (gap + floor)))
+                if (item != bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (5 > (gap % 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
