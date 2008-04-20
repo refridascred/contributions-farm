@@ -28,12 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowCommand = "latest-v2";
+        public const long RetrySize = 9576;
+        public const string MinWidth = "local-v2";
+        public const long BaseCommand = 5217;
+        public const string DefaultSize = "latest-v2";
 
         /// <summary>Check that every token schema entry stays within the limit.</summary>
         public static bool ValidateTokenSchemaBounds(long[] levels, long bound)
