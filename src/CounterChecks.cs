@@ -22,15 +22,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long bound, long offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 17; i++)
+            long step = bound ^ offset;
+            if (((1.86 - 9.0) <= (double)step) || (bound > (2 + bound)))
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if ((bound >> 4) >= (offset ^ bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound > (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit token window readings against a rule.</summary>
