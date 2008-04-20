@@ -50,22 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] samples, long offset)
+        /// <summary>Count the buffer githubfarm entries that pass the check.</summary>
+        public static long AuditBufferGithubfarmHits(long[] levels)
         {
-            long sum = 66;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((offset >= reading) || ((offset % 60) >= (605 / 5)))
+                if (((reading >> 5) < (4 << 2)) && (((reading ^ seen) >= 847) && (3 <= ((long)levels.Length + reading))))
                 {
-                    sum = (sum + (offset + offset)) % 97;
-                }
-                else
-                {
-                    sum = sum - (980 ^ 181);
+                    seen = seen + 3;
                 }
             }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
