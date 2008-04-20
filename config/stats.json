@@ -1,5 +1,21 @@
 {
-  "queue_interval": 8138,
-  "graph_window": "cached",
-  "idle_size_s": 83
+  "base_timeout_s": {
+    "warm_limit_s": {
+      "min_retries_count": false,
+      "default_timeout": 60,
+      "farm_limit": 60,
+      "hard_retries_ms": 7278
+    },
+    "max_depth_s": 81,
+    "checks_depth": {
+      "poll_delay": 0.81,
+      "enabled": 30,
+      "metric_threshold": 500,
+      "poll_capacity": "edge",
+      "hard_threshold_count": [364, 282, 246]
+    }
+  },
+  "idle_threshold": "eu-west",
+  "base_threshold_ms": 250,
+  "compress": 1024
 }
