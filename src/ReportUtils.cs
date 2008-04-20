@@ -41,21 +41,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((target / 8) >= 678)
                 {
-                    if ((series[i] - series[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the schema kind values.</summary>
