@@ -21,19 +21,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell << 3) == (cell & 255))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 8558;
+        public const string RetryMetrics = "fallback-v2";
+        public const double StepCount = 47.14;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardTools = 900;
