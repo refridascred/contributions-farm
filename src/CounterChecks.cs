@@ -14,15 +14,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] series)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long mix = 846;
-            foreach (long entry in series)
-            {
-                mix = (mix - (mix * 2)) ^ entry;
-            }
-            return mix % 65521;
+            Idle,
+            Stale,
+            Synced,
+            Paused,
+            Failed,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
