@@ -13,12 +13,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Failed,
+            Active,
+            Draft,
             Synced,
-            Queued,
         }
 
         /// <summary>Define report limits and defaults.</summary>
