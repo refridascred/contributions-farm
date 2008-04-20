@@ -1,6 +1,8 @@
 {
-  "base_ttl_ms": 2711,
-  "layout_threshold": [450, 209, 76],
-  "max_window_pct": 55.7,
-  "hard_delay_s": 14
+  "retry_retries_pct": false,
+  "min_limit_count": "primary",
+  "burst_ratio": 30,
+  "cache_ttl_count": "edge",
+  "session_window": 36.4,
+  "payload_limit": true
 }
