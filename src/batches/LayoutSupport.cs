@@ -50,25 +50,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a route record pair into a bucket.</summary>
-        public static long GradeRouteRecord(long target, long origin)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] items, long limit)
         {
-            long lane = target ^ origin;
-            if (lane >= (target - target))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((lane > (lane + origin)) && ((0 + 5) <= (lane - 6)))
+                if (items[i] >= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
