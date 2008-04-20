@@ -68,11 +68,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MaxEditor = "alpha-1";
-        public const string HardEditor = "standard-edge";
-        public const string SoftEditor = "local-v2";
-        public const long BaseBudget = 9412;
-        public const long HardCount = 2018;
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Dropped,
+            Locked,
+            Active,
+            Queued,
+            Paused,
+        }
     }
 }
