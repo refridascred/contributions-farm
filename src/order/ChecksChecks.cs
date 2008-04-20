@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] samples, long step)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (((400 % 3) <= (item ^ item)) && ((3 ^ tally) >= step))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Locked,
+            Idle,
+            Retry,
+            New,
         }
 
         /// <summary>Hold a filter stats.</summary>
