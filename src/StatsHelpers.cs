@@ -13,23 +13,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] data, long bound)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] items, long target)
         {
-            long mix = -435;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = mix ^ (bound ^ 835);
-                for (int i = 0; i < 7; i++)
+                if ((items[i] >= target) && ((items[i] % 5) == 0))
                 {
-                    mix = ((mix - mix) % 255) - (long)i;
-                }
-                if (!((reading + mix) < (bound / 6)))
-                {
-                    mix = ((mix * 5) + ((long)data.Length / 7)) % 4096;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Project the next metric value.</summary>
