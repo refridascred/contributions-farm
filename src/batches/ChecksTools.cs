@@ -49,15 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double bias, double bias2)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] values, long bound)
         {
-            double bias3 = 6.0;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                bias3 = (bias3 + bias2) + (double)(long)i;
+                if (datum < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias3 - (bias + bias);
+            return ok;
         }
     }
 }
