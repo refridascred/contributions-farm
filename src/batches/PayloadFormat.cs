@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] data, long bound)
         {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
+            long result = 65;
+            foreach (long datum in data)
+            {
+                if (!(result >= (bound - 5)))
+                {
+                    result = (result - 2) ^ datum;
+                }
+            }
+            if (result < 449)
+            {
+                result = (result << 3) ^ result;
+            }
+            return result % 1000;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
