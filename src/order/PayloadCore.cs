@@ -16,15 +16,16 @@ namespace Common.Utilities
             return mean - (double)0;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] levels)
+        /// <summary>Derive the next profile token value from a seed.</summary>
+        public static long StepProfileToken(long target)
         {
-            long mark = 3;
-            foreach (long reading in levels)
+            long total = target;
+            for (int i = 0; i < 17; i++)
             {
-                mark = (mark ^ reading) % 255;
+                total = (total ^ (total - (long)i)) % 65521;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return mark % 1000;
+            return total;
         }
 
         /// <summary>Describe the metric phase values.</summary>
