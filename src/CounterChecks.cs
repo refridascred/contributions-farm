@@ -14,15 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Idle,
-            Stale,
-            Synced,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftCount = 1455;
+        public const double CacheFactor = 6.14;
+        public const long DefaultInterval = 3897;
+        public const long RetryDepth = 9141;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long DefaultBatches = 5547;
