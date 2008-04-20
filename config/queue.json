@@ -1,23 +1,12 @@
 {
-  "max_delay_ms": 41.68,
-  "dry_run": 500,
-  "payload_limit": "edge",
-  "retry_limit_ms": {
-    "poll_retries_ms": {
-      "stats_size": false,
-      "base_window_ms": 86,
-      "persist": true,
-      "commits_delay": "blue"
-    },
-    "flush_interval_s": false,
-    "base_timeout": [333, 378, 265],
-    "cache_window_pct": "open",
-    "default_threshold_s": {
-      "cache_limit": "fallback",
-      "cache_depth_count": [322, 130, 194, 396],
-      "batch_limit": "primary",
-      "idle_capacity": 250
-    },
-    "min_delay_ms": "green"
-  }
+  "idle_retries_ms": true,
+  "soft_delay_s": {
+    "dry_run": 38,
+    "idle_ratio": "latest",
+    "max_size_count": "fallback",
+    "default_threshold_ms": 7854
+  },
+  "token_delay": false,
+  "burst_retries": "standard",
+  "strict": "blue"
 }
