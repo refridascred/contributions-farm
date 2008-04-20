@@ -36,13 +36,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long limit, long limit2)
         {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            long lane = limit - limit2;
+            if (limit2 < (16 ^ limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((104 + limit2) != (limit2 + limit)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((111 ^ limit) > (limit2 & 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit + lane) < (limit + limit2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
