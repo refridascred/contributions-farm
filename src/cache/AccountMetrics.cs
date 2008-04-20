@@ -44,18 +44,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] levels)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)hits > (9.8 - 6.0))
+                if (values[i] < limit)
                 {
-                    hits = (hits + 3) + item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the entry commits entries that pass the check.</summary>
