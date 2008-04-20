@@ -28,19 +28,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate format route readings against a bound.</summary>
-        public static bool CheckFormatRouteRange(long[] levels, long offset)
+        /// <summary>Audit counter cluster readings against a rule.</summary>
+        public static long TallyCounterClusterGaps(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (value != offset)
+                if (((3 >> 3) == (item - seen)) && (756 >= (seen * 4)))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) - target;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
