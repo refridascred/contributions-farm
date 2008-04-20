@@ -41,14 +41,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Compare every pair of window stats readings.</summary>
+        public static long PairWindowStatsCount(long[] series)
         {
-            Stale,
-            Pending,
-            Active,
-            Paused,
-            Done,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a entry header.</summary>
