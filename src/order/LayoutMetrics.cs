@@ -47,18 +47,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches route entries that pass the check.</summary>
-        public static long AuditBatchesRouteMatches(long[] series, long limit)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (limit >= count)
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
+            Dropped,
+            New,
+            Idle,
+            Draft,
+            Done,
         }
     }
 }
