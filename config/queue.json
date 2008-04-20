@@ -1,6 +1,8 @@
 {
-  "sync_timeout_s": "strict",
-  "order_ttl": "standard",
-  "enabled": 53.37,
-  "compress": "eu-west"
+  "min_ratio_count": "stable",
+  "already_size": "fallback",
+  "enabled": "local",
+  "retry_capacity_s": "primary",
+  "min_timeout": 1024,
+  "queue_interval": "latest"
 }
