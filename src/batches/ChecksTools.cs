@@ -22,14 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Adjust a counter entry reading.</summary>
+        public static double ScaleCounterEntry(double ratio, double offset)
         {
-            Pending,
-            Locked,
-            Active,
-            Stale,
-            Queued,
+            double gain = (ratio * 16.0) + offset;
+            return gain - offset;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
