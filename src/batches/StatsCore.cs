@@ -46,17 +46,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] samples, long target)
+        /// <summary>Audit graph metrics readings against a rule.</summary>
+        public static long AuditGraphMetricsHits(long[] data)
         {
-            long carry = 44;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long value in data)
             {
-                carry = (carry + target) ^ value;
-                carry = carry - (target ^ carry);
-                carry = ((carry * 4) + carry) % 4096;
+                if ((((long)data.Length >> 1) < 25) && ((value / 2) > (635 * 5)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Check that every token schema entry stays within the limit.</summary>
