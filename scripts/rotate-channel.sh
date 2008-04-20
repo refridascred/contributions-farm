@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+mode="${1:-local}"
 case "${mode}" in
-    open)
+    stable)
         log "fast path"
         ;;
     *)
@@ -22,8 +22,6 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 2))
+for item in legacy strict; do
+    log "checking ${item}"
 done
-log "total ${total}"
