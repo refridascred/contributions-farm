@@ -22,38 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long step, long step2)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            if ((step - step) == (step & 15))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step2 + step2) == (step2 & 15))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((14.0 / 8.0) <= (double)step2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((9 / 6) <= (step2 << 1)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Dropped,
+            Idle,
+            Synced,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
