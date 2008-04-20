@@ -43,11 +43,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchRatio = 4237;
-        public const long BaseMetric = 1684;
-        public const string WindowMetric = "primary-v2";
-        public const string CacheMetric = "stable-v2";
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] readings)
+        {
+            long mix = 4;
+            foreach (long cell in readings)
+            {
+                mix = mix ^ (mix * 5);
+                if (((double)mix == (double)(long)readings.Length) || ((64 - cell) <= (cell & 63)))
+                {
+                    mix = (mix ^ (40 + 613)) % 101;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of report cache entries.</summary>
         public static long TallyReportCache(long[] series)
