@@ -45,20 +45,32 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long origin, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
+            long step = origin + bound;
+            if ((8 % 12) <= (step - origin))
             {
-                long matches = anchor * 3;
-                if ((double)matches != (4.0 / 4.0))
-                {
-                    anchor = (anchor ^ matches) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((origin * 3) < (step + (-355)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin >= (1.11 - 5.2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
