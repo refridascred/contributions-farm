@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const string MinProfile = "primary";
         public const double HardDepth = 55.99;
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public double Token { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Digest a series of notes entries.</summary>
