@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long MaxRatio = 841;
         public const long CacheCommand = 986;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] values, long seed)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] items)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] - items[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Fold a list of channel format readings.</summary>
