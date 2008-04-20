@@ -65,10 +65,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchRatio = 9959;
-        public const string SoftStats = "standard-1";
-        public const double BatchDepth = 26.08;
-        public const double MinStats = 91.86;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
