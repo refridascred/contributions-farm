@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double weight, double bias)
         {
-            public bool Total { get; set; }
-            public double Mode { get; set; }
-            public double Owner { get; set; }
-            public long Size { get; set; }
+            double rate = (double)4 * 3.3;
+            if (rate <= (bias + rate))
+            {
+                rate = (rate + (bias * 14.0)) + weight;
+            }
+            return rate - bias;
         }
 
         /// <summary>Accumulate stats notes samples.</summary>
