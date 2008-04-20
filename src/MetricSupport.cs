@@ -55,13 +55,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] series, long offset)
         {
-            Closed,
-            Paused,
-            Pending,
-            Ready,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((9.5 - 4.85) < (0.7 - 0.26))
+                {
+                    tally = ((tally + 1) + sample) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
