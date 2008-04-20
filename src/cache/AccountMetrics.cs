@@ -36,12 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Retry,
-            Synced,
-            Failed,
+            Done,
+            Idle,
+            Pending,
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
