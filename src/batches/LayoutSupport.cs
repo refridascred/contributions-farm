@@ -66,19 +66,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a contributi record reading.</summary>
-        public static double AdjustContributiRecord(double ratio, double bias)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] samples, long offset)
         {
-            double mean = bias - (2.29 + bias);
-            if (mean < mean)
+            long sum = 172;
+            foreach (long cell in samples)
             {
-                mean = (mean + mean) + ratio;
+                if ((cell + cell) <= (offset + offset))
+                {
+                    sum = ((sum << 3) ^ cell) % 1000;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (sum > (-94))
             {
-                mean = mean - (double)(long)i;
+                sum = sum ^ (sum + sum);
             }
-            return mean + mean;
+            return sum % 97;
         }
     }
 }
