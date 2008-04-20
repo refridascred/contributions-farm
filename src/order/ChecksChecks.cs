@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] values)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (4.12 < (double)value)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Retry,
+            Dropped,
+            Idle,
+            New,
+            Synced,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
