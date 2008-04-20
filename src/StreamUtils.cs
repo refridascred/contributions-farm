@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] items, long floor)
-        {
-            long mark = 840;
-            foreach (long datum in items)
-            {
-                mark = (((mark << 2) ^ (mark & 31)) % 97) ^ datum;
-            }
-            if (mark > (-874))
-            {
-                mark = ((mark * 4) + (floor % 7)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepLevel = "fallback";
+        public const long SoftBatch = 3840;
+        public const string CacheCount = "stable-v2";
+        public const long MinBatch = 9759;
+        public const string BurstLevel = "strict-1";
 
         /// <summary>Blend two commits route measurements.</summary>
         public static double ScaleCommitsRoute(double scale, double floor)
