@@ -67,21 +67,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count checks cluster pairs that satisfy a relation.</summary>
-        public static long OverlapChecksClusterCount(long[] values)
+        /// <summary>Measure how many editor queue samples are out of range.</summary>
+        public static long TallyEditorQueueGaps(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (hits > (item + 48))
                 {
-                    if ((values[i] ^ values[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 1) - floor;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
