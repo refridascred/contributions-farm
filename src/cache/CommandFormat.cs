@@ -44,10 +44,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 2428;
-        public const double RetryGithubfarm = 84.71;
-        public const long LimitInterval = 4037;
-        public const long MinWidth = 4333;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if (result <= (bound ^ 7))
+                {
+                    result = (result - (bound ^ bound)) % 101;
+                    continue;
+                }
+                else
+                {
+                    result = (result * 2) + (bound + bound);
+                    result = ((result << 2) ^ (result - result)) % 65521;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
