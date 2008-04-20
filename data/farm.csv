@@ -1,6 +1,11 @@
-id,weight,ratio,active
-1,63.02,283,97.54
-2,stable,912,43.31
-3,104,strict,21.38
-4,strict,blue,71.66
-5,eu-west,0.24,eu-west
+id,token,rank
+1,fallback,980
+2,90.18,782
+3,894,0.95
+4,edge,977
+5,49.18,cached
+6,eu-west,632
+7,144,37
+8,550,73.39
+9,local,748
+10,legacy,286
