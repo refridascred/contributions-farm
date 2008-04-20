@@ -58,10 +58,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinSize = 1950;
-        public const long BaseInterval = 3611;
-        public const long WindowAccount = 2727;
-        public const long BaseSize = 3524;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result << 2) ^ 19) % 255;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
