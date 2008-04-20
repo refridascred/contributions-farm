@@ -41,13 +41,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] series)
         {
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the schema kind values.</summary>
