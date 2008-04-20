@@ -15,14 +15,32 @@ namespace Common.Utilities
         public const double SoftContributi = 70.45;
         public const long BaseContributi = 1476;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long limit, long step)
         {
-            Paused,
-            Dropped,
-            Retry,
-            Stale,
-            Idle,
+            long next = limit ^ step;
+            if ((next >> 3) < next)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)next <= (8.07 - 5.5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((607 % 60) > (next + next)) && (9.3 <= (double)next))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema summary.</summary>
