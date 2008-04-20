@@ -16,11 +16,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long offset, long target)
         {
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
+            if ((219 - offset) != (target / 6))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((0 + target) >= (target / 2)) || ((double)target >= (2.21 - 19.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (offset > target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank stream window input into a small class.</summary>
