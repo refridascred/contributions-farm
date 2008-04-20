@@ -43,26 +43,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of format session entries.</summary>
-        public static long FoldFormatSession(long[] items)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] series)
         {
-            long mix = -1;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((98 < datum) || ((mix & 1) <= mix))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = mix + (89 * 5);
-                }
-                else
-                {
-                    mix = (mix << 3) ^ 135;
+                    if ((series[i] ^ series[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < 91)
-            {
-                mix = (mix << 2) ^ (8 + mix);
-            }
-            return mix;
+            return matches;
         }
     }
 }
