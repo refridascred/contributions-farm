@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchRoute = "fallback-v2";
-        public const double HardRoute = 3.68;
-        public const double CacheDepth = 76.33;
-        public const long DefaultRoute = 1601;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] values, long limit)
+        {
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long FindAlreadyIndex(long[] readings, long target)
