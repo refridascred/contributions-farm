@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleRatio = 5519;
+        public const string StepCache = "primary";
+        public const long HardCache = 6625;
+        public const long LimitCache = 7288;
+        public const double DefaultSize = 57.3;
 
         /// <summary>Iterate the commits batch series from a seed.</summary>
         public static long RollCommitsBatch(long bound)
