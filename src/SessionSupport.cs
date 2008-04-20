@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const string DefaultEditor = "alpha-v2";
         public const long BurstEditor = 7067;
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long origin)
+        /// <summary>Match up graph schema samples.</summary>
+        public static long CompareGraphSchemaCount(long[] data)
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = mark - (origin * 5);
-                mark = mark + (mark * 2);
-                mark = ((mark * 3) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
