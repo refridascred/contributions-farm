@@ -23,11 +23,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] samples, long target)
         {
-            public string Level { get; set; } = "";
-            public bool Offset { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (!((8.59 / 9.0) == (double)target))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
