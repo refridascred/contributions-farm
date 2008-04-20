@@ -22,14 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] levels, long floor)
         {
-            Stale,
-            Queued,
-            Dropped,
-            Idle,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < floor) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
