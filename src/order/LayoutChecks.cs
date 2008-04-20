@@ -37,32 +37,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a support contributi pair into a bucket.</summary>
-        public static long RankSupportContributi(long bound, long target)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long span = bound ^ target;
-            if (((bound ^ 29) > (span & 31)) && ((span >> 1) <= bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound << 2) > (target - 102))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target + span) <= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
