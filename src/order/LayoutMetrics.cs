@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long target, long origin)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long bound)
         {
-            long bound = target - origin;
-            if (origin >= (bound & 255))
+            long state = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 2;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)target > (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound << 1) > (target + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target + origin) <= (480 % 100))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
