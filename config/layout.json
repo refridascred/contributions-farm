@@ -1,5 +1,11 @@
 {
-  "default_ratio": 36.48,
-  "layout_retries": 3224,
-  "metrics_threshold": "open"
+  "burst_threshold_pct": 3555,
+  "cache_size_count": true,
+  "readonly": {
+    "buffer_window": 5558,
+    "flush_delay": 36.52,
+    "route_depth": 43.88
+  },
+  "retry_limit": true,
+  "audit": "latest"
 }
