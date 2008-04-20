@@ -40,24 +40,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long limit, long offset)
+        /// <summary>Measure how many checks batches samples are out of range.</summary>
+        public static long TallyChecksBatchesOutliers(long[] levels)
         {
-            if ((limit + limit) < 31)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit >= 37) && (limit > (24 ^ offset)))
+                if ((sample % 60) == (hits & 15))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
