@@ -14,11 +14,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long target)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            long score = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((target & 127) > (score + 71))
+                {
+                    score = score + target;
+                    score = (score * 5) + (score & 31);
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Accumulate farm samples.</summary>
