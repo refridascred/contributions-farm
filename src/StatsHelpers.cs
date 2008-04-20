@@ -27,18 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks schema entries that pass the check.</summary>
-        public static long TallyChecksSchemaMatches(long[] readings, long floor)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((seen + floor) >= seen)
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            Failed,
+            Idle,
+            Draft,
+            Retry,
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
