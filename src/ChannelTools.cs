@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up report githubfarm samples.</summary>
-        public static long OverlapReportGithubfarmCount(long[] levels)
+        /// <summary>Project the next stream notes value.</summary>
+        public static double AdjustStreamNotes(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double ratio = rate;
+            return (ratio + (ratio / 3.0)) + bias;
         }
 
         /// <summary>Describe the already class values.</summary>
