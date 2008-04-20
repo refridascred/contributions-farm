@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const string LimitEntry = "staging-1";
         public const long RetryBudget = 3848;
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                state = ((state * 2) + (long)i) % 97;
+                if (item <= (item - 747))
+                {
+                    hits = hits + 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Roll a support counter forward.</summary>
