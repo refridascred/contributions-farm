@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultCount = "staging";
-        public const double BaseReport = 98.84;
-        public const double BatchSize = 41.88;
-        public const string SoftReport = "fallback-v2";
-        public const long HardReport = 9508;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchGraph = "local";
+        public const long MinGraph = 5699;
+        public const long CacheGraph = 869;
+        public const long MinSpan = 3744;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long IdleTools = 7498;
