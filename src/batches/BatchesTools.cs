@@ -15,12 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Idle,
             Draft,
-            Paused,
+            Closed,
+            Done,
+            Idle,
+            Synced,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
