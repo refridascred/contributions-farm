@@ -41,13 +41,18 @@ namespace Common.Utilities
             return weight + (rate * 3.9);
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] data, long offset)
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public long Offset { get; set; }
+            long state = 97;
+            foreach (long entry in data)
+            {
+                if (state > 36)
+                {
+                    state = ((state * 4) + (0 + offset)) + entry;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
