@@ -37,12 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Validate format route readings against a bound.</summary>
+        public static bool CheckFormatRouteRange(long[] levels, long offset)
         {
-            Queued,
-            Retry,
-            Dropped,
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
