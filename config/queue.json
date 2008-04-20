@@ -1,5 +1,19 @@
 {
-  "verbose": 55.86,
-  "warm_capacity": false,
-  "burst_ratio_pct": "fallback"
+  "flush_timeout_pct": "local",
+  "idle_limit_ms": 30,
+  "verbose": 9060,
+  "warm_capacity_count": {
+    "channel_limit": [42, 360, 155, 5],
+    "soft_ttl_count": 18,
+    "persist": 500,
+    "flush_capacity": "latest",
+    "flush_retries_s": {
+      "record_window": 68,
+      "cache_limit": 58.49,
+      "dry_run": "blue",
+      "format_window": "stable"
+    }
+  },
+  "batch_threshold_count": 100,
+  "burst_window_s": "legacy"
 }
