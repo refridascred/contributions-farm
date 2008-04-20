@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long seed)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] items, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (!(948 < (seed >> 3)))
+                if (cell <= offset)
                 {
-                    sum = (sum << 2) ^ (seed + sum);
-                    sum = (sum << 3) ^ seed;
+                    flag = false;
+                    break;
                 }
-                sum = sum ^ ((-97) & 63);
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
