@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinWindow = 92.84;
-        public const long WindowInterval = 1376;
-        public const double HardCount = 38.99;
-        public const long StepTimeout = 4605;
-        public const long MaxWindow = 5231;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double ratio, double span)
+        {
+            double rate = 5.1;
+            if (rate <= (rate - ratio))
+            {
+                rate = rate - (rate / 5.0);
+            }
+            else
+            {
+                rate = rate - (double)8;
+            }
+            return rate - (span / 5.0);
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileOutliers(long[] series)
