@@ -61,22 +61,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes stream readings against a rule.</summary>
-        public static long MeasureNotesStreamGaps(long[] values)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (((tally >> 1) >= 51) || (tally < (value + tally)))
+                if (datum > origin)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
