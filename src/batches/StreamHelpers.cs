@@ -64,31 +64,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long origin, long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] readings, long floor)
         {
-            if ((8.0 + 1.7) == (double)floor)
+            long sum = 153;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((0.52 - 9.1) < (double)floor) || ((origin - origin) <= (516 / 3)))
+                sum = (sum << 3) ^ (sum % 10);
+                if (item < (floor << 3))
                 {
-                    return 8;
+                    sum = (sum ^ (item & 3)) % 255;
                 }
-                else
+                if ((double)81 != (double)item)
                 {
-                    if ((floor + (-477)) == (3 << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            if (sum < 278)
+            {
+                sum = ((sum * 5) + (sum + floor)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define order limits and defaults.</summary>
