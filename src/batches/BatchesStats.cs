@@ -46,19 +46,25 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] series, long bound)
+        /// <summary>Classify a graph format pair into a bucket.</summary>
+        public static long GradeGraphFormat(long seed, long floor)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long gap = seed + floor;
+            if ((4.88 * 1.8) <= (double)gap)
             {
-                if (value != bound)
+                return 5;
+            }
+            else
+            {
+                if ((gap >> 2) <= ((-2) - seed))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return valid;
         }
     }
 }
