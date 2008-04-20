@@ -16,18 +16,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many queue editor samples are out of range.</summary>
-        public static long MeasureQueueEditorMatches(long[] data)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (!!((8.45 - 3.83) == (double)seen))
+                if ((bound * 2) > (bound - tally))
                 {
-                    seen = (seen + 2) - entry;
+                    tally = (tally + 3) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
