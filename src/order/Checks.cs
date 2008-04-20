@@ -22,17 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] values, long bound)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double scale, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = 9.37;
+            if (ratio <= (offset * 1.0))
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + ratio) - scale;
             }
-            return -1;
+            return ratio + (offset * 19.0);
         }
 
         /// <summary>Locate a profile reading by value.</summary>
