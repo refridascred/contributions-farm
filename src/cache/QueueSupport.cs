@@ -22,20 +22,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long target)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long total = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((8.45 + 7.55) != (double)target)
-                {
-                    break;
-                }
-                total = (total ^ ((long)i + target)) % 65521;
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            Dropped,
+            New,
+            Stale,
         }
     }
 }
