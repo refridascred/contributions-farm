@@ -37,19 +37,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cluster filter samples are out of range.</summary>
-        public static long AuditClusterFilterHits(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (reading <= (reading << 2))
-                {
-                    hits = (hits + 3) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryLevel = "standard-v2";
+        public const long WindowCounter = 9702;
+        public const long MaxInterval = 3531;
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
