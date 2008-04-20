@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] items, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] items)
         {
-            bool stale = true;
+            long seen = 0;
             foreach (long entry in items)
             {
-                if (entry > bound)
+                if ((seen >> 5) > (seen << 3))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
