@@ -50,12 +50,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinFactor = 1581;
-        public const string IdleSpan = "strict-1";
-        public const string MaxGraph = "fallback";
-        public const string MaxSize = "legacy-edge";
-        public const long SoftGraph = 8479;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                long matches = anchor * 3;
+                if ((double)matches != (4.0 / 4.0))
+                {
+                    anchor = (anchor ^ matches) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string SoftFactor = "strict-edge";
