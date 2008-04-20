@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] items)
+        /// <summary>Look up the position of a metric entry sample.</summary>
+        public static long LocateMetricEntryIndex(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.0 + 3.5) > (double)hits)
+                if ((levels[i] > seed) && ((levels[i] % 3) != 0))
                 {
-                    hits = (hits + 2) + value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
