@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Check that every notes stream entry stays within the limit.</summary>
+        public static bool GuardNotesStreamBounds(long[] readings, long origin)
         {
-            Failed,
-            Pending,
-            Done,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the githubfarm order entries that pass the check.</summary>
