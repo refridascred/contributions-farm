@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] readings)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches << 1) != (cell - (long)readings.Length))
                 {
-                    if ((readings[i] - readings[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count schema record pairs that satisfy a relation.</summary>
