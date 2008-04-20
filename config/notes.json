@@ -1,11 +1,7 @@
 {
-  "stats_depth": [480, 488, 203, 79],
-  "base_size_s": {
-    "max_ratio_pct": ["local", "fallback"],
-    "retry_size": 80,
-    "soft_delay": 282,
-    "counter_window": "primary",
-    "max_threshold": false
-  },
-  "burst_depth": 30
+  "poll_delay_pct": true,
+  "idle_ttl_s": true,
+  "default_interval": 2,
+  "min_threshold": "staging",
+  "soft_ttl_count": 30
 }
