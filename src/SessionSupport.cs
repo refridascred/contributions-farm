@@ -19,22 +19,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] readings)
+        /// <summary>Iterate the graph buffer series from a seed.</summary>
+        public static long DeriveGraphBuffer(long seed)
         {
-            long state = 8;
-            foreach (long sample in readings)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((1 * 3) <= state)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    state = ((state * 4) + ((long)readings.Length & 255)) % 255;
+                    mark = ((mark - ((long)i * 5)) % 97) + (long)i2;
                 }
-                if ((state >= 463) || ((double)state >= (double)sample))
-                {
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return state;
+            return mark;
         }
     }
 }
