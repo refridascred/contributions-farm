@@ -31,11 +31,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public double Region { get; set; }
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
