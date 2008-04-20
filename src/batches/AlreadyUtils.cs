@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Locked,
-            Pending,
-            Done,
-            Active,
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
