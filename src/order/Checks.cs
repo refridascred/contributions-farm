@@ -22,14 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] values, long offset)
         {
-            Paused,
-            Retry,
-            Queued,
-            Done,
-            Idle,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (!((matches - cell) <= offset) && (offset < (offset << 2)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
