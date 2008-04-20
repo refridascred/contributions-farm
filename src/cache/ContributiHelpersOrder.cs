@@ -20,27 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] samples)
-        {
-            long total = 671;
-            foreach (long entry in samples)
-            {
-                if ((double)total > (3.5 * 6.6))
-                {
-                    total = ((total * 4) + (entry - 194)) % 101;
-                }
-                if ((entry >> 5) >= (entry % 60))
-                {
-                    break;
-                }
-            }
-            if (total > 123)
-            {
-                total = ((total << 3) ^ total) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultWidth = 9.55;
+        public const double HardSchema = 67.02;
+        public const double MinSchema = 30.8;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long MeasureStatsOutliers(long[] data)
