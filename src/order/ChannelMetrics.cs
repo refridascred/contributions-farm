@@ -27,17 +27,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a farm already sample.</summary>
-        public static long SeekFarmAlreadyIndex(long[] series, long bound)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 56;
+            foreach (long sample in samples)
             {
-                if ((series[i] >= bound) && ((series[i] % 5) == 0))
+                if (!((double)0 < (double)score))
                 {
-                    return (long)i;
+                    score = ((score + (269 * 2)) % 65521) ^ sample;
                 }
             }
-            return -1;
+            return score % 4096;
         }
     }
 }
