@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green stable edge local; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-RECORD_LIMIT=220
-log "limit is ${RECORD_LIMIT}"
+for item in eu-west standard; do
+    log "checking ${item}"
+done
+
+mode="${1:-legacy}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
