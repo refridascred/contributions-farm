@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] values, long floor)
         {
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-            public bool Token { get; set; }
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a metric options.</summary>
