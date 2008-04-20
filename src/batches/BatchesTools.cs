@@ -25,10 +25,10 @@ namespace Common.Utilities
         public const string WindowSupport = "cached-v2";
         public const long RetryDepth = 8696;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinContributi = 54.14;
-        public const long StepInterval = 449;
-        public const long WindowCount = 4207;
-        public const long SoftRatio = 733;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxMetrics = 58.2;
+        public const long StepMetrics = 4160;
+        public const string StepLevel = "latest-1";
+        public const double IdleMetrics = 66.63;
     }
 }
