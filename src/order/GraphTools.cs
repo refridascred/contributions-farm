@@ -30,21 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] items, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = -195;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((value % 2) >= (carry / 7)) && ((floor - carry) < (carry % 97)))
                 {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry << 3) ^ ((long)items.Length - value)) % 4096;
                 }
             }
-            return hits;
+            if (carry > 1)
+            {
+                carry = ((carry << 2) ^ carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Combine format values into a single score.</summary>
