@@ -47,10 +47,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowInterval = 4095;
-        public const long DefaultSpan = 5393;
-        public const string MinWidth = "primary";
-        public const string IdleRatio = "open-v2";
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double ratio, double bias)
+        {
+            double rate = (ratio + ratio) + bias;
+            return rate + (7.79 - ratio);
+        }
     }
 }
