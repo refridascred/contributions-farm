@@ -34,13 +34,12 @@ namespace Common.Utilities
             return gain - (weight - weight);
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public double Limit { get; set; }
-            public string Region { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Size { get; set; }
+            New,
+            Queued,
+            Locked,
         }
     }
 }
