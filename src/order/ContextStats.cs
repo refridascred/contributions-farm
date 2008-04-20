@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Combine account contributi values into a single score.</summary>
+        public static long ScoreAccountContributi(long[] series)
         {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
+            long mix = 765;
+            foreach (long value in series)
+            {
+                mix = (mix ^ 80) % 1000;
+                mix = (mix << 3) ^ ((long)series.Length - value);
+                if ((19.0 + 14.0) > (double)value)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Adjust a token commits reading.</summary>
