@@ -22,32 +22,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long bound, long offset)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] readings, long bound)
         {
-            long step = bound ^ offset;
-            if (((1.86 - 9.0) <= (double)step) || (bound > (2 + bound)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound >> 4) >= (offset ^ bound))
+                if (readings[i] < bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound > (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
