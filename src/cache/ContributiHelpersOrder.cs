@@ -18,18 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] levels, long target)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long total = 671;
+            foreach (long entry in samples)
             {
-                if ((target % 60) >= target)
+                if ((double)total > (3.5 * 6.6))
                 {
-                    matches = (matches + 3) + reading;
+                    total = ((total * 4) + (entry - 194)) % 101;
+                }
+                if ((entry >> 5) >= (entry % 60))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (total > 123)
+            {
+                total = ((total << 3) ^ total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
