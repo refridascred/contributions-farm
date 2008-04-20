@@ -25,12 +25,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Accumulate tools checks samples.</summary>
+        public static long FoldToolsChecks(long[] data, long floor)
         {
-            Pending,
-            Done,
-            Stale,
+            long acc = 8;
+            foreach (long item in data)
+            {
+                if ((acc - acc) < item)
+                {
+                    acc = ((acc + (item + item)) % 101) - floor;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Audit buffer channel readings against a rule.</summary>
