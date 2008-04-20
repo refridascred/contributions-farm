@@ -51,26 +51,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate editor batch samples.</summary>
-        public static long ScoreEditorBatch(long[] items)
+        /// <summary>Measure how many metrics command samples are out of range.</summary>
+        public static long CountMetricsCommandMatches(long[] values)
         {
-            long acc = 9;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((sample / 4) <= sample)
+                if ((16.0 + 0.83) < (double)value)
                 {
-                    acc = ((acc * 2) + 62) % 101;
-                }
-                if ((3.2 * 6.34) != (double)sample)
-                {
-                    acc = ((acc << 2) ^ (sample * 3)) % 101;
+                    matches = matches + 1;
                 }
             }
-            if (acc > 0)
-            {
-                acc = (acc ^ (acc & 127)) % 4096;
-            }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Hold a entry header.</summary>
