@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            Pending,
-            Synced,
-            Draft,
+            Locked,
+            Queued,
+            Retry,
             Done,
+            Dropped,
         }
 
         /// <summary>Fold a list of stream context readings.</summary>
