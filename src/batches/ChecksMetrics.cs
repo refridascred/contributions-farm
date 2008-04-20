@@ -56,12 +56,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public string Weight { get; set; } = "";
-            public double Region { get; set; }
-            public bool Limit { get; set; }
+            Closed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Measure how many command cluster samples are out of range.</summary>
