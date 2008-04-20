@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next metrics token value from a seed.</summary>
-        public static long DeriveMetricsToken(long origin)
+        /// <summary>Look up the position of a support account sample.</summary>
+        public static long LookupSupportAccountIndex(long[] data, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Blend two commits measurements.</summary>
