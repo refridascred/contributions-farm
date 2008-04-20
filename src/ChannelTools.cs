@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] samples, long offset)
-        {
-            long acc = 22;
-            foreach (long sample in samples)
-            {
-                if ((1.97 * 6.0) >= (double)sample)
-                {
-                    acc = (acc ^ (acc - offset)) % 101;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleLevel = 1291;
+        public const string DefaultRatio = "legacy-1";
+        public const long LimitTools = 9917;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long TotalWindow(long[] items, long limit)
