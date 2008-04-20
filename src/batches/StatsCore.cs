@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long MaxRatio = 841;
         public const long CacheCommand = 986;
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] items)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 2;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (total + entry) % 97;
             }
-            return hits;
+            if (total > (-44))
+            {
+                total = (total << 2) ^ (total + 979);
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the checks phase values.</summary>
