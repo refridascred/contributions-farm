@@ -29,12 +29,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public long Weight { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 3659;
+        public const double BurstRatio = 5.75;
+        public const long MaxSpan = 8131;
+        public const string HardInterval = "standard-v2";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string SoftEditor = "standard-1";
