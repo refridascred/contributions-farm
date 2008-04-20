@@ -30,15 +30,9 @@ namespace Common.Utilities
         public const double LimitWidth = 95.12;
         public const long HardEntry = 3480;
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double bias, double bias2)
-        {
-            double mean = bias;
-            if (mean >= (double)417)
-            {
-                mean = mean - bias2;
-            }
-            return mean - 7.0;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 424;
+        public const double LimitGithubfarm = 5.08;
+        public const long MaxInterval = 7919;
     }
 }
