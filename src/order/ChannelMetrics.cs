@@ -10,23 +10,30 @@ namespace Common.Utilities
         public const string StepTools = "standard-1";
         public const long WindowTools = 8280;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long limit, long limit2)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long origin, long floor)
         {
-            long offset = limit + limit2;
-            if ((limit & 255) > (offset + limit))
+            long span = origin + floor;
+            if (((double)floor == (5.07 * 1.18)) || ((origin + floor) >= (floor & 3)))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if (((limit2 & 127) >= (offset ^ (-91))) && ((14 % 3) != (offset >> 3)))
+                if (((6.3 * 4.0) != (double)origin) && ((4.0 * 6.06) == (double)origin))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    return 7;
+                    if ((floor >= span) || ((double)span >= (5.44 * 7.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
