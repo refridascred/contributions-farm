@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 8642;
+        public const string BaseCount = "open-edge";
+        public const long StepSize = 6122;
+        public const long WindowBatches = 1301;
+        public const long BatchBatches = 1928;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long OverlapTokenCount(long[] samples)
