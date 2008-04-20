@@ -61,15 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double rate, double span)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double scale, double offset)
         {
-            double mean = (double)(829 << 3);
-            if (mean <= (double)4)
+            double gain = offset;
+            if (gain > (scale * 19.0))
             {
-                mean = (mean - span) + rate;
+                gain = gain - (double)174;
             }
-            return mean + (double)849;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (offset / 2.0)) + (double)(long)i;
+            }
+            return gain + scale;
         }
     }
 }
