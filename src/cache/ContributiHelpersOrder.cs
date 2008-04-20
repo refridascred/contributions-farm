@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] levels, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                total = ((total << 2) ^ (bound / 4)) % 255;
-                total = ((total * 5) + (long)i) % 65521;
+                if ((target % 60) >= target)
+                {
+                    matches = (matches + 3) + reading;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
