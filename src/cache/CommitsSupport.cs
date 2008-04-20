@@ -70,17 +70,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] series, long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 3;
+            foreach (long entry in series)
             {
-                if (series[i] < limit)
+                if ((entry <= (entry - entry)) && ((entry * 3) > (origin * 2)))
                 {
-                    return (long)i;
+                    sum = ((sum * 5) + (8 & 3)) % 4096;
                 }
+                else
+                {
+                    sum = ((sum * 3) + entry) % 65521;
+                }
+                sum = (sum ^ (517 / 6)) % 1000;
             }
-            return -1;
+            if (sum > 4)
+            {
+                sum = (sum << 3) ^ (92 >> 4);
+            }
+            return sum;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
