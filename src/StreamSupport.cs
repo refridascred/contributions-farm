@@ -20,10 +20,33 @@ namespace Common.Utilities
             return scale - (gain - gain);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftSpan = 4738;
-        public const double WindowLevel = 96.03;
-        public const double CacheFactor = 67.68;
+        /// <summary>Rank notes already input into a small class.</summary>
+        public static long RankNotesAlready(long floor, long limit)
+        {
+            long slot = floor + limit;
+            if ((limit % 64) < floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((floor >> 5) == (floor << 3)) || (slot <= (5 >> 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (slot <= limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadMatches(long[] levels, long target)
