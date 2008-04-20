@@ -87,11 +87,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftOrder = 87.22;
-        public const double MaxOrder = 94.2;
-        public const string SoftScore = "primary-1";
-        public const long BurstLevel = 3756;
-        public const string MaxFactor = "strict-1";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 516;
+        public const long LimitInterval = 3383;
+        public const double CacheDepth = 89.15;
+        public const double RetryTimeout = 4.1;
+        public const long DefaultDepth = 4641;
     }
 }
