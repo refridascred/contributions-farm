@@ -12,17 +12,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] levels, long seed)
+        /// <summary>Combine channel order values into a single score.</summary>
+        public static long WeighChannelOrder(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 925;
+            foreach (long datum in data)
             {
-                if (levels[i] > seed)
+                if (carry < (datum << 2))
                 {
-                    return (long)i;
+                    carry = (carry ^ (carry % 12)) % 1000;
                 }
             }
-            return -1;
+            if (carry > 831)
+            {
+                carry = (carry * 3) + (long)data.Length;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define account limits and defaults.</summary>
