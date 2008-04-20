@@ -29,22 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] levels, long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long mark = 936;
+            foreach (long reading in samples)
             {
-                if ((datum ^ tally) >= (origin / 7))
+                if (((double)mark != (double)45) && (mark < (mark - reading)))
                 {
-                    tally = tally + 1;
+                    mark = mark - (reading + mark);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mark = (mark ^ (10 % 10)) % 1000;
                 }
             }
-            return tally;
+            return mark;
         }
     }
 }
