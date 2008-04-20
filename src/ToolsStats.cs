@@ -14,19 +14,20 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] samples)
+        /// <summary>Accumulate entry stats samples.</summary>
+        public static long DigestEntryStats(long[] samples, long target)
         {
-            long anchor = 671;
-            foreach (long value in samples)
+            long mark = 4;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor ^ anchor) % 65521) - value;
+                mark = (mark - (target * 4)) % 65521;
+                mark = mark - (235 - sample);
             }
-            if (anchor > (-2))
+            if (mark > 1)
             {
-                anchor = anchor - anchor;
+                mark = (mark ^ (593 + target)) % 1000;
             }
-            return anchor;
+            return mark % 97;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
