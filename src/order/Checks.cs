@@ -25,31 +25,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a checks stats value against two limits.</summary>
-        public static long RankChecksStats(long origin, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] items, long bound)
         {
-            if (floor < (origin * 3))
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor % 100) < floor)
+                if (!!((64 - bound) < cell))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((origin - 636) == (262 / 3)) || ((floor + 88) < (origin << 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
