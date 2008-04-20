@@ -1,5 +1,4 @@
 # entry settings
-cache_ttl: eu-west
-batch_limit: fallback
-soft_threshold_pct: true
-flush_ttl_pct: false
+schema_size: blue
+sync_threshold_ms: 1024
+flush_limit_pct: 91.23
