@@ -64,11 +64,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheCount = 9309;
-        public const long LimitSpan = 9573;
-        public const long IdleGraph = 8814;
-        public const long SoftDepth = 8665;
-        public const string StepScore = "open-1";
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] data, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (offset <= (offset & 63))
+                {
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
