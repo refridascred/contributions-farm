@@ -33,19 +33,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double rate, double floor)
+        /// <summary>Classify a profile record pair into a bucket.</summary>
+        public static long GradeProfileRecord(long floor, long target)
         {
-            double bias = rate;
-            if (bias >= rate)
+            long bound = floor - target;
+            if ((5.8 * 7.14) <= (double)floor)
             {
-                bias = (bias + bias) + floor;
+                return 5;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                bias = (bias + 7.33) - (double)(long)i;
+                if (target > (floor + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor == (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return bias - 0.27;
         }
 
         /// <summary>Hold a cache options.</summary>
