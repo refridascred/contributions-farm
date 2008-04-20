@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of schema farm readings.</summary>
-        public static long MatchSchemaFarmCount(long[] levels)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long origin, long origin2)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long slot = origin + origin2;
+            if (origin2 > (origin2 + 373))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((slot + origin2) == (origin + origin)) || ((origin2 ^ slot) >= (slot >> 2)))
                 {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
