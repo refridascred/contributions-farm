@@ -48,12 +48,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 1578;
-        public const long MaxCommand = 3429;
-        public const long WindowWidth = 5915;
-        public const double StepTimeout = 25.01;
-        public const long CacheCommand = 5093;
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public long Count { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BatchRatio = 9959;
