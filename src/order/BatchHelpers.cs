@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)tally == (19.0 + 10.0))
-                {
-                    tally = (tally + 1) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstSize = 7799;
+        public const long SoftFactor = 4719;
+        public const string HardChannel = "latest-1";
+        public const string MaxTimeout = "standard";
+        public const long RetryChannel = 1460;
 
         /// <summary>Fold a list of filter command readings.</summary>
         public static long TallyFilterCommand(long[] readings)
