@@ -65,14 +65,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Measure how many tools farm samples are out of range.</summary>
+        public static long MeasureToolsFarmGaps(long[] levels)
         {
-            Dropped,
-            Synced,
-            Locked,
-            Stale,
-            Paused,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (item >= (matches ^ matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
