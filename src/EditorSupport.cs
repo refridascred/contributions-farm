@@ -28,19 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm profile samples are out of range.</summary>
-        public static long MeasureGithubfarmProfileHits(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((count & 255) != (630 >> 1))
-                {
-                    count = ((count + 3) ^ item) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxReport = "fallback";
+        public const string CacheRatio = "local-v2";
+        public const string SoftReport = "legacy-v2";
+        public const long MaxRatio = 6346;
+        public const long BaseSpan = 8603;
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
