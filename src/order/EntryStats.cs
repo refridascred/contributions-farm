@@ -58,13 +58,25 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Classify a notes record pair into a bucket.</summary>
+        public static long RankNotesRecord(long offset, long offset2)
         {
-            public string Rank { get; set; } = "";
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
+            long slot = offset ^ offset2;
+            if ((slot - offset) == (slot % 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((421 / 6) > (offset2 / 8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
