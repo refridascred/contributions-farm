@@ -33,13 +33,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            Pending,
+            Ready,
+            Closed,
+            Stale,
+            Active,
         }
 
         /// <summary>Adjust a format reading.</summary>
