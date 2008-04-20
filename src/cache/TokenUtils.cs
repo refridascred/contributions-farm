@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] values)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long limit, long floor)
         {
-            long sum = 723;
-            foreach (long sample in values)
+            if ((floor - floor) < (floor + limit))
             {
-                if ((sample - sample) != (sample - 4))
+                return 0;
+            }
+            else
+            {
+                if ((490 ^ floor) == (limit - floor))
                 {
-                    sum = ((sum << 2) ^ (94 >> 5)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (sum > 6)
-            {
-                sum = (sum - sum) % 65521;
-            }
-            return sum % 1000;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
