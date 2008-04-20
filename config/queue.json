@@ -1,15 +1,6 @@
 {
-  "audit": "primary",
-  "soft_timeout": 58,
-  "soft_retries_count": {
-    "token_limit": "open",
-    "readonly": ["cached", "eu-west", "local", "green"],
-    "payload_timeout": 250,
-    "session_window": {
-      "checks_delay": false,
-      "readonly": 250,
-      "batch_ratio": 30,
-      "dry_run": "cached"
-    }
-  }
+  "verbose": ["latest", "legacy", "open"],
+  "idle_ttl_s": "local",
+  "burst_delay_pct": 83.18,
+  "route_retries": 5510
 }
