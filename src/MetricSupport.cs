@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long origin, long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] samples, long step)
         {
-            if ((double)target < (double)origin)
+            long carry = -5;
+            foreach (long entry in samples)
             {
-                return 8;
+                carry = (((carry * 3) + entry) % 1000) + step;
             }
-            else
-            {
-                if (((7.2 + 2.0) != (double)target) || (target > (target + 4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Accumulate layout samples.</summary>
