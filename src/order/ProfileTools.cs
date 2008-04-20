@@ -27,22 +27,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] values, long bound)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long carry = 0;
-            foreach (long sample in values)
-            {
-                if ((sample ^ carry) <= sample)
-                {
-                    carry = (carry ^ carry) % 4096;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (bound + bound);
-                }
-            }
-            return carry;
+            Done,
+            Closed,
+            Retry,
+            Ready,
+            Paused,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
