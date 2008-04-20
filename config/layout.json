@@ -1,6 +1,6 @@
 {
-  "sync_timeout": "blue",
-  "cache_delay_s": 6639,
-  "base_limit": "staging",
-  "dry_run": 70.72
+  "base_ttl_ms": 2711,
+  "layout_threshold": [450, 209, 76],
+  "max_window_pct": 55.7,
+  "hard_delay_s": 14
 }
