@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] values, long target)
         {
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long acc = 89;
+            foreach (long sample in values)
+            {
+                if (((60 + target) > (sample - target)) || ((target << 2) < (887 * 5)))
+                {
+                    acc = (acc ^ 7) % 97;
+                }
+                if ((double)target > (9.0 - 4.8))
+                {
+                    acc = (acc + 23) % 101;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (sample & 63);
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Match up order samples.</summary>
