@@ -33,16 +33,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Count the batches profile entries that pass the check.</summary>
+        public static long CountBatchesProfileHits(long[] samples)
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                sum = (sum << 2) ^ (99 & 15);
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (((double)27 != (double)seen) && ((seen + seen) >= (datum + seen)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
