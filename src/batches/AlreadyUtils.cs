@@ -53,14 +53,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Locked,
-            Synced,
-            New,
-            Draft,
-            Done,
+            Queued,
+            Idle,
+            Ready,
         }
     }
 }
