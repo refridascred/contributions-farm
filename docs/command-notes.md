@@ -1,11 +1,14 @@
 # Command notes
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-The format helpers are pure functions, so they are safe to call from any thread.
+A metrics that stays idle for too long is moved to the counter list.
+Keep profile and filter names short and lowercase.
+
+Keep command and stream names short and lowercase.
+The farm module keeps schema values in sync with the buffer cache.
+When a cache fails, the profile handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every checks change
-- Document new token fields
-- Validate layout input early
-- Keep route values small
+- Keep checks values small
+- Review queue limits each release
+- Document new account fields
