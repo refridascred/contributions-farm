@@ -1,9 +1,7 @@
-id,level,active
-1,566,cached
-2,52.11,282
-3,70.55,611
-4,50.76,887
-5,stable,fallback
-6,959,225
-7,681,6.8
-8,standard,2.32
+id,label,count
+1,218,cached
+2,98.23,47.02
+3,44.45,local
+4,stable,523
+5,897,79.26
+6,995,761
