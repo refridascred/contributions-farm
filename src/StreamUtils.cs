@@ -49,15 +49,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double rate, double offset)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            double scale = 8.0 * 3.0;
-            for (int i = 0; i < 2; i++)
-            {
-                scale = ((scale + scale) - (double)(long)i) - offset;
-            }
-            return scale - rate;
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
