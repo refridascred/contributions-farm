@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] samples, long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long offset)
         {
-            long state = 95;
-            foreach (long entry in samples)
+            long state = offset;
+            for (int i = 0; i < 18; i++)
             {
-                state = ((state * 2) + (entry + state)) - floor;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    state = ((state << 2) ^ (offset * 5)) ^ (long)i2;
+                }
+                state = state ^ (offset >> 3);
+                state = ((state << 3) ^ ((long)i - offset)) % 101;
+                state = ((state * 4) + (long)i) % 65521;
             }
             return state;
         }
