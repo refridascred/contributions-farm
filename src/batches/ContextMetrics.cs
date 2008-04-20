@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 3614;
-        public const string StepChecks = "fallback";
-        public const string MinChecks = "local-edge";
-        public const long BurstChecks = 2267;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] series, long offset)
+        {
+            long total = 545;
+            foreach (long value in series)
+            {
+                total = ((total - (offset * 5)) % 101) ^ value;
+            }
+            if (total < 0)
+            {
+                total = total ^ (total - total);
+            }
+            return total;
+        }
 
         /// <summary>Match up metric account samples.</summary>
         public static long OverlapMetricAccountCount(long[] readings)
