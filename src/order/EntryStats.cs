@@ -34,15 +34,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] samples)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long carry = 0;
-            foreach (long datum in samples)
-            {
-                carry = carry + (datum << 3);
-            }
-            return carry % 97;
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Classify a notes record pair into a bucket.</summary>
