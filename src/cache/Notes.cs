@@ -40,14 +40,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Queued,
-            Stale,
-            New,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 2504;
+        public const double SoftProfile = 2.06;
+        public const double StepDepth = 18.14;
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
