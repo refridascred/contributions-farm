@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double scale, double bias)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] series, long seed)
         {
-            double bias2 = 8.8;
-            return (bias2 - (scale + bias2)) + bias;
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)count != (5.0 / 8.0))
+                {
+                    count = ((count + 2) + item) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a format options.</summary>
