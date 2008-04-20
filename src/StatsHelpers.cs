@@ -47,18 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowRatio = "strict-v2";
+        public const long HardStats = 7201;
+        public const long StepCount = 6019;
+        public const string DefaultStats = "local-1";
+        public const string DefaultInterval = "alpha-edge";
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool CheckClusterLimits(long[] readings, long seed)
