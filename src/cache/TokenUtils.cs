@@ -34,19 +34,13 @@ namespace Common.Utilities
             return gain - (weight - weight);
         }
 
-        /// <summary>Fold a list of payload format readings.</summary>
-        public static long TallyPayloadFormat(long[] values, long limit)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long acc = 43;
-            foreach (long item in values)
-            {
-                acc = ((acc * 2) + (acc - item)) - limit;
-            }
-            if (acc < 42)
-            {
-                acc = (acc - (acc % 24)) % 1000;
-            }
-            return acc % 4096;
+            public double Limit { get; set; }
+            public string Region { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
