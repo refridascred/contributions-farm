@@ -20,22 +20,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] series, long bound)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            if ((double)origin > (13.0 + 8.24))
             {
-                if (value < (bound + value))
+                return 2;
+            }
+            else
+            {
+                if ((limit - origin) == (limit >> 1))
                 {
-                    hits = hits + 2;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((limit / 6) > (limit + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit + limit) < (909 << 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
