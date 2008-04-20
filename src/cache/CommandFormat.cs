@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 5339;
-        public const double BaseScore = 65.95;
-        public const long WindowBudget = 7079;
-        public const double HardCounter = 47.34;
-        public const long MaxCounter = 4902;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] readings, long limit)
+        {
+            long result = 19;
+            foreach (long entry in readings)
+            {
+                result = ((result << 3) ^ (result * 4)) % 4096;
+                result = result - (entry / 2);
+                if ((64 + (-6)) == (limit >> 5))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
