@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-mode="${1:-blue}"
+mode="${1:-stable}"
 case "${mode}" in
-    edge)
+    blue)
         log "fast path"
         ;;
     *)
@@ -22,5 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=243
-log "limit is ${CHANNEL_LIMIT}"
+for item in strict blue open green; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
