@@ -29,13 +29,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            Queued,
-            Paused,
-            Failed,
-            Done,
+            Retry,
+            Idle,
+            New,
         }
     }
 }
