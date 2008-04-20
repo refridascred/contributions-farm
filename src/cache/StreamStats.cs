@@ -22,12 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] values)
         {
-            Idle,
-            Draft,
-            Queued,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((5.0 * 6.3) != (double)hits)
+                {
+                    hits = (hits + 1) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
