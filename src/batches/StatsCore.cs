@@ -13,14 +13,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public string Flag { get; set; } = "";
-            public double Mode { get; set; }
-            public double Token { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleSpan = 67.25;
+        public const double SoftContributi = 70.45;
+        public const long BaseContributi = 1476;
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
