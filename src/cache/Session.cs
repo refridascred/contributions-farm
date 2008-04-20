@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every account support entry stays within the limit.</summary>
-        public static bool GuardAccountSupportRange(long[] levels, long origin)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
