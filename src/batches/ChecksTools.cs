@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine report schema values into a single score.</summary>
-        public static long TallyReportSchema(long[] data)
-        {
-            long mark = 11;
-            foreach (long datum in data)
-            {
-                if (!((datum % 100) <= (1 ^ (-399))))
-                {
-                    mark = ((mark * 4) + (mark - mark)) % 97;
-                }
-                mark = (mark << 3) ^ datum;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultStats = "open-1";
+        public const long StepStats = 3549;
+        public const long BatchStats = 3676;
+        public const double CacheScore = 13.14;
+        public const double MaxScore = 77.84;
 
         /// <summary>Define order limits and defaults.</summary>
         public const string BaseSize = "alpha";
