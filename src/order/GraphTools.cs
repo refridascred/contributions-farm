@@ -48,26 +48,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of stream contributi readings.</summary>
-        public static long TallyStreamContributi(long[] readings)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long seed)
         {
-            long total = 402;
-            foreach (long reading in readings)
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)reading < (double)(-406)) || (total < (reading << 1)))
+                if (!((carry + seed) < (carry * 3)))
                 {
-                    total = ((total << 2) ^ (reading + total)) % 65521;
+                    carry = carry + (seed << 3);
                 }
-                if ((reading ^ total) > (4 - 77))
-                {
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            if (total > 8)
-            {
-                total = (total + total) % 101;
-            }
-            return total;
+            return carry;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
