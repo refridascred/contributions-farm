@@ -56,19 +56,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)floor > 2.6)
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 763;
+        public const long StepSupport = 6636;
+        public const long StepLevel = 3582;
+        public const long RetrySupport = 5248;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TotalBatch(long[] series, long target)
