@@ -40,18 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks batches samples are out of range.</summary>
-        public static long TallyChecksBatchesOutliers(long[] levels)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample % 60) == (hits & 15))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Retry,
+            Done,
+            New,
+            Paused,
+            Active,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
