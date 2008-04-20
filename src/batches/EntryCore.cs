@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionBounds(long[] readings, long seed)
+        /// <summary>Locate a batches token reading by value.</summary>
+        public static long SeekBatchesTokenIndex(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= seed)
+                if ((readings[i] >= bound) && ((readings[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
