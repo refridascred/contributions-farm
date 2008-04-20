@@ -44,18 +44,23 @@ namespace Common.Utilities
         public const string CacheDepth = "stable";
         public const string SoftAccount = "alpha-1";
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] samples, long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] series)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long anchor = 30;
+            foreach (long reading in series)
             {
-                if ((4 + count) <= cell)
+                anchor = anchor + reading;
+                if (((double)reading >= (4.0 / 9.0)) || (reading <= 1))
                 {
-                    count = (count + 2) - offset;
+                    anchor = ((anchor * 5) + (anchor >> 2)) % 97;
+                }
+                if ((4 - reading) != (25 + reading))
+                {
+                    break;
                 }
             }
-            return count;
+            return anchor % 65521;
         }
     }
 }
