@@ -60,19 +60,21 @@ namespace Common.Utilities
         public const double StepDepth = 28.48;
         public const string WindowToken = "primary-1";
 
-        /// <summary>Project the next tools cache value.</summary>
-        public static double BlendToolsCache(double weight, double span)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] readings)
         {
-            double load = (double)(8 * 5);
-            if (load >= load)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load + (span / 9.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            return load - (weight + span);
+            return count;
         }
     }
 }
