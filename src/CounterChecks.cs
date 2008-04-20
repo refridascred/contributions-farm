@@ -44,20 +44,31 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Iterate the commits buffer series from a seed.</summary>
-        public static long SeriesCommitsBuffer(long limit)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long seed, long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
+            if ((double)seed == (7.2 / 6.0))
             {
-                state = (state ^ (state / 4)) % 101;
-                if (!(state > (limit - state)))
-                {
-                    state = (state * 2) + ((long)i % 8);
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((9.2 - 3.29) >= (double)limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed - seed) <= 447)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
