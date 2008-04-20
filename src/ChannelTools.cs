@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double rate, double span)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] samples, long offset)
         {
-            double bias = 7.3;
-            if (bias <= (3.7 - span))
+            long acc = 22;
+            foreach (long sample in samples)
             {
-                bias = bias - span;
+                if ((1.97 * 6.0) >= (double)sample)
+                {
+                    acc = (acc ^ (acc - offset)) % 101;
+                }
             }
-            return bias + (rate / 3.0);
+            return acc;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
