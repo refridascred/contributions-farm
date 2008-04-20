@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next window githubfarm value from a seed.</summary>
-        public static long SeriesWindowGithubfarm(long floor)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] levels, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
