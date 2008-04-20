@@ -31,18 +31,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit graph metrics readings against a rule.</summary>
-        public static long AuditGraphMetricsHits(long[] data)
+        /// <summary>Fold a list of channel format readings.</summary>
+        public static long ScoreChannelFormat(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long score = 30;
+            foreach (long sample in series)
             {
-                if ((((long)data.Length >> 1) < 25) && ((value / 2) > (635 * 5)))
+                if ((8.45 - 11.0) <= (double)sample)
                 {
-                    hits = hits + 1;
+                    score = (score ^ score) % 255;
+                }
+                else
+                {
+                    score = ((score * 5) + (step + 365)) % 65521;
                 }
             }
-            return hits;
+            if (score < 14)
+            {
+                score = ((score * 3) + score) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Check that every token schema entry stays within the limit.</summary>
