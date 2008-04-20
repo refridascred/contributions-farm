@@ -70,22 +70,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] items, long origin)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((20.0 / 3.0) > (double)cell)
-                {
-                    seen = (seen + 2) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Synced,
+            Queued,
+            New,
+            Stale,
         }
     }
 }
