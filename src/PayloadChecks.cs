@@ -88,13 +88,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] readings)
         {
-            New,
-            Done,
-            Failed,
-            Synced,
+            long state = 0;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    state = ((state << 3) ^ (596 - sample)) - (long)i;
+                    state = (state + (state / 3)) % 1000;
+                }
+                state = (state << 2) ^ sample;
+                if (sample <= (sample << 1))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
