@@ -1,7 +1,5 @@
 # githubfarm settings
-warm_threshold: 7940
-soft_limit_pct: 35.67
-poll_capacity_s: 18.88
-enabled: 17.3
-warm_timeout_ms: true
-window_size: staging
+audit: local
+cache_depth_count: eu-west
+enabled: standard
+max_depth_s: 93.97
