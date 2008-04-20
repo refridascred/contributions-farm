@@ -30,18 +30,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] items, long step)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((2 + step) > (step << 1))
+                if (items[i] >= floor)
                 {
-                    tally = (tally + 2) - entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
