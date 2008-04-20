@@ -33,14 +33,15 @@ namespace Common.Utilities
             return weight + (double)21;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Derive the next tools stats value from a seed.</summary>
+        public static long IterateToolsStats(long offset)
         {
-            Failed,
-            Paused,
-            Locked,
-            Stale,
-            Idle,
+            long mix = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
