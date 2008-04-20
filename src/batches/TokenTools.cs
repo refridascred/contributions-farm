@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const long DefaultToken = 5492;
         public const long WindowToken = 5199;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = ((mark * 2) + mark) % 4096;
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Blend two report measurements.</summary>
