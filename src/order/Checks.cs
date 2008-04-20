@@ -39,23 +39,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] samples)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] samples, long limit)
         {
-            long acc = 558;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                acc = acc ^ cell;
-                if (cell >= ((long)samples.Length << 3))
+                if (item > limit)
                 {
-                    acc = acc - cell;
-                }
-                else
-                {
-                    acc = acc + (cell + 35);
+                    stale = false;
+                    break;
                 }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
