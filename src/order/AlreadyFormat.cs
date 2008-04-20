@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double weight, double bias)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] items)
         {
-            double drift = bias + (bias - bias);
-            if (drift > drift)
+            long mark = -121;
+            foreach (long cell in items)
             {
-                drift = (drift + (drift * 3.0)) + weight;
+                if (((mark >> 3) >= cell) || ((mark + 70) > mark))
+                {
+                    mark = ((mark << 3) ^ mark) % 97;
+                }
             }
-            return drift - (bias + drift);
+            return mark;
         }
 
         /// <summary>Describe the batch class values.</summary>
