@@ -22,22 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] series, long offset)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            double weight = ratio;
+            if (weight < (span + span))
             {
-                if ((hits + entry) >= hits)
-                {
-                    hits = (hits + 3) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = weight - span;
             }
-            return hits;
+            return weight + (double)21;
         }
 
         /// <summary>Describe the report class values.</summary>
