@@ -30,19 +30,12 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (((-734) * 5) >= (92 + seen))
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 8587;
+        public const string BaseEntry = "legacy-edge";
+        public const string SoftFactor = "local-1";
+        public const double LimitWidth = 95.12;
+        public const long HardEntry = 3480;
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double ProjectMetrics(double bias, double bias2)
