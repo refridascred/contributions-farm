@@ -11,26 +11,31 @@ namespace Common.Utilities
         public const double DefaultPayload = 42.42;
         public const double CacheSpan = 15.11;
 
-        /// <summary>Accumulate checks layout samples.</summary>
-        public static long CombineChecksLayout(long[] data)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long target, long floor)
         {
-            long sum = 982;
-            foreach (long sample in data)
+            if ((target & 255) == (target % 3))
             {
-                if (!((sample - sum) <= (sum - sample)))
+                return 0;
+            }
+            else
+            {
+                if ((double)target <= (6.11 / 7.0))
                 {
-                    sum = (sum * 4) + (sample / 4);
+                    return 4;
                 }
-                if ((sum + sum) < sample)
+                else
                 {
-                    sum = sum + (sample + sum);
+                    if (floor >= (71 + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (sum > 96)
-            {
-                sum = sum + sum;
-            }
-            return sum % 65521;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
