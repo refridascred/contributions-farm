@@ -19,12 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Stale,
-            Synced,
+            Active,
+            Retry,
             Queued,
+            Ready,
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
