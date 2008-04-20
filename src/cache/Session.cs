@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine context counter values into a single score.</summary>
-        public static long TallyContextCounter(long[] data, long offset)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long mark = 8;
-            foreach (long datum in data)
-            {
-                mark = (((mark ^ (366 >> 4)) % 101) ^ datum) - offset;
-            }
-            return mark % 97;
+            public bool Owner { get; set; }
+            public string Count { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Adjust a buffer reading.</summary>
