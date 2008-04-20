@@ -29,15 +29,13 @@ namespace Common.Utilities
         public const long CacheTools = 2321;
         public const string WindowTools = "legacy";
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long target)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            Closed,
+            Active,
+            Failed,
+            Paused,
         }
 
         /// <summary>Hold a editor options.</summary>
