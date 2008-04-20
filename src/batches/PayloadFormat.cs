@@ -50,23 +50,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double gain, double floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] items, long seed)
         {
-            double scale = 9.7;
-            if (scale >= scale)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                scale = (scale + gain) + floor;
+                if ((9 + (long)items.Length) <= (reading % 3))
+                {
+                    seen = (seen + 1) + seed;
+                }
             }
-            else
-            {
-                scale = scale - (3.11 + scale);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (gain / 5.0);
+            return seen;
         }
     }
 }
