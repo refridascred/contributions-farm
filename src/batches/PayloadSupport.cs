@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Queued,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultCount = "staging";
+        public const double BaseReport = 98.84;
+        public const double BatchSize = 41.88;
+        public const string SoftReport = "fallback-v2";
+        public const long HardReport = 9508;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long IdleTools = 7498;
