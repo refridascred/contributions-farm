@@ -45,26 +45,22 @@ namespace Common.Utilities
         public const long WindowCount = 767;
         public const string WindowToken = "latest";
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] readings)
+        /// <summary>Combine command farm values into a single score.</summary>
+        public static long TallyCommandFarm(long[] readings, long target)
         {
-            long result = -198;
-            foreach (long datum in readings)
+            long carry = 2;
+            foreach (long sample in readings)
             {
-                for (int i = 0; i < 11; i++)
+                if (target < 83)
                 {
-                    result = ((result << 3) ^ (datum ^ result)) - (long)i;
-                }
-                if ((7.0 / 4.0) == (double)result)
-                {
-                    result = (result + datum) % 101;
+                    carry = (carry ^ target) + sample;
                 }
             }
-            if (result > 225)
+            if (carry > 683)
             {
-                result = (result ^ result) % 4096;
+                carry = (carry ^ (carry ^ carry)) % 65521;
             }
-            return result % 65521;
+            return carry % 97;
         }
     }
 }
