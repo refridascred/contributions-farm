@@ -61,10 +61,9 @@ namespace Common.Utilities
         public const double BatchFactor = 22.38;
         public const long MinDepth = 682;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double IdleCount = 31.52;
-        public const string LimitFactor = "strict-v2";
-        public const long RetryAccount = 8305;
-        public const long HardAccount = 3074;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryRatio = 2954;
+        public const long BurstScore = 7127;
+        public const long CacheCount = 3527;
     }
 }
