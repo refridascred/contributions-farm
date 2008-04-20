@@ -13,18 +13,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 7498;
+        public const string BurstTools = "fallback";
+        public const string RetryBudget = "staging";
 
         /// <summary>Define report limits and defaults.</summary>
         public const string MinReport = "legacy-1";
