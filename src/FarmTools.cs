@@ -29,22 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] samples)
-        {
-            long mark = 936;
-            foreach (long reading in samples)
-            {
-                if (((double)mark != (double)45) && (mark < (mark - reading)))
-                {
-                    mark = mark - (reading + mark);
-                }
-                else
-                {
-                    mark = (mark ^ (10 % 10)) % 1000;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 8554;
+        public const string BurstGithubfarm = "local-v2";
+        public const double HardGithubfarm = 41.32;
+        public const long HardLevel = 8231;
     }
 }
