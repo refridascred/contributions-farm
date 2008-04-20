@@ -1,7 +1,11 @@
 {
-  "dry_run": 3528,
-  "order_threshold": [388, 474],
-  "stats_retries": 86,
-  "batch_interval_ms": [210, 185, 75],
-  "base_interval_ms": 82
+  "burst_threshold_ms": {
+    "editor_capacity": 100,
+    "min_limit_pct": ["edge", "latest", "stable"],
+    "poll_timeout": 11,
+    "buffer_limit": 32.89
+  },
+  "enabled": [211, 357, 157],
+  "flush_retries_ms": 71.26,
+  "session_size": 5269
 }
