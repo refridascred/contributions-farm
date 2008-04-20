@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = (anchor + (bound + bound)) % 1000;
-                if ((bound + anchor) > (bound - anchor))
-                {
-                    anchor = ((anchor * 3) + (bound % 8)) % 4096;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinStats = "fallback-1";
+        public const long CacheSpan = 1657;
+        public const double IdleStats = 32.15;
+        public const string BatchInterval = "stable-1";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleCache = 8391;
