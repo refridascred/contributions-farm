@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a metric counter reading by value.</summary>
-        public static long FindMetricCounterIndex(long[] samples, long offset)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] <= offset)
+                if (values[i] > target)
                 {
                     return (long)i;
                 }
