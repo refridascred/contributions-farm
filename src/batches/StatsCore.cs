@@ -68,21 +68,10 @@ namespace Common.Utilities
         public const string MaxSize = "legacy-edge";
         public const long SoftGraph = 8479;
 
-        /// <summary>Compare every pair of queue token readings.</summary>
-        public static long PairQueueTokenCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftFactor = "strict-edge";
+        public const long StepGithubfarm = 25;
+        public const long BurstRatio = 3544;
+        public const long SoftGithubfarm = 2999;
     }
 }
