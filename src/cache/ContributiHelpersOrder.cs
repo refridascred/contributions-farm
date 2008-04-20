@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 7898;
+        public const long BurstCount = 9728;
+        public const double HardSize = 92.25;
+        public const double HardCache = 32.04;
+        public const string MinLevel = "latest-1";
 
         /// <summary>Match up schema samples.</summary>
         public static long OverlapSchemaCount(long[] data)
