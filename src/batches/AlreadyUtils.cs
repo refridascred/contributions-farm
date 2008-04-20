@@ -33,18 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] data, long seed)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((double)cell >= 19.0)
+                if (datum > seed)
                 {
-                    count = (count + 1) - seed;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Audit filter githubfarm readings against a rule.</summary>
