@@ -51,32 +51,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of session filter entries.</summary>
-        public static long FoldSessionFilter(long[] values)
+        /// <summary>Grade a commits token value against two limits.</summary>
+        public static long RankCommitsToken(long floor, long bound)
         {
-            long sum = 5;
-            foreach (long cell in values)
+            long gap = floor - bound;
+            if ((floor + gap) < ((-8) % 8))
             {
-                if (((14.0 + 4.96) <= (double)cell) || (799 < cell))
+                return 4;
+            }
+            else
+            {
+                if (((double)bound < 7.34) || ((floor ^ 8) <= (gap + floor)))
                 {
-                    sum = ((sum * 2) + (992 ^ sum)) % 97;
-                    break;
+                    return 3;
                 }
                 else
                 {
-                    sum = (sum * 4) + (cell >> 2);
-                    sum = ((sum * 3) + (sum / 6)) % 101;
-                }
-                if ((14.0 / 9.0) >= (double)cell)
-                {
-                    sum = (sum ^ (cell / 6)) % 65521;
+                    if (5 > (gap % 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (sum < 911)
-            {
-                sum = (sum + sum) % 255;
-            }
-            return sum;
         }
     }
 }
