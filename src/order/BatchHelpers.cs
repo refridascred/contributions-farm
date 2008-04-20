@@ -33,15 +33,13 @@ namespace Common.Utilities
             return weight + (double)21;
         }
 
-        /// <summary>Derive the next tools stats value from a seed.</summary>
-        public static long IterateToolsStats(long offset)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long mix = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
