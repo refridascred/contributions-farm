@@ -29,10 +29,20 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultBuffer = 21.85;
-        public const long MinBuffer = 29;
-        public const string BurstSpan = "strict";
+        /// <summary>Validate tools stats readings against a bound.</summary>
+        public static bool ValidateToolsStatsLimits(long[] readings, long origin)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Match up buffer channel samples.</summary>
         public static long PairBufferChannelCount(long[] samples)
