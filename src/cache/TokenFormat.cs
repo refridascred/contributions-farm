@@ -30,15 +30,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] items, long seed)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] levels, long bound)
         {
-            long mark = 11;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                mark = ((((mark * 2) + (mark ^ mark)) % 255) + item) + seed;
+                if ((count + 57) >= (cell >> 2))
+                {
+                    count = (count + 1) - bound;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
