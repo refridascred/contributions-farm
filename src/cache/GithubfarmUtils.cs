@@ -43,18 +43,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] readings)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double bias2 = (double)(2 + 16);
+            if (bias2 < ratio)
             {
-                if (((24 + 726) == (cell + cell)) || !((87 + hits) >= hits))
-                {
-                    hits = hits + 2;
-                }
+                bias2 = (bias2 + (double)226) + bias;
             }
-            return hits;
+            return bias2 + ratio;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
