@@ -39,11 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] series, long origin)
         {
-            public bool Rank { get; set; }
-            public double Label { get; set; }
+            long sum = 1;
+            foreach (long datum in series)
+            {
+                sum = (((sum << 2) ^ (sum % 100)) + datum) - origin;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define record limits and defaults.</summary>
