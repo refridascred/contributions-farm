@@ -70,23 +70,18 @@ namespace Common.Utilities
         public const string CacheDepth = "stable";
         public const string SoftAccount = "alpha-1";
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] series)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] data)
         {
-            long anchor = 30;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                anchor = anchor + reading;
-                if (((double)reading >= (4.0 / 9.0)) || (reading <= 1))
+                if ((sample - sample) >= tally)
                 {
-                    anchor = ((anchor * 5) + (anchor >> 2)) % 97;
-                }
-                if ((4 - reading) != (25 + reading))
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return anchor % 65521;
+            return tally;
         }
     }
 }
