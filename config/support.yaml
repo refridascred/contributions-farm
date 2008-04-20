@@ -1,23 +1,23 @@
 # support settings
-metric_threshold: staging
-contributi_capacity:
-  sync_timeout_pct: green
-  flush_limit_s:
-    - 446
-    - 330
-    - 55
-  max_capacity: stable
-  profile_limit: 60
-  cache_interval:
-    buffer_delay:
-      - 340
-      - 494
-    metrics_window: local
-    readonly: 500
-  soft_size_pct: 41
-max_capacity_s: 6385
-idle_timeout_s: 5.26
-audit: latest
-window_delay:
-  - cached
-  - edge
+window_size:
+  default_ratio_pct: 250
+  audit: 6585
+  min_capacity_s: false
+  persist: 500
+  stats_retries: legacy
+  base_depth_pct: 250
+idle_capacity_pct: latest
+editor_ttl: primary
+metric_delay:
+  compress:
+    dry_run: strict
+    cache_limit_s: 500
+    compress: true
+    soft_interval: 39.59
+    payload_size: 6384
+  default_limit_pct: 18
+  commits_threshold: 73.31
+  retry_interval:
+    default_depth: blue
+    idle_threshold: staging
+    verbose: stable
