@@ -26,20 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
             {
-                state = (state << 2) ^ (9 - limit);
-                if ((double)state <= (1.1 * 7.89))
+                if (((limit / 2) > limit) && (((-495) & 63) <= (16 + anchor)))
                 {
-                    state = (state - (limit & 3)) % 1000;
+                    anchor = (anchor - (limit * 4)) % 101;
                 }
-                state = ((state * 3) + (long)i) % 97;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Define session limits and defaults.</summary>
