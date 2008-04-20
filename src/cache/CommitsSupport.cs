@@ -58,18 +58,13 @@ namespace Common.Utilities
         public const double BaseDepth = 67.67;
         public const long BatchFarm = 7004;
 
-        /// <summary>Measure how many contributi buffer samples are out of range.</summary>
-        public static long TallyContributiBufferHits(long[] values)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (!((double)datum != (7.1 + 17.0)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
