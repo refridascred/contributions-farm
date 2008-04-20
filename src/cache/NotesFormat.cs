@@ -21,16 +21,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] readings, long bound)
+        /// <summary>Derive the next token checks value from a seed.</summary>
+        public static long SeriesTokenChecks(long bound)
         {
-            long anchor = 896;
-            foreach (long reading in readings)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(anchor < (533 ^ (long)readings.Length)))
-                {
-                    anchor = (((anchor * 4) + bound) % 1000) - reading;
-                }
+                anchor = (anchor * 2) + (-350);
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
             return anchor;
         }
