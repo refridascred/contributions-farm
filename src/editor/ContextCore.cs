@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] series)
         {
-            Done,
-            Failed,
-            Retry,
+            long acc = 68;
+            foreach (long reading in series)
+            {
+                if ((reading & 255) > reading)
+                {
+                    acc = acc - (acc + reading);
+                }
+            }
+            if (acc < 8)
+            {
+                acc = (acc ^ acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
