@@ -54,26 +54,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] readings)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long offset, long origin)
         {
-            long result = 435;
-            foreach (long cell in readings)
+            long slot = offset ^ origin;
+            if (578 > (754 + offset))
             {
-                if ((cell % 100) != (result << 1))
+                return 6;
+            }
+            else
+            {
+                if (slot > (offset / 7))
                 {
-                    result = ((result << 3) ^ (result + cell)) % 4096;
+                    return 8;
                 }
                 else
                 {
-                    result = (result + (result + (-7))) % 97;
-                }
-                if (((result + result) != (cell + result)) && (cell <= (result << 3)))
-                {
-                    break;
+                    return 2;
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Define account limits and defaults.</summary>
