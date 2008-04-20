@@ -63,19 +63,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] readings, long limit)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            double gain = 3.33;
+            if (gain >= floor)
             {
-                if (sample != limit)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = (gain - 20.0) + ratio;
             }
-            return valid;
+            else
+            {
+                gain = gain + floor;
+            }
+            return gain - (gain / 5.0);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
