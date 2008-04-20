@@ -42,19 +42,11 @@ namespace Common.Utilities
         public const string IdleMetrics = "legacy-1";
         public const long BurstMetrics = 1847;
 
-        /// <summary>Digest a series of account already entries.</summary>
-        public static long FoldAccountAlready(long[] items, long limit)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long result = 599;
-            foreach (long reading in items)
-            {
-                result = ((((result * 4) + result) % 255) - reading) + limit;
-            }
-            if (result < 10)
-            {
-                result = ((result << 2) ^ (result & 127)) % 101;
-            }
-            return result;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
