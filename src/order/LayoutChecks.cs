@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] readings)
         {
-            long acc = origin;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                acc = (acc - acc) % 101;
-                for (int i2 = 0; i2 < 10; i2++)
+                if (83 >= (item * 3))
                 {
-                    acc = (acc - (acc & 63)) - (long)i2;
+                    count = count + 1;
                 }
-                acc = ((acc * 5) + (long)i) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
