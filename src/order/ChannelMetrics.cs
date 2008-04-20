@@ -14,32 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long origin, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] levels)
         {
-            long span = origin + floor;
-            if (((double)floor == (5.07 * 1.18)) || ((origin + floor) >= (floor & 3)))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((6.3 * 4.0) != (double)origin) && ((4.0 * 6.06) == (double)origin))
+                if (value >= (692 >> 5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor >= span) || ((double)span >= (5.44 * 7.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
