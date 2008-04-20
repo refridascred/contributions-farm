@@ -42,14 +42,12 @@ namespace Common.Utilities
         public const string SoftRatio = "local-edge";
         public const string BaseScore = "fallback-edge";
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Ready,
-            Stale,
-            Pending,
-            Closed,
-            Idle,
+            Active,
+            Synced,
+            Failed,
         }
 
         /// <summary>Hold a order options.</summary>
