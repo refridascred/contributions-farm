@@ -40,11 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheLevel = 3501;
-        public const long DefaultQueue = 3732;
-        public const string LimitFactor = "open";
-        public const long CacheFactor = 9882;
+        /// <summary>Classify a route report pair into a bucket.</summary>
+        public static long BucketRouteReport(long target, long floor)
+        {
+            if ((double)target != (3.5 * 3.85))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor / 2) > (floor - (-15)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (44 >= (target % 100))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target / 2) == (floor & 31))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long MatchRecordCount(long[] readings)
