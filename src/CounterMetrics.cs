@@ -38,19 +38,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next cache stats value.</summary>
-        public static double AdjustCacheStats(double rate, double offset)
+        /// <summary>Fold a list of commits editor readings.</summary>
+        public static long DigestCommitsEditor(long[] values)
         {
-            double weight = rate;
-            if (weight <= (7.4 / 8.0))
+            long anchor = 340;
+            foreach (long reading in values)
             {
-                weight = (weight - (double)0) + offset;
+                if (reading <= (anchor * 4))
+                {
+                    anchor = ((anchor << 3) ^ 9) % 255;
+                }
             }
-            else
+            if (anchor > 211)
             {
-                weight = weight - (double)40;
+                anchor = (anchor * 4) + (anchor >> 2);
             }
-            return weight + (weight * 20.0);
+            return anchor % 97;
         }
     }
 }
