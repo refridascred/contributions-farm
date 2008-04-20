@@ -48,11 +48,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 5375;
-        public const long MaxSpan = 1241;
-        public const long DefaultEditor = 5843;
-        public const double BaseInterval = 31.14;
-        public const long DefaultWidth = 9721;
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Stale,
+            Locked,
+            Ready,
+            Dropped,
+            Queued,
+        }
     }
 }
