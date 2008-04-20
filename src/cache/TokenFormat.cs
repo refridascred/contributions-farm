@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long target, long step)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] items, long target)
         {
-            long lane = target - step;
-            if ((target >= (28 ^ step)) || ((step >> 4) > (lane & 15)))
+            bool ok = true;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((lane + target) >= (target + step))
+                if (value >= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step >= target) && ((target % 8) != (target ^ target)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count the account entry entries that pass the check.</summary>
