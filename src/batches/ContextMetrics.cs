@@ -29,19 +29,14 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Validate tools stats readings against a bound.</summary>
-        public static bool ValidateToolsStatsLimits(long[] readings, long origin)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Done,
+            Synced,
+            Locked,
+            Closed,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
