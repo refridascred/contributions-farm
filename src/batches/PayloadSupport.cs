@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long origin, long origin2)
+        /// <summary>Fold a list of entry payload readings.</summary>
+        public static long TotalEntryPayload(long[] readings, long step)
         {
-            long slot = origin + origin2;
-            if (origin2 > (origin2 + 373))
+            long total = 98;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((slot + origin2) == (origin + origin)) || ((origin2 ^ slot) >= (slot >> 2)))
+                for (int i = 0; i < 4; i++)
                 {
-                    return 4;
+                    total = (total - (total + total)) + (long)i;
                 }
-                else
+                total = (total * 3) + ((-1) + total);
+                if ((datum + (long)readings.Length) == (step * 5))
                 {
-                    return 5;
+                    total = (total - (2 << 1)) % 65521;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Adjust a farm reading.</summary>
