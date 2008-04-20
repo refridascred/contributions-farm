@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleSpan = 4159;
-        public const long BatchFactor = 6690;
-        public const long DefaultEntry = 7993;
-        public const double CacheEntry = 49.71;
-        public const string RetryScore = "latest-edge";
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LookupContextIndex(long[] data, long limit)
