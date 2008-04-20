@@ -39,12 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Check that every metric context entry stays within the limit.</summary>
+        public static bool VerifyMetricContextLimits(long[] values, long target)
         {
-            public bool Ratio { get; set; }
-            public double Label { get; set; }
-            public double Token { get; set; }
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
