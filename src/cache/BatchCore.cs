@@ -34,14 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxCount = 2032;
+        public const double MaxChannel = 90.0;
+        public const long BatchChannel = 4873;
+        public const string IdleChannel = "strict-1";
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long SeekEditorIndex(long[] items, long step)
