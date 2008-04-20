@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] series, long step)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((series[i] < step) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                score = score + ((long)i & 3);
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Match up buffer samples.</summary>
