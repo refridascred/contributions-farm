@@ -49,11 +49,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
+            public string Owner { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
