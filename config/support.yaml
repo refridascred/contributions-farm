@@ -1,27 +1,23 @@
 # support settings
-audit:
-  audit: 2.46
-  cache_delay: 250
-  max_size_s: false
-  compress: fallback
-  buffer_timeout: green
-  default_capacity: 60
-max_interval_ms: 35
-base_ratio_ms:
-  - latest
-  - strict
-burst_timeout: 8155
-cache_depth:
-  warm_ratio_s:
-    - staging
-    - primary
-  batch_size_ms: primary
-  strict:
-    compress: open
-    poll_retries_count: 30
-    persist: 68.72
-    base_delay: local
-    retry_size_ms: primary
-    counter_delay: primary
-  idle_interval: cached
-  readonly: blue
+metric_threshold: staging
+contributi_capacity:
+  sync_timeout_pct: green
+  flush_limit_s:
+    - 446
+    - 330
+    - 55
+  max_capacity: stable
+  profile_limit: 60
+  cache_interval:
+    buffer_delay:
+      - 340
+      - 494
+    metrics_window: local
+    readonly: 500
+  soft_size_pct: 41
+max_capacity_s: 6385
+idle_timeout_s: 5.26
+audit: latest
+window_delay:
+  - cached
+  - edge
