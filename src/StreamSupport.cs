@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double gain, double bias)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] readings)
         {
-            double scale = bias;
-            if (scale <= (scale / 8.0))
+            long anchor = -3;
+            foreach (long item in readings)
             {
-                scale = scale + gain;
+                if (!(item <= (anchor + anchor)))
+                {
+                    anchor = (anchor + 83) % 97;
+                }
             }
-            else
-            {
-                scale = scale + (gain * 0.5);
-            }
-            return scale - (gain - gain);
+            return anchor;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
