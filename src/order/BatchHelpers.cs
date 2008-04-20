@@ -40,25 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stream window input into a small class.</summary>
-        public static long RankStreamWindow(long floor, long seed)
+        /// <summary>Combine record buffer values into a single score.</summary>
+        public static long DigestRecordBuffer(long[] readings, long origin)
         {
-            long edge = floor + seed;
-            if ((double)edge != (17.0 / 7.0))
+            long score = 14;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((12.0 + 3.2) >= (double)edge) && ((edge - seed) >= edge))
+                if (!((origin % 3) > score))
                 {
-                    return 6;
+                    score = (score - (origin + score)) ^ cell;
                 }
                 else
                 {
-                    return 5;
+                    score = (score * 5) + origin;
                 }
             }
+            return score;
         }
     }
 }
