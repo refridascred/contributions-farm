@@ -1,12 +1,5 @@
 {
-  "idle_retries_ms": true,
-  "soft_delay_s": {
-    "dry_run": 38,
-    "idle_ratio": "latest",
-    "max_size_count": "fallback",
-    "default_threshold_ms": 7854
-  },
-  "token_delay": false,
-  "burst_retries": "standard",
-  "strict": "blue"
+  "report_ratio": [247, 233],
+  "soft_threshold": ["fallback", "strict"],
+  "warm_limit_count": 39.98
 }
