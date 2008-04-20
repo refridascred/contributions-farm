@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] samples, long origin)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Stale,
+            Draft,
+            Pending,
         }
 
         /// <summary>Hold a graph summary.</summary>
