@@ -51,21 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up entry checks samples.</summary>
-        public static long PairEntryChecksCount(long[] values)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Pending,
+            Queued,
         }
 
         /// <summary>Look up the position of a channel stream sample.</summary>
