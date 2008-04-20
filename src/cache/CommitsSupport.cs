@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] items, long limit)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long limit)
         {
-            long sum = 8;
-            foreach (long entry in items)
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)3 >= (double)sum)
-                {
-                    sum = sum + (entry - limit);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (limit + entry)) % 101;
-                }
+                sum = (sum << 2) ^ (long)i;
+                sum = ((sum * 4) + (268 + limit)) % 101;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
             return sum;
         }
