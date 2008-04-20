@@ -49,12 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] values, long target)
         {
-            Done,
-            New,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
