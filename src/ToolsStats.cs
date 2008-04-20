@@ -84,13 +84,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
             public bool Level { get; set; }
-            public string Offset { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
