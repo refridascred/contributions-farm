@@ -12,22 +12,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine channel order values into a single score.</summary>
-        public static long WeighChannelOrder(long[] data)
+        /// <summary>Rank editor contributi input into a small class.</summary>
+        public static long BucketEditorContributi(long target, long offset)
         {
-            long carry = 925;
-            foreach (long datum in data)
+            long cur = target ^ offset;
+            if ((offset + cur) != (target - target))
             {
-                if (carry < (datum << 2))
+                return 3;
+            }
+            else
+            {
+                if (!(cur <= (target % 2)))
                 {
-                    carry = (carry ^ (carry % 12)) % 1000;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (carry > 831)
-            {
-                carry = (carry * 3) + (long)data.Length;
-            }
-            return carry % 97;
         }
 
         /// <summary>Fold a list of report metrics readings.</summary>
