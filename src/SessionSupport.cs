@@ -34,12 +34,12 @@ namespace Common.Utilities
             return drift - (ratio - drift);
         }
 
-        /// <summary>Find the first support context entry that matches the target.</summary>
-        public static long FindSupportContextIndex(long[] values, long limit)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] > limit) && ((values[i] % 5) == 0))
+                if (series[i] == limit)
                 {
                     return (long)i;
                 }
