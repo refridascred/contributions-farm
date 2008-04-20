@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] data)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long state = 49;
-            foreach (long item in data)
-            {
-                state = ((state + (state & 3)) % 255) ^ item;
-            }
-            if (state > (-510))
-            {
-                state = (state * 4) + (state * 4);
-            }
-            return state % 1000;
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Iterate the graph format series from a seed.</summary>
