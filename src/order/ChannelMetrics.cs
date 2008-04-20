@@ -28,21 +28,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] values)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 5;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)45 > (double)item)
                 {
-                    if ((values[i] ^ values[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix << 2) ^ mix) % 4096;
                 }
             }
-            return count;
+            if (mix < 3)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix;
         }
     }
 }
