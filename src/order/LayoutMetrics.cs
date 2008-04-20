@@ -36,11 +36,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftCount = 94.24;
-        public const string WindowMetric = "cached-edge";
-        public const long WindowInterval = 5926;
-        public const long RetryWidth = 5045;
-        public const long CacheSpan = 1447;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] levels)
+        {
+            long total = -100;
+            foreach (long cell in levels)
+            {
+                if ((cell & 7) <= 59)
+                {
+                    total = (total * 5) + (total & 31);
+                    total = (total + total) % 255;
+                }
+                total = (total * 3) + (total / 2);
+                if (15.0 >= (double)total)
+                {
+                    total = (total - (total / 5)) % 1000;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (cell + total)) % 101;
+                }
+            }
+            return total % 97;
+        }
     }
 }
