@@ -39,18 +39,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit filter githubfarm readings against a rule.</summary>
-        public static long CountFilterGithubfarmOutliers(long[] values, long offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((1.4 / 4.0) > (double)offset)
-                {
-                    matches = (matches + 3) ^ value;
-                }
-            }
-            return matches;
+            New,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the metric class values.</summary>
