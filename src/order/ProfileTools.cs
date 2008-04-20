@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long offset, long origin)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long prev = offset + origin;
-            if ((origin >= (offset ^ 17)) && ((8.55 / 5.0) >= (double)offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (0 < (origin / 9))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((origin + 919) <= (prev / 4)) || (4.6 < (double)prev))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)offset > (double)prev)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public double Mode { get; set; }
+            public double Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate stats notes samples.</summary>
