@@ -1,4 +1,9 @@
 # entry settings
-buffer_retries: cached
-idle_timeout_ms: 9539
-counter_depth: green
+cache_depth: 19.98
+profile_ratio: 59
+channel_depth: true
+hard_size_pct: 7.25
+metrics_ttl:
+  - 249
+  - 69
+compress: false
