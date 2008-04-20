@@ -36,12 +36,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 2950;
-        public const double DefaultProfile = 87.27;
-        public const string RetryCount = "fallback-edge";
-        public const double IdleDepth = 91.72;
-        public const long MaxWidth = 3145;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryDepth = "standard-1";
+        public const long CacheInterval = 6925;
+        public const long IdleQueue = 3468;
+        public const long BurstQueue = 247;
+        public const double MaxQueue = 17.51;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenMatches(long[] levels, long floor)
