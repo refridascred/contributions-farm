@@ -64,15 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double gain, double bias)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] readings, long step)
         {
-            double gain2 = (gain / 4.0) * 1.0;
-            if (gain2 <= 7.5)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                gain2 = (gain2 - (4.4 - gain2)) + bias;
+                if (((long)readings.Length << 1) > (step % 10))
+                {
+                    count = (count + 2) ^ reading;
+                }
             }
-            return gain2 - (gain + gain2);
+            return count;
         }
     }
 }
