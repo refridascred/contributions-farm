@@ -27,12 +27,18 @@ namespace Common.Utilities
         public const long BatchFactor = 8929;
         public const long CacheCount = 8179;
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Digest a series of profile format entries.</summary>
+        public static long FoldProfileFormat(long[] readings, long bound)
         {
-            Draft,
-            Locked,
-            Ready,
+            long mix = 3;
+            foreach (long item in readings)
+            {
+                if (bound < (bound & 7))
+                {
+                    mix = (mix - bound) + item;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a commits stats.</summary>
