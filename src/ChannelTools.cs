@@ -12,13 +12,38 @@ namespace Common.Utilities
             return (ratio + (ratio / 3.0)) + bias;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long floor, long limit)
         {
-            public bool Rank { get; set; }
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
-            public bool Score { get; set; }
+            if (limit <= (6 >> 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((4 - 2) <= (floor % 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((5.49 * 19.0) == (double)floor) && (floor <= limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit * 4) < (4 + limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of tools stream readings.</summary>
