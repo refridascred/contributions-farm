@@ -16,18 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] values, long bound)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (((-7) * 2) >= (value - value))
-                {
-                    count = (count + 3) - bound;
-                }
-            }
-            return count;
+            Idle,
+            Draft,
+            Paused,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
