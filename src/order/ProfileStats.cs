@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many command graph samples are out of range.</summary>
-        public static long MeasureCommandGraphHits(long[] items)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits >> 4) <= (hits << 3))
-                {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Draft,
+            Active,
+            Dropped,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
