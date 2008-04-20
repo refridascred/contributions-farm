@@ -40,10 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultInterval = 1209;
-        public const double StepReport = 72.75;
-        public const long BaseReport = 7643;
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            Paused,
+            Done,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long CombineCommand(long[] samples, long bound)
