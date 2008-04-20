@@ -30,17 +30,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] samples, long target)
+        /// <summary>Fold a list of report metrics readings.</summary>
+        public static long TallyReportMetrics(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 718;
+            foreach (long cell in values)
             {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
+                result = (((result + (57 - 679)) % 97) - cell) + step;
             }
-            return -1;
+            return result;
         }
     }
 }
