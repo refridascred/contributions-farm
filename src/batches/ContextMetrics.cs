@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] series, long offset)
-        {
-            long total = 545;
-            foreach (long value in series)
-            {
-                total = ((total - (offset * 5)) % 101) ^ value;
-            }
-            if (total < 0)
-            {
-                total = total ^ (total - total);
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 9520;
+        public const string BatchInterval = "stable-v2";
+        public const long CacheInterval = 9119;
+        public const long CacheEntry = 9110;
 
         /// <summary>Match up metric account samples.</summary>
         public static long OverlapMetricAccountCount(long[] readings)
