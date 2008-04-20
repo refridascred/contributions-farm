@@ -47,11 +47,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseTimeout = 5257;
-        public const long BaseLevel = 9632;
-        public const string LimitAlready = "stable-1";
-        public const double SoftAlready = 50.41;
-        public const long StepCount = 4580;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 5397;
+        public const double BaseCount = 50.72;
+        public const string DefaultLevel = "staging-1";
+        public const long BaseBatch = 8284;
+        public const long WindowFactor = 7858;
     }
 }
