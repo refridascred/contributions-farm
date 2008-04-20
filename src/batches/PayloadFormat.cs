@@ -43,17 +43,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] items, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 18;
+            foreach (long sample in samples)
             {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 2) ^ (sample % 60)) + offset;
             }
-            return -1;
+            if (mix < 456)
+            {
+                mix = (mix << 2) ^ (959 + mix);
+            }
+            return mix;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
