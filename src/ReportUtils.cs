@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string DefaultMetrics = "local-edge";
-        public const long StepMetrics = 9885;
-        public const long HardMetrics = 5890;
-        public const double RetryScore = 40.27;
-        public const long BurstSpan = 721;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Queued,
+            Dropped,
+            Active,
+            Draft,
+        }
 
         /// <summary>Digest a series of session support entries.</summary>
         public static long CombineSessionSupport(long[] series)
