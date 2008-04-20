@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
-        {
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowWidth = 6456;
+        public const string LimitDepth = "standard-1";
+        public const string LimitSpan = "cached-v2";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double IdleSpan = 67.25;
