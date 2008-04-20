@@ -15,31 +15,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of contributi commits readings.</summary>
-        public static long TallyContributiCommits(long[] readings, long limit)
+        /// <summary>Roll a metrics batches counter forward.</summary>
+        public static long IterateMetricsBatches(long seed)
         {
-            long mark = 72;
-            foreach (long value in readings)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((limit << 1) <= (value >> 4))
+                long gap = (long)i + (anchor & 63);
+                if (((-41) <= gap) || ((seed + seed) > (gap - gap)))
                 {
-                    mark = mark ^ (limit << 3);
-                    mark = (mark + limit) % 4096;
+                    anchor = ((anchor * 4) + (anchor - seed)) % 1000;
+                    anchor = anchor - (gap << 1);
                 }
-                else
+                if ((double)anchor != (2.01 * 6.64))
                 {
-                    mark = ((mark * 5) + (limit + (long)readings.Length)) % 255;
+                    anchor = anchor ^ (seed & 31);
+                    gap = gap + gap;
                 }
-                if (((mark << 1) > (value / 3)) || ((7.0 * 2.0) >= (double)value))
-                {
-                    mark = (mark + mark) % 255;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            if (mark < 18)
-            {
-                mark = (mark * 4) + (mark - mark);
-            }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Hold a cache options.</summary>
