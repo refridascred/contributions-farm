@@ -14,18 +14,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] series, long bound)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long target)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long total = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (((double)cell == (7.28 / 3.0)) || (118 > bound))
-                {
-                    hits = hits + 3;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Iterate the batches graph series from a seed.</summary>
