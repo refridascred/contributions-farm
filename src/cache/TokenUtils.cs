@@ -23,17 +23,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] series, long step)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Retry,
+            Synced,
+            Queued,
+            Stale,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
