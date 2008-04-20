@@ -29,22 +29,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine tools filter values into a single score.</summary>
-        public static long DigestToolsFilter(long[] data, long seed)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long mix = 7;
-            foreach (long cell in data)
-            {
-                if (((long)data.Length > (mix * 2)) || ((cell * 5) == (cell + seed)))
-                {
-                    mix = (mix + ((-155) % 100)) % 101;
-                }
-            }
-            if (mix < 161)
-            {
-                mix = (mix << 2) ^ (seed * 2);
-            }
-            return mix % 1000;
+            Queued,
+            Paused,
+            Failed,
+            Done,
         }
     }
 }
