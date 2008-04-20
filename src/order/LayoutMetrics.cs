@@ -19,13 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] readings)
         {
-            Dropped,
-            Ready,
-            Done,
-            New,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the format class values.</summary>
