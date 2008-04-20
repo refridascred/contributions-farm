@@ -14,20 +14,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Iterate the graph format series from a seed.</summary>
-        public static long RollGraphFormat(long step)
+        /// <summary>Validate token graph readings against a bound.</summary>
+        public static bool CheckTokenGraphLimits(long[] samples, long limit)
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((double)acc <= 0.33)
+                if (entry != limit)
                 {
-                    acc = ((acc * 4) + (2 + step)) % 97;
-                    acc = ((acc << 3) ^ (acc / 7)) % 1000;
+                    found = false;
+                    break;
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
