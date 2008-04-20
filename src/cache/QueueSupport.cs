@@ -23,19 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] readings)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long sum = 43;
-            foreach (long item in readings)
-            {
-                sum = (sum + (sum + sum)) % 101;
-                if ((item < (sum + sum)) || ((7.0 / 4.0) != (double)sum))
-                {
-                    sum = (sum << 3) ^ (sum + sum);
-                }
-            }
-            return sum;
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the context phase values.</summary>
