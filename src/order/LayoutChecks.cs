@@ -36,11 +36,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double rate, double offset)
+        /// <summary>Classify a support contributi pair into a bucket.</summary>
+        public static long RankSupportContributi(long bound, long target)
         {
-            double gain = (double)(140 - 365);
-            return ((gain + 7.95) + rate) + offset;
+            long span = bound ^ target;
+            if (((bound ^ 29) > (span & 31)) && ((span >> 1) <= bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound << 2) > (target - 102))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target + span) <= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a already reading by value.</summary>
