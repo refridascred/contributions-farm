@@ -55,11 +55,25 @@ namespace Common.Utilities
         public const string StepSpan = "staging";
         public const string RetryLevel = "open-edge";
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long step, long origin)
         {
-            public bool Total { get; set; }
-            public string Score { get; set; } = "";
+            long bound = step - origin;
+            if (((origin % 97) != (step & 7)) || (origin < 44))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step - 551) < bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
