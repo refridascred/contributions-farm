@@ -28,21 +28,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] data)
+        /// <summary>Project the next context cluster value.</summary>
+        public static double SmoothContextCluster(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (offset - offset) * 20.0;
+            if (load < (1.9 - scale))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load - offset;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (offset * 5.0)) - (double)(long)i;
+            }
+            return load - (load * 9.0);
         }
     }
 }
