@@ -25,12 +25,13 @@ namespace Common.Utilities
         public const string MinProfile = "primary";
         public const double HardDepth = 55.99;
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
+            public bool Count { get; set; }
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
