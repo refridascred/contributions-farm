@@ -54,22 +54,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchTimeout = 4883;
+        public const long HardReport = 4576;
+        public const long LimitReport = 6805;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long WeighChannel(long[] samples, long step)
