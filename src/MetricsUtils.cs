@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double gain, double offset)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            double scale = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = ((scale + offset) + (double)(long)i) + gain;
-            }
-            return scale - offset;
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Derive the next filter channel value from a seed.</summary>
