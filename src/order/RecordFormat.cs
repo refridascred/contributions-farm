@@ -23,12 +23,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstRatio = "legacy-v2";
-        public const long SoftBudget = 1610;
-        public const long LimitWidth = 7922;
-        public const long DefaultBudget = 4723;
-        public const long HardTimeout = 8675;
+        /// <summary>Validate metrics cluster readings against a bound.</summary>
+        public static bool CheckMetricsClusterBounds(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterGaps(long[] values)
