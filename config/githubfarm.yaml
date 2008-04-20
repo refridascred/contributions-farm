@@ -1,4 +1,16 @@
 # githubfarm settings
-profile_ttl: fallback
-soft_ratio_s: 17.05
-filter_threshold: local
+base_capacity_pct: 0.13
+poll_timeout:
+  - 50
+  - 461
+  - 159
+  - 140
+max_interval_pct:
+  - standard
+  - strict
+min_size_pct: true
+compress:
+  - latest
+  - green
+  - primary
+poll_delay_pct: 6905
