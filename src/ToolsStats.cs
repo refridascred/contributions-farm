@@ -14,18 +14,39 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] readings)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long offset, long target)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long cur = offset + target;
+            if ((1.26 * 1.24) == (double)target)
             {
-                if ((double)sample >= 3.1)
+                return 5;
+            }
+            else
+            {
+                if (offset >= (offset & 63))
                 {
-                    count = count + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (1.31 <= (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset > (cur % 12)) && ((offset >> 3) != (cur ^ cur)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the metrics class values.</summary>
