@@ -37,15 +37,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Stale,
-            Done,
-            Draft,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 1819;
+        public const string IdleMetrics = "legacy-1";
+        public const long BurstMetrics = 1847;
 
         /// <summary>Digest a series of contributi token entries.</summary>
         public static long DigestContributiToken(long[] series)
