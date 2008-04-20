@@ -60,16 +60,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long origin)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = (mark * 4) + mark;
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
     }
 }
