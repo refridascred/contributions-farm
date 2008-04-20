@@ -1,15 +1,10 @@
 # Command notes
 
-Use order settings to tune how often report data is refreshed.
-Run the cache check before changing any metrics limits.
-The editor report groups every counter by graph.
-
-Each window is validated before it reaches the entry queue.
-A cache that stays idle for too long is moved to the layout list.
+Run the session check before changing any checks limits.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate session input early
-- Log every entry change
-- Review report limits each release
-- Keep checks values small
+- Document new layout fields
+- Keep report values small
+- Validate tools input early
