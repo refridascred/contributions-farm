@@ -47,11 +47,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double ratio, double bias)
-        {
-            double rate = (ratio + ratio) + bias;
-            return rate + (7.79 - ratio);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseTimeout = 5257;
+        public const long BaseLevel = 9632;
+        public const string LimitAlready = "stable-1";
+        public const double SoftAlready = 50.41;
+        public const long StepCount = 4580;
     }
 }
