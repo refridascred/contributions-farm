@@ -21,15 +21,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a token commits reading.</summary>
-        public static double AdjustTokenCommits(double scale, double floor)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long target)
         {
-            double bias = (floor - scale) * 1.64;
-            for (int i = 0; i < 4; i++)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                bias = (bias - bias) - (double)(long)i;
+                mark = (mark << 2) ^ (target ^ mark);
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return bias + bias;
+            return mark;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
