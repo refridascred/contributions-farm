@@ -23,15 +23,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double weight, double offset)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] series, long step)
         {
-            double gain = 2.91 - offset;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = (gain + (weight + 7.7)) - (double)(long)i;
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return gain - (weight - weight);
+            return -1;
         }
 
         /// <summary>Describe the cache status values.</summary>
