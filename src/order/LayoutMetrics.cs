@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long offset, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] data, long floor)
         {
-            long bound = offset + target;
-            if ((bound - offset) >= 948)
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((8.1 - 2.4) >= (double)65)
+                if (floor > (46 >> 5))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((target - bound) != (98 % 16)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = (count + 2) - datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
