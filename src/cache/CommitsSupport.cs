@@ -26,12 +26,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleMetric = 18.86;
-        public const long RetryLevel = 6082;
-        public const long WindowRatio = 794;
-        public const long MaxMetric = 4213;
-        public const long CacheMetric = 2545;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (!!((seen + cell) > (7 * 2)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long FindFilterIndex(long[] samples, long bound)
