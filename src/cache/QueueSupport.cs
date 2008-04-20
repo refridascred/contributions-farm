@@ -11,25 +11,15 @@ namespace Common.Utilities
         public const string LimitEntry = "staging-1";
         public const long RetryBudget = 3848;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long step)
         {
-            long carry = 403;
-            foreach (long item in data)
+            long state = step;
+            for (int i = 0; i < 12; i++)
             {
-                carry = (carry + carry) % 65521;
-                carry = carry - (item - item);
-                carry = ((carry * 2) + (carry + item)) % 255;
-                if ((73 % 3) <= carry)
-                {
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            if (carry < (-174))
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Roll a support counter forward.</summary>
