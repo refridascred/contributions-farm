@@ -55,17 +55,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] series, long floor)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Stale,
+            Pending,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a editor stats.</summary>
