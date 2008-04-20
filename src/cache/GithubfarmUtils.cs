@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const double StepTimeout = 83.56;
         public const string MinCount = "latest-edge";
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public string Count { get; set; } = "";
-            public double Mode { get; set; }
+            Stale,
+            Closed,
+            Draft,
         }
 
         /// <summary>Compare every pair of support readings.</summary>
