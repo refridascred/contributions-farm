@@ -55,24 +55,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine profile stream values into a single score.</summary>
-        public static long WeighProfileStream(long[] items)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long mark = 5;
-            foreach (long cell in items)
-            {
-                mark = (mark - (15 & 31)) % 255;
-                mark = ((mark * 4) + (cell % 5)) % 1000;
-                if ((mark <= 3) || ((7.76 / 8.0) > (double)mark))
-                {
-                    mark = ((mark << 2) ^ (mark << 3)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (85 + mark)) % 4096;
-                }
-            }
-            return mark % 1000;
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
