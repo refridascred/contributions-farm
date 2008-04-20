@@ -45,12 +45,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public string Owner { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepDepth = 518;
+        public const double BaseRatio = 15.32;
+        public const long IdleRoute = 6017;
     }
 }
