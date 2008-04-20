@@ -13,21 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a contributi cluster counter forward.</summary>
-        public static long StepContributiCluster(long limit)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] values)
         {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix - (mix - mix);
-                if ((mix - 273) == (limit << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix ^ ((long)i + 1)) % 1000;
+                    if ((values[i] ^ values[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = (mix * 2) + (516 & 255);
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
