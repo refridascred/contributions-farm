@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long step, long floor)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            if ((floor / 9) > (step / 6))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step % 24) > step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Synced,
+            Stale,
+            Closed,
+            Pending,
         }
 
         /// <summary>Iterate the githubfarm profile series from a seed.</summary>
