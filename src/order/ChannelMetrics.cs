@@ -29,19 +29,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] readings, long origin)
-        {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 1.95;
+        public const double BaseEntry = 71.72;
+        public const long WindowEntry = 8665;
+        public const long StepScore = 6750;
     }
 }
