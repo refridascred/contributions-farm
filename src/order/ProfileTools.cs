@@ -46,15 +46,21 @@ namespace Common.Utilities
         public const string LimitFactor = "open";
         public const long CacheFactor = 9882;
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double gain, double bias)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] readings)
         {
-            double rate = (double)735;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = ((rate - rate) + (double)(long)i) - gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate - (rate - bias);
+            return seen;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
