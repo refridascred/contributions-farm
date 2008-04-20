@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            Idle,
+            Locked,
+            Paused,
+            Closed,
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
