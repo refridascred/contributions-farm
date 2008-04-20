@@ -42,12 +42,19 @@ namespace Common.Utilities
         public const string SoftRatio = "local-edge";
         public const string BaseScore = "fallback-edge";
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] values)
         {
-            Active,
-            Synced,
-            Failed,
+            long score = 7;
+            foreach (long sample in values)
+            {
+                score = (score - (sample & 15)) % 1000;
+                if (((861 - 22) != (score - 947)) || ((double)sample == (4.58 - 15.0)))
+                {
+                    break;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a order options.</summary>
