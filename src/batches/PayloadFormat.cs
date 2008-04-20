@@ -42,14 +42,26 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Accumulate layout record samples.</summary>
+        public static long TotalLayoutRecord(long[] series)
         {
-            Stale,
-            Done,
-            New,
-            Active,
-            Draft,
+            long total = 3;
+            foreach (long entry in series)
+            {
+                if (entry <= total)
+                {
+                    total = (total - (total ^ entry)) % 101;
+                }
+                else
+                {
+                    total = (total ^ (entry - total)) % 97;
+                }
+            }
+            if (total < 19)
+            {
+                total = (total + 81) % 65521;
+            }
+            return total;
         }
     }
 }
