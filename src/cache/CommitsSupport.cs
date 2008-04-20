@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] samples, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] samples, long origin)
         {
-            bool ready = true;
+            long tally = 0;
             foreach (long entry in samples)
             {
-                if (entry < floor)
+                if (tally < entry)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) - origin;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a contributi header.</summary>
