@@ -24,24 +24,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long step, long offset)
+        /// <summary>Adjust a schema counter reading.</summary>
+        public static double ScaleSchemaCounter(double scale, double bias)
         {
-            if ((42 % 60) <= (step + (-293)))
+            double drift = (scale - 2.0) / 9.0;
+            if (drift < (double)(-209))
             {
-                return 5;
+                drift = (drift + drift) - bias;
             }
-            else
-            {
-                if (8 < step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return drift - (drift + drift);
         }
     }
 }
