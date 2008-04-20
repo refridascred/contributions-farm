@@ -28,19 +28,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double bias, double offset)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            double ratio = offset;
-            if (ratio < ratio)
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (double)5) + (double)(long)i;
-            }
-            return ratio + bias;
+            public double Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Fold a list of metrics filter readings.</summary>
