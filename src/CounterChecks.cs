@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] samples, long floor)
         {
-            Pending,
-            New,
-            Idle,
-            Stale,
+            long state = 95;
+            foreach (long entry in samples)
+            {
+                state = ((state * 2) + (entry + state)) - floor;
+            }
+            return state;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
