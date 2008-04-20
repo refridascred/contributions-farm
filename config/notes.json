@@ -1,5 +1,15 @@
 {
-  "min_size_pct": 3010,
-  "farm_ttl": 59,
-  "audit": "strict"
+  "verbose": true,
+  "record_retries": false,
+  "burst_timeout_pct": {
+    "cache_limit_count": 63,
+    "metric_limit": 1626,
+    "audit": false,
+    "hard_limit_pct": {
+      "warm_limit": 250,
+      "sync_ttl_count": false,
+      "retry_capacity_count": 5172,
+      "poll_threshold_count": "local"
+    }
+  }
 }
