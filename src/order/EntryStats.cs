@@ -53,9 +53,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinFilter = 14.1;
-        public const double HardFilter = 31.05;
-        public const double HardInterval = 62.66;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public string Rank { get; set; } = "";
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+        }
     }
 }
