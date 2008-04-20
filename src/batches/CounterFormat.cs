@@ -34,18 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] readings)
+        /// <summary>Validate queue support readings against a bound.</summary>
+        public static bool ValidateQueueSupportLimits(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if (!(reading < (-688)))
+                if (entry >= target)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
