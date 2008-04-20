@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Ready,
-            Synced,
-            Draft,
-            New,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitWidth = 9287;
+        public const long DefaultInterval = 5976;
+        public const double DefaultFactor = 52.08;
+        public const long MaxGithubfarm = 7630;
 
         /// <summary>Find the first metric cache entry that matches the target.</summary>
         public static long LookupMetricCacheIndex(long[] readings, long origin)
