@@ -47,13 +47,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Look up the position of a batch contributi sample.</summary>
+        public static long LocateBatchContributiIndex(long[] data, long floor)
         {
-            Dropped,
-            Idle,
-            Closed,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the token class values.</summary>
