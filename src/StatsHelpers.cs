@@ -48,22 +48,19 @@ namespace Common.Utilities
             return ratio - (double)6;
         }
 
-        /// <summary>Count the filter batches entries that pass the check.</summary>
-        public static long TallyFilterBatchesHits(long[] levels)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double ratio2 = 3.7;
+            if (ratio2 > ratio)
             {
-                if ((sample > 886) || ((double)sample < (17.0 + 2.3)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio2 = ratio2 + bias;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 - (16.0 / 7.0)) + (double)(long)i;
+            }
+            return ratio2 + (double)84;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
