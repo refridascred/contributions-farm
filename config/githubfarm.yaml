@@ -1,15 +1,10 @@
 # githubfarm settings
-poll_size:
-  layout_timeout: 4122
-  route_ratio: 3363
-  filter_capacity: 66.98
-  default_depth: 500
-  base_capacity: 3219
-  cache_delay_count:
-    - 346
-    - 268
-    - 477
-account_capacity: 27.01
-idle_ttl_pct: 12
-poll_capacity_s: 85
-readonly: 25.96
+hard_limit_pct: 37.97
+max_size_count: 60
+warm_retries_ms: eu-west
+report_delay: false
+account_limit:
+  - 153
+  - 283
+  - 153
+commits_limit: staging
