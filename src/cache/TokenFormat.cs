@@ -24,18 +24,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] levels, long bound)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long step, long offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            if ((42 % 60) <= (step + (-293)))
             {
-                if ((count + 57) >= (cell >> 2))
+                return 5;
+            }
+            else
+            {
+                if (8 < step)
                 {
-                    count = (count + 1) - bound;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
