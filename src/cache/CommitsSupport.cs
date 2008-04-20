@@ -60,12 +60,19 @@ namespace Common.Utilities
         public const double StepDepth = 28.48;
         public const string WindowToken = "primary-1";
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Project the next tools cache value.</summary>
+        public static double BlendToolsCache(double weight, double span)
         {
-            Queued,
-            Locked,
-            Ready,
+            double load = (double)(8 * 5);
+            if (load >= load)
+            {
+                load = load + (span / 9.0);
+            }
+            else
+            {
+                load = load + load;
+            }
+            return load - (weight + span);
         }
     }
 }
