@@ -65,21 +65,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 5375;
+        public const long MaxSpan = 1241;
+        public const long DefaultEditor = 5843;
+        public const double BaseInterval = 31.14;
+        public const long DefaultWidth = 9721;
     }
 }
