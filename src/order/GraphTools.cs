@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] items, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] readings)
         {
-            long result = 842;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                result = ((result - result) ^ value) - offset;
+                if ((6 - datum) < (datum ^ datum))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
