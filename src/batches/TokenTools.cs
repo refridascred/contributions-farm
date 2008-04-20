@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a stats queue reading by value.</summary>
-        public static long SeekStatsQueueIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 1943;
+        public const long RetryToken = 5585;
+        public const long HardToken = 791;
+        public const long DefaultToken = 5492;
+        public const long WindowToken = 5199;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long RollWindow(long origin)
