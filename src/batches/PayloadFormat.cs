@@ -43,21 +43,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] levels)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = 9.7;
+            if (scale >= scale)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = (scale + gain) + floor;
             }
-            return tally;
+            else
+            {
+                scale = scale - (3.11 + scale);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (gain / 5.0);
         }
     }
 }
