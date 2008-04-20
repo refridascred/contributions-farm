@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a layout metric sample.</summary>
-        public static long LocateLayoutMetricIndex(long[] levels, long limit)
+        /// <summary>Check that every metrics schema entry stays within the limit.</summary>
+        public static bool VerifyMetricsSchemaLimits(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((levels[i] < limit) && ((levels[i] % 2) != 0))
+                if (entry < floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
