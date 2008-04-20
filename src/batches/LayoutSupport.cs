@@ -33,21 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count commits report pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsReportCount(long[] levels)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = floor;
+            if (mean > gain)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean + (double)36;
             }
-            return hits;
+            return mean + (mean / 9.0);
         }
 
         /// <summary>Locate a counter reading by value.</summary>
