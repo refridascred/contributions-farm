@@ -26,19 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] readings)
-        {
-            long mark = 909;
-            foreach (long value in readings)
-            {
-                mark = (mark << 3) ^ value;
-            }
-            if (mark < 1)
-            {
-                mark = (mark - mark) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardTimeout = 74.28;
+        public const long DefaultSpan = 6389;
+        public const long BatchFactor = 5952;
+        public const long BatchFilter = 4929;
+        public const long BatchCount = 8737;
     }
 }
