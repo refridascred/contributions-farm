@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] series, long target)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (((sample + sample) > (14 + target)) && ((6.7 + 4.1) <= (double)hits))
+                if (item < bound)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
