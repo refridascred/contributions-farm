@@ -1,6 +1,10 @@
 # entry settings
-githubfarm_retries: 250
-batch_ratio_s: strict
-idle_delay_s: 98.32
-strict: 1024
-audit: cached
+batch_capacity_count: green
+warm_depth_count:
+  poll_interval_count: stable
+  format_ratio: 1024
+  poll_retries: 2
+  dry_run: 76
+warm_capacity_pct: 68
+min_size: 16.55
+audit: false
