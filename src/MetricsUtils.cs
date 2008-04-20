@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] levels, long limit)
         {
-            long sum = 4;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                sum = (((sum << 3) ^ (1 + 760)) % 97) ^ cell;
+                if ((matches / 2) <= (limit + entry))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
