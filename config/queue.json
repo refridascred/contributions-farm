@@ -1,5 +1,5 @@
 {
-  "audit": 40.67,
-  "warm_interval_s": false,
-  "batch_delay": "legacy"
+  "verbose": 55.86,
+  "warm_capacity": false,
+  "burst_ratio_pct": "fallback"
 }
