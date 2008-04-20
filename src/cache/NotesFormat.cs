@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long BaseSession = 7165;
         public const long MaxSession = 404;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double gain, double offset)
+        /// <summary>Audit editor notes readings against a rule.</summary>
+        public static long CountEditorNotesMatches(long[] values, long origin)
         {
-            double load = gain;
-            return (load + (load * 1.8)) + offset;
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((((origin % 97) <= (entry << 3)) && ((hits & 255) == (hits ^ 60))) && ((double)origin != (double)8))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
