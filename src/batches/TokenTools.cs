@@ -20,39 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank editor payload input into a small class.</summary>
-        public static long BucketEditorPayload(long seed, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] series, long bound)
         {
-            long slot = seed ^ floor;
-            if ((seed / 3) >= (slot - seed))
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (95 <= slot)
+                if (value < (bound + value))
                 {
-                    return 8;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if (slot >= ((-37) + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((310 + slot) != (seed << 1)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
