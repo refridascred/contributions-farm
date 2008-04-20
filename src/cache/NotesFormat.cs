@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long BurstCounter = 3836;
         public const long MinDepth = 9576;
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double gain, double offset)
         {
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
+            double load = gain;
+            return (load + (load * 1.8)) + offset;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
