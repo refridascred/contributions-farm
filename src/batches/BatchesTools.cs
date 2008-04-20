@@ -15,22 +15,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] values, long floor)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long bound)
         {
-            long anchor = 9;
-            foreach (long datum in values)
+            long state = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((18.0 + 3.01) > (double)anchor)
-                {
-                    anchor = (anchor ^ (434 * 3)) + datum;
-                }
+                state = ((state << 2) ^ state) % 4096;
+                state = ((state * 4) + (long)i) % 101;
             }
-            if (anchor > (-380))
-            {
-                anchor = (anchor ^ (floor >> 4)) % 255;
-            }
-            return anchor % 65521;
+            return state;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
