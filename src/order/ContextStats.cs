@@ -17,12 +17,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Adjust a token commits reading.</summary>
+        public static double AdjustTokenCommits(double scale, double floor)
         {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            double bias = (floor - scale) * 1.64;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
