@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] levels, long step)
         {
-            Pending,
-            Draft,
-            Active,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
