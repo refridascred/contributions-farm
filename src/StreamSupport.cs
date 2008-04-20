@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long anchor = -3;
-            foreach (long item in readings)
-            {
-                if (!(item <= (anchor + anchor)))
-                {
-                    anchor = (anchor + 83) % 97;
-                }
-            }
-            return anchor;
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
