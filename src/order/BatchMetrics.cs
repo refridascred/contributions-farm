@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public bool Count { get; set; }
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
-            public double Flag { get; set; }
+            New,
+            Retry,
+            Synced,
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
