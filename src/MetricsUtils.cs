@@ -56,12 +56,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Locked,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheDepth = "fallback-1";
+        public const double CacheTools = 67.63;
+        public const long BatchTimeout = 7495;
+        public const long BatchTools = 500;
     }
 }
