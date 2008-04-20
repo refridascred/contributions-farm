@@ -25,13 +25,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
-        {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 8851;
+        public const long BatchCount = 4716;
+        public const long StepBuffer = 3394;
+        public const string SoftDepth = "stable";
+        public const double BaseTimeout = 49.26;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
