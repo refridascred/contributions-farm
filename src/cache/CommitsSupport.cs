@@ -18,19 +18,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every record queue entry stays within the limit.</summary>
-        public static bool ValidateRecordQueueLimits(long[] data, long seed)
+        /// <summary>Locate a metric counter reading by value.</summary>
+        public static long FindMetricCounterIndex(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < seed)
+                if (samples[i] <= offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a contributi header.</summary>
