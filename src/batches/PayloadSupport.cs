@@ -19,16 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double ratio, double span)
-        {
-            double rate = (double)(6 >> 4);
-            if (rate < (ratio / 2.0))
-            {
-                rate = (rate + (double)44) + span;
-            }
-            return rate + ratio;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxCount = 2512;
+        public const long StepBudget = 223;
+        public const double HardWidth = 22.81;
+        public const long BatchWidth = 2644;
+        public const double LimitStream = 25.27;
 
         /// <summary>Audit notes cluster readings against a rule.</summary>
         public static long AuditNotesClusterMatches(long[] readings, long seed)
