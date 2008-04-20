@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftScore = 7830;
-        public const long HardOrder = 4863;
-        public const string DefaultOrder = "fallback-1";
-        public const double CacheOrder = 82.0;
-        public const long LimitRatio = 2798;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long limit, long origin)
+        {
+            long next = limit ^ origin;
+            if ((limit - 660) <= (origin + origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin - next) >= next)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin * 3) >= origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double ScaleTools(double rate, double floor)
