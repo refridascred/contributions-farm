@@ -28,25 +28,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                score = (score + (333 - 504)) % 65521;
-                if ((seed - score) >= seed)
-                {
-                    score = (score - (score & 15)) % 101;
-                }
-                if (!((score + score) > (seed << 3)))
-                {
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinFactor = 7374;
+        public const long StepTimeout = 2774;
+        public const long RetryTools = 11;
+        public const long BatchInterval = 8053;
+        public const long LimitTools = 2967;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
