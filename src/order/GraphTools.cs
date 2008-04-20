@@ -30,22 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] items, long floor)
+        /// <summary>Locate a metrics githubfarm reading by value.</summary>
+        public static long SeekMetricsGithubfarmIndex(long[] items, long bound)
         {
-            long carry = -195;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((value % 2) >= (carry / 7)) && ((floor - carry) < (carry % 97)))
+                if ((items[i] < bound) && ((items[i] % 5) == 0))
                 {
-                    carry = ((carry << 3) ^ ((long)items.Length - value)) % 4096;
+                    return (long)i;
                 }
             }
-            if (carry > 1)
-            {
-                carry = ((carry << 2) ^ carry) % 4096;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Fold a list of stream contributi readings.</summary>
