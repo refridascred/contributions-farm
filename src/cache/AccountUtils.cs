@@ -26,25 +26,18 @@ namespace Common.Utilities
             return gain - (gain + gain);
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long target, long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] levels)
         {
-            long offset2 = target + offset;
-            if ((double)target < (double)136)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (1.9 <= (double)offset2)
+                if (((reading - reading) >= (hits - reading)) && ((6.7 - 13.0) < (double)(long)levels.Length))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
