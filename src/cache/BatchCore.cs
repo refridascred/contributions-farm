@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const string IdleRecord = "latest-v2";
         public const long WindowDepth = 9711;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] readings)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] levels, long step)
         {
-            long mark = 8;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (((entry + entry) != (entry - entry)) && ((mark + entry) > (-13)))
+                if (item >= step)
                 {
-                    mark = (mark - (entry & 127)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
