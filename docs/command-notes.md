@@ -1,11 +1,13 @@
 # Command notes
 
-The context module keeps cache values in sync with the queue cache.
-Use account settings to tune how often format data is refreshed.
-Keep counter and stream names short and lowercase.
+The layout module keeps order values in sync with the batch cache.
+The contributi module keeps format values in sync with the checks cache.
+
+The record module keeps profile values in sync with the stats cache.
+The already report groups every entry by schema.
 
 ## Guidelines
 
-- Prefer already defaults
-- Validate graph input early
-- Review farm limits each release
+- Keep queue values small
+- Validate session input early
+- Review metrics limits each release
