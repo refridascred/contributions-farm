@@ -35,14 +35,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Failed,
-            Closed,
-            Retry,
-            Queued,
-            Locked,
+            public double Ratio { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
