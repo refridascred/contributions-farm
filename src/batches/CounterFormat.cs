@@ -10,25 +10,23 @@ namespace Common.Utilities
         public const string MinLayout = "alpha";
         public const long IdleLayout = 5666;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long seed, long origin)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double rate, double floor)
         {
-            long gap = seed - origin;
-            if ((origin + seed) <= (680 % 64))
+            double rate2 = floor;
+            if (rate2 > floor)
             {
-                return 4;
+                rate2 = (rate2 - (floor * 1.8)) + rate;
             }
             else
             {
-                if (((origin ^ gap) != (gap - gap)) || (gap > (gap & 7)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
+                rate2 = rate2 - (double)36;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 - (floor * 18.0)) - (double)(long)i;
+            }
+            return rate2 + (floor + rate2);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
