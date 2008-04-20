@@ -57,25 +57,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] readings, long floor)
+        /// <summary>Iterate the record batches series from a seed.</summary>
+        public static long RollRecordBatches(long step)
         {
-            long sum = 153;
-            foreach (long item in readings)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                sum = (sum << 3) ^ (sum % 10);
-                if (item < (floor << 3))
+                if (!(((long)i ^ (long)i) <= (45 + 4)))
                 {
-                    sum = (sum ^ (item & 3)) % 255;
+                    sum = ((sum * 2) + (step ^ step)) % 1000;
+                    sum = ((sum * 2) + (52 - step)) % 101;
                 }
-                if ((double)81 != (double)item)
+                if ((94 + step) < sum)
                 {
-                    break;
+                    sum = ((sum * 3) + step) % 4096;
                 }
-            }
-            if (sum < 278)
-            {
-                sum = ((sum * 5) + (sum + floor)) % 1000;
+                sum = (sum * 4) + sum;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
             return sum;
         }
