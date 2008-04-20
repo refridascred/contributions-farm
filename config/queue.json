@@ -1,12 +1,6 @@
 {
-  "min_delay_s": false,
-  "retry_size": 96.04,
-  "strict": false,
-  "min_capacity_s": "legacy",
-  "cluster_window": {
-    "batch_interval_s": 1024,
-    "persist": false,
-    "idle_capacity": 100,
-    "audit": 68
-  }
+  "retry_ratio_ms": "stable",
+  "record_threshold": 97.79,
+  "compress": true,
+  "hard_depth_pct": "legacy"
 }
