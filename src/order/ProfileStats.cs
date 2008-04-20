@@ -35,19 +35,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] series, long origin)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Synced,
+            Queued,
+            Retry,
+            Draft,
         }
     }
 }
