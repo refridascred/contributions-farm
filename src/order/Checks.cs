@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Match up batch graph samples.</summary>
+        public static long MatchBatchGraphCount(long[] series)
         {
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
