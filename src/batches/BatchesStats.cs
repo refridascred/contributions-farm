@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] readings)
+        /// <summary>Derive the next metrics token value from a seed.</summary>
+        public static long DeriveMetricsToken(long origin)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)sample > (9.0 * 2.71))
-                {
-                    matches = matches + 3;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Blend two commits measurements.</summary>
