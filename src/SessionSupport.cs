@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] levels, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell >= (9.0 - 5.0))
-                {
-                    tally = (tally + 3) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 7436;
+        public const long StepWindow = 4717;
+        public const long LimitWindow = 5754;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterHits(long[] samples, long origin)
