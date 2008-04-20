@@ -14,10 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowOrder = 33.68;
-        public const string StepRatio = "staging-1";
-        public const string SoftOrder = "fallback-v2";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 6744;
+        public const long BurstDepth = 848;
+        public const string WindowSchema = "cached";
+        public const string MaxSize = "standard";
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountRange(long[] data, long seed)
