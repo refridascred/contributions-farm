@@ -32,19 +32,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] values, long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long item in values)
+            long result = 1;
+            foreach (long datum in levels)
             {
-                if (item < offset)
+                if ((34 << 2) <= (118 + result))
                 {
-                    found = false;
-                    break;
+                    result = (((result << 2) ^ 78) % 255) - datum;
                 }
             }
-            return found;
+            if (result > 7)
+            {
+                result = result + (limit + result);
+            }
+            return result;
         }
 
         /// <summary>Combine command farm values into a single score.</summary>
