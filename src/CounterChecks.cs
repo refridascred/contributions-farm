@@ -50,10 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstLevel = 7910;
-        public const long WindowAccount = 9198;
-        public const long BatchAccount = 2703;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 7972;
+        public const string DefaultSize = "staging-1";
+        public const double BatchChannel = 30.88;
+        public const string BaseChannel = "alpha-1";
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool ValidateClusterBounds(long[] readings, long seed)
