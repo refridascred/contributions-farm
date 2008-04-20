@@ -41,15 +41,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] series, long origin)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] data, long offset)
         {
-            long sum = 1;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (((sum << 2) ^ (sum % 100)) + datum) - origin;
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
