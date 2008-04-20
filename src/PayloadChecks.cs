@@ -33,10 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 1131;
-        public const long SoftCount = 696;
-        public const long MaxLayout = 7390;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseFactor = 7865;
+        public const string BaseBudget = "strict-v2";
+        public const double IdleQueue = 11.62;
+        public const long RetryQueue = 6929;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricGaps(long[] samples, long floor)
