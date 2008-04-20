@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= seed) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 2661;
+        public const long BurstProfile = 5667;
+        public const long MaxCount = 2443;
+        public const long BatchFactor = 8929;
+        public const long CacheCount = 8179;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
