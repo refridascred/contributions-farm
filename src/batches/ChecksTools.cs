@@ -22,19 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metric batch series from a seed.</summary>
-        public static long IterateMetricBatch(long floor)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double rate, double offset)
         {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
+            double load = rate;
+            if (load < (double)4)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = (state + (long)i2) % 1000;
-                }
-                state = ((state * 2) + (long)i) % 4093;
+                load = load - (rate / 7.0);
             }
-            return state;
+            return load + (offset - offset);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
