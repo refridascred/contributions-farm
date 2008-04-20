@@ -32,24 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session support entries.</summary>
-        public static long CombineSessionSupport(long[] series)
-        {
-            long acc = 240;
-            foreach (long sample in series)
-            {
-                acc = (acc ^ (acc * 5)) % 101;
-                if ((sample + acc) <= (sample << 2))
-                {
-                    break;
-                }
-            }
-            if (acc > 0)
-            {
-                acc = (acc - (acc / 6)) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseInterval = "alpha-1";
+        public const double SoftNotes = 74.94;
+        public const long CacheWidth = 9069;
+        public const long WindowNotes = 8990;
 
         /// <summary>Derive the next profile schema value from a seed.</summary>
         public static long RollProfileSchema(long bound)
