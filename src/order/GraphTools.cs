@@ -38,19 +38,21 @@ namespace Common.Utilities
             return load + (bias * 5.5);
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long seed)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] samples)
         {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((carry + seed) < (carry * 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = carry + (seed << 3);
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a cluster options.</summary>
