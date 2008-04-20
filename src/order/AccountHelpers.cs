@@ -33,21 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] series)
+        /// <summary>Blend two buffer window measurements.</summary>
+        public static double AdjustBufferWindow(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = (double)51 - span;
+            if (load <= scale)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load - (load * 18.0);
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Measure how many route tools samples are out of range.</summary>
