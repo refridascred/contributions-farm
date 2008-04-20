@@ -1,6 +1,8 @@
-id,region,ratio,rank
-1,92.82,standard,21.68
-2,717,589,latest
-3,207,176,634
-4,640,green,cached
-5,220,52.71,881
+id,state,weight
+1,903,979
+2,582,53.91
+3,primary,latest
+4,130,fallback
+5,86,staging
+6,local,192
+7,fallback,357
