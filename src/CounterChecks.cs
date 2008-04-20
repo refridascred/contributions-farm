@@ -33,12 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Audit token window readings against a rule.</summary>
+        public static long CountTokenWindowHits(long[] items)
         {
-            Pending,
-            Closed,
-            Stale,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (seen > 4)
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a buffer contributi reading by value.</summary>
