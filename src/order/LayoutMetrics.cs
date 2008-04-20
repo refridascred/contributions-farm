@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long seed)
         {
-            public double Level { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public double Total { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = (sum + (seed >> 4)) % 255;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
