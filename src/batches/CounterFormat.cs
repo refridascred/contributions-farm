@@ -34,19 +34,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate queue support readings against a bound.</summary>
-        public static bool ValidateQueueSupportLimits(long[] levels, long target)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
