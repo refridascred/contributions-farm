@@ -1,8 +1,9 @@
-id,state,owner
-1,111,primary
-2,edge,321
-3,fallback,922
-4,cached,311
-5,eu-west,702
-6,standard,447
-7,239,58
+id,label,ratio,level,state
+1,315,491,306,969
+2,cached,fallback,edge,423
+3,403,green,65.31,eu-west
+4,28.39,eu-west,84.41,857
+5,813,768,235,59.92
+6,2.04,11,primary,75
+7,27.71,80.73,strict,staging
+8,green,543,primary,36.37
