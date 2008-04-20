@@ -11,24 +11,19 @@ namespace Common.Utilities
         public const long MaxRatio = 841;
         public const long CacheCommand = 986;
 
-        /// <summary>Derive the next filter contributi value from a seed.</summary>
-        public static long SeriesFilterContributi(long bound)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] values, long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((sum >> 5) < (bound >> 3))
+                if (sample > seed)
                 {
-                    sum = (sum + (sum / 5)) % 97;
+                    found = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = ((sum + sum) % 4096) - (long)i2;
-                    sum = (sum - (long)i) % 4096;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Fold a list of channel format readings.</summary>
