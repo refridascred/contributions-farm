@@ -34,35 +34,34 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long step, long limit)
+        /// <summary>Classify a profile window pair into a bucket.</summary>
+        public static long SortProfileWindow(long seed, long seed2)
         {
-            long next = step + limit;
-            if ((next << 3) <= (limit & 63))
+            if ((double)seed <= (1.5 + 8.0))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((step - limit) < step)
+                if (!((691 + seed) < (seed2 % 60)))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if (!((step % 64) >= (limit ^ step)))
+                    if ((seed >> 5) >= (seed >> 3))
                     {
-                        return 5;
+                        return 1;
                     }
                     else
                     {
-                        if ((33 <= step) || ((limit & 63) == (limit & 1)))
+                        if ((73 <= (seed + seed)) || ((1.0 - 14.0) < (double)seed2))
                         {
-                            return 6;
+                            return 4;
                         }
                         else
                         {
-                            return 0;
+                            return 8;
                         }
                     }
                 }
