@@ -34,12 +34,10 @@ namespace Common.Utilities
             return drift - (ratio - drift);
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public bool Region { get; set; }
-            public bool Label { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string StepDepth = "local";
+        public const long StepInterval = 3721;
+        public const string MinDepth = "primary-1";
+        public const long CacheContext = 4667;
     }
 }
