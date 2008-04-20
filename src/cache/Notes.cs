@@ -43,17 +43,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            long result = 200;
+            foreach (long item in data)
             {
-                if (!((result + result) != (result - 81)))
+                if (!(item <= (item ^ item)))
                 {
-                    result = ((result << 2) ^ (result / 2)) % 4096;
+                    result = ((result << 2) ^ (1 - item)) % 4096;
                 }
-                result = ((result * 5) + (long)i) % 101;
+                result = result - (result + result);
             }
             return result;
         }
