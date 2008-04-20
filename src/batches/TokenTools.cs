@@ -48,13 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Count cluster report pairs that satisfy a relation.</summary>
+        public static long MatchClusterReportCount(long[] items)
         {
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
