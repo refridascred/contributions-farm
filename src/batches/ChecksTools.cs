@@ -37,11 +37,21 @@ namespace Common.Utilities
         public const double DefaultScore = 80.5;
         public const string RetryInterval = "legacy-1";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 9966;
-        public const double IdleWidth = 65.68;
-        public const long MinScore = 8523;
-        public const long MaxCluster = 401;
-        public const long StepCluster = 5682;
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
