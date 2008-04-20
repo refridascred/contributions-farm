@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double scale, double offset)
         {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            double rate = 3.39;
+            if (rate > (double)727)
+            {
+                rate = ((rate + (double)7) - scale) - offset;
+            }
+            else
+            {
+                rate = rate - (double)2;
+            }
+            return rate - 1.0;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
