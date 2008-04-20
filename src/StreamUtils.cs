@@ -67,11 +67,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 763;
-        public const long StepSupport = 6636;
-        public const long StepLevel = 3582;
-        public const long RetrySupport = 5248;
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TotalBatch(long[] series, long target)
