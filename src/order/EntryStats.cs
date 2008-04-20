@@ -20,14 +20,10 @@ namespace Common.Utilities
             return drift - (floor + bias);
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstLevel = 7543;
+        public const string MinProfile = "primary";
+        public const double HardDepth = 55.99;
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
