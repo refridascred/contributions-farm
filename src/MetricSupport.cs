@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] samples, long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] samples)
         {
-            long carry = -5;
+            long hits = 0;
             foreach (long entry in samples)
             {
-                carry = (((carry * 3) + entry) % 1000) + step;
+                if ((entry / 6) != (26 ^ entry))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
