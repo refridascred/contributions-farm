@@ -45,10 +45,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchSession = "cached";
-        public const string IdleScore = "local-1";
-        public const long StepDepth = 4885;
-        public const long DefaultSession = 1301;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 2882;
+        public const long StepStats = 6360;
+        public const string StepInterval = "staging-v2";
+        public const long RetryCount = 917;
     }
 }
