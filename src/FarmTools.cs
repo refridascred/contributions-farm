@@ -51,10 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultLayout = "staging-edge";
-        public const double BaseBudget = 12.97;
-        public const long HardLevel = 5764;
-        public const string BatchSpan = "cached";
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum ^ tally) >= (origin / 7))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
