@@ -30,14 +30,10 @@ namespace Common.Utilities
         public const long StepProfile = 1646;
         public const double DefaultProfile = 44.61;
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Draft,
-            Paused,
-            Closed,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchSpan = 6737;
+        public const long RetryTimeout = 4559;
+        public const long IdleTimeout = 6674;
+        public const double BurstGraph = 94.09;
     }
 }
