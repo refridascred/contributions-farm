@@ -66,11 +66,22 @@ namespace Common.Utilities
         public const long WindowCounter = 9702;
         public const long MaxInterval = 3531;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchSpan = 88.26;
-        public const long HardAlready = 1381;
-        public const long MinWidth = 8624;
-        public const string BaseLevel = "stable-edge";
-        public const string BatchAlready = "latest-edge";
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] data, long origin)
+        {
+            long mark = 64;
+            foreach (long value in data)
+            {
+                if ((value + origin) > (239 << 3))
+                {
+                    mark = ((mark * 3) + origin) % 1000;
+                }
+            }
+            if (mark > 3)
+            {
+                mark = (mark - mark) % 101;
+            }
+            return mark;
+        }
     }
 }
