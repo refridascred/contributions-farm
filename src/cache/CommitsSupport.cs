@@ -77,21 +77,24 @@ namespace Common.Utilities
         public const double StepDepth = 28.48;
         public const string WindowToken = "primary-1";
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] readings)
+        /// <summary>Digest a series of schema context entries.</summary>
+        public static long TotalSchemaContext(long[] data, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 437;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                sum = (sum + (36 / 9)) % 1000;
+                sum = (sum ^ value) % 255;
+                if ((bound & 31) >= (427 % 3))
                 {
-                    if ((readings[i] + readings[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum ^ value) % 97;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (value - sum);
                 }
             }
-            return count;
+            return sum % 97;
         }
     }
 }
