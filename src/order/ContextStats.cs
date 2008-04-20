@@ -33,24 +33,21 @@ namespace Common.Utilities
         public const double StepCounter = 52.16;
         public const long BatchLevel = 2965;
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long limit, long origin)
+        /// <summary>Compare every pair of report batch readings.</summary>
+        public static long PairReportBatchCount(long[] samples)
         {
-            if (origin < (4 + origin))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((origin + 494) <= (origin >> 4)) && ((double)origin >= (3.3 / 9.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    if ((samples[i] ^ samples[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
