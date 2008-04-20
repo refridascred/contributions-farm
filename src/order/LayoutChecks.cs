@@ -70,12 +70,13 @@ namespace Common.Utilities
             return mean - (offset / 6.0);
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
