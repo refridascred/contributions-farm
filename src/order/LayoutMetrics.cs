@@ -13,17 +13,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] samples, long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (samples[i] > origin)
+                if (reading < floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Scale a editor report figure with a bias.</summary>
