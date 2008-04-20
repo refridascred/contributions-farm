@@ -1,4 +1,7 @@
 # entry settings
-base_delay: 79.01
-soft_limit_pct: fallback
-audit: cached
+enabled: blue
+idle_limit_pct: primary
+default_delay_count: 56.04
+schema_ttl: 1707
+soft_timeout_count: legacy
+contributi_threshold: false
