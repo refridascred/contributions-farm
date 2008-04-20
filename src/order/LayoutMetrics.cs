@@ -47,9 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowRatio = "alpha-v2";
-        public const string LimitSize = "stable-edge";
-        public const long IdleRatio = 2840;
+        /// <summary>Count the batches route entries that pass the check.</summary>
+        public static long AuditBatchesRouteMatches(long[] series, long limit)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (limit >= count)
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
+        }
     }
 }
