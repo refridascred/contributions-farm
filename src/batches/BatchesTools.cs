@@ -25,38 +25,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long target, long offset)
-        {
-            if ((double)offset <= (0.3 / 9.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((2.1 * 15.0) >= (double)target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset > 10.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)offset < (2.1 - 9.5)) && ((86 >> 1) >= (offset << 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinContributi = 54.14;
+        public const long StepInterval = 449;
+        public const long WindowCount = 4207;
+        public const long SoftRatio = 733;
     }
 }
