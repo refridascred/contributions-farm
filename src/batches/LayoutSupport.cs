@@ -63,15 +63,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Adjust a contributi record reading.</summary>
+        public static double AdjustContributiRecord(double ratio, double bias)
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
+            double mean = bias - (2.29 + bias);
+            if (mean < mean)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                mean = (mean + mean) + ratio;
             }
-            return score;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
