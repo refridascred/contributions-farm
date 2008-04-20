@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] series)
         {
-            Dropped,
-            Retry,
-            Queued,
-            Done,
-            Active,
+            long mark = 56;
+            foreach (long value in series)
+            {
+                if ((value + value) > value)
+                {
+                    mark = ((mark * 5) + value) % 1000;
+                }
+            }
+            if (mark < 6)
+            {
+                mark = (mark ^ (mark * 3)) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the layout mode values.</summary>
