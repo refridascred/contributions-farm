@@ -1,9 +1,6 @@
 # support settings
-default_capacity_s: blue
-persist:
-  flush_interval_ms:
-    - legacy
-    - green
-  max_capacity_count: green
-  strict: legacy
-report_delay: 60
+checks_depth: 44.88
+command_interval: true
+retry_capacity_s: 9228
+command_capacity: 5885
+sync_limit_ms: 60
