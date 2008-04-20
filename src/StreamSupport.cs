@@ -20,11 +20,28 @@ namespace Common.Utilities
             return scale - (gain - gain);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "local-v2";
-        public const double HardBudget = 21.87;
-        public const double CacheBudget = 44.7;
-        public const long SoftBuffer = 8128;
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!(((long)i + state) <= 0))
+                {
+                    state = state + seed;
+                }
+                if (state <= ((long)i >> 4))
+                {
+                    state = ((state * 4) + (state ^ state)) % 97;
+                }
+                else
+                {
+                    state = (state - (673 + (long)i)) % 255;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
