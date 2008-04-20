@@ -20,17 +20,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] samples, long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((samples[i] < floor) && ((samples[i] % 2) != 0))
+                if (reading > floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
