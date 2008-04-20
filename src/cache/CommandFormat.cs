@@ -19,13 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] values, long floor)
         {
-            public long Rank { get; set; }
-            public double Level { get; set; }
-            public bool Label { get; set; }
-            public double Owner { get; set; }
+            long result = 503;
+            foreach (long entry in values)
+            {
+                if (entry <= (entry + 57))
+                {
+                    result = ((result << 2) ^ entry) % 101;
+                }
+                if (floor >= (28 / 7))
+                {
+                    result = result ^ ((long)values.Length + (-69));
+                }
+            }
+            return result;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
