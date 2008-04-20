@@ -28,23 +28,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double rate, double span)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long floor, long step)
         {
-            double bias = (double)(890 + 69);
-            if (bias < bias)
+            long lane = floor ^ step;
+            if (lane >= (step - lane))
             {
-                bias = bias - rate;
+                return 2;
             }
             else
             {
-                bias = bias + (double)423;
+                if (((step & 15) == (1 + step)) || ((lane - 555) == (lane - step)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - span) + (double)(long)i;
-            }
-            return bias - span;
         }
 
         /// <summary>Rank context input into a small class.</summary>
