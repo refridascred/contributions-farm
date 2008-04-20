@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long MinBatch = 9759;
         public const string BurstLevel = "strict-1";
 
-        /// <summary>Blend two commits route measurements.</summary>
-        public static double ScaleCommitsRoute(double scale, double floor)
+        /// <summary>Count the notes metrics entries that pass the check.</summary>
+        public static long MeasureNotesMetricsOutliers(long[] values, long step)
         {
-            double load = scale;
-            if (load < floor)
+            long count = 0;
+            foreach (long reading in values)
             {
-                load = load + load;
+                if ((count - step) < count)
+                {
+                    count = (count + 3) ^ reading;
+                }
             }
-            else
-            {
-                load = load - floor;
-            }
-            return load - (scale - load);
+            return count;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
