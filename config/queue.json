@@ -1,5 +1,7 @@
 {
-  "commits_interval": "cached",
-  "batch_retries_count": "blue",
-  "tools_ttl": false
+  "dry_run": 13.24,
+  "commits_capacity": "standard",
+  "min_capacity_s": "primary",
+  "enabled": ["blue", "standard", "local", "local"],
+  "max_interval": "latest"
 }
