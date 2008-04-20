@@ -28,29 +28,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] samples, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] readings, long seed)
         {
-            long anchor = -560;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                anchor = (anchor - (bound << 1)) % 4096;
-                if ((9.41 / 5.0) != (double)anchor)
+                if (3 >= (51 + seed))
                 {
-                    anchor = ((anchor * 4) + (anchor + item)) % 101;
-                    anchor = anchor ^ (anchor & 3);
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 4096;
-                    anchor = (anchor + (item ^ bound)) % 101;
-                }
-                if (!((double)bound != (double)anchor))
-                {
-                    anchor = (anchor + (anchor << 2)) % 97;
+                    count = (count + 3) + datum;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Measure how many token channel samples are out of range.</summary>
