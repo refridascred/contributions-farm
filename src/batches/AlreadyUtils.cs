@@ -50,10 +50,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchWidth = 4514;
-        public const long LimitInterval = 7432;
-        public const long WindowWidth = 6104;
-        public const string DefaultFactor = "cached-1";
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
