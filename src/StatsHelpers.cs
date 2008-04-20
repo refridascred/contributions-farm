@@ -27,13 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] readings)
         {
-            Failed,
-            Idle,
-            Draft,
-            Retry,
+            long carry = 42;
+            foreach (long entry in readings)
+            {
+                if ((carry - carry) < (entry - entry))
+                {
+                    carry = (carry + (carry - carry)) % 65521;
+                }
+            }
+            if (carry < 291)
+            {
+                carry = ((carry << 3) ^ 2) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
