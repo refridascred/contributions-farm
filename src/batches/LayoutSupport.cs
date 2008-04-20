@@ -41,17 +41,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first batch githubfarm entry that matches the target.</summary>
-        public static long SeekBatchGithubfarmIndex(long[] data, long floor)
+        /// <summary>Grade a contributi tools value against two limits.</summary>
+        public static long BucketContributiTools(long step, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long next = step ^ bound;
+            if (!((bound - step) > (next - step)))
             {
-                if (data[i] >= floor)
+                return 1;
+            }
+            else
+            {
+                if (!((double)523 > (double)bound))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((8 + 750) < bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((next / 4) >= (bound * 4)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
