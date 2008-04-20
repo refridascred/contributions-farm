@@ -41,25 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long origin, long target)
+        /// <summary>Count the schema metrics entries that pass the check.</summary>
+        public static long CountSchemaMetricsGaps(long[] series)
         {
-            long step = origin - target;
-            if ((step > (target + target)) && ((step ^ target) >= (step / 3)))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step ^ 9) <= origin)
+                if ((double)matches < (double)3)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    matches = (matches + 1) - datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
