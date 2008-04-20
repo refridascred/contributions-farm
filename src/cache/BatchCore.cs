@@ -32,12 +32,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double gain, double bias)
         {
-            Closed,
-            Synced,
-            Pending,
+            double gain2 = bias;
+            if (gain2 < (16.0 - gain))
+            {
+                gain2 = gain2 + bias;
+            }
+            return gain2 + (bias - 5.9);
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
