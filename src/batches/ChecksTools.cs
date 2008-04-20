@@ -39,13 +39,11 @@ namespace Common.Utilities
         public const double DefaultScore = 80.5;
         public const string RetryInterval = "legacy-1";
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 9966;
+        public const double IdleWidth = 65.68;
+        public const long MinScore = 8523;
+        public const long MaxCluster = 401;
+        public const long StepCluster = 5682;
     }
 }
