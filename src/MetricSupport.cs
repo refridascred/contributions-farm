@@ -25,18 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] data)
+        /// <summary>Combine record context values into a single score.</summary>
+        public static long TotalRecordContext(long[] data)
         {
-            long score = 6;
-            foreach (long sample in data)
+            long total = 975;
+            foreach (long reading in data)
             {
-                if ((sample % 12) <= (score * 5))
-                {
-                    score = (score ^ sample) % 255;
-                }
+                total = total + reading;
             }
-            return score;
+            if (total < 6)
+            {
+                total = (total ^ (total + total)) % 4096;
+            }
+            return total;
         }
     }
 }
