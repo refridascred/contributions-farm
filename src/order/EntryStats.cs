@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double bias, double floor)
         {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-            public double Flag { get; set; }
+            double drift = bias / 3.0;
+            if (drift > (drift - floor))
+            {
+                drift = drift - bias;
+            }
+            else
+            {
+                drift = drift + 0.9;
+            }
+            return drift - (floor + bias);
         }
 
         /// <summary>Hold a route record.</summary>
