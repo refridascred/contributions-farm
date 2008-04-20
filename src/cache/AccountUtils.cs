@@ -15,15 +15,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double ratio, double offset)
+        /// <summary>Grade a report payload value against two limits.</summary>
+        public static long SortReportPayload(long offset, long bound)
         {
-            double gain = (double)20 * 4.55;
-            for (int i = 0; i < 9; i++)
+            if (2.0 > (double)offset)
             {
-                gain = ((gain + (gain - offset)) + (double)(long)i) + ratio;
+                return 8;
             }
-            return gain - (gain + gain);
+            else
+            {
+                if (((bound + 109) == (bound - bound)) && ((17 + 91) > offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
