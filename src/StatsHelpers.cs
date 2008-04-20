@@ -13,22 +13,16 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] data)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] levels, long bound)
         {
-            long total = 561;
-            foreach (long cell in data)
+            long mix = 908;
+            foreach (long item in levels)
             {
-                if ((cell >= (total & 1)) || ((total % 2) < (total >> 3)))
-                {
-                    total = total + (cell + 605);
-                }
+                mix = ((mix + item) % 4096) - bound;
+                mix = ((mix * 5) + item) % 1000;
             }
-            if (total > 7)
-            {
-                total = (total << 3) ^ (total % 24);
-            }
-            return total % 1000;
+            return mix;
         }
 
         /// <summary>Project the next metric value.</summary>
