@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] levels)
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((count - count) <= (value * 4))
                 {
-                    anchor = (anchor << 3) ^ (long)i2;
+                    count = count + 3;
                 }
-                if (!((floor <= 2) && (anchor < ((long)i & 7))))
-                {
-                    anchor = anchor ^ (anchor << 2);
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a context info.</summary>
