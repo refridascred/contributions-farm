@@ -1,19 +1,7 @@
 {
-  "report_size": 6,
-  "profile_threshold": 67,
-  "flush_interval": 30,
-  "verbose": "cached",
-  "hard_retries_count": {
-    "max_capacity_pct": [402, 417],
-    "burst_limit": ["open", "edge", "stable"],
-    "stats_depth": 86.3,
-    "base_limit": {
-      "editor_delay": 34.3,
-      "route_capacity": 493,
-      "cache_delay_s": 83.35,
-      "audit": [149, 39]
-    },
-    "base_delay_count": false
-  },
-  "default_capacity_ms": 6104
+  "sync_window": [379, 190],
+  "soft_window": "staging",
+  "cache_interval_count": "blue",
+  "retry_size": "eu-west",
+  "retry_timeout_count": 38.07
 }
