@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=39
+log "limit is ${RECORD_LIMIT}"
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-for item in local eu-west; do
-    log "checking ${item}"
-done
