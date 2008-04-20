@@ -57,20 +57,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long seed)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!(total >= (total ^ seed)))
-                {
-                    total = ((total * 3) + total) % 65521;
-                }
-                total = total + (total / 7);
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
     }
 }
