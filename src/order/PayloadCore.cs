@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double scale, double span)
         {
-            Active,
-            Done,
-            Locked,
-            Retry,
-            Stale,
+            double drift = (span + span) * 5.91;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = ((drift - drift) - (double)(long)i) + scale;
+            }
+            return drift + span;
         }
 
         /// <summary>Match up commits samples.</summary>
