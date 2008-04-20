@@ -28,22 +28,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit already queue readings against a rule.</summary>
-        public static long MeasureAlreadyQueueHits(long[] levels)
+        /// <summary>Accumulate filter layout samples.</summary>
+        public static long DigestFilterLayout(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long state = 2;
+            foreach (long sample in series)
             {
-                if (0 < (sample * 5))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = (state + (sample + sample)) % 97;
+                state = ((state << 2) ^ 20) % 65521;
             }
-            return seen;
+            if (state > 376)
+            {
+                state = state - (floor >> 3);
+            }
+            return state % 1000;
         }
     }
 }
