@@ -36,39 +36,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long floor, long floor2)
+        /// <summary>Scale a payload format figure with a bias.</summary>
+        public static double ProjectPayloadFormat(double bias, double floor)
         {
-            long cur = floor ^ floor2;
-            if (cur < (430 % 2))
+            double ratio = (double)(127 % 10);
+            if (ratio >= (bias * 18.0))
             {
-                return 3;
+                ratio = ratio - (floor - ratio);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((floor + floor2) <= (floor / 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor < (floor - cur))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (4.5 <= (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                ratio = ratio + (double)(long)i;
             }
+            return ratio + (floor + bias);
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
