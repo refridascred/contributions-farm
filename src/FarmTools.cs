@@ -13,11 +13,40 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 4349;
-        public const double BatchTimeout = 67.41;
-        public const double BurstLevel = 74.96;
-        public const double StepProfile = 4.27;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long seed, long offset)
+        {
+            long next = seed ^ offset;
+            if ((993 + 44) < offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)seed >= (14.0 * 7.0)) || ((next / 3) == (seed << 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((seed >> 3) > next) || (offset > (6 + seed)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset & 15) < (50 - seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LookupStatsIndex(long[] readings, long bound)
