@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long seed, long step)
-        {
-            long step2 = seed + step;
-            if ((step2 * 3) > (seed - seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step + seed) > (seed ^ seed)) && ((double)step2 >= (8.0 * 3.29)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step >= (seed * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 7615;
+        public const long RetryCommand = 6613;
+        public const long RetryWidth = 1216;
+        public const long BaseWidth = 6704;
+        public const long MaxTimeout = 7911;
 
         /// <summary>Fold a list of stream context readings.</summary>
         public static long TotalStreamContext(long[] values, long limit)
