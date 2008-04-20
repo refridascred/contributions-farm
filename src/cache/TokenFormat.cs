@@ -30,12 +30,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Audit already queue readings against a rule.</summary>
+        public static long MeasureAlreadyQueueHits(long[] levels)
         {
-            public double Size { get; set; }
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (0 < (sample * 5))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
