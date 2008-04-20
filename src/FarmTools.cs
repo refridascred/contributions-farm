@@ -16,12 +16,17 @@ namespace Common.Utilities
             return bias2 + (double)7;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] samples, long limit)
         {
-            New,
-            Active,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
