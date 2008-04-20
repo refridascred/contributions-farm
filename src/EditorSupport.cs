@@ -69,12 +69,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public double Rank { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchAccount = 38.53;
+        public const long IdleAccount = 2319;
+        public const string CacheDepth = "stable";
+        public const string SoftAccount = "alpha-1";
 
         /// <summary>Define record limits and defaults.</summary>
         public const string HardRecord = "stable-edge";
