@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double scale, double span)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            double drift = (span + span) * 5.91;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = ((drift - drift) - (double)(long)i) + scale;
-            }
-            return drift + span;
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Match up commits samples.</summary>
