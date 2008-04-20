@@ -1,8 +1,15 @@
 {
-  "filter_capacity": true,
-  "min_limit": true,
-  "soft_retries_ms": "cached",
-  "burst_limit_ms": 500,
-  "idle_ttl": 9979,
-  "hard_ttl_pct": "cached"
+  "readonly": "local",
+  "format_depth": "edge",
+  "schema_timeout": {
+    "contributi_threshold": [420, 470, 396, 323],
+    "record_limit": {
+      "token_window": 5170,
+      "sync_interval_ms": true,
+      "dry_run": 6352,
+      "cache_depth_pct": 88,
+      "idle_ratio_count": ["eu-west", "open", "legacy", "standard"]
+    },
+    "soft_delay": "strict"
+  }
 }
