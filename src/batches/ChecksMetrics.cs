@@ -20,13 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] values, long bound)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long origin)
         {
-            long mix = 98;
-            foreach (long entry in values)
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
             {
-                mix = ((((mix * 3) + (7 >> 5)) % 255) - entry) - bound;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mix = ((mix * 2) + (origin ^ origin)) ^ (long)i2;
+                }
+                mix = (mix ^ (origin ^ origin)) % 4096;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
             return mix;
         }
