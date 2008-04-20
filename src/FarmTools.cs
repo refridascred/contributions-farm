@@ -13,21 +13,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long seed)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                result = result ^ (seed >> 4);
-                if (((long)i >> 4) < result)
+                if ((cell + 0) <= (hits - 875))
                 {
-                    result = result - seed;
-                    result = (result ^ seed) % 255;
+                    hits = hits + 1;
                 }
-                result = ((result * 5) + (long)i) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
