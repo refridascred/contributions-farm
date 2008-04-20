@@ -64,13 +64,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Measure how many command cluster samples are out of range.</summary>
+        public static long AuditCommandClusterMatches(long[] samples, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
-            public bool Count { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item >= (item + floor)) || ((count + floor) >= (floor % 64)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
