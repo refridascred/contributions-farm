@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double bias, double span)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] readings, long origin)
         {
-            double gain = 5.82 * 3.6;
-            return ((gain - (18.0 * 8.2)) + bias) + span;
+            long mix = 678;
+            foreach (long reading in readings)
+            {
+                if (!((origin + origin) == (352 % 64)))
+                {
+                    mix = mix - (mix ^ mix);
+                }
+                if (92 < reading)
+                {
+                    mix = (mix + ((-34) & 255)) % 255;
+                }
+            }
+            if (mix < 90)
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix;
         }
 
         /// <summary>Match up commits samples.</summary>
