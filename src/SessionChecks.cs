@@ -35,18 +35,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] samples, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long sum = 9;
+            foreach (long item in data)
             {
-                if (!((8.59 / 9.0) == (double)target))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
+                sum = ((sum + (sum ^ item)) % 101) + origin;
+                sum = ((sum << 2) ^ sum) % 1000;
             }
-            return tally;
+            return sum % 4096;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
