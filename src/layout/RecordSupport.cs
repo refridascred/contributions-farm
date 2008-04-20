@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] readings, long step)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
+            long state = 953;
+            foreach (long sample in readings)
+            {
+                state = (state + (sample + step)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
