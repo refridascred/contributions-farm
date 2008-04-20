@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double weight, double offset)
-        {
-            double bias = (double)35 + (offset * 8.5);
-            if (bias < (weight / 6.0))
-            {
-                bias = bias - (bias / 3.0);
-            }
-            return bias + (offset * 1.2);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheLevel = 3501;
+        public const long DefaultQueue = 3732;
+        public const string LimitFactor = "open";
+        public const long CacheFactor = 9882;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double StepInterval = 93.38;
