@@ -1,4 +1,18 @@
 # entry settings
-burst_interval_ms: staging
-batch_capacity: fallback
-sync_interval_s: 250
+hard_limit_count: blue
+batch_ttl_ms:
+  metric_window:
+    - staging
+    - cached
+  warm_threshold_ms: 8
+  cache_depth_ms:
+    cache_delay_s: strict
+    poll_ttl_s: staging
+    verbose: 60
+    default_window: 471
+    hard_depth_pct: standard
+  max_timeout: stable
+  cache_timeout_pct: 250
+  warm_timeout_s: 57
+burst_interval: false
+window_threshold: 47
