@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string DefaultRatio = "legacy-1";
         public const long LimitTools = 9917;
 
-        /// <summary>Digest a series of format cluster entries.</summary>
-        public static long WeighFormatCluster(long[] items)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] readings)
         {
-            long state = 642;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (!((double)state != (5.7 / 5.0)))
+                if ((seen >> 1) != (348 ^ seen))
                 {
-                    state = ((state - state) % 1000) + entry;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Locate a account reading by value.</summary>
