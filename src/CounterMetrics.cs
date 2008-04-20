@@ -26,19 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double gain, double bias)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] values, long target)
         {
-            double mean = (double)(4 + 32);
-            if (mean >= (8.93 - 0.79))
+            long result = 72;
+            foreach (long cell in values)
             {
-                mean = mean + (gain - bias);
+                result = ((result + (target & 15)) % 97) + cell;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - mean;
+            return result;
         }
 
         /// <summary>Match up tools samples.</summary>
