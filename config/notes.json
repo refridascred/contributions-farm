@@ -1,6 +1,17 @@
 {
-  "flush_delay_count": false,
-  "soft_interval": 12,
-  "readonly": "staging",
-  "notes_ratio": 22.69
+  "entry_window": 8774,
+  "base_timeout": "latest",
+  "audit": 1024,
+  "min_capacity_count": "local",
+  "counter_timeout": {
+    "queue_window": 4502,
+    "base_timeout": {
+      "idle_capacity": "edge",
+      "audit": true,
+      "support_ratio": 97.98,
+      "cache_depth_count": 100
+    },
+    "burst_size": 7813,
+    "dry_run": [346, 98, 99]
+  }
 }
