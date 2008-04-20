@@ -23,17 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a window tools sample.</summary>
-        public static long LocateWindowToolsIndex(long[] readings, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 43;
+            foreach (long item in readings)
             {
-                if ((readings[i] == origin) && ((readings[i] % 5) != 0))
+                sum = (sum + (sum + sum)) % 101;
+                if ((item < (sum + sum)) || ((7.0 / 4.0) != (double)sum))
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ (sum + sum);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
