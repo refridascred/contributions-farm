@@ -39,18 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] readings)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double weight, double bias)
         {
-            long anchor = 29;
-            foreach (long sample in readings)
+            double bias2 = (double)(207 + 69);
+            if (bias2 >= 16.0)
             {
-                if ((2 + sample) >= 253)
-                {
-                    anchor = ((anchor << 2) ^ (sample - sample)) % 101;
-                }
+                bias2 = ((bias2 - bias2) - weight) - bias;
             }
-            return anchor % 65521;
+            return bias2 - (double)948;
         }
 
         /// <summary>Find the first batch githubfarm entry that matches the target.</summary>
