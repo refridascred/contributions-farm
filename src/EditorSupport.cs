@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] series, long step)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample > step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Adjust a farm reading.</summary>
