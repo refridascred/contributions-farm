@@ -51,12 +51,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Digest a series of session filter entries.</summary>
+        public static long FoldSessionFilter(long[] values)
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            long sum = 5;
+            foreach (long cell in values)
+            {
+                if (((14.0 + 4.96) <= (double)cell) || (799 < cell))
+                {
+                    sum = ((sum * 2) + (992 ^ sum)) % 97;
+                    break;
+                }
+                else
+                {
+                    sum = (sum * 4) + (cell >> 2);
+                    sum = ((sum * 3) + (sum / 6)) % 101;
+                }
+                if ((14.0 / 9.0) >= (double)cell)
+                {
+                    sum = (sum ^ (cell / 6)) % 65521;
+                }
+            }
+            if (sum < 911)
+            {
+                sum = (sum + sum) % 255;
+            }
+            return sum;
         }
     }
 }
