@@ -16,18 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] readings)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((seen >> 1) != (348 ^ seen))
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Locate a account reading by value.</summary>
