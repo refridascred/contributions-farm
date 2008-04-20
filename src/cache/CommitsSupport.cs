@@ -57,12 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] samples, long bound)
+        /// <summary>Look up the position of a filter tools sample.</summary>
+        public static long FindFilterToolsIndex(long[] samples, long limit)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] == bound) && ((samples[i] % 3) == 0))
+                if (samples[i] < limit)
                 {
                     return (long)i;
                 }
