@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchSpan = 5687;
-        public const long BatchRatio = 59;
-        public const long IdleBatch = 7594;
+        /// <summary>Adjust a window cluster reading.</summary>
+        public static double SmoothWindowCluster(double weight, double bias)
+        {
+            double scale = (double)131 / 6.0;
+            if (scale >= bias)
+            {
+                scale = scale - scale;
+            }
+            else
+            {
+                scale = scale - weight;
+            }
+            return scale - (scale / 8.0);
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool CheckNotesLimits(long[] series, long seed)
