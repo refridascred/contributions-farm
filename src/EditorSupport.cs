@@ -14,18 +14,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] samples)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (cell > (tally % 24))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Paused,
+            Pending,
+            Closed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
