@@ -33,15 +33,12 @@ namespace Common.Utilities
             return drift - (drift / 7.0);
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] levels, long bound)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long score = 2;
-            foreach (long item in levels)
-            {
-                score = ((score - (item / 4)) % 65521) + bound;
-            }
-            return score;
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the metric phase values.</summary>
