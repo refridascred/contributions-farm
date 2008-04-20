@@ -16,16 +16,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the context route series from a seed.</summary>
-        public static long SeriesContextRoute(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowWidth = 32.47;
+        public const long LimitDepth = 6321;
+        public const long BatchSpan = 8873;
+        public const string CacheGithubfarm = "standard-v2";
+        public const long BaseGithubfarm = 6874;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
