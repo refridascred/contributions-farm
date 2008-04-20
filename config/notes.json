@@ -1,7 +1,6 @@
 {
-  "burst_delay_count": ["strict", "open", "local"],
-  "warm_capacity_ms": true,
-  "verbose": "strict",
-  "readonly": "legacy",
-  "idle_window_count": 31.5
+  "flush_delay_count": false,
+  "soft_interval": 12,
+  "readonly": "staging",
+  "notes_ratio": 22.69
 }
