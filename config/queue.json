@@ -1,7 +1,12 @@
 {
-  "dry_run": 13.24,
-  "commits_capacity": "standard",
-  "min_capacity_s": "primary",
-  "enabled": ["blue", "standard", "local", "local"],
-  "max_interval": "latest"
+  "min_delay_s": false,
+  "retry_size": 96.04,
+  "strict": false,
+  "min_capacity_s": "legacy",
+  "cluster_window": {
+    "batch_interval_s": 1024,
+    "persist": false,
+    "idle_capacity": 100,
+    "audit": 68
+  }
 }
