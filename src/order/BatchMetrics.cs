@@ -73,18 +73,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many editor queue samples are out of range.</summary>
-        public static long TallyEditorQueueGaps(long[] values, long floor)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (hits > (item + 48))
-                {
-                    hits = (hits + 1) - floor;
-                }
-            }
-            return hits;
+            double drift = 8.0 * 0.43;
+            return ((drift - drift) + weight) + bias;
         }
     }
 }
