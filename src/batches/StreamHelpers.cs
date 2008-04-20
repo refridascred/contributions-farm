@@ -23,18 +23,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] samples)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double drift = bias2;
+            if (drift <= bias)
             {
-                if (((sample + sample) <= (8 >> 3)) && ((count <= (sample ^ sample)) && (sample >= (sample >> 1))))
-                {
-                    count = count + 2;
-                }
+                drift = drift - (16.0 + 9.83);
             }
-            return count;
+            else
+            {
+                drift = drift - (double)27;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (drift * 19.0)) - (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
