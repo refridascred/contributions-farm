@@ -43,19 +43,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many token channel samples are out of range.</summary>
-        public static long TallyTokenChannelOutliers(long[] samples, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (tally > (tally + tally))
-                {
-                    tally = ((tally + 3) + datum) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 3245;
+        public const long IdleSpan = 6212;
+        public const string HardSession = "strict-1";
+        public const long MaxSession = 6932;
+        public const long StepSession = 3851;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long FoldPayload(long[] readings)
