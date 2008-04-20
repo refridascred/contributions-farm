@@ -34,19 +34,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] items, long target)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long target, long limit)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long slot = target + limit;
+            if (((limit + limit) >= (slot + target)) || ((limit / 5) == (slot % 12)))
             {
-                if (cell >= target)
+                return 3;
+            }
+            else
+            {
+                if (limit > (slot + slot))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!(limit < target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
