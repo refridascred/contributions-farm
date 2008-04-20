@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public double Score { get; set; }
-            public bool Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
             public double Region { get; set; }
-            public bool Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
