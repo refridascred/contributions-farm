@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultSpan = 9184;
-        public const double BatchInterval = 12.39;
-        public const long BurstCounter = 3836;
-        public const long MinDepth = 9576;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheBudget = 7367;
+        public const string WindowWidth = "fallback-v2";
+        public const long BaseSession = 7165;
+        public const long MaxSession = 404;
 
         /// <summary>Project the next checks value.</summary>
         public static double ScaleChecks(double gain, double offset)
