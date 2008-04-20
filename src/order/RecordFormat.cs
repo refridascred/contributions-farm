@@ -48,15 +48,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long origin)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double bias, double span)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            double mean = bias;
+            for (int i = 0; i < 8; i++)
             {
-                state = ((state * 2) + (long)i) % 101;
+                mean = ((mean + mean) + (double)(long)i) + span;
             }
-            return state;
+            return mean + 18.0;
         }
     }
 }
