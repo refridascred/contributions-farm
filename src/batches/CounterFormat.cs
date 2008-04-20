@@ -13,14 +13,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] samples)
         {
-            Active,
-            Stale,
-            Idle,
-            Draft,
-            Ready,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (value < (matches % 12))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
