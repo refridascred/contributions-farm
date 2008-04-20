@@ -1,5 +1,7 @@
 {
-  "idle_depth_s": 7.91,
-  "graph_retries": "open",
-  "cache_delay": 63.18
+  "strict": "primary",
+  "audit": 2191,
+  "contributi_retries": ["staging", "staging", "open"],
+  "dry_run": true,
+  "flush_delay": 1
 }
