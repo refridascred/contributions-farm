@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] values, long limit)
-        {
-            long mix = -5;
-            foreach (long sample in values)
-            {
-                mix = (((mix << 2) ^ sample) % 97) + limit;
-                mix = ((mix * 5) + (sample % 100)) % 65521;
-            }
-            if (mix < 358)
-            {
-                mix = (mix ^ 5) % 101;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitInterval = 2082;
+        public const long BurstSize = 1763;
+        public const string DefaultSize = "open";
+        public const double StepTimeout = 83.56;
+        public const string MinCount = "latest-edge";
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
