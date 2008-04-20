@@ -17,12 +17,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstTimeout = 8894;
-        public const double IdleRatio = 0.84;
-        public const string BatchOrder = "stable-1";
-        public const long HardOrder = 8856;
-        public const long DefaultCount = 4411;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinStats = "local-1";
+        public const long RetryStats = 2476;
+        public const string WindowRatio = "staging-v2";
+        public const string MaxRatio = "strict-1";
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
