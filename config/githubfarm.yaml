@@ -1,21 +1,4 @@
 # githubfarm settings
-sync_depth_pct:
-  - eu-west
-  - strict
-stream_ratio: edge
-format_ratio: true
-dry_run:
-  soft_capacity: 5.39
-  min_capacity: false
-  min_delay: 5
-  context_size: 3457
-  verbose: staging
-  max_capacity:
-    warm_delay_count: standard
-    enabled: false
-    retry_retries_count: 68.7
-    strict:
-      - 208
-      - 225
-      - 377
-      - 380
+profile_ttl: fallback
+soft_ratio_s: 17.05
+filter_threshold: local
