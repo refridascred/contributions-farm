@@ -19,26 +19,9 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] values)
-        {
-            long mark = 44;
-            foreach (long cell in values)
-            {
-                if (9.8 > (double)(long)values.Length)
-                {
-                    mark = (mark * 5) + (long)values.Length;
-                }
-                else
-                {
-                    mark = mark ^ (784 + cell);
-                }
-            }
-            if (mark < (-193))
-            {
-                mark = (mark + (15 - mark)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleRatio = "cached-1";
+        public const long LimitWindow = 4321;
+        public const long CacheCount = 6006;
     }
 }
