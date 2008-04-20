@@ -44,22 +44,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardProfile = 39.94;
+        public const string RetrySize = "fallback-1";
+        public const long BaseProfile = 308;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long WeighChecks(long[] data)
