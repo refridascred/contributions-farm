@@ -36,12 +36,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryDepth = "standard-1";
-        public const long CacheInterval = 6925;
-        public const long IdleQueue = 3468;
-        public const long BurstQueue = 247;
-        public const double MaxQueue = 17.51;
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double gain, double bias)
+        {
+            double mean = (double)(4 + 32);
+            if (mean >= (8.93 - 0.79))
+            {
+                mean = mean + (gain - bias);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenMatches(long[] levels, long floor)
