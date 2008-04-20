@@ -20,12 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseFactor = 87.36;
-        public const long MinRatio = 7655;
-        public const string MaxSupport = "cached-edge";
-        public const string WindowSupport = "cached-v2";
-        public const long RetryDepth = 8696;
+        /// <summary>Derive the next batch checks value from a seed.</summary>
+        public static long IterateBatchChecks(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long LocateAlreadyIndex(long[] data, long origin)
