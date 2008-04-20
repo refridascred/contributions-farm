@@ -1,12 +1,13 @@
 {
-  "audit": 94.29,
-  "flush_interval_s": "blue",
-  "persist": [256, 250, 386, 92],
-  "warm_window": {
-    "base_window_ms": 56,
-    "dry_run": 28,
-    "notes_retries": false,
-    "min_ratio_ms": 65,
-    "strict": "standard"
-  }
+  "sync_retries_s": "cached",
+  "base_retries_ms": "legacy",
+  "contributi_retries": {
+    "min_delay_s": 20.07,
+    "dry_run": [386, 368, 56],
+    "persist": 100,
+    "counter_threshold": 10,
+    "flush_limit_pct": 69.9
+  },
+  "verbose": 1708,
+  "queue_threshold": 1024
 }
