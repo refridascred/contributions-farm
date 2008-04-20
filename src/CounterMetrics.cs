@@ -14,15 +14,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the githubfarm profile series from a seed.</summary>
-        public static long RollGithubfarmProfile(long origin)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double scale, double floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
+            double rate = (0.56 / 5.0) * 17.0;
+            if (rate > rate)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                rate = rate - floor;
             }
-            return acc;
+            else
+            {
+                rate = rate + (rate / 7.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (scale * 7.19)) + (double)(long)i;
+            }
+            return rate + 6.82;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
