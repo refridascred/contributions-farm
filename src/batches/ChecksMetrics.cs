@@ -45,18 +45,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] items)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] items, long floor)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading * 2) != (hits + hits))
                 {
-                    if ((items[i] + items[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) - floor;
                 }
             }
             return hits;
