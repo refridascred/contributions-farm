@@ -23,11 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstRatio = "local-1";
-        public const long MinDepth = 504;
-        public const string MinTimeout = "cached-edge";
-        public const long StepWidth = 1204;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = (carry ^ 90) % 97;
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long IdleCluster = 9351;
