@@ -1,9 +1,6 @@
 # support settings
-token_ratio: true
-burst_limit: 2333
-default_retries_pct:
-  - blue
-  - primary
-  - local
-idle_ratio: 3752
-cache_limit: 3373
+dry_run: 2.37
+persist: true
+max_depth_pct: primary
+sync_timeout: edge
+flush_ttl_ms: 34
