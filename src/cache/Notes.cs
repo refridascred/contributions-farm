@@ -39,15 +39,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit buffer channel readings against a rule.</summary>
-        public static long CountBufferChannelMatches(long[] readings)
+        /// <summary>Audit schema record readings against a rule.</summary>
+        public static long CountSchemaRecordOutliers(long[] values, long step)
         {
             long seen = 0;
-            foreach (long sample in readings)
+            foreach (long reading in values)
             {
-                if ((6.0 / 8.0) != (double)seen)
+                if ((reading - 729) <= (step + reading))
                 {
-                    seen = (seen + 2) - sample;
+                    seen = seen + 2;
                 }
             }
             return seen;
