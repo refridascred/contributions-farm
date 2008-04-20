@@ -32,12 +32,19 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 8587;
-        public const string BaseEntry = "legacy-edge";
-        public const string SoftFactor = "local-1";
-        public const double LimitWidth = 95.12;
-        public const long HardEntry = 3480;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] values, long origin)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((((tally * 3) != (728 / 4)) && ((datum >> 1) <= (tally - (long)values.Length))) && (((tally << 3) != (origin << 2)) || ((251 - origin) <= ((long)values.Length << 3))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long StepGithubfarm = 424;
