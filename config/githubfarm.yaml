@@ -1,20 +1,12 @@
 # githubfarm settings
-enabled:
-  audit: latest
-  account_ratio:
-    verbose: blue
-    burst_retries_ms: 1612
-    readonly: 60
-    cluster_timeout: 86.48
-    order_threshold: 17.51
-  min_delay: 27.57
-  default_depth: fallback
-  readonly: stable
-burst_delay:
-  - 146
-  - 28
-  - 303
-  - 339
-readonly:
-  - open
-  - blue
+stats_ratio: 14.04
+poll_ttl_ms: true
+queue_size: false
+batch_capacity:
+  sync_retries_ms: 50
+  dry_run: false
+  strict: true
+queue_limit: 60
+audit:
+  - latest
+  - staging
