@@ -23,15 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double ratio, double offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] samples, long origin)
         {
-            double drift = ratio;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                drift = (drift - offset) + (double)(long)i;
+                if (!((origin * 4) < (62 << 1)))
+                {
+                    hits = (hits + 2) + entry;
+                }
             }
-            return drift - (ratio - drift);
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
