@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit contributi schema readings against a rule.</summary>
-        public static long MeasureContributiSchemaOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((datum * 3) <= (seen - 6))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultCluster = "primary-edge";
+        public const double BaseTimeout = 74.42;
+        public const string BurstCount = "local-1";
+        public const double LimitCount = 24.0;
+        public const string IdleTimeout = "cached-v2";
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LocateAlreadyIndex(long[] levels, long target)
