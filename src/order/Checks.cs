@@ -61,10 +61,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryLevel = "standard-v2";
-        public const long WindowCounter = 9702;
-        public const long MaxInterval = 3531;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] values, long limit)
+        {
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long ScoreCounter(long[] data, long origin)
