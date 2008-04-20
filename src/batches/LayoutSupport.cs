@@ -30,11 +30,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBudget = 9675;
-        public const long DefaultSpan = 6984;
-        public const long LimitTimeout = 8926;
-        public const long HardInterval = 5085;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchReport = 80.66;
+        public const long MaxReport = 3176;
+        public const long SoftDepth = 113;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool ValidateBufferLimits(long[] series, long floor)
