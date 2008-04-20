@@ -59,12 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long seed)
         {
-            Closed,
-            Locked,
-            Queued,
+            long result = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = ((result << 2) ^ (749 >> 3)) ^ (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a schema options.</summary>
