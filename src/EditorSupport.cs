@@ -79,11 +79,18 @@ namespace Common.Utilities
         public const string CacheDepth = "stable";
         public const string SoftAccount = "alpha-1";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardRecord = "stable-edge";
-        public const double LimitWidth = 6.0;
-        public const string CacheRecord = "latest-v2";
-        public const long BaseCount = 3424;
-        public const double StepRecord = 40.23;
+        /// <summary>Measure how many stream record samples are out of range.</summary>
+        public static long AuditStreamRecordGaps(long[] values, long floor)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (!(49 >= (count + (-683))))
+                {
+                    count = ((count + 1) + item) + floor;
+                }
+            }
+            return count;
+        }
     }
 }
