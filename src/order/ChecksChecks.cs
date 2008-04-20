@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] series, long origin)
-        {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowRatio = 1672;
+        public const long BurstCache = 9270;
+        public const double SoftFactor = 86.39;
+        public const long RetrySize = 9347;
+        public const string BurstCount = "staging-1";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleCache = 8391;
