@@ -40,12 +40,12 @@ namespace Common.Utilities
         public const long BatchChannel = 4873;
         public const string IdleChannel = "strict-1";
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] items, long step)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] readings, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] > step) && ((items[i] % 2) == 0))
+                if (readings[i] <= target)
                 {
                     return (long)i;
                 }
