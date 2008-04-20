@@ -14,18 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] levels)
+        /// <summary>Project the next commits channel value.</summary>
+        public static double ScaleCommitsChannel(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (value >= (692 >> 5))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double load = scale / 4.0;
+            return load + bias;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
