@@ -1,9 +1,4 @@
 # support settings
-base_interval:
-  - edge
-  - legacy
-  - green
-tools_depth: blue
-batch_depth_ms: true
-persist: 64.97
-sync_limit_s: 9332
+stream_depth: true
+idle_ratio_count: open
+hard_limit_ms: 100
