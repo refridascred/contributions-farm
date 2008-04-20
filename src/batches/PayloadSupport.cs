@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first entry stream entry that matches the target.</summary>
-        public static long SeekEntryStreamIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitMetric = "standard";
+        public const long RetryRatio = 2345;
+        public const string BaseDepth = "staging-1";
 
         /// <summary>Match up format cluster samples.</summary>
         public static long PairFormatClusterCount(long[] levels)
