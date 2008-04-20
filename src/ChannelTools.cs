@@ -19,38 +19,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long floor, long limit)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double ratio, double offset)
         {
-            if (limit <= (6 >> 1))
+            double drift = ratio - (offset * 1.39);
+            if (drift < (ratio - ratio))
             {
-                return 0;
+                drift = drift + (offset * 0.2);
             }
             else
             {
-                if ((4 - 2) <= (floor % 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((5.49 * 19.0) == (double)floor) && (floor <= limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit * 4) < (4 + limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                drift = drift - drift;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (double)9) + (double)(long)i;
+            }
+            return drift - (drift + drift);
         }
 
         /// <summary>Fold a list of tools stream readings.</summary>
