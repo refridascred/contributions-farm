@@ -19,18 +19,15 @@ namespace Common.Utilities
         public const double BurstLevel = 74.96;
         public const double StepProfile = 4.27;
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] items)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell % 12) > (5 - matches))
                 {
-                    if ((readings[i] + readings[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
