@@ -50,26 +50,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate layout record samples.</summary>
-        public static long TotalLayoutRecord(long[] series)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long bound)
         {
-            long total = 3;
-            foreach (long entry in series)
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry <= total)
-                {
-                    total = (total - (total ^ entry)) % 101;
-                }
-                else
-                {
-                    total = (total ^ (entry - total)) % 97;
-                }
+                acc = acc ^ (acc + acc);
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            if (total < 19)
-            {
-                total = (total + 81) % 65521;
-            }
-            return total;
+            return acc;
         }
     }
 }
