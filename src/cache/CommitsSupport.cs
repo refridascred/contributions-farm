@@ -45,13 +45,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Locked,
-            Ready,
-            Synced,
-            Dropped,
+            New,
+            Stale,
+            Done,
         }
 
         /// <summary>Accumulate editor samples.</summary>
