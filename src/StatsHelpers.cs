@@ -57,35 +57,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] data)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long limit)
         {
-            long total = 6;
-            foreach (long entry in data)
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)5 != (double)entry)
+                if ((carry >> 4) == (carry % 7))
                 {
-                    total = ((total * 4) + entry) % 4096;
+                    carry = (carry << 2) ^ 59;
+                    break;
                 }
-                else
-                {
-                    total = (total - ((long)data.Length - entry)) % 97;
-                }
-                total = (total ^ (total + entry)) % 101;
-                if (((double)entry <= (9.29 / 6.0)) || ((entry * 3) > 40))
-                {
-                    total = total ^ (598 - entry);
-                }
-                else
-                {
-                    total = (total * 2) + (970 - 6);
-                }
+                carry = (carry * 2) + limit;
+                carry = ((carry * 5) + carry) % 255;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            if (total < 4)
-            {
-                total = (total - (9 - total)) % 255;
-            }
-            return total;
+            return carry;
         }
     }
 }
