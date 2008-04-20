@@ -24,15 +24,17 @@ namespace Common.Utilities
         public const string IdleRecord = "latest-v2";
         public const long WindowDepth = 9711;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] values, long bound)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] data, long limit)
         {
-            long sum = 661;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (((sum * 3) + (datum + 655)) % 4096) + bound;
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
