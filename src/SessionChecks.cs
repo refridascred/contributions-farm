@@ -20,18 +20,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] levels, long origin)
         {
-            long carry = 243;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((18 % 16) >= (carry + 616))
+                if (levels[i] <= origin)
                 {
-                    carry = ((carry << 2) ^ (sample - carry)) % 255;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
