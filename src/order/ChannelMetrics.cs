@@ -14,12 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Audit account cache readings against a rule.</summary>
+        public static long AuditAccountCacheMatches(long[] levels, long bound)
         {
-            Done,
-            Draft,
-            Retry,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((tally << 2) > tally)
+                {
+                    tally = ((tally + 3) ^ item) - bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the account status values.</summary>
