@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] samples)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 47;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (6 < (anchor * 2))
                 {
-                    if ((samples[i] ^ samples[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor << 3) ^ (8 ^ 7)) ^ reading;
                 }
             }
-            return tally;
+            if (anchor < 103)
+            {
+                anchor = anchor + (anchor >> 5);
+            }
+            return anchor;
         }
 
         /// <summary>Define format limits and defaults.</summary>
