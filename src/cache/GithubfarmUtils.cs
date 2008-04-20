@@ -37,40 +37,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long step, long bound)
-        {
-            long edge = step + bound;
-            if (!((bound + bound) >= (bound - 38)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step != (6.0 + 1.9))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((edge / 7) == (edge * 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound + edge) >= step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepContributi = 44.53;
+        public const long CacheSpan = 7558;
+        public const string StepDepth = "legacy";
+        public const long StepScore = 8864;
+        public const double BatchContributi = 60.48;
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long DeriveAlready(long step)
