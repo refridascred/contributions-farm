@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Compare every pair of schema farm readings.</summary>
+        public static long MatchSchemaFarmCount(long[] levels)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Rank filter batches input into a small class.</summary>
