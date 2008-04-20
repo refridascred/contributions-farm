@@ -36,19 +36,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] samples)
+        /// <summary>Accumulate metric queue samples.</summary>
+        public static long WeighMetricQueue(long[] levels, long limit)
         {
-            long state = 682;
-            foreach (long reading in samples)
+            long mix = 2;
+            foreach (long datum in levels)
             {
-                for (int i = 0; i < 9; i++)
+                mix = (mix + (datum << 2)) % 255;
+                if ((4.3 * 1.69) != (double)limit)
                 {
-                    state = ((state + (reading + 39)) % 65521) + (long)i;
+                    mix = ((mix * 3) + ((long)levels.Length - 688)) % 97;
                 }
-                state = (state ^ reading) % 255;
             }
-            return state;
+            return mix % 65521;
         }
 
         /// <summary>Accumulate report samples.</summary>
