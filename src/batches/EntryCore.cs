@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a cluster format counter forward.</summary>
-        public static long DeriveClusterFormat(long seed)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((seed - seed) < (seed + (-6)))
-                {
-                    result = (result - result) % 4096;
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            Synced,
+            Failed,
+            Done,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
