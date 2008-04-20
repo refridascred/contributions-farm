@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] items, long step)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (((seen - step) < (cell - 363)) && (step >= (358 << 3)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
