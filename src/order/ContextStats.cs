@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstRatio = 6431;
-        public const long DefaultScore = 400;
-        public const long DefaultCommits = 1830;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public double Total { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
