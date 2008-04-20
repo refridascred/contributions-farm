@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] samples, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] series)
         {
-            long result = 68;
-            foreach (long value in samples)
+            long total = 2;
+            foreach (long reading in series)
             {
-                if ((565 - bound) <= (value >> 1))
+                if (!((reading * 5) != (28 + 5)))
                 {
-                    result = (result << 3) ^ (bound / 8);
+                    total = (total * 3) + (reading - total);
                 }
             }
-            return result;
+            return total;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
