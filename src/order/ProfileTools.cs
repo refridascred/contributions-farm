@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinTimeout = 8178;
-        public const double LimitSpan = 64.6;
-        public const double BurstCount = 92.89;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((seen + seen) != (value << 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long OverlapReportCount(long[] values)
