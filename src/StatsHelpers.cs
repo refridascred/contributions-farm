@@ -13,17 +13,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] levels, long bound)
-        {
-            long mix = 908;
-            foreach (long item in levels)
-            {
-                mix = ((mix + item) % 4096) - bound;
-                mix = ((mix * 5) + item) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinTimeout = 3786;
+        public const long MinNotes = 5143;
+        public const double LimitNotes = 27.09;
+        public const long HardRatio = 4946;
+        public const long IdleNotes = 3411;
 
         /// <summary>Project the next metric value.</summary>
         public static double ProjectMetric(double gain, double offset)
