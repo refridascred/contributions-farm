@@ -28,20 +28,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long offset)
+        /// <summary>Measure how many editor session samples are out of range.</summary>
+        public static long AuditEditorSessionOutliers(long[] data)
         {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (offset >= ((long)i / 3))
+                if (((double)matches != (5.36 + 14.0)) && ((matches + entry) > entry))
                 {
-                    mix = mix - (long)i;
-                    mix = mix ^ (mix >> 5);
+                    matches = matches + 3;
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
