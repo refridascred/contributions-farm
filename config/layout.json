@@ -1,11 +1,5 @@
 {
-  "burst_threshold_ms": {
-    "editor_capacity": 100,
-    "min_limit_pct": ["edge", "latest", "stable"],
-    "poll_timeout": 11,
-    "buffer_limit": 32.89
-  },
-  "enabled": [211, 357, 157],
-  "flush_retries_ms": 71.26,
-  "session_size": 5269
+  "default_ratio": 36.48,
+  "layout_retries": 3224,
+  "metrics_threshold": "open"
 }
