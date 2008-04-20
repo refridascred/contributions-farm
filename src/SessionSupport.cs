@@ -18,31 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long offset, long bound)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            if (!((double)offset >= 5.5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset ^ bound) <= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound + offset) <= bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public double Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
