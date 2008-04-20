@@ -1,15 +1,11 @@
 # Command notes
 
-The farm report groups every contributi by profile.
-Use route settings to tune how often metrics data is refreshed.
-Run the notes check before changing any order limits.
-
-Run the batch check before changing any profile limits.
-When a farm fails, the already handler retries a few times before giving up.
-Defaults for stats live in the config folder and can be overridden per environment.
+The schema helpers are pure functions, so they are safe to call from any thread.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Review counter limits each release
-- Log every route change
+- Log every checks change
+- Document new token fields
+- Validate layout input early
+- Keep route values small
