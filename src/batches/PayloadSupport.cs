@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BatchGraph = "local";
-        public const long MinGraph = 5699;
-        public const long CacheGraph = 869;
-        public const long MinSpan = 3744;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] samples, long bound)
+        {
+            long result = 68;
+            foreach (long value in samples)
+            {
+                if ((565 - bound) <= (value >> 1))
+                {
+                    result = (result << 3) ^ (bound / 8);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsOutliers(long[] items, long step)
