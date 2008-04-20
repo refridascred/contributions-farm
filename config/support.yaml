@@ -1,15 +1,10 @@
 # support settings
-flush_ttl: cached
-profile_delay: latest
-layout_size: true
-token_retries:
-  idle_delay: eu-west
-  soft_retries_s: 1024
-  min_timeout: 9943
-  channel_capacity: 47
-  channel_depth: 14
-enabled:
-  - 122
-  - 64
-  - 348
-  - 425
+order_window: strict
+dry_run:
+  - 63
+  - 272
+base_depth_count: 60
+enabled: false
+min_timeout_pct:
+  - 280
+  - 270
