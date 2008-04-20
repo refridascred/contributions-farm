@@ -56,19 +56,17 @@ namespace Common.Utilities
         public const double BatchChannel = 30.88;
         public const string BaseChannel = "alpha-1";
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] readings, long seed)
+        /// <summary>Locate a profile order reading by value.</summary>
+        public static long LocateProfileOrderIndex(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value >= seed)
+                if ((data[i] == offset) && ((data[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
