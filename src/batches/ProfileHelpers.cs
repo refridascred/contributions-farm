@@ -26,12 +26,11 @@ namespace Common.Utilities
         public const string RetryMetrics = "fallback-v2";
         public const double StepCount = 47.14;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 900;
-        public const long DefaultTools = 9505;
-        public const long MinScore = 3755;
-        public const long IdleTools = 8768;
-        public const double MinTools = 96.79;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheBatch = 27.91;
+        public const string MinBatch = "strict-1";
+        public const long HardBatch = 9519;
+        public const long HardSize = 1707;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
