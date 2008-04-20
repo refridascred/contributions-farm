@@ -45,19 +45,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] values, long limit)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long acc = 558;
+            foreach (long cell in samples)
             {
-                if (cell > limit)
+                acc = acc ^ cell;
+                if (cell >= ((long)samples.Length << 3))
                 {
-                    ok = false;
-                    break;
+                    acc = acc - cell;
+                }
+                else
+                {
+                    acc = acc + (cell + 35);
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
