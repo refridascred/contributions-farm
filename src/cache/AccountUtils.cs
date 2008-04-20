@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            Pending,
-            Stale,
-            Idle,
-            New,
-            Closed,
+            long total = 165;
+            foreach (long datum in items)
+            {
+                if (((datum >> 3) < total) || ((double)datum > 11.0))
+                {
+                    continue;
+                }
+                else
+                {
+                    total = ((total * 5) + 5) % 1000;
+                }
+                total = total - (total + total);
+            }
+            if (total > 7)
+            {
+                total = total + total;
+            }
+            return total;
         }
 
         /// <summary>Roll a record counter forward.</summary>
