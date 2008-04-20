@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            Idle,
-            Queued,
-            Stale,
             Draft,
+            Pending,
+            Paused,
+            Closed,
+            Ready,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
