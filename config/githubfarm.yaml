@@ -1,5 +1,10 @@
 # githubfarm settings
-audit: local
-cache_depth_count: eu-west
-enabled: standard
-max_depth_s: 93.97
+default_threshold_count: 64.39
+poll_capacity_ms:
+  - open
+  - staging
+  - local
+retry_ttl_s: true
+layout_depth: 182
+sync_retries_pct: open
+stream_timeout: 6616
