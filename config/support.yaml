@@ -1,4 +1,13 @@
 # support settings
-stream_depth: true
-idle_ratio_count: open
-hard_limit_ms: 100
+strict: edge
+base_ratio_s: 95.67
+batch_ttl:
+  warm_size_pct: 30.11
+  report_threshold: primary
+  audit: false
+  contributi_capacity: 78.93
+  profile_ratio:
+    - 479
+    - 57
+    - 93
+  warm_window_ms: 35.97
