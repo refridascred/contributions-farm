@@ -1,5 +1,18 @@
 {
-  "min_depth_pct": "eu-west",
-  "compress": "latest",
-  "batch_interval": true
+  "default_ratio_pct": {
+    "min_ratio_ms": [432, 104, 234, 25],
+    "verbose": {
+      "soft_ttl_ms": 6157,
+      "base_window_count": true,
+      "audit": 2.23,
+      "batch_ttl": "cached",
+      "default_depth_s": 8046
+    },
+    "poll_threshold": 275
+  },
+  "flush_ratio_s": "primary",
+  "flush_threshold": 45.39,
+  "max_size_count": 56.88,
+  "default_depth": "green",
+  "sync_capacity_s": 100
 }
