@@ -41,19 +41,24 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] series, long seed)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long floor, long limit)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            if ((6.18 - 9.0) == (double)limit)
             {
-                if (reading <= seed)
+                return 8;
+            }
+            else
+            {
+                if ((limit - limit) <= floor)
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
     }
 }
