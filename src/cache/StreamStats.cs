@@ -51,11 +51,38 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "alpha-edge";
-        public const long BaseScore = 9228;
-        public const double StepBatches = 76.35;
-        public const string DefaultLevel = "strict-edge";
-        public const long DefaultBudget = 4349;
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long limit, long step)
+        {
+            if ((7.0 - 11.0) != (double)limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((limit + step) < (step & 15)) && (step > (step & 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((826 + 8) != (step >> 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step - limit) < (limit + limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
