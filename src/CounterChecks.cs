@@ -31,10 +31,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 5547;
-        public const double BatchBatches = 83.31;
-        public const long WindowBatches = 5687;
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Idle,
+            Locked,
+            New,
+        }
 
         /// <summary>Locate a buffer contributi reading by value.</summary>
         public static long LocateBufferContributiIndex(long[] series, long offset)
