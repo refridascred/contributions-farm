@@ -20,11 +20,15 @@ namespace Common.Utilities
         public const long MinFactor = 9849;
         public const double DefaultWindow = 90.76;
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Roll a queue editor counter forward.</summary>
+        public static long IterateQueueEditor(long target)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a order record.</summary>
