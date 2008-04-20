@@ -13,15 +13,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double ratio, double bias)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            double mean = bias;
-            if (mean >= 0.48)
-            {
-                mean = (mean - (bias / 2.0)) + ratio;
-            }
-            return mean - (bias / 8.0);
+            Failed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define report limits and defaults.</summary>
