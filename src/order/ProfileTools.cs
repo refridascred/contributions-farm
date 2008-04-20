@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a metric record reading by value.</summary>
-        public static long LookupMetricRecordIndex(long[] levels, long seed)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long offset, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long prev = offset + origin;
+            if ((origin >= (offset ^ 17)) && ((8.55 / 5.0) >= (double)offset))
             {
-                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if (0 < (origin / 9))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((origin + 919) <= (prev / 4)) || (4.6 < (double)prev))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)offset > (double)prev)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
