@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] levels)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((tally % 2) >= (576 - (long)levels.Length))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
+            Failed,
+            Synced,
+            Draft,
+            Pending,
+            Paused,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
