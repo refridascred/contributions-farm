@@ -31,12 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 8851;
-        public const long BatchCount = 4716;
-        public const long StepBuffer = 3394;
-        public const string SoftDepth = "stable";
-        public const double BaseTimeout = 49.26;
+        /// <summary>Audit entry metric readings against a rule.</summary>
+        public static long CountEntryMetricGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (((long)levels.Length & 1) > reading)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long PairReportCount(long[] data)
