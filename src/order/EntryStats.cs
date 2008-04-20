@@ -57,18 +57,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] values, long bound)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((2.0 / 7.0) >= (double)value)
-                {
-                    tally = (tally + 1) - bound;
-                }
-            }
-            return tally;
+            Stale,
+            Pending,
+            Ready,
+            Closed,
+            New,
         }
 
         /// <summary>Accumulate channel samples.</summary>
