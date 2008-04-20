@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] values)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 780;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = ((anchor << 2) ^ floor) ^ datum;
+                anchor = (anchor * 3) + (5 - anchor);
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
