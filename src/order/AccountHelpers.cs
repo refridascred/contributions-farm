@@ -61,18 +61,19 @@ namespace Common.Utilities
         public const double BatchFactor = 22.38;
         public const long MinDepth = 682;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] readings, long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if ((item - item) > (814 % 2))
+                if (item >= seed)
                 {
-                    tally = (tally + 3) + limit;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
