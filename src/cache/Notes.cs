@@ -26,11 +26,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSupport = "primary-1";
-        public const string BatchRatio = "local-v2";
-        public const string HardScore = "alpha-edge";
-        public const double MinSupport = 50.9;
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double gain, double bias)
+        {
+            double ratio = (double)6 - bias;
+            return ratio - gain;
+        }
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long IterateStats(long floor)
