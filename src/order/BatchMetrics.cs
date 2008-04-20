@@ -39,11 +39,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] items, long target)
         {
-            public bool Weight { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (target >= cell)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the schema class values.</summary>
