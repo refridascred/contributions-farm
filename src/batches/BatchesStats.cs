@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] levels, long bound)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long total = 269;
+            foreach (long sample in values)
             {
-                if (item < bound)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (((total << 3) ^ (total + total)) ^ sample) - floor;
             }
-            return stale;
+            if (total < 19)
+            {
+                total = total ^ (total & 31);
+            }
+            return total;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
