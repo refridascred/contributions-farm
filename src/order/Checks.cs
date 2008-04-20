@@ -22,30 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits stats values into a single score.</summary>
-        public static long TallyCommitsStats(long[] samples, long floor)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] values, long bound)
         {
-            long sum = -6;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sum / 8) < value)
+                if (values[i] < bound)
                 {
-                    sum = sum ^ (sum >> 4);
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (value ^ sum);
-                }
-                if (sum > (2 >> 2))
-                {
-                    sum = ((sum * 3) + (sum + floor)) % 1000;
-                }
-                else
-                {
-                    sum = (sum + floor) % 4096;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
