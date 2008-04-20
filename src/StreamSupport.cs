@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const double DefaultPayload = 42.42;
         public const double CacheSpan = 15.11;
 
-        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
-        public static bool CheckGithubfarmStreamLimits(long[] readings, long floor)
-        {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftSpan = 4738;
+        public const double WindowLevel = 96.03;
+        public const double CacheFactor = 67.68;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheOutliers(long[] values)
