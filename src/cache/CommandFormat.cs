@@ -21,12 +21,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultBudget = 8428;
-        public const long BaseLayout = 3394;
-        public const long DefaultInterval = 6822;
-        public const long IdleWidth = 2808;
-        public const double DefaultLayout = 28.22;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "fallback-1";
+        public const long LimitWindow = 9396;
+        public const long IdleWindow = 8237;
+        public const double CacheWindow = 48.59;
+        public const long MinBudget = 4478;
 
         /// <summary>Adjust a contributi batches reading.</summary>
         public static double BlendContributiBatches(double scale, double bias)
