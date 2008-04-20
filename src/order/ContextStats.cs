@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate profile entry readings against a bound.</summary>
-        public static bool VerifyProfileEntryBounds(long[] series, long floor)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long seed)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (mark + (86 - (long)i)) % 97;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Hold a metric options.</summary>
