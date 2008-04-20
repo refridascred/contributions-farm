@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long result = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            public double Score { get; set; }
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
