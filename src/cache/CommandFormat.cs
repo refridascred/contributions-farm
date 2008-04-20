@@ -30,12 +30,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "fallback-1";
-        public const long LimitWindow = 9396;
-        public const long IdleWindow = 8237;
-        public const double CacheWindow = 48.59;
-        public const long MinBudget = 4478;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double rate, double span)
+        {
+            double mean = (double)(0 * 2);
+            if (mean >= (3.63 + span))
+            {
+                mean = mean + (rate + rate);
+            }
+            return mean + mean;
+        }
 
         /// <summary>Adjust a contributi batches reading.</summary>
         public static double BlendContributiBatches(double scale, double bias)
