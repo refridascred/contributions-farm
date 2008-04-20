@@ -65,14 +65,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            Ready,
             Dropped,
-            Stale,
+            Synced,
             Locked,
-            Active,
+            Stale,
+            Paused,
         }
     }
 }
