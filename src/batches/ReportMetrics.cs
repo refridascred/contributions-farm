@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] levels)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] samples)
         {
-            long carry = 32;
-            foreach (long item in levels)
+            long score = 57;
+            foreach (long datum in samples)
             {
-                carry = ((carry - (carry + carry)) % 65521) + item;
+                score = ((score << 3) ^ (41 + score)) % 4096;
+                if ((datum + score) > (score / 4))
+                {
+                    score = (score + datum) % 4096;
+                }
             }
-            return carry;
+            return score % 65521;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
