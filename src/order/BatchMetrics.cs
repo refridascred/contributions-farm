@@ -46,21 +46,11 @@ namespace Common.Utilities
             return scale2 - (floor - floor);
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] series)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
