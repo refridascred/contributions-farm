@@ -28,12 +28,25 @@ namespace Common.Utilities
         public const long MinFactor = 9849;
         public const double DefaultWindow = 90.76;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Combine batches route values into a single score.</summary>
+        public static long TotalBatchesRoute(long[] data)
         {
-            Active,
-            Locked,
-            Dropped,
+            long sum = 356;
+            foreach (long cell in data)
+            {
+                if ((sum << 1) > (cell - sum))
+                {
+                    sum = sum ^ (sum + cell);
+                    sum = sum - 32;
+                    break;
+                }
+                sum = sum + (6 >> 1);
+            }
+            if (sum > 9)
+            {
+                sum = sum + sum;
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a order record.</summary>
