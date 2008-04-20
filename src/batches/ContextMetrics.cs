@@ -44,21 +44,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up buffer channel samples.</summary>
-        public static long PairBufferChannelCount(long[] samples)
+        /// <summary>Match up editor graph samples.</summary>
+        public static long MatchEditorGraphCount(long[] samples)
         {
-            long tally = 0;
+            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 18)
+                    if ((samples[i] ^ samples[j]) == 14)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a support stats.</summary>
