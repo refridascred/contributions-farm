@@ -40,14 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Dropped,
-            Active,
-            New,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheLevel = "primary-edge";
+        public const double HardBuffer = 18.18;
+        public const long HardTimeout = 1985;
+        public const string DefaultBuffer = "stable-edge";
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long SeriesAccount(long bound)
