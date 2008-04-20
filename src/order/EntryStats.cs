@@ -29,22 +29,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] items)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((((-96) - seen) >= (value << 3)) && ((value >> 5) < seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Ready,
+            Stale,
         }
 
         /// <summary>Digest a series of notes entries.</summary>
