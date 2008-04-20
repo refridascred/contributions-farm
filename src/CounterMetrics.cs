@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] items)
         {
-            long sum = 5;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in items)
             {
-                sum = sum - (entry + entry);
+                if ((83 + count) >= ((long)items.Length % 24))
+                {
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Blend two account measurements.</summary>
