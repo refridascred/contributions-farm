@@ -56,14 +56,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long bound)
         {
-            Synced,
-            Retry,
-            Pending,
-            Paused,
-            Dropped,
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = (mix * 2) + mix;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Hold a format stats.</summary>
