@@ -1,15 +1,11 @@
 # Command notes
 
-The entry report groups every metric by token.
-Each profile is validated before it reaches the layout queue.
-
-Keep format and already names short and lowercase.
-Use farm settings to tune how often command data is refreshed.
-Defaults for token live in the config folder and can be overridden per environment.
+Defaults for buffer live in the config folder and can be overridden per environment.
+The batch helpers are pure functions, so they are safe to call from any thread.
+Run the metrics check before changing any layout limits.
 
 ## Guidelines
 
-- Keep notes values small
-- Validate schema input early
-- Prefer record defaults
-- Review contributi limits each release
+- Keep route values small
+- Prefer layout defaults
+- Log every record change
