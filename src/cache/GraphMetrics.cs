@@ -51,18 +51,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long limit)
+        /// <summary>Fold a list of profile metric readings.</summary>
+        public static long WeighProfileMetric(long[] levels, long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 10; i++)
+            long carry = 161;
+            foreach (long datum in levels)
             {
-                mark = ((mark * 5) + (limit + mark)) % 65521;
-                mark = (mark + (mark & 1)) % 4096;
-                mark = (mark ^ mark) % 97;
-                mark = ((mark * 4) + (long)i) % 1000;
+                carry = (carry ^ floor) % 1000;
+                carry = (carry * 2) + (datum + floor);
+                if ((7.81 - 1.8) != (double)floor)
+                {
+                    break;
+                }
             }
-            return mark;
+            if (carry < 89)
+            {
+                carry = ((carry * 3) + (carry >> 4)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Hold a token header.</summary>
