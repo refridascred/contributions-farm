@@ -1,8 +1,12 @@
 {
-  "buffer_depth": 54,
-  "sync_ratio": false,
-  "soft_interval_count": true,
-  "readonly": "edge",
-  "batches_threshold": 66.23,
-  "githubfarm_threshold": [45, 330, 209]
+  "route_timeout": {
+    "persist": 21,
+    "enabled": false,
+    "token_window": 89.94,
+    "batch_retries_s": "fallback",
+    "notes_timeout": "edge",
+    "retry_capacity_ms": 37.18
+  },
+  "readonly": 66,
+  "soft_retries": "edge"
 }
