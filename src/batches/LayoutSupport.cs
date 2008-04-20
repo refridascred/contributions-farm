@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long offset, long origin)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long prev = offset ^ origin;
-            if ((double)offset > (2.0 / 2.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)prev >= (9.0 - 1.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Closed,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Look up the position of a already sample.</summary>
