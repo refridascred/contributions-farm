@@ -1,10 +1,12 @@
 # githubfarm settings
-metrics_window:
-  base_threshold_count: false
-  contributi_limit: 50.7
-  format_depth: 9791
-  sync_limit: 7122
-  batches_ratio: eu-west
-  tools_limit: 72
-account_ratio: blue
-poll_timeout: false
+burst_ratio_s: strict
+session_interval:
+  - 354
+  - 370
+  - 437
+  - 478
+default_timeout_pct: 8712
+hard_interval_pct:
+  - latest
+  - edge
+  - eu-west
