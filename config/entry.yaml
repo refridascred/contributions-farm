@@ -1,4 +1,4 @@
 # entry settings
-idle_capacity_s: fallback
-warm_capacity_pct: 8949
-strict: 8
+buffer_retries: cached
+idle_timeout_ms: 9539
+counter_depth: green
