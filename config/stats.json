@@ -1,12 +1,8 @@
 {
-  "command_size": {
-    "flush_size": "local",
-    "max_threshold_pct": [371, 62],
-    "audit": [301, 37, 383],
-    "min_limit": "open",
-    "default_interval_count": "legacy",
-    "profile_window": 63
-  },
-  "dry_run": "blue",
-  "persist": "standard"
+  "verbose": 100,
+  "burst_timeout_pct": [366, 155],
+  "warm_depth_s": "primary",
+  "dry_run": 14.19,
+  "batch_threshold_ms": [133, 477],
+  "readonly": 3938
 }
