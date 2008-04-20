@@ -14,19 +14,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] series, long step)
+        /// <summary>Grade a githubfarm filter value against two limits.</summary>
+        public static long GradeGithubfarmFilter(long step, long origin)
         {
-            bool valid = true;
-            foreach (long value in series)
+            if ((origin & 127) != (origin << 1))
             {
-                if (value <= step)
+                return 2;
+            }
+            else
+            {
+                if ((origin < (-98)) && (origin > (62 - origin)))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
