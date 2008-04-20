@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleRatio = 5519;
-        public const string StepCache = "primary";
-        public const long HardCache = 6625;
-        public const long LimitCache = 7288;
-        public const double DefaultSize = 57.3;
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
+        {
+            Draft,
+            Dropped,
+            Done,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Iterate the commits batch series from a seed.</summary>
         public static long RollCommitsBatch(long bound)
