@@ -56,10 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchSpan = 3329;
-        public const double BaseDepth = 67.67;
-        public const long BatchFarm = 7004;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MinWidth = "staging-edge";
+        public const long DefaultWidth = 9259;
+        public const long MinRatio = 2232;
+        public const double StepDepth = 28.48;
+        public const string WindowToken = "primary-1";
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
