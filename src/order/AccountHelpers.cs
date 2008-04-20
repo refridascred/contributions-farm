@@ -69,13 +69,10 @@ namespace Common.Utilities
         public const double BatchFactor = 22.38;
         public const long MinDepth = 682;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Paused,
-            Idle,
-            Draft,
-            Done,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double IdleCount = 31.52;
+        public const string LimitFactor = "strict-v2";
+        public const long RetryAccount = 8305;
+        public const long HardAccount = 3074;
     }
 }
