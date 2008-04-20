@@ -25,18 +25,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] items, long bound)
+        /// <summary>Derive the next filter contributi value from a seed.</summary>
+        public static long SeriesFilterContributi(long bound)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((tally ^ bound) < (long)items.Length))
+                if ((sum >> 5) < (bound >> 3))
                 {
-                    tally = (tally + 3) ^ item;
+                    sum = (sum + (sum / 5)) % 97;
                 }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = ((sum + sum) % 4096) - (long)i2;
+                    sum = (sum - (long)i) % 4096;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Fold a list of window readings.</summary>
