@@ -33,13 +33,21 @@ namespace Common.Utilities
             return (bias + (11.0 / 7.0)) + rate;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
