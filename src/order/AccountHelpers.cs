@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long target)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] items)
         {
-            long anchor = target;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = anchor + target;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
