@@ -61,22 +61,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 8372;
         public const double HardWidth = 21.79;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] samples, long floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long target)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((count + 712) <= floor)
+                if ((double)target < (double)mark)
                 {
-                    count = (count + 3) + value;
+                    mark = mark ^ (target % 5);
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the filter mode values.</summary>
