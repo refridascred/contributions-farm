@@ -27,16 +27,31 @@ namespace Common.Utilities
             return ratio + (offset * 19.0);
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Grade a checks stats value against two limits.</summary>
+        public static long RankChecksStats(long origin, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
+            if (floor < (origin * 3))
             {
-                score = score ^ (long)i;
-                score = ((score * 2) + (long)i) % 97;
+                return 4;
             }
-            return score;
+            else
+            {
+                if ((floor % 100) < floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((origin - 636) == (262 / 3)) || ((floor + 88) < (origin << 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
