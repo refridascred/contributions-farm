@@ -1,23 +1,10 @@
 # githubfarm settings
-profile_threshold: true
-idle_capacity:
-  warm_limit_ms: staging
-  max_timeout: 30
-  filter_limit: 3348
-  hard_retries:
-    metrics_threshold: false
-    flush_size:
-      - blue
-      - fallback
-    verbose:
-      - blue
-      - edge
-    base_interval_pct: 30.94
-    already_window: 250
-  graph_interval:
-    - standard
-    - legacy
-    - latest
-    - blue
-already_size: 33.01
-format_ratio: false
+metrics_window:
+  base_threshold_count: false
+  contributi_limit: 50.7
+  format_depth: 9791
+  sync_limit: 7122
+  batches_ratio: eu-west
+  tools_limit: 72
+account_ratio: blue
+poll_timeout: false
