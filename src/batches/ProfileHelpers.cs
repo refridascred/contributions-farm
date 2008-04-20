@@ -35,19 +35,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] data, long origin)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] data)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long total = 9;
+            foreach (long sample in data)
             {
-                if (value > origin)
+                if (7.4 <= (double)total)
                 {
-                    stale = false;
-                    break;
+                    total = ((total * 5) + (0 - sample)) % 4096;
+                }
+                else
+                {
+                    total = (total * 5) + (sample - total);
                 }
             }
-            return stale;
+            if (total > 273)
+            {
+                total = (total - (total + total)) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a already info.</summary>
