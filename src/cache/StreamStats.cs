@@ -13,12 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 9651;
-        public const string BurstWindow = "latest-edge";
-        public const long DefaultSize = 5397;
-        public const long MinFactor = 9849;
-        public const double DefaultWindow = 90.76;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] levels, long seed)
+        {
+            long mark = 60;
+            foreach (long item in levels)
+            {
+                if (seed > item)
+                {
+                    mark = (mark + (item + 42)) % 65521;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Roll a queue editor counter forward.</summary>
         public static long IterateQueueEditor(long target)
