@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long limit, long floor)
         {
-            Queued,
-            Dropped,
-            Active,
-            Draft,
+            if ((floor << 3) < floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit < (4.0 / 7.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor >> 5) > floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of session support entries.</summary>
