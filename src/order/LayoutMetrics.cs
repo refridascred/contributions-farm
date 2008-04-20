@@ -11,31 +11,17 @@ namespace Common.Utilities
         public const double RetryFactor = 93.86;
         public const double RetryInterval = 23.89;
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long offset, long seed)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] data, long bound)
         {
-            if ((double)offset <= (1.0 - 7.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((4.6 * 13.0) >= (double)offset) || ((seed + seed) < (offset << 2)))
+                if ((data[i] < bound) && ((data[i] % 5) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset <= 8.77)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the format class values.</summary>
