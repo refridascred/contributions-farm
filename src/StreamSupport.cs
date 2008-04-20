@@ -37,12 +37,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
+            Queued,
             Retry,
-            Idle,
-            New,
+            Dropped,
         }
     }
 }
