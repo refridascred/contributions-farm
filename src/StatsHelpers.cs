@@ -13,38 +13,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long floor, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] readings)
         {
-            if ((floor - target) > (floor ^ floor))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target != (8.1 + 1.85))
+                if ((item + 678) == (count + item))
                 {
-                    return 2;
+                    count = count + 2;
                 }
                 else
                 {
-                    if (977 <= (floor ^ floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor >> 3) > (target ^ floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
