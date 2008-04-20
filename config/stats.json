@@ -1,13 +1,19 @@
 {
-  "retry_timeout_ms": false,
-  "max_size_pct": 22.45,
-  "sync_threshold_pct": 98,
-  "warm_interval": {
-    "layout_retries": 9165,
-    "batch_window": "latest",
-    "batch_window_ms": 7876,
-    "counter_size": "strict",
-    "default_window": 60
-  },
-  "layout_retries": ["legacy", "green"]
+  "record_capacity": "staging",
+  "warm_window": true,
+  "hard_retries_ms": {
+    "flush_window_s": {
+      "verbose": "staging",
+      "persist": true,
+      "min_depth": "stable",
+      "account_limit": "blue",
+      "cluster_threshold": false,
+      "warm_timeout_ms": [279, 433]
+    },
+    "retry_depth_pct": 806,
+    "readonly": "legacy",
+    "max_delay": 41,
+    "poll_timeout": 30,
+    "schema_capacity": 1024
+  }
 }
