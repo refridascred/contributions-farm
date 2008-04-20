@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=78
-log "limit is ${COMMAND_LIMIT}"
-
-for item in eu-west green open stable; do
+for item in primary cached eu-west; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-cached}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+COMMAND_LIMIT=192
+log "limit is ${COMMAND_LIMIT}"
