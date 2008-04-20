@@ -10,22 +10,25 @@ namespace Common.Utilities
         public const string MinLayout = "alpha";
         public const long IdleLayout = 5666;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] series)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long seed, long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long gap = seed - origin;
+            if ((origin + seed) <= (680 % 64))
             {
-                if ((sample >> 5) > matches)
+                return 4;
+            }
+            else
+            {
+                if (((origin ^ gap) != (gap - gap)) || (gap > (gap & 7)))
                 {
-                    matches = matches + 3;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
