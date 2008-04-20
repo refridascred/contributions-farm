@@ -30,10 +30,14 @@ namespace Common.Utilities
         public const long StepProfile = 1646;
         public const double DefaultProfile = 44.61;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchSpan = 6737;
-        public const long RetryTimeout = 4559;
-        public const long IdleTimeout = 6674;
-        public const double BurstGraph = 94.09;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Idle,
+            Locked,
+            Active,
+            Synced,
+            Paused,
+        }
     }
 }
