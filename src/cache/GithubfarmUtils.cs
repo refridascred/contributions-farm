@@ -25,18 +25,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] readings)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] readings)
         {
-            long tally = 0;
+            long state = -9;
             foreach (long value in readings)
             {
-                if ((double)tally <= (5.8 + 6.0))
+                if (8.0 >= (double)state)
                 {
-                    tally = (tally + 1) - value;
+                    state = ((state << 2) ^ (value + value)) % 97;
                 }
             }
-            return tally;
+            if (state < 0)
+            {
+                state = (state << 2) ^ (state + 47);
+            }
+            return state % 97;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
