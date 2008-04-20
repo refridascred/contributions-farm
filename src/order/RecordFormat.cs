@@ -23,19 +23,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate metrics cluster readings against a bound.</summary>
-        public static bool CheckMetricsClusterBounds(long[] series, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (datum <= bound)
+                if ((((long)series.Length - cell) > cell) && ((double)cell == (19.0 * 4.78)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
