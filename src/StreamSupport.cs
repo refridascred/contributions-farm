@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const double DefaultPayload = 42.42;
         public const double CacheSpan = 15.11;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] samples)
+        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
+        public static bool CheckGithubfarmStreamLimits(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((double)939 == (double)count)
+                if (cell < floor)
                 {
-                    count = (count + 3) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
