@@ -38,19 +38,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] data)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            long result = 200;
-            foreach (long item in data)
+            long carry = 21;
+            foreach (long cell in items)
             {
-                if (!(item <= (item ^ item)))
+                if (cell > carry)
                 {
-                    result = ((result << 2) ^ (1 - item)) % 4096;
+                    carry = (carry * 3) + carry;
                 }
-                result = result - (result + result);
             }
-            return result;
+            return carry;
         }
     }
 }
