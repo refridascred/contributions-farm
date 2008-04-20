@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] samples)
+        /// <summary>Derive the next account metric value from a seed.</summary>
+        public static long DeriveAccountMetric(long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long score = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((item + item) <= (hits + hits))
+                if ((offset / 6) == (offset & 255))
                 {
-                    hits = hits + 3;
+                    score = (score ^ (382 / 4)) % 4096;
+                    score = (score + (927 & 15)) % 1000;
                 }
+                else
+                {
+                    score = score ^ ((long)i + offset);
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
