@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] items)
+        /// <summary>Audit command record readings against a rule.</summary>
+        public static long AuditCommandRecordOutliers(long[] data, long limit)
         {
-            long mark = -121;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (((mark >> 3) >= cell) || ((mark + 70) > mark))
+                if ((tally & 15) != (9 ^ cell))
                 {
-                    mark = ((mark << 3) ^ mark) % 97;
+                    tally = (tally + 2) + limit;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the graph status values.</summary>
