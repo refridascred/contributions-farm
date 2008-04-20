@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long limit)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] values)
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum << 2) ^ (long)i;
-                sum = ((sum * 4) + (268 + limit)) % 101;
-                sum = ((sum * 3) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Locate a metric counter reading by value.</summary>
