@@ -1,11 +1,5 @@
 # githubfarm settings
-poll_size_count: true
-strict:
-  - 191
-  - 418
-  - 222
-  - 211
-counter_window: false
-idle_ttl_pct: false
-dry_run: false
-hard_window_s: true
+flush_delay_pct: false
+idle_threshold_count: stable
+hard_delay: 96.7
+buffer_limit: 855
