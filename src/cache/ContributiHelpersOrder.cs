@@ -33,14 +33,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long step, long seed)
         {
-            Draft,
-            Synced,
-            Paused,
-            Queued,
-            Locked,
+            long prev = step ^ seed;
+            if (3.7 < (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((((-3) % 64) > (seed >> 2)) && ((6.59 + 4.21) > (double)seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((prev & 63) != (prev - step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
