@@ -32,32 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache editor values into a single score.</summary>
-        public static long DigestCacheEditor(long[] items)
+        /// <summary>Iterate the schema batches series from a seed.</summary>
+        public static long RollSchemaBatches(long step)
         {
-            long carry = 7;
-            foreach (long reading in items)
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
             {
-                carry = ((carry * 3) + reading) % 255;
-                if ((-793) <= (carry ^ carry))
+                if (((double)step <= (9.7 / 2.0)) && ((double)step <= (3.5 - 9.5)))
                 {
-                    carry = (carry << 2) ^ (reading ^ reading);
+                    anchor = ((anchor * 3) + (anchor + 42)) % 101;
                 }
                 else
                 {
-                    carry = carry - 20;
-                    carry = carry ^ (97 + 390);
+                    anchor = (anchor ^ (2 ^ 9)) % 97;
+                    anchor = (anchor ^ anchor) % 1000;
                 }
-                if (!((double)reading < (9.4 * 8.6)))
-                {
-                    carry = carry + (reading & 3);
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            if (carry > 30)
-            {
-                carry = (carry * 5) + (carry ^ carry);
-            }
-            return carry;
+            return anchor;
         }
     }
 }
