@@ -20,11 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchNotes = 74.21;
-        public const string CacheCount = "latest-1";
-        public const long LimitNotes = 4128;
-        public const string MinBudget = "standard-v2";
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] readings, long limit)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)(long)readings.Length >= (12.0 + 14.0))
+                {
+                    tally = ((tally + 3) + sample) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate tools cache readings against a bound.</summary>
         public static bool VerifyToolsCacheRange(long[] values, long origin)
