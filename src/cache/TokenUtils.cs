@@ -57,19 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] series, long bound)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long result = 145;
+            foreach (long cell in series)
             {
-                if (entry < bound)
-                {
-                    stale = false;
-                    break;
-                }
+                result = (result << 3) ^ (result + cell);
             }
-            return stale;
+            return result;
         }
     }
 }
