@@ -50,18 +50,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] items, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long mark = 81;
+            foreach (long datum in values)
             {
-                if (target >= cell)
+                if ((mark * 4) > datum)
                 {
-                    matches = matches + 2;
+                    mark = mark - (30 - mark);
                 }
             }
-            return matches;
+            return mark % 97;
         }
 
         /// <summary>Describe the schema class values.</summary>
