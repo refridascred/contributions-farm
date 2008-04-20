@@ -39,13 +39,12 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public string Offset { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Locate a filter reading by value.</summary>
