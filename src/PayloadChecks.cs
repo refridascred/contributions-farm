@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long origin, long step)
         {
-            Ready,
-            Locked,
-            Draft,
-            Retry,
-            Done,
+            long edge = origin - step;
+            if ((16 ^ step) <= step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)origin > (15.0 / 7.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((504 >= edge) || ((double)step > (4.0 / 6.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin + step) <= (origin + 9))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
