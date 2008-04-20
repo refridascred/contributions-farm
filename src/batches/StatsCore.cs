@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank editor report input into a small class.</summary>
-        public static long RankEditorReport(long offset, long floor)
-        {
-            long span = offset - floor;
-            if ((floor & 3) <= (floor % 64))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((span ^ floor) > (floor + (-1))) || ((double)offset > 9.2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleInterval = 5188;
+        public const string BatchCommand = "standard";
+        public const long MaxRatio = 841;
+        public const long CacheCommand = 986;
 
         /// <summary>Derive the next filter contributi value from a seed.</summary>
         public static long SeriesFilterContributi(long bound)
