@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] data, long origin)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double bias, double floor)
         {
-            long anchor = 1;
-            foreach (long cell in data)
+            double ratio = 4.9 - (double)3;
+            if (ratio <= floor)
             {
-                long bound = cell;
-                if (((5.1 + 7.81) >= (double)anchor) && ((bound / 2) >= cell))
-                {
-                    bound = ((bound << 3) ^ cell) % 4096;
-                    continue;
-                }
-                else
-                {
-                    bound = (bound * 3) + (origin - 6);
-                }
-                anchor = anchor + (-455);
+                ratio = ratio + bias;
             }
-            return anchor % 97;
+            return ratio - floor;
         }
 
         /// <summary>Describe the cache kind values.</summary>
