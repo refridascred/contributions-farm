@@ -32,18 +32,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the batches profile entries that pass the check.</summary>
-        public static long CountBatchesProfileHits(long[] samples)
+        /// <summary>Roll a context farm counter forward.</summary>
+        public static long StepContextFarm(long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (((double)27 != (double)seen) && ((seen + seen) >= (datum + seen)))
-                {
-                    seen = seen + 3;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Accumulate batch farm samples.</summary>
