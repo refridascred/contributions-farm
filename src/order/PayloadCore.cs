@@ -14,21 +14,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] series)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = gain;
+            if (bias > (floor - gain))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias - 19.0;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - (gain + floor);
         }
 
         /// <summary>Project the next stats buffer value.</summary>
