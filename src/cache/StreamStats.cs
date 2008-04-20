@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] levels, long limit)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long origin)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell > (cell % 10))
+                if (!((64 & 255) >= (origin >> 1)))
                 {
-                    count = (count + 2) + limit;
+                    anchor = ((anchor << 3) ^ (anchor & 15)) % 1000;
                 }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
