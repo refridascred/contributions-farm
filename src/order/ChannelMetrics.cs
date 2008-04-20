@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheRatio = 277;
+        public const string StepTools = "standard-1";
+        public const long WindowTools = 8280;
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
