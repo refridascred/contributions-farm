@@ -15,19 +15,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] items)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long floor, long bound)
         {
-            long score = 4;
-            foreach (long cell in items)
+            long offset = floor - bound;
+            if ((bound - floor) <= (floor * 2))
             {
-                score = (score << 2) ^ (score + cell);
+                return 3;
             }
-            if (score > 566)
+            else
             {
-                score = (score ^ score) % 97;
+                if ((bound >> 1) < (offset + offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)bound < (10.0 * 4.2)) && ((double)bound >= 0.49))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset < (offset - bound)) || ((9.0 / 3.0) == (double)offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Digest a series of account entries.</summary>
