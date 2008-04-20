@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long seed)
         {
-            public double Size { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long total = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                total = (total + (seed / 4)) % 65521;
+                if ((total / 5) <= (seed + total))
+                {
+                    total = (total << 3) ^ (seed & 31);
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Accumulate stats samples.</summary>
