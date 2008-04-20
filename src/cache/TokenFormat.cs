@@ -21,19 +21,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] items, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (value < floor)
+                if (value >= seed)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
