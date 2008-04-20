@@ -1,16 +1,11 @@
 # githubfarm settings
-base_capacity_pct: 0.13
-poll_timeout:
-  - 50
-  - 461
-  - 159
-  - 140
-max_interval_pct:
-  - standard
-  - strict
-min_size_pct: true
-compress:
-  - latest
-  - green
-  - primary
-poll_delay_pct: 6905
+poll_size_count: true
+strict:
+  - 191
+  - 418
+  - 222
+  - 211
+counter_window: false
+idle_ttl_pct: false
+dry_run: false
+hard_window_s: true
