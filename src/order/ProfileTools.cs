@@ -10,21 +10,21 @@ namespace Common.Utilities
         public const double LimitSpan = 64.6;
         public const double BurstCount = 92.89;
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] series)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) == 12)
+                    if ((values[i] + values[j]) == 0)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the checks class values.</summary>
