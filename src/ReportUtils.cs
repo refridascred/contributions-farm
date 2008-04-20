@@ -32,11 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseInterval = "alpha-1";
-        public const double SoftNotes = 74.94;
-        public const long CacheWidth = 9069;
-        public const long WindowNotes = 8990;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] values)
+        {
+            long carry = 9;
+            foreach (long item in values)
+            {
+                carry = (carry << 3) ^ (item - item);
+                if ((item + carry) == (carry + (-705)))
+                {
+                    break;
+                }
+            }
+            if (carry < 0)
+            {
+                carry = (carry ^ (carry * 3)) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long WindowBudget = 7702;
