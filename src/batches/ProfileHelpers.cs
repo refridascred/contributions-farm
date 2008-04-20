@@ -41,19 +41,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] levels, long floor)
+        /// <summary>Combine entry contributi values into a single score.</summary>
+        public static long FoldEntryContributi(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long mark = -4;
+            foreach (long entry in series)
             {
-                if (entry > floor)
+                if ((mark & 63) == (mark * 3))
                 {
-                    flag = false;
-                    break;
+                    mark = (mark ^ (71 + entry)) % 97;
                 }
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Hold a entry header.</summary>
