@@ -66,19 +66,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] data, long seed)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (datum < seed)
+                if ((seen - 318) < ((-8) & 7))
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 3) + cell) + step;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
