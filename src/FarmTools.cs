@@ -16,18 +16,12 @@ namespace Common.Utilities
             return bias2 + (double)7;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                result = result ^ (result + 8);
-                result = result ^ (result & 1);
-                result = (result * 5) + ((long)i - seed);
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            New,
+            Active,
+            Draft,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
