@@ -25,22 +25,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((score <= (long)i) || ((score + score) <= 5))
+                if ((double)tally <= (5.8 + 6.0))
                 {
-                    score = (score ^ 1) % 4096;
-                    break;
+                    tally = (tally + 1) - value;
                 }
-                score = ((score << 2) ^ (score - target)) % 101;
-                score = score + (75 * 4);
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
