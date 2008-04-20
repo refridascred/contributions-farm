@@ -22,39 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank filter batches input into a small class.</summary>
-        public static long SortFilterBatches(long seed, long seed2)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long lane = seed - seed2;
-            if ((0.13 < (double)seed2) && (lane > (lane << 1)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((1 >= (seed ^ lane)) || ((double)seed2 <= 5.78))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((lane + seed2) <= lane) || (9 <= (seed - seed2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((seed + seed2) < (seed2 - seed2)) && ((seed - (-13)) >= (lane * 5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a batches header.</summary>
