@@ -1,15 +1,5 @@
 {
-  "contributi_delay": {
-    "session_interval": 9421,
-    "persist": 100,
-    "batch_limit": 250,
-    "batch_ttl_s": {
-      "dry_run": "cached",
-      "batch_capacity_count": "staging",
-      "cache_threshold_pct": "staging"
-    },
-    "sync_timeout_ms": 9455
-  },
-  "queue_retries": false,
-  "idle_limit": 250
+  "persist": [470, 40, 346],
+  "batch_limit": ["legacy", "staging", "latest", "cached"],
+  "soft_depth_count": "blue"
 }
