@@ -32,21 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] samples)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item >= seed)
                 {
-                    if ((samples[i] - samples[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
