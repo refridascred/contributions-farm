@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] values, long seed)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Done,
+            Queued,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
