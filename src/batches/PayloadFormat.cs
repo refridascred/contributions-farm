@@ -28,19 +28,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine notes metrics values into a single score.</summary>
-        public static long TallyNotesMetrics(long[] series, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] readings, long seed)
         {
-            long total = 7;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                total = ((total + (target << 2)) % 1000) ^ entry;
+                if (item > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (total > 413)
-            {
-                total = total - ((-533) - target);
-            }
-            return total % 1000;
+            return ready;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
