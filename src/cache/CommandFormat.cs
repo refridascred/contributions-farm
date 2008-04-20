@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the contributi checks entries that pass the check.</summary>
-        public static long CountContributiChecksGaps(long[] values)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (!((7.78 / 8.0) == (double)hits))
+                if ((reading * 2) <= reading)
                 {
-                    hits = (hits + 2) + entry;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of window readings.</summary>
