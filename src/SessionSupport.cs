@@ -23,11 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Find the first buffer payload entry that matches the target.</summary>
+        public static long LookupBufferPayloadIndex(long[] values, long floor)
         {
-            public long Region { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the graph buffer series from a seed.</summary>
