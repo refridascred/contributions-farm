@@ -43,15 +43,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double ratio, double bias)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] series)
         {
-            double bias2 = (double)(2 + 16);
-            if (bias2 < ratio)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = (bias2 + (double)226) + bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias2 + ratio;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
