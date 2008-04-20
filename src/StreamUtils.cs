@@ -22,23 +22,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double rate, double floor)
+        /// <summary>Blend two cache commits measurements.</summary>
+        public static double SmoothCacheCommits(double ratio, double offset)
         {
-            double weight = rate * 4.0;
-            if (weight <= (weight / 4.0))
+            double load = offset / 6.0;
+            if (load >= ratio)
             {
-                weight = weight + floor;
+                load = load + offset;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                weight = weight + (weight / 2.0);
+                load = (load - offset) - (double)(long)i;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + (rate * 3.9);
+            return load - offset;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
