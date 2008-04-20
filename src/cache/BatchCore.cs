@@ -31,22 +31,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] data)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long total = 232;
+            foreach (long sample in levels)
             {
-                if (seen >= 6)
-                {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total << 3) ^ (sample + total)) % 255;
             }
-            return seen;
+            if (total < 6)
+            {
+                total = total + (total / 7);
+            }
+            return total;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
