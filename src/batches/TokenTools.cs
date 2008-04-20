@@ -20,38 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long origin, long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] series, long floor)
         {
-            if ((double)origin > (13.0 + 8.24))
+            bool flag = true;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit - origin) == (limit >> 1))
+                if (reading > floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit / 6) > (limit + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit + limit) < (909 << 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
