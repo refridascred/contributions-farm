@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double scale, double floor)
         {
-            public string Level { get; set; } = "";
-            public double Owner { get; set; }
-            public long Total { get; set; }
+            double load = (double)45;
+            if (load < (double)578)
+            {
+                load = (load - 2.2) - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (floor / 3.0)) + (double)(long)i;
+            }
+            return load + floor;
         }
 
         /// <summary>Adjust a support reading.</summary>
