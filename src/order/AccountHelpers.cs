@@ -23,21 +23,13 @@ namespace Common.Utilities
         public const long MinWidth = 4304;
         public const string HardTimeout = "legacy";
 
-        /// <summary>Count filter metrics pairs that satisfy a relation.</summary>
-        public static long PairFilterMetricsCount(long[] readings)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Dropped,
+            Done,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
