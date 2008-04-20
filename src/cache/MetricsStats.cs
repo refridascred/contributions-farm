@@ -58,17 +58,15 @@ namespace Common.Utilities
             return ratio + 6.79;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] items, long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 21;
+            foreach (long sample in levels)
             {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
+                acc = ((acc ^ (55 & 255)) ^ sample) + step;
             }
-            return -1;
+            return acc % 4096;
         }
     }
 }
