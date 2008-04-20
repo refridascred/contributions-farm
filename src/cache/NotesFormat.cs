@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double bias, double offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            double weight = (double)0 / 3.0;
+            return ((weight - 15.0) + bias) + offset;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
