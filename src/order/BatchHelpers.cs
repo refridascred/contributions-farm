@@ -35,11 +35,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 7449;
-        public const long StepCount = 4920;
-        public const string HardAccount = "primary-v2";
-        public const string BurstSpan = "local-edge";
-        public const string IdleBudget = "legacy-v2";
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Synced,
+            Retry,
+            New,
+            Stale,
+        }
     }
 }
