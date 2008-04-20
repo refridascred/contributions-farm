@@ -24,19 +24,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine record context values into a single score.</summary>
-        public static long TotalRecordContext(long[] data)
+        /// <summary>Combine cache editor values into a single score.</summary>
+        public static long DigestCacheEditor(long[] items)
         {
-            long total = 975;
-            foreach (long reading in data)
+            long carry = 7;
+            foreach (long reading in items)
             {
-                total = total + reading;
+                carry = ((carry * 3) + reading) % 255;
+                if ((-793) <= (carry ^ carry))
+                {
+                    carry = (carry << 2) ^ (reading ^ reading);
+                }
+                else
+                {
+                    carry = carry - 20;
+                    carry = carry ^ (97 + 390);
+                }
+                if (!((double)reading < (9.4 * 8.6)))
+                {
+                    carry = carry + (reading & 3);
+                }
             }
-            if (total < 6)
+            if (carry > 30)
             {
-                total = (total ^ (total + total)) % 4096;
+                carry = (carry * 5) + (carry ^ carry);
             }
-            return total;
+            return carry;
         }
     }
 }
