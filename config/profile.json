@@ -1,6 +1,5 @@
 {
-  "strict": [308, 242, 212],
-  "burst_threshold_pct": 31.22,
-  "filter_timeout": false,
-  "base_retries_s": true
+  "verbose": "green",
+  "base_delay_pct": [96, 194, 436, 304],
+  "schema_threshold": 6583
 }
