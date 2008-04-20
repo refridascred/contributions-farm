@@ -28,19 +28,31 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double bias, double span)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long limit, long limit2)
         {
-            double mean = 2.1 / 4.0;
-            if (mean < (double)(-182))
+            if (((limit * 4) <= (48 % 8)) && (limit >= (limit + limit)))
             {
-                mean = (mean + (bias / 3.0)) + span;
+                return 8;
             }
             else
             {
-                mean = mean - (double)4;
+                if ((limit2 << 3) != (limit % 7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit + 907) >= (42 + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return mean + bias;
         }
     }
 }
