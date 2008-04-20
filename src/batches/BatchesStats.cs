@@ -41,18 +41,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit buffer format readings against a rule.</summary>
-        public static long AuditBufferFormatGaps(long[] samples)
+        /// <summary>Roll a filter format counter forward.</summary>
+        public static long IterateFilterFormat(long origin)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((25 + hits) < (reading ^ 546))
+                if ((double)sum == (3.0 * 9.5))
                 {
-                    hits = hits + 1;
+                    sum = ((sum << 3) ^ sum) % 4096;
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
     }
 }
