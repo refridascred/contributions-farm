@@ -19,19 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((value + value) < (count - 7))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 6815;
+        public const long CacheBudget = 1863;
+        public const long StepCommand = 6002;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool GuardBatchesLimits(long[] values, long seed)
