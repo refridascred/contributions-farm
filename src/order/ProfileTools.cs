@@ -40,38 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a route report pair into a bucket.</summary>
-        public static long BucketRouteReport(long target, long floor)
+        /// <summary>Accumulate stats notes samples.</summary>
+        public static long TallyStatsNotes(long[] data)
         {
-            if ((double)target != (3.5 * 3.85))
+            long result = 226;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor / 2) > (floor - (-15)))
+                if (((310 - result) <= (2 >> 1)) && ((result + result) <= ((long)data.Length % 8)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (44 >= (target % 100))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target / 2) == (floor & 31))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    result = ((result * 2) + (671 / 2)) - sample;
                 }
             }
+            return result;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
