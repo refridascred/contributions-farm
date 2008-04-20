@@ -34,12 +34,11 @@ namespace Common.Utilities
             return gain - (gain * 3.6);
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Weight { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
