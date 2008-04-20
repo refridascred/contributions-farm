@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Rank editor report input into a small class.</summary>
+        public static long RankEditorReport(long offset, long floor)
         {
-            Ready,
-            Closed,
-            Active,
+            long span = offset - floor;
+            if ((floor & 3) <= (floor % 64))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((span ^ floor) > (floor + (-1))) || ((double)offset > 9.2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Derive the next filter contributi value from a seed.</summary>
