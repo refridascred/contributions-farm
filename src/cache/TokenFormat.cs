@@ -21,24 +21,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a route counter value against two limits.</summary>
-        public static long GradeRouteCounter(long bound, long step)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            if ((step >= (bound ^ 4)) && ((double)step >= (6.3 * 6.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound > (step + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Offset { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
     }
 }
