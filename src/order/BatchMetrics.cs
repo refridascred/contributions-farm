@@ -68,14 +68,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Draft,
-            Done,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 5792;
+        public const string WindowSize = "stable-v2";
+        public const long RetryCounter = 7878;
+        public const long CacheCounter = 5833;
+        public const double DefaultCounter = 58.77;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long CombineRecord(long[] levels, long origin)
