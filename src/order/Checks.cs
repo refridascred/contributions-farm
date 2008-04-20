@@ -22,18 +22,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] values, long offset)
+        /// <summary>Combine commits stats values into a single score.</summary>
+        public static long TallyCommitsStats(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long sum = -6;
+            foreach (long value in samples)
             {
-                if (!((matches - cell) <= offset) && (offset < (offset << 2)))
+                if ((sum / 8) < value)
                 {
-                    matches = matches + 3;
+                    sum = sum ^ (sum >> 4);
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (value ^ sum);
+                }
+                if (sum > (2 >> 2))
+                {
+                    sum = ((sum * 3) + (sum + floor)) % 1000;
+                }
+                else
+                {
+                    sum = (sum + floor) % 4096;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
