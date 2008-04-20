@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] readings, long origin)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long mix = 678;
-            foreach (long reading in readings)
-            {
-                if (!((origin + origin) == (352 % 64)))
-                {
-                    mix = mix - (mix ^ mix);
-                }
-                if (92 < reading)
-                {
-                    mix = (mix + ((-34) & 255)) % 255;
-                }
-            }
-            if (mix < 90)
-            {
-                mix = mix + (mix - mix);
-            }
-            return mix;
+            Active,
+            Done,
+            Locked,
+            Retry,
+            Stale,
         }
 
         /// <summary>Match up commits samples.</summary>
