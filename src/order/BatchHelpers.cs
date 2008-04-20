@@ -35,11 +35,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinSpan = "staging-1";
-        public const long BaseLevel = 7632;
-        public const string SoftCounter = "local-edge";
-        public const long BatchSpan = 9870;
-        public const double LimitCounter = 76.05;
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
