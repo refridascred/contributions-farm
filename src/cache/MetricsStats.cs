@@ -66,23 +66,17 @@ namespace Common.Utilities
             return ratio + 6.79;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double weight, double floor)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] items, long offset)
         {
-            double gain = floor;
-            if (gain < (weight - floor))
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + floor;
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - 5.04) + (double)(long)i;
-            }
-            return gain + (floor / 8.0);
+            return -1;
         }
     }
 }
