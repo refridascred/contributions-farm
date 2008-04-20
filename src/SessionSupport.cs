@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit schema buffer readings against a rule.</summary>
-        public static long CountSchemaBufferOutliers(long[] levels)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] items)
         {
             long matches = 0;
-            foreach (long reading in levels)
+            foreach (long datum in items)
             {
-                if ((matches ^ 0) <= matches)
+                if (7.0 <= (double)datum)
                 {
-                    matches = (matches + 3) ^ reading;
+                    matches = matches + 1;
                 }
                 else
                 {
