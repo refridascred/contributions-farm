@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] series)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 6;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state << 2) ^ state) ^ cell;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
