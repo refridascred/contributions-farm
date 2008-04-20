@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] readings, long origin)
         {
-            Draft,
-            Dropped,
-            Done,
-            Idle,
-            Failed,
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the commits batch series from a seed.</summary>
