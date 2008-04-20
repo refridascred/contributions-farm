@@ -51,21 +51,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
     }
 }
