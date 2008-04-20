@@ -28,25 +28,11 @@ namespace Common.Utilities
         public const long MinFactor = 9849;
         public const double DefaultWindow = 90.76;
 
-        /// <summary>Combine batches route values into a single score.</summary>
-        public static long TotalBatchesRoute(long[] data)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long sum = 356;
-            foreach (long cell in data)
-            {
-                if ((sum << 1) > (cell - sum))
-                {
-                    sum = sum ^ (sum + cell);
-                    sum = sum - 32;
-                    break;
-                }
-                sum = sum + (6 >> 1);
-            }
-            if (sum > 9)
-            {
-                sum = sum + sum;
-            }
-            return sum % 97;
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a order record.</summary>
