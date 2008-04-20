@@ -12,12 +12,12 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-standard}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in cached standard latest; do
+    log "checking ${item}"
+done
