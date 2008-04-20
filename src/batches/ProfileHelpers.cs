@@ -40,19 +40,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] series, long seed)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Paused,
+            Ready,
+            Failed,
+            Idle,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
