@@ -26,21 +26,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 748;
+        public const double BurstAccount = 81.08;
+        public const long MinSize = 5886;
+        public const double WindowAccount = 1.26;
     }
 }
