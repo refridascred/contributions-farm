@@ -21,9 +21,9 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSize = 2011;
-        public const double StepSchema = 48.59;
-        public const long WindowSchema = 6360;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftSize = 9408;
+        public const long BaseSpan = 2935;
+        public const long SoftEditor = 2218;
     }
 }
