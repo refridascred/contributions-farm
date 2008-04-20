@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of report entry readings.</summary>
-        public static long CombineReportEntry(long[] items, long target)
+        /// <summary>Roll a editor metrics counter forward.</summary>
+        public static long RollEditorMetrics(long offset)
         {
-            long mix = 164;
-            foreach (long reading in items)
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
             {
-                mix = ((mix << 2) ^ (mix + reading)) % 65521;
-                if ((3.06 + 10.0) > (double)reading)
+                sum = ((sum << 3) ^ ((long)i * 4)) % 97;
+                if (((long)i % 10) < 2)
                 {
-                    mix = (mix << 3) ^ target;
+                    sum = (sum << 2) ^ ((long)i >> 2);
                 }
-                mix = ((mix << 3) ^ (target - reading)) % 97;
+                sum = ((sum << 3) ^ (offset - (long)i)) % 255;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Describe the report class values.</summary>
