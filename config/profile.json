@@ -1,12 +1,7 @@
 {
-  "counter_ratio": "green",
-  "session_limit": {
-    "base_retries_pct": 500,
-    "default_capacity_pct": "cached",
-    "burst_retries": "edge",
-    "flush_ttl": ["local", "open"]
-  },
-  "burst_limit": "staging",
-  "warm_depth_ms": "legacy",
-  "default_window": 46
+  "account_retries": 16,
+  "poll_ratio": 87.96,
+  "stream_capacity": ["edge", "latest"],
+  "context_timeout": false,
+  "contributi_timeout": "fallback"
 }
