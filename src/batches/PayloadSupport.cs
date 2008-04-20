@@ -26,9 +26,9 @@ namespace Common.Utilities
             return mean - (bias / 8.0);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepDepth = 518;
-        public const double BaseRatio = 15.32;
-        public const long IdleRoute = 6017;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinReport = "legacy-1";
+        public const double BaseTimeout = 55.77;
+        public const long WindowReport = 8245;
     }
 }
