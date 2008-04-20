@@ -19,23 +19,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double ratio, double offset)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double weight, double floor)
         {
-            double drift = ratio - (offset * 1.39);
-            if (drift < (ratio - ratio))
+            double mean = floor;
+            if (mean > floor)
             {
-                drift = drift + (offset * 0.2);
+                mean = mean - weight;
             }
             else
             {
-                drift = drift - drift;
+                mean = mean - (weight + weight);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (double)9) + (double)(long)i;
-            }
-            return drift - (drift + drift);
+            return mean - (double)2;
         }
 
         /// <summary>Fold a list of tools stream readings.</summary>
