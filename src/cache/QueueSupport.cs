@@ -32,13 +32,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Roll a buffer graph counter forward.</summary>
+        public static long StepBufferGraph(long target)
         {
-            Locked,
-            Synced,
-            Draft,
-            Closed,
+            long acc = target;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
