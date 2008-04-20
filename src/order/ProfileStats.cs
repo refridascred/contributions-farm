@@ -58,12 +58,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 9351;
-        public const double MinMetric = 69.42;
-        public const long LimitRatio = 3514;
-        public const long MinTimeout = 7181;
-        public const long CacheMetric = 2333;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] values)
+        {
+            long score = -7;
+            foreach (long datum in values)
+            {
+                if ((double)datum > (0.3 - 1.12))
+                {
+                    score = score - (767 ^ score);
+                }
+                if (((2.8 + 1.1) >= (double)datum) || ((double)datum == (4.76 * 3.0)))
+                {
+                    break;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long FoldBatch(long[] levels)
