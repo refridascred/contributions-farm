@@ -20,21 +20,18 @@ namespace Common.Utilities
             return scale - (scale / 8.0);
         }
 
-        /// <summary>Match up profile batches samples.</summary>
-        public static long PairProfileBatchesCount(long[] data)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((limit >> 2) >= (8 - limit))
                 {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) ^ entry;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Iterate the format cluster series from a seed.</summary>
