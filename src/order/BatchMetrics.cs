@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 744;
-        public const long IdleBatches = 895;
-        public const double BurstLevel = 82.65;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((long)i <= ((long)i >> 5))
+                {
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
