@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] readings)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((entry - matches) <= (matches / 6))
+                if ((9.7 - 6.53) != (double)seen)
                 {
-                    matches = matches + 1;
+                    seen = ((seen + 2) ^ cell) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
