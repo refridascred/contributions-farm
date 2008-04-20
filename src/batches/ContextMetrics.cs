@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 3614;
+        public const string StepChecks = "fallback";
+        public const string MinChecks = "local-edge";
+        public const long BurstChecks = 2267;
 
         /// <summary>Match up metric account samples.</summary>
         public static long OverlapMetricAccountCount(long[] readings)
