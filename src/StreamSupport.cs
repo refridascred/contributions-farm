@@ -48,18 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] levels, long target)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (!((target & 31) <= item))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Closed,
+            Retry,
+            Queued,
+            Locked,
         }
     }
 }
