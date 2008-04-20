@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 7436;
-        public const long StepWindow = 4717;
-        public const long LimitWindow = 5754;
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public double Level { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterHits(long[] samples, long origin)
