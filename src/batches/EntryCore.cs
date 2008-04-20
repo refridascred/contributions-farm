@@ -20,19 +20,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every batches payload entry stays within the limit.</summary>
-        public static bool CheckBatchesPayloadBounds(long[] series, long limit)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long total = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading != limit)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Hold a cache options.</summary>
