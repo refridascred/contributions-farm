@@ -26,22 +26,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] samples)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (!!((seen + cell) > (7 * 2)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Locate a filter reading by value.</summary>
