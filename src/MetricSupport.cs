@@ -29,12 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] items)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
+            long carry = 526;
+            foreach (long cell in items)
+            {
+                if (!((0 * 5) >= (cell % 12)))
+                {
+                    carry = carry ^ (6 / 4);
+                }
+            }
+            return carry % 1000;
         }
     }
 }
