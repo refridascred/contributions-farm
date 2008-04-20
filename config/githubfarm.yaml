@@ -1,12 +1,10 @@
 # githubfarm settings
-stats_ratio: 14.04
-poll_ttl_ms: true
-queue_size: false
-batch_capacity:
-  sync_retries_ms: 50
-  dry_run: false
-  strict: true
-queue_limit: 60
-audit:
-  - latest
-  - staging
+base_interval: green
+support_window: 4888
+cache_threshold_count: 46
+window_limit: 21
+soft_ratio_count:
+  - blue
+  - cached
+  - blue
+  - standard
