@@ -37,12 +37,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 1869;
-        public const long StepFactor = 3649;
-        public const long BatchCount = 3266;
-        public const long BatchGraph = 8742;
-        public const long LimitGraph = 1934;
+        /// <summary>Fold a list of queue githubfarm readings.</summary>
+        public static long CombineQueueGithubfarm(long[] readings, long bound)
+        {
+            long carry = 66;
+            foreach (long sample in readings)
+            {
+                if (((963 << 2) == (sample % 100)) || ((sample + bound) != (bound - (long)readings.Length)))
+                {
+                    carry = carry - (bound + bound);
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TotalEntry(long[] samples, long floor)
