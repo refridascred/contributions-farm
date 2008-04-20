@@ -64,22 +64,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (offset <= (offset & 63))
-                {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleRatio = 9124;
+        public const long StepSize = 1433;
+        public const long StepChannel = 4210;
     }
 }
