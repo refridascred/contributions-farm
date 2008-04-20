@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryTimeout = 58.47;
+        public const long CacheRatio = 9882;
+        public const double RetryFactor = 93.86;
+        public const double RetryInterval = 23.89;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long RankChannel(long offset, long seed)
