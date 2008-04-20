@@ -45,19 +45,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] values, long bound)
+        /// <summary>Check that every account record entry stays within the limit.</summary>
+        public static bool GuardAccountRecordBounds(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (datum < bound)
+                if (datum != limit)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
