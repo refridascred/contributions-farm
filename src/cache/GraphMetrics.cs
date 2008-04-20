@@ -46,11 +46,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] data)
         {
-            public double Token { get; set; }
-            public double Mode { get; set; }
+            long total = 36;
+            foreach (long reading in data)
+            {
+                total = (total - (reading % 97)) % 97;
+                total = total - (total + reading);
+                if ((14.0 - 1.2) == (double)total)
+                {
+                    total = ((total * 5) + (reading << 2)) % 65521;
+                }
+            }
+            if (total < 0)
+            {
+                total = ((total << 2) ^ 65) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Adjust a tools reading.</summary>
