@@ -1,13 +1,19 @@
 {
-  "warm_interval_pct": [168, 296],
-  "audit": {
-    "payload_ttl": [65, 476],
-    "audit": ["primary", "stable", "eu-west"],
-    "strict": "strict",
-    "persist": ["stable", "edge", "cached"],
-    "base_capacity": 97.33
+  "window_timeout": {
+    "sync_delay_s": "standard",
+    "warm_threshold": false,
+    "compress": 29.22,
+    "burst_retries_pct": [314, 272, 11, 495],
+    "window_depth": {
+      "hard_limit_pct": true,
+      "flush_delay": 5761,
+      "default_ttl_pct": 42.36,
+      "sync_size_count": 18
+    },
+    "cluster_retries": "fallback"
   },
-  "token_interval": "fallback",
-  "farm_ttl": "staging",
-  "warm_interval": "open"
+  "retry_size": 51,
+  "context_timeout": 88.07,
+  "persist": 5.53,
+  "flush_limit": false
 }
