@@ -13,31 +13,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long target, long step)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] values, long bound)
         {
-            if ((double)step == (double)target)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)step != (double)target) || ((target << 2) != (target & 63)))
+                if (values[i] >= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)target > (18.0 / 9.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
