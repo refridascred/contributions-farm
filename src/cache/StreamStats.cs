@@ -20,15 +20,26 @@ namespace Common.Utilities
         public const double CacheTimeout = 87.81;
         public const double BaseCount = 46.6;
 
-        /// <summary>Roll a queue editor counter forward.</summary>
-        public static long IterateQueueEditor(long target)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] levels)
         {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
+            long carry = 28;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if ((double)carry > (2.36 * 4.49))
+                {
+                    carry = (((carry * 2) + carry) % 65521) - datum;
+                }
+                else
+                {
+                    carry = ((carry * 4) + (carry >> 5)) % 1000;
+                }
             }
-            return anchor;
+            if (carry < 9)
+            {
+                carry = (carry * 3) + (carry + carry);
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a batches record.</summary>
