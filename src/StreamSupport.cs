@@ -20,19 +20,13 @@ namespace Common.Utilities
             return scale - (gain - gain);
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long floor)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((1.2 - 0.5) == (double)floor))
-                {
-                    sum = (sum + (long)i) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            Retry,
+            Ready,
+            Queued,
+            Draft,
         }
 
         /// <summary>Accumulate notes samples.</summary>
