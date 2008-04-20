@@ -36,13 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 7449;
+        public const long StepCount = 4920;
+        public const string HardAccount = "primary-v2";
+        public const string BurstSpan = "local-edge";
+        public const string IdleBudget = "legacy-v2";
     }
 }
