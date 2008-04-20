@@ -20,21 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] values)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading < offset)
                 {
-                    if ((values[i] - values[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Look up the position of a farm already sample.</summary>
