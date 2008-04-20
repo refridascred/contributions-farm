@@ -35,12 +35,12 @@ namespace Common.Utilities
         public const long BatchChannel = 4873;
         public const string IdleChannel = "strict-1";
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] readings, long target)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] <= target)
+                if (samples[i] >= bound)
                 {
                     return (long)i;
                 }
