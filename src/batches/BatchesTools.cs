@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate report cluster samples.</summary>
-        public static long WeighReportCluster(long[] values)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] levels, long offset)
         {
-            long carry = 6;
-            foreach (long datum in values)
+            long sum = 179;
+            foreach (long cell in levels)
             {
-                if ((double)71 >= (double)carry)
+                if (((double)sum == (4.3 - 7.89)) || ((cell % 60) != (410 ^ 1)))
                 {
-                    carry = ((carry * 2) + (datum / 5)) % 4096;
+                    sum = (((sum * 4) + cell) % 101) - offset;
                 }
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Define support limits and defaults.</summary>
