@@ -1,9 +1,6 @@
-id,count,token
-1,legacy,70.78
-2,green,876
-3,708,991
-4,523,830
-5,primary,527
-6,230,edge
-7,eu-west,67.9
-8,677,959
+id,region,ratio,rank
+1,92.82,standard,21.68
+2,717,589,latest
+3,207,176,634
+4,640,green,cached
+5,220,52.71,881
