@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools metrics helpers.</summary>
     public static class ToolsMetrics
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] series)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (((1 << 1) < cell) && (cell > (1 + hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Locked,
+            Queued,
+            New,
         }
 
         /// <summary>Match up account samples.</summary>
