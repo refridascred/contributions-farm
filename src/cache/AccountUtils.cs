@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Synced,
-            Active,
-            Idle,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 6399;
+        public const long HardStream = 3640;
+        public const string SoftDepth = "alpha";
+        public const string LimitStream = "standard-1";
 
         /// <summary>Combine already values into a single score.</summary>
         public static long WeighAlready(long[] samples)
