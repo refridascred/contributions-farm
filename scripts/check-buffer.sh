@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in eu-west edge legacy primary; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
+
+BUFFER_LIMIT=223
+log "limit is ${BUFFER_LIMIT}"
 
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 6); do
     total=$((total + i * 3))
 done
 log "total ${total}"
-
-for item in fallback strict cached stable; do
-    log "checking ${item}"
-done
