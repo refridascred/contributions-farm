@@ -22,20 +22,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] data, long origin)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 1234;
+        public const long BaseRatio = 779;
+        public const long BaseWidth = 5454;
+        public const long MinWidth = 6685;
+        public const string StepFactor = "alpha-1";
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
