@@ -86,22 +86,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] series)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((double)count >= 4.71)
-                {
-                    count = (count + 1) - item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
     }
 }
