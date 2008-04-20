@@ -24,17 +24,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] series, long target)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == target) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
         }
     }
 }
