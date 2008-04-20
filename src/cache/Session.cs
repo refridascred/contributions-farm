@@ -24,10 +24,13 @@ namespace Common.Utilities
         public const long DefaultTimeout = 6320;
         public const long BurstCount = 6688;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 3664;
-        public const long BurstPayload = 3509;
-        public const string LimitScore = "standard-1";
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
+        }
 
         /// <summary>Fold a list of batches support readings.</summary>
         public static long DigestBatchesSupport(long[] values, long floor)
