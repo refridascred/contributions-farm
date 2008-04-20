@@ -1,9 +1,8 @@
-id,count,active,owner
-1,edge,734,strict
-2,edge,51.18,84.74
-3,open,547,strict
-4,25.91,403,371
-5,45.49,669,edge
-6,59.02,405,green
-7,staging,3.16,919
-8,788,37.55,453
+id,token
+1,449
+2,275
+3,949
+4,fallback
+5,27.74
+6,standard
+7,41
