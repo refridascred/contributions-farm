@@ -51,21 +51,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] samples)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 641;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((-2) + offset) < 554)
                 {
-                    if ((samples[i] ^ samples[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum - (offset + sum)) % 65521;
+                }
+                if ((datum >> 4) < (sum * 3))
+                {
+                    sum = (sum + (46 & 15)) % 4096;
                 }
             }
-            return count;
+            return sum;
         }
     }
 }
