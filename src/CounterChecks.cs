@@ -22,12 +22,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 1234;
-        public const long BaseRatio = 779;
-        public const long BaseWidth = 5454;
-        public const long MinWidth = 6685;
-        public const string StepFactor = "alpha-1";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseSize = 8676;
+        public const long StepRatio = 5102;
+        public const string SoftCounter = "cached";
+        public const long StepCounter = 2735;
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
