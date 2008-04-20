@@ -1,14 +1,15 @@
 # support settings
-persist:
-  verbose: true
-  cache_interval_pct: false
-  idle_ttl: false
-  max_limit_s: 78
-  flush_limit:
-    - 477
-    - 390
-    - 333
-  sync_delay: latest
-sync_ratio_pct: 5500
-githubfarm_delay: 66
-cache_delay_ms: false
+flush_ttl: cached
+profile_delay: latest
+layout_size: true
+token_retries:
+  idle_delay: eu-west
+  soft_retries_s: 1024
+  min_timeout: 9943
+  channel_capacity: 47
+  channel_depth: 14
+enabled:
+  - 122
+  - 64
+  - 348
+  - 425
