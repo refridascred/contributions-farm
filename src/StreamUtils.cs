@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepLevel = "fallback";
-        public const long SoftBatch = 3840;
-        public const string CacheCount = "stable-v2";
-        public const long MinBatch = 9759;
-        public const string BurstLevel = "strict-1";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 4818;
+        public const string CacheLevel = "legacy";
+        public const string BaseChannel = "cached-v2";
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LocateRouteIndex(long[] data, long seed)
