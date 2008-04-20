@@ -30,12 +30,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-            public string Count { get; set; } = "";
+            Queued,
+            Idle,
+            Failed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Accumulate metric queue samples.</summary>
