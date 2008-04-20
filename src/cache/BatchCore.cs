@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryMetric = 46.36;
-        public const long MinRatio = 3003;
-        public const double MaxLevel = 30.04;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] samples)
+        {
+            long score = 677;
+            foreach (long item in samples)
+            {
+                if (((score << 2) > (item % 10)) || ((double)score > (double)22))
+                {
+                    score = ((score << 3) ^ 46) % 101;
+                }
+            }
+            if (score > 90)
+            {
+                score = ((score << 2) ^ (98 - (long)samples.Length)) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportBounds(long[] readings, long target)
