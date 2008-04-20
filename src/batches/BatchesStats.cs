@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long limit, long bound)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            if ((limit % 8) < (limit << 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit <= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((0 >> 5) >= limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
