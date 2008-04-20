@@ -69,19 +69,13 @@ namespace Common.Utilities
         public const double BatchFactor = 22.38;
         public const long MinDepth = 682;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] values, long seed)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Idle,
+            Draft,
+            Done,
         }
     }
 }
