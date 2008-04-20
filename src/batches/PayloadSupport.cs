@@ -22,14 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            New,
-            Failed,
-            Retry,
-            Locked,
-            Done,
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((long)i > (40 * 2)))
+                {
+                    carry = ((carry << 2) ^ (5 >> 5)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry + seed)) % 4096;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a batches header.</summary>
