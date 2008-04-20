@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-RECORD_LIMIT=132
+RECORD_LIMIT=267
 log "limit is ${RECORD_LIMIT}"
 
-for item in open primary stable standard; do
+for item in primary green stable legacy; do
     log "checking ${item}"
 done
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
