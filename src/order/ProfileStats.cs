@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const string SoftStats = "cached-v2";
         public const long RetryInterval = 5498;
 
-        /// <summary>Derive the next window metrics value from a seed.</summary>
-        public static long IterateWindowMetrics(long offset)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = sum - (1 * 3);
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Draft,
+            Closed,
+            Locked,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
