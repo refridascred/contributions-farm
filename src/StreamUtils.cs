@@ -78,13 +78,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long origin, long origin2)
         {
-            Synced,
-            New,
-            Draft,
-            Idle,
+            long edge = origin ^ origin2;
+            if ((48 << 3) >= edge)
+            {
+                return 6;
+            }
+            else
+            {
+                if (origin < (45 % 64))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
