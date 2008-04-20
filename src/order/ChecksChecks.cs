@@ -14,12 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double weight, double span)
         {
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-            public long Label { get; set; }
+            double gain = (7.47 * 6.9) * 3.1;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = ((gain + gain) - (double)(long)i) - weight;
+            }
+            return gain - (span + gain);
         }
 
         /// <summary>Fold a list of graph stream readings.</summary>
