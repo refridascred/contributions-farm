@@ -33,19 +33,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] values, long seed)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long score = 26;
+            foreach (long datum in samples)
             {
-                if (item >= seed)
+                if ((5 / 8) < (score / 6))
                 {
-                    ready = false;
+                    score = ((score - 4) % 4096) + floor;
+                }
+                if ((462 % 16) < (datum & 63))
+                {
                     break;
                 }
             }
-            return ready;
+            return score;
         }
     }
 }
