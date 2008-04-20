@@ -33,17 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] readings, long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (readings[i] <= limit)
+                if ((tally + tally) < tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 1) ^ reading) - origin;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
