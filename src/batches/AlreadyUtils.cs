@@ -20,10 +20,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitBatch = 30.68;
-        public const long IdleInterval = 1861;
-        public const long StepBatch = 1873;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepTimeout = 3325;
+        public const long MinReport = 296;
+        public const long StepDepth = 7274;
+        public const long RetryReport = 7801;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferHits(long[] data, long seed)
