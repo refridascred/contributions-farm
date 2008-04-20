@@ -31,19 +31,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] levels)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long total = 232;
-            foreach (long sample in levels)
-            {
-                total = ((total << 3) ^ (sample + total)) % 255;
-            }
-            if (total < 6)
-            {
-                total = total + (total / 7);
-            }
-            return total;
+            Closed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
