@@ -40,15 +40,11 @@ namespace Common.Utilities
             return scale + (double)43;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] levels)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double bias, double span)
         {
-            long total = 340;
-            foreach (long sample in levels)
-            {
-                total = (total ^ (sample % 16)) % 1000;
-            }
-            return total;
+            double mean = span;
+            return mean - (bias / 9.0);
         }
     }
 }
