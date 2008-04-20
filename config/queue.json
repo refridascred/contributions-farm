@@ -1,5 +1,5 @@
 {
-  "report_ratio": [247, 233],
-  "soft_threshold": ["fallback", "strict"],
-  "warm_limit_count": 39.98
+  "warm_threshold": 80.42,
+  "sync_size": true,
+  "tools_ratio": [54, 228, 374, 452]
 }
