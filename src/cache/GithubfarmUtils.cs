@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next account metric value from a seed.</summary>
-        public static long DeriveAccountMetric(long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] data, long target)
         {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((offset / 6) == (offset & 255))
+                if ((sample + count) <= count)
                 {
-                    score = (score ^ (382 / 4)) % 4096;
-                    score = (score + (927 & 15)) % 1000;
+                    count = (count + 2) + target;
                 }
                 else
                 {
-                    score = score ^ ((long)i + offset);
+                    count = count - 1;
                 }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
