@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a support account sample.</summary>
-        public static long LookupSupportAccountIndex(long[] data, long floor)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long limit, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((limit % 8) < (limit << 2))
             {
-                if (data[i] <= floor)
+                return 4;
+            }
+            else
+            {
+                if (limit <= bound)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((0 >> 5) >= limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
