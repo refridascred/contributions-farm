@@ -14,13 +14,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long origin)
         {
-            Dropped,
-            Queued,
-            Draft,
-            Synced,
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = (mix * 3) + (long)i;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Project the next payload value.</summary>
