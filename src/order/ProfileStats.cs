@@ -57,18 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] levels, long limit)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((-364) - 28) >= value)
                 {
-                    if ((readings[i] ^ readings[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) - limit;
                 }
             }
             return matches;
