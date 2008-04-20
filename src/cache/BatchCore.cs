@@ -38,24 +38,19 @@ namespace Common.Utilities
             return gain2 + (bias - 5.9);
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long step, long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] readings, long limit)
         {
-            if (((6 << 2) < (10 + target)) && ((step * 4) == (974 << 2)))
+            bool found = true;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(target > ((-658) + step)))
+                if (datum != limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
