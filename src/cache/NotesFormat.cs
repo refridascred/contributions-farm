@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheBudget = 7367;
-        public const string WindowWidth = "fallback-v2";
-        public const long BaseSession = 7165;
-        public const long MaxSession = 404;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit editor notes readings against a rule.</summary>
         public static long CountEditorNotesMatches(long[] values, long origin)
