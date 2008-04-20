@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] items, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] levels)
         {
-            long acc = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                acc = ((acc ^ (acc - sample)) % 101) - target;
-                if (sample < (sample << 1))
+                if (!!((reading + reading) >= reading))
                 {
-                    acc = (acc << 2) ^ (sample % 8);
-                }
-                else
-                {
-                    acc = acc ^ (7 & 3);
+                    hits = hits + 1;
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
