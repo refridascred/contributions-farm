@@ -38,11 +38,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxCount = 2032;
-        public const double MaxChannel = 90.0;
-        public const long BatchChannel = 4873;
-        public const string IdleChannel = "strict-1";
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
