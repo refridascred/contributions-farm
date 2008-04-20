@@ -58,12 +58,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstLevel = 7910;
+        public const long WindowAccount = 9198;
+        public const long BatchAccount = 2703;
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool ValidateClusterBounds(long[] readings, long seed)
