@@ -18,24 +18,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long target, long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long floor)
         {
-            if ((target - target) >= seed)
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((451 << 1) <= seed)
+                if (sum >= (floor % 97))
                 {
-                    return 7;
+                    sum = (sum - (sum & 3)) % 65521;
                 }
-                else
-                {
-                    return 8;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
+            return sum;
         }
     }
 }
