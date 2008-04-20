@@ -62,17 +62,11 @@ namespace Common.Utilities
         public const double BatchChannel = 30.88;
         public const string BaseChannel = "alpha-1";
 
-        /// <summary>Locate a profile order reading by value.</summary>
-        public static long LocateProfileOrderIndex(long[] data, long offset)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == offset) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
