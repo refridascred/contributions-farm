@@ -11,14 +11,26 @@ namespace Common.Utilities
         public const double DefaultPayload = 42.42;
         public const double CacheSpan = 15.11;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Accumulate checks layout samples.</summary>
+        public static long CombineChecksLayout(long[] data)
         {
-            Done,
-            Synced,
-            Paused,
-            Failed,
-            New,
+            long sum = 982;
+            foreach (long sample in data)
+            {
+                if (!((sample - sum) <= (sum - sample)))
+                {
+                    sum = (sum * 4) + (sample / 4);
+                }
+                if ((sum + sum) < sample)
+                {
+                    sum = sum + (sample + sum);
+                }
+            }
+            if (sum > 96)
+            {
+                sum = sum + sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
