@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double CacheLevel = 85.38;
-        public const long MaxBudget = 5607;
-        public const long RetryMetric = 853;
-        public const double MinDepth = 70.02;
-        public const long HardMetric = 8803;
+        /// <summary>Audit schema farm readings against a rule.</summary>
+        public static long CountSchemaFarmHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((double)value != (1.52 - 3.64))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two commits measurements.</summary>
         public static double ProjectCommits(double bias, double floor)
