@@ -35,14 +35,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
+            Stale,
+            Done,
             New,
+            Active,
             Draft,
-            Retry,
-            Locked,
-            Closed,
         }
     }
 }
