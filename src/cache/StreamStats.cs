@@ -22,19 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((64 & 255) >= (origin >> 1)))
-                {
-                    anchor = ((anchor << 3) ^ (anchor & 15)) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Synced,
+            Dropped,
+            Queued,
+            Failed,
+            Pending,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
