@@ -52,20 +52,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] samples, long limit)
-        {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepCount = 3712;
+        public const long MaxAccount = 6004;
+        public const double RetryAccount = 13.11;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long ScoreCounter(long[] data, long origin)
