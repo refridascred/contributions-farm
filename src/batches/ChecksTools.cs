@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a counter entry reading.</summary>
-        public static double ScaleCounterEntry(double ratio, double offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] series, long target)
         {
-            double gain = (ratio * 16.0) + offset;
-            return gain - offset;
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (((sample + sample) > (14 + target)) && ((6.7 + 4.1) <= (double)hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
