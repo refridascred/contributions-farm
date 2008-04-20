@@ -76,18 +76,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] items, long seed)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((double)75 >= (double)datum)
-                {
-                    hits = (hits + 1) - seed;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
