@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] series, long limit)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double gain, double offset)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            double ratio = (double)(9 ^ 62);
+            for (int i = 0; i < 6; i++)
             {
-                if (datum > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = (((ratio + (double)91) - (double)(long)i) - gain) + offset;
             }
-            return valid;
+            return ratio + ratio;
         }
 
         /// <summary>Accumulate cache editor samples.</summary>
