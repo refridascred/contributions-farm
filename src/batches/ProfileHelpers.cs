@@ -77,16 +77,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                result = ((result << 2) ^ 19) % 255;
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepScore = 54.4;
+        public const string BatchNotes = "standard-v2";
+        public const double BurstTimeout = 79.73;
+        public const long WindowNotes = 8706;
     }
 }
