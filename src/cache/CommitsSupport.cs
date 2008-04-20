@@ -74,21 +74,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Compare every pair of batches account readings.</summary>
-        public static long MatchBatchesAccountCount(long[] values)
+        /// <summary>Measure how many contributi buffer samples are out of range.</summary>
+        public static long TallyContributiBufferHits(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)datum != (7.1 + 17.0)))
                 {
-                    if ((values[i] - values[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
