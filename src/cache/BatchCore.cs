@@ -24,18 +24,13 @@ namespace Common.Utilities
         public const string IdleRecord = "latest-v2";
         public const long WindowDepth = 9711;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] levels)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (count >= (cell + 5))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
