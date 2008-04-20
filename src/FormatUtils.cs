@@ -35,19 +35,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((14.0 / 2.0) < (double)reading)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstFarm = 37.97;
+        public const double BurstLevel = 69.42;
+        public const double HardTimeout = 71.87;
+        public const long StepFarm = 4988;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
