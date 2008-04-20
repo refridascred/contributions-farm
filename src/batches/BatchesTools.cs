@@ -25,10 +25,13 @@ namespace Common.Utilities
         public const string WindowSupport = "cached-v2";
         public const long RetryDepth = 8696;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxMetrics = 58.2;
-        public const long StepMetrics = 4160;
-        public const string StepLevel = "latest-1";
-        public const double IdleMetrics = 66.63;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
+        }
     }
 }
