@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double bias, double offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] series, long limit)
         {
-            double weight = (double)0 / 3.0;
-            return ((weight - 15.0) + bias) + offset;
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate cache editor samples.</summary>
