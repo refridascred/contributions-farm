@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public bool Count { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 5439;
+        public const double HardLevel = 18.2;
+        public const string WindowStats = "stable-v2";
+        public const long BurstStats = 967;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool CheckToolsRange(long[] samples, long step)
