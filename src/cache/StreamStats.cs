@@ -24,19 +24,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a notes cluster reading.</summary>
-        public static double BlendNotesCluster(double rate, double floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            double drift = (16.0 * 0.2) - (floor / 7.0);
-            if (drift >= (3.0 / 2.0))
+            long total = 7;
+            foreach (long sample in levels)
             {
-                drift = (drift - (16.0 / 5.0)) + rate;
+                total = total + (sample + sample);
             }
-            else
-            {
-                drift = drift + (drift * 0.2);
-            }
-            return drift + 10.0;
+            return total;
         }
 
         /// <summary>Describe the command status values.</summary>
