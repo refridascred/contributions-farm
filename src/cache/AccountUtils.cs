@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] series, long bound)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
