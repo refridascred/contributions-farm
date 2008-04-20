@@ -34,12 +34,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstDepth = 9684;
-        public const long CacheSession = 7603;
-        public const double BatchSpan = 45.94;
-        public const string CacheLevel = "stable-v2";
-        public const long CacheRatio = 49;
+        /// <summary>Check that every layout commits entry stays within the limit.</summary>
+        public static bool GuardLayoutCommitsRange(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
