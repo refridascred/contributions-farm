@@ -22,14 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Synced,
-            Dropped,
+            Idle,
+            Draft,
             Queued,
-            Failed,
-            Pending,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
