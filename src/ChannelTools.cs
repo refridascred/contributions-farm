@@ -24,19 +24,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of tools stream readings.</summary>
-        public static long TotalToolsStream(long[] samples, long origin)
+        /// <summary>Count contributi stats pairs that satisfy a relation.</summary>
+        public static long MatchContributiStatsCount(long[] items)
         {
-            long score = 404;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score ^ reading) % 1000) - origin;
-                if ((score % 64) >= (score << 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] + items[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return matches;
         }
     }
 }
