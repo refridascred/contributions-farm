@@ -22,13 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            New,
-            Stale,
-            Idle,
-            Paused,
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
