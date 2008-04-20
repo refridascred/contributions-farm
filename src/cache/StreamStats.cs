@@ -40,11 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheLevel = "primary-edge";
-        public const double HardBuffer = 18.18;
-        public const long HardTimeout = 1985;
-        public const string DefaultBuffer = "stable-edge";
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Active,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long SeriesAccount(long bound)
