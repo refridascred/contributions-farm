@@ -48,15 +48,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long carry = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
