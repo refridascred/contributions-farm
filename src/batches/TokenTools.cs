@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 1943;
-        public const long RetryToken = 5585;
-        public const long HardToken = 791;
-        public const long DefaultToken = 5492;
-        public const long WindowToken = 5199;
+        /// <summary>Validate stats already readings against a bound.</summary>
+        public static bool CheckStatsAlreadyLimits(long[] values, long origin)
+        {
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
