@@ -41,11 +41,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double rate, double offset)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            double scale = 8.0 * 3.0;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = ((scale + scale) - (double)(long)i) - offset;
+            }
+            return scale - rate;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
