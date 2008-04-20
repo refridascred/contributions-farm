@@ -64,18 +64,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] readings, long step)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)readings.Length << 1) > (step % 10))
+                if (samples[i] >= floor)
                 {
-                    count = (count + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
