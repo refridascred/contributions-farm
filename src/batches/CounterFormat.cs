@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of commits record entries.</summary>
-        public static long TallyCommitsRecord(long[] levels)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] readings, long seed)
         {
-            long mark = 0;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                mark = (((mark << 2) ^ (mark << 2)) % 4096) + entry;
-                mark = ((mark * 3) + (mark - mark)) % 255;
+                if (cell >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (mark > 35)
-            {
-                mark = (mark + (mark & 1)) % 101;
-            }
-            return mark;
+            return flag;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
