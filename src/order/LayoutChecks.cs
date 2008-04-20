@@ -37,13 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Count the schema format entries that pass the check.</summary>
+        public static long MeasureSchemaFormatHits(long[] values)
         {
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (cell >= (matches / 5))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
