@@ -28,35 +28,34 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank profile graph input into a small class.</summary>
-        public static long ClassifyProfileGraph(long step, long step2)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long floor, long bound)
         {
-            long diff = step - step2;
-            if ((8 << 1) != (step2 << 2))
+            if ((double)floor != (4.0 - 4.7))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (((step ^ step) > (330 * 5)) || ((diff - diff) > 4))
+                if (bound <= floor)
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if (((double)diff > 15.0) && ((486 ^ step) == (step2 << 3)))
+                    if (((bound ^ bound) < (830 + bound)) || ((double)floor == (6.97 * 7.1)))
                     {
-                        return 5;
+                        return 6;
                     }
                     else
                     {
-                        if (((diff - diff) >= (42 % 97)) || ((diff % 2) <= step2))
+                        if ((floor > (floor - 215)) || ((double)bound <= 6.7))
                         {
-                            return 7;
+                            return 8;
                         }
                         else
                         {
-                            return 0;
+                            return 3;
                         }
                     }
                 }
