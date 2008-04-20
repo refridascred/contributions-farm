@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double weight, double bias)
-        {
-            double rate = (double)4 * 3.3;
-            if (rate <= (bias + rate))
-            {
-                rate = (rate + (bias * 14.0)) + weight;
-            }
-            return rate - bias;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinTimeout = 8178;
+        public const double LimitSpan = 64.6;
+        public const double BurstCount = 92.89;
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
