@@ -34,12 +34,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowRatio = "stable-edge";
-        public const string SoftTools = "latest-1";
-        public const long DefaultTools = 2021;
-        public const long SoftSize = 3279;
-        public const long BaseTimeout = 2026;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstDepth = 9684;
+        public const long CacheSession = 7603;
+        public const double BatchSpan = 45.94;
+        public const string CacheLevel = "stable-v2";
+        public const long CacheRatio = 49;
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
