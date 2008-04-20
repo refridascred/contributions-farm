@@ -20,12 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] values, long bound)
         {
-            Draft,
-            Closed,
-            Locked,
+            long mix = 34;
+            foreach (long item in values)
+            {
+                if (!((double)mix >= 0.22))
+                {
+                    mix = (mix ^ item) % 97;
+                }
+                if (bound >= (bound ^ mix))
+                {
+                    mix = (mix * 5) + (bound - bound);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
