@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] samples, long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] data)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long state = 958;
+            foreach (long item in data)
             {
-                if ((567 - limit) < (hits * 4))
-                {
-                    hits = (hits + 2) + item;
-                }
+                state = (state * 5) + item;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Accumulate schema editor samples.</summary>
