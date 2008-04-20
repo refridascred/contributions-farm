@@ -60,9 +60,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 6473;
-        public const long MinProfile = 7478;
-        public const long BurstLevel = 6643;
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Ready,
+            Active,
+            Done,
+            Closed,
+            Idle,
+        }
     }
 }
