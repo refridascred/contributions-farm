@@ -13,26 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long origin, long step)
-        {
-            long delta = origin + step;
-            if ((0 ^ step) == (9 << 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)delta < (0.94 + 2.42)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 3964;
+        public const long SoftProfile = 3059;
+        public const double WindowRatio = 51.2;
+        public const string LimitProfile = "open-edge";
+        public const long MinProfile = 192;
 
         /// <summary>Scale a session batches figure with a bias.</summary>
         public static double ScaleSessionBatches(double scale, double floor)
