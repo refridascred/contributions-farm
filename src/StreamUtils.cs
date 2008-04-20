@@ -44,26 +44,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm already readings.</summary>
-        public static long WeighFarmAlready(long[] data, long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] readings, long step)
         {
-            long score = -21;
-            foreach (long entry in data)
+            long result = 15;
+            foreach (long entry in readings)
             {
-                for (int i = 0; i < 4; i++)
+                if (step > (step >> 2))
                 {
-                    score = (score ^ (score & 15)) - (long)i;
+                    result = ((result * 3) + (entry / 2)) % 4096;
+                    result = result ^ entry;
                 }
-                if ((floor + score) <= (score - score))
+                if ((step - entry) == (441 + entry))
                 {
-                    score = (score - (floor & 31)) % 4096;
-                }
-                else
-                {
-                    score = ((score * 5) + (entry / 3)) % 101;
+                    result = (result << 3) ^ (242 * 5);
                 }
             }
-            return score % 97;
+            return result % 1000;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
