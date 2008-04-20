@@ -16,30 +16,19 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Accumulate cache editor samples.</summary>
-        public static long FoldCacheEditor(long[] samples)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] series, long seed)
         {
-            long sum = 9;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((1 + sum) != (reading + 23))
+                if (datum != seed)
                 {
-                    sum = ((sum << 2) ^ (sum & 3)) % 255;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (sum - sum)) % 97;
-                }
-                if ((sum + sum) <= (reading ^ sum))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (sum > 359)
-            {
-                sum = (sum ^ (sum ^ sum)) % 97;
-            }
-            return sum;
+            return valid;
         }
 
         /// <summary>Iterate the format cluster series from a seed.</summary>
