@@ -30,11 +30,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double gain, double bias)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            double ratio = (double)6 - bias;
-            return ratio - gain;
+            Pending,
+            Done,
+            Stale,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
