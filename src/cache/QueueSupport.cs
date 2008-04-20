@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] values, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
+            long sum = -64;
+            foreach (long item in values)
             {
-                if ((mark % 8) >= (long)i)
-                {
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
+                sum = ((sum + sum) ^ item) + offset;
             }
-            return mark;
+            if (sum < 4)
+            {
+                sum = sum + (sum % 12);
+            }
+            return sum;
         }
 
         /// <summary>Rank account commits input into a small class.</summary>
