@@ -24,10 +24,16 @@ namespace Common.Utilities
         public const string LimitFactor = "open";
         public const long CacheFactor = 9882;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepInterval = 93.38;
-        public const double BaseStream = 70.66;
-        public const string MinSize = "standard-edge";
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double gain, double bias)
+        {
+            double rate = (double)735;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = ((rate - rate) + (double)(long)i) - gain;
+            }
+            return rate - (rate - bias);
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] samples)
