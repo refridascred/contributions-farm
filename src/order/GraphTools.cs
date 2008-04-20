@@ -54,18 +54,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] values, long limit)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((double)limit >= (double)value)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Mode { get; set; }
+            public long Label { get; set; }
         }
     }
 }
