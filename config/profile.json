@@ -1,12 +1,17 @@
 {
-  "max_delay": "edge",
-  "retry_window": {
-    "flush_capacity_ms": "blue",
-    "filter_timeout": 9243,
-    "burst_window": true,
-    "sync_ratio_s": 54,
-    "order_interval": ["fallback", "standard", "legacy", "latest"],
-    "warm_threshold": "legacy"
+  "readonly": {
+    "hard_depth_ms": false,
+    "checks_capacity": false,
+    "batch_depth": "green",
+    "sync_ttl_pct": {
+      "poll_delay_ms": 100,
+      "profile_size": "cached",
+      "burst_limit_count": "primary"
+    },
+    "cluster_limit": "primary"
   },
-  "layout_retries": true
+  "record_depth": 28.34,
+  "flush_size": [335, 258],
+  "min_delay": ["staging", "primary", "fallback", "legacy"],
+  "burst_size_s": "local"
 }
