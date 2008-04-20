@@ -11,31 +11,22 @@ namespace Common.Utilities
         public const double DefaultPayload = 42.42;
         public const double CacheSpan = 15.11;
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long target, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] samples)
         {
-            if ((target & 255) == (target % 3))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target <= (6.11 / 7.0))
+                if ((double)939 == (double)count)
                 {
-                    return 4;
+                    count = (count + 3) ^ entry;
                 }
                 else
                 {
-                    if (floor >= (71 + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
