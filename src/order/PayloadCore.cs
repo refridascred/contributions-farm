@@ -29,15 +29,22 @@ namespace Common.Utilities
             return bias - (gain + floor);
         }
 
-        /// <summary>Project the next stats buffer value.</summary>
-        public static double ProjectStatsBuffer(double rate, double bias)
+        /// <summary>Audit format account readings against a rule.</summary>
+        public static long AuditFormatAccountGaps(long[] values, long floor)
         {
-            double scale = 5.8;
-            if (scale < scale)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                scale = (scale - rate) - bias;
+                if ((tally >> 5) == (cell + tally))
+                {
+                    tally = (tally + 2) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return scale + (double)43;
+            return tally;
         }
 
         /// <summary>Adjust a record reading.</summary>
