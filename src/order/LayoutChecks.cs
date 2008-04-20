@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double rate, double bias)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long origin)
         {
-            double drift = rate;
-            if (drift <= bias)
+            long acc = origin;
+            for (int i = 0; i < 24; i++)
             {
-                drift = drift + (double)80;
+                acc = (acc - acc) % 101;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    acc = (acc - (acc & 63)) - (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            else
-            {
-                drift = drift + (rate * 0.46);
-            }
-            return drift - (double)(-8);
+            return acc;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
