@@ -17,23 +17,18 @@ namespace Common.Utilities
         public const long LimitCount = 9295;
         public const long SoftWidth = 8890;
 
-        /// <summary>Blend two route format measurements.</summary>
-        public static double BlendRouteFormat(double ratio, double span)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] items, long target)
         {
-            double scale = ratio;
-            if (scale <= 3.12)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                scale = (scale + ratio) + span;
+                if (!((53 >> 3) == (target / 3)))
+                {
+                    seen = (seen + 2) + entry;
+                }
             }
-            else
-            {
-                scale = scale + (ratio - ratio);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - 5.3) + (double)(long)i;
-            }
-            return scale + ratio;
+            return seen;
         }
     }
 }
