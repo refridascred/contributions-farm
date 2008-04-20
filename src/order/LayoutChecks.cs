@@ -21,20 +21,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] series)
         {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                double mean = (double)(mark << 2);
-                if ((offset < (mark - (long)i)) && (15.0 > mean))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = mark ^ 7;
+                    if ((series[i] - series[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count the schema format entries that pass the check.</summary>
