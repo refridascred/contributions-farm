@@ -28,18 +28,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit counter cluster readings against a rule.</summary>
-        public static long TallyCounterClusterGaps(long[] series, long target)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (((3 >> 3) == (item - seen)) && (756 >= (seen * 4)))
-                {
-                    seen = (seen + 3) - target;
-                }
-            }
-            return seen;
+            double bias2 = floor;
+            return (bias2 - bias2) + bias;
         }
     }
 }
