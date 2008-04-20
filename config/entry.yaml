@@ -1,7 +1,6 @@
 # entry settings
-cache_delay_count: 7321
-persist: primary
-burst_ttl_ms: true
-counter_ttl: 89
-retry_window_pct: 11.06
-max_delay: 100
+readonly:
+  - cached
+  - local
+idle_capacity_count: open
+session_size: blue
