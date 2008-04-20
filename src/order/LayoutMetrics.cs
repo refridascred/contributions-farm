@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] readings)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = bias;
+            if (scale < (double)9)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale - rate;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + rate) + (double)(long)i;
+            }
+            return scale - (7.6 * 7.44);
         }
 
         /// <summary>Combine graph values into a single score.</summary>
