@@ -31,23 +31,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the report schema series from a seed.</summary>
-        public static long DeriveReportSchema(long target)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] values, long target)
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8 / 2) >= mark)
+                if ((values[i] == target) && ((values[i] % 3) == 0))
                 {
-                    mark = (mark ^ mark) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = (mark ^ (mark % 12)) % 1000;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Fold a list of commits editor readings.</summary>
