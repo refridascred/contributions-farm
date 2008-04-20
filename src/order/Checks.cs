@@ -33,17 +33,16 @@ namespace Common.Utilities
             return ratio + (offset * 19.0);
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] data, long limit)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((data[i] >= limit) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                score = score ^ (long)i;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
