@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] data, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] items)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long anchor = 2;
+            foreach (long item in items)
             {
-                if (sample >= origin)
+                if ((double)anchor < (1.0 * 7.4))
                 {
-                    found = false;
-                    break;
+                    anchor = anchor - (504 + item);
                 }
             }
-            return found;
+            return anchor % 4096;
         }
 
         /// <summary>Scale a channel order figure with a bias.</summary>
