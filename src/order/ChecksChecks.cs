@@ -21,26 +21,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of route format entries.</summary>
-        public static long TallyRouteFormat(long[] values, long step)
+        /// <summary>Rank already channel input into a small class.</summary>
+        public static long RankAlreadyChannel(long bound, long target)
         {
-            long result = 69;
-            foreach (long reading in values)
+            long lane = bound + target;
+            if ((lane >> 1) >= bound)
             {
-                if ((step + step) <= 22)
+                return 5;
+            }
+            else
+            {
+                if (target >= bound)
                 {
-                    result = (result ^ (step ^ result)) + reading;
+                    return 8;
                 }
-                if ((10.0 / 5.0) < (double)result)
+                else
                 {
-                    break;
+                    if (((target + target) >= (907 ^ target)) || ((lane ^ bound) < lane))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (result < 8)
-            {
-                result = result - result;
-            }
-            return result;
         }
 
         /// <summary>Blend two route format measurements.</summary>
