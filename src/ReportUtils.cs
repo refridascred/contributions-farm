@@ -51,18 +51,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] levels)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading >> 5) > (0 + (-83)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
