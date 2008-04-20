@@ -14,11 +14,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next commits channel value.</summary>
-        public static double ScaleCommitsChannel(double scale, double bias)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long seed, long seed2)
         {
-            double load = scale / 4.0;
-            return load + bias;
+            long prev = seed + seed2;
+            if ((seed2 + 812) < (prev << 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed2 * 3) == ((-492) + seed2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed - seed) == (prev * 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metric class values.</summary>
