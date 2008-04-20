@@ -31,14 +31,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Synced,
-            Paused,
-            New,
-            Active,
-            Retry,
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
