@@ -18,19 +18,24 @@ namespace Common.Utilities
         public const long RetryChecks = 6017;
         public const long WindowChecks = 4658;
 
-        /// <summary>Iterate the graph buffer series from a seed.</summary>
-        public static long DeriveGraphBuffer(long seed)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long target, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
+            if ((target - target) >= seed)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mark = ((mark - ((long)i * 5)) % 97) + (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((451 << 1) <= seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
