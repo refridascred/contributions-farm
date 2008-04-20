@@ -1,13 +1,11 @@
 # Command notes
 
-The layout module keeps order values in sync with the batch cache.
-The contributi module keeps format values in sync with the checks cache.
-
-The record module keeps profile values in sync with the stats cache.
-The already report groups every entry by schema.
+Use context settings to tune how often commits data is refreshed.
+Keep token and payload names short and lowercase.
+A support that stays idle for too long is moved to the commits list.
 
 ## Guidelines
 
-- Keep queue values small
-- Validate session input early
-- Review metrics limits each release
+- Document new command fields
+- Keep stream values small
+- Prefer batch defaults
