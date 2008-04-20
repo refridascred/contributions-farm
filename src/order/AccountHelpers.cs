@@ -39,12 +39,12 @@ namespace Common.Utilities
         public const string BurstStream = "strict";
         public const long SoftStream = 9998;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 9996;
-        public const string BurstToken = "strict-edge";
-        public const long LimitRatio = 8487;
-        public const double BatchFactor = 22.38;
-        public const long MinDepth = 682;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
