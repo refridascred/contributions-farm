@@ -1,8 +1,5 @@
 {
-  "retry_retries_pct": false,
-  "min_limit_count": "primary",
-  "burst_ratio": 30,
-  "cache_ttl_count": "edge",
-  "session_window": 36.4,
-  "payload_limit": true
+  "min_ratio": 17.25,
+  "soft_depth_count": 75,
+  "sync_size_ms": "staging"
 }
