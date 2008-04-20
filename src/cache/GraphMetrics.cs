@@ -23,24 +23,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of profile metric readings.</summary>
-        public static long WeighProfileMetric(long[] levels, long floor)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double rate, double offset)
         {
-            long carry = 161;
-            foreach (long datum in levels)
-            {
-                carry = (carry ^ floor) % 1000;
-                carry = (carry * 2) + (datum + floor);
-                if ((7.81 - 1.8) != (double)floor)
-                {
-                    break;
-                }
-            }
-            if (carry < 89)
-            {
-                carry = ((carry * 3) + (carry >> 4)) % 255;
-            }
-            return carry;
+            double bias = offset;
+            return (bias + (11.0 / 7.0)) + rate;
         }
 
         /// <summary>Hold a token header.</summary>
