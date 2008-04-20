@@ -1,8 +1,11 @@
 # githubfarm settings
-persist: 71
-report_delay:
-  - 258
-  - 109
-  - 186
-burst_timeout: 61
-warm_interval_pct: 1574
+metric_window:
+  - 490
+  - 172
+  - 260
+layout_timeout: primary
+sync_threshold:
+  - 171
+  - 499
+  - 469
+  - 151
