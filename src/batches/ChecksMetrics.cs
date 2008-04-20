@@ -36,11 +36,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinLevel = "local-1";
-        public const string SoftCount = "fallback-edge";
-        public const long RetryCluster = 2263;
-        public const string DefaultCluster = "stable";
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
+        {
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
