@@ -50,24 +50,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] data, long limit)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            long sum = 12;
+            foreach (long item in data)
             {
-                if (((limit / 4) > (9 & 15)) || ((limit % 3) <= (carry + 2)))
+                if (!((sum * 5) >= sum))
                 {
-                    carry = (carry - (limit / 4)) % 4096;
+                    sum = sum ^ (item % 97);
                 }
-                carry = (carry + carry) % 101;
-                for (int i2 = 0; i2 < 3; i2++)
+                else
                 {
-                    carry = ((carry ^ (limit * 5)) % 101) ^ (long)i2;
+                    sum = (sum - (limit << 1)) % 1000;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Hold a entry header.</summary>
