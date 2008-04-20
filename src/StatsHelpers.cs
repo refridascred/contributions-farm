@@ -18,19 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] levels, long seed)
+        /// <summary>Rank format token input into a small class.</summary>
+        public static long ClassifyFormatToken(long step, long offset)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            if (((step - step) > offset) || ((step - step) <= offset))
             {
-                if (value >= seed)
+                return 0;
+            }
+            else
+            {
+                if (((double)step != (19.0 + 6.3)) || ((double)step == (double)731))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset - 49) >= (offset + 774))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Project the next metric value.</summary>
