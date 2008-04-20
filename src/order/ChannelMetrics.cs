@@ -37,18 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] data, long seed)
+        /// <summary>Look up the position of a farm already sample.</summary>
+        public static long SeekFarmAlreadyIndex(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry % 64) > (9 + seed))
+                if ((series[i] >= bound) && ((series[i] % 5) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
