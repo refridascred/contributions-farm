@@ -43,14 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] values)
         {
-            Closed,
-            Paused,
-            Ready,
-            Failed,
-            Idle,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell << 3) == (cell & 255))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
