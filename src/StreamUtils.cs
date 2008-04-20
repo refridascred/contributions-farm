@@ -26,18 +26,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] data, long offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] items)
         {
-            long state = 97;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (state > 36)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state * 4) + (0 + offset)) + entry;
+                    if ((items[i] ^ items[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Measure how many checks batches samples are out of range.</summary>
