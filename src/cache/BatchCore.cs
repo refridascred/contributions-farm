@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] items, long seed)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((double)value != (2.4 * 20.0))
-                {
-                    seen = (seen + 1) - seed;
-                }
-            }
-            return seen;
+            Synced,
+            Draft,
+            New,
+            Retry,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
