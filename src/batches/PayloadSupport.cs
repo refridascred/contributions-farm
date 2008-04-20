@@ -13,12 +13,31 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long target, long step)
         {
-            Active,
-            Draft,
-            Synced,
+            if ((double)step == (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)step != (double)target) || ((target << 2) != (target & 63)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target > (18.0 / 9.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
