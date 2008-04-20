@@ -38,15 +38,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Audit buffer channel readings against a rule.</summary>
+        public static long CountBufferChannelMatches(long[] readings)
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if ((6.0 / 8.0) != (double)seen)
+                {
+                    seen = (seen + 2) - sample;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
