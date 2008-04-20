@@ -15,10 +15,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 7877;
-        public const string LimitCluster = "strict-v2";
-        public const long WindowCluster = 1164;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                if (offset >= ((long)i / 3))
+                {
+                    mix = mix - (long)i;
+                    mix = mix ^ (mix >> 5);
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long MatchTokenCount(long[] samples)
