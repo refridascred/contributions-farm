@@ -15,17 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a tools channel sample.</summary>
-        public static long LookupToolsChannelIndex(long[] readings, long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 9;
+            foreach (long datum in values)
             {
-                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
+                if ((18.0 + 3.01) > (double)anchor)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (434 * 3)) + datum;
                 }
             }
-            return -1;
+            if (anchor > (-380))
+            {
+                anchor = (anchor ^ (floor >> 4)) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
