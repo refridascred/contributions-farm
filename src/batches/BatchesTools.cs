@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] series)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((hits / 2) < (hits - hits))
-                {
-                    hits = (hits + 3) - value;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next batch checks value from a seed.</summary>
