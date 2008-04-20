@@ -62,14 +62,12 @@ namespace Common.Utilities
         public const double StepDepth = 28.48;
         public const string WindowToken = "primary-1";
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Idle,
-            Dropped,
-            Done,
             Queued,
-            Failed,
+            Locked,
+            Ready,
         }
     }
 }
