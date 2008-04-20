@@ -60,32 +60,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Count the buffer account entries that pass the check.</summary>
+        public static long MeasureBufferAccountMatches(long[] levels, long step)
         {
-            long mix = target;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((mix ^ target) > (276 + (long)i))
+                if ((matches - 0) < step)
                 {
-                    mix = (mix + (target - target)) % 4096;
+                    matches = (matches + 1) - reading;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = (mix + (target - target)) ^ (long)i2;
-                    mix = ((mix << 3) ^ (target + mix)) % 101;
-                }
-                if (((143 % 12) < (long)i) && (target >= (long)i))
-                {
-                    break;
-                }
-                else
-                {
-                    mix = ((mix * 5) + mix) % 255;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return matches;
         }
     }
 }
