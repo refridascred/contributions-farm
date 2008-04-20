@@ -40,14 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Done,
-            Dropped,
-            Draft,
-            Retry,
-            Closed,
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Accumulate buffer samples.</summary>
