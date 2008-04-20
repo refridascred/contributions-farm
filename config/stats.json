@@ -1,16 +1,12 @@
 {
-  "dry_run": [69, 435],
-  "token_window": {
-    "burst_interval": 6301,
-    "flush_threshold_count": 69.85,
-    "cache_threshold_count": true
+  "flush_retries_count": [289, 37, 55, 224],
+  "editor_threshold": 2669,
+  "sync_ttl_pct": {
+    "retry_depth_ms": "primary",
+    "window_size": 43.18,
+    "contributi_limit": 50
   },
-  "idle_size_s": {
-    "max_depth": true,
-    "compress": 2621,
-    "sync_depth": true,
-    "enabled": "open"
-  },
-  "enabled": [130, 170, 332, 419],
-  "farm_limit": "eu-west"
+  "cache_ratio": true,
+  "readonly": true,
+  "cache_ratio_ms": "standard"
 }
