@@ -58,15 +58,17 @@ namespace Common.Utilities
             return ratio + 6.79;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] levels, long step)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long offset)
         {
-            long acc = 21;
-            foreach (long sample in levels)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                acc = ((acc ^ (55 & 255)) ^ sample) + step;
+                score = ((score << 2) ^ (score >> 2)) % 65521;
+                score = ((score << 3) ^ score) % 65521;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return acc % 4096;
+            return score;
         }
     }
 }
