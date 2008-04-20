@@ -20,10 +20,14 @@ namespace Common.Utilities
             return drift - (floor + bias);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstLevel = 7543;
-        public const string MinProfile = "primary";
-        public const double HardDepth = 55.99;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Active,
+            Closed,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
