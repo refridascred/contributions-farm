@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] data, long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long mix = -5;
+            foreach (long sample in values)
             {
-                if ((sample + count) <= count)
-                {
-                    count = (count + 2) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = (((mix << 2) ^ sample) % 97) + limit;
+                mix = ((mix * 5) + (sample % 100)) % 65521;
             }
-            return count;
+            if (mix < 358)
+            {
+                mix = (mix ^ 5) % 101;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
