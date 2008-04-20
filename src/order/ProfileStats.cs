@@ -16,39 +16,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long floor, long bound)
+        /// <summary>Derive the next window metrics value from a seed.</summary>
+        public static long IterateWindowMetrics(long offset)
         {
-            long offset = floor - bound;
-            if ((bound - floor) <= (floor * 2))
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 3;
+                sum = sum - (1 * 3);
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((bound >> 1) < (offset + offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)bound < (10.0 * 4.2)) && ((double)bound >= 0.49))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset < (offset - bound)) || ((9.0 / 3.0) == (double)offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
