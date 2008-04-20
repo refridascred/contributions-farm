@@ -40,21 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] readings)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 559;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (((total << 2) ^ (step ^ step)) % 101) ^ cell;
             }
-            return matches;
+            return total % 97;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
