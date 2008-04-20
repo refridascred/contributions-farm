@@ -14,27 +14,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long seed)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!(((long)i + state) <= 0))
-                {
-                    state = state + seed;
-                }
-                if (state <= ((long)i >> 4))
-                {
-                    state = ((state * 4) + (state ^ state)) % 97;
-                }
-                else
-                {
-                    state = (state - (673 + (long)i)) % 255;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Retry,
+            Locked,
+            Queued,
+            Done,
+            New,
         }
 
         /// <summary>Validate format route readings against a bound.</summary>
