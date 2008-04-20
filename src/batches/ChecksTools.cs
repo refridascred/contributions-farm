@@ -39,11 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 5188;
-        public const long BurstSchema = 7347;
-        public const double DefaultScore = 80.5;
-        public const string RetryInterval = "legacy-1";
+        /// <summary>Look up the position of a commits stream sample.</summary>
+        public static long SeekCommitsStreamIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= floor) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up queue samples.</summary>
         public static long CompareQueueCount(long[] data)
