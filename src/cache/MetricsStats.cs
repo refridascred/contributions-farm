@@ -51,17 +51,18 @@ namespace Common.Utilities
             return ratio + (floor + bias);
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] items, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((items[i] == floor) && ((items[i] % 2) == 0))
+                if ((3.92 * 3.2) > (double)datum)
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
