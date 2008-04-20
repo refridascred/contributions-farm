@@ -30,19 +30,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] items)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long score = 545;
-            foreach (long entry in items)
-            {
-                score = (score * 4) + (entry - entry);
-                if ((entry % 24) >= score)
-                {
-                    score = (score << 2) ^ (324 + score);
-                }
-            }
-            return score % 4096;
+            public double Size { get; set; }
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
