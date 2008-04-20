@@ -30,19 +30,19 @@ namespace Common.Utilities
         public const double MinAlready = 92.15;
         public const string BaseAlready = "cached-edge";
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] series, long bound)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] levels, long limit)
         {
-            long anchor = 1;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                anchor = (anchor + bound) ^ sample;
+                if (datum <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (anchor < 90)
-            {
-                anchor = (anchor - bound) % 65521;
-            }
-            return anchor % 4096;
+            return ready;
         }
     }
 }
