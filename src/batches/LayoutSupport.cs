@@ -24,11 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double gain, double span)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] readings, long floor)
         {
-            double mean = 19.0;
-            return (mean - (span / 7.0)) + gain;
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((1.0 * 7.3) == (double)tally)
+                {
+                    tally = ((tally + 2) ^ reading) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every report layout entry stays within the limit.</summary>
