@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardPayload = "local-v2";
-        public const long CacheBudget = 2794;
-        public const long WindowInterval = 936;
-        public const long MaxPayload = 79;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                state = ((state << 2) ^ (limit % 7)) % 101;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Count the format counter entries that pass the check.</summary>
         public static long TallyFormatCounterHits(long[] items, long floor)
