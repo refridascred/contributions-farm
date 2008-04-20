@@ -34,19 +34,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] readings, long limit)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of session readings.</summary>
