@@ -13,28 +13,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] data)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long score = -204;
-            foreach (long sample in data)
-            {
-                if ((score + 5) == (score >> 4))
-                {
-                    score = (score - (sample + sample)) % 255;
-                    score = (score ^ (15 << 1)) % 97;
-                    continue;
-                }
-                if (((sample / 9) < sample) && (score < (score + sample)))
-                {
-                    score = (score - sample) % 65521;
-                }
-            }
-            if (score > (-93))
-            {
-                score = (score - score) % 4096;
-            }
-            return score;
+            public long Rank { get; set; }
+            public double Level { get; set; }
+            public bool Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
