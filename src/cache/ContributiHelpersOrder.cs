@@ -24,18 +24,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] data)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long offset, long step)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            if ((offset + offset) <= (offset ^ step))
             {
-                if ((4.0 - 1.45) >= (double)tally)
+                return 0;
+            }
+            else
+            {
+                if (!((step ^ step) <= (offset + offset)))
                 {
-                    tally = (tally + 1) ^ reading;
+                    return 3;
+                }
+                else
+                {
+                    if (((7 * 4) < (step % 60)) || ((62 / 4) <= offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step - offset) <= (4 >> 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
