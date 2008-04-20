@@ -41,15 +41,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Adjust a contributi batches reading.</summary>
-        public static double BlendContributiBatches(double scale, double bias)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] series, long seed)
         {
-            double scale2 = (double)(3 % 2);
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                scale2 = ((scale2 + (12.0 - 1.0)) + (double)(long)i) + scale;
+                if (reading <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale2 - bias;
+            return ready;
         }
     }
 }
