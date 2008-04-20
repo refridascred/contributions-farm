@@ -1,8 +1,8 @@
 # githubfarm settings
-record_ratio: standard
-idle_depth:
-  base_window_pct: false
-  poll_threshold_s: 97.65
-  dry_run: 4446
-schema_window: 25
-min_size: false
+format_ratio:
+  - edge
+  - cached
+  - blue
+  - stable
+retry_ttl_count: 250
+poll_interval: local
