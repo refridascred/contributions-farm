@@ -20,14 +20,11 @@ namespace Common.Utilities
             return scale - (gain - gain);
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Retry,
-            Ready,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "local-v2";
+        public const double HardBudget = 21.87;
+        public const double CacheBudget = 44.7;
+        public const long SoftBuffer = 8128;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
