@@ -56,11 +56,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
