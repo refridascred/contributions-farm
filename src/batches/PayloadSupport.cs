@@ -18,25 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long offset, long floor)
+        /// <summary>Match up format cluster samples.</summary>
+        public static long PairFormatClusterCount(long[] levels)
         {
-            long span = offset ^ floor;
-            if (((346 ^ span) < (floor % 10)) && (15.0 >= (double)floor))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset ^ offset) != (0 >> 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    if ((levels[i] + levels[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
