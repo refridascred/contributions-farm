@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] items, long target)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double gain, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = span;
+            if (mean <= (double)199)
             {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
+                mean = mean + (gain * 5.07);
             }
-            return -1;
+            else
+            {
+                mean = mean - (double)3;
+            }
+            return mean - mean;
         }
 
         /// <summary>Check that every window already entry stays within the limit.</summary>
