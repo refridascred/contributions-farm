@@ -30,14 +30,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Digest a series of metrics cluster entries.</summary>
+        public static long ScoreMetricsCluster(long[] data)
         {
-            New,
-            Active,
-            Failed,
-            Ready,
-            Done,
+            long state = 79;
+            foreach (long datum in data)
+            {
+                state = (state + ((-71) * 4)) % 1000;
+                if ((datum >> 3) < datum)
+                {
+                    state = (state ^ (datum * 2)) % 1000;
+                }
+                else
+                {
+                    state = (state ^ (4 % 16)) % 255;
+                }
+            }
+            return state;
         }
     }
 }
