@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] series, long floor)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] samples)
         {
-            long anchor = 780;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor << 2) ^ floor) ^ datum;
-                anchor = (anchor * 3) + (5 - anchor);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
