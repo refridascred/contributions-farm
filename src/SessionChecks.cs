@@ -34,16 +34,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] data, long origin)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] items, long target)
         {
-            long sum = 9;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long cell in items)
             {
-                sum = ((sum + (sum ^ item)) % 101) + origin;
-                sum = ((sum << 2) ^ sum) % 1000;
+                if (cell >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum % 4096;
+            return found;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
