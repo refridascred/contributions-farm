@@ -1,8 +1,11 @@
 {
-  "sync_timeout_pct": "eu-west",
-  "batch_size": 30,
-  "cache_size": "strict",
-  "stats_timeout": "strict",
-  "burst_ttl_count": 3.69,
-  "strict": 77
+  "batch_threshold": "legacy",
+  "hard_window_s": false,
+  "idle_ttl": {
+    "cache_ttl": false,
+    "dry_run": 93.99,
+    "min_ttl": 7357
+  },
+  "poll_ratio": 39,
+  "readonly": 2395
 }
