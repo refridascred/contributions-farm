@@ -46,13 +46,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Synced,
-            Closed,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 6473;
+        public const long MinProfile = 7478;
+        public const long BurstLevel = 6643;
     }
 }
