@@ -14,31 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long bound, long bound2)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            if (((bound2 * 3) < (7 + bound2)) || ((7.0 * 7.0) != (double)bound2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound * 4) > (bound2 & 15))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound2 << 1) >= (bound - bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Dropped,
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Fold a list of profile metric readings.</summary>
