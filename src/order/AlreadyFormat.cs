@@ -61,27 +61,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of report cache entries.</summary>
-        public static long TallyReportCache(long[] series)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] samples, long offset)
         {
-            long mark = 316;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (datum <= mark)
+                if (entry < offset)
                 {
-                    mark = ((mark << 2) ^ (656 % 60)) % 101;
-                }
-                if (!((824 - (long)series.Length) == (datum * 5)))
-                {
-                    mark = (mark * 3) + (mark + (-519));
-                    mark = mark ^ (mark - mark);
-                }
-                if (mark > (mark / 9))
-                {
-                    mark = (mark << 2) ^ (mark & 3);
+                    flag = false;
+                    break;
                 }
             }
-            return mark % 65521;
+            return flag;
         }
     }
 }
