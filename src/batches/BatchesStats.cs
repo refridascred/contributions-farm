@@ -18,10 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheRatio = 9091;
-        public const double MinLevel = 58.11;
-        public const long BurstProfile = 803;
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileGaps(long[] samples, long seed)
