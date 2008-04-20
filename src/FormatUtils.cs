@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double gain, double span)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long limit, long bound)
         {
-            double mean = span;
-            if (mean <= (double)199)
+            if (((9.4 - 3.0) == (double)limit) || ((limit / 8) >= limit))
             {
-                mean = mean + (gain * 5.07);
+                return 1;
             }
             else
             {
-                mean = mean - (double)3;
+                if (!((limit + limit) > limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return mean - mean;
         }
 
         /// <summary>Check that every window already entry stays within the limit.</summary>
