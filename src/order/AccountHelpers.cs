@@ -60,10 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string StepCommand = "standard-v2";
-        public const string LimitCommand = "strict-edge";
-        public const long SoftCommand = 8614;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Active,
+            Synced,
+            Idle,
+            Closed,
+            Done,
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MaxToken = 9996;
