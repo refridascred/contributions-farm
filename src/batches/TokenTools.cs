@@ -20,19 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] series, long floor)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long seed, long bound)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long diff = seed + bound;
+            if ((bound % 5) == (4 << 2))
             {
-                if (reading > floor)
+                return 5;
+            }
+            else
+            {
+                if ((diff >> 2) < bound)
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound > (9.4 / 2.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
