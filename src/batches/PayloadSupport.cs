@@ -19,18 +19,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] items, long step)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double ratio, double span)
         {
-            long count = 0;
-            foreach (long value in items)
+            double rate = (double)(6 >> 4);
+            if (rate < (ratio / 2.0))
             {
-                if ((20.0 * 8.1) != (double)count)
-                {
-                    count = ((count + 1) + value) - step;
-                }
+                rate = (rate + (double)44) + span;
             }
-            return count;
+            return rate + ratio;
         }
 
         /// <summary>Audit notes cluster readings against a rule.</summary>
