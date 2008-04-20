@@ -1,6 +1,26 @@
 # githubfarm settings
-batch_ratio_ms: 3642
-burst_capacity_count: 8122
-schema_size: 3
-soft_ttl_pct: staging
-flush_delay: open
+verbose: 14.79
+context_timeout:
+  - cached
+  - open
+  - standard
+min_capacity: false
+hard_timeout_ms: false
+enabled:
+  idle_timeout: 67
+  retry_ratio_count:
+    min_retries_pct: stable
+    contributi_ttl: 49
+    hard_delay_count: fallback
+    max_timeout: 2613
+    max_limit_pct:
+      - staging
+      - standard
+  strict: 67.87
+  report_retries: 60
+  profile_window: green
+  idle_depth_s:
+    - 46
+    - 367
+    - 208
+    - 379
