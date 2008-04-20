@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] items, long step)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (((seen - step) < (cell - 363)) && (step >= (358 << 3)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Active,
+            Draft,
+            Done,
+            Stale,
+            Queued,
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
