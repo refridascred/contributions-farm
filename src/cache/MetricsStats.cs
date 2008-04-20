@@ -64,12 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] data, long target)
         {
-            public double Region { get; set; }
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the editor cache series from a seed.</summary>
