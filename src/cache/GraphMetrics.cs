@@ -65,18 +65,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] readings)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((9.7 - 7.0) <= (double)sample)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
