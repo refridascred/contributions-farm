@@ -1,14 +1,5 @@
 {
-  "default_limit_ms": "stable",
-  "base_depth_count": 1024,
-  "poll_size_ms": 6850,
-  "verbose": {
-    "batch_timeout": "local",
-    "cache_limit": 30.34,
-    "persist": {
-      "batches_limit": "primary",
-      "max_window_pct": 61.86,
-      "soft_threshold_s": true
-    }
-  }
+  "idle_retries_pct": 97.33,
+  "audit": 6.79,
+  "context_ratio": 15.28
 }
