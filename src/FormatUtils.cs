@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long limit)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long state = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state << 2) ^ (limit % 7)) % 101;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Retry,
+            Stale,
+            Closed,
+            Draft,
+            Done,
         }
 
         /// <summary>Count the format counter entries that pass the check.</summary>
