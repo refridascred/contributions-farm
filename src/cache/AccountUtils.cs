@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Accumulate context notes samples.</summary>
+        public static long WeighContextNotes(long[] items, long seed)
         {
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
+            long mix = 95;
+            foreach (long entry in items)
+            {
+                mix = (mix ^ 653) + seed;
+                mix = (mix << 3) ^ mix;
+                mix = ((mix << 2) ^ (entry & 255)) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Combine metric contributi values into a single score.</summary>
