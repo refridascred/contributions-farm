@@ -35,18 +35,15 @@ namespace Common.Utilities
             return scale + (double)43;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] series)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] levels)
         {
-            long mark = 11;
-            foreach (long entry in series)
+            long total = 340;
+            foreach (long sample in levels)
             {
-                if ((79 % 10) <= (entry + entry))
-                {
-                    mark = (mark + (55 + entry)) % 97;
-                }
+                total = (total ^ (sample % 16)) % 1000;
             }
-            return mark;
+            return total;
         }
     }
 }
