@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] samples)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry / 6) != (26 ^ entry))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
