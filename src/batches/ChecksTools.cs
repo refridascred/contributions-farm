@@ -22,15 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double rate, double offset)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double load = rate;
-            if (load < (double)4)
-            {
-                load = load - (rate / 7.0);
-            }
-            return load + (offset - offset);
+            New,
+            Stale,
+            Idle,
+            Paused,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
