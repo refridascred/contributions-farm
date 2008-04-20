@@ -22,14 +22,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Locked,
-            Ready,
-            Active,
-            Synced,
-            Queued,
+            Draft,
+            Stale,
+            New,
         }
     }
 }
