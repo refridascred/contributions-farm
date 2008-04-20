@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric tools helpers.</summary>
     public static class MetricTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepSize = 19.31;
-        public const double WindowInterval = 43.47;
-        public const long DefaultSize = 3337;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 2) + (acc & 15)) % 65521;
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double BaseTimeout = 36.81;
