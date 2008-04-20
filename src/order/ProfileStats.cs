@@ -14,11 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 6744;
-        public const long BurstDepth = 848;
-        public const string WindowSchema = "cached";
-        public const string MaxSize = "standard";
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] data)
+        {
+            long mark = 700;
+            foreach (long reading in data)
+            {
+                if (reading >= (92 << 1))
+                {
+                    mark = mark - (mark % 60);
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountRange(long[] data, long seed)
