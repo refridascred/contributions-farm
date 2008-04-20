@@ -22,20 +22,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two cache commits measurements.</summary>
-        public static double SmoothCacheCommits(double ratio, double offset)
-        {
-            double load = offset / 6.0;
-            if (load >= ratio)
-            {
-                load = load + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - offset) - (double)(long)i;
-            }
-            return load - offset;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 59.38;
+        public const long WindowMetric = 5044;
+        public const string CacheSpan = "open-1";
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long CombineContributi(long[] data, long offset)
