@@ -36,19 +36,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a payload format figure with a bias.</summary>
-        public static double ProjectPayloadFormat(double bias, double floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            double ratio = (double)(127 % 10);
-            if (ratio >= (bias * 18.0))
-            {
-                ratio = ratio - (floor - ratio);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + (floor + bias);
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Adjust a format reading.</summary>
