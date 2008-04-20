@@ -37,12 +37,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
