@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Iterate the route contributi series from a seed.</summary>
+        public static long SeriesRouteContributi(long origin)
         {
-            Ready,
-            Stale,
-            Paused,
-            Draft,
+            long total = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((long)i >= total))
+                {
+                    total = total + total;
+                }
+                total = ((total << 3) ^ origin) % 97;
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
