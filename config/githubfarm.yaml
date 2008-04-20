@@ -1,32 +1,7 @@
 # githubfarm settings
-burst_retries_count: 100
-cache_threshold_s: false
-hard_interval_pct: 38.6
-min_limit:
-  - legacy
-  - eu-west
-soft_threshold:
-  readonly:
-    layout_size: 2269
-    soft_size_ms: true
-    burst_ratio:
-      - 151
-      - 61
-    soft_ratio_count: primary
-    soft_depth_pct: staging
-  burst_size:
-    - strict
-    - staging
-  commits_interval: fallback
-  cluster_ttl: 5910
-  dry_run: latest
-  retry_ratio:
-    already_ttl: standard
-    burst_retries: 81
-    buffer_delay: 40.2
-    max_ratio_count: 19.55
-    hard_capacity_pct: true
-    strict:
-      - legacy
-      - legacy
-enabled: 30
+warm_threshold: 7940
+soft_limit_pct: 35.67
+poll_capacity_s: 18.88
+enabled: 17.3
+warm_timeout_ms: true
+window_size: staging
