@@ -30,20 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] values, long origin)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheWidth = 4455;
+        public const long MaxTools = 9019;
+        public const long MinTools = 4426;
+        public const long BatchTools = 5748;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsHits(long[] data)
