@@ -36,22 +36,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine session checks values into a single score.</summary>
-        public static long TallySessionChecks(long[] readings)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long mix = 7;
-            foreach (long entry in readings)
-            {
-                if (!(entry <= mix))
-                {
-                    mix = (mix ^ (entry + entry)) % 4096;
-                }
-            }
-            if (mix < 26)
-            {
-                mix = (mix * 2) + (9 - mix);
-            }
-            return mix % 65521;
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
