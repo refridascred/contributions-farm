@@ -37,10 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 1819;
-        public const string IdleMetrics = "legacy-1";
-        public const long BurstMetrics = 1847;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (((long)samples.Length ^ value) < seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long ScoreSession(long[] items)
