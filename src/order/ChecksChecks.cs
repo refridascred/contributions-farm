@@ -22,26 +22,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] readings, long seed)
-        {
-            long sum = -724;
-            foreach (long value in readings)
-            {
-                if ((value * 5) >= sum)
-                {
-                    sum = ((sum << 2) ^ (3 << 3)) % 255;
-                }
-                if (((seed + 1) > (-72)) && ((sum + seed) >= (seed - sum)))
-                {
-                    sum = ((sum << 2) ^ (sum - (long)readings.Length)) % 255;
-                }
-            }
-            if (sum > 924)
-            {
-                sum = (sum ^ (588 ^ 243)) % 255;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstCount = 5317;
+        public const long SoftSchema = 6604;
+        public const long MinSchema = 4555;
+        public const long MaxSize = 8735;
+        public const long BaseScore = 2926;
     }
 }
