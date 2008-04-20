@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long limit)
         {
-            Pending,
-            Done,
-            Queued,
+            long total = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 4) + (490 << 1)) % 97;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
