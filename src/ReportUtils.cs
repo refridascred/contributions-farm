@@ -66,19 +66,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] values, long limit)
-        {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxEditor = "alpha-1";
+        public const string HardEditor = "standard-edge";
+        public const string SoftEditor = "local-v2";
+        public const long BaseBudget = 9412;
+        public const long HardCount = 2018;
     }
 }
