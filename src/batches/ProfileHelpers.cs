@@ -68,10 +68,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepScore = 54.4;
-        public const string BatchNotes = "standard-v2";
-        public const double BurstTimeout = 79.73;
-        public const long WindowNotes = 8706;
+        /// <summary>Look up the position of a checks record sample.</summary>
+        public static long FindChecksRecordIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
