@@ -24,11 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstProfile = 7.35;
-        public const long IdleLevel = 2651;
-        public const long StepProfile = 1646;
-        public const double DefaultProfile = 44.61;
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
