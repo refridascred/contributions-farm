@@ -47,9 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 965;
-        public const long WindowInterval = 669;
-        public const long MinLayout = 5132;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] levels, long seed)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (sample > (sample >> 4))
+                {
+                    tally = (tally + 2) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
