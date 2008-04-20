@@ -1,16 +1,12 @@
 # support settings
-filter_threshold:
-  - 291
-  - 199
-  - 212
-compress: staging
-default_window:
-  min_limit_pct: edge
-  hard_retries_count: 10
-  batch_ratio_ms:
-    - 418
-    - 364
-    - 27
-    - 45
-  poll_threshold_s: 68
-  window_ratio: standard
+strict:
+  - eu-west
+  - blue
+  - blue
+  - latest
+persist: 19.89
+default_timeout_count:
+  - standard
+  - blue
+  - stable
+readonly: 30
