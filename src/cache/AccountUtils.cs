@@ -26,18 +26,25 @@ namespace Common.Utilities
             return gain - (gain + gain);
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] items)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long target, long offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long offset2 = target + offset;
+            if ((double)target < (double)136)
             {
-                if ((hits + value) < (value ^ value))
+                return 8;
+            }
+            else
+            {
+                if (1.9 <= (double)offset2)
                 {
-                    hits = hits + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
     }
 }
