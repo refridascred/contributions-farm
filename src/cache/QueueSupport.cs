@@ -11,32 +11,25 @@ namespace Common.Utilities
         public const string LimitEntry = "staging-1";
         public const long RetryBudget = 3848;
 
-        /// <summary>Rank account commits input into a small class.</summary>
-        public static long SortAccountCommits(long floor, long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] data)
         {
-            long step = floor + seed;
-            if ((floor + floor) == (seed << 1))
+            long carry = 403;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (floor > (266 - floor))
+                carry = (carry + carry) % 65521;
+                carry = carry - (item - item);
+                carry = ((carry * 2) + (carry + item)) % 255;
+                if ((73 % 3) <= carry)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed & 3) < step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            if (carry < (-174))
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Match up route schema samples.</summary>
