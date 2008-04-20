@@ -16,11 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] series)
         {
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
+            long mix = 2;
+            foreach (long datum in series)
+            {
+                if (mix > (datum / 6))
+                {
+                    mix = ((mix << 3) ^ (datum % 8)) % 1000;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Locate a account reading by value.</summary>
