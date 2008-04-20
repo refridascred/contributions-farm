@@ -64,9 +64,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleRatio = 9124;
-        public const long StepSize = 1433;
-        public const long StepChannel = 4210;
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double scale, double floor)
+        {
+            double mean = (double)458 * 9.9;
+            if (mean < 4.78)
+            {
+                mean = ((mean - (4.17 - mean)) - scale) + floor;
+            }
+            return mean + (mean - mean);
+        }
     }
 }
