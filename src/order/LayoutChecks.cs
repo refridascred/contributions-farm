@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] readings)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (83 >= (item * 3))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
