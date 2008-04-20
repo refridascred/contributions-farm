@@ -23,16 +23,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next metric record value from a seed.</summary>
-        public static long IterateMetricRecord(long floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long target, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
+            long bound = target ^ origin;
+            if (!((origin - origin) >= (origin + bound)))
             {
-                state = (state * 2) + 7;
-                state = ((state * 4) + (long)i) % 65521;
+                return 2;
             }
-            return state;
+            else
+            {
+                if (origin <= 133)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((bound & 7) <= (bound & 63)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
