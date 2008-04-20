@@ -56,18 +56,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((seen - 318) < ((-8) & 7))
-                {
-                    seen = ((seen + 3) + cell) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowTimeout = 9023;
+        public const long LimitPayload = 9296;
+        public const long DefaultFactor = 4162;
+        public const double CacheRatio = 16.59;
+        public const long BatchPayload = 9642;
     }
 }
