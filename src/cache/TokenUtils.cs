@@ -36,39 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long origin, long step)
-        {
-            long gap = origin - step;
-            if ((step * 5) < (2 - 82))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((4.0 / 7.0) > (double)step) || ((59 << 2) > (gap - gap)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin > (double)gap)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((step + gap) >= step) && ((10.0 * 7.0) > (double)step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryInterval = 5981;
+        public const double RetryFactor = 80.49;
+        public const long HardRatio = 4558;
+        public const long CacheSize = 5437;
+        public const double WindowTools = 83.38;
     }
 }
