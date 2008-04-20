@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long limit)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] samples)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
