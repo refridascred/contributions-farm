@@ -20,19 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] readings, long limit)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)(long)readings.Length >= (12.0 + 14.0))
-                {
-                    tally = ((tally + 3) + sample) - limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseSize = "alpha";
+        public const long RetryOrder = 3092;
+        public const double WindowOrder = 24.25;
+        public const long RetryTimeout = 1959;
 
         /// <summary>Validate tools cache readings against a bound.</summary>
         public static bool VerifyToolsCacheRange(long[] values, long origin)
