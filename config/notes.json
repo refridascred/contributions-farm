@@ -1,5 +1,5 @@
 {
-  "compress": 82,
-  "flush_capacity_pct": 63.04,
-  "max_size_ms": true
+  "support_ttl": 36,
+  "batch_interval_pct": 500,
+  "cache_size": false
 }
