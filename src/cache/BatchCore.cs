@@ -24,13 +24,15 @@ namespace Common.Utilities
         public const string IdleRecord = "latest-v2";
         public const long WindowDepth = 9711;
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] values, long bound)
         {
-            Locked,
-            Retry,
-            New,
-            Synced,
+            long sum = 661;
+            foreach (long datum in values)
+            {
+                sum = (((sum * 3) + (datum + 655)) % 4096) + bound;
+            }
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
