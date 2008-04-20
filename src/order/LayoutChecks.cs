@@ -23,17 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] levels, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 272;
+            foreach (long value in items)
             {
-                if ((levels[i] <= target) && ((levels[i] % 2) != 0))
+                if (value >= (value >> 3))
                 {
-                    return (long)i;
+                    state = state ^ (state & 31);
                 }
+                state = state + (85 ^ value);
             }
-            return -1;
+            if (state > 34)
+            {
+                state = ((state << 2) ^ (long)items.Length) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Count the schema format entries that pass the check.</summary>
