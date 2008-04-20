@@ -14,14 +14,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Idle,
-            Stale,
-            Retry,
-            Pending,
-            Dropped,
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Adjust a schema counter reading.</summary>
