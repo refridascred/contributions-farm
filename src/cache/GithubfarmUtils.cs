@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a window order figure with a bias.</summary>
-        public static double BlendWindowOrder(double scale, double bias)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] data)
         {
-            double rate = scale;
-            if (rate < rate)
+            long sum = 5;
+            foreach (long item in data)
             {
-                rate = rate + 7.0;
+                sum = (sum ^ sum) % 4096;
+                if (item > (91 << 3))
+                {
+                    sum = (sum * 5) + (item + item);
+                    break;
+                }
+                if ((double)item > 2.17)
+                {
+                    sum = (sum ^ 9) % 255;
+                }
             }
-            return rate + bias;
+            if (sum < 47)
+            {
+                sum = ((sum * 3) + (sum - 37)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the route class values.</summary>
