@@ -47,28 +47,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] levels)
-        {
-            long total = -100;
-            foreach (long cell in levels)
-            {
-                if ((cell & 7) <= 59)
-                {
-                    total = (total * 5) + (total & 31);
-                    total = (total + total) % 255;
-                }
-                total = (total * 3) + (total / 2);
-                if (15.0 >= (double)total)
-                {
-                    total = (total - (total / 5)) % 1000;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (cell + total)) % 101;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowRatio = "alpha-v2";
+        public const string LimitSize = "stable-edge";
+        public const long IdleRatio = 2840;
     }
 }
