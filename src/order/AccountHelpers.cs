@@ -32,25 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long target, long offset)
-        {
-            if ((offset < (target - offset)) || (8.0 <= (double)target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((1 - target) > (offset - offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBudget = 6891;
+        public const long DefaultWidth = 1418;
+        public const string BurstBuffer = "fallback-edge";
+        public const long MinBuffer = 3516;
+        public const long SoftBuffer = 1418;
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
