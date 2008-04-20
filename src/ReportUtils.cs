@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string DefaultMetrics = "local-edge";
+        public const long StepMetrics = 9885;
+        public const long HardMetrics = 5890;
+        public const double RetryScore = 40.27;
+        public const long BurstSpan = 721;
 
         /// <summary>Digest a series of session support entries.</summary>
         public static long CombineSessionSupport(long[] series)
