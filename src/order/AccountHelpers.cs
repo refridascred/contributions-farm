@@ -14,22 +14,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] items, long bound)
+        /// <summary>Find the first metric cache entry that matches the target.</summary>
+        public static long LookupMetricCacheIndex(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (497 > bound)
+                if (readings[i] == origin)
                 {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
