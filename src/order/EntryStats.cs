@@ -34,11 +34,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
+            public bool Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a notes record pair into a bucket.</summary>
