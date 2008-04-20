@@ -71,9 +71,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetrySize = "standard-v2";
-        public const double IdleSize = 68.82;
-        public const long SoftMetric = 253;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+        }
     }
 }
