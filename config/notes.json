@@ -1,27 +1,5 @@
 {
-  "editor_depth": "stable",
-  "batch_retries_ms": false,
-  "cache_ttl_s": "strict",
-  "idle_retries_ms": 39.12,
-  "hard_threshold_s": 2.13,
-  "idle_threshold": {
-    "dry_run": {
-      "enabled": 95.12,
-      "default_ratio": true,
-      "readonly": 1024,
-      "burst_ttl_ms": [46, 71, 45, 498]
-    },
-    "strict": 82.39,
-    "editor_ttl": {
-      "min_interval": ["standard", "strict", "staging"],
-      "strict": [141, 22, 39],
-      "format_delay": [38, 280, 184, 358],
-      "persist": "legacy",
-      "flush_delay": 4493,
-      "hard_ratio_s": [358, 494, 366, 276]
-    },
-    "stream_ratio": [432, 218],
-    "batch_threshold_pct": true,
-    "max_threshold_ms": 250
-  }
+  "compress": 82,
+  "flush_capacity_pct": 63.04,
+  "max_size_ms": true
 }
