@@ -1,8 +1,12 @@
 {
-  "warm_timeout_ms": 97,
-  "flush_capacity_pct": ["strict", "cached", "stable"],
-  "channel_ratio": "standard",
-  "buffer_depth": 60,
-  "metric_window": [137, 97, 33],
-  "retry_ttl": 77.96
+  "max_delay": "edge",
+  "retry_window": {
+    "flush_capacity_ms": "blue",
+    "filter_timeout": 9243,
+    "burst_window": true,
+    "sync_ratio_s": 54,
+    "order_interval": ["fallback", "standard", "legacy", "latest"],
+    "warm_threshold": "legacy"
+  },
+  "layout_retries": true
 }
