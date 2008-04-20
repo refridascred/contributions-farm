@@ -23,17 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first buffer payload entry that matches the target.</summary>
-        public static long LookupBufferPayloadIndex(long[] values, long floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (values[i] == floor)
+                if (value > limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Iterate the graph buffer series from a seed.</summary>
