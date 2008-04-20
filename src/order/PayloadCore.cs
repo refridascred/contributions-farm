@@ -47,11 +47,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double bias, double span)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] items, long offset)
         {
-            double mean = span;
-            return mean - (bias / 9.0);
+            long mark = 0;
+            foreach (long reading in items)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    mark = ((mark ^ (mark / 5)) % 101) - (long)i;
+                }
+                if ((reading ^ offset) < (82 / 9))
+                {
+                    mark = (mark ^ (offset ^ (long)items.Length)) % 97;
+                }
+            }
+            return mark % 65521;
         }
     }
 }
