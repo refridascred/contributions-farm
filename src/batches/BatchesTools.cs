@@ -23,14 +23,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Look up the position of a tools channel sample.</summary>
+        public static long LookupToolsChannelIndex(long[] readings, long origin)
         {
-            Draft,
-            Closed,
-            Done,
-            Idle,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
