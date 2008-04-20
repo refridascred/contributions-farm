@@ -48,17 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == bound) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultLayout = "staging-edge";
+        public const double BaseBudget = 12.97;
+        public const long HardLevel = 5764;
+        public const string BatchSpan = "cached";
     }
 }
