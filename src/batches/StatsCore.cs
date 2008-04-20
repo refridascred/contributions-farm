@@ -49,10 +49,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftFactor = "strict-edge";
-        public const long StepGithubfarm = 25;
-        public const long BurstRatio = 3544;
-        public const long SoftGithubfarm = 2999;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((604 < (count - count)) || ((double)count <= (2.0 / 5.0)))
+                {
+                    count = ((count + 3) + entry) + offset;
+                }
+            }
+            return count;
+        }
     }
 }
