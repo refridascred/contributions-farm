@@ -41,12 +41,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public long Total { get; set; }
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSpan = 411;
+        public const long CacheCount = 1936;
+        public const long IdleSchema = 4011;
     }
 }
