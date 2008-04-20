@@ -55,31 +55,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long origin, long bound)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            if ((origin ^ 0) <= (origin + origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound > (5.18 * 18.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (origin <= (origin % 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
