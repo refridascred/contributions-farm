@@ -1,12 +1,20 @@
 {
-  "idle_retries_count": 30,
-  "max_capacity": 4213,
-  "record_window": {
-    "context_window": ["stable", "legacy"],
-    "cache_capacity_count": true,
-    "readonly": [276, 201, 249, 71],
-    "farm_depth": [86, 179, 357],
-    "min_timeout_pct": 57.85,
-    "base_interval_pct": "primary"
-  }
+  "checks_ratio": {
+    "audit": {
+      "cache_timeout": "blue",
+      "base_size": 100,
+      "idle_size_count": "local",
+      "persist": 9100,
+      "audit": "edge",
+      "window_delay": ["green", "strict", "stable"]
+    },
+    "dry_run": 51,
+    "warm_capacity_s": false,
+    "base_timeout": false,
+    "sync_ratio": false,
+    "default_ratio_s": false
+  },
+  "max_retries_count": false,
+  "cache_depth_ms": ["edge", "fallback"],
+  "hard_size_pct": "open"
 }
