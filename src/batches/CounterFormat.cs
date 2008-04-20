@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] readings, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (cell >= seed)
+                if ((reading >> 2) != (6 % 64))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) + floor;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
