@@ -36,11 +36,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchTimeout = 9497;
-        public const double BaseDepth = 45.35;
-        public const string IdleTimeout = "legacy";
-        public const double MinContext = 18.8;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
