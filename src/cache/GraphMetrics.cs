@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] levels, long floor)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Synced,
+            Locked,
+            Closed,
         }
 
         /// <summary>Accumulate schema editor samples.</summary>
