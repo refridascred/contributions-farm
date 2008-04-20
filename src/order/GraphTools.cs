@@ -14,13 +14,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Queued,
-            Retry,
-            Done,
-            Ready,
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine record values into a single score.</summary>
