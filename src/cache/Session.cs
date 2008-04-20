@@ -33,14 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Queued,
-            Stale,
-            Pending,
-            Active,
-            Done,
+            public string Flag { get; set; } = "";
+            public double Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
