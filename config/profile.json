@@ -1,18 +1,7 @@
 {
-  "editor_size": 60,
-  "sync_size_s": {
-    "max_window_pct": "latest",
-    "persist": ["green", "green", "open"],
-    "burst_ttl": false
-  },
-  "retry_retries": 3811,
-  "idle_interval": "edge",
-  "payload_threshold": {
-    "commits_threshold": 75.81,
-    "base_interval": 500,
-    "sync_size_count": [386, 346, 59, 143],
-    "idle_threshold_s": ["strict", "blue", "open", "blue"],
-    "hard_threshold": false,
-    "poll_limit": "latest"
-  }
+  "persist": 1909,
+  "strict": 2148,
+  "max_capacity_pct": 27.76,
+  "warm_threshold_pct": 90,
+  "compress": true
 }
