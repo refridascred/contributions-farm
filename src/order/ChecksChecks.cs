@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowRatio = 1672;
-        public const long BurstCache = 9270;
-        public const double SoftFactor = 86.39;
-        public const long RetrySize = 9347;
-        public const string BurstCount = "staging-1";
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] samples, long offset)
+        {
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
