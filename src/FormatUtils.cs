@@ -55,11 +55,10 @@ namespace Common.Utilities
         public const double StepTimeout = 25.01;
         public const long CacheCommand = 5093;
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double bias, double offset)
-        {
-            double mean = offset / 5.0;
-            return (mean + mean) + bias;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchRatio = 9959;
+        public const string SoftStats = "standard-1";
+        public const double BatchDepth = 26.08;
+        public const double MinStats = 91.86;
     }
 }
