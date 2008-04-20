@@ -55,19 +55,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] data)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double bias, double bias2)
         {
-            long anchor = 74;
-            foreach (long entry in data)
+            double mean = bias - bias2;
+            if (mean >= (double)(-621))
             {
-                anchor = anchor ^ (entry + entry);
+                mean = mean - (double)637;
             }
-            if (anchor > 7)
+            for (int i = 0; i < 6; i++)
             {
-                anchor = anchor + (anchor / 5);
+                mean = (mean + (9.1 * 6.4)) + (double)(long)i;
             }
-            return anchor;
+            return mean + (double)989;
         }
     }
 }
