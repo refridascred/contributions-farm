@@ -67,11 +67,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] samples, long step)
         {
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
+            long sum = 637;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    sum = ((((sum * 2) + (step + sum)) % 255) - (long)i) - reading;
+                }
+                sum = (sum << 3) ^ sum;
+            }
+            return sum;
         }
     }
 }
