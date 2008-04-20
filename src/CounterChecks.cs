@@ -22,10 +22,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchSpan = 1768;
-        public const long CacheInterval = 6207;
-        public const long CacheRoute = 111;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
