@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleInterval = 5188;
-        public const string BatchCommand = "standard";
-        public const long MaxRatio = 841;
-        public const long CacheCommand = 986;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Failed,
+            Pending,
+            Done,
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TallyQueue(long[] values)
