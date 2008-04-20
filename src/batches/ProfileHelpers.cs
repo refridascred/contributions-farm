@@ -25,23 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (((count % 100) >= (item + 4)) || ((count + item) >= ((-7) + item)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxRatio = 3480;
+        public const long HardPayload = 2370;
+        public const string RetryInterval = "local";
+        public const long SoftPayload = 1273;
+        public const long LimitPayload = 384;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferGaps(long[] values)
