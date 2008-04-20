@@ -1,10 +1,4 @@
 # githubfarm settings
-base_interval: green
-support_window: 4888
-cache_threshold_count: 46
-window_limit: 21
-soft_ratio_count:
-  - blue
-  - cached
-  - blue
-  - standard
+profile_interval: 250
+readonly: 1024
+min_ratio: true
