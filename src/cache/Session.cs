@@ -19,10 +19,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftLevel = 8319;
-        public const long DefaultTimeout = 6320;
-        public const long BurstCount = 6688;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Queued,
+            Failed,
+            Retry,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
