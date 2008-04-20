@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] samples)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] levels, long step)
         {
-            long carry = 68;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (((carry << 2) ^ (carry << 2)) % 101) + sample;
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < (-856))
-            {
-                carry = carry ^ carry;
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
