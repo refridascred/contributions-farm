@@ -57,18 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (entry < ((long)samples.Length / 4))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheCount = 9309;
+        public const long LimitSpan = 9573;
+        public const long IdleGraph = 8814;
+        public const long SoftDepth = 8665;
+        public const string StepScore = "open-1";
     }
 }
