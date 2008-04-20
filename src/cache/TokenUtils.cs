@@ -23,14 +23,38 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long step, long step2)
         {
-            Locked,
-            Retry,
-            Synced,
-            Queued,
-            Stale,
+            if ((step - step) == (step & 15))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step2 + step2) == (step2 & 15))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((14.0 / 8.0) <= (double)step2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((9 / 6) <= (step2 << 1)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
