@@ -37,18 +37,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of queue githubfarm readings.</summary>
-        public static long CombineQueueGithubfarm(long[] readings, long bound)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] levels)
         {
-            long carry = 66;
-            foreach (long sample in readings)
+            long anchor = 699;
+            foreach (long entry in levels)
             {
-                if (((963 << 2) == (sample % 100)) || ((sample + bound) != (bound - (long)readings.Length)))
+                if ((double)anchor == (6.39 + 7.4))
                 {
-                    carry = carry - (bound + bound);
+                    anchor = ((anchor * 5) + (anchor & 255)) % 97;
+                }
+                if ((entry ^ 6) > (anchor & 31))
+                {
+                    break;
                 }
             }
-            return carry % 1000;
+            return anchor % 4096;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
