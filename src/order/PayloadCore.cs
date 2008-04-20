@@ -37,21 +37,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up metric checks samples.</summary>
-        public static long PairMetricChecksCount(long[] values)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Done,
+            Active,
+            Stale,
+            Retry,
         }
     }
 }
