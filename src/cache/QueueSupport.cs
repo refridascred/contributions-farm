@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] values, long offset)
-        {
-            long sum = -64;
-            foreach (long item in values)
-            {
-                sum = ((sum + sum) ^ item) + offset;
-            }
-            if (sum < 4)
-            {
-                sum = sum + (sum % 12);
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepFactor = 4409;
+        public const long DefaultEntry = 1350;
+        public const string LimitEntry = "staging-1";
+        public const long RetryBudget = 3848;
 
         /// <summary>Rank account commits input into a small class.</summary>
         public static long SortAccountCommits(long floor, long seed)
