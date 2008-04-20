@@ -23,14 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 3204;
+        public const long LimitInterval = 6750;
+        public const long BurstAlready = 3099;
+        public const double MinAlready = 92.15;
+        public const string BaseAlready = "cached-edge";
 
         /// <summary>Roll a buffer graph counter forward.</summary>
         public static long StepBufferGraph(long target)
