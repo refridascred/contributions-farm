@@ -26,23 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double ratio, double bias)
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
+            double mean = bias;
+            if (mean >= 0.48)
             {
-                if (!((long)i > (40 * 2)))
-                {
-                    carry = ((carry << 2) ^ (5 >> 5)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry + seed)) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
+                mean = (mean - (bias / 2.0)) + ratio;
             }
-            return carry;
+            return mean - (bias / 8.0);
         }
 
         /// <summary>Define route limits and defaults.</summary>
