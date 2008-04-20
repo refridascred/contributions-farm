@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] samples, long origin)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long mix = 417;
+            foreach (long item in series)
             {
-                if (tally < entry)
+                mix = ((mix - (633 / 9)) % 255) ^ item;
+                if ((origin >> 5) != (mix / 9))
                 {
-                    tally = (tally + 2) - origin;
+                    break;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a contributi header.</summary>
