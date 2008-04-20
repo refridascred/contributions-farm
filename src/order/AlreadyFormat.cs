@@ -27,19 +27,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] items, long offset)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double bias, double offset)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            double ratio = offset;
+            if (ratio < ratio)
             {
-                if (datum > offset)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ratio + ratio;
             }
-            return flag;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (double)5) + (double)(long)i;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Fold a list of metrics filter readings.</summary>
