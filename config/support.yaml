@@ -1,15 +1,6 @@
 # support settings
-max_threshold_ms: primary
-soft_capacity:
-  base_interval_pct:
-    - 113
-    - 320
-    - 359
-    - 270
-  order_delay: false
-  metrics_depth: 10.5
-  max_interval_count: 33
-base_limit_pct: local
-verbose: 84
-cache_depth_ms: strict
-session_ratio: edge
+flush_interval: 20
+retry_threshold_s: primary
+readonly: 11.36
+base_window_count: 29.77
+commits_size: false
