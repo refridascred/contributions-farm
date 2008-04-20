@@ -23,32 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long target, long origin)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long bound)
         {
-            long bound = target ^ origin;
-            if (!((origin - origin) >= (origin + bound)))
+            long result = bound;
+            for (int i = 0; i < 22; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin <= 133)
+                if ((27 - result) != (7 * 2))
                 {
-                    return 4;
+                    result = result - result;
                 }
-                else
-                {
-                    if (!((bound & 7) <= (bound & 63)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
