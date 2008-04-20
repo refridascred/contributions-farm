@@ -36,19 +36,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] readings)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long mix = 4;
-            foreach (long cell in readings)
-            {
-                mix = mix ^ (mix * 5);
-                if (((double)mix == (double)(long)readings.Length) || ((64 - cell) <= (cell & 63)))
-                {
-                    mix = (mix ^ (40 + 613)) % 101;
-                }
-            }
-            return mix;
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
+            public bool Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of report cache entries.</summary>
