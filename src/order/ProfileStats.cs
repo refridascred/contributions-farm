@@ -43,19 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double gain, double span)
-        {
-            double weight = (double)(9 - 315);
-            if (weight < (gain * 6.0))
-            {
-                weight = (weight - (weight * 8.17)) + span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + gain) + (double)(long)i;
-            }
-            return weight - (weight - gain);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleStats = "standard-edge";
+        public const long BaseDepth = 4890;
+        public const double CacheStats = 79.77;
+        public const long DefaultSpan = 1045;
+        public const string BatchTimeout = "alpha-1";
     }
 }
