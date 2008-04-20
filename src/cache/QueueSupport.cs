@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Ready,
-            Done,
-            New,
-            Queued,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string HardBuffer = "primary-edge";
+        public const long MaxWidth = 5734;
+        public const string StepRatio = "stable-edge";
+        public const string HardSpan = "strict";
 
         /// <summary>Look up the position of a window tools sample.</summary>
         public static long LocateWindowToolsIndex(long[] readings, long origin)
