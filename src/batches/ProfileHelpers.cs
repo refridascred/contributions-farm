@@ -36,12 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] series, long seed)
         {
-            Failed,
-            Retry,
-            Stale,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine entry contributi values into a single score.</summary>
