@@ -57,22 +57,19 @@ namespace Common.Utilities
         public const long MaxAccount = 6004;
         public const double RetryAccount = 13.11;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] data, long origin)
+        /// <summary>Validate farm layout readings against a bound.</summary>
+        public static bool CheckFarmLayoutBounds(long[] levels, long offset)
         {
-            long mark = 64;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((value + origin) > (239 << 3))
+                if (cell != offset)
                 {
-                    mark = ((mark * 3) + origin) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            if (mark > 3)
-            {
-                mark = (mark - mark) % 101;
-            }
-            return mark;
+            return stale;
         }
     }
 }
