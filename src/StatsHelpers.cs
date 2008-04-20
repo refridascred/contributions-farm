@@ -48,13 +48,22 @@ namespace Common.Utilities
             return ratio - (double)6;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Count the filter batches entries that pass the check.</summary>
+        public static long TallyFilterBatchesHits(long[] levels)
         {
-            public double Count { get; set; }
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample > 886) || ((double)sample < (17.0 + 2.3)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
