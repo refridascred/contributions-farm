@@ -30,18 +30,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] data, long seed)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!((seed / 7) != (entry + entry)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
