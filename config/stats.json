@@ -1,12 +1,13 @@
 {
-  "retry_ratio": 7.41,
-  "base_interval": {
-    "poll_ttl": 83.92,
-    "stream_timeout": ["cached", "legacy", "green"],
-    "default_ratio_s": "fallback",
-    "warm_ratio_count": "open"
+  "compress": false,
+  "window_depth": true,
+  "strict": [170, 107, 298],
+  "notes_retries": {
+    "format_retries": "staging",
+    "flush_ttl_s": 78.73,
+    "base_size_s": false,
+    "poll_delay_ms": false
   },
-  "channel_delay": 93.83,
-  "dry_run": "stable",
-  "persist": ["fallback", "stable"]
+  "command_delay": [416, 375, 46],
+  "stats_ratio": 11.32
 }
