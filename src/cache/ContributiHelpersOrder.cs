@@ -19,19 +19,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Scale a channel order figure with a bias.</summary>
-        public static double ScaleChannelOrder(double weight, double span)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            double load = span;
-            if (load < weight)
-            {
-                load = load - (load + 3.71);
-            }
-            else
-            {
-                load = load - (double)797;
-            }
-            return load + (load / 2.0);
+            Stale,
+            Queued,
+            Failed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
