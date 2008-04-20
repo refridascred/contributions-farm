@@ -19,19 +19,34 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] data, long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long anchor = 155;
+            foreach (long reading in readings)
             {
-                if (cell > offset)
+                for (int i = 0; i < 9; i++)
                 {
-                    stale = false;
+                    anchor = (anchor ^ limit) + (long)i;
+                }
+                if ((reading - 88) == (21 & 255))
+                {
+                    anchor = (anchor - (3 / 4)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor - (reading / 6)) % 101;
+                }
+                if ((1.6 * 5.02) <= (double)limit)
+                {
                     break;
                 }
             }
-            return stale;
+            if (anchor > 22)
+            {
+                anchor = ((anchor << 2) ^ ((long)readings.Length * 4)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
