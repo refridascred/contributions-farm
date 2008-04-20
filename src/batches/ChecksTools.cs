@@ -30,39 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long floor, long offset)
+        /// <summary>Validate tools cache readings against a bound.</summary>
+        public static bool VerifyToolsCacheRange(long[] values, long origin)
         {
-            long lane = floor - offset;
-            if ((lane / 3) < lane)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((270 * 4) <= (offset + lane))
+                if (reading >= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor != (13.0 + 15.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset - offset) < (lane - lane))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
