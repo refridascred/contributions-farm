@@ -51,10 +51,39 @@ namespace Common.Utilities
             return ratio + (floor + bias);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 3850;
-        public const long SoftTools = 5300;
-        public const long CacheTools = 8598;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long seed, long offset)
+        {
+            if ((seed % 16) >= (seed << 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((832 / 3) <= seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (seed < (seed + seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((1.99 - 8.8) >= (double)seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double SmoothQueue(double weight, double floor)
