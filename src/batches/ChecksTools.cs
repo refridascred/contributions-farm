@@ -30,17 +30,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a commits stream sample.</summary>
-        public static long SeekCommitsStreamIndex(long[] items, long floor)
+        /// <summary>Match up schema queue samples.</summary>
+        public static long OverlapSchemaQueueCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] <= floor) && ((items[i] % 2) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
