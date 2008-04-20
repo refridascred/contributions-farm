@@ -18,32 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metric buffer pair into a bucket.</summary>
-        public static long SortMetricBuffer(long floor, long limit)
-        {
-            if ((limit - limit) > (limit & 63))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((-2) - floor) < limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor + 489) <= (749 % 12))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleGithubfarm = 91.07;
+        public const long BaseGithubfarm = 239;
+        public const long RetrySize = 5017;
+        public const string CacheFactor = "stable";
+        public const long DefaultDepth = 9805;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool VerifyCommandLimits(long[] readings, long limit)
