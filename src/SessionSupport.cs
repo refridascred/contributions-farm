@@ -23,20 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] readings, long limit)
-        {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 2154;
+        public const long RetryChecks = 6017;
+        public const long WindowChecks = 4658;
 
         /// <summary>Iterate the graph buffer series from a seed.</summary>
         public static long DeriveGraphBuffer(long seed)
