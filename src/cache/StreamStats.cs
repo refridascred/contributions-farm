@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count payload githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchPayloadGithubfarmCount(long[] readings)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 940;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mark = ((mark << 3) ^ (mark + mark)) % 65521;
+                mark = (mark << 3) ^ (item / 8);
+                if (item < (mark << 3))
                 {
-                    if ((readings[i] + readings[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return mark % 1000;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
