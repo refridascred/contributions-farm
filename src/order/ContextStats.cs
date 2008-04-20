@@ -47,9 +47,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 424;
-        public const double LimitGithubfarm = 5.08;
-        public const long MaxInterval = 7919;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] levels, long floor)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((matches ^ floor) <= (matches / 2))
+                {
+                    matches = (matches + 3) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
