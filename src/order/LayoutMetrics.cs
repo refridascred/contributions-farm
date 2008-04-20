@@ -67,19 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] levels, long target)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Closed,
+            Done,
         }
     }
 }
