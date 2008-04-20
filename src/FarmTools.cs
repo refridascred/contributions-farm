@@ -29,10 +29,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 8554;
-        public const string BurstGithubfarm = "local-v2";
-        public const double HardGithubfarm = 41.32;
-        public const long HardLevel = 8231;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] values)
+        {
+            long mark = 44;
+            foreach (long cell in values)
+            {
+                if (9.8 > (double)(long)values.Length)
+                {
+                    mark = (mark * 5) + (long)values.Length;
+                }
+                else
+                {
+                    mark = mark ^ (784 + cell);
+                }
+            }
+            if (mark < (-193))
+            {
+                mark = (mark + (15 - mark)) % 101;
+            }
+            return mark;
+        }
     }
 }
