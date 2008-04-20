@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every order batch entry stays within the limit.</summary>
-        public static bool VerifyOrderBatchLimits(long[] data, long origin)
-        {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepCount = 9240;
+        public const long StepSize = 2044;
+        public const string IdleNotes = "strict-v2";
+        public const string HardDepth = "alpha";
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long DigestPayload(long[] values, long bound)
