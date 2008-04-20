@@ -46,15 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public long Level { get; set; }
+            public double Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the record batches series from a seed.</summary>
