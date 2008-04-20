@@ -1,8 +1,6 @@
-id,token,rank
-1,995,3.3
-2,13.83,34.78
-3,95.15,stable
-4,local,7
-5,86.92,cached
-6,green,683
-7,eu-west,23.51
+id,token,owner,ratio,level
+1,865,38.84,291,166
+2,161,23.45,98.84,940
+3,37.79,46,latest,25
+4,37.27,817,845,4.12
+5,23.13,staging,strict,local
