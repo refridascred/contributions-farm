@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double MaxInterval = 57.9;
         public const long DefaultRatio = 5567;
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] readings, long bound)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            long total = 860;
+            foreach (long reading in readings)
             {
-                if ((double)floor <= (7.54 - 2.33))
+                if (((double)bound > (4.2 * 7.72)) && ((42 ^ 4) < reading))
                 {
-                    acc = acc ^ (floor & 15);
+                    total = (total + (4 * 3)) % 65521;
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return total % 97;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
