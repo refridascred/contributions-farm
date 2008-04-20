@@ -1,14 +1,9 @@
 # githubfarm settings
-soft_capacity:
-  notes_interval: fallback
-  retry_ttl_pct: legacy
-  warm_limit_count: eu-west
-  graph_capacity:
-    - fallback
-    - primary
-    - open
-queue_ttl:
-  flush_ttl_s: 100
-  warm_capacity: false
-  min_timeout_ms: 68.06
-farm_threshold: 151
+base_delay:
+  - primary
+  - green
+  - standard
+min_interval_pct: fallback
+cache_depth_count: eu-west
+poll_retries_count: 69.54
+readonly: open
