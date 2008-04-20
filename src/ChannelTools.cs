@@ -24,12 +24,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] series, long target)
         {
-            Active,
-            New,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
