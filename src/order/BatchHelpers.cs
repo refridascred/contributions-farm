@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 4) + (490 << 1)) % 97;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchFactor = 4842;
+        public const string BurstCommits = "stable-1";
+        public const string RetryInterval = "open-1";
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long StepGraph(long floor)
