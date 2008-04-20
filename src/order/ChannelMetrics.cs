@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Ready,
-            Failed,
-            Paused,
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Validate order readings against a bound.</summary>
