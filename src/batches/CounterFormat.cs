@@ -26,19 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] items, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] readings)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long mark = 909;
+            foreach (long value in readings)
             {
-                if (datum != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = (mark << 3) ^ value;
             }
-            return ready;
+            if (mark < 1)
+            {
+                mark = (mark - mark) % 97;
+            }
+            return mark;
         }
     }
 }
