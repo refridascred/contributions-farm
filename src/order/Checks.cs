@@ -33,18 +33,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] items, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (!!((64 - bound) < cell))
+                if (((double)origin >= 8.6) && ((2 ^ origin) == (value ^ seen)))
                 {
-                    hits = hits + 1;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
