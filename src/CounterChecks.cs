@@ -22,11 +22,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseSize = 8676;
-        public const long StepRatio = 5102;
-        public const string SoftCounter = "cached";
-        public const long StepCounter = 2735;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchSpan = 1768;
+        public const long CacheInterval = 6207;
+        public const long CacheRoute = 111;
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
