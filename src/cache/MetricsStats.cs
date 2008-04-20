@@ -51,38 +51,19 @@ namespace Common.Utilities
             return ratio + (floor + bias);
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long seed, long offset)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double scale, double floor)
         {
-            if ((seed % 16) >= (seed << 3))
+            double ratio = scale;
+            if (ratio > (double)60)
             {
-                return 7;
+                ratio = (ratio - ratio) + floor;
             }
             else
             {
-                if ((832 / 3) <= seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (seed < (seed + seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((1.99 - 8.8) >= (double)seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                ratio = ratio - (double)71;
             }
+            return ratio + 6.79;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
