@@ -1,12 +1,11 @@
 # Command notes
 
-Use command settings to tune how often window data is refreshed.
-Each payload is validated before it reaches the token queue.
-Each editor is validated before it reaches the entry queue.
+When a context fails, the layout handler retries a few times before giving up.
+A stats that stays idle for too long is moved to the metric list.
+When a commits fails, the buffer handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new graph fields
-- Prefer contributi defaults
-- Validate buffer input early
-- Keep channel values small
+- Review checks limits each release
+- Validate profile input early
+- Keep format values small
