@@ -22,31 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long offset, long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] series, long offset)
         {
-            if ((219 - offset) != (target / 6))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((0 + target) >= (target / 2)) || ((double)target >= (2.21 - 19.0)))
+                if ((hits + entry) >= hits)
                 {
-                    return 5;
+                    hits = (hits + 3) + offset;
                 }
                 else
                 {
-                    if (offset > target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank stream window input into a small class.</summary>
