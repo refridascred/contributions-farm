@@ -30,13 +30,13 @@ namespace Common.Utilities
         public const double MinAlready = 92.15;
         public const string BaseAlready = "cached-edge";
 
-        /// <summary>Roll a buffer graph counter forward.</summary>
-        public static long StepBufferGraph(long target)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
             return acc;
         }
