@@ -29,12 +29,18 @@ namespace Common.Utilities
         public const long MinWidth = 6685;
         public const string StepFactor = "alpha-1";
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] items, long step)
         {
-            Idle,
-            Locked,
-            New,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((9.8 * 8.0) >= (double)step)
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a buffer contributi reading by value.</summary>
