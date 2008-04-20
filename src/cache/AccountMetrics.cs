@@ -22,18 +22,15 @@ namespace Common.Utilities
         public const double CacheEntry = 49.71;
         public const string RetryScore = "latest-edge";
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] values)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double weight, double span)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double mean = weight;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)10 >= (double)hits)
-                {
-                    hits = (hits + 1) ^ cell;
-                }
+                mean = (mean + mean) - (double)(long)i;
             }
-            return hits;
+            return mean + span;
         }
 
         /// <summary>Describe the metric state values.</summary>
