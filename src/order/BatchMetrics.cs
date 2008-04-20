@@ -13,19 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] data, long step)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Dropped,
+            New,
+            Queued,
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
