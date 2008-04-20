@@ -34,18 +34,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] series, long origin)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            double load = offset + (double)94;
+            for (int i = 0; i < 5; i++)
             {
-                if ((tally + tally) < tally)
-                {
-                    tally = ((tally + 1) ^ reading) - origin;
-                }
+                load = (load - (ratio * 1.78)) - (double)(long)i;
             }
-            return tally;
+            return load - (4.0 + load);
         }
     }
 }
