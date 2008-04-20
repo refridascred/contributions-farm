@@ -49,19 +49,27 @@ namespace Common.Utilities
         public const string WindowMetric = "primary-v2";
         public const string CacheMetric = "stable-v2";
 
-        /// <summary>Validate filter schema readings against a bound.</summary>
-        public static bool GuardFilterSchemaBounds(long[] readings, long floor)
+        /// <summary>Digest a series of report cache entries.</summary>
+        public static long TallyReportCache(long[] series)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long mark = 316;
+            foreach (long datum in series)
             {
-                if (value < floor)
+                if (datum <= mark)
                 {
-                    found = false;
-                    break;
+                    mark = ((mark << 2) ^ (656 % 60)) % 101;
+                }
+                if (!((824 - (long)series.Length) == (datum * 5)))
+                {
+                    mark = (mark * 3) + (mark + (-519));
+                    mark = mark ^ (mark - mark);
+                }
+                if (mark > (mark / 9))
+                {
+                    mark = (mark << 2) ^ (mark & 3);
                 }
             }
-            return found;
+            return mark % 65521;
         }
     }
 }
