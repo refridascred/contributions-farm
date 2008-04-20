@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a layout profile reading by value.</summary>
-        public static long FindLayoutProfileIndex(long[] levels, long offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = -15;
+            foreach (long sample in readings)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 5) == 0))
+                if (!((total % 12) > total))
                 {
-                    return (long)i;
+                    total = total - total;
+                }
+                else
+                {
+                    total = (total - (sample / 3)) % 1000;
+                }
+                if ((total >> 5) >= (sample << 1))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Project the next metrics value.</summary>
