@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepTools = 66.71;
-        public const long MaxTools = 1036;
-        public const double BaseCount = 12.59;
-        public const long BurstTools = 3364;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Idle,
+            Draft,
+            Failed,
+            Done,
+            Pending,
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long IdleSpan = 4159;
