@@ -48,11 +48,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long seed)
         {
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
