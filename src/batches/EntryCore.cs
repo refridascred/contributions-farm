@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long step, long offset)
+        /// <summary>Match up commits record samples.</summary>
+        public static long CompareCommitsRecordCount(long[] series)
         {
-            if ((step + offset) > (step / 2))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step == (2.9 * 7.99))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step > (offset ^ step))
+                    if ((series[i] ^ series[j]) == 14)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
