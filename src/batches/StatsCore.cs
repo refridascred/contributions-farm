@@ -57,20 +57,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = (((mix << 3) ^ (mix + step)) % 1000) - (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchDepth = 4930;
+        public const long StepNotes = 559;
+        public const long BaseNotes = 8746;
+        public const string StepBudget = "standard-edge";
+        public const string BatchNotes = "alpha";
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
