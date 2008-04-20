@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string DefaultRatio = "legacy-1";
         public const long LimitTools = 9917;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] items, long limit)
+        /// <summary>Digest a series of format cluster entries.</summary>
+        public static long WeighFormatCluster(long[] items)
         {
-            long score = 8;
-            foreach (long datum in items)
+            long state = 642;
+            foreach (long entry in items)
             {
-                if (7.7 >= (double)limit)
+                if (!((double)state != (5.7 / 5.0)))
                 {
-                    score = ((score + (limit % 97)) % 1000) + datum;
+                    state = ((state - state) % 1000) + entry;
                 }
             }
-            return score;
+            return state;
         }
 
         /// <summary>Describe the commits state values.</summary>
