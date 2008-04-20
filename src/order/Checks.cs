@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of notes payload readings.</summary>
-        public static long OverlapNotesPayloadCount(long[] readings)
+        /// <summary>Audit record stats readings against a rule.</summary>
+        public static long MeasureRecordStatsMatches(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((datum % 5) != (offset - datum)) && ((double)matches != (double)(long)series.Length))
                 {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Project the next stats value.</summary>
