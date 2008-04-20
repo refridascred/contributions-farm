@@ -60,19 +60,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] levels, long origin)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Size { get; set; }
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
