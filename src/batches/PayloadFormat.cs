@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double scale, double floor)
+        /// <summary>Digest a series of batch queue entries.</summary>
+        public static long CombineBatchQueue(long[] readings)
         {
-            double load = (double)45;
-            if (load < (double)578)
+            long result = -294;
+            foreach (long entry in readings)
             {
-                load = (load - 2.2) - scale;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    result = result - ((long)i2 >> 4);
+                    result = (result + (entry % 8)) % 101;
+                }
+                if ((double)result != (double)entry)
+                {
+                    result = result + ((-8) - result);
+                }
+                else
+                {
+                    result = result - (entry << 1);
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (floor / 3.0)) + (double)(long)i;
-            }
-            return load + floor;
+            return result % 97;
         }
 
         /// <summary>Adjust a support reading.</summary>
