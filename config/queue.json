@@ -1,18 +1,5 @@
 {
-  "cache_ratio": "standard",
-  "max_delay": "edge",
-  "enabled": {
-    "soft_size": "legacy",
-    "max_size_count": 41.59,
-    "default_timeout_pct": {
-      "hard_limit": 500,
-      "strict": "latest",
-      "max_retries": 21.54,
-      "warm_threshold": 250
-    },
-    "poll_delay_count": "latest"
-  },
-  "profile_window": 3529,
-  "cache_threshold": true,
-  "channel_limit": 60
+  "audit": 40.67,
+  "warm_interval_s": false,
+  "batch_delay": "legacy"
 }
