@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowWidth = 6456;
-        public const string LimitDepth = "standard-1";
-        public const string LimitSpan = "cached-v2";
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
+        {
+            Locked,
+            Pending,
+            Done,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double IdleSpan = 67.25;
