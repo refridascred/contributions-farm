@@ -27,14 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
+            Closed,
+            Done,
+            Queued,
             Active,
-            Idle,
-            Stale,
-            Synced,
-            Locked,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
