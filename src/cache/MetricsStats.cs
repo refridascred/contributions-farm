@@ -81,18 +81,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] levels, long bound)
+        /// <summary>Iterate the editor cache series from a seed.</summary>
+        public static long RollEditorCache(long floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((hits - bound) < (5 + hits))
+                if ((mark ^ mark) != (floor - floor))
                 {
-                    hits = (hits + 2) + datum;
+                    mark = (mark ^ floor) % 101;
+                    mark = mark + mark;
+                    continue;
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
     }
 }
