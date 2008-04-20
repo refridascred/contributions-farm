@@ -36,12 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Idle,
-            Closed,
-            Done,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftCount = 94.24;
+        public const string WindowMetric = "cached-edge";
+        public const long WindowInterval = 5926;
+        public const long RetryWidth = 5045;
+        public const long CacheSpan = 1447;
     }
 }
