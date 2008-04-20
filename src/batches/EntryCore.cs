@@ -32,12 +32,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchCache = 37.99;
-        public const string CacheFactor = "strict-1";
-        public const long LimitCache = 6816;
-        public const string BatchLevel = "stable";
-        public const double HardCache = 57.32;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double StepLevel = 42.92;
