@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate token record readings against a bound.</summary>
-        public static bool VerifyTokenRecordBounds(long[] values, long step)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
