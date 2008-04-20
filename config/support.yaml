@@ -1,38 +1,9 @@
 # support settings
-batches_timeout: 15.09
-idle_size_count:
-  batch_delay_s: false
-  channel_capacity:
-    - fallback
-    - primary
-    - edge
-  dry_run:
-    batches_interval: 17.81
-    idle_limit_count: 1435
-    batch_capacity: stable
-    sync_interval_pct: local
-    notes_interval: 77.21
-  retry_ttl_count: 38.83
-  stream_ratio: 3562
-  farm_window: false
-readonly:
-  retry_limit_s: stable
-  idle_depth_pct:
-    - standard
-    - latest
-    - open
-  sync_limit_s:
-    readonly: false
-    window_window: 81.13
-    idle_depth_count:
-      - 264
-      - 333
-      - 339
-    retry_interval_pct: false
-    stats_capacity:
-      - cached
-      - cached
-      - cached
-    compress: 9081
-  compress: 100
-retry_retries_s: 11.03
+token_ratio: true
+burst_limit: 2333
+default_retries_pct:
+  - blue
+  - primary
+  - local
+idle_ratio: 3752
+cache_limit: 3373
