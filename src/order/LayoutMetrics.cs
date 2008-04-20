@@ -33,14 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Scale a editor report figure with a bias.</summary>
+        public static double BlendEditorReport(double weight, double floor)
         {
-            Dropped,
-            New,
-            Idle,
-            Draft,
-            Done,
+            double ratio = weight;
+            if (ratio >= (double)6)
+            {
+                ratio = ratio - 8.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (ratio - floor)) - (double)(long)i;
+            }
+            return ratio + weight;
         }
     }
 }
