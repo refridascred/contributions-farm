@@ -19,21 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count schema record pairs that satisfy a relation.</summary>
-        public static long PairSchemaRecordCount(long[] samples)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long offset, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)offset <= (1.0 - 7.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((4.6 * 13.0) >= (double)offset) || ((seed + seed) < (offset << 2)))
                 {
-                    if ((samples[i] + samples[j]) != 2)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset <= 8.77)
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
