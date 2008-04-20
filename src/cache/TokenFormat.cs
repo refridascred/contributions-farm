@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] readings)
+        /// <summary>Count the account entry entries that pass the check.</summary>
+        public static long MeasureAccountEntryGaps(long[] data, long origin)
         {
             long hits = 0;
-            foreach (long value in readings)
+            foreach (long item in data)
             {
-                if (!(((95 - hits) <= (hits + hits)) || (hits < ((long)readings.Length ^ hits))))
+                if ((double)item > 2.7)
                 {
-                    hits = (hits + 2) + value;
+                    hits = (hits + 3) - origin;
                 }
                 else
                 {
