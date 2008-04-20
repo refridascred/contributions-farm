@@ -38,23 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metrics cluster entries.</summary>
-        public static long ScoreMetricsCluster(long[] data)
-        {
-            long state = 79;
-            foreach (long datum in data)
-            {
-                state = (state + ((-71) * 4)) % 1000;
-                if ((datum >> 3) < datum)
-                {
-                    state = (state ^ (datum * 2)) % 1000;
-                }
-                else
-                {
-                    state = (state ^ (4 % 16)) % 255;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxBatch = "latest-v2";
+        public const long LimitCount = 4224;
+        public const long IdleBudget = 6023;
+        public const long MinRatio = 6709;
+        public const long DefaultRatio = 6081;
     }
 }
