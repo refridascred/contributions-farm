@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] data, long floor)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (floor > (46 >> 5))
-                {
-                    count = (count + 2) - datum;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
