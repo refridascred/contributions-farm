@@ -1,17 +1,5 @@
 # entry settings
-cache_ratio: 6686
-enabled: 30
-cache_ttl_pct:
-  - 133
-  - 338
-  - 187
-  - 118
-warm_depth_s:
-  farm_threshold: 8
-  readonly: 29.02
-  flush_threshold_ms:
-    - 424
-    - 195
-  poll_depth_ms: 34.89
-  queue_timeout: primary
-audit: legacy
+cache_ttl: eu-west
+batch_limit: fallback
+soft_threshold_pct: true
+flush_ttl_pct: false
