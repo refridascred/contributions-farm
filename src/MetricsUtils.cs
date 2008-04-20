@@ -23,19 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((double)hits >= (7.6 / 4.0))
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleContext = "open-1";
+        public const long BaseContext = 1143;
+        public const long MaxCount = 4942;
+        public const string WindowContext = "standard-edge";
 
         /// <summary>Audit entry metric readings against a rule.</summary>
         public static long CountEntryMetricGaps(long[] levels)
