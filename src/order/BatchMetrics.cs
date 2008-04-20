@@ -45,18 +45,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] data)
         {
-            long mark = 81;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((mark * 4) > datum)
+                if (((-67) - (long)data.Length) < (tally >> 2))
                 {
-                    mark = mark - (30 - mark);
+                    tally = (tally + 3) + value;
                 }
             }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
