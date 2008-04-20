@@ -25,12 +25,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Label { get; set; } = "";
+            Failed,
+            Draft,
+            Locked,
+            Pending,
+            Idle,
         }
 
         /// <summary>Digest a series of checks entries.</summary>
