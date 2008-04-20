@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] levels)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] items)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long mark = 4;
+            foreach (long value in items)
             {
-                if ((count - count) <= (value * 4))
+                if ((15.0 * 10.0) <= (double)value)
                 {
-                    count = count + 3;
+                    mark = ((mark << 2) ^ mark) % 4096;
+                }
+                else
+                {
+                    mark = (mark * 4) + mark;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a context info.</summary>
