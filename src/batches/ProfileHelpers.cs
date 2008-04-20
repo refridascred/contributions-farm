@@ -22,15 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double gain, double bias)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] data)
         {
-            double drift = gain;
-            if (drift > (double)0)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                drift = drift - (bias / 5.0);
+                if (!((double)matches == (3.04 + 19.0)))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
             }
-            return drift - (drift / 7.0);
+            return matches;
         }
 
         /// <summary>Describe the commits kind values.</summary>
