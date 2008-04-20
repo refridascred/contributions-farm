@@ -27,14 +27,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Queued,
+            Active,
             Idle,
-            Failed,
-            Draft,
-            Retry,
+            Stale,
+            Synced,
+            Locked,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
