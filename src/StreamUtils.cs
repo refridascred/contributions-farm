@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long MinBatch = 9759;
         public const string BurstLevel = "strict-1";
 
-        /// <summary>Count the notes metrics entries that pass the check.</summary>
-        public static long MeasureNotesMetricsOutliers(long[] values, long step)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count - step) < count)
+                if (data[i] >= seed)
                 {
-                    count = (count + 3) ^ reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up stats samples.</summary>
