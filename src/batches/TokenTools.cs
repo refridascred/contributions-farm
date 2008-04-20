@@ -50,18 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile account samples are out of range.</summary>
-        public static long MeasureProfileAccountHits(long[] series, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((seed - 27) < hits)
+                if ((offset & 1) >= (offset - 685))
                 {
-                    hits = (hits + 2) + entry;
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
