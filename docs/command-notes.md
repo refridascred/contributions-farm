@@ -1,12 +1,15 @@
 # Command notes
 
-Run the session check before changing any metrics limits.
-Each contributi is validated before it reaches the route queue.
-The format module keeps batch values in sync with the contributi cache.
+The farm report groups every contributi by profile.
+Use route settings to tune how often metrics data is refreshed.
+Run the notes check before changing any order limits.
+
+Run the batch check before changing any profile limits.
+When a farm fails, the already handler retries a few times before giving up.
+Defaults for stats live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new cache fields
-- Keep batch values small
-- Validate notes input early
-- Prefer buffer defaults
+- Prefer batch defaults
+- Review counter limits each release
+- Log every route change
