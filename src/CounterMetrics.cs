@@ -18,13 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Digest a series of account format entries.</summary>
+        public static long TotalAccountFormat(long[] levels, long seed)
         {
-            New,
-            Closed,
-            Synced,
-            Failed,
+            long sum = 96;
+            foreach (long value in levels)
+            {
+                if ((5.51 - 2.31) >= (double)sum)
+                {
+                    sum = ((sum * 2) + (84 + 1)) + value;
+                }
+                if (3 > seed)
+                {
+                    break;
+                }
+            }
+            if (sum < 439)
+            {
+                sum = (sum ^ (sum + sum)) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Accumulate metric samples.</summary>
