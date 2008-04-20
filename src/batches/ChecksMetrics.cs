@@ -63,19 +63,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double ratio, double floor)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            double gain = 3.33;
-            if (gain >= floor)
-            {
-                gain = (gain - 20.0) + ratio;
-            }
-            else
-            {
-                gain = gain + floor;
-            }
-            return gain - (gain / 5.0);
+            Synced,
+            New,
+            Failed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
