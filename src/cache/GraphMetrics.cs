@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] data, long limit)
+        /// <summary>Derive the next window githubfarm value from a seed.</summary>
+        public static long SeriesWindowGithubfarm(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((data[i] > limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
