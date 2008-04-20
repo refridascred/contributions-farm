@@ -14,19 +14,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] samples, long limit)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] samples)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (item > limit)
+                if (cell > (tally % 24))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
