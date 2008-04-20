@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] levels, long seed)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] data, long offset)
         {
-            long total = 3;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                total = (total + total) % 101;
-                if ((seed & 255) != (reading << 1))
+                if (cell > offset)
                 {
-                    total = (total ^ (seed % 5)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
