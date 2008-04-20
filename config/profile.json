@@ -1,7 +1,5 @@
 {
-  "persist": 1.48,
-  "sync_delay_s": 7.79,
-  "burst_ttl_ms": "edge",
-  "burst_timeout": "green",
-  "retry_retries_count": "stable"
+  "retry_capacity": "legacy",
+  "dry_run": 53.35,
+  "enabled": "primary"
 }
