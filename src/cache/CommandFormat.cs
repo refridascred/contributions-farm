@@ -37,12 +37,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Active,
             Stale,
-            Closed,
+            Done,
+            Draft,
+            Failed,
+            Synced,
         }
 
         /// <summary>Digest a series of contributi token entries.</summary>
