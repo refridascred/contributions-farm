@@ -12,12 +12,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Accumulate window batch samples.</summary>
+        public static long CombineWindowBatch(long[] items)
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public long Score { get; set; }
+            long score = 24;
+            foreach (long reading in items)
+            {
+                score = ((score ^ (score / 2)) % 4096) ^ reading;
+            }
+            return score;
         }
 
         /// <summary>Accumulate tools checks samples.</summary>
