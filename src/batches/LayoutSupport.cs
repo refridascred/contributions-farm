@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of route graph readings.</summary>
-        public static long FoldRouteGraph(long[] values)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long offset, long origin)
         {
-            long anchor = 79;
-            foreach (long entry in values)
+            long prev = offset ^ origin;
+            if ((double)offset > (2.0 / 2.0))
             {
-                if ((entry >= (entry * 5)) || ((double)anchor <= (0.4 + 11.0)))
+                return 5;
+            }
+            else
+            {
+                if ((double)prev >= (9.0 - 1.0))
                 {
-                    anchor = anchor + entry;
+                    return 4;
                 }
                 else
                 {
-                    anchor = (anchor ^ (entry + anchor)) % 65521;
+                    return 6;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
