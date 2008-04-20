@@ -55,19 +55,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double bias, double bias2)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double bias, double offset)
         {
-            double mean = bias - bias2;
-            if (mean >= (double)(-621))
+            double rate = bias + (double)24;
+            if (rate < 2.36)
             {
-                mean = mean - (double)637;
+                rate = (rate - (8.0 / 3.0)) + offset;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (9.1 * 6.4)) + (double)(long)i;
-            }
-            return mean + (double)989;
+            return rate + (double)672;
         }
     }
 }
