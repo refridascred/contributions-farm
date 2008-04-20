@@ -28,19 +28,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double bias, double offset)
+        /// <summary>Combine notes metrics values into a single score.</summary>
+        public static long TallyNotesMetrics(long[] series, long target)
         {
-            double drift = bias;
-            if (drift >= 2.8)
+            long total = 7;
+            foreach (long entry in series)
             {
-                drift = (drift - (9.0 / 6.0)) - offset;
+                total = ((total + (target << 2)) % 1000) ^ entry;
             }
-            for (int i = 0; i < 9; i++)
+            if (total > 413)
             {
-                drift = (drift + (double)6) - (double)(long)i;
+                total = total - ((-533) - target);
             }
-            return drift - (bias * 5.83);
+            return total % 1000;
         }
 
         /// <summary>Hold a stream entry.</summary>
