@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a editor metrics counter forward.</summary>
-        public static long RollEditorMetrics(long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] items, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                sum = ((sum << 3) ^ ((long)i * 4)) % 97;
-                if (((long)i % 10) < 2)
+                if ((double)value != (2.4 * 20.0))
                 {
-                    sum = (sum << 2) ^ ((long)i >> 2);
+                    seen = (seen + 1) - seed;
                 }
-                sum = ((sum << 3) ^ (offset - (long)i)) % 255;
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
