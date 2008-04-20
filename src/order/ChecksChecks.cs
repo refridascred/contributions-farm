@@ -27,19 +27,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] levels, long floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double weight, double bias)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            double load = weight;
+            if (load < load)
             {
-                if (reading > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                load = (load - weight) + bias;
             }
-            return ok;
+            return load - 9.9;
         }
     }
 }
