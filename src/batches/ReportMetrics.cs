@@ -23,21 +23,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Locked,
+            Retry,
+            Stale,
+            Ready,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
