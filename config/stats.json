@@ -1,13 +1,15 @@
 {
-  "compress": false,
-  "window_depth": true,
-  "strict": [170, 107, 298],
-  "notes_retries": {
-    "format_retries": "staging",
-    "flush_ttl_s": 78.73,
-    "base_size_s": false,
-    "poll_delay_ms": false
+  "contributi_delay": {
+    "session_interval": 9421,
+    "persist": 100,
+    "batch_limit": 250,
+    "batch_ttl_s": {
+      "dry_run": "cached",
+      "batch_capacity_count": "staging",
+      "cache_threshold_pct": "staging"
+    },
+    "sync_timeout_ms": 9455
   },
-  "command_delay": [416, 375, 46],
-  "stats_ratio": 11.32
+  "queue_retries": false,
+  "idle_limit": 250
 }
