@@ -18,39 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long offset, long bound)
+        /// <summary>Check that every window already entry stays within the limit.</summary>
+        public static bool GuardWindowAlreadyLimits(long[] values, long bound)
         {
-            long bound2 = offset ^ bound;
-            if ((offset + 3) <= (464 & 255))
+            bool ok = true;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound2 + offset) <= (93 + bound))
+                if (reading <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (bound < offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((3.6 - 6.2) < (double)offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
