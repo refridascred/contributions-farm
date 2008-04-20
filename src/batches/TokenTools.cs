@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up checks account samples.</summary>
-        public static long MatchChecksAccountCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultContributi = 30.85;
+        public const long LimitSpan = 8593;
+        public const long SoftContributi = 4674;
+        public const long MaxContributi = 2695;
+        public const double BatchContributi = 5.67;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long RankFarm(long seed, long bound)
