@@ -33,21 +33,15 @@ namespace Common.Utilities
         public const double StepCounter = 52.16;
         public const long BatchLevel = 2965;
 
-        /// <summary>Compare every pair of report batch readings.</summary>
-        public static long PairReportBatchCount(long[] samples)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)(829 << 3);
+            if (mean <= (double)4)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean - span) + rate;
             }
-            return seen;
+            return mean + (double)849;
         }
     }
 }
