@@ -56,39 +56,22 @@ namespace Common.Utilities
         public const long DefaultInterval = 8372;
         public const double HardWidth = 21.79;
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long bound, long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] samples, long floor)
         {
-            long slot = bound ^ floor;
-            if ((3.2 - 4.0) != (double)bound)
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound + bound) > (slot - slot))
+                if ((count + 712) <= floor)
                 {
-                    return 8;
+                    count = (count + 3) + value;
                 }
                 else
                 {
-                    if (!((707 / 6) >= floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor >= (floor - 394)) || ((floor - 202) == (floor ^ slot)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a checks entry.</summary>
