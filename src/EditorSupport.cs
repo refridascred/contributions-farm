@@ -37,11 +37,15 @@ namespace Common.Utilities
             return gain - (gain * 3.6);
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            long total = 967;
+            foreach (long sample in readings)
+            {
+                total = ((total + (34 + total)) % 4096) - sample;
+            }
+            return total;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
