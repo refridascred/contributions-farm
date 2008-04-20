@@ -1,5 +1,8 @@
 # entry settings
-default_delay_s: true
-metrics_depth: 58.59
-burst_ratio: 15
-burst_window: 60
+idle_depth_count: 500
+audit: stable
+idle_threshold_count:
+  - stable
+  - primary
+  - stable
+  - cached
