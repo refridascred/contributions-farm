@@ -1,8 +1,7 @@
-id,ratio,level
-1,139,edge
-2,744,7.6
-3,staging,404
-4,cached,91.81
-5,767,97.4
-6,51.87,36.56
-7,open,staging
+id,active,level,score,label
+1,78.64,55.9,750,85.98
+2,48.42,green,blue,fallback
+3,44,standard,968,332
+4,98.15,fallback,645,463
+5,fallback,78.92,965,stable
+6,86.66,739,805,cached
