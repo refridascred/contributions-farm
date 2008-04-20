@@ -12,11 +12,26 @@ namespace Common.Utilities
         public const double CacheOrder = 82.0;
         public const long LimitRatio = 2798;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryBudget = 2198;
-        public const double RetryTools = 11.13;
-        public const long CacheTools = 2321;
-        public const string WindowTools = "legacy";
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long limit, long step)
+        {
+            long next = limit ^ step;
+            if (step <= (step ^ limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((196 - next) >= (step << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
