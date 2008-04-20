@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            New,
-            Done,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 5935;
+        public const string HardRatio = "standard-1";
+        public const string SoftBudget = "alpha-v2";
 
         /// <summary>Project the next context cluster value.</summary>
         public static double SmoothContextCluster(double scale, double offset)
