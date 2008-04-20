@@ -32,18 +32,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] series, long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] levels)
         {
-            long mark = 49;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((seed - seed) <= (cell * 5))
+                if (((sample % 16) <= 119) && ((double)sample > (double)seen))
                 {
-                    mark = ((mark << 3) ^ (mark % 100)) % 101;
+                    seen = seen + 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a buffer stats.</summary>
