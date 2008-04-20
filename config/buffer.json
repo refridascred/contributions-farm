@@ -1,21 +1,5 @@
 {
-  "compress": "strict",
-  "max_window_ms": "legacy",
-  "persist": {
-    "dry_run": "eu-west",
-    "warm_retries": "stable",
-    "default_ttl_count": 500,
-    "poll_depth": "fallback",
-    "verbose": 26.9
-  },
-  "idle_ratio": "edge",
-  "burst_ttl_count": {
-    "hard_interval_count": [204, 500],
-    "flush_limit_s": 5667,
-    "checks_capacity": "standard",
-    "persist": ["edge", "legacy", "staging"],
-    "soft_capacity_count": 54.71,
-    "graph_ratio": true
-  },
-  "sync_interval_count": "staging"
+  "warm_ratio": 95,
+  "verbose": [316, 23, 355],
+  "schema_delay": 13
 }
