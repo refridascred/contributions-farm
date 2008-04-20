@@ -35,23 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next route cluster value.</summary>
-        public static double BlendRouteCluster(double bias, double floor)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            double load = (double)(3 + 7);
-            if (load >= (bias / 5.0))
-            {
-                load = load + (floor + load);
-            }
-            else
-            {
-                load = load - (floor + bias);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - floor) - (double)(long)i;
-            }
-            return load - (double)98;
+            public double Mode { get; set; }
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
