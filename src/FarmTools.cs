@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double scale, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 > bias)
-            {
-                bias2 = (bias2 + bias2) - scale;
-            }
-            return bias2 + (double)7;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftSpan = 2669;
+        public const double MaxWidth = 90.67;
+        public const long BurstGithubfarm = 7714;
+        public const double MinGithubfarm = 48.43;
+        public const double MaxSize = 43.07;
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LocateWindowIndex(long[] samples, long limit)
