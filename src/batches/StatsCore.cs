@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] levels, long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] levels)
         {
-            long state = 9;
-            foreach (long entry in levels)
+            long state = 58;
+            foreach (long reading in levels)
             {
-                state = ((state + state) % 101) ^ entry;
-                if ((15 * 5) == (floor & 7))
+                state = (state + reading) % 1000;
+                state = ((state << 3) ^ (state / 5)) % 65521;
+                if (((reading & 1) < state) || ((5.87 / 9.0) != (double)state))
                 {
-                    break;
+                    state = state ^ state;
+                }
+                else
+                {
+                    state = state ^ (reading * 3);
                 }
             }
-            return state % 1000;
+            return state;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
