@@ -13,12 +13,24 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinTimeout = 3786;
-        public const long MinNotes = 5143;
-        public const double LimitNotes = 27.09;
-        public const long HardRatio = 4946;
-        public const long IdleNotes = 3411;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] data, long bound)
+        {
+            long mix = -435;
+            foreach (long reading in data)
+            {
+                mix = mix ^ (bound ^ 835);
+                for (int i = 0; i < 7; i++)
+                {
+                    mix = ((mix - mix) % 255) - (long)i;
+                }
+                if (!((reading + mix) < (bound / 6)))
+                {
+                    mix = ((mix * 5) + ((long)data.Length / 7)) % 4096;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Project the next metric value.</summary>
         public static double ProjectMetric(double gain, double offset)
