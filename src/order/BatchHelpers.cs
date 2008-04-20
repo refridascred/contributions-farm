@@ -23,15 +23,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double ratio, double span)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] samples)
         {
-            double weight = ratio;
-            if (weight < (span + span))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight + (double)21;
+            return count;
         }
 
         /// <summary>Hold a queue header.</summary>
