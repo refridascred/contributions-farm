@@ -84,17 +84,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] items, long step)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Done,
+            Failed,
+            Synced,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
