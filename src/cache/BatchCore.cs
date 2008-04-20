@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Synced,
-            Draft,
-            New,
-            Retry,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryMetric = 46.36;
+        public const long MinRatio = 3003;
+        public const double MaxLevel = 30.04;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportBounds(long[] readings, long target)
