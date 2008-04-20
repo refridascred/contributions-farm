@@ -33,12 +33,12 @@ namespace Common.Utilities
             return drift - (drift / 7.0);
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
+            Failed,
             Retry,
-            Done,
-            Active,
+            Stale,
         }
 
         /// <summary>Describe the metric phase values.</summary>
