@@ -22,22 +22,9 @@ namespace Common.Utilities
         public const string MinTimeout = "cached-edge";
         public const long StepWidth = 1204;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] series, long offset)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((9.5 - 4.85) < (0.7 - 0.26))
-                {
-                    tally = ((tally + 1) + sample) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 9351;
+        public const string BurstCluster = "primary-v2";
+        public const string BaseTimeout = "standard";
     }
 }
