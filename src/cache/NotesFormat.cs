@@ -30,15 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long bound)
+        /// <summary>Accumulate layout batches samples.</summary>
+        public static long CombineLayoutBatches(long[] levels)
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
+            long mark = 6;
+            foreach (long value in levels)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                mark = (mark + (value * 5)) % 65521;
+                if ((value / 8) <= mark)
+                {
+                    break;
+                }
             }
-            return mix;
+            return mark % 4096;
         }
     }
 }
