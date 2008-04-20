@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] readings, long step)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (reading > step)
+                if (item < bound)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
