@@ -28,26 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel format readings.</summary>
-        public static long ScoreChannelFormat(long[] series, long step)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long score = 30;
-            foreach (long sample in series)
-            {
-                if ((8.45 - 11.0) <= (double)sample)
-                {
-                    score = (score ^ score) % 255;
-                }
-                else
-                {
-                    score = ((score * 5) + (step + 365)) % 65521;
-                }
-            }
-            if (score < 14)
-            {
-                score = ((score * 3) + score) % 101;
-            }
-            return score % 97;
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every token schema entry stays within the limit.</summary>
