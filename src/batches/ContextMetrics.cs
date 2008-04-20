@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] readings)
-        {
-            long total = -15;
-            foreach (long sample in readings)
-            {
-                if (!((total % 12) > total))
-                {
-                    total = total - total;
-                }
-                else
-                {
-                    total = (total - (sample / 3)) % 1000;
-                }
-                if ((total >> 5) >= (sample << 1))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitSize = 45.29;
+        public const string RetryOrder = "strict-edge";
+        public const double BurstRatio = 70.1;
+        public const long BatchSize = 8083;
+        public const string DefaultOrder = "strict-1";
 
         /// <summary>Combine format layout values into a single score.</summary>
         public static long CombineFormatLayout(long[] items)
