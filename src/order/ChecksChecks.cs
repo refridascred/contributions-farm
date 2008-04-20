@@ -18,9 +18,9 @@ namespace Common.Utilities
         public const long LimitCount = 9295;
         public const long SoftWidth = 8890;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinSize = 2080;
-        public const string CacheAccount = "alpha-edge";
-        public const long SoftRatio = 4220;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSize = 2011;
+        public const double StepSchema = 48.59;
+        public const long WindowSchema = 6360;
     }
 }
