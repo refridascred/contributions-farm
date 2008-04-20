@@ -23,19 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every githubfarm already entry stays within the limit.</summary>
-        public static bool GuardGithubfarmAlreadyLimits(long[] data, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long anchor = 29;
+            foreach (long sample in readings)
             {
-                if (reading >= offset)
+                if ((2 + sample) >= 253)
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (sample - sample)) % 101;
                 }
             }
-            return flag;
+            return anchor % 65521;
         }
 
         /// <summary>Find the first batch githubfarm entry that matches the target.</summary>
