@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long bound, long offset)
+        /// <summary>Validate profile entry readings against a bound.</summary>
+        public static bool VerifyProfileEntryBounds(long[] series, long floor)
         {
-            if ((offset ^ offset) <= (bound ^ offset))
+            bool ok = true;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (9.1 <= (double)offset)
+                if (datum != floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset - bound) >= 0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset >> 1) >= offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a metric options.</summary>
