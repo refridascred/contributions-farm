@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long bound, long offset)
         {
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public double Total { get; set; }
-            public double Stamp { get; set; }
+            if ((offset ^ offset) <= (bound ^ offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if (9.1 <= (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset - bound) >= 0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset >> 1) >= offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric options.</summary>
