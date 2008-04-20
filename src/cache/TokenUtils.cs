@@ -32,15 +32,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] series)
-        {
-            long result = 145;
-            foreach (long cell in series)
-            {
-                result = (result << 3) ^ (result + cell);
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 3098;
+        public const long MinSpan = 2417;
+        public const long LimitWidth = 7061;
+        public const double LimitAlready = 44.07;
     }
 }
