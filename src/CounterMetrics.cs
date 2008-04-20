@@ -29,17 +29,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] series, long bound)
+        /// <summary>Iterate the report schema series from a seed.</summary>
+        public static long DeriveReportSchema(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((series[i] >= bound) && ((series[i] % 2) == 0))
+                if ((8 / 2) >= mark)
                 {
-                    return (long)i;
+                    mark = (mark ^ mark) % 4096;
                 }
+                else
+                {
+                    mark = (mark ^ (mark % 12)) % 1000;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Fold a list of commits editor readings.</summary>
