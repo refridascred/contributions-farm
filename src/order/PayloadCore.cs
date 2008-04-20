@@ -29,19 +29,18 @@ namespace Common.Utilities
             return bias - (gain + floor);
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] items, long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long total = 9;
+            foreach (long entry in samples)
             {
-                if (value <= step)
+                if ((total >> 1) > total)
                 {
-                    ok = false;
-                    break;
+                    total = ((total << 3) ^ total) + entry;
                 }
             }
-            return ok;
+            return total % 65521;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
