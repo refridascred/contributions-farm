@@ -23,15 +23,18 @@ namespace Common.Utilities
         public const double WindowLevel = 96.03;
         public const double CacheFactor = 67.68;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] data)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] levels, long target)
         {
-            long carry = 8;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                carry = (((carry * 5) + (carry & 63)) % 97) + item;
+                if (!((target & 31) <= item))
+                {
+                    matches = matches + 1;
+                }
             }
-            return carry % 1000;
+            return matches;
         }
     }
 }
