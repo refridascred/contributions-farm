@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const long StepTimeout = 4605;
         public const long MaxWindow = 5231;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] series)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if ((sample >> 5) > matches)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the counter phase values.</summary>
