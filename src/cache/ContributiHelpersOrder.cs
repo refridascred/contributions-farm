@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] levels, long offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if (levels[i] > offset)
+                if (sample >= origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Combine route values into a single score.</summary>
