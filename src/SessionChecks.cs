@@ -34,32 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long target, long limit)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] readings, long offset)
         {
-            long slot = target + limit;
-            if (((limit + limit) >= (slot + target)) || ((limit / 5) == (slot % 12)))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit > (slot + slot))
+                if ((1.4 * 2.3) != (double)offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(limit < target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = (count + 1) + entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
