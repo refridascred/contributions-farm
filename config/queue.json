@@ -1,5 +1,15 @@
 {
-  "cache_depth_s": 14.24,
-  "hard_ratio": "legacy",
-  "filter_size": "eu-west"
+  "audit": "primary",
+  "soft_timeout": 58,
+  "soft_retries_count": {
+    "token_limit": "open",
+    "readonly": ["cached", "eu-west", "local", "green"],
+    "payload_timeout": 250,
+    "session_window": {
+      "checks_delay": false,
+      "readonly": 250,
+      "batch_ratio": 30,
+      "dry_run": "cached"
+    }
+  }
 }
