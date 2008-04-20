@@ -23,19 +23,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two layout stream measurements.</summary>
-        public static double BlendLayoutStream(double rate, double bias)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] readings, long step)
         {
-            double load = 7.1 / 3.0;
-            if (load > (13.0 / 4.0))
+            long acc = -3;
+            foreach (long reading in readings)
             {
-                load = load - (double)31;
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = ((acc + reading) - (long)i) - step;
+                }
+                acc = (acc << 2) ^ (reading % 100);
+                if ((acc < (reading << 3)) || ((8.0 / 5.0) < (double)reading))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + rate) - (double)(long)i;
-            }
-            return load + (bias * 5.5);
+            return acc % 65521;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
