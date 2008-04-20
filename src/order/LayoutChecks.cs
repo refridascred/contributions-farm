@@ -91,9 +91,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitBatches = "alpha-edge";
-        public const long IdleBatches = 4398;
-        public const long SoftBatches = 8744;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public long Flag { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
