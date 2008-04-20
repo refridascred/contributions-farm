@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine account contributi values into a single score.</summary>
-        public static long ScoreAccountContributi(long[] series)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] items)
         {
-            long mix = 765;
-            foreach (long value in series)
+            long state = 5;
+            foreach (long sample in items)
             {
-                mix = (mix ^ 80) % 1000;
-                mix = (mix << 3) ^ ((long)series.Length - value);
-                if ((19.0 + 14.0) > (double)value)
-                {
-                    break;
-                }
+                state = (state ^ state) + sample;
             }
-            return mix;
+            if (state < 63)
+            {
+                state = (state * 3) + 626;
+            }
+            return state;
         }
 
         /// <summary>Roll a format counter forward.</summary>
