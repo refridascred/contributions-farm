@@ -32,21 +32,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up route schema samples.</summary>
-        public static long CompareRouteSchemaCount(long[] series)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((8.45 + 7.55) != (double)target)
                 {
-                    if ((series[i] + series[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
+                total = (total ^ ((long)i + target)) % 65521;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
     }
 }
