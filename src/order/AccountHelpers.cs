@@ -17,18 +17,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first metric cache entry that matches the target.</summary>
-        public static long LookupMetricCacheIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinAlready = 98.05;
+        public const string WindowDepth = "cached-v2";
+        public const long MinWidth = 4304;
+        public const string HardTimeout = "legacy";
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long LookupTokenIndex(long[] samples, long floor)
