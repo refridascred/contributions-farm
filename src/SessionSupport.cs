@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Audit schema buffer readings against a rule.</summary>
+        public static long CountSchemaBufferOutliers(long[] levels)
         {
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((matches ^ 0) <= matches)
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batches entry.</summary>
