@@ -1,4 +1,9 @@
 # support settings
-stream_size: 5.49
-command_interval: standard
-context_capacity: edge
+base_interval:
+  - edge
+  - legacy
+  - green
+tools_depth: blue
+batch_depth_ms: true
+persist: 64.97
+sync_limit_s: 9332
