@@ -14,13 +14,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] series, long bound)
         {
-            Active,
-            Closed,
-            Idle,
-            Draft,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (((double)cell == (7.28 / 3.0)) || (118 > bound))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the batches graph series from a seed.</summary>
