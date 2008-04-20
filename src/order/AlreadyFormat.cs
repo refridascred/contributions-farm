@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit command record readings against a rule.</summary>
-        public static long AuditCommandRecordOutliers(long[] data, long limit)
+        /// <summary>Derive the next profile queue value from a seed.</summary>
+        public static long StepProfileQueue(long step)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long state = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((tally & 15) != (9 ^ cell))
-                {
-                    tally = (tally + 2) + limit;
-                }
+                state = state + (state + step);
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the graph status values.</summary>
