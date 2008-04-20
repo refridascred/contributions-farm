@@ -20,22 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the account entry entries that pass the check.</summary>
-        public static long MeasureAccountEntryGaps(long[] data, long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long score = 22;
+            foreach (long entry in readings)
             {
-                if ((double)item > 2.7)
+                if ((target - entry) >= 608)
                 {
-                    hits = (hits + 3) - origin;
+                    score = (score << 3) ^ (score + target);
+                    score = (score ^ score) % 101;
                 }
-                else
+                score = (score - (target >> 1)) % 1000;
+                if ((score + 7) >= entry)
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return score % 65521;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
