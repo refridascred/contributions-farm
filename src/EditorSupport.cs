@@ -28,11 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchSpan = 661;
-        public const long BurstWidth = 3880;
-        public const string RetryBudget = "cached-v2";
-        public const long SoftBudget = 711;
+        /// <summary>Measure how many githubfarm profile samples are out of range.</summary>
+        public static long MeasureGithubfarmProfileHits(long[] series, long limit)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((count & 255) != (630 >> 1))
+                {
+                    count = ((count + 3) ^ item) - limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
