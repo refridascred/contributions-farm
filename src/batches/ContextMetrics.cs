@@ -51,22 +51,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] series, long offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] samples, long target)
         {
-            long sum = 641;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (((-2) + offset) < 554)
+                if (reading >= target)
                 {
-                    sum = (sum - (offset + sum)) % 65521;
-                }
-                if ((datum >> 4) < (sum * 3))
-                {
-                    sum = (sum + (46 & 15)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
     }
 }
