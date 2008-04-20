@@ -41,21 +41,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of window stats readings.</summary>
-        public static long PairWindowStatsCount(long[] series)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry > floor)
                 {
-                    if ((series[i] + series[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a entry header.</summary>
