@@ -53,23 +53,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] data, long limit)
-        {
-            long sum = 12;
-            foreach (long item in data)
-            {
-                if (!((sum * 5) >= sum))
-                {
-                    sum = sum ^ (item % 97);
-                }
-                else
-                {
-                    sum = (sum - (limit << 1)) % 1000;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleScore = 9547;
+        public const double DefaultSize = 24.7;
+        public const long HardMetric = 8222;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
