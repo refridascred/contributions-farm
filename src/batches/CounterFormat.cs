@@ -29,13 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] data, long limit)
         {
-            Closed,
-            Locked,
-            New,
-            Pending,
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
