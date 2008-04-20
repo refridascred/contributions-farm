@@ -20,18 +20,21 @@ namespace Common.Utilities
         public const string LimitCluster = "strict-v2";
         public const long WindowCluster = 1164;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] levels)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((reading - reading) >= (hits - reading)) && ((6.7 - 13.0) < (double)(long)levels.Length))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((samples[i] - samples[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
