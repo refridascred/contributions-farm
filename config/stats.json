@@ -1,8 +1,25 @@
 {
-  "route_interval": 3562,
-  "burst_timeout": "stable",
-  "format_depth": false,
-  "contributi_interval": [43, 279],
-  "verbose": 94.86,
-  "entry_timeout": true
+  "max_limit_s": true,
+  "soft_retries_ms": {
+    "base_limit": 16,
+    "cache_ttl": {
+      "poll_interval": 4127,
+      "max_ttl_s": "cached",
+      "cache_timeout_ms": 9.6
+    },
+    "retry_capacity_s": 2397,
+    "enabled": [441, 205, 155],
+    "sync_window": {
+      "burst_retries": "stable",
+      "enabled": [143, 24, 373, 6],
+      "default_timeout_pct": ["cached", "blue"],
+      "graph_size": 100,
+      "max_limit": "stable",
+      "dry_run": true
+    },
+    "audit": 2731
+  },
+  "flush_ttl": 71.99,
+  "notes_timeout": 6,
+  "min_timeout_s": false
 }
