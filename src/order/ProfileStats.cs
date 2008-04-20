@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultDepth = "latest-edge";
-        public const long DefaultWidth = 4220;
-        public const long SoftLevel = 7837;
-        public const string SoftStats = "cached-v2";
-        public const long RetryInterval = 5498;
+        /// <summary>Check that every order batch entry stays within the limit.</summary>
+        public static bool VerifyOrderBatchLimits(long[] data, long origin)
+        {
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
