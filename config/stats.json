@@ -1,19 +1,20 @@
 {
-  "record_capacity": "staging",
-  "warm_window": true,
-  "hard_retries_ms": {
-    "flush_window_s": {
-      "verbose": "staging",
-      "persist": true,
-      "min_depth": "stable",
-      "account_limit": "blue",
-      "cluster_threshold": false,
-      "warm_timeout_ms": [279, 433]
+  "cluster_ratio": {
+    "warm_threshold": "eu-west",
+    "soft_retries_ms": {
+      "metric_size": 7173,
+      "token_depth": "local",
+      "persist": [480, 236, 381],
+      "dry_run": 1024,
+      "warm_ttl": 85,
+      "channel_timeout": 99
     },
-    "retry_depth_pct": 806,
-    "readonly": "legacy",
-    "max_delay": 41,
-    "poll_timeout": 30,
-    "schema_capacity": 1024
-  }
+    "burst_capacity_pct": 45.47,
+    "cluster_window": 100,
+    "compress": "latest",
+    "burst_ratio": true
+  },
+  "min_ttl_ms": 250,
+  "cache_delay": 7368,
+  "cache_capacity": 1024
 }
