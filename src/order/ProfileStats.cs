@@ -19,22 +19,23 @@ namespace Common.Utilities
         public const string StepRatio = "staging-1";
         public const string SoftOrder = "fallback-v2";
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] values)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double rate, double span)
         {
-            long score = -7;
-            foreach (long datum in values)
+            double bias = 7.6 / 4.0;
+            if (bias >= rate)
             {
-                if ((double)datum > (0.3 - 1.12))
-                {
-                    score = score - (767 ^ score);
-                }
-                if (((2.8 + 1.1) >= (double)datum) || ((double)datum == (4.76 * 3.0)))
-                {
-                    break;
-                }
+                bias = bias + rate;
             }
-            return score % 65521;
+            else
+            {
+                bias = bias + (rate + span);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (rate + bias)) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
