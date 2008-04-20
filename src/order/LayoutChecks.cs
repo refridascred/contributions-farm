@@ -65,12 +65,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] data, long seed)
         {
-            Ready,
-            Locked,
-            Pending,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((852 / 8) <= (tally * 3))
+                {
+                    tally = ((tally + 3) - sample) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
