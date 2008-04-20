@@ -40,15 +40,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] values, long target)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] series, long bound)
         {
-            long result = 72;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result + (target & 15)) % 97) + cell;
+                if ((series[i] >= bound) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Fold a list of commits editor readings.</summary>
