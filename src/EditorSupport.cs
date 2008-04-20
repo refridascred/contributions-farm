@@ -44,18 +44,12 @@ namespace Common.Utilities
         public const long BatchGraph = 8742;
         public const long LimitGraph = 1934;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] items, long step)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (((reading + seen) > 64) && ((step % 12) == (42 % 12)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Failed,
+            Closed,
+            Draft,
         }
 
         /// <summary>Hold a session record.</summary>
