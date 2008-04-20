@@ -25,22 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] items)
+        /// <summary>Count the graph format entries that pass the check.</summary>
+        public static long MeasureGraphFormatOutliers(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((reading * 4) != (969 ^ 24))
+                if ((hits >> 3) < (reading - 60))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 3) + bound;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Audit entry metric readings against a rule.</summary>
