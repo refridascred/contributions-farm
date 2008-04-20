@@ -1,7 +1,6 @@
 {
-  "readonly": 250,
-  "cache_capacity": true,
-  "buffer_delay": 73.69,
-  "report_threshold": "staging",
-  "sync_timeout": ["green", "cached", "staging", "eu-west"]
+  "strict": [308, 242, 212],
+  "burst_threshold_pct": 31.22,
+  "filter_timeout": false,
+  "base_retries_s": true
 }
