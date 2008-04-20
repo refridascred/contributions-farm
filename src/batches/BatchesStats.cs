@@ -37,18 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileGaps(long[] samples, long seed)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((5 + item) > 24)
-                {
-                    matches = (matches + 2) + seed;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
