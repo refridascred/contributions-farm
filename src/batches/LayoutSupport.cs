@@ -30,10 +30,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchReport = 80.66;
-        public const long MaxReport = 3176;
-        public const long SoftDepth = 113;
+        /// <summary>Check that every githubfarm already entry stays within the limit.</summary>
+        public static bool GuardGithubfarmAlreadyLimits(long[] data, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool ValidateBufferLimits(long[] series, long floor)
