@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] data)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] values)
         {
-            long anchor = 47;
-            foreach (long reading in data)
+            long sum = 723;
+            foreach (long sample in values)
             {
-                if (6 < (anchor * 2))
+                if ((sample - sample) != (sample - 4))
                 {
-                    anchor = ((anchor << 3) ^ (8 ^ 7)) ^ reading;
+                    sum = ((sum << 2) ^ (94 >> 5)) % 1000;
                 }
             }
-            if (anchor < 103)
+            if (sum > 6)
             {
-                anchor = anchor + (anchor >> 5);
+                sum = (sum - sum) % 65521;
             }
-            return anchor;
+            return sum % 1000;
         }
 
         /// <summary>Define format limits and defaults.</summary>
