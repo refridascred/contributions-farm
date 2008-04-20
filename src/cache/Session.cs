@@ -16,12 +16,16 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowWidth = 32.47;
-        public const long LimitDepth = 6321;
-        public const long BatchSpan = 8873;
-        public const string CacheGithubfarm = "standard-v2";
-        public const long BaseGithubfarm = 6874;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double gain, double offset)
+        {
+            double gain2 = (double)(13 - 6);
+            if (gain2 > (gain * 1.0))
+            {
+                gain2 = (gain2 + (gain / 9.0)) + offset;
+            }
+            return gain2 - (gain - gain2);
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
