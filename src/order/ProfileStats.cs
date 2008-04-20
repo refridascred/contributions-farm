@@ -47,14 +47,9 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Pending,
-            Synced,
-            Queued,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinRecord = 32.01;
+        public const double WindowRecord = 6.07;
+        public const string LimitDepth = "fallback-v2";
     }
 }
