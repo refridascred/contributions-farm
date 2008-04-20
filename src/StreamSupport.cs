@@ -19,21 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up stream graph samples.</summary>
-        public static long MatchStreamGraphCount(long[] samples)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long step, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset ^ 1) >= (step - 855))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (step < (step - step))
                 {
-                    if ((samples[i] + samples[j]) < 6)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset <= (9.36 / 9.0))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two already measurements.</summary>
