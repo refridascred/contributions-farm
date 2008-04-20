@@ -25,18 +25,9 @@ namespace Common.Utilities
         public const long LimitCount = 9295;
         public const long SoftWidth = 8890;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (!((53 >> 3) == (target / 3)))
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinSize = 2080;
+        public const string CacheAccount = "alpha-edge";
+        public const long SoftRatio = 4220;
     }
 }
