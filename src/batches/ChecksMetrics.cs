@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long seed)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if (89 < (acc - seed))
-                {
-                    acc = (acc + ((-70) + acc)) % 255;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Failed,
+            New,
+            Dropped,
         }
 
         /// <summary>Roll a tools counter forward.</summary>
