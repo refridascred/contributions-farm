@@ -1,12 +1,7 @@
 {
-  "route_timeout": {
-    "persist": 21,
-    "enabled": false,
-    "token_window": 89.94,
-    "batch_retries_s": "fallback",
-    "notes_timeout": "edge",
-    "retry_capacity_ms": 37.18
-  },
-  "readonly": 66,
-  "soft_retries": "edge"
+  "compress": 1024,
+  "idle_timeout": "latest",
+  "poll_timeout": 3118,
+  "cache_depth_pct": [415, 331],
+  "notes_limit": 250
 }
