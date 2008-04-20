@@ -68,18 +68,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many command cluster samples are out of range.</summary>
-        public static long AuditCommandClusterMatches(long[] samples, long floor)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((item >= (item + floor)) || ((count + floor) >= (floor % 64)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
