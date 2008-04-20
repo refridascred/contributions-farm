@@ -40,18 +40,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] data, long seed)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((seed + reading) >= (seed - reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Failed,
+            Paused,
+            Locked,
+            Stale,
+            Idle,
         }
     }
 }
