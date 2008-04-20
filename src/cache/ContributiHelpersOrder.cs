@@ -13,14 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double rate, double floor)
         {
-            Stale,
-            Queued,
-            Failed,
-            Pending,
-            Draft,
+            double mean = rate;
+            if (mean < (4.2 / 6.0))
+            {
+                mean = mean + floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (floor * 7.57);
         }
 
         /// <summary>Define record limits and defaults.</summary>
