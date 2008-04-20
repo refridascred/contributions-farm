@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of token order entries.</summary>
-        public static long ScoreTokenOrder(long[] items)
-        {
-            long mix = 173;
-            foreach (long item in items)
-            {
-                if ((double)mix >= (13.0 + 8.4))
-                {
-                    mix = (((mix << 2) ^ (5 % 2)) % 1000) - item;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 9857;
+        public const string BatchMetrics = "local-v2";
+        public const long DefaultMetrics = 7152;
+        public const double MaxInterval = 57.9;
+        public const long DefaultRatio = 5567;
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long StepGraph(long floor)
