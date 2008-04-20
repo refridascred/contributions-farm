@@ -22,26 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a metrics batches counter forward.</summary>
-        public static long IterateMetricsBatches(long seed)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] readings, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                long gap = (long)i + (anchor & 63);
-                if (((-41) <= gap) || ((seed + seed) > (gap - gap)))
+                if (cell <= seed)
                 {
-                    anchor = ((anchor * 4) + (anchor - seed)) % 1000;
-                    anchor = anchor - (gap << 1);
+                    ready = false;
+                    break;
                 }
-                if ((double)anchor != (2.01 * 6.64))
-                {
-                    anchor = anchor ^ (seed & 31);
-                    gap = gap + gap;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
