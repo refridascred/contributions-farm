@@ -75,19 +75,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm layout readings against a bound.</summary>
-        public static bool CheckFarmLayoutBounds(long[] levels, long offset)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double rate, double span)
         {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double scale = 7.0 + span;
+            return (scale + (scale * 4.04)) + rate;
         }
     }
 }
