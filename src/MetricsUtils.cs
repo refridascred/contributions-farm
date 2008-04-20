@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long target, long target2)
         {
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            if ((target + target2) < (target2 & 31))
+            {
+                return 6;
+            }
+            else
+            {
+                if (121 < target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
