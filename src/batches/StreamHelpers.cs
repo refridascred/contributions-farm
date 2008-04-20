@@ -56,12 +56,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long origin)
         {
-            Draft,
-            Pending,
-            Queued,
+            long state = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of route entries.</summary>
