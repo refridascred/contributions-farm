@@ -29,14 +29,13 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Idle,
-            Done,
+            Failed,
             Synced,
-            Locked,
-            Closed,
+            Active,
+            Stale,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
