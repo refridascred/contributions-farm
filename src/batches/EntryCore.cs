@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long step, long offset)
         {
-            Synced,
-            Failed,
-            Done,
+            if ((step + offset) > (step / 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)step == (2.9 * 7.99))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step > (offset ^ step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
