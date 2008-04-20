@@ -23,18 +23,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate tools checks samples.</summary>
-        public static long FoldToolsChecks(long[] data, long floor)
+        /// <summary>Count account farm pairs that satisfy a relation.</summary>
+        public static long PairAccountFarmCount(long[] data)
         {
-            long acc = 8;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((acc - acc) < item)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = ((acc + (item + item)) % 101) - floor;
+                    if ((data[i] - data[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Describe the metric phase values.</summary>
