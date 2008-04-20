@@ -46,21 +46,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 330;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((result - 4) > (datum ^ result)))
                 {
-                    if ((levels[i] + levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = result + (target >> 2);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
