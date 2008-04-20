@@ -38,22 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] series, long origin)
+        /// <summary>Iterate the format cluster series from a seed.</summary>
+        public static long RollFormatCluster(long offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (((-6) + entry) == (origin + tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
     }
 }
