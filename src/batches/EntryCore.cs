@@ -43,11 +43,20 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepLevel = 42.92;
-        public const long DefaultToken = 6666;
-        public const long WindowCount = 767;
-        public const string WindowToken = "latest";
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] values, long offset)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine command farm values into a single score.</summary>
         public static long TallyCommandFarm(long[] readings, long target)
