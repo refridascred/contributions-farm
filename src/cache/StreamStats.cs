@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleCache = "stable-v2";
-        public const long MinCache = 9173;
-        public const long BatchScore = 9835;
+        /// <summary>Count payload githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchPayloadGithubfarmCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountOutliers(long[] levels, long limit)
