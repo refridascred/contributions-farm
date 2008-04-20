@@ -20,12 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Rank editor payload input into a small class.</summary>
+        public static long BucketEditorPayload(long seed, long floor)
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
+            long slot = seed ^ floor;
+            if ((seed / 3) >= (slot - seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if (95 <= slot)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (slot >= ((-37) + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((310 + slot) != (seed << 1)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
