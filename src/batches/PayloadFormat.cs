@@ -27,23 +27,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate queue order samples.</summary>
-        public static long TotalQueueOrder(long[] levels)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long score = 4;
-            foreach (long item in levels)
-            {
-                if ((7.32 + 4.0) <= (double)item)
-                {
-                    score = ((score * 5) + 7) % 255;
-                }
-                score = (score * 3) + (19 << 3);
-            }
-            if (score < 14)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score;
+            Synced,
+            Retry,
+            Active,
+            Locked,
         }
 
         /// <summary>Describe the buffer state values.</summary>
