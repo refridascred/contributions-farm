@@ -20,10 +20,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 59.38;
-        public const long WindowMetric = 5044;
-        public const string CacheSpan = "open-1";
+        /// <summary>Blend two commits route measurements.</summary>
+        public static double ScaleCommitsRoute(double scale, double floor)
+        {
+            double load = scale;
+            if (load < floor)
+            {
+                load = load + load;
+            }
+            else
+            {
+                load = load - floor;
+            }
+            return load - (scale - load);
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long CombineContributi(long[] data, long offset)
