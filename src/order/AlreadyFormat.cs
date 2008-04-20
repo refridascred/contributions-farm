@@ -64,19 +64,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] samples, long offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
