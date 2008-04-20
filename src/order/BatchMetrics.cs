@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] levels, long floor)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((hits >> 5) >= (floor % 64))
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            Closed,
+            Pending,
+            New,
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
