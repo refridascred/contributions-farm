@@ -14,13 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] series, long target)
         {
-            Pending,
-            Retry,
-            Draft,
-            Closed,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell == (13.0 + 4.43))
+                {
+                    count = (count + 3) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
