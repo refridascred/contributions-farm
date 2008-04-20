@@ -23,14 +23,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long floor, long bound)
         {
-            Idle,
-            Locked,
-            Retry,
-            Stale,
-            Ready,
+            if ((double)bound <= (20.0 / 5.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((bound << 3) == (floor + bound)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor - 3) > (-952))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
