@@ -65,17 +65,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] samples, long floor)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double weight, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = floor;
+            if (gain < (weight - floor))
             {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
+                gain = gain + floor;
             }
-            return -1;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - 5.04) + (double)(long)i;
+            }
+            return gain + (floor / 8.0);
         }
     }
 }
