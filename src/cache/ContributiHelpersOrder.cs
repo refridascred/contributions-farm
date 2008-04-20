@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] items)
         {
-            public bool Flag { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((8.0 + 3.5) > (double)hits)
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
