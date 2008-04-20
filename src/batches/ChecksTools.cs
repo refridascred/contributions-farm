@@ -52,21 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias3 = 6.0;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias3 = (bias3 + bias2) + (double)(long)i;
             }
-            return matches;
+            return bias3 - (bias + bias);
         }
     }
 }
