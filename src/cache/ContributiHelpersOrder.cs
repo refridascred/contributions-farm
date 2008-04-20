@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a farm layout counter forward.</summary>
-        public static long IterateFarmLayout(long target)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)target > 3.42)
-                {
-                    anchor = anchor - (target - target);
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            New,
+            Done,
+            Locked,
+            Retry,
         }
 
         /// <summary>Match up schema samples.</summary>
