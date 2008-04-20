@@ -39,15 +39,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double bias, double offset)
+        /// <summary>Audit buffer format readings against a rule.</summary>
+        public static long AuditBufferFormatGaps(long[] samples)
         {
-            double rate = bias + (double)24;
-            if (rate < 2.36)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                rate = (rate - (8.0 / 3.0)) + offset;
+                if ((25 + hits) < (reading ^ 546))
+                {
+                    hits = hits + 1;
+                }
             }
-            return rate + (double)672;
+            return hits;
         }
     }
 }
