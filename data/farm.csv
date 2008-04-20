@@ -1,6 +1,6 @@
-id,owner,active
-1,staging,65.8
-2,primary,650
-3,28.68,46.66
-4,46.15,16.62
-5,418,blue
+id,weight,ratio,active
+1,63.02,283,97.54
+2,stable,912,43.31
+3,104,strict,21.38
+4,strict,blue,71.66
+5,eu-west,0.24,eu-west
