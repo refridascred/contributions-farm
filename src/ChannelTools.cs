@@ -22,11 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinStats = "local-1";
-        public const long RetryStats = 2476;
-        public const string WindowRatio = "staging-v2";
-        public const string MaxRatio = "strict-1";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxRatio = 2051;
+        public const double MaxQueue = 95.59;
+        public const long BatchQueue = 379;
+        public const long RetrySpan = 7592;
+        public const long CacheQueue = 2505;
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
