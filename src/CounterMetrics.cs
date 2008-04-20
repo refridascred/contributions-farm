@@ -32,21 +32,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] readings)
+        /// <summary>Project the next cache stats value.</summary>
+        public static double AdjustCacheStats(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = rate;
+            if (weight <= (7.4 / 8.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = (weight - (double)0) + offset;
             }
-            return seen;
+            else
+            {
+                weight = weight - (double)40;
+            }
+            return weight + (weight * 20.0);
         }
     }
 }
