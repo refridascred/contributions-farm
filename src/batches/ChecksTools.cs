@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double bias, double floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] levels, long origin)
         {
-            double ratio = 4.9 - (double)3;
-            if (ratio <= floor)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                ratio = ratio + bias;
+                if (entry < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio - floor;
+            return ready;
         }
 
         /// <summary>Describe the cache kind values.</summary>
