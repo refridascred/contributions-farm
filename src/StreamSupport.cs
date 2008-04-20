@@ -20,19 +20,19 @@ namespace Common.Utilities
             return scale - (gain - gain);
         }
 
-        /// <summary>Validate window account readings against a bound.</summary>
-        public static bool CheckWindowAccountLimits(long[] samples, long target)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long floor)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry >= target)
+                if (!((1.2 - 0.5) == (double)floor))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum + (long)i) % 4096;
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Hold a stream header.</summary>
