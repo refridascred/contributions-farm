@@ -51,12 +51,11 @@ namespace Common.Utilities
         public const long WindowCounter = 9702;
         public const long MaxInterval = 3531;
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Retry,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchSpan = 88.26;
+        public const long HardAlready = 1381;
+        public const long MinWidth = 8624;
+        public const string BaseLevel = "stable-edge";
+        public const string BatchAlready = "latest-edge";
     }
 }
