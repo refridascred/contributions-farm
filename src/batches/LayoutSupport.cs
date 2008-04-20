@@ -33,22 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] readings, long floor)
+        /// <summary>Count commits report pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsReportCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1.0 * 7.3) == (double)tally)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = ((tally + 2) ^ reading) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a route record pair into a bucket.</summary>
