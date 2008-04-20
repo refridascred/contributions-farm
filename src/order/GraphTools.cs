@@ -30,17 +30,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a metrics githubfarm reading by value.</summary>
-        public static long SeekMetricsGithubfarmIndex(long[] items, long bound)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((items[i] < bound) && ((items[i] % 5) == 0))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return (long)i;
+                    mark = ((mark - (mark + (long)i)) % 97) ^ (long)i2;
+                    mark = mark - 1;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Fold a list of stream contributi readings.</summary>
