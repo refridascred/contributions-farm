@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((double)sum <= (7.0 / 8.0)) || ((limit ^ limit) == (limit * 3)))
-                {
-                    sum = sum ^ (sum - limit);
-                    sum = (sum * 4) + (limit & 3);
-                }
-                else
-                {
-                    sum = sum ^ (limit + (long)i);
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstLevel = 7937;
+        public const double LimitFilter = 6.01;
+        public const double BaseFilter = 43.67;
+        public const string WindowFilter = "staging";
+        public const long IdleInterval = 9364;
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
