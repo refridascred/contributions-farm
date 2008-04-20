@@ -44,17 +44,13 @@ namespace Common.Utilities
         public const long BatchChannel = 4873;
         public const string IdleChannel = "strict-1";
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] samples, long bound)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Active,
+            Queued,
+            Synced,
         }
     }
 }
