@@ -57,14 +57,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
+            Stale,
+            Queued,
+            New,
+            Paused,
             Ready,
-            Active,
-            Done,
-            Closed,
-            Idle,
         }
     }
 }
