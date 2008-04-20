@@ -55,10 +55,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseMetrics = "open";
-        public const string LimitMetrics = "local";
-        public const double CacheMetrics = 10.91;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Locked,
+            Draft,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double BatchAccount = 38.53;
