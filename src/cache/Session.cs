@@ -31,12 +31,19 @@ namespace Common.Utilities
             return gain2 - (gain - gain2);
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] values, long target)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public double Level { get; set; }
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up counter samples.</summary>
