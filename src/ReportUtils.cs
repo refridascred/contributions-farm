@@ -68,19 +68,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] levels, long bound)
-        {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowFactor = "staging-edge";
+        public const long StepOrder = 4440;
+        public const long BurstOrder = 8754;
+        public const long CacheSize = 9561;
+        public const long IdleTimeout = 152;
     }
 }
