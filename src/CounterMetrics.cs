@@ -43,10 +43,18 @@ namespace Common.Utilities
         public const double IdleDepth = 91.72;
         public const long MaxWidth = 3145;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 4170;
-        public const double SoftGithubfarm = 88.05;
-        public const long BaseGithubfarm = 345;
-        public const double BurstBudget = 69.73;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((5.0 + 15.0) < (double)count)
+                {
+                    count = ((count + 2) + datum) - floor;
+                }
+            }
+            return count;
+        }
     }
 }
