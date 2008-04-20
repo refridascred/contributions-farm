@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 6678;
-        public const string BatchOrder = "legacy-1";
-        public const string StepDepth = "local-1";
-        public const long BurstCount = 4869;
-        public const double HardOrder = 16.16;
+        /// <summary>Audit contributi schema readings against a rule.</summary>
+        public static long MeasureContributiSchemaOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((datum * 3) <= (seen - 6))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long SeriesProfile(long floor)
