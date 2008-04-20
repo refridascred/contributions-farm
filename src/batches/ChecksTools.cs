@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long origin, long step)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] levels, long bound)
         {
-            long lane = origin - step;
-            if (6.0 > (double)step)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (lane <= ((-908) << 3))
+                if ((levels[i] >= bound) && ((levels[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin >> 3) >= origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((lane % 2) < origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up context samples.</summary>
