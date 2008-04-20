@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const double StepTimeout = 83.56;
         public const string MinCount = "latest-edge";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitCommits = 20.29;
-        public const long BatchCommits = 7400;
-        public const string HardCommits = "legacy-1";
-        public const double WindowCommits = 85.5;
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Draft,
+            Synced,
+            Done,
+            Pending,
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long MatchSupportCount(long[] series)
