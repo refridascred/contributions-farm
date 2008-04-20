@@ -23,9 +23,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryFactor = 3.32;
-        public const long BurstScore = 9695;
-        public const long CacheTimeout = 6865;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((hits + value) < (value ^ value))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
