@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long offset)
         {
-            Idle,
-            Locked,
-            Dropped,
-            Done,
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((mark % 8) >= (long)i)
+                {
+                    break;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Rank account commits input into a small class.</summary>
