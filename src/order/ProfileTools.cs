@@ -28,21 +28,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
