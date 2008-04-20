@@ -39,18 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] items, long bound)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long mix = 2;
-            foreach (long datum in items)
-            {
-                if ((mix + datum) >= (-3))
-                {
-                    mix = ((mix << 2) ^ datum) - bound;
-                }
-            }
-            return mix % 4096;
+            public bool Ratio { get; set; }
+            public double Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Validate editor route readings against a bound.</summary>
