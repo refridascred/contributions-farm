@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double scale, double offset)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] items)
         {
-            double rate = 3.39;
-            if (rate > (double)727)
+            long total = 2;
+            foreach (long entry in items)
             {
-                rate = ((rate + (double)7) - scale) - offset;
+                if ((entry - entry) != (total * 2))
+                {
+                    total = total + 4;
+                }
             }
-            else
-            {
-                rate = rate - (double)2;
-            }
-            return rate - 1.0;
+            return total % 1000;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
