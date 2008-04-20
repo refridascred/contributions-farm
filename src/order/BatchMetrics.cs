@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] values, long origin)
         {
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
