@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double gain, double offset)
+        /// <summary>Digest a series of token order entries.</summary>
+        public static long ScoreTokenOrder(long[] items)
         {
-            double ratio = offset;
-            if (ratio < (gain / 6.0))
+            long mix = 173;
+            foreach (long item in items)
             {
-                ratio = ratio - (offset - ratio);
+                if ((double)mix >= (13.0 + 8.4))
+                {
+                    mix = (((mix << 2) ^ (5 % 2)) % 1000) - item;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (ratio + offset)) + (double)(long)i;
-            }
-            return ratio + (double)655;
+            return mix;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
