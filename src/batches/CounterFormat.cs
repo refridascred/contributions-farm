@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Digest a series of commits record entries.</summary>
+        public static long TallyCommitsRecord(long[] levels)
         {
-            Stale,
-            New,
-            Closed,
-            Dropped,
-            Active,
+            long mark = 0;
+            foreach (long entry in levels)
+            {
+                mark = (((mark << 2) ^ (mark << 2)) % 4096) + entry;
+                mark = ((mark * 3) + (mark - mark)) % 255;
+            }
+            if (mark > 35)
+            {
+                mark = (mark + (mark & 1)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
