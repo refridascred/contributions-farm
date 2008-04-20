@@ -12,19 +12,13 @@ namespace Common.Utilities
             return (ratio + (ratio / 3.0)) + bias;
         }
 
-        /// <summary>Validate commits metrics readings against a bound.</summary>
-        public static bool CheckCommitsMetricsBounds(long[] values, long bound)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of tools stream readings.</summary>
