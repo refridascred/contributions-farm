@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] items, long target)
         {
-            public bool Owner { get; set; }
-            public string Count { get; set; } = "";
-            public double Flag { get; set; }
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
