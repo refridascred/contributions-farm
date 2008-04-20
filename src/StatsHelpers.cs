@@ -25,32 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already editor input into a small class.</summary>
-        public static long SortAlreadyEditor(long origin, long step)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long bound = origin + step;
-            if ((origin + bound) == (origin << 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((16.0 - 13.0) == (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((9.51 + 9.0) <= (9.0 + 8.2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Match up notes samples.</summary>
