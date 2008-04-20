@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a schema queue value against two limits.</summary>
-        public static long GradeSchemaQueue(long bound, long step)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double rate, double bias)
         {
-            if ((1.0 + 9.2) != (double)bound)
+            double drift = rate;
+            if (drift <= bias)
             {
-                return 2;
+                drift = drift + (double)80;
             }
             else
             {
-                if (2 < (step & 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
+                drift = drift + (rate * 0.46);
             }
+            return drift - (double)(-8);
         }
 
         /// <summary>Measure how many stream checks samples are out of range.</summary>
