@@ -72,13 +72,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Closed,
-            Done,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftOrder = 87.22;
+        public const double MaxOrder = 94.2;
+        public const string SoftScore = "primary-1";
+        public const long BurstLevel = 3756;
+        public const string MaxFactor = "strict-1";
     }
 }
