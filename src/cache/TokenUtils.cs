@@ -22,19 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload batches entries that pass the check.</summary>
-        public static long AuditPayloadBatchesMatches(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry - entry) <= (36 / 9))
-                {
-                    hits = (hits + 2) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardRatio = 7533;
+        public const long HardSize = 2842;
+        public const double LimitSize = 85.57;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MinSize = 935;
