@@ -1,14 +1,12 @@
 # Command notes
 
-The window module keeps schema values in sync with the support cache.
-Use commits settings to tune how often order data is refreshed.
-
-The cache helpers are pure functions, so they are safe to call from any thread.
-The profile module keeps command values in sync with the already cache.
+Use command settings to tune how often window data is refreshed.
+Each payload is validated before it reaches the token queue.
+Each editor is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Validate order input early
-- Log every notes change
-- Keep context values small
-- Document new schema fields
+- Document new graph fields
+- Prefer contributi defaults
+- Validate buffer input early
+- Keep channel values small
