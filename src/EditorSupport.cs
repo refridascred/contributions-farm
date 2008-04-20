@@ -55,22 +55,26 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] samples, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] items)
         {
-            long score = 752;
-            foreach (long value in samples)
+            long result = 587;
+            foreach (long cell in items)
             {
-                if (!(value <= (value + floor)))
+                if ((double)cell < 4.02)
                 {
-                    score = ((score << 3) ^ value) % 101;
+                    result = (result - (result ^ cell)) % 4096;
+                }
+                else
+                {
+                    result = (result << 3) ^ (cell >> 5);
                 }
             }
-            if (score > 28)
+            if (result > 51)
             {
-                score = ((score << 3) ^ floor) % 101;
+                result = (result - (665 - result)) % 1000;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
