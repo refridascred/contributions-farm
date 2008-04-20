@@ -70,10 +70,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheDepth = "fallback-1";
-        public const double CacheTools = 67.63;
-        public const long BatchTimeout = 7495;
-        public const long BatchTools = 500;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] data)
+        {
+            long anchor = 364;
+            foreach (long sample in data)
+            {
+                anchor = (anchor - (sample & 3)) % 4096;
+            }
+            return anchor;
+        }
     }
 }
