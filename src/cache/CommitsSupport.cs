@@ -22,17 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] values, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (values[i] > target)
+                if (entry < floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a contributi header.</summary>
