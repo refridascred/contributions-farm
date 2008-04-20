@@ -63,19 +63,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] values, long step)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 9770;
+        public const long RetryFilter = 9332;
+        public const double SoftSpan = 97.99;
+        public const string SoftSize = "strict-edge";
     }
 }
