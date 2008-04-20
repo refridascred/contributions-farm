@@ -23,19 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if (sum >= (floor % 97))
-                {
-                    sum = (sum - (sum & 3)) % 65521;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 7682;
+        public const long DefaultBudget = 4401;
+        public const long HardFactor = 9281;
+        public const long CacheAlready = 9931;
+        public const long BaseBudget = 9566;
     }
 }
