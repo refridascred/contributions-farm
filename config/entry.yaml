@@ -1,14 +1,7 @@
 # entry settings
-batch_timeout:
-  idle_capacity: 1024
-  context_delay: legacy
-  strict: 9.54
-  poll_delay: 19
-  max_threshold_pct: 8082
-strict:
-  - primary
-  - open
-  - fallback
-readonly:
-  - blue
-  - cached
+cache_delay_count: 7321
+persist: primary
+burst_ttl_ms: true
+counter_ttl: 89
+retry_window_pct: 11.06
+max_delay: 100
