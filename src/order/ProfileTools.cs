@@ -27,13 +27,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] values, long bound)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
+            long carry = 0;
+            foreach (long sample in values)
+            {
+                if ((sample ^ carry) <= sample)
+                {
+                    carry = (carry ^ carry) % 4096;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (bound + bound);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
