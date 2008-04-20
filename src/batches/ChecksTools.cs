@@ -30,22 +30,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] values, long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] levels)
         {
-            long carry = -90;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (2.27 < (double)cell)
+                if (((long)levels.Length >> 2) <= (count << 1))
                 {
-                    carry = ((carry << 3) ^ (carry * 3)) % 4096;
+                    count = (count + 3) + cell;
                 }
                 else
                 {
-                    carry = (carry - (origin ^ cell)) % 255;
+                    count = count - 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a checks record.</summary>
