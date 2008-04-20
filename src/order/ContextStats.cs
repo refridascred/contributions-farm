@@ -33,18 +33,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] values, long origin)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long limit)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((((tally * 3) != (728 / 4)) && ((datum >> 1) <= (tally - (long)values.Length))) && (((tally << 3) != (origin << 2)) || ((251 - origin) <= ((long)values.Length << 3))))
-                {
-                    tally = tally + 3;
-                }
+                sum = (sum << 2) ^ (99 & 15);
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
