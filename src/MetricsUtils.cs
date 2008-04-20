@@ -16,15 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the graph format entries that pass the check.</summary>
-        public static long MeasureGraphFormatOutliers(long[] readings, long bound)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] samples)
         {
             long hits = 0;
-            foreach (long reading in readings)
+            foreach (long item in samples)
             {
-                if ((hits >> 3) < (reading - 60))
+                if ((double)hits >= (7.6 / 4.0))
                 {
-                    hits = (hits + 3) + bound;
+                    hits = (hits + 3) ^ item;
                 }
             }
             return hits;
