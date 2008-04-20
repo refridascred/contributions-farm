@@ -21,23 +21,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((5.0 * 6.3) != (double)hits)
-                {
-                    hits = (hits + 1) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 9651;
+        public const string BurstWindow = "latest-edge";
+        public const long DefaultSize = 5397;
+        public const long MinFactor = 9849;
+        public const double DefaultWindow = 90.76;
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
