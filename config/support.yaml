@@ -1,9 +1,5 @@
 # support settings
-soft_ratio:
-  - 10
-  - 434
-  - 389
-poll_limit_s:
-  - 148
-  - 225
-warm_timeout: 250
+warm_size: 6572
+flush_capacity_count: 6767
+cache_depth_count: true
+default_window_s: 30
