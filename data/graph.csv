@@ -1,6 +1,6 @@
-id,state,count,ratio
-1,558,785,32.63
-2,48.66,75.69,797
-3,624,18.87,400
-4,blue,624,86.49
-5,47.82,standard,472
+id,active,token,weight
+1,edge,edge,open
+2,latest,56.51,50.16
+3,448,88.35,open
+4,214,736,blue
+5,52.82,60.24,stable
