@@ -48,18 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] data, long bound)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((sample + bound) >= matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
