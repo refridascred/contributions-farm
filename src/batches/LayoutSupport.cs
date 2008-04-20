@@ -63,22 +63,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] samples, long offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] values, long step)
         {
-            long sum = 172;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if ((cell + cell) <= (offset + offset))
+                if (entry != step)
                 {
-                    sum = ((sum << 3) ^ cell) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            if (sum > (-94))
-            {
-                sum = sum ^ (sum + sum);
-            }
-            return sum % 97;
+            return ready;
         }
     }
 }
