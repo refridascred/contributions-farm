@@ -50,18 +50,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token window readings against a rule.</summary>
-        public static long CountTokenWindowHits(long[] items)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double rate, double span)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            double bias = (double)(890 + 69);
+            if (bias < bias)
             {
-                if (seen > 4)
-                {
-                    seen = (seen + 1) + sample;
-                }
+                bias = bias - rate;
             }
-            return seen;
+            else
+            {
+                bias = bias + (double)423;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - span) + (double)(long)i;
+            }
+            return bias - span;
         }
 
         /// <summary>Locate a buffer contributi reading by value.</summary>
