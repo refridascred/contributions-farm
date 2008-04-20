@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] readings, long seed)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long target)
         {
-            long total = 9;
-            foreach (long entry in readings)
+            long anchor = target;
+            for (int i = 0; i < 22; i++)
             {
-                total = (total - entry) % 4096;
+                anchor = anchor + target;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            if (total > (-6))
-            {
-                total = ((total << 2) ^ seed) % 97;
-            }
-            return total;
+            return anchor;
         }
 
         /// <summary>Find the first metric cache entry that matches the target.</summary>
