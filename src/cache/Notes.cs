@@ -12,15 +12,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Accumulate window batch samples.</summary>
-        public static long CombineWindowBatch(long[] items)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] samples)
         {
-            long score = 24;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score ^ (score / 2)) % 4096) ^ reading;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Count account farm pairs that satisfy a relation.</summary>
