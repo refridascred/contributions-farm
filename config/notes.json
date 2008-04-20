@@ -1,5 +1,7 @@
 {
-  "batch_delay_s": false,
-  "audit": "staging",
-  "default_capacity_s": true
+  "persist": 95.55,
+  "hard_size_s": 9364,
+  "default_window_count": 67.91,
+  "flush_limit": 500,
+  "batch_interval_s": ["edge", "staging", "blue"]
 }
