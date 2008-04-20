@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Synced,
-            Stale,
-            Retry,
-            Active,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseBudget = "strict-edge";
+        public const string HardBatch = "open-v2";
+        public const long WindowDepth = 3511;
+        public const long MinBatch = 2105;
+        public const long IdleFactor = 1555;
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long DeriveBuffer(long target)
