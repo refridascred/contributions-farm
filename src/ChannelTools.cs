@@ -17,40 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long origin, long limit)
-        {
-            long gap = origin ^ limit;
-            if ((origin * 4) >= gap)
-            {
-                return 3;
-            }
-            else
-            {
-                if (limit > origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((660 ^ origin) < (origin + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (gap < origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstTimeout = 8894;
+        public const double IdleRatio = 0.84;
+        public const string BatchOrder = "stable-1";
+        public const long HardOrder = 8856;
+        public const long DefaultCount = 4411;
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
