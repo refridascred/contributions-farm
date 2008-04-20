@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two contributi stats measurements.</summary>
-        public static double SmoothContributiStats(double ratio, double offset)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double bias, double bias2)
         {
-            double mean = (offset / 3.0) - ratio;
-            for (int i = 0; i < 6; i++)
+            double weight = bias2;
+            if (weight > (double)(-1))
             {
-                mean = (mean - mean) + (double)(long)i;
+                weight = weight + weight;
             }
-            return mean - (ratio - ratio);
+            else
+            {
+                weight = weight - (bias2 - weight);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
