@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long origin)
         {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
