@@ -13,22 +13,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] readings)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long step, long offset)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long step2 = step ^ offset;
+            if (((offset * 3) <= (step2 * 4)) && (9.9 >= (double)offset))
             {
-                if (!((count ^ value) == (value - value)))
+                return 6;
+            }
+            else
+            {
+                if ((step2 - 29) <= step)
                 {
-                    count = count + 1;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((98 / 3) > (step2 - offset)) && ((step ^ step2) <= offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
