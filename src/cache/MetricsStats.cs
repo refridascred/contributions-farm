@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] samples)
+        /// <summary>Look up the position of a counter payload sample.</summary>
+        public static long SeekCounterPayloadIndex(long[] data, long seed)
         {
-            long sum = 3;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum - (item << 3)) % 101;
-                sum = (sum - (-16)) % 255;
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 25)
-            {
-                sum = (sum - (sum + 8)) % 255;
-            }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
