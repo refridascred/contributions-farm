@@ -1,4 +1,25 @@
 # githubfarm settings
-profile_interval: 250
-readonly: 1024
-min_ratio: true
+base_capacity_ms:
+  sync_retries:
+    readonly:
+      - 406
+      - 106
+    sync_timeout_s: open
+    format_threshold: stable
+    warm_ratio_count:
+      - 454
+      - 21
+      - 193
+      - 454
+    idle_size_s: 53.63
+  cache_retries: 250
+  burst_timeout:
+    - 306
+    - 148
+  hard_window_count:
+    - cached
+    - standard
+    - eu-west
+    - blue
+flush_threshold_ms: 28
+stats_depth: false
