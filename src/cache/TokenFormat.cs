@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
-            public long Count { get; set; }
+            Synced,
+            Stale,
+            Retry,
+            Active,
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
