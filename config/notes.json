@@ -1,12 +1,18 @@
 {
-  "idle_ttl": 96.83,
-  "batch_threshold_ms": 60,
-  "profile_limit": 100,
-  "min_size": {
-    "strict": false,
-    "session_limit": 100,
-    "report_capacity": "edge",
-    "format_capacity": 3970
+  "flush_timeout_count": "local",
+  "retry_delay_count": 54,
+  "base_delay_pct": "legacy",
+  "batch_capacity_pct": {
+    "record_ratio": false,
+    "farm_window": ["edge", "latest"],
+    "report_window": "legacy",
+    "warm_depth_ms": {
+      "stats_retries": "blue",
+      "compress": 16,
+      "report_ttl": "latest"
+    },
+    "min_interval_pct": [42, 337, 376, 124]
   },
-  "flush_interval": "edge"
+  "audit": 96.7,
+  "idle_timeout_s": true
 }
