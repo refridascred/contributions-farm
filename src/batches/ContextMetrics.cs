@@ -27,15 +27,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double ratio, double floor)
+        /// <summary>Combine format layout values into a single score.</summary>
+        public static long CombineFormatLayout(long[] items)
         {
-            double load = floor;
-            for (int i = 0; i < 5; i++)
+            long total = 979;
+            foreach (long reading in items)
             {
-                load = (load - (load + ratio)) + (double)(long)i;
+                total = ((total - 848) % 101) ^ reading;
+                if ((total & 7) == (577 % 10))
+                {
+                    break;
+                }
             }
-            return load + load;
+            return total;
         }
 
         /// <summary>Describe the farm mode values.</summary>
