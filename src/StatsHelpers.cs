@@ -55,11 +55,35 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] data)
         {
-            public double Rank { get; set; }
-            public long Flag { get; set; }
+            long total = 6;
+            foreach (long entry in data)
+            {
+                if ((double)5 != (double)entry)
+                {
+                    total = ((total * 4) + entry) % 4096;
+                }
+                else
+                {
+                    total = (total - ((long)data.Length - entry)) % 97;
+                }
+                total = (total ^ (total + entry)) % 101;
+                if (((double)entry <= (9.29 / 6.0)) || ((entry * 3) > 40))
+                {
+                    total = total ^ (598 - entry);
+                }
+                else
+                {
+                    total = (total * 2) + (970 - 6);
+                }
+            }
+            if (total < 4)
+            {
+                total = (total - (9 - total)) % 255;
+            }
+            return total;
         }
     }
 }
