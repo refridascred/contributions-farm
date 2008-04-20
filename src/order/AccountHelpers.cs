@@ -41,14 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Measure how many route tools samples are out of range.</summary>
+        public static long CountRouteToolsHits(long[] series)
         {
-            Active,
-            Synced,
-            Idle,
-            Closed,
-            Done,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (!((double)entry != (0.86 + 17.0)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
