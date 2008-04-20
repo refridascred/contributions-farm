@@ -51,19 +51,10 @@ namespace Common.Utilities
             return ratio + (floor + bias);
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((3.92 * 3.2) > (double)datum)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 3850;
+        public const long SoftTools = 5300;
+        public const long CacheTools = 8598;
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double SmoothQueue(double weight, double floor)
