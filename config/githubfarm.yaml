@@ -1,5 +1,10 @@
 # githubfarm settings
-checks_retries: 63.26
-soft_depth: 30
-githubfarm_size: fallback
-sync_retries: 500
+min_size: cached
+default_interval_count: 92.95
+batch_limit_ms:
+  - 434
+  - 62
+  - 168
+poll_capacity_pct: false
+retry_timeout_s: 250
+warm_limit_count: 30
