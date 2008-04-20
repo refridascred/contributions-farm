@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long limit, long origin)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] samples, long target)
         {
-            long next = limit ^ origin;
-            if ((limit - 660) <= (origin + origin))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin - next) >= next)
+                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin * 3) >= origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a profile record pair into a bucket.</summary>
