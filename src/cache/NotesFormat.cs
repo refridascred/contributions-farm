@@ -17,19 +17,22 @@ namespace Common.Utilities
         public const string CacheTools = "legacy";
         public const string SoftSize = "open-v2";
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double scale, double offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] series, long origin)
         {
-            double ratio = offset;
-            if (ratio >= scale)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                ratio = ratio + (double)865;
+                if (((-6) + entry) == (origin + tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - (offset - ratio);
+            return tally;
         }
     }
 }
