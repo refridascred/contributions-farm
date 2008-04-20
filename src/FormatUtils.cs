@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long limit, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] data)
         {
-            if (((9.4 - 3.0) == (double)limit) || ((limit / 8) >= limit))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((limit + limit) > limit))
+                if ((3 + tally) <= entry)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the format counter entries that pass the check.</summary>
