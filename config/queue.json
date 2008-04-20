@@ -1,5 +1,6 @@
 {
-  "burst_depth_count": 79,
-  "cache_depth": "legacy",
-  "batch_size_ms": 93
+  "sync_timeout_s": "strict",
+  "order_ttl": "standard",
+  "enabled": 53.37,
+  "compress": "eu-west"
 }
