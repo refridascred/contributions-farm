@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] samples, long step)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long state = 23;
-            foreach (long cell in samples)
-            {
-                if ((double)state > (3.5 / 4.0))
-                {
-                    state = ((state ^ (cell + (long)samples.Length)) % 1000) + step;
-                }
-            }
-            return state;
+            public long Label { get; set; }
+            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
