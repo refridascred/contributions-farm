@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit record stats readings against a rule.</summary>
-        public static long MeasureRecordStatsMatches(long[] series, long offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long seed)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long result = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (((datum % 5) != (offset - datum)) && ((double)matches != (double)(long)series.Length))
-                {
-                    matches = matches + 2;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Project the next stats value.</summary>
