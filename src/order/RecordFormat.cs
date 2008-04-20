@@ -38,18 +38,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] values)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value ^ matches) == ((-20) * 4))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
