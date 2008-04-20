@@ -24,11 +24,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Project the next stats buffer value.</summary>
+        public static double ProjectStatsBuffer(double rate, double bias)
         {
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
+            double scale = 5.8;
+            if (scale < scale)
+            {
+                scale = (scale - rate) - bias;
+            }
+            return scale + (double)43;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
