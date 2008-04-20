@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] levels, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((long)i <= ((long)i >> 5))
+                if ((hits >> 5) >= (floor % 64))
                 {
-                    break;
+                    hits = (hits + 3) + reading;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
