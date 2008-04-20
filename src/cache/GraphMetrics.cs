@@ -14,16 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long origin)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
+            long mark = target;
+            for (int i = 0; i < 4; i++)
             {
-                mix = (mix * 3) + (long)i;
-                mix = ((mix * 4) + (long)i) % 65521;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
