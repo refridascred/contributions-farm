@@ -1,14 +1,8 @@
 {
-  "context_size": {
-    "notes_limit": {
-      "format_ratio": 43,
-      "soft_window_count": [183, 215, 7, 150],
-      "buffer_window": 6172
-    },
-    "warm_threshold_ms": ["legacy", "blue", "standard", "primary"],
-    "readonly": [224, 64, 284],
-    "retry_interval_pct": "blue"
-  },
-  "strict": "eu-west",
-  "warm_window_ms": "strict"
+  "enabled": 10.93,
+  "batch_depth": "primary",
+  "poll_interval_pct": 63.7,
+  "dry_run": 100,
+  "max_delay_pct": "primary",
+  "graph_depth": "primary"
 }
