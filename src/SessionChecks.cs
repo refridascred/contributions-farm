@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Draft,
-            Done,
-            Active,
+            Dropped,
+            Locked,
             Queued,
+            Idle,
         }
 
         /// <summary>Hold a already options.</summary>
