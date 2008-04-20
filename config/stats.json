@@ -1,5 +1,7 @@
 {
-  "persist": [470, 40, 346],
-  "batch_limit": ["legacy", "staging", "latest", "cached"],
-  "soft_depth_count": "blue"
+  "readonly": 49,
+  "checks_depth": ["staging", "cached", "latest", "local"],
+  "hard_timeout": 69,
+  "metrics_ratio": 6888,
+  "base_ttl": ["eu-west", "eu-west", "latest"]
 }
