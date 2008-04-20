@@ -54,25 +54,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long offset, long origin)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long slot = offset ^ origin;
-            if (578 > (754 + offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if (slot > (offset / 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
