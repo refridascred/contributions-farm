@@ -1,5 +1,12 @@
 {
-  "idle_retries_pct": 97.33,
-  "audit": 6.79,
-  "context_ratio": 15.28
+  "retry_ratio": 7.41,
+  "base_interval": {
+    "poll_ttl": 83.92,
+    "stream_timeout": ["cached", "legacy", "green"],
+    "default_ratio_s": "fallback",
+    "warm_ratio_count": "open"
+  },
+  "channel_delay": 93.83,
+  "dry_run": "stable",
+  "persist": ["fallback", "stable"]
 }
