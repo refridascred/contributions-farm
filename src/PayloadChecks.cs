@@ -28,18 +28,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] readings, long seed)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long mix = 101;
+            foreach (long sample in items)
             {
-                if (3 >= (51 + seed))
+                if (mix > offset)
                 {
-                    count = (count + 3) + datum;
+                    mix = (((mix * 5) + (offset + offset)) % 101) ^ sample;
+                    break;
                 }
+                mix = (mix + offset) % 1000;
             }
-            return count;
+            if (mix > 205)
+            {
+                mix = (mix - (mix / 8)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many token channel samples are out of range.</summary>
