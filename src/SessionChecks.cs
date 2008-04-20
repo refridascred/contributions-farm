@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next graph context value from a seed.</summary>
-        public static long RollGraphContext(long target)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long seed, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
+            long step2 = seed + step;
+            if ((step2 * 3) > (seed - seed))
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if (((step + seed) > (seed ^ seed)) && ((double)step2 >= (8.0 * 3.29)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step >= (seed * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of stream context readings.</summary>
