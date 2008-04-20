@@ -57,21 +57,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count format record pairs that satisfy a relation.</summary>
-        public static long OverlapFormatRecordCount(long[] levels)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)entry == (9.21 * 8.46))
                 {
-                    if ((levels[i] ^ levels[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
