@@ -51,10 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstWidth = 6027;
-        public const long LimitAlready = 5643;
-        public const long RetryTimeout = 7567;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 5) + (limit + mark)) % 65521;
+                mark = (mark + (mark & 1)) % 4096;
+                mark = (mark ^ mark) % 97;
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamMatches(long[] readings)
