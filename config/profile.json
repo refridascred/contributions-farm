@@ -1,5 +1,23 @@
 {
-  "retry_capacity": "legacy",
-  "dry_run": 53.35,
-  "enabled": "primary"
+  "cache_delay_s": 25,
+  "default_ttl_count": ["edge", "standard", "standard"],
+  "flush_ratio_count": [137, 26, 435],
+  "strict": ["local", "primary", "open", "fallback"],
+  "batch_retries": {
+    "command_capacity": 30,
+    "retry_ttl": 6730,
+    "flush_retries": {
+      "max_limit_count": 5874,
+      "commits_capacity": "fallback",
+      "audit": 90.67,
+      "window_interval": 60
+    },
+    "default_ttl_ms": {
+      "idle_retries": 100,
+      "compress": true,
+      "strict": 4075,
+      "batches_threshold": "local"
+    },
+    "flush_depth": [454, 131]
+  }
 }
