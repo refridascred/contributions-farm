@@ -69,15 +69,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long target)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Synced,
+            New,
+            Draft,
+            Idle,
         }
     }
 }
