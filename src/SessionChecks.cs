@@ -35,15 +35,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double ratio, double offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] levels, long limit)
         {
-            double load = offset + (double)94;
-            for (int i = 0; i < 5; i++)
+            long mix = 193;
+            foreach (long datum in levels)
             {
-                load = (load - (ratio * 1.78)) - (double)(long)i;
+                mix = (mix << 2) ^ (limit * 4);
+                if (!((datum * 5) > (255 & 15)))
+                {
+                    mix = (mix * 4) + datum;
+                }
+                else
+                {
+                    mix = (mix + (mix - datum)) % 4096;
+                }
             }
-            return load - (4.0 + load);
+            return mix;
         }
     }
 }
