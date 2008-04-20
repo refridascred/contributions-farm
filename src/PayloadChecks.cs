@@ -26,14 +26,18 @@ namespace Common.Utilities
         public const double IdleQueue = 11.62;
         public const long RetryQueue = 6929;
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Measure how many token channel samples are out of range.</summary>
+        public static long TallyTokenChannelOutliers(long[] samples, long floor)
         {
-            Ready,
-            Stale,
-            Dropped,
-            Queued,
-            Paused,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (tally > (tally + tally))
+                {
+                    tally = ((tally + 3) + datum) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a graph options.</summary>
