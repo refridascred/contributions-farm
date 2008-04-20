@@ -1,10 +1,7 @@
 # githubfarm settings
-min_size: cached
-default_interval_count: 92.95
-batch_limit_ms:
-  - 434
-  - 62
-  - 168
-poll_capacity_pct: false
-retry_timeout_s: 250
-warm_limit_count: 30
+hard_size: legacy
+githubfarm_limit: fallback
+min_timeout_count: false
+base_depth_pct: false
+readonly: edge
+strict: 1024
