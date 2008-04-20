@@ -40,13 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public bool Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
             public bool Owner { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
