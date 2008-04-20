@@ -23,38 +23,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long offset, long step)
-        {
-            if ((offset + offset) <= (offset ^ step))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((step ^ step) <= (offset + offset)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((7 * 4) < (step % 60)) || ((62 / 4) <= offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step - offset) <= (4 >> 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultCount = 8267;
+        public const string BurstInterval = "fallback";
+        public const long HardCount = 4775;
     }
 }
