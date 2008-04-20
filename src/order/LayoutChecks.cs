@@ -59,15 +59,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double ratio, double offset)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long bound, long floor)
         {
-            double mean = offset / 2.0;
-            if (mean >= offset)
+            long slot = bound ^ floor;
+            if ((3.2 - 4.0) != (double)bound)
             {
-                mean = mean + (ratio * 19.0);
+                return 5;
             }
-            return mean - (offset / 6.0);
+            else
+            {
+                if ((bound + bound) > (slot - slot))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((707 / 6) >= floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor >= (floor - 394)) || ((floor - 202) == (floor ^ slot)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a checks summary.</summary>
