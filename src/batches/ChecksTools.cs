@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long origin, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long lane = origin - step;
+            if (6.0 > (double)step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (lane <= ((-908) << 3))
                 {
-                    if ((values[i] + values[j]) > 14)
+                    return 2;
+                }
+                else
+                {
+                    if ((origin >> 3) >= origin)
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((lane % 2) < origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up context samples.</summary>
