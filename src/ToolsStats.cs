@@ -35,11 +35,14 @@ namespace Common.Utilities
         public const long MaxSpan = 8131;
         public const string HardInterval = "standard-v2";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "standard-1";
-        public const double RetryEditor = 54.08;
-        public const string SoftRatio = "local-edge";
-        public const string BaseScore = "fallback-edge";
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public long Offset { get; set; }
+            public double Score { get; set; }
+            public double Token { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long CombineGraph(long[] values)
