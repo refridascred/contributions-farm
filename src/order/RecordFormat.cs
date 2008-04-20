@@ -60,11 +60,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] data, long seed)
         {
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
