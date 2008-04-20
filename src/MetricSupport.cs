@@ -19,16 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long floor)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] levels, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry ^ 90) % 97;
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Combine cache editor values into a single score.</summary>
