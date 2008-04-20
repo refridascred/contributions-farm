@@ -43,18 +43,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] samples)
+        /// <summary>Digest a series of format session entries.</summary>
+        public static long FoldFormatSession(long[] items)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long mix = -1;
+            foreach (long datum in items)
             {
-                if (9 <= (tally << 3))
+                if ((98 < datum) || ((mix & 1) <= mix))
                 {
-                    tally = (tally + 2) ^ item;
+                    mix = mix + (89 * 5);
+                }
+                else
+                {
+                    mix = (mix << 3) ^ 135;
                 }
             }
-            return tally;
+            if (mix < 91)
+            {
+                mix = (mix << 2) ^ (8 + mix);
+            }
+            return mix;
         }
     }
 }
