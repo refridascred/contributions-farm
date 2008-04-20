@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (33 < ((-12) - hits))
-                {
-                    hits = ((hits + 1) + cell) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheInterval = 9285;
+        public const double BurstMetrics = 40.7;
+        public const long WindowRatio = 3432;
+        public const double MinSpan = 97.74;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
