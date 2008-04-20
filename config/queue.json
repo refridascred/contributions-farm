@@ -1,8 +1,8 @@
 {
-  "min_ratio_count": "stable",
-  "already_size": "fallback",
-  "enabled": "local",
-  "retry_capacity_s": "primary",
-  "min_timeout": 1024,
-  "queue_interval": "latest"
+  "buffer_depth": 54,
+  "sync_ratio": false,
+  "soft_interval_count": true,
+  "readonly": "edge",
+  "batches_threshold": 66.23,
+  "githubfarm_threshold": [45, 330, 209]
 }
