@@ -72,21 +72,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] readings)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
     }
 }
