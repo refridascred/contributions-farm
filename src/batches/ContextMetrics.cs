@@ -51,15 +51,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double weight, double floor)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            double weight2 = (double)(824 - 126);
-            if (weight2 >= (weight2 / 9.0))
-            {
-                weight2 = (weight2 - weight) - floor;
-            }
-            return weight2 - 9.0;
+            Dropped,
+            Closed,
+            New,
+            Synced,
+            Paused,
         }
 
         /// <summary>Match up command samples.</summary>
