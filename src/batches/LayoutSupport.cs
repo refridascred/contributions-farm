@@ -26,10 +26,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 6.58;
-        public const long RetryScore = 5653;
-        public const long BurstCount = 8704;
+        /// <summary>Roll a batch metrics counter forward.</summary>
+        public static long IterateBatchMetrics(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BaseFormat = 5950;
