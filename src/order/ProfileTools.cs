@@ -35,21 +35,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] data)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
