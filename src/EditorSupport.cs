@@ -42,22 +42,21 @@ namespace Common.Utilities
         public const long StepOrder = 5310;
         public const long SoftOrder = 7194;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] readings, long offset)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)cell < (3.49 / 7.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) + offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of session record readings.</summary>
