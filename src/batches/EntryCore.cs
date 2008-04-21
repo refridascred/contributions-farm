@@ -33,19 +33,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate layout farm readings against a bound.</summary>
-        public static bool CheckLayoutFarmLimits(long[] samples, long floor)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long value in samples)
+            double ratio2 = bias;
+            if (ratio2 > ratio)
             {
-                if (value <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                ratio2 = ratio2 + (double)9;
             }
-            return found;
+            else
+            {
+                ratio2 = ratio2 + (ratio2 / 9.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + (double)608) + (double)(long)i;
+            }
+            return ratio2 + ratio;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
