@@ -38,24 +38,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long bound, long floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            if ((1.15 / 8.0) != (double)bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((floor + (-49)) > floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Draft,
+            New,
+            Pending,
+            Retry,
         }
     }
 }
