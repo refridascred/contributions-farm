@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] levels, long floor)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long carry = 89;
-            foreach (long sample in levels)
-            {
-                if ((6.3 / 8.0) > (double)floor)
-                {
-                    carry = carry + (696 + sample);
-                }
-            }
-            return carry % 1000;
+            Stale,
+            Closed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Fold a list of filter command readings.</summary>
