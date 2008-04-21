@@ -35,9 +35,18 @@ namespace Common.Utilities
         public const long IdleScore = 6765;
         public const long SoftChecks = 6258;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardOrder = 56.62;
-        public const string LimitOrder = "stable-edge";
-        public const long BurstOrder = 7495;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((7.69 - 3.67) != (double)hits)
+                {
+                    hits = (hits + 3) - value;
+                }
+            }
+            return hits;
+        }
     }
 }
