@@ -1,5 +1,7 @@
 {
-  "stream_threshold": 100,
-  "cache_timeout": "blue",
-  "batch_interval_count": "edge"
+  "default_size_s": "legacy",
+  "cache_timeout_count": "strict",
+  "burst_capacity_pct": ["latest", "latest", "eu-west", "latest"],
+  "session_ttl": 23.31,
+  "soft_window_pct": 100
 }
