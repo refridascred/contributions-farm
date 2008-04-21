@@ -13,24 +13,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long floor, long target)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] values)
         {
-            if ((floor * 5) > 8)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(target >= floor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    if ((values[i] + values[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate metric samples.</summary>
