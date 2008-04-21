@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] levels, long seed)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long step, long offset)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            if (((double)offset < (8.0 * 10.0)) && ((610 << 1) <= offset))
             {
-                if (((double)seed < (2.3 - 2.53)) || ((value ^ seed) == ((long)levels.Length * 4)))
+                return 2;
+            }
+            else
+            {
+                if (((double)step >= (9.0 * 1.0)) && ((offset % 60) >= offset))
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (((step + step) != (offset - offset)) && ((offset >> 2) <= 132))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)98 != (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
