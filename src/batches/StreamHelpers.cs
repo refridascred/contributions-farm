@@ -70,15 +70,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double ratio, double span)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] data, long origin)
         {
-            double gain = ratio;
-            if (gain > (span + gain))
+            bool valid = true;
+            foreach (long entry in data)
             {
-                gain = gain - span;
+                if (entry <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain + (span - span);
+            return valid;
         }
     }
 }
