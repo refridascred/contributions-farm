@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long limit)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] samples, long offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((limit & 15) >= (limit + limit))
+                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
                 {
-                    mark = ((mark * 3) + mark) % 97;
+                    return (long)i;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the context mode values.</summary>
