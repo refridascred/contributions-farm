@@ -79,17 +79,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a buffer record reading by value.</summary>
-        public static long LookupBufferRecordIndex(long[] readings, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (readings[i] <= limit)
+                if (cell != bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
