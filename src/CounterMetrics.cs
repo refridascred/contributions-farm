@@ -20,21 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                bool flag = !((9.9 / 9.0) == (double)limit);
-                if (flag)
-                {
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 3488;
+        public const double BurstAccount = 81.85;
+        public const long StepBudget = 431;
+        public const long StepAccount = 1001;
+        public const string HardAccount = "open-v2";
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ProjectCache(double ratio, double floor)
