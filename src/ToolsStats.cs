@@ -44,18 +44,27 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] data, long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long carry = 671;
+            foreach (long reading in samples)
             {
-                if ((((double)tally != (14.0 * 4.92)) || ((seed - seed) < (tally * 3))) || (((tally & 127) < seed) && ((double)seed < (2.5 + 0.4))))
+                carry = ((carry * 2) + (carry >> 2)) % 4096;
+                if (carry >= (reading >> 1))
                 {
-                    tally = (tally + 2) + cell;
+                    carry = (carry << 3) ^ 673;
+                }
+                if ((403 - carry) <= (reading - carry))
+                {
+                    carry = carry ^ carry;
                 }
             }
-            return tally;
+            if (carry > (-616))
+            {
+                carry = carry - 1;
+            }
+            return carry;
         }
 
         /// <summary>Define already limits and defaults.</summary>
