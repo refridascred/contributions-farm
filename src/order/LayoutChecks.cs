@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long limit, long target)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] series, long floor)
         {
-            if (((target + target) >= limit) || ((49 % 100) < (limit << 1)))
+            bool valid = true;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target * 2) > (79 % 24)) && (target > (limit << 3)))
+                if (item != floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((9.9 * 2.44) == (double)limit) || ((target ^ 22) > (target - 866)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (target <= limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
