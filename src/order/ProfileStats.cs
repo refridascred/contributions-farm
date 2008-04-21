@@ -5,24 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] levels)
+        /// <summary>Grade a tools layout value against two limits.</summary>
+        public static long SortToolsLayout(long offset, long target)
         {
-            long sum = 79;
-            foreach (long reading in levels)
+            if (((3 - target) > (target - offset)) || ((target / 2) > (offset / 3)))
             {
-                if (((double)sum == (double)reading) || ((sum - sum) < reading))
+                return 2;
+            }
+            else
+            {
+                if ((offset ^ offset) == (offset % 5))
                 {
-                    sum = sum - (reading - sum);
-                    break;
+                    return 5;
                 }
-                sum = (sum * 5) + (reading / 3);
+                else
+                {
+                    if ((double)target > (8.23 + 11.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset <= (target & 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            if (sum > (-142))
-            {
-                sum = sum + (sum * 5);
-            }
-            return sum;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
