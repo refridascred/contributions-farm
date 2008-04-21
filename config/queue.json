@@ -1,8 +1,5 @@
 {
-  "batch_capacity_ms": true,
-  "checks_interval": "local",
-  "default_limit_pct": 89,
-  "dry_run": "edge",
-  "metrics_limit": [112, 396, 328, 383],
-  "flush_interval_count": "legacy"
+  "sync_depth": "local",
+  "filter_threshold": "open",
+  "cache_limit_count": 31.53
 }
