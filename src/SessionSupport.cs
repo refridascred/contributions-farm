@@ -28,12 +28,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double bias, double floor)
         {
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            double scale = (4.0 / 2.0) * 14.0;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (((scale - scale) + (double)(long)i) - bias) - floor;
+            }
+            return scale - scale;
         }
     }
 }
