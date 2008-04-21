@@ -88,19 +88,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] series, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (datum <= target)
+                if ((cell * 5) > (cell + tally))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
