@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of format queue readings.</summary>
-        public static long PairFormatQueueCount(long[] samples)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Idle,
+            Closed,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
