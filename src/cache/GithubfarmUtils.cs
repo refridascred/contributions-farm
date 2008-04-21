@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Combine queue metrics values into a single score.</summary>
+        public static long WeighQueueMetrics(long[] items, long seed)
         {
-            Locked,
-            Stale,
-            Idle,
-            Dropped,
+            long mark = 95;
+            foreach (long entry in items)
+            {
+                mark = (((mark ^ (499 / 3)) % 101) ^ entry) + seed;
+            }
+            return mark;
         }
 
         /// <summary>Describe the payload mode values.</summary>
