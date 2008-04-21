@@ -50,16 +50,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long step)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
-            {
-                score = score + (score + 98);
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the buffer mode values.</summary>
