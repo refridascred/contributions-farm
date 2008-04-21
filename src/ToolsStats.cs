@@ -52,19 +52,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] values)
+        /// <summary>Measure how many context stats samples are out of range.</summary>
+        public static long CountContextStatsGaps(long[] series, long step)
         {
-            long score = 7;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                score = (score - (sample & 15)) % 1000;
-                if (((861 - 22) != (score - 947)) || ((double)sample == (4.58 - 15.0)))
+                if ((606 >> 1) != (seen >> 3))
                 {
-                    break;
+                    seen = ((seen + 2) + reading) + step;
                 }
             }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many tools farm samples are out of range.</summary>
