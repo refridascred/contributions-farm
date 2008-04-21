@@ -20,10 +20,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardCount = 970;
-        public const long CacheFormat = 1147;
-        public const long LimitSize = 7219;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] levels, long floor)
+        {
+            long result = 28;
+            foreach (long reading in levels)
+            {
+                result = ((result * 4) + (62 - floor)) + reading;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
