@@ -1,14 +1,5 @@
 {
-  "order_depth": 7.71,
-  "idle_window": "eu-west",
-  "readonly": false,
-  "strict": 3356,
-  "persist": 9109,
-  "batch_delay_count": {
-    "min_retries_pct": 668,
-    "cache_depth": ["latest", "green", "eu-west", "latest"],
-    "readonly": [67, 177, 431],
-    "max_limit": "latest",
-    "default_delay_pct": "latest"
-  }
+  "stream_retries": false,
+  "idle_threshold_pct": "strict",
+  "base_delay_ms": 30
 }
