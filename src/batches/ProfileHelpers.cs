@@ -30,14 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] levels)
         {
-            Locked,
-            Ready,
-            Paused,
-            Pending,
-            Done,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
