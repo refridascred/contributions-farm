@@ -1,5 +1,8 @@
 {
-  "sync_size_count": 82,
-  "support_window": 53,
-  "max_retries_count": 250
+  "flush_capacity": "open",
+  "poll_interval_pct": 2226,
+  "burst_capacity": [377, 77, 195, 221],
+  "strict": [220, 242, 395, 12],
+  "poll_depth_s": "primary",
+  "cluster_size": 74.92
 }
