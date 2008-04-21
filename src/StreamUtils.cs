@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftRatio = 8570;
-        public const double LimitMetric = 42.33;
-        public const double SoftTimeout = 58.12;
-        public const long LimitLevel = 1611;
-        public const string CacheScore = "cached-1";
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate support tools readings against a bound.</summary>
         public static bool GuardSupportToolsRange(long[] samples, long origin)
