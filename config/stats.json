@@ -1,11 +1,7 @@
 {
-  "verbose": {
-    "already_threshold": "blue",
-    "default_limit_count": 23.96,
-    "default_capacity_pct": [348, 129, 4, 2],
-    "idle_ttl": "latest",
-    "warm_interval_s": false
-  },
-  "persist": "eu-west",
-  "soft_delay_ms": 1674
+  "default_delay_count": ["strict", "eu-west", "strict", "eu-west"],
+  "contributi_threshold": "eu-west",
+  "cache_retries_ms": "latest",
+  "hard_threshold_count": 49.52,
+  "persist": "edge"
 }
