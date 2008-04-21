@@ -13,21 +13,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 862;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = result - (offset % 12);
+                if ((result - reading) >= result)
                 {
-                    if ((levels[i] + levels[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (result > 970)
+            {
+                result = (result ^ 460) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
