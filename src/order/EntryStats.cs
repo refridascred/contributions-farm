@@ -22,16 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 6420;
+        public const long CacheCounter = 38;
+        public const long CacheLevel = 11;
+        public const long HardCounter = 4822;
+        public const double RetryCounter = 98.78;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long WeighCounter(long[] series)
