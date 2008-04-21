@@ -76,13 +76,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            Done,
-            Retry,
-            Locked,
-            Pending,
+            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Weight { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
