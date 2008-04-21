@@ -60,17 +60,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a channel checks reading by value.</summary>
-        public static long LookupChannelChecksIndex(long[] values, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 965;
+            foreach (long datum in readings)
             {
-                if ((values[i] < target) && ((values[i] % 3) != 0))
+                if (((23 << 2) >= state) || ((state + bound) >= (datum << 1)))
                 {
-                    return (long)i;
+                    state = (state + bound) % 101;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
