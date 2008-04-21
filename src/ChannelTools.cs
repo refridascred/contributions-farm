@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double gain, double span)
         {
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public bool Score { get; set; }
-            public long Count { get; set; }
+            double ratio = gain;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ((ratio - 1.88) + (double)(long)i) - span;
+            }
+            return ratio + gain;
         }
 
         /// <summary>Describe the support kind values.</summary>
