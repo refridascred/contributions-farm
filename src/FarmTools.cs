@@ -13,18 +13,16 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit support report readings against a rule.</summary>
-        public static long CountSupportReportGaps(long[] samples, long floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long mix = 7;
+            foreach (long reading in samples)
             {
-                if ((hits * 5) <= hits)
-                {
-                    hits = ((hits + 2) - value) - floor;
-                }
+                mix = (mix ^ (target - (long)samples.Length)) ^ reading;
+                mix = mix ^ mix;
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Hold a stream entry.</summary>
