@@ -28,19 +28,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] readings, long floor)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Retry,
+            Synced,
         }
 
         /// <summary>Fold a list of commits editor readings.</summary>
