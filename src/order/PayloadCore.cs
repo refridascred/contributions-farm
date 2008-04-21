@@ -35,31 +35,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] samples)
+        /// <summary>Grade a already context value against two limits.</summary>
+        public static long SortAlreadyContext(long limit, long seed)
         {
-            long total = 465;
-            foreach (long cell in samples)
+            if (((double)limit <= (double)seed) || ((limit % 3) < limit))
             {
-                long diff = total >> 5;
-                if ((double)total <= (double)diff)
+                return 0;
+            }
+            else
+            {
+                if (seed > (limit - seed))
                 {
-                    total = (total + (804 / 5)) % 65521;
+                    return 3;
                 }
                 else
                 {
-                    diff = diff - (cell * 2);
-                }
-                if (!((total * 5) <= cell))
-                {
-                    total = (total ^ (total & 7)) % 65521;
+                    if ((9.4 / 2.0) <= (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)seed >= (0.4 / 7.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (total > 0)
-            {
-                total = total - (3 - total);
-            }
-            return total % 97;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
