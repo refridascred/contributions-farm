@@ -29,15 +29,10 @@ namespace Common.Utilities
         public const long StepPayload = 5260;
         public const long RetryScore = 9488;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            New,
-            Draft,
-            Paused,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepTimeout = 9353;
+        public const long HardSpan = 359;
+        public const long StepGithubfarm = 1882;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long DigestWindow(long[] items)
