@@ -45,12 +45,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 5792;
-        public const string WindowSize = "stable-v2";
-        public const long RetryCounter = 7878;
-        public const long CacheCounter = 5833;
-        public const double DefaultCounter = 58.77;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
