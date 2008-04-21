@@ -52,22 +52,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] series)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] series)
         {
-            long score = 255;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((cell + 8) > (score + score)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score << 3) ^ (score * 3)) % 65521;
-                }
-                else
-                {
-                    score = (score * 4) + (cell & 127);
+                    if ((series[i] ^ series[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
     }
 }
