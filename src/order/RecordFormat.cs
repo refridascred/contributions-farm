@@ -45,14 +45,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Retry,
-            Done,
-            Active,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitFactor = 5253;
+        public const long BaseScore = 1758;
+        public const long StepAccount = 9419;
     }
 }
