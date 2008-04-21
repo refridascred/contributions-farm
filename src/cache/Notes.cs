@@ -67,20 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter counter entry stays within the limit.</summary>
-        public static bool ValidateFilterCounterRange(long[] series, long offset)
-        {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 3321;
+        public const double IdleTimeout = 76.97;
+        public const double RetryLevel = 78.26;
+        public const string BaseCount = "strict-v2";
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long PairLayoutCount(long[] series)
