@@ -80,21 +80,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 1081;
+        public const string SoftInterval = "stable";
+        public const string BaseCount = "fallback-edge";
+        public const string StepGraph = "latest-1";
+        public const string BurstFactor = "local-v2";
     }
 }
