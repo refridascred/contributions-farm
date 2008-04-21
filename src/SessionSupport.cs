@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next entry notes value from a seed.</summary>
-        public static long IterateEntryNotes(long bound)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double bias, double floor)
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
+            double ratio = floor;
+            for (int i = 0; i < 2; i++)
             {
-                state = ((state * 5) + (long)i) % 101;
+                ratio = (ratio + ratio) + (double)(long)i;
             }
-            return state;
+            return ratio - (bias + floor);
         }
 
         /// <summary>Describe the editor mode values.</summary>
