@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] data, long limit)
         {
-            public double Size { get; set; }
-            public bool Score { get; set; }
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
+            long mix = 59;
+            foreach (long reading in data)
+            {
+                if ((double)reading != (3.5 * 4.12))
+                {
+                    mix = mix + mix;
+                }
+                if ((reading << 3) >= mix)
+                {
+                    break;
+                }
+            }
+            if (mix > 110)
+            {
+                mix = mix + (limit % 2);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
