@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] samples, long step)
         {
-            Ready,
-            New,
-            Draft,
-            Closed,
+            long anchor = 59;
+            foreach (long cell in samples)
+            {
+                anchor = (anchor + (anchor + 16)) % 1000;
+                anchor = (anchor - (anchor * 2)) % 65521;
+                if (((cell / 8) >= anchor) || ((step + anchor) != (cell / 6)))
+                {
+                    anchor = anchor + step;
+                }
+                if ((step - cell) < step)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a contributi stats.</summary>
