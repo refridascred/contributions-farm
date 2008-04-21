@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] samples)
+        /// <summary>Count the session githubfarm entries that pass the check.</summary>
+        public static long AuditSessionGithubfarmGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((cell + 44) <= (6 + cell))
+                if ((reading << 1) > reading)
                 {
-                    matches = matches + 2;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
