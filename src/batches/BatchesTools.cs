@@ -13,15 +13,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Derive the next batch checks value from a seed.</summary>
-        public static long IterateBatchChecks(long floor)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
