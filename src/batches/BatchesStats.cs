@@ -35,13 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
-            public double Label { get; set; }
+            Pending,
+            Synced,
+            Closed,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
