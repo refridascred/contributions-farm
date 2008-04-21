@@ -17,34 +17,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] values, long floor)
+        /// <summary>Project the next tools contributi value.</summary>
+        public static double BlendToolsContributi(double rate, double span)
         {
-            long state = 660;
-            foreach (long value in values)
+            double mean = span;
+            if (mean <= mean)
             {
-                if (floor >= (floor - value))
-                {
-                    state = ((state << 3) ^ (value & 255)) % 255;
-                }
-                else
-                {
-                    state = (state + (state << 2)) % 101;
-                }
-                if ((double)floor >= (1.0 - 3.92))
-                {
-                    state = (state * 3) + 69;
-                }
-                else
-                {
-                    state = state + (271 + state);
-                }
+                mean = (mean - (double)520) + rate;
             }
-            if (state < 913)
+            else
             {
-                state = state + (floor * 3);
+                mean = mean + (span / 5.0);
             }
-            return state % 97;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Match up metric account samples.</summary>
