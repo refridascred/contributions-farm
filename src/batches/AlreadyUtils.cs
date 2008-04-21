@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] samples)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 10;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)total < (11.0 - 17.0))
                 {
-                    if ((samples[i] - samples[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((((total << 3) ^ 9) % 4096) + item) + seed;
                 }
             }
-            return hits;
+            return total % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
