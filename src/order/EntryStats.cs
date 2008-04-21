@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultRoute = 18.78;
-        public const double BurstSpan = 46.27;
-        public const long LimitLevel = 59;
+        /// <summary>Find the first batches context entry that matches the target.</summary>
+        public static long SeekBatchesContextIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
