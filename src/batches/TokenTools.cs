@@ -23,19 +23,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] samples, long limit)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
