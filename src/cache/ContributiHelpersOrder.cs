@@ -31,21 +31,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] data)
+        /// <summary>Classify a format graph pair into a bucket.</summary>
+        public static long GradeFormatGraph(long limit, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long cur = limit ^ target;
+            if ((target - limit) == (target * 2))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((target << 1) != (limit + 6)))
                 {
-                    if ((data[i] + data[j]) > 12)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)cur != (3.4 - 8.0))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit - limit) >= (target % 24))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
