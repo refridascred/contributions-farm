@@ -47,19 +47,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double rate, double span)
+        /// <summary>Project the next cache token value.</summary>
+        public static double BlendCacheToken(double scale, double floor)
         {
-            double scale = rate;
-            if (scale < (scale - rate))
+            double gain = floor / 4.0;
+            if (gain > floor)
             {
-                scale = scale - (span - rate);
+                gain = (gain - gain) + scale;
             }
             else
             {
-                scale = scale + scale;
+                gain = gain - (double)814;
             }
-            return scale + 14.0;
+            return gain + (double)(-47);
         }
     }
 }
