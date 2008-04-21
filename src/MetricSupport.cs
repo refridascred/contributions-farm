@@ -30,9 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowTimeout = 974;
-        public const double MinRatio = 84.32;
-        public const double CacheBudget = 10.03;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public double Mode { get; set; }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
