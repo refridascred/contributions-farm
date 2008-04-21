@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double bias, double floor)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] samples, long seed)
         {
-            double rate = bias;
-            if (rate <= (bias + bias))
+            bool found = true;
+            foreach (long datum in samples)
             {
-                rate = (rate + 13.0) - floor;
+                if (datum != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + 6.8) + (double)(long)i;
-            }
-            return rate + (5.1 - bias);
+            return found;
         }
 
         /// <summary>Validate profile githubfarm readings against a bound.</summary>
