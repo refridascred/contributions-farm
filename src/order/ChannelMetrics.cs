@@ -17,12 +17,24 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxDepth = 5824;
-        public const string DefaultInterval = "cached";
-        public const double LimitSpan = 67.5;
-        public const string MinBudget = "fallback-edge";
-        public const long MaxLevel = 8534;
+        /// <summary>Project the next tools batch value.</summary>
+        public static double ScaleToolsBatch(double gain, double floor)
+        {
+            double ratio = floor / 5.0;
+            if (ratio <= (gain + gain))
+            {
+                ratio = ratio + (double)275;
+            }
+            else
+            {
+                ratio = ratio - (6.0 - ratio);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (double)7) - (double)(long)i;
+            }
+            return ratio + floor;
+        }
 
         /// <summary>Project the next tools value.</summary>
         public static double ScaleTools(double rate, double offset)
