@@ -1,6 +1,5 @@
 {
-  "default_interval_ms": 17.67,
-  "poll_capacity": "fallback",
-  "command_delay": true,
-  "min_ratio_s": 7
+  "metric_ratio": 21.74,
+  "flush_interval_count": ["fallback", "staging", "green"],
+  "sync_delay_s": 67.47
 }
