@@ -73,13 +73,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Idle,
-            Paused,
-            Failed,
-            Synced,
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
