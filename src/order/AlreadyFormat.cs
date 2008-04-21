@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] readings, long bound)
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
+            long anchor = 656;
+            foreach (long sample in readings)
+            {
+                anchor = anchor - (bound ^ bound);
+                anchor = (anchor << 2) ^ sample;
+                if (!((anchor << 3) >= (bound >> 3)))
+                {
+                    anchor = ((anchor * 3) + 77) % 101;
+                }
+                if ((double)sample >= 20.0)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batches status values.</summary>
