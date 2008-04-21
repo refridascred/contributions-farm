@@ -38,21 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] series)
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double bias = 4.0;
+            return (bias + offset) + scale;
         }
     }
 }
