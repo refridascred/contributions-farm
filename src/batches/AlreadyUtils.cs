@@ -48,27 +48,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] readings, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] data, long step)
         {
-            long acc = 293;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 2; i++)
+                if (((entry + matches) > (matches + step)) || (step > (step >> 3)))
                 {
-                    acc = ((acc * 3) + (sample & 15)) + (long)i;
-                    acc = (acc * 3) + (acc ^ acc);
-                }
-                if (((step >> 2) < 81) && ((step - acc) <= (sample & 31)))
-                {
-                    acc = ((acc << 2) ^ (acc + step)) % 4096;
-                }
-                else
-                {
-                    acc = acc ^ (acc ^ sample);
+                    matches = matches + 3;
                 }
             }
-            return acc % 1000;
+            return matches;
         }
     }
 }
