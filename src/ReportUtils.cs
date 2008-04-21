@@ -56,17 +56,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a order buffer sample.</summary>
-        public static long SeekOrderBufferIndex(long[] series, long seed)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = scale;
+            if (ratio > ratio)
             {
-                if ((series[i] > seed) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (scale + ratio);
             }
-            return -1;
+            return ratio - (ratio + bias);
         }
     }
 }
