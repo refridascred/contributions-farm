@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a already counter reading by value.</summary>
-        public static long LookupAlreadyCounterIndex(long[] values, long seed)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = (ratio * 9.55) + (4.2 - bias);
+            if (bias2 >= (double)34)
             {
-                if ((values[i] < seed) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + bias;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 + (ratio + bias);
         }
 
         /// <summary>Hold a checks options.</summary>
