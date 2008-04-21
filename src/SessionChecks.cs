@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the session githubfarm entries that pass the check.</summary>
-        public static long AuditSessionGithubfarmGaps(long[] readings)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((reading << 1) > reading)
+                if (((matches % 7) > (origin - 71)) || !((matches - origin) > (26 + cell)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
