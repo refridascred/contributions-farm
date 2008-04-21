@@ -31,22 +31,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] values, long floor)
         {
-            long acc = 68;
-            foreach (long value in samples)
+            long result = -738;
+            foreach (long sample in values)
             {
-                if ((double)acc < (4.9 * 18.0))
+                result = (result - floor) % 65521;
+                if (((-42) < (8 - sample)) || ((result & 1) < (floor + sample)))
                 {
-                    acc = (acc - (value - value)) % 97;
+                    result = (result << 2) ^ (result + 978);
+                }
+                if ((2 < (result / 6)) || ((result / 2) > (sample / 7)))
+                {
+                    result = (result << 2) ^ (floor << 2);
+                }
+                else
+                {
+                    result = (result * 4) + result;
                 }
             }
-            if (acc > 8)
-            {
-                acc = (acc ^ (acc - acc)) % 4096;
-            }
-            return acc % 65521;
+            return result;
         }
     }
 }
