@@ -1,10 +1,15 @@
 # support settings
-soft_capacity: 2798
-burst_retries_s: 82
-default_ttl:
-  - primary
-  - latest
-  - cached
-  - legacy
-base_limit_s: 33
-contributi_retries: fallback
+batch_ratio_count: 500
+readonly: true
+report_window:
+  burst_interval_pct: 91.14
+  burst_limit_ms:
+    report_limit: blue
+    compress: 34.28
+    soft_ttl_count: 100
+  retry_limit_pct: edge
+  warm_delay_count: 40.24
+  layout_depth: edge
+  readonly: false
+min_ratio_ms: latest
+sync_ttl_count: 100
