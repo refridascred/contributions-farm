@@ -60,18 +60,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine route account values into a single score.</summary>
-        public static long CombineRouteAccount(long[] levels)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long mix = 362;
-            foreach (long cell in levels)
-            {
-                if ((mix % 97) < (275 + 13))
-                {
-                    mix = (mix * 3) + (cell - mix);
-                }
-            }
-            return mix;
+            Dropped,
+            Active,
+            Draft,
+            Ready,
+            Failed,
         }
     }
 }
