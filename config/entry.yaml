@@ -1,28 +1,7 @@
 # entry settings
-base_ratio_pct: 7741
-retry_capacity: edge
-idle_interval_ms: primary
-hard_ttl:
-  burst_ratio_pct: 4190
-  default_limit_s:
-    idle_ratio_pct: primary
-    batch_ratio: 60
-    compress:
-      - cached
-      - strict
-    report_capacity: primary
-    enabled: 60.79
-  flush_ratio_count: 80.87
-  hard_limit_pct:
-    cache_threshold: true
-    burst_window_ms:
-      - primary
-      - fallback
-      - standard
-      - strict
-    audit: 7321
-default_capacity_ms:
-  dry_run: 12.27
-  burst_interval_pct: staging
-  min_retries_s: 16.37
-warm_delay_pct: 500
+warm_timeout_count: strict
+cache_window_ms: 79
+idle_size_pct: 38.09
+entry_threshold: legacy
+report_capacity: true
+dry_run: primary
