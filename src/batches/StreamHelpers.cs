@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] values, long limit)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double bias, double span)
         {
-            bool valid = true;
-            foreach (long value in values)
+            double mean = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if (value > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = ((mean - 7.18) + (double)(long)i) - span;
             }
-            return valid;
+            return mean - 17.0;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
