@@ -1,7 +1,15 @@
 {
-  "account_interval": 30,
-  "flush_retries_pct": false,
-  "warm_capacity": 0.07,
-  "audit": false,
-  "idle_limit_count": "blue"
+  "sync_interval": false,
+  "verbose": {
+    "warm_size_count": "primary",
+    "readonly": 89.88,
+    "burst_ratio": 2763,
+    "poll_depth_s": {
+      "persist": "legacy",
+      "min_interval": "legacy",
+      "warm_ttl_s": 23.11
+    }
+  },
+  "readonly": "blue",
+  "idle_ratio": 12
 }
