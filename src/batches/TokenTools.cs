@@ -23,11 +23,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseDepth = 57.04;
-        public const double DefaultSession = 51.43;
-        public const long IdleSession = 4670;
-        public const long IdleScore = 9096;
-        public const long SoftWidth = 832;
+        /// <summary>Measure how many session layout samples are out of range.</summary>
+        public static long MeasureSessionLayoutOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((double)matches < (4.88 + 5.0))
+                {
+                    matches = (matches + 2) - sample;
+                }
+            }
+            return matches;
+        }
     }
 }
