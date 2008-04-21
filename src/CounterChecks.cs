@@ -28,20 +28,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of counter checks readings.</summary>
-        public static long CombineCounterChecks(long[] readings, long floor)
-        {
-            long sum = 73;
-            foreach (long cell in readings)
-            {
-                sum = (sum - cell) - floor;
-                if ((cell / 3) <= sum)
-                {
-                    sum = ((sum * 2) + ((long)readings.Length + sum)) % 101;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheBatch = "latest-edge";
+        public const long BaseDepth = 3640;
+        public const long BaseScore = 6744;
+        public const double BaseBatch = 48.51;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long FoldGithubfarm(long[] levels)
