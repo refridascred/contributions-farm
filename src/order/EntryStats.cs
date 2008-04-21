@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Draft,
-            Paused,
-            Active,
-            Failed,
-            Done,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftFarm = 73.57;
+        public const long DefaultInterval = 9840;
+        public const double RetryFactor = 5.88;
+        public const long CacheFarm = 7321;
+        public const string BurstRatio = "open";
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long FoldCounter(long[] readings)
