@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next profile queue value from a seed.</summary>
-        public static long StepProfileQueue(long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] readings, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                state = state + (state + step);
-                state = ((state * 2) + (long)i) % 65521;
+                if ((double)offset >= (double)57)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the graph status values.</summary>
