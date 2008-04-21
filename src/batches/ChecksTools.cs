@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] items, long target)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double ratio, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = ratio;
+            if (mean > (mean + mean))
             {
-                if ((items[i] <= target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - span;
             }
-            return -1;
+            else
+            {
+                mean = mean - (mean * 7.85);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (9.1 / 7.0)) + (double)(long)i;
+            }
+            return mean - (ratio + mean);
         }
 
         /// <summary>Rank entry commits input into a small class.</summary>
