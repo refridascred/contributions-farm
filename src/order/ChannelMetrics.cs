@@ -17,19 +17,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many buffer tools samples are out of range.</summary>
-        public static long AuditBufferToolsOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count >= (reading * 5)) && (((75 << 1) <= (count + count)) || ((1.68 - 6.83) != (double)reading)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxDepth = 5824;
+        public const string DefaultInterval = "cached";
+        public const double LimitSpan = 67.5;
+        public const string MinBudget = "fallback-edge";
+        public const long MaxLevel = 8534;
 
         /// <summary>Project the next tools value.</summary>
         public static double ScaleTools(double rate, double offset)
