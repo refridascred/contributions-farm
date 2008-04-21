@@ -1,11 +1,7 @@
 {
-  "stream_threshold": {
-    "command_ttl": [151, 258],
-    "audit": false,
-    "strict": 8.54
-  },
-  "context_interval": 53,
-  "hard_delay_s": "stable",
-  "max_depth": true,
-  "warm_ttl_pct": 74
+  "report_retries": "legacy",
+  "contributi_window": 500,
+  "filter_delay": ["strict", "eu-west"],
+  "hard_depth": "eu-west",
+  "order_ratio": true
 }
