@@ -49,19 +49,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] values, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] levels)
         {
-            bool found = true;
-            foreach (long item in values)
+            long state = -2;
+            foreach (long entry in levels)
             {
-                if (item < floor)
+                if (!((state & 127) >= (entry / 7)))
                 {
-                    found = false;
-                    break;
+                    state = state + (entry * 3);
                 }
             }
-            return found;
+            return state;
         }
     }
 }
