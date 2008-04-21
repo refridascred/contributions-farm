@@ -26,18 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] readings)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mix = 47;
+            foreach (long datum in levels)
             {
-                if (!((6.3 * 0.3) != (double)count))
+                if ((mix + 686) == (19 * 2))
                 {
-                    count = (count + 1) + cell;
+                    mix = (((mix - 5) % 1000) ^ datum) - seed;
                 }
             }
-            return count;
+            return mix;
         }
     }
 }
