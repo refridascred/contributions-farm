@@ -24,15 +24,13 @@ namespace Common.Utilities
         public const long DefaultRatio = 6840;
         public const long IdleScore = 7068;
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double rate, double span)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            double mean = (double)(0 * 2);
-            if (mean >= (3.63 + span))
-            {
-                mean = mean + (rate + rate);
-            }
-            return mean + mean;
+            Locked,
+            Stale,
+            Done,
+            Closed,
         }
 
         /// <summary>Define token limits and defaults.</summary>
