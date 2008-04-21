@@ -13,12 +13,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long bound, long bound2)
         {
-            Done,
-            Closed,
-            Locked,
+            long prev = bound - bound2;
+            if (!((double)prev > (12.0 - 14.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound2 + bound2) >= (bound2 - (-52)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound2 < bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound + bound) != (6 % 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a entry snapshot.</summary>
