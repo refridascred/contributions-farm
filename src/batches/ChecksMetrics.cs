@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] items, long offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] levels, long seed)
         {
             bool valid = true;
-            foreach (long value in items)
+            foreach (long datum in levels)
             {
-                if (value < offset)
+                if (datum != seed)
                 {
                     valid = false;
                     break;
