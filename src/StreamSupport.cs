@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] items, long seed)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long result = 55;
-            foreach (long reading in items)
-            {
-                if ((seed + seed) < (4 & 255))
-                {
-                    result = (result - 224) ^ reading;
-                }
-            }
-            return result;
+            Failed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
