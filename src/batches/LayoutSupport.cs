@@ -40,18 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] items)
+        /// <summary>Roll a context contributi counter forward.</summary>
+        public static long IterateContextContributi(long seed)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum < (hits & 31))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    hits = hits + 3;
+                    mark = (mark - (mark + seed)) + (long)i2;
+                    mark = ((mark << 2) ^ (mark >> 3)) % 4096;
                 }
+                long hits = seed;
+                mark = (mark << 2) ^ (hits + hits);
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
