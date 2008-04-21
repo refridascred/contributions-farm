@@ -30,10 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 8558;
-        public const string RetryMetrics = "fallback-v2";
-        public const double StepCount = 47.14;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepCount = 4039;
+        public const double MinBuffer = 31.76;
+        public const double SoftBuffer = 22.82;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string BurstScore = "alpha";
