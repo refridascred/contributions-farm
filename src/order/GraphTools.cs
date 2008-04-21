@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] readings, long origin)
-        {
-            long mark = 75;
-            foreach (long datum in readings)
-            {
-                if ((origin * 3) == (datum + datum))
-                {
-                    mark = (mark ^ (4 / 9)) % 255;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchAccount = 98.53;
+        public const double LimitWidth = 48.82;
+        public const string CacheAccount = "fallback-v2";
+        public const long IdleRatio = 1392;
 
         /// <summary>Adjust a record reading.</summary>
         public static double SmoothRecord(double bias, double bias2)
