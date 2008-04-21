@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] readings, long limit)
         {
-            Queued,
-            Ready,
-            Retry,
-            Stale,
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
