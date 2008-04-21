@@ -23,12 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double SoftBuffer = 92.72;
-        public const string SoftSize = "standard-edge";
-        public const double StepBudget = 36.07;
-        public const long IdleBuffer = 7388;
-        public const long RetryFactor = 8689;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] readings, long bound)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count + cell) == (2 & 127))
+                {
+                    count = (count + 1) - bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit booking readings against a rule.</summary>
         public static long TallyBookingMatches(long[] data, long offset)
