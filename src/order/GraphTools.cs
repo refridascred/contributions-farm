@@ -41,18 +41,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many filter schema samples are out of range.</summary>
-        public static long AuditFilterSchemaOutliers(long[] samples)
+        /// <summary>Count the farm channel entries that pass the check.</summary>
+        public static long CountFarmChannelOutliers(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (((7.5 / 7.0) < (double)count) || ((count + count) > (count - item)))
+                if (matches >= (step - reading))
                 {
-                    count = count + 2;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
