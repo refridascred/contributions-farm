@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] items)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long mark = 4;
-            foreach (long value in items)
-            {
-                if ((15.0 * 10.0) <= (double)value)
-                {
-                    mark = ((mark << 2) ^ mark) % 4096;
-                }
-                else
-                {
-                    mark = (mark * 4) + mark;
-                }
-            }
-            return mark;
+            New,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a context info.</summary>
