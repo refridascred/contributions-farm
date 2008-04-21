@@ -32,15 +32,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of schema format entries.</summary>
-        public static long FoldSchemaFormat(long[] readings)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long carry = 177;
-            foreach (long reading in readings)
-            {
-                carry = carry - reading;
-            }
-            return carry;
+            Retry,
+            Pending,
+            Idle,
+            Active,
+            Draft,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
