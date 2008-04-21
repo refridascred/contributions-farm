@@ -18,31 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long target, long seed)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] levels)
         {
-            if (seed < (seed & 127))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (target >= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((seed - target) == (target + target)))
+                    if ((levels[i] ^ levels[j]) > 9)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate checks report readings against a bound.</summary>
