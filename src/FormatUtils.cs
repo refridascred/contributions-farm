@@ -50,19 +50,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] series, long seed)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell > seed)
+                if (samples[i] >= floor)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Match up notes samples.</summary>
