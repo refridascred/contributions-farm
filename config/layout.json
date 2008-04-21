@@ -1,10 +1,8 @@
 {
-  "metrics_window": 60,
-  "order_window": {
-    "warm_depth": false,
-    "commits_delay": ["standard", "stable"],
-    "flush_interval_pct": 60
-  },
-  "readonly": "eu-west",
-  "window_window": [196, 497, 382, 451]
+  "base_depth_pct": 60,
+  "layout_depth": "strict",
+  "dry_run": 93.13,
+  "poll_ratio": ["standard", "local"],
+  "max_size_s": 17.71,
+  "order_delay": true
 }
