@@ -33,17 +33,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] values, long target)
+        /// <summary>Iterate the stream profile series from a seed.</summary>
+        public static long DeriveStreamProfile(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((values[i] == target) && ((values[i] % 3) == 0))
+                if (!((double)origin <= (1.0 + 15.0)))
                 {
-                    return (long)i;
+                    sum = (sum - (long)i) % 65521;
+                    break;
                 }
+                else
+                {
+                    sum = (sum + sum) % 1000;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Fold a list of commits editor readings.</summary>
