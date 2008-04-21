@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up account command samples.</summary>
-        public static long OverlapAccountCommandCount(long[] data)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Count the buffer queue entries that pass the check.</summary>
