@@ -14,13 +14,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Draft,
-            Synced,
             Done,
+            Synced,
+            Failed,
             Pending,
+            Idle,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
