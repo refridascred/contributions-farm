@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] readings, long seed)
+        /// <summary>Roll a token route counter forward.</summary>
+        public static long SeriesTokenRoute(long bound)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (cell <= seed)
+                anchor = (anchor * 3) + bound;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor << 3) ^ 0) - (long)i2;
                 }
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    anchor = ((anchor << 3) ^ ((long)i << 1)) ^ (long)i3;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Hold a cache entry.</summary>
