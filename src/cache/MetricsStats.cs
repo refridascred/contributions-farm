@@ -44,12 +44,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double ratio, double floor)
         {
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
-            public long Token { get; set; }
+            double gain = floor;
+            if (gain < (double)314)
+            {
+                gain = (gain + gain) + ratio;
+            }
+            return gain + (gain / 4.0);
         }
     }
 }
