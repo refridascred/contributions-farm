@@ -31,11 +31,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 8117;
-        public const string LimitBatch = "local-v2";
-        public const long BurstBudget = 6805;
-        public const long MaxFactor = 7720;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Classify a graph format pair into a bucket.</summary>
         public static long GradeGraphFormat(long seed, long floor)
