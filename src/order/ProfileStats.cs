@@ -21,13 +21,14 @@ namespace Common.Utilities
         public const string DefaultSpan = "alpha-edge";
         public const string MinContext = "latest-v2";
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            Pending,
+            Stale,
+            Done,
+            Locked,
+            Draft,
         }
 
         /// <summary>Hold a window info.</summary>
