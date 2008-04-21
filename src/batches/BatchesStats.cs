@@ -33,11 +33,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Measure how many farm commits samples are out of range.</summary>
