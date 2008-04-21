@@ -49,17 +49,39 @@ namespace Common.Utilities
             return scale + (scale / 6.0);
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] items, long offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long origin, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound = origin - seed;
+            if ((20.0 / 5.0) == (double)bound)
             {
-                if ((items[i] < offset) && ((items[i] % 5) != 0))
+                return 7;
+            }
+            else
+            {
+                if (!((bound + 692) > (origin ^ 611)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((60 + seed) <= origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed + 8) <= seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
