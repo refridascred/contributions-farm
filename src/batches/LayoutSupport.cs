@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] data, long origin)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Blend two record measurements.</summary>
