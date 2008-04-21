@@ -33,23 +33,37 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long seed, long floor)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long limit, long floor)
         {
-            long lane = seed ^ floor;
-            if ((seed + floor) != (lane << 2))
+            long lane = limit ^ floor;
+            if (((double)lane >= (5.0 - 14.0)) || ((limit + floor) != (floor >> 1)))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (seed >= (floor - seed))
+                if (((lane - limit) <= floor) || ((lane - 28) <= (199 - 453)))
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    return 6;
+                    if ((9.6 - 16.0) == (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)limit > 6.3)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
