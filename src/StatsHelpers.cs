@@ -32,14 +32,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            New,
-            Stale,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySupport = 46.7;
+        public const string BurstWidth = "standard-v2";
+        public const double MaxInterval = 30.46;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long CountCommitsGaps(long[] data, long seed)
