@@ -1,4 +1,9 @@
 # entry settings
-audit: blue
-persist: green
-default_interval_count: 99
+verbose:
+  - 203
+  - 12
+  - 406
+flush_threshold_s: 81.11
+poll_depth_pct: staging
+warm_ttl_pct: 4520
+buffer_depth: edge
