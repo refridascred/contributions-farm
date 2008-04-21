@@ -34,13 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public string Count { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-            public double Stamp { get; set; }
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
     }
 }
