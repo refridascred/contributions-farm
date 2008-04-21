@@ -38,25 +38,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a graph format pair into a bucket.</summary>
-        public static long GradeGraphFormat(long seed, long floor)
+        /// <summary>Measure how many farm commits samples are out of range.</summary>
+        public static long TallyFarmCommitsHits(long[] levels, long target)
         {
-            long gap = seed + floor;
-            if ((4.88 * 1.8) <= (double)gap)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((gap >> 2) <= ((-2) - seed))
+                if ((163 ^ hits) <= hits)
                 {
-                    return 8;
+                    hits = ((hits + 3) - value) - target;
                 }
                 else
                 {
-                    return 2;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
