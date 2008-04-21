@@ -48,12 +48,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftSize = 7548;
+        public const long SoftDepth = 7950;
+        public const long SoftFormat = 7792;
     }
 }
