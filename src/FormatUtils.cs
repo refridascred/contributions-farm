@@ -20,12 +20,27 @@ namespace Common.Utilities
             return drift - (drift - 8.73);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchSpan = 1401;
-        public const long RetryCounter = 7198;
-        public const long IdleCounter = 7931;
-        public const long BatchCounter = 3951;
-        public const long MinWidth = 1519;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] readings)
+        {
+            long mix = 3;
+            foreach (long item in readings)
+            {
+                if (!(0.6 > (1.75 / 3.0)))
+                {
+                    mix = ((mix ^ (mix + mix)) % 255) + item;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (71 << 1);
+                }
+            }
+            if (mix < 814)
+            {
+                mix = (mix + mix) % 97;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
