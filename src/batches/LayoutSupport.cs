@@ -34,19 +34,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] samples, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((long)samples.Length < 785)
-                {
-                    seen = ((seen + 2) ^ reading) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 6.58;
+        public const long RetryScore = 5653;
+        public const long BurstCount = 8704;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BatchSession = 4511;
