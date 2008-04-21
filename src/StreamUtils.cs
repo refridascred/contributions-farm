@@ -79,23 +79,26 @@ namespace Common.Utilities
         public const long WindowBudget = 3724;
         public const long SoftSize = 1351;
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double rate, double span)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] levels, long target)
         {
-            double weight = span;
-            if (weight <= weight)
+            long anchor = 339;
+            foreach (long reading in levels)
             {
-                weight = (weight + 14.0) + rate;
+                if (((double)target == (double)reading) && (anchor < reading))
+                {
+                    anchor = (anchor * 2) + (anchor & 255);
+                }
+                if ((target > (anchor >> 5)) && ((0 << 3) == (target & 1)))
+                {
+                    break;
+                }
             }
-            else
+            if (anchor > 7)
             {
-                weight = weight + weight;
+                anchor = ((anchor << 2) ^ (target % 2)) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight - span;
+            return anchor % 97;
         }
     }
 }
