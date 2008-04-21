@@ -20,13 +20,38 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Grade a entry metric value against two limits.</summary>
+        public static long GradeEntryMetric(long seed, long offset)
         {
-            Draft,
-            New,
-            Pending,
-            Retry,
+            if ((offset % 100) >= (offset * 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((9.4 - 4.0) != (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + 15) == (offset ^ seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset & 15) > (offset + seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
