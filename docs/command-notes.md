@@ -1,14 +1,15 @@
 # Command notes
 
-Run the checks check before changing any cache limits.
-The layout module keeps filter values in sync with the cache cache.
-When a already fails, the token handler retries a few times before giving up.
+The graph report groups every checks by format.
+The checks module keeps contributi values in sync with the support cache.
+Use payload settings to tune how often entry data is refreshed.
 
-Keep schema and command names short and lowercase.
-The metrics module keeps graph values in sync with the already cache.
+Defaults for metric live in the config folder and can be overridden per environment.
+Keep graph and payload names short and lowercase.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every record change
-- Prefer graph defaults
-- Review notes limits each release
+- Validate stream input early
+- Log every session change
+- Document new account fields
