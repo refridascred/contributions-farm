@@ -42,12 +42,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultWidth = 6431;
-        public const long RetryFarm = 8897;
-        public const long WindowFarm = 8955;
-        public const long BatchFarm = 507;
-        public const double StepTimeout = 98.42;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long seed, long step)
+        {
+            if (!(4 < (step % 12)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step << 2) > (seed << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double SoftSupport = 38.89;
