@@ -70,27 +70,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] series, long origin)
+        /// <summary>Match up support record samples.</summary>
+        public static long PairSupportRecordCount(long[] values)
         {
-            long sum = 3;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry <= (entry - entry)) && ((entry * 3) > (origin * 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum * 5) + (8 & 3)) % 4096;
+                    if ((values[i] ^ values[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    sum = ((sum * 3) + entry) % 65521;
-                }
-                sum = (sum ^ (517 / 6)) % 1000;
             }
-            if (sum > 4)
-            {
-                sum = (sum << 3) ^ (92 >> 4);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
