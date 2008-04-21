@@ -59,15 +59,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long bound)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] series, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
+            long state = 420;
+            foreach (long sample in series)
             {
-                score = ((score * 2) + (long)i) % 97;
+                if ((target << 2) > (target / 6))
+                {
+                    state = ((state + (state / 2)) % 97) ^ sample;
+                }
+                if (target >= state)
+                {
+                    break;
+                }
             }
-            return score;
+            return state;
         }
     }
 }
