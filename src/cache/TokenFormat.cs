@@ -13,30 +13,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] data, long bound)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long result = 9;
-            foreach (long sample in data)
-            {
-                if (sample < (sample / 5))
-                {
-                    result = (result + (bound - result)) % 65521;
-                }
-                else
-                {
-                    result = (result + sample) % 97;
-                }
-                if (((sample - sample) >= sample) && ((bound + bound) != (result >> 1)))
-                {
-                    break;
-                }
-            }
-            if (result < 59)
-            {
-                result = ((result << 2) ^ (bound - bound)) % 4096;
-            }
-            return result;
+            Locked,
+            Draft,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the channel level values.</summary>
