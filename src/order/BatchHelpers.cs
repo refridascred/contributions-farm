@@ -16,17 +16,15 @@ namespace Common.Utilities
             return scale - (offset - offset);
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] samples, long bound)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double scale, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = scale;
+            if (load > (bias - scale))
             {
-                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                load = load - 5.59;
             }
-            return -1;
+            return load - bias;
         }
 
         /// <summary>Describe the contributi class values.</summary>
