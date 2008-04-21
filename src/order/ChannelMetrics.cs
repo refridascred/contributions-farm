@@ -26,18 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] series, long seed)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry ^ seed) >= 276)
+                if (samples[i] < seed)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Grade a editor schema value against two limits.</summary>
