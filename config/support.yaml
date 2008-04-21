@@ -1,7 +1,30 @@
 # support settings
-poll_retries_pct: edge
-audit: 60
-window_ttl: 19
-already_capacity: legacy
-batches_timeout: eu-west
-warm_size_ms: true
+max_threshold: 60.72
+report_ratio: eu-west
+idle_threshold_s: standard
+dry_run:
+  compress: 80.77
+  hard_window_s: stable
+  burst_limit: true
+  idle_ttl_s: open
+  strict:
+    idle_timeout: true
+    audit: cached
+    retry_capacity_count: green
+    warm_threshold_s: 1875
+    enabled: 100
+  max_window:
+    soft_depth_ms: 8859
+    strict:
+      - open
+      - stable
+      - blue
+      - stable
+    hard_ratio_ms: eu-west
+    batch_retries:
+      - 371
+      - 248
+      - 68
+    min_threshold: true
+    enabled: cached
+default_window: standard
