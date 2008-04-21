@@ -33,32 +33,19 @@ namespace Common.Utilities
         public const string DefaultInterval = "legacy";
         public const long HardStream = 4475;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long step, long seed)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] series)
         {
-            long prev = step + seed;
-            if (((981 / 3) != (prev % 8)) || (step >= (prev / 8)))
+            long score = -6;
+            foreach (long item in series)
             {
-                return 7;
+                score = (score - (score * 5)) - item;
             }
-            else
+            if (score < 69)
             {
-                if ((double)prev != (4.0 * 9.93))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((prev - seed) > prev) || (((-725) + step) < step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                score = ((score * 2) + (48 + score)) % 1000;
             }
+            return score;
         }
 
         /// <summary>Hold a token entry.</summary>
