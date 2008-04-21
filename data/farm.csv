@@ -1,10 +1,7 @@
-id,token,level,weight
-1,49.23,30.64,529
-2,510,71.05,240
-3,790,primary,946
-4,green,85.31,117
-5,90.02,strict,638
-6,7.06,67.57,blue
-7,958,863,338
-8,staging,stable,37.95
-9,91.3,937,edge
+id,token,count,region,level
+1,510,24.61,606,324
+2,green,local,blue,71.61
+3,staging,staging,standard,49
+4,stable,5.91,83.41,latest
+5,latest,665,475,205
+6,7.11,39.66,922,legacy
