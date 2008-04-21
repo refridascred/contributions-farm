@@ -54,19 +54,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate filter metric readings against a bound.</summary>
-        public static bool CheckFilterMetricRange(long[] levels, long target)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Failed,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a window header.</summary>
