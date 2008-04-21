@@ -1,7 +1,8 @@
 # support settings
-base_timeout_ms:
-  max_timeout_s: standard
-  burst_timeout_s: standard
-  readonly: stable
-filter_interval: blue
-warm_timeout: 250
+default_size: legacy
+strict:
+  - 296
+  - 107
+  - 148
+  - 446
+account_capacity: 3160
