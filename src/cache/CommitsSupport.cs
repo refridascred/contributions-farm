@@ -20,23 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double ratio, double floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] levels)
         {
-            double bias = ratio;
-            if (bias <= (floor / 4.0))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                bias = bias - 10.0;
+                if ((item - hits) == (hits + hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                bias = bias - (double)33;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (ratio - floor)) + (double)(long)i;
-            }
-            return bias + bias;
+            return hits;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
