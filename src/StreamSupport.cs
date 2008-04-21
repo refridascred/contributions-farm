@@ -19,16 +19,12 @@ namespace Common.Utilities
         public const long CacheMetric = 3155;
         public const double BurstFactor = 87.85;
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = (anchor + (anchor - anchor)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Ready,
+            Synced,
+            Pending,
         }
     }
 }
