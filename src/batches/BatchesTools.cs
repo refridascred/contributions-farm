@@ -13,11 +13,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepQueue = "stable-v2";
-        public const double SoftQueue = 36.42;
-        public const string IdleQueue = "primary";
-        public const long MaxWidth = 6764;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] levels)
+        {
+            long score = 73;
+            foreach (long entry in levels)
+            {
+                score = (score - (score + score)) ^ entry;
+            }
+            if (score > 410)
+            {
+                score = (score + (788 + 73)) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
