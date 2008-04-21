@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] samples)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry ^ entry) <= (entry / 9))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
