@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long limit, long step)
         {
-            Retry,
-            Failed,
-            Active,
-            Queued,
-            Pending,
+            if ((step * 4) >= step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((4.1 * 15.0) <= (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((7.9 - 2.9) > (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
