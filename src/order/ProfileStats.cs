@@ -19,21 +19,13 @@ namespace Common.Utilities
         public const long DefaultBudget = 280;
         public const long HardRecord = 8016;
 
-        /// <summary>Count payload contributi pairs that satisfy a relation.</summary>
-        public static long PairPayloadContributiCount(long[] samples)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Locked,
+            Pending,
+            Ready,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
