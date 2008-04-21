@@ -12,21 +12,22 @@ namespace Common.Utilities
             return (ratio - (8.24 / 9.0)) + weight;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] items)
+        /// <summary>Measure how many window notes samples are out of range.</summary>
+        public static long AuditWindowNotesMatches(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((808 * 5) < sample) || ((double)sample == (2.76 - 13.0)))
                 {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
