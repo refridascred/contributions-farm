@@ -35,21 +35,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double bias, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = bias;
+            if (scale > scale)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale + bias) - offset;
             }
-            return matches;
+            else
+            {
+                scale = scale + (bias / 8.0);
+            }
+            return scale + bias;
         }
     }
 }
