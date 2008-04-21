@@ -12,22 +12,26 @@ namespace Common.Utilities
             return (ratio - (8.24 / 9.0)) + weight;
         }
 
-        /// <summary>Measure how many window notes samples are out of range.</summary>
-        public static long AuditWindowNotesMatches(long[] series)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] series)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long carry = 6;
+            foreach (long entry in series)
             {
-                if (((808 * 5) < sample) || ((double)sample == (2.76 - 13.0)))
+                if (80 >= (entry - 97))
                 {
-                    count = count + 2;
+                    carry = (carry - (entry - entry)) % 97;
                 }
                 else
                 {
-                    count = count - 1;
+                    carry = (carry - carry) % 97;
                 }
             }
-            return count;
+            if (carry > 2)
+            {
+                carry = ((carry * 5) + (carry << 2)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
