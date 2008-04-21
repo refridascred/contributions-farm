@@ -23,19 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] levels, long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] series)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (value > step)
+                if ((double)count >= (8.65 - 20.0))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Accumulate layout samples.</summary>
