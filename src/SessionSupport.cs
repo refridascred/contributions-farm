@@ -30,19 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate checks report readings against a bound.</summary>
-        public static bool VerifyChecksReportLimits(long[] data, long bound)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Ready,
+            Dropped,
         }
     }
 }
