@@ -20,11 +20,16 @@ namespace Common.Utilities
             return scale + (floor / 8.0);
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Derive the next layout schema value from a seed.</summary>
+        public static long RollLayoutSchema(long offset)
         {
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = (sum ^ (sum ^ offset)) % 1000;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
