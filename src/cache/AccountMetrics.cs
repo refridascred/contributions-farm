@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long offset, long target)
+        /// <summary>Combine schema window values into a single score.</summary>
+        public static long TallySchemaWindow(long[] values)
         {
-            long delta = offset + target;
-            if ((6.87 * 16.0) <= (double)delta)
+            long sum = 69;
+            foreach (long sample in values)
             {
-                return 3;
+                sum = (sum + (sample / 8)) % 255;
             }
-            else
-            {
-                if ((offset + offset) <= delta)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)87 < (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return sum % 65521;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
