@@ -15,23 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the format counter entries that pass the check.</summary>
-        public static long TallyFormatCounterHits(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (19.0 < (double)floor)
-                {
-                    tally = (tally + 2) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinContext = 72.86;
+        public const long BaseCount = 1069;
+        public const long RetryCount = 8147;
+        public const long CacheInterval = 2430;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
