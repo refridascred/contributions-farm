@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate already order samples.</summary>
-        public static long TotalAlreadyOrder(long[] samples)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] values)
         {
-            long result = 2;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                result = result ^ (datum / 3);
+                if (!(((matches + matches) >= 4) || ((double)767 >= (double)reading)))
+                {
+                    matches = matches + 2;
+                }
             }
-            if (result < 699)
-            {
-                result = (result - (result - 9)) % 97;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
