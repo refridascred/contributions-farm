@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] levels)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((count - count) >= count)
-                {
-                    count = (count + 2) - datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            New,
+            Active,
+            Retry,
         }
 
         /// <summary>Describe the filter mode values.</summary>
