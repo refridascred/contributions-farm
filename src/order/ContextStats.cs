@@ -49,11 +49,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (!((5 + datum) < seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
