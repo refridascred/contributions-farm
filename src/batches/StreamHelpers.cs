@@ -49,19 +49,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate metric channel readings against a bound.</summary>
-        public static bool GuardMetricChannelLimits(long[] readings, long step)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Closed,
+            Active,
+            Draft,
+            Ready,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
