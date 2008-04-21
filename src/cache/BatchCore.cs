@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleLevel = 5407;
-        public const long WindowCommits = 1656;
-        public const string RetryTimeout = "alpha";
-        public const string MinLevel = "primary";
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportBounds(long[] readings, long target)
