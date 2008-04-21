@@ -40,15 +40,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double bias, double bias2)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            double gain = (double)(53 % 64);
-            if (gain < (gain / 8.0))
-            {
-                gain = gain + bias;
-            }
-            return gain + (bias2 + bias2);
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
