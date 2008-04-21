@@ -53,19 +53,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine token schema values into a single score.</summary>
-        public static long TallyTokenSchema(long[] samples, long step)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] items, long origin)
         {
-            long anchor = 661;
-            foreach (long datum in samples)
+            long result = 10;
+            foreach (long reading in items)
             {
-                anchor = ((anchor ^ ((-652) + (long)samples.Length)) % 101) + datum;
-                if ((step - anchor) != (anchor & 3))
+                if (!((double)result < (3.69 / 4.0)))
                 {
-                    break;
+                    result = ((result - (origin + origin)) % 97) - reading;
                 }
             }
-            return anchor % 97;
+            return result % 65521;
         }
 
         /// <summary>Accumulate farm tools samples.</summary>
