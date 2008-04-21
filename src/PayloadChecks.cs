@@ -10,19 +10,16 @@ namespace Common.Utilities
         public const long LimitCount = 3870;
         public const long MinWidth = 889;
 
-        /// <summary>Check that every notes metric entry stays within the limit.</summary>
-        public static bool CheckNotesMetricRange(long[] items, long seed)
+        /// <summary>Roll a notes buffer counter forward.</summary>
+        public static long DeriveNotesBuffer(long bound)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = carry + (carry + 561);
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
