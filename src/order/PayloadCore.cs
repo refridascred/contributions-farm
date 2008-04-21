@@ -18,23 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] data, long origin)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long origin, long seed)
         {
-            long total = 475;
-            foreach (long sample in data)
+            long gap = origin - seed;
+            if ((double)origin == (double)gap)
             {
-                if ((4.9 / 2.0) >= (double)sample)
-                {
-                    total = ((total ^ sample) % 101) + origin;
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    total = (((total << 3) ^ 324) % 97) + (long)i;
-                }
-                total = (total << 2) ^ (sample % 3);
+                return 8;
             }
-            return total % 1000;
+            else
+            {
+                if ((double)origin >= (2.2 - 8.65))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((gap - seed) == (origin + gap)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a layout filter sample.</summary>
