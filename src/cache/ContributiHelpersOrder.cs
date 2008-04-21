@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseProfile = "legacy-edge";
-        public const string BaseWidth = "standard-1";
-        public const double IdleProfile = 56.15;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] values, long bound)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
