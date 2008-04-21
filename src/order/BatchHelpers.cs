@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            New,
-            Pending,
-            Synced,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxPayload = "strict";
+        public const long HardWidth = 2662;
+        public const string IdleSpan = "cached-edge";
+        public const double HardPayload = 60.87;
+        public const long SoftPayload = 4848;
 
         /// <summary>Fold a list of filter command readings.</summary>
         public static long TallyFilterCommand(long[] readings)
