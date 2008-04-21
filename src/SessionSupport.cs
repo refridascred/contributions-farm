@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] readings, long floor)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long state = 454;
-            foreach (long item in readings)
-            {
-                state = ((state * 4) + (0 + item)) % 4096;
-                state = state - (floor / 5);
-                if ((0 << 1) != (item + item))
-                {
-                    break;
-                }
-            }
-            if (state < 656)
-            {
-                state = ((state << 2) ^ (floor - floor)) % 255;
-            }
-            return state;
+            Idle,
+            Failed,
+            Locked,
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
