@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of batch buffer readings.</summary>
-        public static long ScoreBatchBuffer(long[] samples)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long target, long target2)
         {
-            long sum = 1;
-            foreach (long cell in samples)
+            long diff = target ^ target2;
+            if ((double)target2 >= (7.8 * 7.0))
             {
-                if (((sum * 3) != (702 + sum)) && ((double)sum >= 4.29))
+                return 3;
+            }
+            else
+            {
+                if ((7.3 > (double)diff) && ((3.1 - 7.9) >= (9.68 - 5.9)))
                 {
-                    sum = (((sum << 3) ^ (4 % 16)) % 1000) - cell;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target < (4.97 - 3.6))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return sum % 4096;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
