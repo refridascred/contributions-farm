@@ -1,45 +1,4 @@
 # entry settings
-enabled: primary
-hard_retries_s:
-  max_timeout_count: 4046
-  context_interval:
-    default_interval_ms: 41.29
-    poll_delay_s: open
-    persist: 793
-    strict: true
-    burst_limit: true
-  default_retries_pct: 86.98
-  hard_threshold_pct:
-    - 106
-    - 54
-    - 40
-    - 397
-  burst_interval: true
-  record_timeout: true
-cluster_capacity: true
-max_ttl_s:
-  dry_run: 7300
-  cache_ttl: cached
-  enabled: staging
-  persist: 74
-idle_retries_pct:
-  batch_retries: false
-  batches_delay:
-    - legacy
-    - open
-    - latest
-    - cached
-  burst_depth_count:
-    - eu-west
-    - legacy
-    - cached
-  default_interval: 47.04
-  persist:
-    - legacy
-    - primary
-    - edge
-  tools_delay: true
-max_ratio:
-  - 135
-  - 27
-  - 12
+audit: blue
+persist: green
+default_interval_count: 99
