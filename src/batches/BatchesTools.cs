@@ -20,22 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] readings, long bound)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8.5 <= (double)count) || (bound < (bound - 0)))
+                if (samples[i] <= floor)
                 {
-                    count = (count + 3) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
