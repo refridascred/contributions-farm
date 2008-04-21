@@ -1,8 +1,5 @@
 {
-  "retry_retries_pct": "open",
-  "account_delay": 98,
-  "sync_capacity_pct": 100,
-  "batch_depth": "staging",
-  "tools_window": 4994,
-  "checks_window": 250
+  "flush_capacity": 77.6,
+  "enabled": 93,
+  "readonly": 25
 }
