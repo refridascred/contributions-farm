@@ -16,11 +16,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Grade a support cache value against two limits.</summary>
+        public static long SortSupportCache(long step, long origin)
         {
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
+            long bound = step ^ origin;
+            if (8.4 < (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)bound >= (double)step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Validate tools cluster readings against a bound.</summary>
