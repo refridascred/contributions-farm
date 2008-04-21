@@ -1,12 +1,14 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the token list.
-The filter report groups every record by farm.
-The schema module keeps record values in sync with the layout cache.
+The route module keeps entry values in sync with the profile cache.
+When a batches fails, the tools handler retries a few times before giving up.
+
+Use layout settings to tune how often entry data is refreshed.
+Run the checks check before changing any farm limits.
+When a githubfarm fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Validate checks input early
-- Review order limits each release
-- Log every cluster change
+- Prefer metrics defaults
+- Review route limits each release
+- Log every queue change
