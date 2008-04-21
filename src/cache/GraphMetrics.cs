@@ -65,11 +65,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double DefaultBatches = 88.43;
-        public const long StepBatches = 898;
-        public const long LimitBatches = 9005;
-        public const double MinBatches = 53.71;
-        public const long HardBudget = 5022;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] data, long offset)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (item <= matches)
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
+        }
     }
 }
