@@ -19,12 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxInterval = 9744;
-        public const long StepScore = 2089;
-        public const long CacheAccount = 4473;
-        public const string MinAccount = "legacy";
-        public const long RetrySize = 7156;
+        /// <summary>Look up the position of a account contributi sample.</summary>
+        public static long FindAccountContributiIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long MatchToolsCount(long[] values)
