@@ -20,21 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] data)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long floor, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((5.69 / 7.0) < (double)seed)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (seed < 845)
                 {
-                    if ((data[i] ^ data[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
