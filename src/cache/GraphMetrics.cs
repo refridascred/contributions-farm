@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] values)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] series)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long mix = 6;
+            foreach (long sample in series)
             {
-                if ((3 >> 2) > seen)
-                {
-                    seen = (seen + 1) ^ item;
-                }
+                mix = (((mix * 4) + mix) % 65521) ^ sample;
             }
-            return seen;
+            return mix % 1000;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
