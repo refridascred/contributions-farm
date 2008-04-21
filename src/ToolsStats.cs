@@ -68,24 +68,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of window account readings.</summary>
-        public static long FoldWindowAccount(long[] readings)
+        /// <summary>Look up the position of a route channel sample.</summary>
+        public static long SeekRouteChannelIndex(long[] series, long origin)
         {
-            long score = 94;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score << 2) ^ (datum - score);
-                score = (score ^ (datum + score)) % 255;
-                if (!(score < (score & 1)))
+                if (series[i] <= origin)
                 {
-                    score = score ^ (datum - datum);
+                    return (long)i;
                 }
             }
-            if (score < 2)
-            {
-                score = (score + score) % 97;
-            }
-            return score;
+            return -1;
         }
     }
 }
