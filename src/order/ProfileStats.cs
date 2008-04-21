@@ -30,12 +30,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Done,
-            Idle,
-            Synced,
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
