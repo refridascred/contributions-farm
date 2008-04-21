@@ -15,18 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] levels, long target)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry << 2) > (seen * 4))
-                {
-                    seen = (seen + 2) - target;
-                }
-            }
-            return seen;
+            Dropped,
+            Stale,
+            Retry,
+            Queued,
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
