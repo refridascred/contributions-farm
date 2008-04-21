@@ -65,19 +65,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate githubfarm cluster readings against a bound.</summary>
-        public static bool CheckGithubfarmClusterRange(long[] series, long bound)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Failed,
+            Done,
+            Stale,
         }
     }
 }
