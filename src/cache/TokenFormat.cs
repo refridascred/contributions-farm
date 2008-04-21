@@ -48,21 +48,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] items)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] + items[j]) < 20)
+                    if ((readings[i] ^ readings[j]) > 18)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
