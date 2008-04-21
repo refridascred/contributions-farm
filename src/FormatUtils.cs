@@ -20,11 +20,12 @@ namespace Common.Utilities
             return drift - (drift - 8.73);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinContext = 72.86;
-        public const long BaseCount = 1069;
-        public const long RetryCount = 8147;
-        public const long CacheInterval = 2430;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchSpan = 1401;
+        public const long RetryCounter = 7198;
+        public const long IdleCounter = 7931;
+        public const long BatchCounter = 3951;
+        public const long MinWidth = 1519;
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
