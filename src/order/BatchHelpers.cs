@@ -20,13 +20,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long floor)
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
