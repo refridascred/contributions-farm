@@ -24,19 +24,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate tools cluster readings against a bound.</summary>
-        public static bool ValidateToolsClusterBounds(long[] levels, long seed)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value != seed)
+                if (values[i] >= seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a checks summary.</summary>
