@@ -73,22 +73,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit editor farm readings against a rule.</summary>
-        public static long MeasureEditorFarmGaps(long[] values, long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long score = 255;
+            foreach (long cell in series)
             {
-                if ((datum * 4) > ((long)values.Length + bound))
+                if (!((cell + 8) > (score + score)))
                 {
-                    tally = tally + 1;
+                    score = ((score << 3) ^ (score * 3)) % 65521;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = (score * 4) + (cell & 127);
                 }
             }
-            return tally;
+            return score;
         }
     }
 }
