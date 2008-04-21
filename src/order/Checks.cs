@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] levels, long floor)
+        /// <summary>Rank metrics counter input into a small class.</summary>
+        public static long GradeMetricsCounter(long step, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((step / 9) < (step & 63)) || (step <= offset))
             {
-                if (levels[i] <= floor)
+                return 4;
+            }
+            else
+            {
+                if (((1.8 * 5.27) != (double)step) && (0.49 < (double)step))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (offset < (offset & 63))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
