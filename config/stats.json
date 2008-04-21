@@ -1,5 +1,12 @@
 {
-  "min_limit": "local",
-  "base_depth_count": "legacy",
-  "filter_depth": 91.14
+  "max_interval_pct": false,
+  "verbose": 4,
+  "flush_capacity_pct": {
+    "checks_capacity": 60,
+    "flush_size": 66.4,
+    "soft_ttl_s": false,
+    "poll_interval_pct": "green",
+    "schema_limit": "edge"
+  },
+  "farm_depth": 13
 }
