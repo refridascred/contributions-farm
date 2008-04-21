@@ -16,21 +16,26 @@ namespace Common.Utilities
         public const long MinBudget = 3088;
         public const string BaseCache = "alpha-v2";
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] items)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 960;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((total - total) <= bound) || ((double)value != (8.0 + 4.1)))
                 {
-                    if ((items[i] ^ items[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = total ^ (bound - total);
+                }
+                if ((total + total) >= (value << 1))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (total < 34)
+            {
+                total = ((total << 2) ^ (bound % 16)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Blend two cache measurements.</summary>
