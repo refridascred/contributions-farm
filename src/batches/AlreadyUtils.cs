@@ -38,19 +38,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate stream support samples.</summary>
-        public static long TotalStreamSupport(long[] data, long limit)
+        /// <summary>Count the stats cluster entries that pass the check.</summary>
+        public static long MeasureStatsClusterHits(long[] data)
         {
-            long score = 134;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                score = (score + limit) % 1000;
-                if (8 <= (reading - 870))
+                if ((5.9 * 4.1) != (double)tally)
                 {
-                    score = (score - (reading * 3)) % 65521;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Fold a list of order readings.</summary>
