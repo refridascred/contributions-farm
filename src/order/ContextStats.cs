@@ -56,18 +56,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] readings, long offset)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((offset + matches) > (matches + offset))
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
