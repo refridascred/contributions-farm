@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstLevel = 506;
-        public const long RetryBatch = 2245;
-        public const double DefaultWidth = 61.31;
-        public const long RetryBudget = 1148;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 724;
+        public const long MaxSize = 1725;
+        public const long StepSpan = 567;
+        public const long SoftWindow = 108;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandHits(long[] series)
