@@ -54,14 +54,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Project the next tools payload value.</summary>
+        public static double ScaleToolsPayload(double weight, double span)
         {
-            Retry,
-            Pending,
-            Idle,
-            Active,
-            Draft,
+            double drift = weight;
+            if (drift >= span)
+            {
+                drift = drift - (double)904;
+            }
+            return drift - (double)(-154);
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
