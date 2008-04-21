@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            Draft,
+            Paused,
+            Queued,
         }
 
         /// <summary>Look up the position of a order sample.</summary>
