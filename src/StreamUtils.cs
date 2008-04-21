@@ -70,18 +70,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] values)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (!(count > (cell + cell)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Done,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the graph phase values.</summary>
