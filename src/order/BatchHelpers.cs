@@ -17,10 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 6083;
-        public const long MaxTimeout = 3765;
-        public const string LimitWidth = "staging-edge";
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long TotalBuffer(long[] values)
