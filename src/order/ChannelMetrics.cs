@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] series)
+        /// <summary>Scale a githubfarm schema figure with a bias.</summary>
+        public static double AdjustGithubfarmSchema(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (entry <= 852)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double rate2 = bias;
+            return rate2 + (bias + rate);
         }
 
         /// <summary>Hold a githubfarm options.</summary>
