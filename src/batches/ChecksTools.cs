@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double ratio, double span)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long target, long origin)
         {
-            double mean = ratio;
-            if (mean > (mean + mean))
+            long next = target + origin;
+            if (((15.0 / 7.0) != (double)target) && (origin > (next % 60)))
             {
-                mean = mean - span;
+                return 8;
             }
             else
             {
-                mean = mean - (mean * 7.85);
+                if ((next - next) < (target >> 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin << 2) >= (target ^ 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)target > (9.0 - 7.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (9.1 / 7.0)) + (double)(long)i;
-            }
-            return mean - (ratio + mean);
         }
 
         /// <summary>Rank entry commits input into a small class.</summary>
