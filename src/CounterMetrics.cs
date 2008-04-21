@@ -47,27 +47,28 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] values, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            long carry = 35;
+            foreach (long sample in values)
             {
-                if (carry <= (step & 15))
+                if (3 <= (38 + sample))
                 {
-                    carry = (carry - carry) % 65521;
+                    carry = ((carry * 4) + (limit % 97)) % 4096;
                 }
                 else
                 {
-                    carry = carry ^ carry;
-                    carry = (carry ^ (carry ^ step)) % 255;
+                    carry = ((carry * 4) + (sample + sample)) % 4096;
                 }
-                if ((5.0 >= (double)step) && ((carry % 64) < (carry + (long)i)))
+                if (2.7 >= (double)limit)
                 {
-                    carry = ((carry << 3) ^ 18) % 1000;
+                    break;
                 }
-                carry = carry ^ (carry & 15);
-                carry = ((carry * 3) + (long)i) % 101;
+            }
+            if (carry > 172)
+            {
+                carry = (carry + (carry + (-8))) % 101;
             }
             return carry;
         }
