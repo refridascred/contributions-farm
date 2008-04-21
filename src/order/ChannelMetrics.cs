@@ -23,13 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public double Mode { get; set; }
-            public string Count { get; set; } = "";
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
