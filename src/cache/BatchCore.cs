@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double ratio, double offset)
         {
-            Dropped,
-            Ready,
-            Queued,
+            double load = (double)0 / 9.0;
+            if (load <= (0.9 - ratio))
+            {
+                load = (load - (double)9) + offset;
+            }
+            else
+            {
+                load = load + (ratio + 6.25);
+            }
+            return load - (double)55;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
