@@ -14,38 +14,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long origin, long target)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            if ((double)target >= (8.22 / 5.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (target > origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((0 ^ origin) >= (target ^ origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)target > (3.0 * 9.27))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Rank stats cluster input into a small class.</summary>
