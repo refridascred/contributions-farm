@@ -54,18 +54,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many context stats samples are out of range.</summary>
-        public static long CountContextStatsGaps(long[] series, long step)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((606 >> 1) != (seen >> 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = ((seen + 2) + reading) + step;
+                    if ((data[i] - data[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many tools farm samples are out of range.</summary>
