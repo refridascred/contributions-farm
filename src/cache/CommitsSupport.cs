@@ -34,31 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long step, long limit)
+        /// <summary>Compare every pair of order stream readings.</summary>
+        public static long OverlapOrderStreamCount(long[] values)
         {
-            if ((limit * 2) != (step % 24))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit + limit) > limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step >> 3) < (959 * 3))
+                    if ((values[i] + values[j]) < 3)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a counter entry.</summary>
