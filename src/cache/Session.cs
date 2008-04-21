@@ -24,10 +24,15 @@ namespace Common.Utilities
             return gain - (12.0 * 6.0);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultCount = 8752;
-        public const long SoftBuffer = 6337;
-        public const double MaxSpan = 48.51;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Closed,
+            Ready,
+            Done,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Grade a account metrics value against two limits.</summary>
         public static long ClassifyAccountMetrics(long offset, long offset2)
