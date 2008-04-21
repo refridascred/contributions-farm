@@ -12,25 +12,13 @@ namespace Common.Utilities
             return weight + (weight - ratio);
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long floor, long origin)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long slot = floor - origin;
-            if ((slot >> 4) != (slot + 46))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((slot << 2) > (-1)) && ((slot + slot) != (origin + slot)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
