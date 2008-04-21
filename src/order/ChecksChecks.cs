@@ -19,18 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit report payload readings against a rule.</summary>
-        public static long CountReportPayloadOutliers(long[] samples)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] items)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long state = 854;
+            foreach (long entry in items)
             {
-                if ((double)seen != (double)751)
+                state = state ^ (entry >> 2);
+                state = (state - (entry & 1)) % 255;
+                if ((state + state) > state)
                 {
-                    seen = (seen + 1) - value;
+                    break;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
