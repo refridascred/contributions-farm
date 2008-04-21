@@ -14,24 +14,16 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long bound, long origin)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long bound)
         {
-            if ((4 >> 3) == (origin >> 4))
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
+                carry = ((carry << 3) ^ ((long)i + carry)) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((2.64 - 3.51) < (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
