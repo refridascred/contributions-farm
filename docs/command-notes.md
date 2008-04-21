@@ -1,15 +1,12 @@
 # Command notes
 
-The stats report groups every batch by route.
-Keep context and contributi names short and lowercase.
-Keep channel and checks names short and lowercase.
-
-Keep cluster and window names short and lowercase.
-Run the stream check before changing any editor limits.
-The metric report groups every entry by checks.
+Each metric is validated before it reaches the stats queue.
+Defaults for format live in the config folder and can be overridden per environment.
+Use checks settings to tune how often profile data is refreshed.
 
 ## Guidelines
 
-- Keep batches values small
-- Validate checks input early
-- Prefer tools defaults
+- Review queue limits each release
+- Log every cluster change
+- Keep window values small
+- Document new account fields
