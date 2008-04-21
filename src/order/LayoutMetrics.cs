@@ -19,10 +19,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultEditor = "primary";
-        public const string BurstSize = "cached-1";
-        public const long BaseLevel = 223;
-        public const double BaseCount = 48.53;
+        /// <summary>Find the first account profile entry that matches the target.</summary>
+        public static long LookupAccountProfileIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
