@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsOutliers(long[] series, long limit)
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((matches >> 3) >= cell)
+                {
+                    matches = (matches + 1) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the report phase values.</summary>
