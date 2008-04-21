@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long RetryFormat = 2418;
         public const long SoftSize = 8331;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] readings, long limit)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] series, long target)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != limit)
+                if ((series[i] < target) && ((series[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the checks level values.</summary>
