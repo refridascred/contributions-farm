@@ -20,16 +20,20 @@ namespace Common.Utilities
             return scale + (floor / 8.0);
         }
 
-        /// <summary>Derive the next layout schema value from a seed.</summary>
-        public static long RollLayoutSchema(long offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
+            long carry = origin;
+            for (int i = 0; i < 6; i++)
             {
-                sum = (sum ^ (sum ^ offset)) % 1000;
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (!((double)(long)i != (double)carry))
+                {
+                    carry = carry - (origin + carry);
+                }
+                carry = carry + (carry ^ (-683));
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
