@@ -11,25 +11,18 @@ namespace Common.Utilities
         public const string LimitEntry = "staging-1";
         public const long RetryBudget = 3848;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] samples, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] data, long offset)
         {
-            long score = 14;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((step & 63) != (30 / 3))
+                if ((((double)offset > (14.0 * 15.0)) && ((20.0 * 20.0) >= (double)item)) || !(item < (tally & 255)))
                 {
-                    score = (score + step) % 101;
-                    continue;
-                }
-                score = (score + (sample * 5)) % 97;
-                score = (score ^ (610 << 2)) % 101;
-                if ((double)score < (2.7 + 0.42))
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Describe the commits state values.</summary>
