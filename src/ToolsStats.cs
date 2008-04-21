@@ -62,21 +62,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] data)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long origin, long origin2)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long edge = origin - origin2;
+            if (!((origin2 + edge) <= (origin - origin)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((edge - origin) < origin)
                 {
-                    if ((data[i] + data[j]) < 20)
+                    return 6;
+                }
+                else
+                {
+                    if (((double)edge > 2.85) && ((double)origin2 <= (7.11 * 14.0)))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin2 % 60) < edge)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a route channel sample.</summary>
