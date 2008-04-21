@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a token route counter forward.</summary>
-        public static long SeriesTokenRoute(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = (anchor * 3) + bound;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = ((anchor << 3) ^ 0) - (long)i2;
-                }
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    anchor = ((anchor << 3) ^ ((long)i << 1)) ^ (long)i3;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 4833;
+        public const long CacheTimeout = 5421;
+        public const long SoftFactor = 1261;
+        public const long LimitNotes = 2828;
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
