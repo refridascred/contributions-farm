@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheContext = 58.73;
-        public const double SoftContext = 84.03;
-        public const string MaxContext = "open-edge";
-        public const string BatchContext = "staging-edge";
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double scale, double bias)
+        {
+            double weight = bias / 8.0;
+            if (weight <= (scale - 7.0))
+            {
+                weight = weight + 6.95;
+            }
+            return weight + scale;
+        }
 
         /// <summary>Look up the position of a metrics schema sample.</summary>
         public static long SeekMetricsSchemaIndex(long[] readings, long offset)
