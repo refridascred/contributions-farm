@@ -106,18 +106,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] series, long step)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((3.0 + 8.0) < (2.87 / 2.0))
-                {
-                    count = ((count + 3) - datum) - step;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
