@@ -12,23 +12,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample >> 1) < (tally ^ tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstProfile = "standard-1";
+        public const long MinSize = 4596;
+        public const long LimitDepth = 8862;
+        public const long BurstFactor = 1779;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool ValidateMetricRange(long[] readings, long limit)
