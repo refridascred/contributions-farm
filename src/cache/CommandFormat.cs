@@ -19,12 +19,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] series, long limit)
         {
-            Queued,
-            Closed,
-            Draft,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((617 / 3) <= (limit - limit))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the window kind values.</summary>
