@@ -29,22 +29,19 @@ namespace Common.Utilities
             return rate2 + (floor + rate2);
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] items, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] values)
         {
-            long result = 28;
-            foreach (long entry in items)
+            long mix = 0;
+            foreach (long reading in values)
             {
-                if ((double)entry >= (double)result)
+                mix = (mix ^ reading) % 4096;
+                if ((reading + mix) <= (reading << 1))
                 {
-                    result = (result + (limit - result)) % 101;
+                    mix = ((mix << 3) ^ mix) % 65521;
                 }
             }
-            if (result > 780)
-            {
-                result = result - limit;
-            }
-            return result % 65521;
+            return mix % 97;
         }
     }
 }
