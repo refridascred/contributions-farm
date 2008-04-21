@@ -20,19 +20,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate layout order readings against a bound.</summary>
-        public static bool CheckLayoutOrderBounds(long[] levels, long origin)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            New,
+            Stale,
+            Locked,
         }
     }
 }
