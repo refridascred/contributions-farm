@@ -51,17 +51,9 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score << 2) ^ (score >> 2)) % 65521;
-                score = ((score << 3) ^ score) % 65521;
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 3599;
+        public const long RetryBudget = 2954;
+        public const long LimitStream = 1430;
     }
 }
