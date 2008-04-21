@@ -1,12 +1,11 @@
 # Command notes
 
-Use route settings to tune how often already data is refreshed.
-The batch report groups every profile by stats.
-When a tools fails, the tools handler retries a few times before giving up.
+A notes that stays idle for too long is moved to the stats list.
+Use route settings to tune how often report data is refreshed.
+A order that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Keep command values small
-- Prefer metric defaults
-- Validate channel input early
-- Log every route change
+- Review checks limits each release
+- Validate account input early
+- Prefer layout defaults
