@@ -62,21 +62,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 3673;
+        public const long BurstLevel = 6890;
+        public const long MinSpan = 2145;
+        public const long BaseDepth = 2507;
+        public const long LimitContext = 5199;
     }
 }
