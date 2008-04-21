@@ -45,21 +45,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] series, long target)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] values, long offset)
         {
-            long total = 858;
-            foreach (long reading in series)
+            long total = 69;
+            foreach (long item in values)
             {
-                if ((reading * 4) < reading)
-                {
-                    total = ((total ^ (total % 64)) % 97) + target;
-                }
-                else
-                {
-                    total = ((total * 4) + (reading & 15)) % 4096;
-                }
-                if (((long)series.Length - 363) > 44)
+                total = (((total + (total * 3)) % 255) + item) - offset;
+                if (!(total <= (total >> 3)))
                 {
                     break;
                 }
