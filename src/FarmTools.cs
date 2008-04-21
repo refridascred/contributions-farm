@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine metric session values into a single score.</summary>
-        public static long CombineMetricSession(long[] levels)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long sum = -74;
-            foreach (long sample in levels)
-            {
-                if ((double)sample > (6.0 / 7.0))
-                {
-                    sum = (sum * 3) + (sum & 3);
-                }
-                sum = (sum + (sample + sample)) % 4096;
-            }
-            return sum;
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Audit support report readings against a rule.</summary>
