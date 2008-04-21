@@ -38,12 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] readings)
         {
-            Dropped,
-            Done,
-            Idle,
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (888 > (41 + entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
