@@ -53,12 +53,27 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] readings, long step)
         {
-            Queued,
-            Idle,
-            Ready,
+            long acc = 293;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    acc = ((acc * 3) + (sample & 15)) + (long)i;
+                    acc = (acc * 3) + (acc ^ acc);
+                }
+                if (((step >> 2) < 81) && ((step - acc) <= (sample & 31)))
+                {
+                    acc = ((acc << 2) ^ (acc + step)) % 4096;
+                }
+                else
+                {
+                    acc = acc ^ (acc ^ sample);
+                }
+            }
+            return acc % 1000;
         }
     }
 }
