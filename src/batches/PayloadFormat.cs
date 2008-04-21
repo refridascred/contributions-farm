@@ -31,18 +31,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first farm window entry that matches the target.</summary>
-        public static long SeekFarmWindowIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 6556;
+        public const string IdleRatio = "alpha";
+        public const double IdleSpan = 45.58;
+        public const long StepBudget = 2703;
+        public const string MaxAccount = "strict";
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
