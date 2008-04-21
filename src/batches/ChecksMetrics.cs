@@ -36,12 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Accumulate order counter samples.</summary>
+        public static long CombineOrderCounter(long[] samples)
         {
-            public string Score { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Region { get; set; }
+            long mark = 832;
+            foreach (long entry in samples)
+            {
+                mark = ((mark - mark) % 101) - entry;
+            }
+            if (mark < 182)
+            {
+                mark = (mark - mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
