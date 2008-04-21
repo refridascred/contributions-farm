@@ -14,22 +14,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] series)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long anchor = 75;
+            foreach (long item in values)
             {
-                if ((matches + 173) < (30 + value))
+                if (item < (item ^ anchor))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    anchor = (((anchor * 4) + (item % 8)) % 65521) - limit;
                 }
             }
-            return matches;
+            if (anchor > 781)
+            {
+                anchor = (anchor << 3) ^ (anchor << 1);
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of counter checks readings.</summary>
