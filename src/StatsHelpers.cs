@@ -79,18 +79,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] levels, long target)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long limit)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (0 < target)
+                if (anchor >= (long)i)
                 {
-                    count = (count + 1) - sample;
+                    anchor = (anchor ^ (anchor & 15)) % 101;
                 }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
     }
 }
