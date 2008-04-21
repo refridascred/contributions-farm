@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] values)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long bound)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long score = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((seen + seen) != (value << 3))
-                {
-                    seen = seen + 2;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Match up report samples.</summary>
