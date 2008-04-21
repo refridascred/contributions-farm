@@ -23,13 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            Active,
-            Dropped,
-            Queued,
-            Idle,
+            Retry,
+            Draft,
+            Synced,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
