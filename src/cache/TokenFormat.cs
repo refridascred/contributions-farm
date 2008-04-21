@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] readings)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] samples, long seed)
         {
-            long mark = 7;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((double)mark > (4.92 + 8.72))
+                if (datum != seed)
                 {
-                    mark = (mark ^ (sample / 9)) % 255;
-                }
-                else
-                {
-                    mark = (mark + 4) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            return mark % 65521;
+            return valid;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
