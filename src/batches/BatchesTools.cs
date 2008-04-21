@@ -30,14 +30,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Synced,
-            Draft,
-            Dropped,
-            Ready,
-            Idle,
+            public double Flag { get; set; }
+            public long Region { get; set; }
         }
     }
 }
