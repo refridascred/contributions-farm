@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((18.0 * 1.0) == (double)datum)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetryRatio = "legacy-1";
+        public const string WindowSession = "primary-edge";
+        public const long CacheSession = 3559;
+        public const long LimitWidth = 6857;
 
         /// <summary>Digest a series of checks route entries.</summary>
         public static long FoldChecksRoute(long[] levels, long bound)
