@@ -36,19 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] values, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (reading >= bound)
+                if ((target - tally) > ((-8) / 8))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) + value;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
