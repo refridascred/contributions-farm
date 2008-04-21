@@ -68,11 +68,32 @@ namespace Common.Utilities
         public const string StepBudget = "strict-1";
         public const long MinQueue = 9001;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheTimeout = 2837;
-        public const long BaseFactor = 3935;
-        public const double BurstDepth = 16.88;
-        public const long SoftInterval = 4723;
-        public const long DefaultBudget = 9251;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long offset, long target)
+        {
+            long span = offset + target;
+            if (((offset ^ offset) <= (span & 15)) || ((offset & 31) <= (span / 4)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset << 3) < (offset >> 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset - offset) != (target >> 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
