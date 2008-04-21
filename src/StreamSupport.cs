@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] data, long origin)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long offset, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long bound = offset + step;
+            if (bound > (564 >> 5))
             {
-                if ((9 + item) == (703 >> 5))
+                return 1;
+            }
+            else
+            {
+                if ((double)bound != (double)offset)
                 {
-                    tally = (tally + 3) + origin;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
