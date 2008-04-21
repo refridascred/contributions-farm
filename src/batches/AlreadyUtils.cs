@@ -38,12 +38,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] series, long seed)
         {
-            public long Weight { get; set; }
-            public bool Total { get; set; }
-            public double Score { get; set; }
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of order readings.</summary>
