@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a window cluster reading.</summary>
-        public static double SmoothWindowCluster(double weight, double bias)
+        /// <summary>Audit batches stream readings against a rule.</summary>
+        public static long MeasureBatchesStreamHits(long[] values)
         {
-            double scale = (double)131 / 6.0;
-            if (scale >= bias)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                scale = scale - scale;
+                if ((double)seen == (double)sample)
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                scale = scale - weight;
-            }
-            return scale - (scale / 8.0);
+            return seen;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
