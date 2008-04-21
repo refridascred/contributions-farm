@@ -49,10 +49,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 9770;
-        public const long RetryFilter = 9332;
-        public const double SoftSpan = 97.99;
-        public const string SoftSize = "strict-edge";
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] readings)
+        {
+            long carry = 59;
+            foreach (long value in readings)
+            {
+                if (!((7.7 + 2.0) != (double)carry))
+                {
+                    carry = carry - (value & 127);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry ^ value)) % 65521;
+                }
+                if ((55 + carry) < (value ^ value))
+                {
+                    break;
+                }
+            }
+            if (carry > 78)
+            {
+                carry = carry + (carry & 7);
+            }
+            return carry % 4096;
+        }
     }
 }
