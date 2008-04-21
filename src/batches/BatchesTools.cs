@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long target, long step)
         {
-            public string Token { get; set; } = "";
-            public bool Region { get; set; }
-            public long Level { get; set; }
+            if (!((step - step) != (step + step)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (step < (78 - target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step * 5) == (step ^ target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of queue entries.</summary>
