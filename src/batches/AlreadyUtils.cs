@@ -39,19 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] samples, long seed)
+        /// <summary>Accumulate command order samples.</summary>
+        public static long TotalCommandOrder(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long state = 150;
+            foreach (long entry in readings)
             {
-                if (datum != seed)
-                {
-                    found = false;
-                    break;
-                }
+                state = (((state << 2) ^ (offset >> 1)) % 4096) - entry;
+                state = (state + 407) % 1000;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Validate profile githubfarm readings against a bound.</summary>
