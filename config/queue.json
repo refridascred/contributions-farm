@@ -1,7 +1,7 @@
 {
-  "payload_depth": "blue",
-  "base_window_pct": 1024,
-  "batch_ratio_s": [185, 60, 76, 282],
-  "batch_delay_ms": "primary",
-  "default_interval_s": [308, 30]
+  "retry_size_count": ["blue", "eu-west", "green", "open"],
+  "poll_interval": false,
+  "poll_ttl_pct": 500,
+  "readonly": "green",
+  "contributi_limit": 1024
 }
