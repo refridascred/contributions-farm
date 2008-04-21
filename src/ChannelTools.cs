@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 1379;
-        public const string LimitRoute = "stable-1";
-        public const double BaseSize = 60.9;
+        /// <summary>Iterate the queue channel series from a seed.</summary>
+        public static long StepQueueChannel(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!((origin ^ origin) != ((long)i + origin)))
+                {
+                    score = (score + ((long)i % 8)) % 65521;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
