@@ -42,12 +42,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Digest a series of filter contributi entries.</summary>
+        public static long WeighFilterContributi(long[] levels)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public bool Label { get; set; }
+            long total = 2;
+            foreach (long entry in levels)
+            {
+                if ((370 <= (entry << 1)) && ((double)total < (3.0 / 4.0)))
+                {
+                    total = ((total << 2) ^ (entry + 800)) % 101;
+                }
+            }
+            return total;
         }
     }
 }
