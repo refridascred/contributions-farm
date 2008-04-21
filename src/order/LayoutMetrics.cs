@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
-            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
