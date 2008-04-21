@@ -20,22 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] data)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] readings, long limit)
         {
-            long score = 78;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((3 / 3) > value)
+                if (!((limit << 1) > (81 + limit)) || (((double)sample <= (6.0 + 8.77)) || (sample > (limit & 3))))
                 {
-                    score = score - value;
-                }
-                else
-                {
-                    score = (score + (score + score)) % 101;
+                    matches = matches + 1;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a order options.</summary>
