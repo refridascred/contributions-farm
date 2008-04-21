@@ -20,19 +20,18 @@ namespace Common.Utilities
         public const double RetryDepth = 48.63;
         public const long BaseFactor = 5583;
 
-        /// <summary>Fold a list of graph stream readings.</summary>
-        public static long WeighGraphStream(long[] samples)
+        /// <summary>Count the entry githubfarm entries that pass the check.</summary>
+        public static long CountEntryGithubfarmHits(long[] data, long origin)
         {
-            long anchor = -45;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 6; i++)
+                if (184 >= (seen + seen))
                 {
-                    anchor = ((anchor + anchor) % 101) - (long)i;
+                    seen = ((seen + 3) - datum) - origin;
                 }
-                anchor = anchor - value;
             }
-            return anchor;
+            return seen;
         }
     }
 }
