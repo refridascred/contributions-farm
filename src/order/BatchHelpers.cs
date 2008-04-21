@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] data, long origin)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double bias, double offset)
         {
-            long total = 434;
-            foreach (long sample in data)
+            double scale = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((total - total) < (origin * 5))
-                {
-                    total = (((total * 5) + ((long)data.Length / 5)) % 101) - sample;
-                }
+                scale = (scale + (offset + bias)) - (double)(long)i;
             }
-            return total;
+            return scale - (offset - offset);
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
