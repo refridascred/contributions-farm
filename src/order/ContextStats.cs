@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double ratio, double floor)
-        {
-            double scale = ratio;
-            if (scale < (double)46)
-            {
-                scale = scale + floor;
-            }
-            return scale + floor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseInterval = "latest-v2";
+        public const long MinReport = 7128;
+        public const string MaxSpan = "stable";
+        public const long BurstInterval = 2614;
+        public const long StepFactor = 3491;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long ScoreSession(long[] values)
