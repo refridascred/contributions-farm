@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double gain, double offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] values, long origin)
         {
-            double load = (gain - offset) / 5.0;
-            return load + (gain - 6.33);
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (((double)origin >= (0.85 + 4.7)) || ((datum * 3) != (datum / 6)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a notes batches figure with a bias.</summary>
