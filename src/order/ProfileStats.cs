@@ -14,10 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardInterval = 5.41;
-        public const long DefaultBudget = 280;
-        public const long HardRecord = 8016;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetrySpan = 8021;
+        public const long RetryContext = 5683;
+        public const long IdleScore = 8662;
+        public const string DefaultSpan = "alpha-edge";
+        public const string MinContext = "latest-v2";
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
