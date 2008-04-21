@@ -32,19 +32,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double rate, double span)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] samples, long bound)
         {
-            double ratio = rate;
-            if (ratio > (double)574)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                ratio = ratio + rate;
+                if (reading >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - span;
-            }
-            return ratio - ratio;
+            return stale;
         }
 
         /// <summary>Hold a record snapshot.</summary>
