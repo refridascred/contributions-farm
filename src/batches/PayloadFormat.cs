@@ -32,19 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] readings, long seed)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Dropped,
+            Queued,
+            Idle,
         }
 
         /// <summary>Look up the position of a channel payload sample.</summary>
