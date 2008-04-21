@@ -31,22 +31,39 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] levels)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long target, long target2)
         {
-            long mix = 0;
-            foreach (long value in levels)
+            long span = target ^ target2;
+            if ((target2 >> 1) > 210)
             {
-                if (((mix + 86) < (value / 7)) && ((17.0 * 8.0) >= (double)mix))
+                return 6;
+            }
+            else
+            {
+                if (!((double)target2 <= 2.4))
                 {
-                    mix = (mix ^ (mix * 3)) % 97;
+                    return 2;
                 }
                 else
                 {
-                    mix = (mix ^ 22) % 1000;
+                    if ((target ^ span) > (target2 + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((4.96 * 10.0) < (double)span))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mix;
         }
     }
 }
