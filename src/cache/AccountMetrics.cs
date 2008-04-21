@@ -61,12 +61,23 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 1038;
-        public const long DefaultDepth = 2655;
-        public const double MinDepth = 20.11;
-        public const string StepBudget = "strict-1";
-        public const long MinQueue = 9001;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)item >= (double)5)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
