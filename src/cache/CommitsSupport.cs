@@ -55,21 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] levels)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seen ^ (long)series.Length) <= (datum + seen))
                 {
-                    if ((levels[i] + levels[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
