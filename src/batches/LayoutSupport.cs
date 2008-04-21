@@ -40,25 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long floor, long limit)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long origin)
         {
-            long edge = floor + limit;
-            if ((edge + floor) >= (2 << 3))
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((limit + edge) < 7) || ((double)floor > (12.0 / 7.0)))
+                if ((origin - origin) != (long)i)
                 {
-                    return 1;
+                    acc = (acc + (origin - (long)i)) % 97;
                 }
-                else
-                {
-                    return 4;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
+            return acc;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
