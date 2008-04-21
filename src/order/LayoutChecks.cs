@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] data, long target)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long limit, long target)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if (((target + target) >= limit) || ((49 % 100) < (limit << 1)))
             {
-                if (hits <= item)
+                return 4;
+            }
+            else
+            {
+                if (((target * 2) > (79 % 24)) && (target > (limit << 3)))
                 {
-                    hits = (hits + 3) + target;
+                    return 6;
+                }
+                else
+                {
+                    if (((9.9 * 2.44) == (double)limit) || ((target ^ 22) > (target - 866)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (target <= limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
