@@ -47,10 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 5273;
-        public const long RetryPayload = 5217;
-        public const double CacheBudget = 8.34;
-        public const long CacheCount = 1437;
+        /// <summary>Count the channel order entries that pass the check.</summary>
+        public static long TallyChannelOrderOutliers(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((seen >> 1) <= seen)
+                {
+                    seen = ((seen + 1) ^ item) - limit;
+                }
+            }
+            return seen;
+        }
     }
 }
