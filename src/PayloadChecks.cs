@@ -31,22 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of format githubfarm readings.</summary>
-        public static long TallyFormatGithubfarm(long[] series, long limit)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double bias, double span)
         {
-            long acc = -92;
-            foreach (long cell in series)
+            double drift = (double)(8 * 2);
+            for (int i = 0; i < 6; i++)
             {
-                if (((3 << 3) <= cell) && (((long)series.Length >> 5) > acc))
-                {
-                    acc = ((acc * 4) + (cell >> 4)) + limit;
-                }
+                drift = ((drift + 10.0) - (double)(long)i) - span;
             }
-            if (acc > 29)
-            {
-                acc = (acc ^ (acc & 63)) % 4096;
-            }
-            return acc;
+            return drift + (bias + drift);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
