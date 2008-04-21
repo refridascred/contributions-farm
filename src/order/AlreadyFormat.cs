@@ -65,15 +65,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a profile editor figure with a bias.</summary>
-        public static double ScaleProfileEditor(double weight, double bias)
+        /// <summary>Combine batch queue values into a single score.</summary>
+        public static long DigestBatchQueue(long[] series)
         {
-            double drift = (weight + 18.0) - 2.7;
-            for (int i = 0; i < 3; i++)
+            long state = 41;
+            foreach (long datum in series)
             {
-                drift = ((drift - 13.0) + (double)(long)i) + bias;
+                if ((state - state) > (state >> 5))
+                {
+                    state = (((state * 3) + 526) % 255) ^ datum;
+                }
+                else
+                {
+                    state = state ^ state;
+                }
+                state = state + (state << 3);
             }
-            return drift - (double)166;
+            return state;
         }
     }
 }
