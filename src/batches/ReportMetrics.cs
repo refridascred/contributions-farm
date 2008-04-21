@@ -13,21 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] values)
+        /// <summary>Digest a series of cache session entries.</summary>
+        public static long DigestCacheSession(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = (result ^ (result & 1)) % 97;
+                if ((entry << 3) > (result * 4))
                 {
-                    if ((values[i] - values[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result * 2) + entry) % 1000;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
