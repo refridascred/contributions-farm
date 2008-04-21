@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of githubfarm report entries.</summary>
-        public static long FoldGithubfarmReport(long[] values, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] items)
         {
-            long total = 77;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (((7.77 / 8.0) < (double)total) && ((4 + total) == (cell - cell)))
+                if ((matches * 3) < (entry & 127))
                 {
-                    break;
+                    matches = matches + 2;
                 }
-                if ((cell << 3) <= (cell - 8))
+                else
                 {
-                    total = ((total << 2) ^ (offset & 255)) % 4096;
+                    matches = matches - 1;
                 }
             }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
