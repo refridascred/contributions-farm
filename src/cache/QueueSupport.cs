@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleSpan = 5774;
-        public const long MaxWidth = 8051;
-        public const long SoftFormat = 6896;
-        public const long RetryFormat = 2418;
-        public const long SoftSize = 8331;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long WeighMetric(long[] values, long bound)
