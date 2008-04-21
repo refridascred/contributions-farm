@@ -53,21 +53,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] data)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample <= offset)
                 {
-                    if ((data[i] - data[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Measure how many tools farm samples are out of range.</summary>
