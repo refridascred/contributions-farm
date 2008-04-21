@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double gain, double floor)
         {
-            New,
-            Active,
-            Locked,
-            Failed,
-            Dropped,
+            double rate = (double)0 - (floor - 7.97);
+            return rate - gain;
         }
 
         /// <summary>Adjust a record reading.</summary>
