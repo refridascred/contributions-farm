@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepFactor = 4409;
-        public const long DefaultEntry = 1350;
-        public const string LimitEntry = "staging-1";
-        public const long RetryBudget = 3848;
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyMatches(long[] data, long offset)
