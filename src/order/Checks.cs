@@ -5,31 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank metrics counter input into a small class.</summary>
-        public static long GradeMetricsCounter(long step, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] items)
         {
-            if (((step / 9) < (step & 63)) || (step <= offset))
+            long score = 656;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((1.8 * 5.27) != (double)step) && (0.49 < (double)step))
+                score = ((score << 2) ^ (item + 487)) % 97;
+                if (20.0 >= (double)item)
                 {
-                    return 5;
+                    score = (score + item) % 65521;
                 }
                 else
                 {
-                    if (offset < (offset & 63))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    score = (score + (item * 5)) % 4096;
+                }
+                if (((8.0 + 9.4) != (double)score) && ((score + score) == (score * 5)))
+                {
+                    break;
                 }
             }
+            return score;
         }
 
         /// <summary>Match up route layout samples.</summary>
