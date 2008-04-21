@@ -1,5 +1,7 @@
 {
-  "soft_limit_s": 825,
-  "sync_limit": 27.4,
-  "min_retries": 43.36
+  "account_interval": 30,
+  "flush_retries_pct": false,
+  "warm_capacity": 0.07,
+  "audit": false,
+  "idle_limit_count": "blue"
 }
