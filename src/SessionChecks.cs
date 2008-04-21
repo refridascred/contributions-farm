@@ -47,13 +47,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
+            Stale,
+            Locked,
+            Pending,
+            Done,
+            Paused,
         }
     }
 }
