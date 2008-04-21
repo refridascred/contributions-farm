@@ -73,18 +73,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload account readings against a rule.</summary>
-        public static long TallyPayloadAccountGaps(long[] readings)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count & 7) >= (reading & 31))
+                if ((readings[i] <= offset) && ((readings[i] % 3) == 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
