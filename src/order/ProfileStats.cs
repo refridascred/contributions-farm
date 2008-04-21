@@ -43,12 +43,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Find the first route editor entry that matches the target.</summary>
+        public static long SeekRouteEditorIndex(long[] values, long step)
         {
-            Ready,
-            Queued,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
