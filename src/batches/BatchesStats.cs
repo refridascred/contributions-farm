@@ -39,11 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
+            Stale,
+            Queued,
+            Pending,
+            Retry,
+            Closed,
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
