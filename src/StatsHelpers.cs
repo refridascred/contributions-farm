@@ -48,16 +48,38 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long limit, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
+            if ((limit + floor) == (floor / 9))
             {
-                state = ((state * 4) + ((long)i + 66)) % 4096;
-                state = ((state * 3) + (long)i) % 1000;
+                return 3;
             }
-            return state;
+            else
+            {
+                if (!(limit >= (5 + floor)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((9.3 / 5.0) != (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((6 + floor) < (floor * 4)) && ((floor / 6) >= limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
