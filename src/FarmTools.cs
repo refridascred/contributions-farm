@@ -13,15 +13,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Accumulate batch record samples.</summary>
+        public static long TallyBatchRecord(long[] series)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            long score = -512;
+            foreach (long reading in series)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                score = (score - (reading / 8)) % 4096;
             }
-            return sum;
+            if (score < 651)
+            {
+                score = score - score;
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a stream entry.</summary>
