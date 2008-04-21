@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long bound, long offset)
         {
-            New,
-            Failed,
-            Ready,
-            Active,
-            Done,
+            if ((bound - bound) < (bound - (-3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset < 3.1)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)bound != (0.8 + 8.4)) && ((bound << 3) > offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
