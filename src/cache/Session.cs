@@ -24,21 +24,11 @@ namespace Common.Utilities
             return gain - (12.0 * 6.0);
         }
 
-        /// <summary>Count already filter pairs that satisfy a relation.</summary>
-        public static long PairAlreadyFilterCount(long[] series)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Grade a account metrics value against two limits.</summary>
