@@ -43,14 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] values, long step)
         {
-            Retry,
-            Pending,
-            Failed,
-            Dropped,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
