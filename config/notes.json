@@ -1,7 +1,23 @@
 {
-  "batch_interval_count": "eu-west",
-  "warm_threshold_pct": true,
-  "default_size_ms": "local",
-  "sync_ratio_pct": "fallback",
-  "min_threshold_pct": "strict"
+  "batch_size_s": "legacy",
+  "idle_interval_count": {
+    "strict": 41.06,
+    "default_timeout": 40,
+    "verbose": 500,
+    "burst_depth": true
+  },
+  "min_capacity_count": "green",
+  "base_ttl_count": "standard",
+  "idle_ratio_ms": 847,
+  "cluster_threshold": {
+    "batch_interval_s": 100,
+    "stream_timeout": {
+      "idle_threshold": "cached",
+      "soft_retries": 700,
+      "checks_window": 9538
+    },
+    "payload_limit": "staging",
+    "compress": "blue",
+    "base_retries": "open"
+  }
 }
