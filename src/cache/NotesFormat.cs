@@ -14,18 +14,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 9064;
+        public const long BaseFactor = 2903;
+        public const double HardInterval = 81.4;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
