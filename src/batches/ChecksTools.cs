@@ -60,21 +60,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] samples)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            Retry,
+            Locked,
+            Pending,
         }
     }
 }
