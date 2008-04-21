@@ -1,7 +1,12 @@
 {
-  "flush_threshold_pct": 55.92,
-  "verbose": false,
-  "metrics_limit": "staging",
-  "persist": true,
-  "readonly": 559
+  "base_ratio": "open",
+  "burst_ttl_pct": 12.25,
+  "warm_depth_pct": {
+    "idle_timeout": 5577,
+    "readonly": [16, 186],
+    "default_retries_count": "strict",
+    "entry_capacity": "latest",
+    "context_ratio": true,
+    "warm_timeout_pct": "open"
+  }
 }
