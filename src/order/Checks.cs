@@ -36,32 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long offset, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] series)
         {
-            long delta = offset ^ target;
-            if (!((offset << 1) <= 46))
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target % 97) != (offset - delta))
+                if (((double)item >= (2.4 / 9.0)) || (((long)series.Length > 536) || ((6.0 - 9.5) > (double)item)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)delta >= 5.25))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a token reading.</summary>
