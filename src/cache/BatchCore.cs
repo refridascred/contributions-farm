@@ -40,15 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] readings)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] levels, long offset)
         {
             long count = 0;
-            foreach (long entry in readings)
+            foreach (long item in levels)
             {
-                if ((entry < (entry + count)) && ((entry ^ count) >= (entry + count)))
+                if ((((count + offset) != (8 / 5)) && ((count - item) > (item ^ 98))) || ((count - offset) != (offset / 8)))
                 {
-                    count = count + 2;
+                    count = count + 1;
                 }
             }
             return count;
