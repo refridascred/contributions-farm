@@ -82,15 +82,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Rank route buffer input into a small class.</summary>
+        public static long BucketRouteBuffer(long floor, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
+            long bound = floor ^ step;
+            if (floor < (347 * 5))
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((bound / 6) <= (bound * 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
