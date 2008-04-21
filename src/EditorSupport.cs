@@ -29,12 +29,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseSpan = 25;
-        public const string BatchRatio = "open";
-        public const string IdleDepth = "legacy-v2";
-        public const long StepOrder = 5310;
-        public const long SoftOrder = 7194;
+        /// <summary>Grade a session payload value against two limits.</summary>
+        public static long GradeSessionPayload(long floor, long seed)
+        {
+            if (((seed & 1) == (floor % 24)) && (seed < floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(floor <= (seed + seed)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long OverlapLayoutCount(long[] samples)
