@@ -33,22 +33,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] items, long seed)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long step)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long sum = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((item + (long)items.Length) <= (item << 3))
-                {
-                    seen = (seen + 1) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
