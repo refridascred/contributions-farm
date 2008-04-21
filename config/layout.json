@@ -1,8 +1,8 @@
 {
-  "warm_threshold_s": 95.28,
-  "commits_limit": false,
-  "cache_limit_ms": 20.07,
-  "sync_ttl_count": "legacy",
-  "persist": "staging",
-  "report_depth": 100
+  "flush_timeout": 1452,
+  "contributi_window": 30,
+  "base_delay_pct": 6765,
+  "order_size": "legacy",
+  "enabled": false,
+  "dry_run": "cached"
 }
