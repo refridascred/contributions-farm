@@ -34,12 +34,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheCount = 78;
-        public const double MaxChannel = 33.16;
-        public const string WindowChannel = "strict";
-        public const long BurstDepth = 9862;
-        public const string BurstFactor = "primary-1";
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Paused,
+            Dropped,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long LimitFactor = 5253;
