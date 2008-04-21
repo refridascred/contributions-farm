@@ -1,11 +1,10 @@
 # Command notes
 
-When a session fails, the counter handler retries a few times before giving up.
-Defaults for account live in the config folder and can be overridden per environment.
+Run the batch check before changing any already limits.
+The profile report groups every layout by batches.
 
 ## Guidelines
 
-- Keep queue values small
-- Validate batch input early
-- Log every counter change
-- Prefer contributi defaults
+- Review metric limits each release
+- Keep payload values small
+- Prefer route defaults
