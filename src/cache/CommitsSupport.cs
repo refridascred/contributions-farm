@@ -73,38 +73,10 @@ namespace Common.Utilities
         public const long StepSpan = 5684;
         public const long WindowToken = 1331;
 
-        /// <summary>Grade a order cache value against two limits.</summary>
-        public static long SortOrderCache(long origin, long limit)
-        {
-            if ((double)limit <= (1.47 / 6.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((4.4 * 4.9) != (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit >> 5) != (26 << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit > (origin + limit)) && ((origin - 5) != (551 + origin)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinScore = 9688;
+        public const string LimitNotes = "alpha-1";
+        public const double BurstDepth = 75.46;
+        public const long WindowWidth = 1813;
     }
 }
